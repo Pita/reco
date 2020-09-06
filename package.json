@@ -1,0 +1,40 @@
+{
+  "name": "reco",
+  "version": "0.0.1",
+  "description": "Regular Expression COmpiler",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build",
+    "serve": "ts-node ./src",
+    "start": "node ./dist",
+    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pita/reco.git"
+  },
+  "keywords": [
+    "regex",
+    "compile",
+    "regular",
+    "expression"
+  ],
+  "author": "Peter 'Pita' Martischka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pita/reco/issues"
+  },
+  "homepage": "https://github.com/Pita/reco#readme",
+  "devDependencies": {
+    "@types/node": "^14.6.4",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "2.1.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
