@@ -313,21 +313,12 @@ function ${fn.name}(str: string, start: number): number {
   })
 }
 
-function genCode(regexStr: string): void {
+export function genCode(regexStr: string): void {
   const pattern = regexpParser.pattern(regexStr)
   // console.log(JSON.stringify(pattern, null, 2));
   const collector = new Collector(regexStr)
   const disjunction = pattern.value
   const mainHandle = handleDisjunction(disjunction, collector)
 
-  console.log(collectedFunctionsToCode(collector.getFunctions(), mainHandle))
+  return collectedFunctionsToCode(collector.getFunctions(), mainHandle)
 }
-
-// from a regexp text
-// /((?:\*[0-9a-z]+)*)(?:\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\?|/g.test(str);
-
-// const astOutput = regexpParser.pattern(
-//   "/((?:\\*[0-9a-z]+)*)(?:\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\?|/g"
-// );
-
-genCode('/((?:\\*[0-9a-z]+)*)(?:\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\?|/g')
