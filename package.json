@@ -29,6 +29,8 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.13",
+    "@types/lodash": "^4.14.161",
     "@types/node": "^14.6.4",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
@@ -44,6 +46,7 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "lodash": "^4.17.20",
     "regexp-to-ast": "^0.5.0"
   }
 }
