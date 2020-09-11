@@ -4,7 +4,7 @@
   "description": "Regular Expression COmpiler",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc --build",
     "start": "ts-node ./src/index",
     "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix"
@@ -26,14 +26,19 @@
   },
   "homepage": "https://github.com/Pita/reco#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/node": "^14.6.4",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
+    "babel-jest": "^26.3.0",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.4",
     "eslint": "^7.8.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
     "prettier": "2.1.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
