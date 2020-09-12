@@ -8,23 +8,23 @@ const createFromSet = (regex: string) => {
   return CharRange.fromSet(regexSet, pattern.flags.ignoreCase);
 };
 
-const createFromChar = (regex: string) => {
+const createFromCharacter = (regex: string) => {
   const regexpParser = new RegExpParser();
   const pattern = regexpParser.pattern(regex);
   const regexSet = pattern.value.value[0].value[0] as Character;
-  return CharRange.fromCharachter(regexSet, pattern.flags.ignoreCase);
+  return CharRange.fromCharacter(regexSet, pattern.flags.ignoreCase);
 };
 
 describe('CharRange', () => {
   describe('fromCharachter', () => {
     test('can add a single charachter', () => {
-      const charRange = createFromChar('/a/');
+      const charRange = createFromCharacter('/a/');
 
       expect(charRange.toJSON()).toEqual({ complement: false, chars: [97] });
     });
 
     test('adds two charachters when ignoreCase is set', () => {
-      const charRange = createFromChar('/a/i');
+      const charRange = createFromCharacter('/a/i');
 
       expect(charRange.toJSON()).toEqual({
         complement: false,

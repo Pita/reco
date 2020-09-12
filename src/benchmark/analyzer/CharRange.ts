@@ -12,7 +12,7 @@ export class CharRange {
     this.complement = options.complement;
   }
 
-  static fromCharachter(char: Character, ignoreCase: boolean) {
+  static fromCharacter(char: Character, ignoreCase: boolean) {
     return new CharRange({
       complement: false,
       chars: normalizeUpperLowerCase(char.value, ignoreCase),
