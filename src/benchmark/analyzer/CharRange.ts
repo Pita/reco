@@ -37,6 +37,13 @@ export class CharRange {
     });
   }
 
+  static createEmptyRange() {
+    return new CharRange({
+      chars: [],
+      complement: false,
+    });
+  }
+
   hasOverlap(other: CharRange): boolean {
     if (this.complement && other.complement) {
       return true;
@@ -78,6 +85,32 @@ export class CharRange {
     return new CharRange({
       complement: false,
       chars: _.intersection(this.chars, other.chars),
+    });
+  }
+
+  union(other: CharRange): CharRange {
+    if (this.complement && other.complement) {
+      return new CharRange({
+        complement: true,
+        chars: _.intersection(this.chars, other.chars),
+      });
+    }
+    if (this.complement) {
+      return new CharRange({
+        complement: true,
+        chars: _.difference(this.chars, other.chars),
+      });
+    }
+    if (other.complement) {
+      return new CharRange({
+        complement: true,
+        chars: _.difference(other.chars, this.chars),
+      });
+    }
+
+    return new CharRange({
+      complement: false,
+      chars: _.union(this.chars, other.chars),
     });
   }
 

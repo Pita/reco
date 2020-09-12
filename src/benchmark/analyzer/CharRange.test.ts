@@ -82,7 +82,7 @@ describe('CharRange', () => {
   });
 
   describe('smallestInCommon', () => {
-    test('can recognize overlap between two inclusive', () => {
+    test('can recognize smallest in common between two inclusive', () => {
       const set1 = CharRange.fromSet(createRegexRange('/[ac]/') as Set);
       const set2 = CharRange.fromSet(createRegexRange('/[a-z]/') as Set);
 
@@ -95,7 +95,7 @@ describe('CharRange', () => {
       expect(set2.smallestInCommon(set1).toJSON()).toStrictEqual(result);
     });
 
-    test('can recognize non overlap between two inclusive', () => {
+    test('can recognize smallest in common between two inclusive', () => {
       const set1 = CharRange.fromSet(createRegexRange('/[0-9]/') as Set);
       const set2 = CharRange.fromSet(createRegexRange('/[a-z]/') as Set);
 
@@ -108,7 +108,7 @@ describe('CharRange', () => {
       expect(set2.smallestInCommon(set1).toJSON()).toStrictEqual(result);
     });
 
-    test('can recognize non overlap between inclusive & exclusive', () => {
+    test('can recognize smallest in common between inclusive & exclusive', () => {
       const set1 = CharRange.fromSet(createRegexRange('/[^b]/') as Set);
       const set2 = CharRange.fromSet(createRegexRange('/[b]/') as Set);
 
@@ -121,7 +121,7 @@ describe('CharRange', () => {
       expect(set2.smallestInCommon(set1).toJSON()).toStrictEqual(result);
     });
 
-    test('can recognize overlap between inclusive & exclusive', () => {
+    test('can recognize smallest in common between inclusive & exclusive', () => {
       const set1 = CharRange.fromSet(createRegexRange('/[^b]/') as Set);
       const set2 = CharRange.fromSet(createRegexRange('/[bc]/') as Set);
 
@@ -134,7 +134,7 @@ describe('CharRange', () => {
       expect(set2.smallestInCommon(set1).toJSON()).toStrictEqual(result);
     });
 
-    test('can recognize overlap between two exclusive', () => {
+    test('can recognize smallest in common between two exclusive', () => {
       const set1 = CharRange.fromSet(createRegexRange('/[^b]/') as Set);
       const set2 = CharRange.fromSet(createRegexRange('/[^c]/') as Set);
 
@@ -148,8 +148,88 @@ describe('CharRange', () => {
     });
   });
 
-  // smallest in common
-  // ab <-> [a-z] -> ab
-  // ^b <-> b -> nada
-  // ^b <-> ^c -> everything except b & c
+  describe('union', () => {
+    test('can create union between two inclusive', () => {
+      const set1 = CharRange.fromSet(createRegexRange('/[ac]/') as Set);
+      const set2 = CharRange.fromSet(createRegexRange('/[a-z]/') as Set);
+
+      // a - z
+      let chars = [];
+      for (let i = 97; i <= 122; i++) {
+        chars.push(i);
+      }
+      chars = chars.sort();
+
+      const result = {
+        complement: false,
+        chars,
+      };
+
+      expect(set1.union(set2).toJSON()).toStrictEqual(result);
+      expect(set2.union(set1).toJSON()).toStrictEqual(result);
+    });
+
+    test('can create union between two inclusive', () => {
+      const set1 = CharRange.fromSet(createRegexRange('/[0-9]/') as Set);
+      const set2 = CharRange.fromSet(createRegexRange('/[a-z]/') as Set);
+
+      // a - z
+      let chars = [];
+      for (let i = 48; i <= 57; i++) {
+        chars.push(i);
+      }
+      // 0-9
+      for (let i = 97; i <= 122; i++) {
+        chars.push(i);
+      }
+      chars = chars.sort();
+
+      const result = {
+        complement: false,
+        chars,
+      };
+
+      expect(set1.union(set2).toJSON()).toStrictEqual(result);
+      expect(set2.union(set1).toJSON()).toStrictEqual(result);
+    });
+
+    test('can create union between inclusive & exclusive', () => {
+      const set1 = CharRange.fromSet(createRegexRange('/[^bc]/') as Set);
+      const set2 = CharRange.fromSet(createRegexRange('/[b]/') as Set);
+
+      const result = {
+        complement: true,
+        chars: [99],
+      };
+
+      expect(set1.union(set2).toJSON()).toStrictEqual(result);
+      expect(set2.union(set1).toJSON()).toStrictEqual(result);
+    });
+
+    test('can create union between inclusive & exclusive', () => {
+      const set1 = CharRange.fromSet(createRegexRange('/[^bd]/') as Set);
+      const set2 = CharRange.fromSet(createRegexRange('/[bc]/') as Set);
+
+      const result = {
+        complement: true,
+        chars: [100],
+      };
+
+      expect(set1.union(set2).toJSON()).toStrictEqual(result);
+      expect(set2.union(set1).toJSON()).toStrictEqual(result);
+    });
+
+    test('can create union between two exclusive', () => {
+      const set1 = CharRange.fromSet(createRegexRange('/[^bc]/') as Set);
+      const set2 = CharRange.fromSet(createRegexRange('/[^c]/') as Set);
+
+      const result = {
+        complement: true,
+        chars: [99],
+      };
+
+      expect(set1.union(set2).toJSON()).toStrictEqual(result);
+      expect(set2.union(set1).toJSON()).toStrictEqual(result);
+    });
+  });
 });
