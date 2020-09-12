@@ -1,5 +1,6 @@
 import { Character, Set as RegexSet } from 'regexp-to-ast';
 import _ from 'lodash';
+import { normalizeUpperLowerCase } from '../../normalize_upper_lower_case';
 
 export class CharRange {
   private chars: number[];
@@ -11,22 +12,26 @@ export class CharRange {
     this.complement = options.complement;
   }
 
-  static fromCharachter(char: Character) {
+  static fromCharachter(char: Character, ignoreCase: boolean) {
     return new CharRange({
       complement: false,
-      chars: [char.value],
+      chars: normalizeUpperLowerCase(char.value, ignoreCase),
     });
   }
 
-  static fromSet(set: RegexSet) {
+  static fromSet(set: RegexSet, ignoreCase: boolean) {
     const chars: number[] = [];
     set.value.forEach((setValue) => {
       if (typeof setValue === 'number') {
-        chars.push(setValue);
+        normalizeUpperLowerCase(setValue, ignoreCase).forEach((char) =>
+          chars.push(char),
+        );
       } else {
         const { from, to } = setValue;
         for (let i = from; i <= to; i++) {
-          chars.push(i);
+          normalizeUpperLowerCase(i, ignoreCase).forEach((char) =>
+            chars.push(char),
+          );
         }
       }
     });
