@@ -1,6 +1,6 @@
 import { Character, Set as RegexSet } from 'regexp-to-ast';
 import _ from 'lodash';
-import { normalizeUpperLowerCase } from '../../normalize_upper_lower_case';
+import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 
 export class CharRange {
   private chars: number[];
