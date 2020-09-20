@@ -1,0 +1,14 @@
+{
+  "regex": "/^[a-z0-9_-]{3,16}$/",
+  "type": "groupMatch",
+  "testInputs": [
+    "hi",
+    "hi!",
+    "hie",
+    "helloWorld",
+    "hello@world",
+    "hello_world",
+    "hello!world",
+    "hello-world"
+  ]
+}

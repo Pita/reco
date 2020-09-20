@@ -1,0 +1,7 @@
+{
+  "regex": "/(?:<[^>]+\\s)(on\\S+)=[\"']?((?:.(?![\"']?\\s+(?:\\S+)=|[>\"']))+.)[\"']?/",
+  "type": "textSearch",
+  "testInputs": [
+    "<img src=\"foo.jpg\" onload=\"something\" />\n<img onmessage=\"javascript:foo()\">\n<a notonmessage=\"nomatch-here\">\n<p>\n  things that are just onfoo=\"bar\" shouldn't match either, outside of a tag\n</p>"
+  ]
+}

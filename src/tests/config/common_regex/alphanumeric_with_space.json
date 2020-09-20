@@ -1,0 +1,16 @@
+{
+  "regex": "/^[a-zA-Z0-9 ]*$/",
+  "type": "groupMatch",
+  "testInputs": [
+    "hello",
+    "what",
+    "how are you",
+    "how are you?",
+    "hi5",
+    "8ask",
+    "yyyy.",
+    "! dff",
+    "NoSpecialcharacters#",
+    "54445566"
+  ]
+}

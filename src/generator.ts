@@ -144,7 +144,6 @@ function handleCharacter(
   character: Character,
   collector: Collector,
 ): FunctionHandle {
-  // input params: str, start, length -> MatchResult
   const code = `
   const isMatch = str.charCodeAt(start) === ${character.value};
   return isMatch ? 1 : -1; 
@@ -286,36 +285,51 @@ return -1
 function collectedFunctionsToCode(
   functions: CollectedFunction[],
   mainHandle: FunctionHandle,
-) {
+): string {
   const runtime = `
+    class Regex {
   `;
 
   const functionStrings = functions.map((fn) => {
     return `
 // From: ${fn.origin}
-function ${fn.name}(str: string, start: number): number {
+private ${fn.name}(str: string, start: number): number {
   ${fn.code}
 }
     `;
   });
 
   const mainFunction = `
-    function test(str: string) {
-      return ${mainHandle.name}(str, 0) !== -1;
+      static exec(str: string) {
+        const regexInstance = new Regex();
+        for (let i = 0; i < str.length; i++) {
+          const length = regexInstance.${mainHandle.name}(str, i);
+
+          if (length !== -1) {
+            return {
+              matches: [
+                str.substr(i, length)
+              ],
+              index: i,
+            }
+          }
+        }
+
+        return null;
+      }
     }
 
-    module.exports = { test };
+    module.exports = { Regex };
   `;
 
   return prettier.format(runtime + functionStrings.join('') + mainFunction, {
     semi: true,
-    parser: 'babel',
+    parser: 'babel-ts',
   });
 }
 
-export function genCode(regexStr: string): void {
+export function genCode(regexStr: string): string {
   const pattern = regexpParser.pattern(regexStr);
-  // console.log(JSON.stringify(pattern, null, 2));
   const collector = new Collector(regexStr);
   const disjunction = pattern.value;
   const mainHandle = handleDisjunction(disjunction, collector);

@@ -1,0 +1,25 @@
+{
+  "regex": "/(https?:\\/\\/)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)/",
+  "type": "groupMatch",
+  "testInputs": [
+    "http://foo.com/blah_blah",
+    "http://foo.com/blah_blah/",
+    "http://foo.com/blah_blah_(wikipedia)",
+    "http://www.example.com/wpstyle/?p=364",
+    "https://www.example.com/foo/?bar=baz&inga=42&quux",
+    "http://userid:password@example.com:8080",
+    "http://foo.com/blah_(wikipedia)#cite-1",
+    "google.com",
+    "www.google.com",
+    "http://../",
+    "http://224.1.1.1",
+    "http://142.42.1.1:8080/",
+    "ftp://foo.bar/baz",
+    "http://1337.net",
+    "http://foo.bar/?q=Test%20URL-encoded%20stuff",
+    "http://code.google.com/events/#&product=browser",
+    "http://-error-.invalid/",
+    "http://3628126748",
+    "http://उदाहरण.परीक्षा"
+  ]
+}

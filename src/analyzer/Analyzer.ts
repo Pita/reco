@@ -173,6 +173,23 @@ function prettyPrint(str: string) {
   console.dir(analyzeRegex(str), { colors: true, depth: 10 });
 }
 
+/*
+  MOVE TO NOTES
+
+  Possible functions with this structure:
+  verify if a star or plus quantifier needs backtracking
+  check if there are fixed position strings
+  get minLength of match
+  verify at positions throughout the code if match is still possible
+*/
+
+/*
+  To verify backtracking: 
+  - find instance of quantifier
+  - find next sibling
+  - verify if there is an overlap
+*/
+
 // console.dir(analyzeRegex('/\\d*(\\.\\d+)?/'), { colors: true, depth: 10 });
 
 prettyPrint('/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6})*$/');
