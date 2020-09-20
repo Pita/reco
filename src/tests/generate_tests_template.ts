@@ -5,6 +5,7 @@ const prettier = require('prettier');
 const template = `
 import { GeneratedRegex } from './generated_regex.ts';
 
+// {{{testRegex}}}
 describe('{{{string testName}}}', () => {
   {{#each testInputs}}
     test('processes test input \\'{{string testInput}}\\' correctly', () => {

@@ -166,12 +166,13 @@ function handleCharacter(
 }
 
 function handleGroup(group: Group, collector: Collector): FunctionHandle {
+  throw new Error('Groups are not implemented yet');
   // TODO; has more features
-  const fn = handleDisjunction(group.value, collector);
-  if (group.quantifier) {
-    return wrapWithQuantifier({ quantifier: group.quantifier, fn, collector });
-  }
-  return fn;
+  // const fn = handleDisjunction(group.value, collector);
+  // if (group.quantifier) {
+  //   return wrapWithQuantifier({ quantifier: group.quantifier, fn, collector });
+  // }
+  // return fn;
 }
 
 function handleSet(set: Set, collector: Collector): FunctionHandle {
@@ -321,7 +322,7 @@ private ${fn.name}(str: string, start: number): number {
           if (instance.matched) {
             return {
               matches: [
-                str.substr(instance.start, instance.end)
+                str.substring(instance.start, instance.end)
               ],
               index: i,
             }

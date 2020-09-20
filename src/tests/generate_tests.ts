@@ -38,13 +38,17 @@ configFiles.forEach((configFile) => {
       }
 
       let groups = [];
-      for (let i = 0; i < groups.length; i++) {
+      for (let i = 0; i < result.length; i++) {
         groups.push(result[i]);
       }
 
       return { testInput, isNull: false, index: result.index, groups };
     });
-    const testCode = template({ testName, testInputs });
+    const testCode = template({
+      testName,
+      testInputs,
+      testRegex: config.regex,
+    });
 
     const folderName = `${__dirname}/generated/${testName}`;
 
