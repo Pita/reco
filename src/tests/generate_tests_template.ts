@@ -3,7 +3,7 @@ const jsStringEscape = require('js-string-escape');
 const prettier = require('prettier');
 
 const template = `
-import { GeneratedRegex } from './generated_regex.ts';
+import { GeneratedRegex } from './generated_regex';
 
 // {{{testRegex}}}
 describe('{{{string testName}}}', () => {
