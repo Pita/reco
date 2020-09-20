@@ -1,4 +1,4 @@
-import { genCode } from '../../../../generator';
+import { genCode } from '../generator';
 import * as fs from 'fs';
 
 const regex = /[a-zA-Z0-9]/;

@@ -83,7 +83,7 @@ function wrapWithQuantifier(options: {
   let code = (() => {
     if (quantifier.atLeast === 0 && quantifier.atMost === 1) {
       return `
-        const result = ${fn.name}(str, start);
+        const result = this.${fn.name}(str, start);
         return result === -1 ? 0 : result;
       `;
     }
@@ -96,7 +96,7 @@ let i = start;
     if (quantifier.atLeast > 0) {
       for (; i < quantifier.atLeast; i++) {
         code += `
-const match_${i} = ${fn.name}(str, i);
+const match_${i} = this.${fn.name}(str, i);
 if (match_${i} === -1) {
   return -1;
 }
@@ -107,7 +107,7 @@ i += match_${i};
     if (quantifier.atMost !== Infinity) {
       for (; i < quantifier.atMost; i++) {
         code += `
-const match_${i} = ${fn.name}(str, i);
+const match_${i} = this.${fn.name}(str, i);
 if (match_${i} === -1) {
   return i - start;
 }
@@ -118,7 +118,7 @@ i += match_${i};
     if (quantifier.atMost === Infinity) {
       code += `
 while(i < str.length) {
-  const greedy_match = ${fn.name}(str, i);
+  const greedy_match = this.${fn.name}(str, i);
   if (greedy_match === -1) {
     return i - start;
   }
@@ -230,7 +230,7 @@ function handleAlternative(
     .map((term) => handleTerm(term, collector))
     .map((handle, i) => {
       return `
-const result_${i} = ${handle.name}(str, i);
+const result_${i} = this.${handle.name}(str, i);
 if (result_${i} === -1) {
   return -1;
 }
@@ -263,7 +263,7 @@ function handleDisjunction(
     .map((alternative) => handleAlternative(alternative, collector))
     .map((fn, i) => {
       return `
-const alternative_${i} = ${fn.name}(str, start);
+const alternative_${i} = this.${fn.name}(str, start);
 if (alternative_${i} !== -1) {
   return alternative_${i};
 }
@@ -287,7 +287,10 @@ function collectedFunctionsToCode(
   mainHandle: FunctionHandle,
 ): string {
   const runtime = `
-    class Regex {
+    class GeneratedRegex {
+      matched: boolean;
+      start: number = -1;
+      end: number = -1;
   `;
 
   const functionStrings = functions.map((fn) => {
@@ -300,15 +303,25 @@ private ${fn.name}(str: string, start: number): number {
   });
 
   const mainFunction = `
-      static exec(str: string) {
-        const regexInstance = new Regex();
-        for (let i = 0; i < str.length; i++) {
-          const length = regexInstance.${mainHandle.name}(str, i);
+      constructor(str: string, start: number) {
+        const length = this.${mainHandle.name}(str, start);
+        if (length !== -1) {
+          this.matched = true;
+          this.start = start;
+          this.end = start + length;
+        } else {
+          this.matched = false;
+        }
+      }
 
-          if (length !== -1) {
+      static exec(str: string) {
+        for (let i = 0; i < str.length; i++) {
+          const instance = new GeneratedRegex(str, i);
+
+          if (instance.matched) {
             return {
               matches: [
-                str.substr(i, length)
+                str.substr(instance.start, instance.end)
               ],
               index: i,
             }
@@ -319,7 +332,7 @@ private ${fn.name}(str: string, start: number): number {
       }
     }
 
-    module.exports = { Regex };
+    module.exports = { GeneratedRegex };
   `;
 
   return prettier.format(runtime + functionStrings.join('') + mainFunction, {
