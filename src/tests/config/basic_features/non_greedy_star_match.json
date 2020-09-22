@@ -1,0 +1,5 @@
+{
+  "regex": "/(.*?)(a)/",
+  "type": "groupMatch",
+  "testInputs": ["foooada", "aa", "bbbba", "asdfa"]
+}

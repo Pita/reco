@@ -1,0 +1,5 @@
+{
+  "regex": "/[^ab-c]/",
+  "type": "groupMatch",
+  "testInputs": ["d", "a", "bsd", "!8asdf", ";,asd"]
+}

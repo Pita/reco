@@ -1,0 +1,5 @@
+{
+  "regex": "/.x/s",
+  "type": "groupMatch",
+  "testInputs": ["\nx", "bx", "x"]
+}

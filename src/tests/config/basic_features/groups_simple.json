@@ -1,0 +1,12 @@
+{
+  "regex": "/([a-y]{2})k(123)/",
+  "type": "groupMatch",
+  "testInputs": [
+    "abk123",
+    "asdfasdf",
+    "cdk123123",
+    "buk234",
+    "aabaak",
+    "123asdk"
+  ]
+}

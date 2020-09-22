@@ -1,0 +1,5 @@
+{
+  "regex": "/\\bfoo/",
+  "type": "groupMatch",
+  "testInputs": ["foo", "34foo", " foo", ".foo", "!foo", "bfoo", "_foo"]
+}

@@ -1,0 +1,5 @@
+{
+  "regex": "/a|b|f/",
+  "type": "groupMatch",
+  "testInputs": ["a", "Ba", "Bf", "aaaaaaac", "aabaa", "faaå"]
+}

@@ -1,0 +1,5 @@
+{
+  "regex": "/\\p{L}/u",
+  "type": "groupMatch",
+  "testInputs": ["A", "ბ", "ㄱ"]
+}

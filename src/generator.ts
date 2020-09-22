@@ -177,6 +177,11 @@ function handleGroup(group: Group, collector: Collector): FunctionHandle {
 
 function handleSet(set: Set, collector: Collector): FunctionHandle {
   let code = `const char = str.charCodeAt(start);`;
+
+  if (set.complement) {
+    throw new Error('Does not support complement sets yet');
+  }
+
   // TODO: what is complement?!
   set.value.forEach((value, i) => {
     if (typeof value === 'number') {
@@ -344,6 +349,17 @@ private ${fn.name}(str: string, start: number): number {
 
 export function genCode(regexStr: string): string {
   const pattern = regexpParser.pattern(regexStr);
+
+  if (pattern.flags.ignoreCase) {
+    throw new Error('Does not support ignoreCase yet');
+  }
+  if (pattern.flags.unicode) {
+    throw new Error('Does not support unicode yet');
+  }
+  if (pattern.flags.multiLine) {
+    throw new Error('Does not support multiline yet');
+  }
+
   const collector = new Collector(regexStr);
   const disjunction = pattern.value;
   const mainHandle = handleDisjunction(disjunction, collector);
