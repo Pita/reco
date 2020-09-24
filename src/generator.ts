@@ -18,6 +18,7 @@ import {
   TemplateGroupMarkerDefinition,
   TemplateValues,
   TemplateSetDefinition,
+  TemplateDisjunctionDefinition,
 } from './generator_ts_template';
 
 // MAYBE EXTEND INSTEAD OF OMIT?!
@@ -29,6 +30,7 @@ type SubDefinition<T> = Omit<T, 'functionName' | 'posLine1' | 'posLine2'> & {
 type CharacterDefinition = SubDefinition<TemplateCharacterDefinition>;
 type GroupMarkerDefinition = SubDefinition<TemplateGroupMarkerDefinition>;
 type SetDefinition = SubDefinition<TemplateSetDefinition>;
+type DisjunctionDefinition = SubDefinition<TemplateDisjunctionDefinition>;
 
 class Collector {
   private regexStr: string;
@@ -37,6 +39,7 @@ class Collector {
   private characterHandler: TemplateCharacterDefinition[] = [];
   private groupMarkerHandler: TemplateGroupMarkerDefinition[] = [];
   private setHandler: TemplateSetDefinition[] = [];
+  private disjunctionHandler: TemplateDisjunctionDefinition[] = [];
 
   constructor(regexStr: string) {
     this.regexStr = regexStr;
@@ -81,6 +84,17 @@ class Collector {
     return { functionName };
   }
 
+  addDisjunctionDefintion(def: DisjunctionDefinition): FunctionHandle {
+    const functionName = 'handleDisjunction' + this.getNewCount();
+    this.disjunctionHandler.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return { functionName };
+  }
+
   addSetDefintion(def: SetDefinition): FunctionHandle {
     const functionName = 'handleSet' + this.getNewCount();
     this.setHandler.push({
@@ -99,6 +113,7 @@ class Collector {
       groupMarkerHandler: this.groupMarkerHandler,
       regexStr: this.regexStr,
       setHandler: this.setHandler,
+      disjunctionHandler: this.disjunctionHandler,
     };
   }
 }
@@ -107,7 +122,7 @@ function handleCharacter(
   character: Character,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FollowUpFunctionHandle {
+): FunctionHandle {
   if (character.quantifier) {
     throw new Error('Quantifier on charachters are not implemented yet');
   }
@@ -123,7 +138,7 @@ function handleSet(
   set: RegexSet,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FollowUpFunctionHandle {
+): FunctionHandle {
   if (set.quantifier) {
     throw new Error('Quantifier on charachters are not implemented yet');
   }
@@ -151,7 +166,7 @@ function handleGroup(
   group: Group,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FollowUpFunctionHandle {
+): FunctionHandle {
   if (group.quantifier) {
     throw new Error('Quantifier on groups are not implemented yet');
   }
@@ -189,7 +204,7 @@ function handleTerm(
   term: Term,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FollowUpFunctionHandle {
+): FunctionHandle {
   switch (term.type) {
     case 'Character':
       return handleCharacter(term, collector, followUp);
@@ -206,7 +221,7 @@ function handleAlternative(
   alternative: Alternative,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FollowUpFunctionHandle {
+): FunctionHandle {
   let currentFollowUp = followUp;
   for (let i = alternative.value.length - 1; i >= 0; i--) {
     currentFollowUp = handleTerm(
@@ -216,19 +231,49 @@ function handleAlternative(
     );
   }
 
-  return currentFollowUp;
+  return currentFollowUp!;
 }
 
 function handleDisjunction(
   disjunction: Disjunction,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FollowUpFunctionHandle {
+): FunctionHandle {
   if (disjunction.value.length === 1) {
     return handleAlternative(disjunction.value[0], collector, followUp);
   }
 
-  throw new Error('Multiple disjunctions not yet supported');
+  const alternatives = disjunction.value.map((alternative) =>
+    handleAlternative(alternative, collector, followUp),
+  );
+  return collector.addDisjunctionDefintion({
+    alternatives,
+    followUp: null,
+    location: disjunction.loc,
+  });
+}
+
+function fixGroupIdx(disjunction: Disjunction) {
+  let idx = 1;
+
+  function traverse(element: any) {
+    const value = element?.value;
+
+    if (element.type === 'Group' && element.capturing) {
+      element.idx = idx;
+      idx++;
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((value) => traverse(value));
+    } else if (value) {
+      traverse(value);
+    }
+  }
+
+  traverse(disjunction);
+
+  return disjunction;
 }
 
 export function genCode(regexStr: string): string {
@@ -245,12 +290,8 @@ export function genCode(regexStr: string): string {
   }
 
   const collector = new Collector(regexStr);
-  const disjunction = pattern.value;
+  const disjunction = fixGroupIdx(pattern.value);
   const mainHandler = handleDisjunction(disjunction, collector, null);
-
-  if (mainHandler === null) {
-    throw new Error('No main handle function generated');
-  }
 
   return genCodeFromTemplate({
     ...collector.getTemplateValues(),

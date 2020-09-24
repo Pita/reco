@@ -41,7 +41,10 @@ configFiles.forEach((configFile) => {
 
       let groups = [];
       for (let i = 0; i < result.length; i++) {
-        groups.push(result[i]);
+        groups.push({
+          isUndefined: result[i] === undefined,
+          value: result[i],
+        });
       }
 
       return { testInput, isNull: false, index: result.index, groups };

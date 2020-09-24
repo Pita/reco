@@ -18,7 +18,12 @@ describe('{{{string testName}}}', () => {
         expect(result.index).toBe({{{index}}});
 
         {{#each groups}}
-          expect(result.matches[{{@index}}]).toBe('{{string this}}');
+          {{#if isUndefined}}
+            expect(result.matches[{{@index}}]).toBeUndefined();
+          {{/if}}
+          {{#unless isUndefined}}
+            expect(result.matches[{{@index}}]).toBe('{{string value}}');
+          {{/unless}}
         {{/each}}
       {{/unless}}
     });

@@ -80,6 +80,32 @@ class GeneratedRegex {
 
   {{/each}}
 
+  {{#each disjunctionHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
+      {{#each alternatives}}
+        const result_{{{functionName}}} = this.{{{functionName}}}(str, start, alreadyMatched);
+
+        if (result_{{{functionName}}} !== -1) {
+          {{#if ../followUp}}
+            return this.{{{../followUp.functionName}}}(
+              str, 
+              start + result_{{{functionName}}}, 
+              alreadyMatched + result_{{{functionName}}}
+            );
+          {{/if}}
+          {{#unless ../followUp}}
+            return result_{{{functionName}}};
+          {{/unless}}
+        }
+      {{/each}}
+
+      return -1;
+    }
+
+  {{/each}}
+
   constructor(str: string, start: number) {
     const length = this.{{{mainHandler.functionName}}}(str, start, 0);
     if (length !== -1) {
@@ -99,7 +125,9 @@ class GeneratedRegex {
         return {
           matches: [
             {{#times groups}}
-              str.substring(instance.groupMarkers[{{@index}} * 2], instance.groupMarkers[{{@index}} * 2 + 1]),
+              instance.groupMarkers[{{@index}} * 2 + 1] !== -1 
+                ? str.substring(instance.groupMarkers[{{@index}} * 2], instance.groupMarkers[{{@index}} * 2 + 1])
+                : undefined,
             {{/times}}
           ],
           index: i,
@@ -141,10 +169,15 @@ export interface TemplateSetDefinition extends FunctionDefinition {
   complement: boolean;
 }
 
+export interface TemplateDisjunctionDefinition extends FunctionDefinition {
+  alternatives: FunctionHandle[];
+}
+
 export interface TemplateValues {
   characterHandler: TemplateCharacterDefinition[];
   groupMarkerHandler: TemplateGroupMarkerDefinition[];
   setHandler: TemplateSetDefinition[];
+  disjunctionHandler: TemplateDisjunctionDefinition[];
   mainHandler: FunctionHandle;
   groups: number;
   regexStr: string;
