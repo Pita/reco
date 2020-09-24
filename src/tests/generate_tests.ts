@@ -14,13 +14,15 @@ const configFiles = glob.sync('**/*.json', {
 rimraf.sync(`${__dirname}/generated`);
 
 configFiles.forEach((configFile) => {
-  try {
-    const config: {
-      type: string;
-      testInputs: string[];
-      regex: string;
-    } = JSON.parse(fs.readFileSync(`${configFolder}/${configFile}`, 'utf8'));
+  const config: {
+    type: string;
+    testInputs: string[];
+    regex: string;
+    mustPass?: boolean;
+  } = JSON.parse(fs.readFileSync(`${configFolder}/${configFile}`, 'utf8'));
+  let passed = true;
 
+  try {
     if (config.type !== 'groupMatch') {
       throw new Error(`Unsupported test type: ${config.type}`);
     }
@@ -56,6 +58,22 @@ configFiles.forEach((configFile) => {
     fs.writeFileSync(`${folderName}/generated_regex.ts`, regexCode, 'utf8');
     fs.writeFileSync(`${folderName}/generated_test.test.ts`, testCode, 'utf8');
   } catch (e) {
-    console.error(`Skipped: ${configFile}`, e.toString());
+    passed = false;
+
+    if (config.mustPass) {
+      console.error(`Can't generate previously passing test: ${configFile}`);
+
+      throw e;
+    } else {
+      console.error(`Skipped: ${configFile}`, e.toString());
+    }
+  }
+
+  if (passed) {
+    fs.writeFileSync(
+      `${configFolder}/${configFile}`,
+      JSON.stringify({ ...config, mustPass: true }, null, 2),
+      'utf8',
+    );
   }
 });

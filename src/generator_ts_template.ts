@@ -3,13 +3,41 @@ const jsStringEscape = require('js-string-escape');
 const prettier = require('prettier');
 
 const template = `
+// {{{regexStr}}}
 class GeneratedRegex {
   matched: boolean;
-  start: number = -1;
-  end: number = -1;
+
+  {{#if groups}}
+    groupMarkers: [
+      {{#times groups}}
+        number, number,
+      {{/times}}
+    ] = [
+      {{#times groups}}
+        -1, -1,
+      {{/times}}
+    ]
+  {{/if}}
+
+  {{#each groupMarkerHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
+      this.groupMarkers[{{{groupMarkerIndex}}}] = start;
+
+      {{#if followUp}}
+        return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+      {{/if}}
+      {{#unless followUp}}
+        return alreadyMatched;
+      {{/unless}}
+    }
+  {{/each}}
 
   {{#each characterHandler}}
-    {{functionName}}(str: string, start: number, alreadyMatched: number): number {
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
       const isMatch = str.charCodeAt(start) === {{{charCode}}};
       if (!isMatch) {
         return -1;
@@ -22,14 +50,15 @@ class GeneratedRegex {
         return alreadyMatched + 1;
       {{/unless}}
     }
+
   {{/each}}
 
   constructor(str: string, start: number) {
     const length = this.{{{mainHandler.functionName}}}(str, start, 0);
     if (length !== -1) {
       this.matched = true;
-      this.start = start;
-      this.end = start + length;
+      this.groupMarkers[0] = start;
+      this.groupMarkers[1] = start + length;
     } else {
       this.matched = false;
     }
@@ -42,7 +71,9 @@ class GeneratedRegex {
       if (instance.matched) {
         return {
           matches: [
-            str.substring(instance.start, instance.end)
+            {{#times groups}}
+              str.substring(instance.groupMarkers[{{@index}} * 2], instance.groupMarkers[{{@index}} * 2 + 1]),
+            {{/times}}
           ],
           index: i,
         }
@@ -62,21 +93,42 @@ export interface FunctionHandle {
 
 export type FollowUpFunctionHandle = FunctionHandle | null;
 
-export interface TemplateCharacterDefinition {
+interface FunctionDefinition {
   functionName: string;
-  charCode: number;
   followUp: FollowUpFunctionHandle;
+  posLine1: string;
+  posLine2: string;
+}
+
+export interface TemplateCharacterDefinition extends FunctionDefinition {
+  charCode: number;
+}
+
+export interface TemplateGroupMarkerDefinition extends FunctionDefinition {
+  groupMarkerIndex: number;
 }
 
 export interface TemplateValues {
   characterHandler: TemplateCharacterDefinition[];
+  groupMarkerHandler: TemplateGroupMarkerDefinition[];
   mainHandler: FunctionHandle;
+  groups: number;
+  regexStr: string;
 }
 
 Handlebars.registerHelper(
   'string',
   (str) => new Handlebars.SafeString(jsStringEscape(str)),
 );
+
+Handlebars.registerHelper('times', function (n, block) {
+  var accum = '';
+  for (var i = 0; i < n; ++i) {
+    block.data.index = i;
+    accum += block.fn(i);
+  }
+  return accum;
+});
 
 const compiled = Handlebars.compile(template);
 export function genCodeFromTemplate(context: TemplateValues): string {

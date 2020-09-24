@@ -1,5 +1,5 @@
 {
-  "regex": "/([a-y]{2})k(123)/",
+  "regex": "/(ab)k(123)/",
   "type": "groupMatch",
   "testInputs": [
     "abk123",
@@ -8,5 +8,6 @@
     "buk234",
     "aabaak",
     "123asdk"
-  ]
+  ],
+  "mustPass": true
 }
