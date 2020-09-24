@@ -7,7 +7,8 @@ import {
   Term,
   Quantifier,
   Group,
-  Set,
+  Set as RegexSet,
+  Range,
 } from 'regexp-to-ast';
 import {
   FunctionHandle,
@@ -16,6 +17,7 @@ import {
   genCodeFromTemplate,
   TemplateGroupMarkerDefinition,
   TemplateValues,
+  TemplateSetDefinition,
 } from './generator_ts_template';
 
 // MAYBE EXTEND INSTEAD OF OMIT?!
@@ -26,6 +28,7 @@ type SubDefinition<T> = Omit<T, 'functionName' | 'posLine1' | 'posLine2'> & {
 
 type CharacterDefinition = SubDefinition<TemplateCharacterDefinition>;
 type GroupMarkerDefinition = SubDefinition<TemplateGroupMarkerDefinition>;
+type SetDefinition = SubDefinition<TemplateSetDefinition>;
 
 class Collector {
   private regexStr: string;
@@ -33,6 +36,7 @@ class Collector {
   private groups = 1;
   private characterHandler: TemplateCharacterDefinition[] = [];
   private groupMarkerHandler: TemplateGroupMarkerDefinition[] = [];
+  private setHandler: TemplateSetDefinition[] = [];
 
   constructor(regexStr: string) {
     this.regexStr = regexStr;
@@ -77,12 +81,24 @@ class Collector {
     return { functionName };
   }
 
+  addSetDefintion(def: SetDefinition): FunctionHandle {
+    const functionName = 'handleSet' + this.getNewCount();
+    this.setHandler.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return { functionName };
+  }
+
   getTemplateValues(): Omit<TemplateValues, 'mainHandler'> {
     return {
       groups: this.groups,
       characterHandler: this.characterHandler,
       groupMarkerHandler: this.groupMarkerHandler,
       regexStr: this.regexStr,
+      setHandler: this.setHandler,
     };
   }
 }
@@ -100,6 +116,34 @@ function handleCharacter(
     charCode: character.value,
     followUp,
     location: character.loc,
+  });
+}
+
+function handleSet(
+  set: RegexSet,
+  collector: Collector,
+  followUp: FollowUpFunctionHandle,
+): FollowUpFunctionHandle {
+  if (set.quantifier) {
+    throw new Error('Quantifier on charachters are not implemented yet');
+  }
+
+  const chars: number[] = [];
+  const ranges: Range[] = [];
+  set.value.forEach((value) => {
+    if (typeof value === 'number') {
+      chars.push(value);
+    } else {
+      ranges.push(value);
+    }
+  });
+
+  return collector.addSetDefintion({
+    chars,
+    ranges,
+    complement: set.complement,
+    followUp,
+    location: set.loc,
   });
 }
 
@@ -151,6 +195,8 @@ function handleTerm(
       return handleCharacter(term, collector, followUp);
     case 'Group':
       return handleGroup(term, collector, followUp);
+    case 'Set':
+      return handleSet(term, collector, followUp);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }

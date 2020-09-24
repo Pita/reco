@@ -1,5 +1,12 @@
 {
   "regex": "/[^ab-c]/",
   "type": "groupMatch",
-  "testInputs": ["d", "a", "bsd", "!8asdf", ";,asd"]
+  "testInputs": [
+    "d",
+    "a",
+    "bsd",
+    "!8asdf",
+    ";,asd"
+  ],
+  "mustPass": true
 }

@@ -7,17 +7,44 @@ const template = `
 class GeneratedRegex {
   matched: boolean;
 
-  {{#if groups}}
-    groupMarkers: [
-      {{#times groups}}
-        number, number,
-      {{/times}}
-    ] = [
-      {{#times groups}}
-        -1, -1,
-      {{/times}}
-    ]
-  {{/if}}
+  groupMarkers: [
+    {{#times groups}}
+      number, number,
+    {{/times}}
+  ] = [
+    {{#times groups}}
+      -1, -1,
+    {{/times}}
+  ]
+
+  {{#each setHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
+      const charCode = str.charCodeAt(start);
+
+      const matched = {{#if complement}}!{{/if}}(
+        {{#each ranges}}
+           (charCode >= {{{from}}} && charCode <= {{{to}}}) ||
+        {{/each}}
+        {{#each chars}}
+           charCode === {{{this}}} ||
+        {{/each}}
+        false
+      );
+
+      if (!matched) {
+        return -1;
+      }
+
+      {{#if followUp}}
+        return this.{{{followUp.functionName}}}(str, start + 1, alreadyMatched + 1);
+      {{/if}}
+      {{#unless followUp}}
+        return alreadyMatched + 1;
+      {{/unless}}
+    }
+  {{/each}}
 
   {{#each groupMarkerHandler}}
     // {{{posLine1}}}
@@ -108,9 +135,16 @@ export interface TemplateGroupMarkerDefinition extends FunctionDefinition {
   groupMarkerIndex: number;
 }
 
+export interface TemplateSetDefinition extends FunctionDefinition {
+  ranges: { from: number; to: number }[];
+  chars: number[];
+  complement: boolean;
+}
+
 export interface TemplateValues {
   characterHandler: TemplateCharacterDefinition[];
   groupMarkerHandler: TemplateGroupMarkerDefinition[];
+  setHandler: TemplateSetDefinition[];
   mainHandler: FunctionHandle;
   groups: number;
   regexStr: string;
