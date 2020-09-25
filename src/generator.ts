@@ -19,9 +19,9 @@ import {
   TemplateValues,
   TemplateSetDefinition,
   TemplateDisjunctionDefinition,
+  TemplateRecursiveQuantifierDefinition,
+  TemplateQuantifierWithMinOrMaxDefinition,
 } from './generator_ts_template';
-
-// MAYBE EXTEND INSTEAD OF OMIT?!
 
 type SubDefinition<T> = Omit<T, 'functionName' | 'posLine1' | 'posLine2'> & {
   location: IRegExpAST['loc'];
@@ -31,6 +31,12 @@ type CharacterDefinition = SubDefinition<TemplateCharacterDefinition>;
 type GroupMarkerDefinition = SubDefinition<TemplateGroupMarkerDefinition>;
 type SetDefinition = SubDefinition<TemplateSetDefinition>;
 type DisjunctionDefinition = SubDefinition<TemplateDisjunctionDefinition>;
+type RecursiveQuantifierDefinition = SubDefinition<
+  TemplateRecursiveQuantifierDefinition
+>;
+type QuantifierWithMinOrMaxDefinition = SubDefinition<
+  TemplateQuantifierWithMinOrMaxDefinition
+>;
 
 class Collector {
   private regexStr: string;
@@ -40,6 +46,9 @@ class Collector {
   private groupMarkerHandler: TemplateGroupMarkerDefinition[] = [];
   private setHandler: TemplateSetDefinition[] = [];
   private disjunctionHandler: TemplateDisjunctionDefinition[] = [];
+  private greedyQuantifierHandler: TemplateRecursiveQuantifierDefinition[] = [];
+  private lazyQuantifierHandler: TemplateRecursiveQuantifierDefinition[] = [];
+  private quantifierWithMinOrMaxHandler: TemplateQuantifierWithMinOrMaxDefinition[] = [];
 
   constructor(regexStr: string) {
     this.regexStr = regexStr;
@@ -106,6 +115,45 @@ class Collector {
     return { functionName };
   }
 
+  addLazyQuantifierDefintion(
+    def: RecursiveQuantifierDefinition,
+  ): FunctionHandle {
+    const functionName = 'lazyQuantifier' + this.getNewCount();
+    this.lazyQuantifierHandler.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return { functionName };
+  }
+
+  addGreedyQuantifierDefintion(
+    def: RecursiveQuantifierDefinition,
+  ): FunctionHandle {
+    const functionName = 'greedyQuantifier' + this.getNewCount();
+    this.greedyQuantifierHandler.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return { functionName };
+  }
+
+  addQuantifierWithMinOrMaxHandlerDefintion(
+    def: QuantifierWithMinOrMaxDefinition,
+  ): FunctionHandle {
+    const functionName = 'quantifierWithMinOrMax' + this.getNewCount();
+    this.quantifierWithMinOrMaxHandler.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return { functionName };
+  }
+
   getTemplateValues(): Omit<TemplateValues, 'mainHandler'> {
     return {
       groups: this.groups,
@@ -114,97 +162,163 @@ class Collector {
       regexStr: this.regexStr,
       setHandler: this.setHandler,
       disjunctionHandler: this.disjunctionHandler,
+      lazyQuantifierHandler: this.lazyQuantifierHandler,
+      greedyQuantifierHandler: this.greedyQuantifierHandler,
+      quantifierWithMinOrMaxHandler: this.quantifierWithMinOrMaxHandler,
     };
   }
 }
 
-function handleCharacter(
-  character: Character,
-  collector: Collector,
-  followUp: FollowUpFunctionHandle,
-): FunctionHandle {
-  if (character.quantifier) {
-    throw new Error('Quantifier on charachters are not implemented yet');
-  }
-
-  return collector.addCharacterDefinition({
-    charCode: character.value,
-    followUp,
-    location: character.loc,
-  });
+interface AstWithQuantifier {
+  quantifier?: Quantifier;
+  loc: IRegExpAST['loc'];
 }
 
-function handleSet(
-  set: RegexSet,
+const withQuantifier = <T extends AstWithQuantifier>(
+  func: (
+    ast: T,
+    collector: Collector,
+    followUp: FollowUpFunctionHandle,
+  ) => FunctionHandle,
+): ((
+  ast: T,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FunctionHandle {
-  if (set.quantifier) {
-    throw new Error('Quantifier on charachters are not implemented yet');
-  }
+) => FunctionHandle) => {
+  return (ast, collector, followUp) => {
+    const quantifier = ast.quantifier;
+    if (quantifier == null) {
+      return func(ast, collector, followUp);
+    }
 
-  const chars: number[] = [];
-  const ranges: Range[] = [];
-  set.value.forEach((value) => {
-    if (typeof value === 'number') {
-      chars.push(value);
+    const wrappedHandler = func(ast, collector, null);
+    if (quantifier.atLeast > 0 || quantifier.atMost !== Infinity) {
+      const minRequired = quantifier.atLeast || undefined;
+      const minIsMax = quantifier.atLeast === quantifier.atMost;
+      const recursionLimit =
+        quantifier.atMost === Infinity
+          ? undefined
+          : quantifier.atMost - quantifier.atLeast;
+
+      let recursiveQuantifier = undefined;
+      if (!minIsMax) {
+        const recursionOptions = {
+          recursionLimit,
+          wrappedHandler,
+          location: ast.loc,
+          followUp,
+        };
+
+        recursiveQuantifier = quantifier.greedy
+          ? collector.addGreedyQuantifierDefintion(recursionOptions)
+          : collector.addLazyQuantifierDefintion(recursionOptions);
+      }
+
+      return collector.addQuantifierWithMinOrMaxHandlerDefintion({
+        wrappedHandler,
+        minRequired,
+        minIsMax,
+        recursionLimit,
+        recursiveQuantifier,
+        followUp: recursiveQuantifier ? null : followUp,
+        location: quantifier.loc,
+      });
     } else {
-      ranges.push(value);
+      const recursionOptions = {
+        recursionLimit: undefined,
+        wrappedHandler,
+        location: quantifier.loc,
+        followUp,
+      };
+
+      return quantifier.greedy
+        ? collector.addGreedyQuantifierDefintion(recursionOptions)
+        : collector.addLazyQuantifierDefintion(recursionOptions);
     }
-  });
+  };
+};
 
-  return collector.addSetDefintion({
-    chars,
-    ranges,
-    complement: set.complement,
-    followUp,
-    location: set.loc,
-  });
-}
-
-function handleGroup(
-  group: Group,
-  collector: Collector,
-  followUp: FollowUpFunctionHandle,
-): FunctionHandle {
-  if (group.quantifier) {
-    throw new Error('Quantifier on groups are not implemented yet');
-  }
-
-  if (group.capturing) {
-    const idx = group.idx;
-    if (idx == null) {
-      throw new Error('Capturing group does not have an idx');
-    }
-    collector.bumpGroupsCount(idx);
-
-    const groupEndMarker = collector.addGroupMarkerDefintion({
-      groupMarkerIndex: idx * 2 + 1,
+const handleCharacter = withQuantifier(
+  (
+    character: Character,
+    collector: Collector,
+    followUp: FollowUpFunctionHandle,
+  ): FunctionHandle => {
+    return collector.addCharacterDefinition({
+      charCode: character.value,
       followUp,
-      location: { begin: group.loc.end - 1, end: group.loc.end },
+      location: character.loc,
     });
-    const disjunction = handleDisjunction(
-      group.value,
-      collector,
-      groupEndMarker,
-    );
-    const groupStartMarker = collector.addGroupMarkerDefintion({
-      groupMarkerIndex: idx * 2,
-      followUp: disjunction,
-      location: { begin: group.loc.begin, end: group.loc.begin + 1 },
+  },
+);
+
+const handleSet = withQuantifier(
+  (
+    set: RegexSet,
+    collector: Collector,
+    followUp: FollowUpFunctionHandle,
+  ): FunctionHandle => {
+    const chars: number[] = [];
+    const ranges: Range[] = [];
+    set.value.forEach((value) => {
+      if (typeof value === 'number') {
+        chars.push(value);
+      } else {
+        ranges.push(value);
+      }
     });
 
-    return groupStartMarker;
-  } else {
-    return handleDisjunction(group.value, collector, followUp);
-  }
-}
+    return collector.addSetDefintion({
+      chars,
+      ranges,
+      complement: set.complement,
+      followUp,
+      location: set.loc,
+    });
+  },
+);
 
-function handleTerm(
+const handleGroup = withQuantifier(
+  (
+    group: Group,
+    collector: Collector,
+    followUp: FollowUpFunctionHandle,
+  ): FunctionHandle => {
+    if (group.capturing) {
+      const idx = group.idx;
+      if (idx == null) {
+        throw new Error('Capturing group does not have an idx');
+      }
+      collector.bumpGroupsCount(idx);
+
+      const groupEndMarker = collector.addGroupMarkerDefintion({
+        groupMarkerIndex: idx * 2 + 1,
+        followUp,
+        location: { begin: group.loc.end - 1, end: group.loc.end },
+      });
+      const disjunction = handleDisjunction(
+        group.value,
+        collector,
+        groupEndMarker,
+      );
+      const groupStartMarker = collector.addGroupMarkerDefintion({
+        groupMarkerIndex: idx * 2,
+        followUp: disjunction,
+        location: { begin: group.loc.begin, end: group.loc.begin + 1 },
+      });
+
+      return groupStartMarker;
+    } else {
+      return handleDisjunction(group.value, collector, followUp);
+    }
+  },
+);
+
+const handleTerm = (
   term: Term,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FunctionHandle {
+): FunctionHandle => {
   switch (term.type) {
     case 'Character':
       return handleCharacter(term, collector, followUp);
@@ -215,13 +329,13 @@ function handleTerm(
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }
-}
+};
 
-function handleAlternative(
+const handleAlternative = (
   alternative: Alternative,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FunctionHandle {
+): FunctionHandle => {
   let currentFollowUp = followUp;
   for (let i = alternative.value.length - 1; i >= 0; i--) {
     currentFollowUp = handleTerm(
@@ -232,13 +346,13 @@ function handleAlternative(
   }
 
   return currentFollowUp!;
-}
+};
 
-function handleDisjunction(
+const handleDisjunction = (
   disjunction: Disjunction,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
-): FunctionHandle {
+): FunctionHandle => {
   if (disjunction.value.length === 1) {
     return handleAlternative(disjunction.value[0], collector, followUp);
   }
@@ -251,9 +365,9 @@ function handleDisjunction(
     followUp: null,
     location: disjunction.loc,
   });
-}
+};
 
-function fixGroupIdx(disjunction: Disjunction) {
+const fixGroupIdx = (disjunction: Disjunction) => {
   let idx = 1;
 
   function traverse(element: any) {
@@ -274,9 +388,9 @@ function fixGroupIdx(disjunction: Disjunction) {
   traverse(disjunction);
 
   return disjunction;
-}
+};
 
-export function genCode(regexStr: string): string {
+export const genCode = (regexStr: string): string => {
   const pattern = new RegExpParser().pattern(regexStr);
 
   if (pattern.flags.ignoreCase) {
@@ -297,4 +411,4 @@ export function genCode(regexStr: string): string {
     ...collector.getTemplateValues(),
     mainHandler,
   });
-}
+};

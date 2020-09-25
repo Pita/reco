@@ -20,7 +20,7 @@ class GeneratedRegex {
   {{#each setHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
       const charCode = str.charCodeAt(start);
 
       const matched = {{#if complement}}!{{/if}}(
@@ -49,13 +49,18 @@ class GeneratedRegex {
   {{#each groupMarkerHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
-      this.groupMarkers[{{{groupMarkerIndex}}}] = start;
+    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
 
       {{#if followUp}}
-        return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        const followUp = this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        if (followUp !== -1) {
+          this.groupMarkers[{{{groupMarkerIndex}}}] = start;
+        }
+
+        return followUp;
       {{/if}}
       {{#unless followUp}}
+        this.groupMarkers[{{{groupMarkerIndex}}}] = start;
         return alreadyMatched;
       {{/unless}}
     }
@@ -64,7 +69,7 @@ class GeneratedRegex {
   {{#each characterHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
       const isMatch = str.charCodeAt(start) === {{{charCode}}};
       if (!isMatch) {
         return -1;
@@ -83,7 +88,7 @@ class GeneratedRegex {
   {{#each disjunctionHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{functionName}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
       {{#each alternatives}}
         const result_{{{functionName}}} = this.{{{functionName}}}(str, start, alreadyMatched);
 
@@ -104,6 +109,148 @@ class GeneratedRegex {
       return -1;
     }
 
+  {{/each}}
+
+  {{#each lazyQuantifierHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{{functionName}}}(
+      str: string, 
+      start: number, 
+      alreadyMatched: number, 
+      {{#if recursionLimit}} recursionCount: number {{/if}}
+    ): number {
+      {{#unless followUp}}
+        return 0;
+      {{/unless}}
+      {{#if followUp}}
+        const followUpMatch = this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        if (followUpMatch !== -1) {
+          return followUpMatch;
+        }
+
+        const wrappedResult = this.{{{wrappedHandler.functionName}}}(str, start, 0);
+        if (wrappedResult === -1) {
+          return -1;
+        }
+
+        {{#if recursionLimit}}
+          return this.{{{followUp.functionName}}}(
+            str, 
+            start + wrappedResult, 
+            alreadyMatched + wrappedResult, 
+          );
+        {{/if}}
+
+        return this.{{{functionName}}}(
+          str, 
+          start + wrappedResult, 
+          alreadyMatched + wrappedResult, 
+          {{#if recursionLimit}} recursionCount + 1 {{/if}}
+        )
+      {{/if}}
+    }
+  {{/each}}
+
+
+  {{#each greedyQuantifierHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{{functionName}}}(
+      str: string, 
+      start: number, 
+      alreadyMatched: number, 
+      {{#if recursionLimit}} recursionCount: number {{/if}}
+    ): number {
+      // try to match
+      const wrappedResult = this.{{{wrappedHandler.functionName}}}(str, start, 0);
+      if (wrappedResult === -1) {
+        {{#if followUp}}
+          // match did not work, try do the follow up instead
+          return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        {{/if}}
+        {{#unless followUp}}
+          // match did not work, no follow up, what we got is enough
+          return alreadyMatched;
+        {{/unless}}
+      }
+
+      {{#if recursionLimit}}
+        if (recursionCount + 1 === {{{recursionLimit}}}) {
+          {{#if followUp}}
+            return this.{{{followUp.functionName}}}(
+              str, 
+              start + wrappedResult, 
+              alreadyMatched + wrappedResult, 
+            );
+          {{/if}}
+          {{#unless followUp}}
+            return alreadyMatched + wrappedResult;
+          {{/unless}}
+        }
+      {{/if}}
+
+      const recursionResult = this.{{{functionName}}}(
+        str, 
+        start + wrappedResult, 
+        alreadyMatched + wrappedResult, 
+        {{#if recursionLimit}} recursionCount + 1 {{/if}}
+      );
+      if (recursionResult === -1) {
+        {{#if followUp}}
+          return this.{{{followUp.functionName}}}(
+            str, 
+            start, 
+            alreadyMatched, 
+          );
+        {{/if}}
+        {{#unless followUp}}
+          return alreadyMatched;
+        {{/unless}}
+      }
+
+      return recursionResult;
+    }
+  {{/each}}
+
+  {{#each quantifierWithMinOrMaxHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{{functionName}}}(str: string, start_base: number, alreadyMatched_base: number): number {
+      let start = start_base;
+      let alreadyMatched = alreadyMatched_base;
+
+      {{#if minRequired}}
+        for (let i = 0; i < {{{ minRequired}}}; i++) {
+          const wrappedResult = this.{{{wrappedHandler.functionName}}}(str, start, 0);
+          if (wrappedResult === -1) {
+            return -1;
+          }
+          start += wrappedResult;
+          alreadyMatched += wrappedResult;
+        }
+      {{/if}}
+      {{#if minIsMax}}
+        {{#if followUp}}
+          return this.{{{followUp.functionName}}}(
+            str, 
+            start, 
+            alreadyMatched, 
+          );
+        {{/if}}
+        {{#unless followUp}}
+          return alreadyMatched;
+        {{/unless}}
+      {{/if}}
+      {{#unless minIsMax}}
+        return this.{{{recursiveQuantifier.functionName}}}(
+          str, 
+          start, 
+          alreadyMatched,
+          {{#if recursionLimit}} 0 {{/if}}
+        );
+      {{/unless}}
+    }
   {{/each}}
 
   constructor(str: string, start: number) {
@@ -173,11 +320,29 @@ export interface TemplateDisjunctionDefinition extends FunctionDefinition {
   alternatives: FunctionHandle[];
 }
 
+export interface TemplateRecursiveQuantifierDefinition
+  extends FunctionDefinition {
+  recursionLimit?: number;
+  wrappedHandler: FunctionHandle;
+}
+
+export interface TemplateQuantifierWithMinOrMaxDefinition
+  extends FunctionDefinition {
+  wrappedHandler: FunctionHandle;
+  recursiveQuantifier?: FunctionHandle;
+  minRequired?: number;
+  minIsMax: boolean;
+  recursionLimit?: number;
+}
+
 export interface TemplateValues {
   characterHandler: TemplateCharacterDefinition[];
   groupMarkerHandler: TemplateGroupMarkerDefinition[];
   setHandler: TemplateSetDefinition[];
   disjunctionHandler: TemplateDisjunctionDefinition[];
+  lazyQuantifierHandler: TemplateRecursiveQuantifierDefinition[];
+  greedyQuantifierHandler: TemplateRecursiveQuantifierDefinition[];
+  quantifierWithMinOrMaxHandler: TemplateQuantifierWithMinOrMaxDefinition[];
   mainHandler: FunctionHandle;
   groups: number;
   regexStr: string;

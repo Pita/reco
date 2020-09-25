@@ -21,5 +21,6 @@
     "http://-error-.invalid/",
     "http://3628126748",
     "http://उदाहरण.परीक्षा"
-  ]
+  ],
+  "mustPass": true
 }

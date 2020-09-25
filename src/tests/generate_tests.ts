@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { genCode } from '../generator';
 import template from './generate_tests_template';
 import * as rimraf from 'rimraf';
+import * as path from 'path';
 
 const configFolder = `${__dirname}/config`;
 
@@ -49,7 +50,10 @@ configFiles.forEach((configFile) => {
 
       return { testInput, isNull: false, index: result.index, groups };
     });
+    const fileName = `generated_${path.basename(testName)}`;
+
     const testCode = template({
+      fileName,
       testName,
       testInputs,
       testRegex: config.regex,
@@ -58,8 +62,8 @@ configFiles.forEach((configFile) => {
     const folderName = `${__dirname}/generated/${testName}`;
 
     mkdirp.sync(folderName);
-    fs.writeFileSync(`${folderName}/generated_regex.ts`, regexCode, 'utf8');
-    fs.writeFileSync(`${folderName}/generated_test.test.ts`, testCode, 'utf8');
+    fs.writeFileSync(`${folderName}/${fileName}.ts`, regexCode, 'utf8');
+    fs.writeFileSync(`${folderName}/${fileName}.test.ts`, testCode, 'utf8');
   } catch (e) {
     passed = false;
 
