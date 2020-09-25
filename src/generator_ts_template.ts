@@ -162,9 +162,13 @@ class GeneratedRegex {
       alreadyMatched: number, 
       {{#if recursionLimit}} recursionCount: number {{/if}}
     ): number {
+      const groupMarkersCopy = this.groupMarkers.slice();
+
       // try to match
       const wrappedResult = this.{{{wrappedHandler.functionName}}}(str, start, 0);
       if (wrappedResult === -1) {
+        this.groupMarkers = groupMarkersCopy;
+
         {{#if followUp}}
           // match did not work, try do the follow up instead
           return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
@@ -197,6 +201,7 @@ class GeneratedRegex {
         {{#if recursionLimit}} recursionCount + 1 {{/if}}
       );
       if (recursionResult === -1) {
+        this.groupMarkers = groupMarkersCopy;
         {{#if followUp}}
           return this.{{{followUp.functionName}}}(
             str, 
