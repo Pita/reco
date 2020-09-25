@@ -89,6 +89,8 @@ class GeneratedRegex {
     // {{{posLine1}}}
     // {{{posLine2}}}
     private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+      const groupMarkersCopy = this.groupMarkers.slice();
+
       {{#each alternatives}}
         const result_{{{functionName}}} = this.{{{functionName}}}(str, start, alreadyMatched);
 
@@ -104,6 +106,8 @@ class GeneratedRegex {
             return result_{{{functionName}}};
           {{/unless}}
         }
+
+        this.groupMarkers = groupMarkersCopy;
       {{/each}}
 
       return -1;
