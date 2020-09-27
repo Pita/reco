@@ -20,7 +20,7 @@ class GeneratedRegex {
   {{#each setOrCharacterHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number): number {
       const charCode = str.charCodeAt(start);
 
       // end of string
@@ -43,10 +43,10 @@ class GeneratedRegex {
       }
 
       {{#if followUp}}
-        return this.{{{followUp.functionName}}}(str, start + 1, alreadyMatched + 1);
+        return this.{{{followUp.functionName}}}(str, start + 1);
       {{/if}}
       {{#unless followUp}}
-        return alreadyMatched + 1;
+        return start + 1;
       {{/unless}}
     }
   {{/each}}
@@ -54,10 +54,10 @@ class GeneratedRegex {
   {{#each groupMarkerHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number): number {
 
       {{#if followUp}}
-        const followUp = this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        const followUp = this.{{{followUp.functionName}}}(str, start);
         if (followUp !== -1) {
           this.groupMarkers[{{{groupMarkerIndex}}}] = start;
         }
@@ -66,7 +66,7 @@ class GeneratedRegex {
       {{/if}}
       {{#unless followUp}}
         this.groupMarkers[{{{groupMarkerIndex}}}] = start;
-        return alreadyMatched;
+        return start;
       {{/unless}}
     }
   {{/each}}
@@ -74,18 +74,17 @@ class GeneratedRegex {
   {{#each disjunctionHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number): number {
       const groupMarkersCopy = this.groupMarkers.slice();
 
       {{#each alternatives}}
-        const result_{{{functionName}}} = this.{{{functionName}}}(str, start, alreadyMatched);
+        const result_{{{functionName}}} = this.{{{functionName}}}(str, start);
 
         if (result_{{{functionName}}} !== -1) {
           {{#if ../followUp}}
             return this.{{{../followUp.functionName}}}(
               str, 
               start + result_{{{functionName}}}, 
-              alreadyMatched + result_{{{functionName}}}
             );
           {{/if}}
           {{#unless ../followUp}}
@@ -107,14 +106,13 @@ class GeneratedRegex {
     private {{{functionName}}}(
       str: string, 
       start: number, 
-      alreadyMatched: number, 
       {{#if recursionLimit}} recursionCount: number {{/if}}
     ): number {
       {{#unless followUp}}
         return 0;
       {{/unless}}
       {{#if followUp}}
-        const followUpMatch = this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        const followUpMatch = this.{{{followUp.functionName}}}(str, start);
         if (followUpMatch !== -1) {
           return followUpMatch;
         }
@@ -127,15 +125,13 @@ class GeneratedRegex {
         {{#if recursionLimit}}
           return this.{{{followUp.functionName}}}(
             str, 
-            start + wrappedResult, 
-            alreadyMatched + wrappedResult, 
+            wrappedResult, 
           );
         {{/if}}
 
         return this.{{{functionName}}}(
           str, 
-          start + wrappedResult, 
-          alreadyMatched + wrappedResult, 
+          wrappedResult, 
           {{#if recursionLimit}} recursionCount + 1 {{/if}}
         )
       {{/if}}
@@ -149,7 +145,6 @@ class GeneratedRegex {
     private {{{functionName}}}(
       str: string, 
       start: number, 
-      alreadyMatched: number, 
       {{#if recursionLimit}} recursionCount: number {{/if}}
     ): number {
       const groupMarkersCopy = this.groupMarkers.slice();
@@ -161,11 +156,11 @@ class GeneratedRegex {
 
         {{#if followUp}}
           // match did not work, try do the follow up instead
-          return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+          return this.{{{followUp.functionName}}}(str, start);
         {{/if}}
         {{#unless followUp}}
           // match did not work, no follow up, what we got is enough
-          return alreadyMatched;
+          return start;
         {{/unless}}
       }
 
@@ -174,20 +169,18 @@ class GeneratedRegex {
           {{#if followUp}}
             return this.{{{followUp.functionName}}}(
               str, 
-              start + wrappedResult, 
-              alreadyMatched + wrappedResult, 
+              wrappedResult, 
             );
           {{/if}}
           {{#unless followUp}}
-            return alreadyMatched + wrappedResult;
+            return wrappedResult;
           {{/unless}}
         }
       {{/if}}
 
       const recursionResult = this.{{{functionName}}}(
         str, 
-        start + wrappedResult, 
-        alreadyMatched + wrappedResult, 
+        wrappedResult, 
         {{#if recursionLimit}} recursionCount + 1 {{/if}}
       );
       if (recursionResult === -1) {
@@ -196,11 +189,10 @@ class GeneratedRegex {
           return this.{{{followUp.functionName}}}(
             str, 
             start, 
-            alreadyMatched, 
           );
         {{/if}}
         {{#unless followUp}}
-          return alreadyMatched;
+          return start;
         {{/unless}}
       }
 
@@ -213,7 +205,6 @@ class GeneratedRegex {
     // {{{posLine2}}}
     private {{{functionName}}}(str: string, start_base: number, alreadyMatched_base: number): number {
       let start = start_base;
-      let alreadyMatched = alreadyMatched_base;
 
       {{#if minRequired}}
         for (let i = 0; i < {{{ minRequired}}}; i++) {
@@ -221,8 +212,7 @@ class GeneratedRegex {
           if (wrappedResult === -1) {
             return -1;
           }
-          start += wrappedResult;
-          alreadyMatched += wrappedResult;
+          start = wrappedResult;
         }
       {{/if}}
       {{#if minIsMax}}
@@ -230,18 +220,16 @@ class GeneratedRegex {
           return this.{{{followUp.functionName}}}(
             str, 
             start, 
-            alreadyMatched, 
           );
         {{/if}}
         {{#unless followUp}}
-          return alreadyMatched;
+          return start;
         {{/unless}}
       {{/if}}
       {{#unless minIsMax}}
         return this.{{{recursiveQuantifier.functionName}}}(
           str, 
           start, 
-          alreadyMatched,
           {{#if recursionLimit}} 0 {{/if}}
         );
       {{/unless}}
@@ -251,16 +239,16 @@ class GeneratedRegex {
   {{#each startAnchorHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number): number {
       if (start !== 0) {
         return -1;
       }
 
       {{#if followUp}}
-        return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        return this.{{{followUp.functionName}}}(str, start);
       {{/if}}
       {{#unless followUp}}
-        return alreadyMatched;
+        return start;
       {{/unless}}
     }
   {{/each}}
@@ -268,26 +256,26 @@ class GeneratedRegex {
   {{#each endAnchorHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
-    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+    private {{{functionName}}}(str: string, start: number): number {
       if (str.length !== start) {
         return -1;
       }
 
       {{#if followUp}}
-        return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+        return this.{{{followUp.functionName}}}(str, start);
       {{/if}}
       {{#unless followUp}}
-        return alreadyMatched;
+        return start;
       {{/unless}}
     }
   {{/each}}
 
   constructor(str: string, start: number) {
-    const length = this.{{{mainHandler.functionName}}}(str, start, 0);
+    const length = this.{{{mainHandler.functionName}}}(str, start);
     if (length !== -1) {
       this.matched = true;
       this.groupMarkers[0] = start;
-      this.groupMarkers[1] = start + length;
+      this.groupMarkers[1] = length;
     } else {
       this.matched = false;
     }
