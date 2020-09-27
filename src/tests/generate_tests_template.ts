@@ -9,6 +9,12 @@ import templateValues from './{{{string fileName}}}_templateValues.json';
 // {{{testRegex}}}
 describe('{{{string testName}}}', () => {
   test('template values are as expected', () => {
+    Object.keys(templateValues).forEach(key => {
+      if (Array.isArray(templateValues[key]) && templateValues[key].length === 0) {
+        delete templateValues[key];
+      }
+    })
+
     expect(templateValues).toMatchSnapshot();
   });
   

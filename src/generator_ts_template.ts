@@ -17,7 +17,7 @@ class GeneratedRegex {
     {{/times}}
   ]
 
-  {{#each setHandler}}
+  {{#each setOrCharacterHandler}}
     // {{{posLine1}}}
     // {{{posLine2}}}
     private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
@@ -64,25 +64,6 @@ class GeneratedRegex {
         return alreadyMatched;
       {{/unless}}
     }
-  {{/each}}
-
-  {{#each characterHandler}}
-    // {{{posLine1}}}
-    // {{{posLine2}}}
-    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
-      const isMatch = str.charCodeAt(start) === {{{charCode}}};
-      if (!isMatch) {
-        return -1;
-      }
-
-      {{#if followUp}}
-        return this.{{{followUp.functionName}}}(str, start + 1, alreadyMatched + 1);
-      {{/if}}
-      {{#unless followUp}}
-        return alreadyMatched + 1;
-      {{/unless}}
-    }
-
   {{/each}}
 
   {{#each disjunctionHandler}}
@@ -311,15 +292,11 @@ interface FunctionDefinition {
   posLine2: string;
 }
 
-export interface TemplateCharacterDefinition extends FunctionDefinition {
-  charCode: number;
-}
-
 export interface TemplateGroupMarkerDefinition extends FunctionDefinition {
   groupMarkerIndex: number;
 }
 
-export interface TemplateSetDefinition extends FunctionDefinition {
+export interface TemplateSetOrCharacterDefinition extends FunctionDefinition {
   ranges: { from: number; to: number }[];
   chars: number[];
   complement: boolean;
@@ -345,9 +322,8 @@ export interface TemplateQuantifierWithMinOrMaxDefinition
 }
 
 export interface TemplateValues {
-  characterHandler: TemplateCharacterDefinition[];
+  setOrCharacterHandler: TemplateSetOrCharacterDefinition[];
   groupMarkerHandler: TemplateGroupMarkerDefinition[];
-  setHandler: TemplateSetDefinition[];
   disjunctionHandler: TemplateDisjunctionDefinition[];
   lazyQuantifierHandler: TemplateRecursiveQuantifierDefinition[];
   greedyQuantifierHandler: TemplateRecursiveQuantifierDefinition[];

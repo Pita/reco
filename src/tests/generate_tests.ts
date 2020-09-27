@@ -76,7 +76,7 @@ configFiles.forEach((configFile) => {
 
       throw e;
     } else {
-      console.error(`Skipped: ${configFile}`, e.toString());
+      console.error(`Skipped: ${configFile}`, e.toString(), e.stack);
     }
   }
 
