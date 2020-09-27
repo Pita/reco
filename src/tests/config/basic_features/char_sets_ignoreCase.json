@@ -1,5 +1,12 @@
 {
   "regex": "/[a-z]/i",
   "type": "groupMatch",
-  "testInputs": ["hello", "HELLO", "03aasdf90", "1223!AaB8", ";,2342aBc"]
+  "testInputs": [
+    "hello",
+    "HELLO",
+    "03aasdf90",
+    "1223!AaB8",
+    ";,2342aBc"
+  ],
+  "mustPass": true
 }

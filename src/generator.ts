@@ -404,9 +404,6 @@ export const genCode = (
   if (pattern.flags.multiLine) {
     throw new Error('Does not support multiline yet');
   }
-  if (pattern.flags.ignoreCase) {
-    throw new Error('Does not support multiline yet');
-  }
 
   const collector = new Collector(regexStr);
   const disjunction = fixGroupIdx(pattern.value);
