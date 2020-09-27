@@ -4,9 +4,14 @@ const prettier = require('prettier');
 
 const template = `
 import { GeneratedRegex } from './{{{string fileName}}}';
+import templateValues from './{{{string fileName}}}_templateValues.json';
 
 // {{{testRegex}}}
 describe('{{{string testName}}}', () => {
+  test('template values are as expected', () => {
+    expect(templateValues).toMatchSnapshot();
+  });
+  
   {{#each testInputs}}
     test('processes test input \\'{{string testInput}}\\' correctly', () => {
       const result = GeneratedRegex.exec('{{string testInput}}');

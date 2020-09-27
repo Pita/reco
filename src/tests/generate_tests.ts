@@ -12,8 +12,7 @@ const configFiles = glob.sync('**/*.json', {
   cwd: configFolder,
 });
 
-rimraf.sync(`${__dirname}/generated`);
-
+rimraf.sync(`${__dirname}/generated/**/*.+(ts|json)`);
 configFiles.forEach((configFile) => {
   const config: {
     type: string;
@@ -30,7 +29,7 @@ configFiles.forEach((configFile) => {
 
     const testName = configFile.replace(/\.json$/, '');
 
-    const regexCode = genCode(config.regex);
+    const { code, templateValues } = genCode(config.regex);
 
     const nativeRegex: RegExp = eval(config.regex);
     const testInputs = config.testInputs.map((testInput) => {
@@ -62,7 +61,12 @@ configFiles.forEach((configFile) => {
     const folderName = `${__dirname}/generated/${testName}`;
 
     mkdirp.sync(folderName);
-    fs.writeFileSync(`${folderName}/${fileName}.ts`, regexCode, 'utf8');
+    fs.writeFileSync(`${folderName}/${fileName}.ts`, code, 'utf8');
+    fs.writeFileSync(
+      `${folderName}/${fileName}_templateValues.json`,
+      JSON.stringify(templateValues, null, 2),
+      'utf8',
+    );
     fs.writeFileSync(`${folderName}/${fileName}.test.ts`, testCode, 'utf8');
   } catch (e) {
     passed = false;

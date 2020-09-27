@@ -390,7 +390,9 @@ const fixGroupIdx = (disjunction: Disjunction) => {
   return disjunction;
 };
 
-export const genCode = (regexStr: string): string => {
+export const genCode = (
+  regexStr: string,
+): { code: string; templateValues: TemplateValues } => {
   const pattern = new RegExpParser().pattern(regexStr);
 
   if (pattern.flags.ignoreCase) {
@@ -407,8 +409,7 @@ export const genCode = (regexStr: string): string => {
   const disjunction = fixGroupIdx(pattern.value);
   const mainHandler = handleDisjunction(disjunction, collector, null);
 
-  return genCodeFromTemplate({
-    ...collector.getTemplateValues(),
-    mainHandler,
-  });
+  const templateValues = { ...collector.getTemplateValues(), mainHandler };
+  const code = genCodeFromTemplate(templateValues);
+  return { code, templateValues };
 };
