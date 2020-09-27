@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/groups_disjunctions template values are as expected 1`] = `
+Object {
+  "disjunctionHandler": Array [
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "groupMarker7",
+        },
+        Object {
+          "functionName": "groupMarker10",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction11",
+      "location": Object {
+        "begin": 2,
+        "end": 17,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "  ^^^^^^^^^^^^^^^",
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker1",
+      "groupMarkerIndex": 9,
+      "location": Object {
+        "begin": 20,
+        "end": 21,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "                    ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+      "functionName": "groupMarker3",
+      "groupMarkerIndex": 8,
+      "location": Object {
+        "begin": 18,
+        "end": 19,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "                  ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker3",
+      },
+      "functionName": "groupMarker4",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 17,
+        "end": 18,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "                 ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker4",
+      },
+      "functionName": "groupMarker5",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 8,
+        "end": 9,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "        ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+      "functionName": "groupMarker7",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "  ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker4",
+      },
+      "functionName": "groupMarker8",
+      "groupMarkerIndex": 7,
+      "location": Object {
+        "begin": 16,
+        "end": 17,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "                ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter9",
+      },
+      "functionName": "groupMarker10",
+      "groupMarkerIndex": 6,
+      "location": Object {
+        "begin": 10,
+        "end": 11,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "          ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction11",
+      },
+      "functionName": "groupMarker12",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": " ^",
+    },
+  ],
+  "groups": 5,
+  "mainHandler": Object {
+    "functionName": "groupMarker12",
+  },
+  "regexStr": "/(([a-c])|([d-f]))(a)/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        97,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker1",
+      },
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 19,
+        "end": 20,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "                   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker5",
+      },
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 3,
+        "end": 8,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "   ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 99,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker8",
+      },
+      "functionName": "handleSetOrCharacter9",
+      "location": Object {
+        "begin": 11,
+        "end": 16,
+      },
+      "posLine1": "/(([a-c])|([d-f]))(a)/",
+      "posLine2": "           ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 100,
+          "to": 102,
+        },
+      ],
+    },
+  ],
+}
+`;

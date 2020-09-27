@@ -29,7 +29,7 @@ configFiles.forEach((configFile) => {
 
     const testName = configFile.replace(/\.json$/, '');
 
-    const { code, templateValues } = genCode(config.regex);
+    const { code, templateValues, pattern } = genCode(config.regex);
 
     const nativeRegex: RegExp = eval(config.regex);
     const testInputs = config.testInputs.map((testInput) => {
@@ -65,6 +65,11 @@ configFiles.forEach((configFile) => {
     fs.writeFileSync(
       `${folderName}/${fileName}_templateValues.json`,
       JSON.stringify(templateValues, null, 2),
+      'utf8',
+    );
+    fs.writeFileSync(
+      `${folderName}/${fileName}_pattern.json`,
+      JSON.stringify(pattern, null, 2),
       'utf8',
     );
     fs.writeFileSync(`${folderName}/${fileName}.test.ts`, testCode, 'utf8');

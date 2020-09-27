@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/time_4_24h_with_seconds template values are as expected 1`] = `
+Object {
+  "disjunctionHandler": Array [
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter8",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter10",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction11",
+      "location": Object {
+        "begin": 4,
+        "end": 18,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "    ^^^^^^^^^^^^^^",
+    },
+  ],
+  "groups": 1,
+  "mainHandler": Object {
+    "functionName": "handleDisjunction11",
+  },
+  "regexStr": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter1",
+      "location": Object {
+        "begin": 46,
+        "end": 48,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "                                              ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter1",
+      },
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 38,
+        "end": 46,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "                                      ^^^^^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        58,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 34,
+        "end": 35,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "                                  ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+      "functionName": "handleSetOrCharacter4",
+      "location": Object {
+        "begin": 31,
+        "end": 33,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "                               ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter4",
+      },
+      "functionName": "handleSetOrCharacter5",
+      "location": Object {
+        "begin": 23,
+        "end": 31,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "                       ^^^^^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        58,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter5",
+      },
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 19,
+        "end": 20,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "                   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+      "functionName": "handleSetOrCharacter7",
+      "location": Object {
+        "begin": 8,
+        "end": 10,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "        ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter7",
+      },
+      "functionName": "handleSetOrCharacter8",
+      "location": Object {
+        "begin": 4,
+        "end": 8,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "    ^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+      "functionName": "handleSetOrCharacter9",
+      "location": Object {
+        "begin": 12,
+        "end": 18,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "            ^^^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter9",
+      },
+      "functionName": "handleSetOrCharacter10",
+      "location": Object {
+        "begin": 11,
+        "end": 12,
+      },
+      "posLine1": "/(?:[01]\\\\d|2[0123]):(?:[012345]\\\\d):(?:[012345]\\\\d)/",
+      "posLine2": "           ^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;

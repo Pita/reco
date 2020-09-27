@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/non_greedy_star_match template values are as expected 1`] = `
+Object {
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker1",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 8,
+        "end": 9,
+      },
+      "posLine1": "/(.*?)(a)/",
+      "posLine2": "        ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+      "functionName": "groupMarker3",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 6,
+        "end": 7,
+      },
+      "posLine1": "/(.*?)(a)/",
+      "posLine2": "      ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker3",
+      },
+      "functionName": "groupMarker4",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 5,
+        "end": 6,
+      },
+      "posLine1": "/(.*?)(a)/",
+      "posLine2": "     ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "lazyQuantifier6",
+      },
+      "functionName": "groupMarker7",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/(.*?)(a)/",
+      "posLine2": " ^",
+    },
+  ],
+  "groups": 3,
+  "lazyQuantifierHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker4",
+      },
+      "functionName": "lazyQuantifier6",
+      "location": Object {
+        "begin": 3,
+        "end": 5,
+      },
+      "posLine1": "/(.*?)(a)/",
+      "posLine2": "   ^^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter5",
+      },
+    },
+  ],
+  "mainHandler": Object {
+    "functionName": "groupMarker7",
+  },
+  "regexStr": "/(.*?)(a)/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        97,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker1",
+      },
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 7,
+        "end": 8,
+      },
+      "posLine1": "/(.*?)(a)/",
+      "posLine2": "       ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        10,
+        13,
+        8232,
+        8233,
+      ],
+      "complement": true,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter5",
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/(.*?)(a)/",
+      "posLine2": "  ^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;

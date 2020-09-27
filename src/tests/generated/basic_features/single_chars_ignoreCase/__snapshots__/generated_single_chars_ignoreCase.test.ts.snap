@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/single_chars_ignoreCase template values are as expected 1`] = `
+Object {
+  "groups": 1,
+  "mainHandler": Object {
+    "functionName": "handleSetOrCharacter3",
+  },
+  "regexStr": "/def/i",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        102,
+        70,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter1",
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "posLine1": "/def/i",
+      "posLine2": "   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        101,
+        69,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter1",
+      },
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/def/i",
+      "posLine2": "  ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        100,
+        68,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/def/i",
+      "posLine2": " ^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;

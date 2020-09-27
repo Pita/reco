@@ -1,0 +1,658 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/ipv4 template values are as expected 1`] = `
+Object {
+  "disjunctionHandler": Array [
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter3",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter5",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter8",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter11",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter14",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction15",
+      "location": Object {
+        "begin": 58,
+        "end": 104,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    },
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter20",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter22",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter25",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter28",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter31",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction32",
+      "location": Object {
+        "begin": 4,
+        "end": 50,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    },
+  ],
+  "endAnchorHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "endAnchor1",
+      "location": Object {
+        "begin": 105,
+        "end": 106,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                                         ^",
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "endAnchor1",
+      },
+      "functionName": "groupMarker2",
+      "groupMarkerIndex": 7,
+      "location": Object {
+        "begin": 104,
+        "end": 105,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                                        ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction15",
+      },
+      "functionName": "groupMarker16",
+      "groupMarkerIndex": 6,
+      "location": Object {
+        "begin": 57,
+        "end": 58,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                         ^",
+    },
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker17",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 53,
+        "end": 54,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                     ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter18",
+      },
+      "functionName": "groupMarker19",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 50,
+        "end": 51,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                  ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction32",
+      },
+      "functionName": "groupMarker33",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "   ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker33",
+      },
+      "functionName": "groupMarker34",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "  ^",
+    },
+  ],
+  "groups": 4,
+  "mainHandler": Object {
+    "functionName": "startAnchor36",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "quantifierWithMinOrMax7",
+      "location": Object {
+        "begin": 81,
+        "end": 84,
+      },
+      "minIsMax": true,
+      "minRequired": 2,
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                 ^^^",
+      "recursionLimit": 0,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker19",
+      },
+      "functionName": "quantifierWithMinOrMax24",
+      "location": Object {
+        "begin": 27,
+        "end": 30,
+      },
+      "minIsMax": true,
+      "minRequired": 2,
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                           ^^^",
+      "recursionLimit": 0,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter23",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker16",
+      },
+      "functionName": "quantifierWithMinOrMax35",
+      "location": Object {
+        "begin": 54,
+        "end": 57,
+      },
+      "minIsMax": true,
+      "minRequired": 3,
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                      ^^^",
+      "recursionLimit": 0,
+      "wrappedHandler": Object {
+        "functionName": "groupMarker34",
+      },
+    },
+  ],
+  "regexStr": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 58,
+        "end": 63,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                          ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter4",
+      "location": Object {
+        "begin": 69,
+        "end": 74,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                     ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter4",
+      },
+      "functionName": "handleSetOrCharacter5",
+      "location": Object {
+        "begin": 64,
+        "end": 69,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 49,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 76,
+        "end": 81,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                            ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        49,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax7",
+      },
+      "functionName": "handleSetOrCharacter8",
+      "location": Object {
+        "begin": 75,
+        "end": 76,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                           ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter9",
+      "location": Object {
+        "begin": 91,
+        "end": 96,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                           ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter9",
+      },
+      "functionName": "handleSetOrCharacter10",
+      "location": Object {
+        "begin": 86,
+        "end": 91,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                      ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 52,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter10",
+      },
+      "functionName": "handleSetOrCharacter11",
+      "location": Object {
+        "begin": 85,
+        "end": 86,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                     ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter12",
+      "location": Object {
+        "begin": 99,
+        "end": 104,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                                   ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 53,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        53,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter12",
+      },
+      "functionName": "handleSetOrCharacter13",
+      "location": Object {
+        "begin": 98,
+        "end": 99,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                                  ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter13",
+      },
+      "functionName": "handleSetOrCharacter14",
+      "location": Object {
+        "begin": 97,
+        "end": 98,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                                 ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        46,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker17",
+      },
+      "functionName": "handleSetOrCharacter18",
+      "location": Object {
+        "begin": 51,
+        "end": 53,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                   ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker19",
+      },
+      "functionName": "handleSetOrCharacter20",
+      "location": Object {
+        "begin": 4,
+        "end": 9,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "    ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker19",
+      },
+      "functionName": "handleSetOrCharacter21",
+      "location": Object {
+        "begin": 15,
+        "end": 20,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "               ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter21",
+      },
+      "functionName": "handleSetOrCharacter22",
+      "location": Object {
+        "begin": 10,
+        "end": 15,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "          ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 49,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter23",
+      "location": Object {
+        "begin": 22,
+        "end": 27,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                      ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        49,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax24",
+      },
+      "functionName": "handleSetOrCharacter25",
+      "location": Object {
+        "begin": 21,
+        "end": 22,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                     ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker19",
+      },
+      "functionName": "handleSetOrCharacter26",
+      "location": Object {
+        "begin": 37,
+        "end": 42,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                     ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter26",
+      },
+      "functionName": "handleSetOrCharacter27",
+      "location": Object {
+        "begin": 32,
+        "end": 37,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 52,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter27",
+      },
+      "functionName": "handleSetOrCharacter28",
+      "location": Object {
+        "begin": 31,
+        "end": 32,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                               ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker19",
+      },
+      "functionName": "handleSetOrCharacter29",
+      "location": Object {
+        "begin": 45,
+        "end": 50,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                             ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 53,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        53,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter29",
+      },
+      "functionName": "handleSetOrCharacter30",
+      "location": Object {
+        "begin": 44,
+        "end": 45,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                            ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter30",
+      },
+      "functionName": "handleSetOrCharacter31",
+      "location": Object {
+        "begin": 43,
+        "end": 44,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                           ^",
+      "ranges": Array [],
+    },
+  ],
+  "startAnchorHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax35",
+      },
+      "functionName": "startAnchor36",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": " ^",
+    },
+  ],
+}
+`;

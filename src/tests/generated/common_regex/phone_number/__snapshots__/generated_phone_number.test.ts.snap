@@ -1,0 +1,1304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/phone_number template values are as expected 1`] = `
+Object {
+  "disjunctionHandler": Array [
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter10",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter16",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter25",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter26",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction27",
+      "location": Object {
+        "begin": 114,
+        "end": 134,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                  ^^^^^^^^^^^^^^^^^^^^",
+    },
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter57",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter61",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction62",
+      "location": Object {
+        "begin": 21,
+        "end": 39,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                     ^^^^^^^^^^^^^^^^^^",
+    },
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter65",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter66",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction67",
+      "location": Object {
+        "begin": 14,
+        "end": 19,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "              ^^^^^",
+    },
+  ],
+  "endAnchorHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "endAnchor1",
+      "location": Object {
+        "begin": 155,
+        "end": 156,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                           ^",
+    },
+  ],
+  "greedyQuantifierHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "greedyQuantifier4",
+      "location": Object {
+        "begin": 149,
+        "end": 151,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                     ^^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker6",
+      },
+      "functionName": "greedyQuantifier8",
+      "location": Object {
+        "begin": 135,
+        "end": 147,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                       ^^^^^^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter7",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax9",
+      },
+      "functionName": "greedyQuantifier12",
+      "location": Object {
+        "begin": 119,
+        "end": 121,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                       ^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter11",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction27",
+      },
+      "functionName": "greedyQuantifier29",
+      "location": Object {
+        "begin": 98,
+        "end": 110,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                  ^^^^^^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter28",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "endAnchor1",
+      },
+      "functionName": "greedyQuantifier31",
+      "location": Object {
+        "begin": 95,
+        "end": 154,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "quantifierWithMinOrMax30",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "greedyQuantifier35",
+      "location": Object {
+        "begin": 76,
+        "end": 88,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                            ^^^^^^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter34",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax36",
+      },
+      "functionName": "greedyQuantifier38",
+      "location": Object {
+        "begin": 73,
+        "end": 75,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                         ^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter37",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax39",
+      },
+      "functionName": "greedyQuantifier41",
+      "location": Object {
+        "begin": 67,
+        "end": 69,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                   ^^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter40",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax42",
+      },
+      "functionName": "greedyQuantifier44",
+      "location": Object {
+        "begin": 64,
+        "end": 66,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                ^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter43",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker33",
+      },
+      "functionName": "greedyQuantifier46",
+      "location": Object {
+        "begin": 90,
+        "end": 94,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                          ^^^^",
+      "wrappedHandler": Object {
+        "functionName": "quantifierWithMinOrMax45",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "greedyQuantifier49",
+      "location": Object {
+        "begin": 45,
+        "end": 57,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                             ^^^^^^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter48",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "greedyQuantifier52",
+      "location": Object {
+        "begin": 40,
+        "end": 42,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                        ^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter51",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker54",
+      },
+      "functionName": "greedyQuantifier59",
+      "location": Object {
+        "begin": 36,
+        "end": 38,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                    ^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter58",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction67",
+      },
+      "functionName": "greedyQuantifier69",
+      "location": Object {
+        "begin": 8,
+        "end": 10,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "        ^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter68",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax50",
+      },
+      "functionName": "greedyQuantifier71",
+      "location": Object {
+        "begin": 5,
+        "end": 44,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "quantifierWithMinOrMax70",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker47",
+      },
+      "functionName": "greedyQuantifier73",
+      "location": Object {
+        "begin": 2,
+        "end": 59,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "quantifierWithMinOrMax72",
+      },
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker2",
+      "groupMarkerIndex": 7,
+      "location": Object {
+        "begin": 152,
+        "end": 153,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                        ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax5",
+      },
+      "functionName": "groupMarker6",
+      "groupMarkerIndex": 6,
+      "location": Object {
+        "begin": 148,
+        "end": 149,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                    ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax32",
+      },
+      "functionName": "groupMarker33",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 94,
+        "end": 95,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                              ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier46",
+      },
+      "functionName": "groupMarker47",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 60,
+        "end": 61,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                            ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax53",
+      },
+      "functionName": "groupMarker54",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 39,
+        "end": 40,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                       ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction62",
+      },
+      "functionName": "groupMarker63",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 20,
+        "end": 21,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                    ^",
+    },
+  ],
+  "groups": 4,
+  "mainHandler": Object {
+    "functionName": "startAnchor75",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax5",
+      "location": Object {
+        "begin": 151,
+        "end": 152,
+      },
+      "minIsMax": false,
+      "minRequired": 1,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                       ^",
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier4",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax9",
+      "location": Object {
+        "begin": 147,
+        "end": 148,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                   ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier8",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter7",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax13",
+      "location": Object {
+        "begin": 121,
+        "end": 122,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                         ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier12",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter11",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax30",
+      "location": Object {
+        "begin": 110,
+        "end": 111,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                              ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier29",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter28",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax32",
+      "location": Object {
+        "begin": 154,
+        "end": 155,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                          ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier31",
+      },
+      "wrappedHandler": Object {
+        "functionName": "quantifierWithMinOrMax30",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax36",
+      "location": Object {
+        "begin": 88,
+        "end": 89,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                        ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier35",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter34",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax39",
+      "location": Object {
+        "begin": 75,
+        "end": 76,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                           ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier38",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter37",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax42",
+      "location": Object {
+        "begin": 69,
+        "end": 73,
+      },
+      "minIsMax": false,
+      "minRequired": 1,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                     ^^^^",
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier41",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter40",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax45",
+      "location": Object {
+        "begin": 66,
+        "end": 67,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                  ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier44",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter43",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax50",
+      "location": Object {
+        "begin": 57,
+        "end": 58,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                         ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier49",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter48",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax53",
+      "location": Object {
+        "begin": 42,
+        "end": 43,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                          ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier52",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter51",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax60",
+      "location": Object {
+        "begin": 38,
+        "end": 39,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                      ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier59",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter58",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax70",
+      "location": Object {
+        "begin": 10,
+        "end": 11,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "          ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier69",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter68",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax72",
+      "location": Object {
+        "begin": 44,
+        "end": 45,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                            ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier71",
+      },
+      "wrappedHandler": Object {
+        "functionName": "quantifierWithMinOrMax70",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax74",
+      "location": Object {
+        "begin": 59,
+        "end": 60,
+      },
+      "minIsMax": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                           ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier73",
+      },
+      "wrappedHandler": Object {
+        "functionName": "quantifierWithMinOrMax72",
+      },
+    },
+  ],
+  "regexStr": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 149,
+        "end": 151,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                     ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+        46,
+        32,
+        92,
+        47,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter7",
+      "location": Object {
+        "begin": 135,
+        "end": 147,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                       ^^^^^^^^^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        35,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax9",
+      },
+      "functionName": "handleSetOrCharacter10",
+      "location": Object {
+        "begin": 114,
+        "end": 115,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                  ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        46,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter11",
+      "location": Object {
+        "begin": 119,
+        "end": 121,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                       ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        116,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax13",
+      },
+      "functionName": "handleSetOrCharacter14",
+      "location": Object {
+        "begin": 118,
+        "end": 119,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                      ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        120,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter14",
+      },
+      "functionName": "handleSetOrCharacter15",
+      "location": Object {
+        "begin": 117,
+        "end": 118,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                     ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        101,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter15",
+      },
+      "functionName": "handleSetOrCharacter16",
+      "location": Object {
+        "begin": 116,
+        "end": 117,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                    ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        110,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax9",
+      },
+      "functionName": "handleSetOrCharacter17",
+      "location": Object {
+        "begin": 131,
+        "end": 132,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        111,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter17",
+      },
+      "functionName": "handleSetOrCharacter18",
+      "location": Object {
+        "begin": 130,
+        "end": 131,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                  ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        105,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter18",
+      },
+      "functionName": "handleSetOrCharacter19",
+      "location": Object {
+        "begin": 129,
+        "end": 130,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                 ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        115,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter19",
+      },
+      "functionName": "handleSetOrCharacter20",
+      "location": Object {
+        "begin": 128,
+        "end": 129,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        110,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter20",
+      },
+      "functionName": "handleSetOrCharacter21",
+      "location": Object {
+        "begin": 127,
+        "end": 128,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                               ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        101,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter21",
+      },
+      "functionName": "handleSetOrCharacter22",
+      "location": Object {
+        "begin": 126,
+        "end": 127,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                              ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        116,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter22",
+      },
+      "functionName": "handleSetOrCharacter23",
+      "location": Object {
+        "begin": 125,
+        "end": 126,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                             ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        120,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter23",
+      },
+      "functionName": "handleSetOrCharacter24",
+      "location": Object {
+        "begin": 124,
+        "end": 125,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                            ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        101,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter24",
+      },
+      "functionName": "handleSetOrCharacter25",
+      "location": Object {
+        "begin": 123,
+        "end": 124,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                           ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        120,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax9",
+      },
+      "functionName": "handleSetOrCharacter26",
+      "location": Object {
+        "begin": 133,
+        "end": 134,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                     ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+        46,
+        32,
+        92,
+        47,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter28",
+      "location": Object {
+        "begin": 98,
+        "end": 110,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                  ^^^^^^^^^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+        46,
+        32,
+        92,
+        47,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter34",
+      "location": Object {
+        "begin": 76,
+        "end": 88,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                            ^^^^^^^^^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        41,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter37",
+      "location": Object {
+        "begin": 73,
+        "end": 75,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                         ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter40",
+      "location": Object {
+        "begin": 67,
+        "end": 69,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                   ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        40,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter43",
+      "location": Object {
+        "begin": 64,
+        "end": 66,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+        46,
+        32,
+        92,
+        47,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter48",
+      "location": Object {
+        "begin": 45,
+        "end": 57,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                             ^^^^^^^^^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        41,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter51",
+      "location": Object {
+        "begin": 40,
+        "end": 42,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                        ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker54",
+      },
+      "functionName": "handleSetOrCharacter55",
+      "location": Object {
+        "begin": 28,
+        "end": 30,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                            ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter55",
+      },
+      "functionName": "handleSetOrCharacter56",
+      "location": Object {
+        "begin": 26,
+        "end": 28,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                          ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter56",
+      },
+      "functionName": "handleSetOrCharacter57",
+      "location": Object {
+        "begin": 21,
+        "end": 26,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                     ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 49,
+          "to": 52,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter58",
+      "location": Object {
+        "begin": 36,
+        "end": 38,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                    ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax60",
+      },
+      "functionName": "handleSetOrCharacter61",
+      "location": Object {
+        "begin": 31,
+        "end": 36,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                               ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 49,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        48,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker63",
+      },
+      "functionName": "handleSetOrCharacter64",
+      "location": Object {
+        "begin": 15,
+        "end": 16,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "               ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter64",
+      },
+      "functionName": "handleSetOrCharacter65",
+      "location": Object {
+        "begin": 14,
+        "end": 15,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "              ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        43,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker63",
+      },
+      "functionName": "handleSetOrCharacter66",
+      "location": Object {
+        "begin": 17,
+        "end": 19,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                 ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        40,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter68",
+      "location": Object {
+        "begin": 8,
+        "end": 10,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "        ^^",
+      "ranges": Array [],
+    },
+  ],
+  "startAnchorHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax74",
+      },
+      "functionName": "startAnchor75",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": " ^",
+    },
+  ],
+}
+`;

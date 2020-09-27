@@ -1,0 +1,554 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/url_http template values are as expected 1`] = `
+Object {
+  "greedyQuantifierHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker1",
+      },
+      "functionName": "greedyQuantifier3",
+      "location": Object {
+        "begin": 91,
+        "end": 92,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                                                           ^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter5",
+      },
+      "functionName": "greedyQuantifier7",
+      "location": Object {
+        "begin": 51,
+        "end": 56,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                   ^^^^^",
+      "recursionLimit": 4,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter9",
+      },
+      "functionName": "greedyQuantifier11",
+      "location": Object {
+        "begin": 20,
+        "end": 42,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                    ^^^^^^^^^^^^^^^^^^^^^^",
+      "recursionLimit": 254,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter10",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax12",
+      },
+      "functionName": "greedyQuantifier19",
+      "location": Object {
+        "begin": 12,
+        "end": 19,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "            ^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "groupMarker18",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter23",
+      },
+      "functionName": "greedyQuantifier25",
+      "location": Object {
+        "begin": 5,
+        "end": 6,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "     ^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter24",
+      },
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker1",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 92,
+        "end": 93,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                                                            ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier3",
+      },
+      "functionName": "groupMarker4",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 62,
+        "end": 63,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                              ^",
+    },
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker13",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 18,
+        "end": 19,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                  ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter17",
+      },
+      "functionName": "groupMarker18",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 12,
+        "end": 13,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "            ^",
+    },
+  ],
+  "groups": 3,
+  "mainHandler": Object {
+    "functionName": "handleSetOrCharacter30",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax8",
+      "location": Object {
+        "begin": 56,
+        "end": 61,
+      },
+      "minIsMax": false,
+      "minRequired": 2,
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                        ^^^^^",
+      "recursionLimit": 4,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier7",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax12",
+      "location": Object {
+        "begin": 42,
+        "end": 49,
+      },
+      "minIsMax": false,
+      "minRequired": 2,
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                          ^^^^^^^",
+      "recursionLimit": 254,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier11",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter10",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax20",
+      "location": Object {
+        "begin": 19,
+        "end": 20,
+      },
+      "minIsMax": false,
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                   ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier19",
+      },
+      "wrappedHandler": Object {
+        "functionName": "groupMarker18",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax26",
+      "location": Object {
+        "begin": 6,
+        "end": 7,
+      },
+      "minIsMax": false,
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "      ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier25",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter24",
+      },
+    },
+  ],
+  "regexStr": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        45,
+        64,
+        58,
+        37,
+        95,
+        43,
+        46,
+        126,
+        35,
+        40,
+        41,
+        63,
+        38,
+        47,
+        47,
+        61,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 63,
+        "end": 91,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 122,
+        },
+        Object {
+          "from": 65,
+          "to": 90,
+        },
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        8,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker4",
+      },
+      "functionName": "handleSetOrCharacter5",
+      "location": Object {
+        "begin": 61,
+        "end": 62,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                             ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 51,
+        "end": 56,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                   ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 122,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        46,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax8",
+      },
+      "functionName": "handleSetOrCharacter9",
+      "location": Object {
+        "begin": 49,
+        "end": 51,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                                                 ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+        64,
+        58,
+        37,
+        46,
+        95,
+        43,
+        126,
+        35,
+        61,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter10",
+      "location": Object {
+        "begin": 20,
+        "end": 42,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                    ^^^^^^^^^^^^^^^^^^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 122,
+        },
+        Object {
+          "from": 65,
+          "to": 90,
+        },
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        46,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker13",
+      },
+      "functionName": "handleSetOrCharacter14",
+      "location": Object {
+        "begin": 16,
+        "end": 18,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "                ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        119,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter14",
+      },
+      "functionName": "handleSetOrCharacter15",
+      "location": Object {
+        "begin": 15,
+        "end": 16,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "               ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        119,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter15",
+      },
+      "functionName": "handleSetOrCharacter16",
+      "location": Object {
+        "begin": 14,
+        "end": 15,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "              ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        119,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter16",
+      },
+      "functionName": "handleSetOrCharacter17",
+      "location": Object {
+        "begin": 13,
+        "end": 14,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "             ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        47,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax20",
+      },
+      "functionName": "handleSetOrCharacter21",
+      "location": Object {
+        "begin": 10,
+        "end": 12,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "          ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        47,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter21",
+      },
+      "functionName": "handleSetOrCharacter22",
+      "location": Object {
+        "begin": 8,
+        "end": 10,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "        ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        58,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter22",
+      },
+      "functionName": "handleSetOrCharacter23",
+      "location": Object {
+        "begin": 7,
+        "end": 8,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "       ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        115,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter24",
+      "location": Object {
+        "begin": 5,
+        "end": 6,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "     ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        112,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax26",
+      },
+      "functionName": "handleSetOrCharacter27",
+      "location": Object {
+        "begin": 4,
+        "end": 5,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "    ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        116,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter27",
+      },
+      "functionName": "handleSetOrCharacter28",
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        116,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter28",
+      },
+      "functionName": "handleSetOrCharacter29",
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": "  ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        104,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter29",
+      },
+      "functionName": "handleSetOrCharacter30",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/https?:\\\\/\\\\/(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#()?&//=]*)/",
+      "posLine2": " ^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;

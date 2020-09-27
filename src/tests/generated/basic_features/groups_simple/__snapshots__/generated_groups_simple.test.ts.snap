@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/groups_simple template values are as expected 1`] = `
+Object {
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker1",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 10,
+        "end": 11,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "          ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter4",
+      },
+      "functionName": "groupMarker5",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 6,
+        "end": 7,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "      ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+      "functionName": "groupMarker7",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 4,
+        "end": 5,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "    ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter9",
+      },
+      "functionName": "groupMarker10",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": " ^",
+    },
+  ],
+  "groups": 3,
+  "mainHandler": Object {
+    "functionName": "groupMarker10",
+  },
+  "regexStr": "/(ab)k(123)/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        51,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker1",
+      },
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 9,
+        "end": 10,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "         ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 8,
+        "end": 9,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "        ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        49,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+      "functionName": "handleSetOrCharacter4",
+      "location": Object {
+        "begin": 7,
+        "end": 8,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "       ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        107,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker5",
+      },
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 5,
+        "end": 6,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "     ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        98,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker7",
+      },
+      "functionName": "handleSetOrCharacter8",
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        97,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter8",
+      },
+      "functionName": "handleSetOrCharacter9",
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/(ab)k(123)/",
+      "posLine2": "  ^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;

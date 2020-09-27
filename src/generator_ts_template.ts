@@ -243,6 +243,40 @@ class GeneratedRegex {
     }
   {{/each}}
 
+  {{#each startAnchorHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+      if (start !== 0) {
+        return -1;
+      }
+
+      {{#if followUp}}
+        return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+      {{/if}}
+      {{#unless followUp}}
+        return alreadyMatched;
+      {{/unless}}
+    }
+  {{/each}}
+
+  {{#each endAnchorHandler}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
+      if (str.length !== start) {
+        return -1;
+      }
+
+      {{#if followUp}}
+        return this.{{{followUp.functionName}}}(str, start, alreadyMatched);
+      {{/if}}
+      {{#unless followUp}}
+        return alreadyMatched;
+      {{/unless}}
+    }
+  {{/each}}
+
   constructor(str: string, start: number) {
     const length = this.{{{mainHandler.functionName}}}(str, start, 0);
     if (length !== -1) {
@@ -285,35 +319,38 @@ export interface FunctionHandle {
 
 export type FollowUpFunctionHandle = FunctionHandle | null;
 
-interface FunctionDefinition {
+export interface TemplateFunctionDefinition {
   functionName: string;
   followUp: FollowUpFunctionHandle;
   posLine1: string;
   posLine2: string;
 }
 
-export interface TemplateGroupMarkerDefinition extends FunctionDefinition {
+export interface TemplateGroupMarkerDefinition
+  extends TemplateFunctionDefinition {
   groupMarkerIndex: number;
 }
 
-export interface TemplateSetOrCharacterDefinition extends FunctionDefinition {
+export interface TemplateSetOrCharacterDefinition
+  extends TemplateFunctionDefinition {
   ranges: { from: number; to: number }[];
   chars: number[];
   complement: boolean;
 }
 
-export interface TemplateDisjunctionDefinition extends FunctionDefinition {
+export interface TemplateDisjunctionDefinition
+  extends TemplateFunctionDefinition {
   alternatives: FunctionHandle[];
 }
 
 export interface TemplateRecursiveQuantifierDefinition
-  extends FunctionDefinition {
+  extends TemplateFunctionDefinition {
   recursionLimit?: number;
   wrappedHandler: FunctionHandle;
 }
 
 export interface TemplateQuantifierWithMinOrMaxDefinition
-  extends FunctionDefinition {
+  extends TemplateFunctionDefinition {
   wrappedHandler: FunctionHandle;
   recursiveQuantifier?: FunctionHandle;
   minRequired?: number;
@@ -328,6 +365,8 @@ export interface TemplateValues {
   lazyQuantifierHandler: TemplateRecursiveQuantifierDefinition[];
   greedyQuantifierHandler: TemplateRecursiveQuantifierDefinition[];
   quantifierWithMinOrMaxHandler: TemplateQuantifierWithMinOrMaxDefinition[];
+  startAnchorHandler: TemplateFunctionDefinition[];
+  endAnchorHandler: TemplateFunctionDefinition[];
   mainHandler: FunctionHandle;
   groups: number;
   regexStr: string;

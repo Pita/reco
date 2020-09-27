@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_sets template values are as expected 1`] = `
+Object {
+  "groups": 1,
+  "mainHandler": Object {
+    "functionName": "handleSetOrCharacter1",
+  },
+  "regexStr": "/[a-zA-Z0-9]/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter1",
+      "location": Object {
+        "begin": 1,
+        "end": 12,
+      },
+      "posLine1": "/[a-zA-Z0-9]/",
+      "posLine2": " ^^^^^^^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 122,
+        },
+        Object {
+          "from": 65,
+          "to": 90,
+        },
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+  ],
+}
+`;

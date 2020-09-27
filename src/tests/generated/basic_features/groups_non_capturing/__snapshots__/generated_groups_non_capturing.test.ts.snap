@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/groups_non_capturing template values are as expected 1`] = `
+Object {
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter1",
+      },
+      "functionName": "groupMarker2",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 8,
+        "end": 9,
+      },
+      "posLine1": "/(?:a)(b)c/",
+      "posLine2": "        ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+      "functionName": "groupMarker4",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 6,
+        "end": 7,
+      },
+      "posLine1": "/(?:a)(b)c/",
+      "posLine2": "      ^",
+    },
+  ],
+  "groups": 2,
+  "mainHandler": Object {
+    "functionName": "handleSetOrCharacter5",
+  },
+  "regexStr": "/(?:a)(b)c/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        99,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter1",
+      "location": Object {
+        "begin": 9,
+        "end": 10,
+      },
+      "posLine1": "/(?:a)(b)c/",
+      "posLine2": "         ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        98,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 7,
+        "end": 8,
+      },
+      "posLine1": "/(?:a)(b)c/",
+      "posLine2": "       ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        97,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker4",
+      },
+      "functionName": "handleSetOrCharacter5",
+      "location": Object {
+        "begin": 4,
+        "end": 5,
+      },
+      "posLine1": "/(?:a)(b)c/",
+      "posLine2": "    ^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;

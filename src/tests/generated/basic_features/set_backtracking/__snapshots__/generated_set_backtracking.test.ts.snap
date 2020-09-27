@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/set_backtracking template values are as expected 1`] = `
+Object {
+  "greedyQuantifierHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker4",
+      },
+      "functionName": "greedyQuantifier6",
+      "location": Object {
+        "begin": 22,
+        "end": 23,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "                      ^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter5",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker11",
+      },
+      "functionName": "greedyQuantifier13",
+      "location": Object {
+        "begin": 2,
+        "end": 7,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "  ^^^^^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter12",
+      },
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker1",
+      "groupMarkerIndex": 9,
+      "location": Object {
+        "begin": 30,
+        "end": 31,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "                              ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+      "functionName": "groupMarker3",
+      "groupMarkerIndex": 8,
+      "location": Object {
+        "begin": 24,
+        "end": 25,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "                        ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker3",
+      },
+      "functionName": "groupMarker4",
+      "groupMarkerIndex": 7,
+      "location": Object {
+        "begin": 23,
+        "end": 24,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "                       ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier6",
+      },
+      "functionName": "groupMarker7",
+      "groupMarkerIndex": 6,
+      "location": Object {
+        "begin": 16,
+        "end": 17,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "                ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker7",
+      },
+      "functionName": "groupMarker8",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 15,
+        "end": 16,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "               ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter9",
+      },
+      "functionName": "groupMarker10",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 9,
+        "end": 10,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "         ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker10",
+      },
+      "functionName": "groupMarker11",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 8,
+        "end": 9,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "        ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax14",
+      },
+      "functionName": "groupMarker15",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": " ^",
+    },
+  ],
+  "groups": 5,
+  "mainHandler": Object {
+    "functionName": "groupMarker15",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax14",
+      "location": Object {
+        "begin": 7,
+        "end": 8,
+      },
+      "minIsMax": false,
+      "minRequired": 1,
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "       ^",
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier13",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter12",
+      },
+    },
+  ],
+  "regexStr": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker1",
+      },
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 25,
+        "end": 30,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "                         ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 49,
+          "to": 51,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter5",
+      "location": Object {
+        "begin": 17,
+        "end": 22,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "                 ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 100,
+          "to": 122,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker8",
+      },
+      "functionName": "handleSetOrCharacter9",
+      "location": Object {
+        "begin": 10,
+        "end": 15,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "          ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 104,
+          "to": 111,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter12",
+      "location": Object {
+        "begin": 2,
+        "end": 7,
+      },
+      "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+      "posLine2": "  ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 122,
+        },
+      ],
+    },
+  ],
+}
+`;

@@ -15,5 +15,6 @@
     "456-hello",
     "456-World",
     "456"
-  ]
+  ],
+  "mustPass": true
 }

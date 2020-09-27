@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/time_2_24h_zero template values are as expected 1`] = `
+Object {
+  "disjunctionHandler": Array [
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter7",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter9",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter11",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction12",
+      "location": Object {
+        "begin": 3,
+        "end": 23,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "   ^^^^^^^^^^^^^^^^^^^^",
+    },
+  ],
+  "endAnchorHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "endAnchor1",
+      "location": Object {
+        "begin": 35,
+        "end": 36,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "                                   ^",
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter4",
+      },
+      "functionName": "groupMarker5",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 23,
+        "end": 24,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "                       ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction12",
+      },
+      "functionName": "groupMarker13",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "  ^",
+    },
+  ],
+  "groups": 2,
+  "mainHandler": Object {
+    "functionName": "startAnchor14",
+  },
+  "regexStr": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "endAnchor1",
+      },
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 30,
+        "end": 35,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "                              ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 25,
+        "end": 30,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "                         ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 53,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        58,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+      "functionName": "handleSetOrCharacter4",
+      "location": Object {
+        "begin": 24,
+        "end": 25,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "                        ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker5",
+      },
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 4,
+        "end": 9,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "    ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        48,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+      "functionName": "handleSetOrCharacter7",
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker5",
+      },
+      "functionName": "handleSetOrCharacter8",
+      "location": Object {
+        "begin": 11,
+        "end": 16,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "           ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        49,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter8",
+      },
+      "functionName": "handleSetOrCharacter9",
+      "location": Object {
+        "begin": 10,
+        "end": 11,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "          ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker5",
+      },
+      "functionName": "handleSetOrCharacter10",
+      "location": Object {
+        "begin": 18,
+        "end": 23,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "                  ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 51,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter10",
+      },
+      "functionName": "handleSetOrCharacter11",
+      "location": Object {
+        "begin": 17,
+        "end": 18,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": "                 ^",
+      "ranges": Array [],
+    },
+  ],
+  "startAnchorHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker13",
+      },
+      "functionName": "startAnchor14",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/",
+      "posLine2": " ^",
+    },
+  ],
+}
+`;

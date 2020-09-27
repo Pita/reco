@@ -1,0 +1,265 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/numbers_negative_positive_decimal template values are as expected 1`] = `
+Object {
+  "endAnchorHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "endAnchor1",
+      "location": Object {
+        "begin": 15,
+        "end": 16,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "               ^",
+    },
+  ],
+  "greedyQuantifierHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "greedyQuantifier4",
+      "location": Object {
+        "begin": 10,
+        "end": 12,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "          ^^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "endAnchor1",
+      },
+      "functionName": "greedyQuantifier8",
+      "location": Object {
+        "begin": 7,
+        "end": 14,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "       ^^^^^^^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "groupMarker7",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax9",
+      },
+      "functionName": "greedyQuantifier11",
+      "location": Object {
+        "begin": 6,
+        "end": 7,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "      ^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter10",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier11",
+      },
+      "functionName": "greedyQuantifier13",
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "  ^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter12",
+      },
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker2",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 13,
+        "end": 14,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "             ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter6",
+      },
+      "functionName": "groupMarker7",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 7,
+        "end": 8,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "       ^",
+    },
+  ],
+  "groups": 2,
+  "mainHandler": Object {
+    "functionName": "startAnchor15",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax5",
+      "location": Object {
+        "begin": 12,
+        "end": 13,
+      },
+      "minIsMax": false,
+      "minRequired": 1,
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "            ^",
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier4",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax9",
+      "location": Object {
+        "begin": 14,
+        "end": 15,
+      },
+      "minIsMax": false,
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "              ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier8",
+      },
+      "wrappedHandler": Object {
+        "functionName": "groupMarker7",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax14",
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "minIsMax": false,
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "   ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier13",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter12",
+      },
+    },
+  ],
+  "regexStr": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 10,
+        "end": 12,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "          ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        46,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax5",
+      },
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 8,
+        "end": 10,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "        ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter10",
+      "location": Object {
+        "begin": 4,
+        "end": 6,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "    ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter12",
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": "  ^",
+      "ranges": Array [],
+    },
+  ],
+  "startAnchorHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax14",
+      },
+      "functionName": "startAnchor15",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/^-?\\\\d*(\\\\.\\\\d+)?$/",
+      "posLine2": " ^",
+    },
+  ],
+}
+`;

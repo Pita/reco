@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/username template values are as expected 1`] = `
+Object {
+  "endAnchorHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "endAnchor1",
+      "location": Object {
+        "begin": 18,
+        "end": 19,
+      },
+      "posLine1": "/^[a-z0-9_-]{3,16}$/",
+      "posLine2": "                  ^",
+    },
+  ],
+  "greedyQuantifierHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "endAnchor1",
+      },
+      "functionName": "greedyQuantifier3",
+      "location": Object {
+        "begin": 2,
+        "end": 12,
+      },
+      "posLine1": "/^[a-z0-9_-]{3,16}$/",
+      "posLine2": "  ^^^^^^^^^^",
+      "recursionLimit": 13,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+    },
+  ],
+  "groups": 1,
+  "mainHandler": Object {
+    "functionName": "startAnchor5",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax4",
+      "location": Object {
+        "begin": 12,
+        "end": 18,
+      },
+      "minIsMax": false,
+      "minRequired": 3,
+      "posLine1": "/^[a-z0-9_-]{3,16}$/",
+      "posLine2": "            ^^^^^^",
+      "recursionLimit": 13,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier3",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter2",
+      },
+    },
+  ],
+  "regexStr": "/^[a-z0-9_-]{3,16}$/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        95,
+        45,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter2",
+      "location": Object {
+        "begin": 2,
+        "end": 12,
+      },
+      "posLine1": "/^[a-z0-9_-]{3,16}$/",
+      "posLine2": "  ^^^^^^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 122,
+        },
+        Object {
+          "from": 48,
+          "to": 57,
+        },
+      ],
+    },
+  ],
+  "startAnchorHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax4",
+      },
+      "functionName": "startAnchor5",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/^[a-z0-9_-]{3,16}$/",
+      "posLine2": " ^",
+    },
+  ],
+}
+`;

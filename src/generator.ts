@@ -10,6 +10,8 @@ import {
   Set as RegexSet,
   Range,
   RegExpFlags,
+  Assertion,
+  RegExpPattern,
 } from 'regexp-to-ast';
 import {
   FunctionHandle,
@@ -21,6 +23,7 @@ import {
   TemplateDisjunctionDefinition,
   TemplateRecursiveQuantifierDefinition,
   TemplateQuantifierWithMinOrMaxDefinition,
+  TemplateFunctionDefinition,
 } from './generator_ts_template';
 import { normalizeUpperLowerCase } from './normalize_upper_lower_case';
 
@@ -28,6 +31,7 @@ type SubDefinition<T> = Omit<T, 'functionName' | 'posLine1' | 'posLine2'> & {
   location: IRegExpAST['loc'];
 };
 
+type FunctionDefinition = SubDefinition<TemplateFunctionDefinition>;
 type GroupMarkerDefinition = SubDefinition<TemplateGroupMarkerDefinition>;
 type SetOrCharacterDefinition = SubDefinition<TemplateSetOrCharacterDefinition>;
 type DisjunctionDefinition = SubDefinition<TemplateDisjunctionDefinition>;
@@ -48,6 +52,8 @@ class Collector {
   private greedyQuantifierHandler: TemplateRecursiveQuantifierDefinition[] = [];
   private lazyQuantifierHandler: TemplateRecursiveQuantifierDefinition[] = [];
   private quantifierWithMinOrMaxHandler: TemplateQuantifierWithMinOrMaxDefinition[] = [];
+  private startAnchorHandler: TemplateFunctionDefinition[] = [];
+  private endAnchorHandler: TemplateFunctionDefinition[] = [];
 
   constructor(regexStr: string) {
     this.regexStr = regexStr;
@@ -129,6 +135,28 @@ class Collector {
     return { functionName };
   }
 
+  addStartAnchorDefintion(def: FunctionDefinition): FunctionHandle {
+    const functionName = 'startAnchor' + this.getNewCount();
+    this.startAnchorHandler.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return { functionName };
+  }
+
+  addEndAnchorDefintion(def: FunctionDefinition): FunctionHandle {
+    const functionName = 'endAnchor' + this.getNewCount();
+    this.endAnchorHandler.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return { functionName };
+  }
+
   addQuantifierWithMinOrMaxHandlerDefintion(
     def: QuantifierWithMinOrMaxDefinition,
   ): FunctionHandle {
@@ -152,6 +180,8 @@ class Collector {
       lazyQuantifierHandler: this.lazyQuantifierHandler,
       greedyQuantifierHandler: this.greedyQuantifierHandler,
       quantifierWithMinOrMaxHandler: this.quantifierWithMinOrMaxHandler,
+      startAnchorHandler: this.startAnchorHandler,
+      endAnchorHandler: this.endAnchorHandler,
     };
   }
 }
@@ -314,6 +344,36 @@ const handleGroup = withQuantifier(
   },
 );
 
+const handleStartAnchor = (
+  startAnchor: Assertion,
+  collector: Collector,
+  followUp: FollowUpFunctionHandle,
+  flags: RegExpFlags,
+): FunctionHandle => {
+  if (startAnchor.value) {
+    throw new Error('Start Anchor has value!');
+  }
+  return collector.addStartAnchorDefintion({
+    followUp,
+    location: startAnchor.loc,
+  });
+};
+
+const handleEndAnchor = (
+  endAnchor: Assertion,
+  collector: Collector,
+  followUp: FollowUpFunctionHandle,
+  flags: RegExpFlags,
+): FunctionHandle => {
+  if (endAnchor.value) {
+    throw new Error('End Anchor has value!');
+  }
+  return collector.addEndAnchorDefintion({
+    followUp,
+    location: endAnchor.loc,
+  });
+};
+
 const handleTerm = (
   term: Term,
   collector: Collector,
@@ -326,6 +386,10 @@ const handleTerm = (
       return handleSetOrCharacter(term, collector, followUp, flags);
     case 'Group':
       return handleGroup(term, collector, followUp, flags);
+    case 'StartAnchor':
+      return handleStartAnchor(term, collector, followUp, flags);
+    case 'EndAnchor':
+      return handleEndAnchor(term, collector, followUp, flags);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }
@@ -395,7 +459,7 @@ const fixGroupIdx = (disjunction: Disjunction) => {
 
 export const genCode = (
   regexStr: string,
-): { code: string; templateValues: TemplateValues } => {
+): { code: string; templateValues: TemplateValues; pattern: RegExpPattern } => {
   const pattern = new RegExpParser().pattern(regexStr);
 
   if (pattern.flags.unicode) {
@@ -416,5 +480,5 @@ export const genCode = (
 
   const templateValues = { ...collector.getTemplateValues(), mainHandler };
   const code = genCodeFromTemplate(templateValues);
-  return { code, templateValues };
+  return { code, templateValues, pattern };
 };

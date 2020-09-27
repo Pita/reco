@@ -1,0 +1,418 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/date_year_first_dash template values are as expected 1`] = `
+Object {
+  "disjunctionHandler": Array [
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter4",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter6",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter8",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction9",
+      "location": Object {
+        "begin": 29,
+        "end": 48,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                             ^^^^^^^^^^^^^^^^^^^",
+    },
+    Object {
+      "alternatives": Array [
+        Object {
+          "functionName": "handleSetOrCharacter14",
+        },
+        Object {
+          "functionName": "handleSetOrCharacter16",
+        },
+      ],
+      "followUp": null,
+      "functionName": "handleDisjunction17",
+      "location": Object {
+        "begin": 13,
+        "end": 26,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "             ^^^^^^^^^^^^^",
+    },
+  ],
+  "groupMarkerHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "groupMarker1",
+      "groupMarkerIndex": 3,
+      "location": Object {
+        "begin": 49,
+        "end": 50,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                                                 ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "groupMarker1",
+      },
+      "functionName": "groupMarker2",
+      "groupMarkerIndex": 7,
+      "location": Object {
+        "begin": 48,
+        "end": 49,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                                                ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction9",
+      },
+      "functionName": "groupMarker10",
+      "groupMarkerIndex": 6,
+      "location": Object {
+        "begin": 28,
+        "end": 29,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                            ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter11",
+      },
+      "functionName": "groupMarker12",
+      "groupMarkerIndex": 5,
+      "location": Object {
+        "begin": 26,
+        "end": 27,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                          ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleDisjunction17",
+      },
+      "functionName": "groupMarker18",
+      "groupMarkerIndex": 4,
+      "location": Object {
+        "begin": 12,
+        "end": 13,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "            ^",
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter22",
+      },
+      "functionName": "groupMarker23",
+      "groupMarkerIndex": 2,
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": " ^",
+    },
+  ],
+  "groups": 4,
+  "mainHandler": Object {
+    "functionName": "groupMarker23",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter19",
+      },
+      "functionName": "quantifierWithMinOrMax21",
+      "location": Object {
+        "begin": 8,
+        "end": 11,
+      },
+      "minIsMax": true,
+      "minRequired": 3,
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "        ^^^",
+      "recursionLimit": 0,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter20",
+      },
+    },
+  ],
+  "regexStr": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter3",
+      "location": Object {
+        "begin": 30,
+        "end": 35,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                              ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 49,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        48,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter3",
+      },
+      "functionName": "handleSetOrCharacter4",
+      "location": Object {
+        "begin": 29,
+        "end": 30,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                             ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter5",
+      "location": Object {
+        "begin": 40,
+        "end": 42,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                                        ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        49,
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter5",
+      },
+      "functionName": "handleSetOrCharacter6",
+      "location": Object {
+        "begin": 36,
+        "end": 40,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                                    ^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker2",
+      },
+      "functionName": "handleSetOrCharacter7",
+      "location": Object {
+        "begin": 44,
+        "end": 48,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                                            ^^^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        51,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter7",
+      },
+      "functionName": "handleSetOrCharacter8",
+      "location": Object {
+        "begin": 43,
+        "end": 44,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                                           ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker10",
+      },
+      "functionName": "handleSetOrCharacter11",
+      "location": Object {
+        "begin": 27,
+        "end": 28,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                           ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker12",
+      },
+      "functionName": "handleSetOrCharacter13",
+      "location": Object {
+        "begin": 14,
+        "end": 19,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "              ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 49,
+          "to": 57,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        48,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter13",
+      },
+      "functionName": "handleSetOrCharacter14",
+      "location": Object {
+        "begin": 13,
+        "end": 14,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "             ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker12",
+      },
+      "functionName": "handleSetOrCharacter15",
+      "location": Object {
+        "begin": 21,
+        "end": 26,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                     ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 48,
+          "to": 50,
+        },
+      ],
+    },
+    Object {
+      "chars": Array [
+        49,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "handleSetOrCharacter15",
+      },
+      "functionName": "handleSetOrCharacter16",
+      "location": Object {
+        "begin": 20,
+        "end": 21,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "                    ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        45,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "groupMarker18",
+      },
+      "functionName": "handleSetOrCharacter19",
+      "location": Object {
+        "begin": 11,
+        "end": 12,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "           ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter20",
+      "location": Object {
+        "begin": 6,
+        "end": 8,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "      ^^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        49,
+        50,
+      ],
+      "complement": false,
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax21",
+      },
+      "functionName": "handleSetOrCharacter22",
+      "location": Object {
+        "begin": 2,
+        "end": 6,
+      },
+      "posLine1": "/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/",
+      "posLine2": "  ^^^^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;

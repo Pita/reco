@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_sets_ignoreCase template values are as expected 1`] = `
+Object {
+  "groups": 1,
+  "mainHandler": Object {
+    "functionName": "handleSetOrCharacter1",
+  },
+  "regexStr": "/[a-z]/i",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter1",
+      "location": Object {
+        "begin": 1,
+        "end": 6,
+      },
+      "posLine1": "/[a-z]/i",
+      "posLine2": " ^^^^^",
+      "ranges": Array [
+        Object {
+          "from": 97,
+          "to": 122,
+        },
+        Object {
+          "from": 65,
+          "to": 90,
+        },
+      ],
+    },
+  ],
+}
+`;

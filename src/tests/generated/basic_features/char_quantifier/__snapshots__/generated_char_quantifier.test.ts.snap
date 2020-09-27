@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_quantifier template values are as expected 1`] = `
+Object {
+  "greedyQuantifierHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "greedyQuantifier2",
+      "location": Object {
+        "begin": 5,
+        "end": 6,
+      },
+      "posLine1": "/a*B+c?/",
+      "posLine2": "     ^",
+      "recursionLimit": 1,
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter1",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax3",
+      },
+      "functionName": "greedyQuantifier5",
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "posLine1": "/a*B+c?/",
+      "posLine2": "   ^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter4",
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "quantifierWithMinOrMax6",
+      },
+      "functionName": "greedyQuantifier8",
+      "location": Object {
+        "begin": 2,
+        "end": 3,
+      },
+      "posLine1": "/a*B+c?/",
+      "posLine2": "  ^",
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter7",
+      },
+    },
+  ],
+  "groups": 1,
+  "mainHandler": Object {
+    "functionName": "greedyQuantifier8",
+  },
+  "quantifierWithMinOrMaxHandler": Array [
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax3",
+      "location": Object {
+        "begin": 6,
+        "end": 7,
+      },
+      "minIsMax": false,
+      "posLine1": "/a*B+c?/",
+      "posLine2": "      ^",
+      "recursionLimit": 1,
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier2",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter1",
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "quantifierWithMinOrMax6",
+      "location": Object {
+        "begin": 4,
+        "end": 5,
+      },
+      "minIsMax": false,
+      "minRequired": 1,
+      "posLine1": "/a*B+c?/",
+      "posLine2": "    ^",
+      "recursiveQuantifier": Object {
+        "functionName": "greedyQuantifier5",
+      },
+      "wrappedHandler": Object {
+        "functionName": "handleSetOrCharacter4",
+      },
+    },
+  ],
+  "regexStr": "/a*B+c?/",
+  "setOrCharacterHandler": Array [
+    Object {
+      "chars": Array [
+        99,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter1",
+      "location": Object {
+        "begin": 5,
+        "end": 6,
+      },
+      "posLine1": "/a*B+c?/",
+      "posLine2": "     ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        66,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter4",
+      "location": Object {
+        "begin": 3,
+        "end": 4,
+      },
+      "posLine1": "/a*B+c?/",
+      "posLine2": "   ^",
+      "ranges": Array [],
+    },
+    Object {
+      "chars": Array [
+        97,
+      ],
+      "complement": false,
+      "followUp": null,
+      "functionName": "handleSetOrCharacter7",
+      "location": Object {
+        "begin": 1,
+        "end": 2,
+      },
+      "posLine1": "/a*B+c?/",
+      "posLine2": " ^",
+      "ranges": Array [],
+    },
+  ],
+}
+`;
