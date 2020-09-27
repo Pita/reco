@@ -5,6 +5,7 @@ import { genCode } from '../generator';
 import template from './generate_tests_template';
 import * as rimraf from 'rimraf';
 import * as path from 'path';
+import * as _ from 'lodash';
 
 const configFolder = `${__dirname}/config`;
 
@@ -23,15 +24,39 @@ configFiles.forEach((configFile) => {
   let passed = true;
 
   try {
-    if (config.type !== 'groupMatch') {
-      throw new Error(`Unsupported test type: ${config.type}`);
-    }
-
     const testName = configFile.replace(/\.json$/, '');
 
     const { code, templateValues, pattern } = genCode(config.regex);
-
     const nativeRegex: RegExp = eval(config.regex);
+    if (nativeRegex.global) {
+      throw new Error("Can't correctly test global regex yet");
+    }
+
+    if (config.regex.indexOf('\\W') !== -1) {
+      throw new Error(`Bug in regexp parser ${config.regex}`);
+    }
+
+    if (config.type === 'textSearch') {
+      const newTestInputs = config.testInputs.map((testInput) => {
+        let start = 0;
+        let partlyMatches = [];
+        let result: RegExpExecArray | null;
+        while ((result = nativeRegex.exec(testInput.substr(start))) !== null) {
+          if (result === null) {
+            break;
+          }
+          const end = start + result.index + result[0].length;
+          partlyMatches.push(testInput.substring(start, end));
+          start = end + 1;
+        }
+
+        partlyMatches.push(testInput.substr(start));
+        return partlyMatches;
+      });
+
+      config.testInputs = _.flatten(newTestInputs);
+    }
+
     const testInputs = config.testInputs.map((testInput) => {
       const result = nativeRegex.exec(testInput);
 

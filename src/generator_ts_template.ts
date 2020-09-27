@@ -23,6 +23,11 @@ class GeneratedRegex {
     private {{{functionName}}}(str: string, start: number, alreadyMatched: number): number {
       const charCode = str.charCodeAt(start);
 
+      // end of string
+      if (Number.isNaN(charCode)) {
+        return -1;
+      }
+
       const matched = {{#if complement}}!{{/if}}(
         {{#each ranges}}
            (charCode >= {{{from}}} && charCode <= {{{to}}}) ||
