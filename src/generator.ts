@@ -239,20 +239,18 @@ const handleSetOrCharacter = withQuantifier(
     let complement = false;
 
     const addCharacter = (char: number) => {
-      // normalizeUpperLowerCase(char, flags.ignoreCase).forEach((char) =>
-      //   chars.push(char),
-      // );
-      chars.push(char);
+      normalizeUpperLowerCase(char, flags.ignoreCase).forEach((char) =>
+        chars.push(char),
+      );
     };
 
     const addRange = (range: Range) => {
-      // const from = normalizeUpperLowerCase(range.from, flags.ignoreCase);
-      // const to = normalizeUpperLowerCase(range.to, flags.ignoreCase);
+      const from = normalizeUpperLowerCase(range.from, flags.ignoreCase);
+      const to = normalizeUpperLowerCase(range.to, flags.ignoreCase);
 
-      // for (let i = 0; i < from.length; i++) {
-      //   ranges.push({ from: to[i], to: to[i] });
-      // }
-      ranges.push(range);
+      for (let i = 0; i < from.length; i++) {
+        ranges.push({ from: from[i], to: to[i] });
+      }
     };
 
     if (term.type === 'Set') {
