@@ -30,17 +30,15 @@ type SubDefinition<T> = Omit<T, 'posLine1' | 'posLine2'> & {
 
 type AtomDefinition = SubDefinition<TemplateAtom>;
 
-// type AtomDefinition =
-//   | SubDefinition<CharOrSetTemplateAtom>
-//   | SubDefinition<DisjunctionTemplateAtom>;
-
 class Collector {
   private regexStr: string;
   private counter = 0;
+  private groupCount: number;
   private fiberHandlers: FiberTemplateDefinition[] = [];
 
-  constructor(regexStr: string) {
+  constructor(regexStr: string, groupCount: number) {
     this.regexStr = regexStr;
+    this.groupCount = groupCount;
   }
 
   private getNewCount() {
@@ -84,7 +82,7 @@ class Collector {
 
     return {
       functionName: currentFiber.functionName,
-      isClosed: false, //def.type !== 'charOrSet' || def.type !== 'disjunction',
+      isClosed: false,
     };
   }
 
@@ -92,6 +90,7 @@ class Collector {
     return {
       regexStr: this.regexStr,
       fiberHandlers: this.fiberHandlers,
+      groupsCount: this.groupCount,
     };
   }
 }
@@ -156,15 +155,45 @@ const handleGroup = (
   followUp: FollowUpFunctionHandle,
   flags: RegExpFlags,
 ): FunctionHandle => {
-  if (group.capturing) {
-    throw new Error('Capturing groups are not implemented yet');
-  }
-
   if (group.quantifier) {
     throw new Error('Quantifiers for groups are not implemented yet');
   }
+  if (!group.capturing) {
+    return handleDisjunction(group.value, collector, followUp, flags);
+  }
+  const idx = group.idx;
+  if (idx == null) {
+    throw new Error('Capturing group does not have an idx');
+  }
 
-  return handleDisjunction(group.value, collector, followUp, flags);
+  const groupEndMarker = collector.addAtom({
+    type: 'groupEndMarker',
+    followUp,
+    location: { begin: group.loc.end - 1, end: group.loc.end },
+    data: {
+      groupIndex: idx,
+      groupStartMarkerIndex: idx * 2,
+      groupEndMarkerIndex: idx * 2 + 1,
+    },
+  });
+
+  const disjunction = handleDisjunction(
+    group.value,
+    collector,
+    groupEndMarker,
+    flags,
+  );
+
+  const groupStartMarker = collector.addAtom({
+    type: 'groupStartMarker',
+    followUp: disjunction,
+    location: { begin: group.loc.begin, end: group.loc.begin + 1 },
+    data: {
+      groupIndex: idx,
+    },
+  });
+
+  return groupStartMarker;
 };
 
 const handleStartAnchor = (
@@ -267,6 +296,32 @@ const handleDisjunction = (
   });
 };
 
+const fixGroupIdx = (disjunction: Disjunction) => {
+  let idx = 1;
+
+  function traverse(element: any) {
+    const value = element && element.value;
+
+    if (element.type === 'Group' && element.capturing) {
+      element.idx = idx;
+      idx++;
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((value) => traverse(value));
+    } else if (value) {
+      traverse(value);
+    }
+  }
+
+  traverse(disjunction);
+
+  return {
+    disjunction,
+    groupCount: idx,
+  };
+};
+
 export const genCode = (
   regexStr: string,
 ): { code: string; templateValues: TemplateValues; pattern: RegExpPattern } => {
@@ -279,8 +334,8 @@ export const genCode = (
     throw new Error('Does not support multiline yet');
   }
 
-  const collector = new Collector(regexStr);
-  const disjunction = pattern.value;
+  const { disjunction, groupCount } = fixGroupIdx(pattern.value);
+  const collector = new Collector(regexStr, groupCount);
   const mainHandler = handleDisjunction(
     disjunction,
     collector,

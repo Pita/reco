@@ -6,6 +6,24 @@ const template = `
 // {{{regexStr}}}
 function generatedRegexMatcher(str: string) {
   const strLength = str.length;
+  let groupMarkers:[
+    {{#times groupsCount}}
+      number, number,
+    {{/times}}
+  ] = [
+    {{#times groupsCount}}
+      -1, -1,
+    {{/times}}
+  ];
+  const tempGroupStartMarkers: [
+    {{#times groupsCount}}
+      number, 
+    {{/times}}
+  ] = [
+    {{#times groupsCount}}
+      -1,
+    {{/times}}
+  ];
 
   {{#each fiberHandlers}}
     const {{{functionName}}} = (start: number): number => {
@@ -35,11 +53,17 @@ function generatedRegexMatcher(str: string) {
           i++;
         {{/atomCase}}
         {{#atomCase 'disjunction'}}
+          // TODO: Make that this does not require garbage collection
+          // typed array or for loop
+          // there might also be a possiblity to not copy all groups
+          const groupMarkersCopy = groupMarkers.slice();
+
           {{#each alternatives}}
             const length{{{@index}}} = {{{functionName}}}(i);
             if (length{{{@index}}} !== -1) {
               return length{{{@index}}};
             }
+            groupMarkers = groupMarkersCopy;
           {{/each}}
           return -1;
         {{/atomCase}}
@@ -52,6 +76,13 @@ function generatedRegexMatcher(str: string) {
           if (i !== strLength) {
             return -1;
           }
+        {{/atomCase}}
+        {{#atomCase 'groupStartMarker'}}
+          tempGroupStartMarkers[{{{groupIndex}}}] = i;
+        {{/atomCase}}
+        {{#atomCase 'groupEndMarker'}}
+          groupMarkers[{{{groupStartMarkerIndex}}}] = tempGroupStartMarkers[{{{groupIndex}}}];
+          groupMarkers[{{{groupEndMarkerIndex}}}] = i;
         {{/atomCase}}
       {{/each}}
       {{#if followUp}}
@@ -66,9 +97,18 @@ function generatedRegexMatcher(str: string) {
   for (let i = 0; i < strLength; i++) {
     const length = {{{mainHandler.functionName}}}(i);
     if (length !== -1) {
+      // TODO: why do we do this?!
+      groupMarkers[0] = i;
+      groupMarkers[1] = length;
       return {
         index: i,
-        matches: [str.substring(i, length)]
+        matches: [
+          {{#times groupsCount}}
+            groupMarkers[{{@index}} * 2 + 1] !== -1 
+              ? str.substring(groupMarkers[{{@index}} * 2], groupMarkers[{{@index}} * 2 + 1])
+              : undefined,
+          {{/times}}
+        ]
       }
     }
   }
@@ -122,11 +162,29 @@ export interface EndAnchorTemplateAtom extends BaseTemplateAtom {
   data: {};
 }
 
+export interface GroupStartMarkerTemplateAtom extends BaseTemplateAtom {
+  type: 'groupStartMarker';
+  data: {
+    groupIndex: number;
+  };
+}
+
+export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
+  type: 'groupEndMarker';
+  data: {
+    groupIndex: number;
+    groupStartMarkerIndex: number;
+    groupEndMarkerIndex: number;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | DisjunctionTemplateAtom
   | StartAnchorTemplateAtom
-  | EndAnchorTemplateAtom;
+  | EndAnchorTemplateAtom
+  | GroupStartMarkerTemplateAtom
+  | GroupEndMarkerTemplateAtom;
 
 export interface FiberTemplateDefinition extends FunctionTemplateDefinition {
   atoms: TemplateAtom[];
@@ -136,6 +194,7 @@ export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
   mainHandler: FunctionHandle;
   regexStr: string;
+  groupsCount: number;
 }
 
 Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
@@ -148,19 +207,14 @@ Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
   }
 });
 
-// Handlebars.registerHelper(
-//   'string',
-//   (str) => new Handlebars.SafeString(jsStringEscape(str)),
-// );
-
-// Handlebars.registerHelper('times', function (n, block) {
-//   var accum = '';
-//   for (var i = 0; i < n; ++i) {
-//     block.data.index = i;
-//     accum += block.fn(i);
-//   }
-//   return accum;
-// });
+Handlebars.registerHelper('times', function (n, block) {
+  var accum = '';
+  for (var i = 0; i < n; ++i) {
+    block.data.index = i;
+    accum += block.fn(i);
+  }
+  return accum;
+});
 
 const compiled = Handlebars.compile(template);
 export function genCodeFromTemplate(context: TemplateValues): string {

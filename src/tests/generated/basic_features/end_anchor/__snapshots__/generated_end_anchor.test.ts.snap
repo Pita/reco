@@ -52,6 +52,7 @@ Object {
       "functionName": "fiber0001",
     },
   ],
+  "groupsCount": 1,
   "mainHandler": Object {
     "functionName": "fiber0001",
     "isClosed": false,
