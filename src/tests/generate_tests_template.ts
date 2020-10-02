@@ -3,7 +3,7 @@ const jsStringEscape = require('js-string-escape');
 const prettier = require('prettier');
 
 const template = `
-import { GeneratedRegex } from './{{{string fileName}}}';
+import { generatedRegexMatcher } from './{{{string fileName}}}';
 import templateValues from './{{{string fileName}}}_templateValues.json';
 
 // {{{testRegex}}}
@@ -20,7 +20,7 @@ describe('{{{string testName}}}', () => {
   
   {{#each testInputs}}
     test('processes test input \\'{{string testInput}}\\' correctly', () => {
-      const result = GeneratedRegex.exec('{{string testInput}}');
+      const result = generatedRegexMatcher('{{string testInput}}');
 
       {{#if isNull}}
         expect(result).toBeNull();

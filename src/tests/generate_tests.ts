@@ -1,7 +1,7 @@
 import * as glob from 'glob';
 import mkdirp from 'mkdirp';
 import * as fs from 'fs';
-import { genCode } from '../generator';
+import { genCode } from '../generator_v3/generator_v3';
 import template from './generate_tests_template';
 import * as rimraf from 'rimraf';
 import * as path from 'path';

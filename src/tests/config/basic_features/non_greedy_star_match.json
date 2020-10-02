@@ -1,11 +1,5 @@
 {
   "regex": "/(.*?)(a)/",
   "type": "groupMatch",
-  "testInputs": [
-    "foooada",
-    "aa",
-    "bbbba",
-    "asdfa"
-  ],
-  "mustPass": true
+  "testInputs": ["foooada", "aa", "bbbba", "asdfa"]
 }

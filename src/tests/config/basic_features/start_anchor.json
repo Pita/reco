@@ -1,10 +1,5 @@
 {
   "regex": "/^def/",
   "type": "groupMatch",
-  "testInputs": [
-    " def",
-    "def",
-    "de\ndef"
-  ],
-  "mustPass": true
+  "testInputs": [" def", "def", "de\ndef"]
 }

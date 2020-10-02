@@ -24,7 +24,7 @@ class GeneratedRegex {
       if (start >= str.length) {
         return -1;
       }
-      
+
       const charCode = str.charCodeAt(start);
 
       const matched = {{#if complement}}!{{/if}}(

@@ -24,8 +24,8 @@ import {
   TemplateRecursiveQuantifierDefinition,
   TemplateQuantifierWithMinOrMaxDefinition,
   TemplateFunctionDefinition,
-} from './generator_ts_template';
-import { normalizeUpperLowerCase } from './normalize_upper_lower_case';
+} from './generator_v2_ts_template';
+import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 
 type SubDefinition<T> = Omit<T, 'functionName' | 'posLine1' | 'posLine2'> & {
   location: IRegExpAST['loc'];

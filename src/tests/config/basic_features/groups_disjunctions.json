@@ -1,13 +1,5 @@
 {
   "regex": "/(([a-c])|([d-f]))(a)/",
   "type": "groupMatch",
-  "testInputs": [
-    "ba",
-    "fa",
-    "fd",
-    "za",
-    "da",
-    "ca"
-  ],
-  "mustPass": true
+  "testInputs": ["ba", "fa", "fd", "za", "da", "ca"]
 }

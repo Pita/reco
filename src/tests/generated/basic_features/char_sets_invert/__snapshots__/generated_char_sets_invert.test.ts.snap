@@ -2,32 +2,58 @@
 
 exports[`basic_features/char_sets_invert template values are as expected 1`] = `
 Object {
-  "groups": 1,
-  "mainHandler": Object {
-    "functionName": "handleSetOrCharacter1",
-  },
-  "regexStr": "/[^ab-c]/",
-  "setOrCharacterHandler": Array [
+  "fiberHandlers": Array [
     Object {
-      "chars": Array [
-        97,
-      ],
-      "complement": true,
-      "followUp": null,
-      "functionName": "handleSetOrCharacter1",
-      "location": Object {
-        "begin": 1,
-        "end": 8,
-      },
-      "posLine1": "/[^ab-c]/",
-      "posLine2": " ^^^^^^^",
-      "ranges": Array [
+      "atoms": Array [
         Object {
-          "from": 98,
-          "to": 99,
+          "chars": Array [
+            97,
+          ],
+          "complement": true,
+          "location": Object {
+            "begin": 1,
+            "end": 8,
+          },
+          "posLine1": "/[^ab-c]/",
+          "posLine2": " ^^^^^^^",
+          "ranges": Array [
+            Object {
+              "from": 98,
+              "to": 99,
+            },
+          ],
+          "type": "charOrSet",
         },
       ],
+      "followUp": null,
+      "functionName": "fiber0001",
     },
   ],
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "chars": Array [
+          97,
+        ],
+        "complement": true,
+        "location": Object {
+          "begin": 1,
+          "end": 8,
+        },
+        "posLine1": "/[^ab-c]/",
+        "posLine2": " ^^^^^^^",
+        "ranges": Array [
+          Object {
+            "from": 98,
+            "to": 99,
+          },
+        ],
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+  },
+  "regexStr": "/[^ab-c]/",
 }
 `;

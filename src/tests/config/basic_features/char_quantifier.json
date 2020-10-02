@@ -1,13 +1,5 @@
 {
   "regex": "/a*B+c?/",
   "type": "groupMatch",
-  "testInputs": [
-    "aaaaB",
-    "B",
-    "Bc",
-    "aaaaaaac",
-    "aaaaaB",
-    "Bcaaaa"
-  ],
-  "mustPass": true
+  "testInputs": ["aaaaB", "B", "Bc", "aaaaaaac", "aaaaaB", "Bcaaaa"]
 }
