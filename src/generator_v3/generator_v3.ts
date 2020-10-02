@@ -10,6 +10,7 @@ import {
   RegExpFlags,
   RegExpPattern,
   Group,
+  Assertion,
 } from 'regexp-to-ast';
 import {
   FunctionHandle,
@@ -18,8 +19,6 @@ import {
   TemplateValues,
   FiberTemplateDefinition,
   TemplateAtom,
-  CharOrSetTemplateAtom,
-  DisjunctionTemplateAtom,
 } from './generator_v3_ts_template';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 import * as _ from 'lodash';
@@ -168,6 +167,40 @@ const handleGroup = (
   return handleDisjunction(group.value, collector, followUp, flags);
 };
 
+const handleStartAnchor = (
+  startAnchor: Assertion,
+  collector: Collector,
+  followUp: FollowUpFunctionHandle,
+  flags: RegExpFlags,
+): FunctionHandle => {
+  if (startAnchor.value) {
+    throw new Error('Start Anchor has value!');
+  }
+  return collector.addAtom({
+    type: 'startAnchor',
+    followUp,
+    location: startAnchor.loc,
+    data: {},
+  });
+};
+
+const handleEndAnchor = (
+  endAnchor: Assertion,
+  collector: Collector,
+  followUp: FollowUpFunctionHandle,
+  flags: RegExpFlags,
+): FunctionHandle => {
+  if (endAnchor.value) {
+    throw new Error('End Anchor has value!');
+  }
+  return collector.addAtom({
+    type: 'endAnchor',
+    followUp,
+    location: endAnchor.loc,
+    data: {},
+  });
+};
+
 const handleTerm = (
   term: Term,
   collector: Collector,
@@ -180,6 +213,10 @@ const handleTerm = (
       return handleSetOrCharacter(term, collector, followUp, flags);
     case 'Group':
       return handleGroup(term, collector, followUp, flags);
+    case 'StartAnchor':
+      return handleStartAnchor(term, collector, followUp, flags);
+    case 'EndAnchor':
+      return handleEndAnchor(term, collector, followUp, flags);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }

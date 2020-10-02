@@ -43,6 +43,16 @@ function generatedRegexMatcher(str: string) {
           {{/each}}
           return -1;
         {{/atomCase}}
+        {{#atomCase 'startAnchor'}}
+          if (i !== 0) {
+            return -1;
+          }
+        {{/atomCase}}
+        {{#atomCase 'endAnchor'}}
+          if (i !== strLength) {
+            return -1;
+          }
+        {{/atomCase}}
       {{/each}}
       {{#if followUp}}
         return {{{followUp.functionName}}}(i);
@@ -102,7 +112,21 @@ export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
   };
 }
 
-export type TemplateAtom = CharOrSetTemplateAtom | DisjunctionTemplateAtom;
+export interface StartAnchorTemplateAtom extends BaseTemplateAtom {
+  type: 'startAnchor';
+  data: {};
+}
+
+export interface EndAnchorTemplateAtom extends BaseTemplateAtom {
+  type: 'endAnchor';
+  data: {};
+}
+
+export type TemplateAtom =
+  | CharOrSetTemplateAtom
+  | DisjunctionTemplateAtom
+  | StartAnchorTemplateAtom
+  | EndAnchorTemplateAtom;
 
 export interface FiberTemplateDefinition extends FunctionTemplateDefinition {
   atoms: TemplateAtom[];
