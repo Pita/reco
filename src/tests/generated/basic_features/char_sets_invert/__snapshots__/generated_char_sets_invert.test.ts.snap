@@ -6,22 +6,20 @@ Object {
     Object {
       "atoms": Array [
         Object {
-          "chars": Array [
-            97,
-          ],
-          "complement": true,
-          "location": Object {
-            "begin": 1,
-            "end": 8,
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": true,
+            "ranges": Array [
+              Object {
+                "from": 98,
+                "to": 99,
+              },
+            ],
           },
           "posLine1": "/[^ab-c]/",
           "posLine2": " ^^^^^^^",
-          "ranges": Array [
-            Object {
-              "from": 98,
-              "to": 99,
-            },
-          ],
           "type": "charOrSet",
         },
       ],
@@ -30,29 +28,8 @@ Object {
     },
   ],
   "mainHandler": Object {
-    "atoms": Array [
-      Object {
-        "chars": Array [
-          97,
-        ],
-        "complement": true,
-        "location": Object {
-          "begin": 1,
-          "end": 8,
-        },
-        "posLine1": "/[^ab-c]/",
-        "posLine2": " ^^^^^^^",
-        "ranges": Array [
-          Object {
-            "from": 98,
-            "to": 99,
-          },
-        ],
-        "type": "charOrSet",
-      },
-    ],
-    "followUp": null,
     "functionName": "fiber0001",
+    "isClosed": false,
   },
   "regexStr": "/[^ab-c]/",
 }

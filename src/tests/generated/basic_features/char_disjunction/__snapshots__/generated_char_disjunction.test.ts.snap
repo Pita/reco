@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_disjunction template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/a|b|f/",
+          "posLine2": " ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              98,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/a|b|f/",
+          "posLine2": "   ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0002",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              102,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/a|b|f/",
+          "posLine2": "     ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0003",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "alternatives": Array [
+              Object {
+                "functionName": "fiber0001",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0002",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0003",
+                "isClosed": false,
+              },
+            ],
+          },
+          "posLine1": "/a|b|f/",
+          "posLine2": " ^^^^^",
+          "type": "disjunction",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0004",
+    },
+  ],
+  "mainHandler": Object {
+    "functionName": "fiber0004",
+    "isClosed": true,
+  },
+  "regexStr": "/a|b|f/",
+}
+`;

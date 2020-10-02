@@ -12,10 +12,11 @@ function generatedRegexMatcher(str: string) {
       let i = start;
       {{#each atoms}}
         /*
+         * {{{type}}}
          * {{{posLine1}}}
          * {{{posLine2}}}
          */
-        {{#ifEquals type 'charOrSet'}}
+        {{#atomCase 'charOrSet'}}
           if (i >= strLength) {
             return -1;
           }
@@ -32,7 +33,16 @@ function generatedRegexMatcher(str: string) {
             return -1;
           };
           i++;
-        {{/ifEquals}}
+        {{/atomCase}}
+        {{#atomCase 'disjunction'}}
+          {{#each alternatives}}
+            const length{{{@index}}} = {{{functionName}}}(i);
+            if (length{{{@index}}} !== -1) {
+              return length{{{@index}}};
+            }
+          {{/each}}
+          return -1;
+        {{/atomCase}}
       {{/each}}
       {{#if followUp}}
         return {{{followUp.functionName}}}(i);
@@ -61,6 +71,7 @@ module.exports = {generatedRegexMatcher};
 
 export interface FunctionHandle {
   functionName: string;
+  isClosed: boolean;
 }
 
 export type FollowUpFunctionHandle = FunctionHandle | null;
@@ -77,12 +88,21 @@ export interface BaseTemplateAtom {
 
 export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
   type: 'charOrSet';
-  ranges: { from: number; to: number }[];
-  chars: number[];
-  complement: boolean;
+  data: {
+    ranges: { from: number; to: number }[];
+    chars: number[];
+    complement: boolean;
+  };
 }
 
-export type TemplateAtom = CharOrSetTemplateAtom;
+export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
+  type: 'disjunction';
+  data: {
+    alternatives: FunctionHandle[];
+  };
+}
+
+export type TemplateAtom = CharOrSetTemplateAtom | DisjunctionTemplateAtom;
 
 export interface FiberTemplateDefinition extends FunctionTemplateDefinition {
   atoms: TemplateAtom[];
@@ -94,13 +114,14 @@ export interface TemplateValues {
   regexStr: string;
 }
 
-Handlebars.registerHelper('ifEquals', function (
-  this: any,
-  arg1,
-  arg2,
-  options,
-) {
-  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
+  const isAtomType = this.type === atomType;
+
+  if (isAtomType) {
+    return options.fn(this.data);
+  } else {
+    return options.inverse(this);
+  }
 });
 
 // Handlebars.registerHelper(

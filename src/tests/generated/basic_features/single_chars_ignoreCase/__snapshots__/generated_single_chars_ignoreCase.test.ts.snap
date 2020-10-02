@@ -6,48 +6,42 @@ Object {
     Object {
       "atoms": Array [
         Object {
-          "chars": Array [
-            100,
-            68,
-          ],
-          "complement": false,
-          "location": Object {
-            "begin": 1,
-            "end": 2,
+          "data": Object {
+            "chars": Array [
+              100,
+              68,
+            ],
+            "complement": false,
+            "ranges": Array [],
           },
           "posLine1": "/def/i",
           "posLine2": " ^",
-          "ranges": Array [],
           "type": "charOrSet",
         },
         Object {
-          "chars": Array [
-            101,
-            69,
-          ],
-          "complement": false,
-          "location": Object {
-            "begin": 2,
-            "end": 3,
+          "data": Object {
+            "chars": Array [
+              101,
+              69,
+            ],
+            "complement": false,
+            "ranges": Array [],
           },
           "posLine1": "/def/i",
           "posLine2": "  ^",
-          "ranges": Array [],
           "type": "charOrSet",
         },
         Object {
-          "chars": Array [
-            102,
-            70,
-          ],
-          "complement": false,
-          "location": Object {
-            "begin": 3,
-            "end": 4,
+          "data": Object {
+            "chars": Array [
+              102,
+              70,
+            ],
+            "complement": false,
+            "ranges": Array [],
           },
           "posLine1": "/def/i",
           "posLine2": "   ^",
-          "ranges": Array [],
           "type": "charOrSet",
         },
       ],
@@ -56,55 +50,8 @@ Object {
     },
   ],
   "mainHandler": Object {
-    "atoms": Array [
-      Object {
-        "chars": Array [
-          100,
-          68,
-        ],
-        "complement": false,
-        "location": Object {
-          "begin": 1,
-          "end": 2,
-        },
-        "posLine1": "/def/i",
-        "posLine2": " ^",
-        "ranges": Array [],
-        "type": "charOrSet",
-      },
-      Object {
-        "chars": Array [
-          101,
-          69,
-        ],
-        "complement": false,
-        "location": Object {
-          "begin": 2,
-          "end": 3,
-        },
-        "posLine1": "/def/i",
-        "posLine2": "  ^",
-        "ranges": Array [],
-        "type": "charOrSet",
-      },
-      Object {
-        "chars": Array [
-          102,
-          70,
-        ],
-        "complement": false,
-        "location": Object {
-          "begin": 3,
-          "end": 4,
-        },
-        "posLine1": "/def/i",
-        "posLine2": "   ^",
-        "ranges": Array [],
-        "type": "charOrSet",
-      },
-    ],
-    "followUp": null,
     "functionName": "fiber0001",
+    "isClosed": false,
   },
   "regexStr": "/def/i",
 }

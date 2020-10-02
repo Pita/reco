@@ -9,6 +9,7 @@ import {
   Range,
   RegExpFlags,
   RegExpPattern,
+  Group,
 } from 'regexp-to-ast';
 import {
   FunctionHandle,
@@ -17,6 +18,8 @@ import {
   TemplateValues,
   FiberTemplateDefinition,
   TemplateAtom,
+  CharOrSetTemplateAtom,
+  DisjunctionTemplateAtom,
 } from './generator_v3_ts_template';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 import * as _ from 'lodash';
@@ -27,6 +30,10 @@ type SubDefinition<T> = Omit<T, 'posLine1' | 'posLine2'> & {
 };
 
 type AtomDefinition = SubDefinition<TemplateAtom>;
+
+// type AtomDefinition =
+//   | SubDefinition<CharOrSetTemplateAtom>
+//   | SubDefinition<DisjunctionTemplateAtom>;
 
 class Collector {
   private regexStr: string;
@@ -52,7 +59,7 @@ class Collector {
 
   addAtom(def: AtomDefinition): FunctionHandle {
     let currentFiber: FiberTemplateDefinition | undefined = undefined;
-    if (def.followUp) {
+    if (def.followUp && def.followUp.isClosed === false) {
       currentFiber = this.fiberHandlers.find(
         (fiberHandler) =>
           fiberHandler.functionName === def.followUp?.functionName,
@@ -60,21 +67,26 @@ class Collector {
     }
     if (currentFiber === undefined) {
       currentFiber = {
-        followUp: null,
+        followUp: def.followUp,
         atoms: [],
         functionName: `fiber${this.getNewCount()}`,
       };
       this.fiberHandlers.push(currentFiber);
     }
 
-    const newAtom: TemplateAtom = {
+    // TODO: type this correctly
+    const newAtom: any = {
       ...this.formatAstLocation(def.location),
-      ..._.omit(def, 'followUp'),
+      type: def.type,
+      data: def.data,
     };
 
     currentFiber.atoms.unshift(newAtom);
 
-    return currentFiber;
+    return {
+      functionName: currentFiber.functionName,
+      isClosed: def.type !== 'charOrSet',
+    };
   }
 
   getTemplateValues(): Omit<TemplateValues, 'mainHandler'> {
@@ -129,12 +141,31 @@ const handleSetOrCharacter = (
 
   return collector.addAtom({
     type: 'charOrSet',
-    chars,
-    ranges,
-    complement,
+    data: {
+      chars,
+      ranges,
+      complement,
+    },
     followUp,
     location: term.loc,
   });
+};
+
+const handleGroup = (
+  group: Group,
+  collector: Collector,
+  followUp: FollowUpFunctionHandle,
+  flags: RegExpFlags,
+): FunctionHandle => {
+  if (group.capturing) {
+    throw new Error('Capturing groups are not implemented yet');
+  }
+
+  if (group.quantifier) {
+    throw new Error('Quantifiers for groups are not implemented yet');
+  }
+
+  return handleDisjunction(group.value, collector, followUp, flags);
 };
 
 const handleTerm = (
@@ -147,6 +178,8 @@ const handleTerm = (
     case 'Character':
     case 'Set':
       return handleSetOrCharacter(term, collector, followUp, flags);
+    case 'Group':
+      return handleGroup(term, collector, followUp, flags);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }
@@ -181,7 +214,20 @@ const handleDisjunction = (
     return handleAlternative(disjunction.value[0], collector, followUp, flags);
   }
 
-  throw new Error('Disjunction not implemented yet');
+  if (followUp) {
+    followUp.isClosed = true;
+  }
+
+  const alternatives = disjunction.value.map((alternative) =>
+    handleAlternative(alternative, collector, followUp, flags),
+  );
+
+  return collector.addAtom({
+    type: 'disjunction',
+    data: { alternatives },
+    followUp: null,
+    location: disjunction.loc,
+  });
 };
 
 export const genCode = (

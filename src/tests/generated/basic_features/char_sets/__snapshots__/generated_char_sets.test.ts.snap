@@ -6,28 +6,26 @@ Object {
     Object {
       "atoms": Array [
         Object {
-          "chars": Array [],
-          "complement": false,
-          "location": Object {
-            "begin": 1,
-            "end": 12,
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+              Object {
+                "from": 65,
+                "to": 90,
+              },
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
           },
           "posLine1": "/[a-zA-Z0-9]/",
           "posLine2": " ^^^^^^^^^^^",
-          "ranges": Array [
-            Object {
-              "from": 97,
-              "to": 122,
-            },
-            Object {
-              "from": 65,
-              "to": 90,
-            },
-            Object {
-              "from": 48,
-              "to": 57,
-            },
-          ],
           "type": "charOrSet",
         },
       ],
@@ -36,35 +34,8 @@ Object {
     },
   ],
   "mainHandler": Object {
-    "atoms": Array [
-      Object {
-        "chars": Array [],
-        "complement": false,
-        "location": Object {
-          "begin": 1,
-          "end": 12,
-        },
-        "posLine1": "/[a-zA-Z0-9]/",
-        "posLine2": " ^^^^^^^^^^^",
-        "ranges": Array [
-          Object {
-            "from": 97,
-            "to": 122,
-          },
-          Object {
-            "from": 65,
-            "to": 90,
-          },
-          Object {
-            "from": 48,
-            "to": 57,
-          },
-        ],
-        "type": "charOrSet",
-      },
-    ],
-    "followUp": null,
     "functionName": "fiber0001",
+    "isClosed": false,
   },
   "regexStr": "/[a-zA-Z0-9]/",
 }
