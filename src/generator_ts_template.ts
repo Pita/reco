@@ -21,12 +21,11 @@ class GeneratedRegex {
     // {{{posLine1}}}
     // {{{posLine2}}}
     private {{{functionName}}}(str: string, start: number): number {
-      const charCode = str.charCodeAt(start);
-
-      // end of string
-      if (Number.isNaN(charCode)) {
+      if (start >= str.length) {
         return -1;
       }
+      
+      const charCode = str.charCodeAt(start);
 
       const matched = {{#if complement}}!{{/if}}(
         {{#each ranges}}
