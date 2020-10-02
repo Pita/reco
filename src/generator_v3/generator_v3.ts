@@ -84,7 +84,7 @@ class Collector {
 
     return {
       functionName: currentFiber.functionName,
-      isClosed: def.type !== 'charOrSet',
+      isClosed: false, //def.type !== 'charOrSet' || def.type !== 'disjunction',
     };
   }
 

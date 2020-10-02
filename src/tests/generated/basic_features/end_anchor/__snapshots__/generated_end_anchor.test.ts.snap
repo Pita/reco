@@ -6,18 +6,6 @@ Object {
     Object {
       "atoms": Array [
         Object {
-          "data": Object {},
-          "posLine1": "/def$/",
-          "posLine2": "    ^",
-          "type": "endAnchor",
-        },
-      ],
-      "followUp": null,
-      "functionName": "fiber0001",
-    },
-    Object {
-      "atoms": Array [
-        Object {
           "data": Object {
             "chars": Array [
               100,
@@ -53,16 +41,19 @@ Object {
           "posLine2": "   ^",
           "type": "charOrSet",
         },
+        Object {
+          "data": Object {},
+          "posLine1": "/def$/",
+          "posLine2": "    ^",
+          "type": "endAnchor",
+        },
       ],
-      "followUp": Object {
-        "functionName": "fiber0001",
-        "isClosed": true,
-      },
-      "functionName": "fiber0002",
+      "followUp": null,
+      "functionName": "fiber0001",
     },
   ],
   "mainHandler": Object {
-    "functionName": "fiber0002",
+    "functionName": "fiber0001",
     "isClosed": false,
   },
   "regexStr": "/def$/",

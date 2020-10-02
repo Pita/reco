@@ -54,7 +54,7 @@ Object {
   ],
   "mainHandler": Object {
     "functionName": "fiber0001",
-    "isClosed": true,
+    "isClosed": false,
   },
   "regexStr": "/^def/",
 }
