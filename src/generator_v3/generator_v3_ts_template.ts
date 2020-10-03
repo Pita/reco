@@ -88,11 +88,6 @@ function generatedRegexMatcher(str: string) {
           groupMarkers[{{{groupEndMarkerIndex}}}] = i;
         {{/atomCase}}
         {{#atomCase 'greedyQuantifier'}}
-          {{#if maxOrMinCount}}
-            let matchCount = -1;
-          {{/if}}
-
-          // TODO: can probably be inlined
           const followUpCallback = (start: number) => {
             {{#if followUp}}
               return {{{followUp.functionName}}}(start);
@@ -103,40 +98,24 @@ function generatedRegexMatcher(str: string) {
           }
 
           const recursiveCallback = (start: number): number => {
-            {{#if maxOrMinCount}}
-              matchCount++;
-            {{/if}}
-
-            // if max count is reached, return followUpCallback
-            {{#if maxCount}}
-              // we've matched enough, lets continue with the follow up
-              if (matchCount=== {{{maxCount}}}) {
-                return followUpCallback(start); 
-              }
-            {{/if}}
-
+            const groupMarkersCopy = groupMarkers.slice();
             const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, recursiveCallback);
             if (tryDeeperResult !== -1) {
               // we actually were able to go deeper, nice!
               return tryDeeperResult;
+            } else {
+              // recursion failed, reset groups
+              groupMarkers = groupMarkersCopy;
             }
-            
-            {{#if minCount}}
-              // we didn't match enough, bail!
-              if (matchCount < {{{minCount}}}) {
-                return -1; 
-              }
-            {{/if}}
 
-            {{#if maxOrMinCount}}
-              matchCount--;
-            {{/if}}
-
-            // we couldn't find a deeper match, we can only try the follow up
-            return followUpCallback(start);          
+            const followUpResult = followUpCallback(start);
+            if (followUpResult === -1) {
+              groupMarkers = groupMarkersCopy;
+            }
+            return followUpResult;
           };
 
-          return recursiveCallback(start);
+          return recursiveCallback(i);
         {{/atomCase}}        
       {{/each}}
       // TODO: not needed in case last element is disjunction or quantifier

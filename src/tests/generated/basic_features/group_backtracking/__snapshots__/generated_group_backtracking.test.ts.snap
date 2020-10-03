@@ -149,7 +149,7 @@ Object {
             "maxOrMinCount": false,
             "wrappedHandler": Object {
               "functionName": "fiber0002",
-              "isClosed": false,
+              "isClosed": true,
             },
           },
           "posLine1": "/(aa3)*(aa3a)/",

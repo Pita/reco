@@ -55,26 +55,6 @@ class Collector {
     };
   }
 
-  // addGreedyQuantifier(
-  //   def: Omit<
-  //     GreedyQuantifierTemplateDefinition,
-  //     'functionName' | 'posLine1' | 'posLine2'
-  //   > & { location: IRegExpAST['loc'] },
-  // ): FunctionHandle {
-  //   const functionName = `greedyQuantifier${this.getNewCount()}`;
-
-  //   this.greedyQuantifierHandlers.push({
-  //     functionName,
-  //     ...this.formatAstLocation(def.location),
-  //     ...def,
-  //   });
-
-  //   return {
-  //     functionName,
-  //     isClosed: true,
-  //   };
-  // }
-
   addAtom(def: AtomDefinition): FunctionHandle {
     let currentFiber: FiberTemplateDefinition | undefined = undefined;
     if (def.followUp && def.followUp.isClosed === false) {
@@ -100,6 +80,8 @@ class Collector {
     };
 
     currentFiber.atoms.unshift(newAtom);
+
+    // console.log(def, this.fiberHandlers);
 
     return {
       functionName: currentFiber.functionName,
@@ -149,6 +131,7 @@ const withQuantifier = <T extends AstWithQuantifier>(
       { functionName: 'callback', isClosed: true },
       flags,
     );
+    wrappedHandler.isClosed = true;
     if (followUp) {
       followUp.isClosed = true;
     }
@@ -156,6 +139,10 @@ const withQuantifier = <T extends AstWithQuantifier>(
     const maxCount =
       quantifier.atMost === Infinity ? undefined : quantifier.atMost;
     const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
+
+    if (maxOrMinCount) {
+      throw new Error('Only supports infinite quantifiers so far');
+    }
 
     return collector.addAtom({
       type: 'greedyQuantifier',
@@ -402,6 +389,7 @@ export const genCode = (
   regexStr: string,
 ): { code: string; templateValues: TemplateValues; pattern: RegExpPattern } => {
   const pattern = new RegExpParser().pattern(regexStr);
+  debugger;
 
   if (pattern.flags.unicode) {
     throw new Error('Does not support unicode yet');
