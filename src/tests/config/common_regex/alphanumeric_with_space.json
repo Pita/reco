@@ -12,5 +12,6 @@
     "! dff",
     "NoSpecialcharacters#",
     "54445566"
-  ]
+  ],
+  "mustPass": true
 }

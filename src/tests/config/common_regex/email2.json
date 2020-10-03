@@ -16,5 +16,6 @@
     "email@example.museum",
     "email@example.co.jp",
     "firstname-lastname@example.com"
-  ]
+  ],
+  "mustPass": true
 }

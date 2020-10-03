@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/email1 template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "                                                   ^",
+          "type": "endAnchor",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 3,
+            "groupIndex": 1,
+            "groupStartMarkerIndex": 2,
+          },
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "                                                 ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0002",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+              Object {
+                "from": 65,
+                "to": 90,
+              },
+            ],
+          },
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "                                    ^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0003",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              46,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "                                  ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0004",
+        "isClosed": true,
+      },
+      "functionName": "fiber0005",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              46,
+              45,
+            ],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+              Object {
+                "from": 65,
+                "to": 90,
+              },
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "                    ^^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0006",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              64,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "                   ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0007",
+        "isClosed": true,
+      },
+      "functionName": "fiber0008",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              46,
+              95,
+              37,
+              45,
+            ],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+              Object {
+                "from": 65,
+                "to": 90,
+              },
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "   ^^^^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0009",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 1,
+          },
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": "  ^",
+          "type": "groupStartMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0010",
+        "isClosed": true,
+      },
+      "functionName": "fiber0011",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+          "posLine2": " ^",
+          "type": "startAnchor",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0012",
+        "isClosed": true,
+      },
+      "functionName": "fiber0013",
+    },
+  ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0002",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0004",
+      "location": Object {
+        "begin": 44,
+        "end": 49,
+      },
+      "maxCount": 6,
+      "maxOrMinCount": true,
+      "minCount": 2,
+      "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+      "posLine2": "                                            ^^^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0003",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0005",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0007",
+      "location": Object {
+        "begin": 33,
+        "end": 34,
+      },
+      "maxOrMinCount": true,
+      "minCount": 1,
+      "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+      "posLine2": "                                 ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0006",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0008",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0010",
+      "location": Object {
+        "begin": 18,
+        "end": 19,
+      },
+      "maxOrMinCount": true,
+      "minCount": 1,
+      "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+      "posLine2": "                  ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0009",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0012",
+      "location": Object {
+        "begin": 50,
+        "end": 51,
+      },
+      "maxOrMinCount": false,
+      "posLine1": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+      "posLine2": "                                                  ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0011",
+        "isClosed": false,
+      },
+    },
+  ],
+  "groupsCount": 2,
+  "mainHandler": Object {
+    "functionName": "fiber0013",
+    "isClosed": false,
+  },
+  "regexStr": "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6})*$/",
+}
+`;

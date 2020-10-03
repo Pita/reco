@@ -1,0 +1,1165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/phone_number template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                                           ^",
+          "type": "endAnchor",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 7,
+            "groupIndex": 3,
+            "groupStartMarkerIndex": 6,
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                                        ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0002",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                                     ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0003",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 3,
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                                    ^",
+          "type": "groupStartMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0004",
+        "isClosed": true,
+      },
+      "functionName": "fiber0005",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              45,
+              46,
+              32,
+              92,
+              47,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                       ^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0006",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              35,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                  ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0007",
+        "isClosed": true,
+      },
+      "functionName": "fiber0008",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              46,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                       ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0009",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              101,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                    ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              120,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                     ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              116,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                      ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0010",
+        "isClosed": true,
+      },
+      "functionName": "fiber0011",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              101,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                           ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              120,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                            ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              116,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                             ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              101,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                              ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              110,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                               ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              115,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              105,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                 ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              111,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                  ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              110,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                   ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0007",
+        "isClosed": true,
+      },
+      "functionName": "fiber0012",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              120,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                                     ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0007",
+        "isClosed": true,
+      },
+      "functionName": "fiber0013",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "alternatives": Array [
+              Object {
+                "functionName": "fiber0008",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0011",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0012",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0013",
+                "isClosed": false,
+              },
+            ],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                                  ^^^^^^^^^^^^^^^^^^^^",
+          "type": "disjunction",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0014",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              45,
+              46,
+              32,
+              92,
+              47,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                                  ^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0015",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 5,
+            "groupIndex": 2,
+            "groupStartMarkerIndex": 4,
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                                              ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0017",
+        "isClosed": true,
+      },
+      "functionName": "fiber0018",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              45,
+              46,
+              32,
+              92,
+              47,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                            ^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0019",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              41,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                         ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0021",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                   ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0023",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              40,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                                ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0025",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 2,
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                                            ^",
+          "type": "groupStartMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0027",
+        "isClosed": true,
+      },
+      "functionName": "fiber0028",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              45,
+              46,
+              32,
+              92,
+              47,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                             ^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0029",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              41,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                        ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0031",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 3,
+            "groupIndex": 1,
+            "groupStartMarkerIndex": 2,
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                       ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0032",
+        "isClosed": true,
+      },
+      "functionName": "fiber0033",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 49,
+                "to": 52,
+              },
+            ],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                     ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                          ^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                            ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0033",
+        "isClosed": true,
+      },
+      "functionName": "fiber0034",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                                    ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0035",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 49,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                               ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0036",
+        "isClosed": true,
+      },
+      "functionName": "fiber0037",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 1,
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                    ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "alternatives": Array [
+              Object {
+                "functionName": "fiber0034",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0037",
+                "isClosed": false,
+              },
+            ],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                     ^^^^^^^^^^^^^^^^^^",
+          "type": "disjunction",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0038",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              48,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "              ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              48,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "               ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0038",
+        "isClosed": true,
+      },
+      "functionName": "fiber0039",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              43,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "                 ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0038",
+        "isClosed": true,
+      },
+      "functionName": "fiber0040",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "alternatives": Array [
+              Object {
+                "functionName": "fiber0039",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0040",
+                "isClosed": false,
+              },
+            ],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "              ^^^^^",
+          "type": "disjunction",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0041",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              40,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": "        ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0042",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+          "posLine2": " ^",
+          "type": "startAnchor",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0045",
+        "isClosed": true,
+      },
+      "functionName": "fiber0046",
+    },
+  ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0002",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0004",
+      "location": Object {
+        "begin": 151,
+        "end": 152,
+      },
+      "maxOrMinCount": true,
+      "minCount": 1,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                       ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0003",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0005",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0007",
+      "location": Object {
+        "begin": 147,
+        "end": 148,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                   ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0006",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier0007",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0010",
+      "location": Object {
+        "begin": 121,
+        "end": 122,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                         ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0009",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0014",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0016",
+      "location": Object {
+        "begin": 110,
+        "end": 111,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                              ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0015",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0017",
+      "location": Object {
+        "begin": 154,
+        "end": 155,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                                                                                          ^",
+      "wrappedHandler": Object {
+        "functionName": "greedyQuantifier0016",
+        "isClosed": true,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0020",
+      "location": Object {
+        "begin": 88,
+        "end": 89,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                        ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0019",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier0020",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0022",
+      "location": Object {
+        "begin": 75,
+        "end": 76,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                           ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0021",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier0022",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0024",
+      "location": Object {
+        "begin": 69,
+        "end": 73,
+      },
+      "maxOrMinCount": true,
+      "minCount": 1,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                     ^^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0023",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier0024",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0026",
+      "location": Object {
+        "begin": 66,
+        "end": 67,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                  ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0025",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0018",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0027",
+      "location": Object {
+        "begin": 90,
+        "end": 94,
+      },
+      "maxOrMinCount": false,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                                                          ^^^^",
+      "wrappedHandler": Object {
+        "functionName": "greedyQuantifier0026",
+        "isClosed": true,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0030",
+      "location": Object {
+        "begin": 57,
+        "end": 58,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                         ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0029",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0032",
+      "location": Object {
+        "begin": 42,
+        "end": 43,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                          ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0031",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0033",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0036",
+      "location": Object {
+        "begin": 38,
+        "end": 39,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                      ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0035",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0041",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0043",
+      "location": Object {
+        "begin": 10,
+        "end": 11,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "          ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0042",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier0030",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0044",
+      "location": Object {
+        "begin": 44,
+        "end": 45,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                            ^",
+      "wrappedHandler": Object {
+        "functionName": "greedyQuantifier0043",
+        "isClosed": true,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0028",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0045",
+      "location": Object {
+        "begin": 59,
+        "end": 60,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+      "posLine2": "                                                           ^",
+      "wrappedHandler": Object {
+        "functionName": "greedyQuantifier0044",
+        "isClosed": true,
+      },
+    },
+  ],
+  "groupsCount": 4,
+  "mainHandler": Object {
+    "functionName": "fiber0046",
+    "isClosed": false,
+  },
+  "regexStr": "/^(?:(?:\\\\(?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(\\\\d+))?$/",
+}
+`;

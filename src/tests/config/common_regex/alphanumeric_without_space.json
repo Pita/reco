@@ -1,5 +1,12 @@
 {
   "regex": "/^[a-zA-Z0-9]*$/",
   "type": "groupMatch",
-  "testInputs": ["hello", "what", "how are you?", "hi5", "8ask"]
+  "testInputs": [
+    "hello",
+    "what",
+    "how are you?",
+    "hi5",
+    "8ask"
+  ],
+  "mustPass": true
 }

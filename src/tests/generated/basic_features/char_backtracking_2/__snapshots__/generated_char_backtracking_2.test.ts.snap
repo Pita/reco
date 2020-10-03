@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_backtracking_2 template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 3,
+            "groupIndex": 1,
+            "groupStartMarkerIndex": 2,
+          },
+          "posLine1": "/(aa?){3}/",
+          "posLine2": "     ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa?){3}/",
+          "posLine2": "   ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0002",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 1,
+          },
+          "posLine1": "/(aa?){3}/",
+          "posLine2": " ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa?){3}/",
+          "posLine2": "  ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0003",
+        "isClosed": true,
+      },
+      "functionName": "fiber0004",
+    },
+  ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0003",
+      "location": Object {
+        "begin": 4,
+        "end": 5,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/(aa?){3}/",
+      "posLine2": "    ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0002",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": null,
+      "functionName": "greedyQuantifier0005",
+      "location": Object {
+        "begin": 6,
+        "end": 9,
+      },
+      "maxCount": 3,
+      "maxOrMinCount": true,
+      "minCount": 3,
+      "posLine1": "/(aa?){3}/",
+      "posLine2": "      ^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0004",
+        "isClosed": false,
+      },
+    },
+  ],
+  "groupsCount": 2,
+  "mainHandler": Object {
+    "functionName": "greedyQuantifier0005",
+    "isClosed": true,
+  },
+  "regexStr": "/(aa?){3}/",
+}
+`;

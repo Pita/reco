@@ -26,7 +26,10 @@ function generatedRegexMatcher(str: string) {
   ];
 
   {{#each fiberHandlers}}
-    const {{{functionName}}} = (start: number): number => {
+    const {{{functionName}}} = (
+      start: number,
+      {{#hasCallback}} callback: (start: number) => number {{/hasCallback}}
+    ): number => {
       let i = start;
       {{#each atoms}}
         /*
@@ -85,12 +88,72 @@ function generatedRegexMatcher(str: string) {
           groupMarkers[{{{groupEndMarkerIndex}}}] = i;
         {{/atomCase}}
       {{/each}}
+      // TODO: not needed in case last element is disjunction or quantifier
       {{#if followUp}}
         return {{{followUp.functionName}}}(i);
       {{/if}}
       {{#unless followUp}}
         return i;
       {{/unless}}
+    }
+  {{/each}}
+
+  // TODO: SHOULD BE AN ATOM
+  {{#each greedyQuantifierHandlers}}
+    // {{{posLine1}}}
+    // {{{posLine2}}}
+    const {{{functionName}}} = (
+      start: number,
+      {{#hasCallback}} callback: (start: number) => number // TODO: can this ever happen? {{/hasCallback}} 
+    ): number => {
+      {{#if maxOrMinCount}}
+        let matchCount = -1;
+      {{/if}}
+
+      const followUpCallback = (start: number) => {
+        {{#if followUp}}
+          return {{{followUp.functionName}}}(start);
+        {{/if}}
+        {{#unless followUp}}
+          return start;
+        {{/unless}}
+      }
+
+      const callback = (start: number): number => {
+        {{#if maxOrMinCount}}
+          matchCount++;
+        {{/if}}
+
+        // if max count is reached, return followUpCallback
+        {{#if maxCount}}
+          // we've matched enough, lets continue with the follow up
+          if (matchCount=== {{{maxCount}}}) {
+            return followUpCallback(start); 
+          }
+        {{/if}}
+
+        const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, callback);
+        if (tryDeeperResult !== -1) {
+          // we actually were able to go deeper, nice!
+          return tryDeeperResult;
+        }
+        
+        {{#if minCount}}
+          // we didn't match enough, bail!
+          if (matchCount < {{{minCount}}}) {
+            return -1; 
+          }
+        {{/if}}
+
+        {{#if maxOrMinCount}}
+          matchCount--;
+        {{/if}}
+
+        // we couldn't find a deeper match, we can only try the follow up
+        return followUpCallback(start);          
+      };
+
+      return callback(start);
     }
   {{/each}}
 
@@ -190,8 +253,19 @@ export interface FiberTemplateDefinition extends FunctionTemplateDefinition {
   atoms: TemplateAtom[];
 }
 
+export interface GreedyQuantifierTemplateDefinition
+  extends FunctionTemplateDefinition {
+  wrappedHandler: FunctionHandle;
+  maxOrMinCount?: boolean;
+  minCount?: number;
+  maxCount?: number;
+  posLine1: string;
+  posLine2: string;
+}
+
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
+  greedyQuantifierHandlers: GreedyQuantifierTemplateDefinition[];
   mainHandler: FunctionHandle;
   regexStr: string;
   groupsCount: number;
@@ -202,6 +276,16 @@ Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
 
   if (isAtomType) {
     return options.fn(this.data);
+  } else {
+    return options.inverse(this);
+  }
+});
+
+Handlebars.registerHelper('hasCallback', function (this: any, options) {
+  const hasCallback = this.followUp?.functionName === 'callback';
+
+  if (hasCallback) {
+    return options.fn(this);
   } else {
     return options.inverse(this);
   }

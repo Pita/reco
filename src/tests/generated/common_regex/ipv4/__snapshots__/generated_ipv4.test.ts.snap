@@ -1,0 +1,662 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/ipv4 template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 7,
+            "groupIndex": 3,
+            "groupStartMarkerIndex": 6,
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                                        ^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {},
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                                         ^",
+          "type": "endAnchor",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                          ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "fiber0002",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 49,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                     ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "fiber0003",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                            ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0004",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              49,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                           ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0005",
+        "isClosed": true,
+      },
+      "functionName": "fiber0006",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              50,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                     ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 52,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                      ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                           ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "fiber0007",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              50,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                                 ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              53,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                                  ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 53,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                                                                   ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "fiber0008",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 3,
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                         ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "alternatives": Array [
+              Object {
+                "functionName": "fiber0002",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0003",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0006",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0007",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0008",
+                "isClosed": false,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "type": "disjunction",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0009",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 5,
+            "groupIndex": 2,
+            "groupStartMarkerIndex": 4,
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                  ^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              46,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                   ^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 3,
+            "groupIndex": 1,
+            "groupStartMarkerIndex": 2,
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                                     ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0010",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "    ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0010",
+        "isClosed": true,
+      },
+      "functionName": "fiber0011",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 49,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "          ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "               ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0010",
+        "isClosed": true,
+      },
+      "functionName": "fiber0012",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                      ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0013",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              49,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                     ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0014",
+        "isClosed": true,
+      },
+      "functionName": "fiber0015",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              50,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                               ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 52,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                     ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0010",
+        "isClosed": true,
+      },
+      "functionName": "fiber0016",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              50,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                           ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              53,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                            ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 48,
+                "to": 53,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "                                             ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "fiber0010",
+        "isClosed": true,
+      },
+      "functionName": "fiber0017",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 1,
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "  ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "groupIndex": 2,
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "   ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "alternatives": Array [
+              Object {
+                "functionName": "fiber0011",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0012",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0015",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0016",
+                "isClosed": false,
+              },
+              Object {
+                "functionName": "fiber0017",
+                "isClosed": false,
+              },
+            ],
+          },
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "type": "disjunction",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0018",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+          "posLine2": " ^",
+          "type": "startAnchor",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0019",
+        "isClosed": true,
+      },
+      "functionName": "fiber0020",
+    },
+  ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0005",
+      "location": Object {
+        "begin": 81,
+        "end": 84,
+      },
+      "maxCount": 2,
+      "maxOrMinCount": true,
+      "minCount": 2,
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                                                 ^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0004",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0010",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0014",
+      "location": Object {
+        "begin": 27,
+        "end": 30,
+      },
+      "maxCount": 2,
+      "maxOrMinCount": true,
+      "minCount": 2,
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                           ^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0013",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0009",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0019",
+      "location": Object {
+        "begin": 54,
+        "end": 57,
+      },
+      "maxCount": 3,
+      "maxOrMinCount": true,
+      "minCount": 3,
+      "posLine1": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+      "posLine2": "                                                      ^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0018",
+        "isClosed": false,
+      },
+    },
+  ],
+  "groupsCount": 4,
+  "mainHandler": Object {
+    "functionName": "fiber0020",
+    "isClosed": false,
+  },
+  "regexStr": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
+}
+`;

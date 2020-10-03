@@ -1,0 +1,527 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/url_protocol_optional template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 7,
+            "groupIndex": 3,
+            "groupStartMarkerIndex": 6,
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                                                                                             ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              45,
+              64,
+              58,
+              37,
+              95,
+              43,
+              46,
+              126,
+              35,
+              63,
+              38,
+              47,
+              47,
+              61,
+            ],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+              Object {
+                "from": 65,
+                "to": 90,
+              },
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0002",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              8,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                                                                ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupIndex": 3,
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                                                                 ^",
+          "type": "groupStartMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0003",
+        "isClosed": true,
+      },
+      "functionName": "fiber0004",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+            ],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                                                      ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0005",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              46,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                                                    ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0006",
+        "isClosed": true,
+      },
+      "functionName": "fiber0007",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              45,
+              64,
+              58,
+              37,
+              46,
+              95,
+              43,
+              126,
+              35,
+              61,
+            ],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+              Object {
+                "from": 65,
+                "to": 90,
+              },
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                       ^^^^^^^^^^^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0008",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 2,
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "               ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              119,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              119,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                 ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              119,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                  ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              46,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                   ^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 5,
+            "groupIndex": 2,
+            "groupStartMarkerIndex": 4,
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "                     ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0010",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              58,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "        ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              47,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "         ^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              47,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "           ^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 3,
+            "groupIndex": 1,
+            "groupStartMarkerIndex": 2,
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "             ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0012",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              115,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "      ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0013",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 1,
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": " ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              104,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "  ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              116,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "   ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              116,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "    ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              112,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+          "posLine2": "     ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0014",
+        "isClosed": true,
+      },
+      "functionName": "fiber0015",
+    },
+  ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0003",
+      "location": Object {
+        "begin": 92,
+        "end": 93,
+      },
+      "maxOrMinCount": false,
+      "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+      "posLine2": "                                                                                            ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0002",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0004",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0006",
+      "location": Object {
+        "begin": 59,
+        "end": 64,
+      },
+      "maxCount": 6,
+      "maxOrMinCount": true,
+      "minCount": 2,
+      "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+      "posLine2": "                                                           ^^^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0005",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0007",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0009",
+      "location": Object {
+        "begin": 45,
+        "end": 52,
+      },
+      "maxCount": 256,
+      "maxOrMinCount": true,
+      "minCount": 2,
+      "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+      "posLine2": "                                             ^^^^^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0008",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier0009",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0011",
+      "location": Object {
+        "begin": 22,
+        "end": 23,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+      "posLine2": "                      ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0010",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0012",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0014",
+      "location": Object {
+        "begin": 7,
+        "end": 8,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+      "posLine2": "       ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0013",
+        "isClosed": false,
+      },
+    },
+    Object {
+      "followUp": Object {
+        "functionName": "greedyQuantifier0011",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0016",
+      "location": Object {
+        "begin": 14,
+        "end": 15,
+      },
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "posLine1": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+      "posLine2": "              ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0015",
+        "isClosed": false,
+      },
+    },
+  ],
+  "groupsCount": 4,
+  "mainHandler": Object {
+    "functionName": "greedyQuantifier0016",
+    "isClosed": true,
+  },
+  "regexStr": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
+}
+`;

@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/username template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^[a-z0-9_-]{3,16}$/",
+          "posLine2": "                  ^",
+          "type": "endAnchor",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              95,
+              45,
+            ],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+              Object {
+                "from": 48,
+                "to": 57,
+              },
+            ],
+          },
+          "posLine1": "/^[a-z0-9_-]{3,16}$/",
+          "posLine2": "  ^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0002",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^[a-z0-9_-]{3,16}$/",
+          "posLine2": " ^",
+          "type": "startAnchor",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "greedyQuantifier0003",
+        "isClosed": true,
+      },
+      "functionName": "fiber0004",
+    },
+  ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0003",
+      "location": Object {
+        "begin": 12,
+        "end": 18,
+      },
+      "maxCount": 16,
+      "maxOrMinCount": true,
+      "minCount": 3,
+      "posLine1": "/^[a-z0-9_-]{3,16}$/",
+      "posLine2": "            ^^^^^^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0002",
+        "isClosed": false,
+      },
+    },
+  ],
+  "groupsCount": 1,
+  "mainHandler": Object {
+    "functionName": "fiber0004",
+    "isClosed": false,
+  },
+  "regexStr": "/^[a-z0-9_-]{3,16}$/",
+}
+`;

@@ -11,6 +11,7 @@ import {
   RegExpPattern,
   Group,
   Assertion,
+  Quantifier,
 } from 'regexp-to-ast';
 import {
   FunctionHandle,
@@ -19,6 +20,7 @@ import {
   TemplateValues,
   FiberTemplateDefinition,
   TemplateAtom,
+  GreedyQuantifierTemplateDefinition,
 } from './generator_v3_ts_template';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 import * as _ from 'lodash';
@@ -35,6 +37,7 @@ class Collector {
   private counter = 0;
   private groupCount: number;
   private fiberHandlers: FiberTemplateDefinition[] = [];
+  private greedyQuantifierHandlers: GreedyQuantifierTemplateDefinition[] = [];
 
   constructor(regexStr: string, groupCount: number) {
     this.regexStr = regexStr;
@@ -51,6 +54,26 @@ class Collector {
       posLine1: this.regexStr,
       posLine2:
         ' '.repeat(location.begin) + '^'.repeat(location.end - location.begin),
+    };
+  }
+
+  addGreedyQuantifier(
+    def: Omit<
+      GreedyQuantifierTemplateDefinition,
+      'functionName' | 'posLine1' | 'posLine2'
+    > & { location: IRegExpAST['loc'] },
+  ): FunctionHandle {
+    const functionName = `greedyQuantifier${this.getNewCount()}`;
+
+    this.greedyQuantifierHandlers.push({
+      functionName,
+      ...this.formatAstLocation(def.location),
+      ...def,
+    });
+
+    return {
+      functionName,
+      isClosed: true,
     };
   }
 
@@ -90,111 +113,163 @@ class Collector {
     return {
       regexStr: this.regexStr,
       fiberHandlers: this.fiberHandlers,
+      greedyQuantifierHandlers: this.greedyQuantifierHandlers,
       groupsCount: this.groupCount,
     };
   }
 }
 
-const handleSetOrCharacter = (
-  term: RegexSet | Character,
+interface AstWithQuantifier {
+  quantifier?: Quantifier;
+  loc: IRegExpAST['loc'];
+}
+
+const withQuantifier = <T extends AstWithQuantifier>(
+  func: (
+    ast: T,
+    collector: Collector,
+    followUp: FollowUpFunctionHandle,
+    flags: RegExpFlags,
+  ) => FunctionHandle,
+): ((
+  ast: T,
   collector: Collector,
   followUp: FollowUpFunctionHandle,
   flags: RegExpFlags,
-): FunctionHandle => {
-  if (term.quantifier) {
-    throw new Error('Quantifiers for sets and chars are not implemented yet');
-  }
-
-  const chars: number[] = [];
-  const ranges: Range[] = [];
-  let complement = false;
-
-  const addCharacter = (char: number) => {
-    normalizeUpperLowerCase(char, flags.ignoreCase).forEach((char) =>
-      chars.push(char),
-    );
-  };
-
-  const addRange = (range: Range) => {
-    const from = normalizeUpperLowerCase(range.from, flags.ignoreCase);
-    const to = normalizeUpperLowerCase(range.to, flags.ignoreCase);
-
-    for (let i = 0; i < from.length; i++) {
-      ranges.push({ from: from[i], to: to[i] });
+) => FunctionHandle) => {
+  return (ast, collector, followUp, flags) => {
+    const quantifier = ast.quantifier;
+    if (quantifier == null) {
+      return func(ast, collector, followUp, flags);
     }
-  };
+    if (!quantifier.greedy) {
+      throw new Error('Non greedy quantifiers not implemented yet');
+    }
 
-  if (term.type === 'Set') {
-    complement = term.complement;
-    term.value.forEach((value) => {
-      if (typeof value === 'number') {
-        addCharacter(value);
-      } else {
-        addRange(value);
-      }
+    const wrappedHandler = func(
+      ast,
+      collector,
+      { functionName: 'callback', isClosed: true },
+      flags,
+    );
+    if (followUp) {
+      followUp.isClosed = true;
+    }
+    const minCount = quantifier.atLeast === 0 ? undefined : quantifier.atLeast;
+    const maxCount =
+      quantifier.atMost === Infinity ? undefined : quantifier.atMost;
+    const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
+
+    return collector.addGreedyQuantifier({
+      minCount,
+      maxCount,
+      maxOrMinCount,
+      followUp,
+      wrappedHandler,
+      location: quantifier.loc,
     });
-  } else {
-    addCharacter(term.value);
-  }
-
-  return collector.addAtom({
-    type: 'charOrSet',
-    data: {
-      chars,
-      ranges,
-      complement,
-    },
-    followUp,
-    location: term.loc,
-  });
+  };
 };
 
-const handleGroup = (
-  group: Group,
-  collector: Collector,
-  followUp: FollowUpFunctionHandle,
-  flags: RegExpFlags,
-): FunctionHandle => {
-  if (group.quantifier) {
-    throw new Error('Quantifiers for groups are not implemented yet');
-  }
-  if (!group.capturing) {
-    return handleDisjunction(group.value, collector, followUp, flags);
-  }
-  const idx = group.idx;
-  if (idx == null) {
-    throw new Error('Capturing group does not have an idx');
-  }
+const handleSetOrCharacter = withQuantifier(
+  (
+    term: RegexSet | Character,
+    collector: Collector,
+    followUp: FollowUpFunctionHandle,
+    flags: RegExpFlags,
+  ): FunctionHandle => {
+    const chars: number[] = [];
+    const ranges: Range[] = [];
+    let complement = false;
 
-  const groupEndMarker = collector.addAtom({
-    type: 'groupEndMarker',
-    followUp,
-    location: { begin: group.loc.end - 1, end: group.loc.end },
-    data: {
-      groupIndex: idx,
-      groupStartMarkerIndex: idx * 2,
-      groupEndMarkerIndex: idx * 2 + 1,
-    },
-  });
+    // TODO: simplify ranges
 
-  const disjunction = handleDisjunction(
-    group.value,
-    collector,
-    groupEndMarker,
-    flags,
-  );
+    const addCharacter = (char: number) => {
+      normalizeUpperLowerCase(char, flags.ignoreCase).forEach((char) =>
+        chars.push(char),
+      );
+    };
 
-  const groupStartMarker = collector.addAtom({
-    type: 'groupStartMarker',
-    followUp: disjunction,
-    location: { begin: group.loc.begin, end: group.loc.begin + 1 },
-    data: {
-      groupIndex: idx,
-    },
-  });
+    const addRange = (range: Range) => {
+      const from = normalizeUpperLowerCase(range.from, flags.ignoreCase);
+      const to = normalizeUpperLowerCase(range.to, flags.ignoreCase);
 
-  return groupStartMarker;
-};
+      for (let i = 0; i < from.length; i++) {
+        ranges.push({ from: from[i], to: to[i] });
+      }
+    };
+
+    if (term.type === 'Set') {
+      complement = term.complement;
+      term.value.forEach((value) => {
+        if (typeof value === 'number') {
+          addCharacter(value);
+        } else {
+          addRange(value);
+        }
+      });
+    } else {
+      addCharacter(term.value);
+    }
+
+    return collector.addAtom({
+      type: 'charOrSet',
+      data: {
+        chars,
+        ranges,
+        complement,
+      },
+      followUp,
+      location: term.loc,
+    });
+  },
+);
+
+const handleGroup = withQuantifier(
+  (
+    group: Group,
+    collector: Collector,
+    followUp: FollowUpFunctionHandle,
+    flags: RegExpFlags,
+  ): FunctionHandle => {
+    if (!group.capturing) {
+      return handleDisjunction(group.value, collector, followUp, flags);
+    }
+    const idx = group.idx;
+    if (idx == null) {
+      throw new Error('Capturing group does not have an idx');
+    }
+
+    const groupEndMarker = collector.addAtom({
+      type: 'groupEndMarker',
+      followUp,
+      location: { begin: group.loc.end - 1, end: group.loc.end },
+      data: {
+        groupIndex: idx,
+        groupStartMarkerIndex: idx * 2,
+        groupEndMarkerIndex: idx * 2 + 1,
+      },
+    });
+
+    const disjunction = handleDisjunction(
+      group.value,
+      collector,
+      groupEndMarker,
+      flags,
+    );
+
+    const groupStartMarker = collector.addAtom({
+      type: 'groupStartMarker',
+      followUp: disjunction,
+      location: { begin: group.loc.begin, end: group.loc.begin + 1 },
+      data: {
+        groupIndex: idx,
+      },
+    });
+
+    return groupStartMarker;
+  },
+);
 
 const handleStartAnchor = (
   startAnchor: Assertion,

@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/group_backtracking template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 2,
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "       ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "        ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "         ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              51,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "          ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "           ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 5,
+            "groupIndex": 2,
+            "groupStartMarkerIndex": 4,
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "            ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 1,
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": " ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "  ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              97,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "   ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              51,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "    ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 3,
+            "groupIndex": 1,
+            "groupStartMarkerIndex": 2,
+          },
+          "posLine1": "/(aa3)*(aa3a)/",
+          "posLine2": "     ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+        "isClosed": true,
+      },
+      "functionName": "fiber0002",
+    },
+  ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "functionName": "fiber0001",
+        "isClosed": true,
+      },
+      "functionName": "greedyQuantifier0003",
+      "location": Object {
+        "begin": 6,
+        "end": 7,
+      },
+      "maxOrMinCount": false,
+      "posLine1": "/(aa3)*(aa3a)/",
+      "posLine2": "      ^",
+      "wrappedHandler": Object {
+        "functionName": "fiber0002",
+        "isClosed": false,
+      },
+    },
+  ],
+  "groupsCount": 3,
+  "mainHandler": Object {
+    "functionName": "greedyQuantifier0003",
+    "isClosed": true,
+  },
+  "regexStr": "/(aa3)*(aa3a)/",
+}
+`;
