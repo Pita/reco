@@ -65,56 +65,53 @@ Object {
           "posLine2": "  ^",
           "type": "charOrSet",
         },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "functionName": "fiber0001",
+              "isClosed": true,
+            },
+            "maxCount": 1,
+            "maxOrMinCount": true,
+            "wrappedHandler": Object {
+              "functionName": "fiber0002",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/(aa?){3}/",
+          "posLine2": "    ^",
+          "type": "greedyQuantifier",
+        },
       ],
-      "followUp": Object {
-        "functionName": "greedyQuantifier0003",
-        "isClosed": true,
-      },
-      "functionName": "fiber0004",
-    },
-  ],
-  "greedyQuantifierHandlers": Array [
-    Object {
-      "followUp": Object {
-        "functionName": "fiber0001",
-        "isClosed": true,
-      },
-      "functionName": "greedyQuantifier0003",
-      "location": Object {
-        "begin": 4,
-        "end": 5,
-      },
-      "maxCount": 1,
-      "maxOrMinCount": true,
-      "posLine1": "/(aa?){3}/",
-      "posLine2": "    ^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0002",
-        "isClosed": false,
-      },
-    },
-    Object {
       "followUp": null,
-      "functionName": "greedyQuantifier0005",
-      "location": Object {
-        "begin": 6,
-        "end": 9,
-      },
-      "maxCount": 3,
-      "maxOrMinCount": true,
-      "minCount": 3,
-      "posLine1": "/(aa?){3}/",
-      "posLine2": "      ^^^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0004",
-        "isClosed": false,
-      },
+      "functionName": "fiber0003",
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "followUp": null,
+            "maxCount": 3,
+            "maxOrMinCount": true,
+            "minCount": 3,
+            "wrappedHandler": Object {
+              "functionName": "fiber0003",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/(aa?){3}/",
+          "posLine2": "      ^^^",
+          "type": "greedyQuantifier",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0004",
     },
   ],
   "groupsCount": 2,
   "mainHandler": Object {
-    "functionName": "greedyQuantifier0005",
-    "isClosed": true,
+    "functionName": "fiber0004",
+    "isClosed": false,
   },
   "regexStr": "/(aa?){3}/",
 }

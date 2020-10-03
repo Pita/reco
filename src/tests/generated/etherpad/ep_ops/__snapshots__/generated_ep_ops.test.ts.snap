@@ -89,12 +89,26 @@ Object {
           "posLine2": "                                            ^",
           "type": "groupStartMarker",
         },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "functionName": "fiber0001",
+              "isClosed": true,
+            },
+            "maxOrMinCount": true,
+            "minCount": 1,
+            "wrappedHandler": Object {
+              "functionName": "fiber0002",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
+          "posLine2": "                                                     ^",
+          "type": "greedyQuantifier",
+        },
       ],
-      "followUp": Object {
-        "functionName": "greedyQuantifier0003",
-        "isClosed": true,
-      },
-      "functionName": "fiber0004",
+      "followUp": null,
+      "functionName": "fiber0003",
     },
     Object {
       "atoms": Array [
@@ -113,7 +127,7 @@ Object {
         "functionName": "callback",
         "isClosed": true,
       },
-      "functionName": "fiber0005",
+      "functionName": "fiber0004",
     },
     Object {
       "atoms": Array [
@@ -141,7 +155,7 @@ Object {
         "functionName": "callback",
         "isClosed": true,
       },
-      "functionName": "fiber0006",
+      "functionName": "fiber0005",
     },
     Object {
       "atoms": Array [
@@ -165,12 +179,26 @@ Object {
           "posLine2": "                        ^",
           "type": "groupStartMarker",
         },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "functionName": "fiber0004",
+              "isClosed": true,
+            },
+            "maxOrMinCount": true,
+            "minCount": 1,
+            "wrappedHandler": Object {
+              "functionName": "fiber0005",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
+          "posLine2": "                                 ^",
+          "type": "greedyQuantifier",
+        },
       ],
-      "followUp": Object {
-        "functionName": "greedyQuantifier0007",
-        "isClosed": true,
-      },
-      "functionName": "fiber0008",
+      "followUp": null,
+      "functionName": "fiber0006",
     },
     Object {
       "atoms": Array [
@@ -184,12 +212,26 @@ Object {
           "posLine2": "                  ^",
           "type": "groupEndMarker",
         },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "functionName": "fiber0003",
+              "isClosed": true,
+            },
+            "maxCount": 1,
+            "maxOrMinCount": true,
+            "wrappedHandler": Object {
+              "functionName": "fiber0006",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
+          "posLine2": "                                    ^",
+          "type": "greedyQuantifier",
+        },
       ],
-      "followUp": Object {
-        "functionName": "greedyQuantifier0009",
-        "isClosed": true,
-      },
-      "functionName": "fiber0010",
+      "followUp": null,
+      "functionName": "fiber0007",
     },
     Object {
       "atoms": Array [
@@ -217,7 +259,7 @@ Object {
         "functionName": "callback",
         "isClosed": true,
       },
-      "functionName": "fiber0011",
+      "functionName": "fiber0008",
     },
     Object {
       "atoms": Array [
@@ -233,12 +275,26 @@ Object {
           "posLine2": "     ^^",
           "type": "charOrSet",
         },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "functionName": "callback",
+              "isClosed": true,
+            },
+            "maxOrMinCount": true,
+            "minCount": 1,
+            "wrappedHandler": Object {
+              "functionName": "fiber0008",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
+          "posLine2": "               ^",
+          "type": "greedyQuantifier",
+        },
       ],
-      "followUp": Object {
-        "functionName": "greedyQuantifier0012",
-        "isClosed": true,
-      },
-      "functionName": "fiber0013",
+      "followUp": null,
+      "functionName": "fiber0009",
     },
     Object {
       "atoms": Array [
@@ -250,12 +306,25 @@ Object {
           "posLine2": " ^",
           "type": "groupStartMarker",
         },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "functionName": "fiber0007",
+              "isClosed": true,
+            },
+            "maxOrMinCount": false,
+            "wrappedHandler": Object {
+              "functionName": "fiber0009",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
+          "posLine2": "                 ^",
+          "type": "greedyQuantifier",
+        },
       ],
-      "followUp": Object {
-        "functionName": "greedyQuantifier0014",
-        "isClosed": true,
-      },
-      "functionName": "fiber0015",
+      "followUp": null,
+      "functionName": "fiber0010",
     },
     Object {
       "atoms": Array [
@@ -273,7 +342,7 @@ Object {
         },
       ],
       "followUp": null,
-      "functionName": "fiber0016",
+      "functionName": "fiber0011",
     },
     Object {
       "atoms": Array [
@@ -281,11 +350,11 @@ Object {
           "data": Object {
             "alternatives": Array [
               Object {
-                "functionName": "fiber0015",
+                "functionName": "fiber0010",
                 "isClosed": false,
               },
               Object {
-                "functionName": "fiber0016",
+                "functionName": "fiber0011",
                 "isClosed": false,
               },
             ],
@@ -296,108 +365,12 @@ Object {
         },
       ],
       "followUp": null,
-      "functionName": "fiber0017",
-    },
-  ],
-  "greedyQuantifierHandlers": Array [
-    Object {
-      "followUp": Object {
-        "functionName": "fiber0001",
-        "isClosed": true,
-      },
-      "functionName": "greedyQuantifier0003",
-      "location": Object {
-        "begin": 53,
-        "end": 54,
-      },
-      "maxOrMinCount": true,
-      "minCount": 1,
-      "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
-      "posLine2": "                                                     ^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0002",
-        "isClosed": false,
-      },
-    },
-    Object {
-      "followUp": Object {
-        "functionName": "fiber0005",
-        "isClosed": true,
-      },
-      "functionName": "greedyQuantifier0007",
-      "location": Object {
-        "begin": 33,
-        "end": 34,
-      },
-      "maxOrMinCount": true,
-      "minCount": 1,
-      "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
-      "posLine2": "                                 ^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0006",
-        "isClosed": false,
-      },
-    },
-    Object {
-      "followUp": Object {
-        "functionName": "fiber0004",
-        "isClosed": true,
-      },
-      "functionName": "greedyQuantifier0009",
-      "location": Object {
-        "begin": 36,
-        "end": 37,
-      },
-      "maxCount": 1,
-      "maxOrMinCount": true,
-      "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
-      "posLine2": "                                    ^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0008",
-        "isClosed": false,
-      },
-    },
-    Object {
-      "followUp": Object {
-        "functionName": "callback",
-        "isClosed": true,
-      },
-      "functionName": "greedyQuantifier0012",
-      "location": Object {
-        "begin": 15,
-        "end": 16,
-      },
-      "maxOrMinCount": true,
-      "minCount": 1,
-      "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
-      "posLine2": "               ^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0011",
-        "isClosed": false,
-      },
-    },
-    Object {
-      "followUp": Object {
-        "functionName": "fiber0010",
-        "isClosed": true,
-      },
-      "functionName": "greedyQuantifier0014",
-      "location": Object {
-        "begin": 17,
-        "end": 18,
-      },
-      "maxOrMinCount": false,
-      "posLine1": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
-      "posLine2": "                 ^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0013",
-        "isClosed": false,
-      },
+      "functionName": "fiber0012",
     },
   ],
   "groupsCount": 5,
   "mainHandler": Object {
-    "functionName": "fiber0017",
+    "functionName": "fiber0012",
     "isClosed": false,
   },
   "regexStr": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",

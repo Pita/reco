@@ -80,12 +80,23 @@ Object {
           "posLine2": "           ^",
           "type": "charOrSet",
         },
+        Object {
+          "data": Object {
+            "followUp": null,
+            "maxOrMinCount": true,
+            "minCount": 1,
+            "wrappedHandler": Object {
+              "functionName": "fiber0001",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/([a-y]){2}k(123)+/",
+          "posLine2": "                 ^",
+          "type": "greedyQuantifier",
+        },
       ],
-      "followUp": Object {
-        "functionName": "greedyQuantifier0002",
-        "isClosed": true,
-      },
-      "functionName": "fiber0003",
+      "followUp": null,
+      "functionName": "fiber0002",
     },
     Object {
       "atoms": Array [
@@ -127,51 +138,37 @@ Object {
         "functionName": "callback",
         "isClosed": true,
       },
-      "functionName": "fiber0004",
+      "functionName": "fiber0003",
     },
-  ],
-  "greedyQuantifierHandlers": Array [
     Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "functionName": "fiber0002",
+              "isClosed": true,
+            },
+            "maxCount": 2,
+            "maxOrMinCount": true,
+            "minCount": 2,
+            "wrappedHandler": Object {
+              "functionName": "fiber0003",
+              "isClosed": false,
+            },
+          },
+          "posLine1": "/([a-y]){2}k(123)+/",
+          "posLine2": "        ^^^",
+          "type": "greedyQuantifier",
+        },
+      ],
       "followUp": null,
-      "functionName": "greedyQuantifier0002",
-      "location": Object {
-        "begin": 17,
-        "end": 18,
-      },
-      "maxOrMinCount": true,
-      "minCount": 1,
-      "posLine1": "/([a-y]){2}k(123)+/",
-      "posLine2": "                 ^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0001",
-        "isClosed": false,
-      },
-    },
-    Object {
-      "followUp": Object {
-        "functionName": "fiber0003",
-        "isClosed": true,
-      },
-      "functionName": "greedyQuantifier0005",
-      "location": Object {
-        "begin": 8,
-        "end": 11,
-      },
-      "maxCount": 2,
-      "maxOrMinCount": true,
-      "minCount": 2,
-      "posLine1": "/([a-y]){2}k(123)+/",
-      "posLine2": "        ^^^",
-      "wrappedHandler": Object {
-        "functionName": "fiber0004",
-        "isClosed": false,
-      },
+      "functionName": "fiber0004",
     },
   ],
   "groupsCount": 3,
   "mainHandler": Object {
-    "functionName": "greedyQuantifier0005",
-    "isClosed": true,
+    "functionName": "fiber0004",
+    "isClosed": false,
   },
   "regexStr": "/([a-y]){2}k(123)+/",
 }

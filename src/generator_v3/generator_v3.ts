@@ -20,7 +20,6 @@ import {
   TemplateValues,
   FiberTemplateDefinition,
   TemplateAtom,
-  GreedyQuantifierTemplateDefinition,
 } from './generator_v3_ts_template';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 import * as _ from 'lodash';
@@ -37,7 +36,6 @@ class Collector {
   private counter = 0;
   private groupCount: number;
   private fiberHandlers: FiberTemplateDefinition[] = [];
-  private greedyQuantifierHandlers: GreedyQuantifierTemplateDefinition[] = [];
 
   constructor(regexStr: string, groupCount: number) {
     this.regexStr = regexStr;
@@ -57,25 +55,25 @@ class Collector {
     };
   }
 
-  addGreedyQuantifier(
-    def: Omit<
-      GreedyQuantifierTemplateDefinition,
-      'functionName' | 'posLine1' | 'posLine2'
-    > & { location: IRegExpAST['loc'] },
-  ): FunctionHandle {
-    const functionName = `greedyQuantifier${this.getNewCount()}`;
+  // addGreedyQuantifier(
+  //   def: Omit<
+  //     GreedyQuantifierTemplateDefinition,
+  //     'functionName' | 'posLine1' | 'posLine2'
+  //   > & { location: IRegExpAST['loc'] },
+  // ): FunctionHandle {
+  //   const functionName = `greedyQuantifier${this.getNewCount()}`;
 
-    this.greedyQuantifierHandlers.push({
-      functionName,
-      ...this.formatAstLocation(def.location),
-      ...def,
-    });
+  //   this.greedyQuantifierHandlers.push({
+  //     functionName,
+  //     ...this.formatAstLocation(def.location),
+  //     ...def,
+  //   });
 
-    return {
-      functionName,
-      isClosed: true,
-    };
-  }
+  //   return {
+  //     functionName,
+  //     isClosed: true,
+  //   };
+  // }
 
   addAtom(def: AtomDefinition): FunctionHandle {
     let currentFiber: FiberTemplateDefinition | undefined = undefined;
@@ -113,7 +111,6 @@ class Collector {
     return {
       regexStr: this.regexStr,
       fiberHandlers: this.fiberHandlers,
-      greedyQuantifierHandlers: this.greedyQuantifierHandlers,
       groupsCount: this.groupCount,
     };
   }
@@ -160,13 +157,17 @@ const withQuantifier = <T extends AstWithQuantifier>(
       quantifier.atMost === Infinity ? undefined : quantifier.atMost;
     const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
 
-    return collector.addGreedyQuantifier({
-      minCount,
-      maxCount,
-      maxOrMinCount,
-      followUp,
-      wrappedHandler,
+    return collector.addAtom({
+      type: 'greedyQuantifier',
+      data: {
+        minCount,
+        maxCount,
+        maxOrMinCount,
+        wrappedHandler,
+        followUp,
+      },
       location: quantifier.loc,
+      followUp: null,
     });
   };
 };
