@@ -18,6 +18,7 @@ import {
   TemplateValues,
   FiberTemplateDefinition,
   TemplateAtom,
+  FollowUp,
 } from './generator_v3_ts_template';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 import * as _ from 'lodash';
@@ -51,15 +52,24 @@ class Collector {
   }
 
   createConnectedFiber(fiber: FiberTemplateDefinition) {
-    // TODO: there might be a special case where the fiber to close has zero atoms,
-    // therefore we might want to reuse it
+    // Special case where the fiber to close has zero atoms,
+    // therefore we can delete it
+    let followUp: FollowUp = fiber;
+    const hasCallback = fiber.hasCallback;
+    if (fiber.atoms.length === 0) {
+      followUp = fiber.followUp;
+      const index = this.fiberHandlers.indexOf(fiber);
+      if (index !== -1) {
+        this.fiberHandlers.splice(index, 1);
+      }
+    }
 
     const newFiber: FiberTemplateDefinition = {
-      followUp: fiber,
+      followUp,
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
-      hasCallback: fiber.hasCallback,
+      hasCallback,
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
