@@ -34,7 +34,7 @@ function generatedRegexMatcher(str: string) {
       {{#each atoms}}
         /*
          * {{{type}}}
-         * {{{posLine1}}}
+         * {{#escapeComment posLine1}}{{/escapeComment}}
          * {{{posLine2}}}
          */
         {{#atomCase 'charOrSet'}}
@@ -270,13 +270,9 @@ export interface TemplateValues {
   groupsCount: number;
 }
 
-// Handlebars.registerHelper('followUpRequired', function (this: any, options) {
-//   if (this.followUp?.functionName !== 'tail') {
-//     return options.fn(this);
-//   } else {
-//     return options.inverse(this);
-//   }
-// });
+Handlebars.registerHelper('escapeComment', function (this: any, value) {
+  return value.replace(/\*/g, '﹡');
+});
 
 Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
   const isAtomType = this.type === atomType;
@@ -297,10 +293,6 @@ Handlebars.registerHelper('hasCallback', function (this: any, options) {
     return options.inverse(this);
   }
 });
-
-// Handlebars.registerHelper('log', function (this: any, value1, value2, options) {
-//   console.log('HANDLEBAR', value1, value2);
-// });
 
 Handlebars.registerHelper('times', function (n, block) {
   var accum = '';
