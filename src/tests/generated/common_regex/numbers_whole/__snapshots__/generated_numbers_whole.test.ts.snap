@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`common_regex/alphanumeric_without_space template values are as expected 1`] = `
+exports[`common_regex/numbers_whole template values are as expected 1`] = `
 Object {
   "fiberHandlers": Array [
     Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "/^[a-zA-Z0-9]*$/",
-          "posLine2": "              ^",
+          "posLine1": "/^\\\\d+$/",
+          "posLine2": "     ^",
           "type": "endAnchor",
         },
       ],
@@ -21,25 +21,23 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [],
-            "complement": false,
-            "ranges": Array [
-              Object {
-                "from": 97,
-                "to": 122,
-              },
-              Object {
-                "from": 65,
-                "to": 90,
-              },
-              Object {
-                "from": 48,
-                "to": 57,
-              },
+            "chars": Array [
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
             ],
+            "complement": false,
+            "ranges": Array [],
           },
-          "posLine1": "/^[a-zA-Z0-9]*$/",
-          "posLine2": "  ^^^^^^^^^^^",
+          "posLine1": "/^\\\\d+$/",
+          "posLine2": "  ^^",
           "type": "charOrSet",
         },
       ],
@@ -54,7 +52,7 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "/^[a-zA-Z0-9]*$/",
+          "posLine1": "/^\\\\d+$/",
           "posLine2": " ^",
           "type": "startAnchor",
         },
@@ -64,8 +62,8 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {},
-                  "posLine1": "/^[a-zA-Z0-9]*$/",
-                  "posLine2": "              ^",
+                  "posLine1": "/^\\\\d+$/",
+                  "posLine2": "     ^",
                   "type": "endAnchor",
                 },
               ],
@@ -74,30 +72,29 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": false,
             },
-            "maxOrMinCount": false,
+            "maxOrMinCount": true,
+            "minCount": 1,
             "wrappedHandler": Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "chars": Array [],
-                    "complement": false,
-                    "ranges": Array [
-                      Object {
-                        "from": 97,
-                        "to": 122,
-                      },
-                      Object {
-                        "from": 65,
-                        "to": 90,
-                      },
-                      Object {
-                        "from": 48,
-                        "to": 57,
-                      },
+                    "chars": Array [
+                      48,
+                      49,
+                      50,
+                      51,
+                      52,
+                      53,
+                      54,
+                      55,
+                      56,
+                      57,
                     ],
+                    "complement": false,
+                    "ranges": Array [],
                   },
-                  "posLine1": "/^[a-zA-Z0-9]*$/",
-                  "posLine2": "  ^^^^^^^^^^^",
+                  "posLine1": "/^\\\\d+$/",
+                  "posLine2": "  ^^",
                   "type": "charOrSet",
                 },
               ],
@@ -109,8 +106,8 @@ Object {
               "lastAtomReturns": false,
             },
           },
-          "posLine1": "/^[a-zA-Z0-9]*$/",
-          "posLine2": "             ^",
+          "posLine1": "/^\\\\d+$/",
+          "posLine2": "    ^",
           "type": "greedyQuantifier",
         },
       ],
@@ -125,7 +122,7 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {},
-        "posLine1": "/^[a-zA-Z0-9]*$/",
+        "posLine1": "/^\\\\d+$/",
         "posLine2": " ^",
         "type": "startAnchor",
       },
@@ -135,8 +132,8 @@ Object {
             "atoms": Array [
               Object {
                 "data": Object {},
-                "posLine1": "/^[a-zA-Z0-9]*$/",
-                "posLine2": "              ^",
+                "posLine1": "/^\\\\d+$/",
+                "posLine2": "     ^",
                 "type": "endAnchor",
               },
             ],
@@ -145,30 +142,29 @@ Object {
             "hasCallback": false,
             "lastAtomReturns": false,
           },
-          "maxOrMinCount": false,
+          "maxOrMinCount": true,
+          "minCount": 1,
           "wrappedHandler": Object {
             "atoms": Array [
               Object {
                 "data": Object {
-                  "chars": Array [],
-                  "complement": false,
-                  "ranges": Array [
-                    Object {
-                      "from": 97,
-                      "to": 122,
-                    },
-                    Object {
-                      "from": 65,
-                      "to": 90,
-                    },
-                    Object {
-                      "from": 48,
-                      "to": 57,
-                    },
+                  "chars": Array [
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
                   ],
+                  "complement": false,
+                  "ranges": Array [],
                 },
-                "posLine1": "/^[a-zA-Z0-9]*$/",
-                "posLine2": "  ^^^^^^^^^^^",
+                "posLine1": "/^\\\\d+$/",
+                "posLine2": "  ^^",
                 "type": "charOrSet",
               },
             ],
@@ -180,8 +176,8 @@ Object {
             "lastAtomReturns": false,
           },
         },
-        "posLine1": "/^[a-zA-Z0-9]*$/",
-        "posLine2": "             ^",
+        "posLine1": "/^\\\\d+$/",
+        "posLine2": "    ^",
         "type": "greedyQuantifier",
       },
     ],
@@ -190,6 +186,6 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
   },
-  "regexStr": "/^[a-zA-Z0-9]*$/",
+  "regexStr": "/^\\\\d+$/",
 }
 `;

@@ -4,6 +4,13 @@ exports[`basic_features/char_disjunction template values are as expected 1`] = `
 Object {
   "fiberHandlers": Array [
     Object {
+      "atoms": Array [],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+    },
+    Object {
       "atoms": Array [
         Object {
           "data": Object {
@@ -18,8 +25,16 @@ Object {
           "type": "charOrSet",
         },
       ],
-      "followUp": null,
-      "functionName": "fiber0001",
+      "followUp": Object {
+        "atoms": Array [],
+        "followUp": null,
+        "functionName": "fiber0001",
+        "hasCallback": false,
+        "lastAtomReturns": false,
+      },
+      "functionName": "fiber0002",
+      "hasCallback": false,
+      "lastAtomReturns": false,
     },
     Object {
       "atoms": Array [
@@ -36,8 +51,16 @@ Object {
           "type": "charOrSet",
         },
       ],
-      "followUp": null,
-      "functionName": "fiber0002",
+      "followUp": Object {
+        "atoms": Array [],
+        "followUp": null,
+        "functionName": "fiber0001",
+        "hasCallback": false,
+        "lastAtomReturns": false,
+      },
+      "functionName": "fiber0003",
+      "hasCallback": false,
+      "lastAtomReturns": false,
     },
     Object {
       "atoms": Array [
@@ -54,8 +77,16 @@ Object {
           "type": "charOrSet",
         },
       ],
-      "followUp": null,
-      "functionName": "fiber0003",
+      "followUp": Object {
+        "atoms": Array [],
+        "followUp": null,
+        "functionName": "fiber0001",
+        "hasCallback": false,
+        "lastAtomReturns": false,
+      },
+      "functionName": "fiber0004",
+      "hasCallback": false,
+      "lastAtomReturns": false,
     },
     Object {
       "atoms": Array [
@@ -63,16 +94,82 @@ Object {
           "data": Object {
             "alternatives": Array [
               Object {
-                "functionName": "fiber0001",
-                "isClosed": false,
-              },
-              Object {
+                "atoms": Array [
+                  Object {
+                    "data": Object {
+                      "chars": Array [
+                        97,
+                      ],
+                      "complement": false,
+                      "ranges": Array [],
+                    },
+                    "posLine1": "/a|b|f/",
+                    "posLine2": " ^",
+                    "type": "charOrSet",
+                  },
+                ],
+                "followUp": Object {
+                  "atoms": Array [],
+                  "followUp": null,
+                  "functionName": "fiber0001",
+                  "hasCallback": false,
+                  "lastAtomReturns": false,
+                },
                 "functionName": "fiber0002",
-                "isClosed": false,
+                "hasCallback": false,
+                "lastAtomReturns": false,
               },
               Object {
+                "atoms": Array [
+                  Object {
+                    "data": Object {
+                      "chars": Array [
+                        98,
+                      ],
+                      "complement": false,
+                      "ranges": Array [],
+                    },
+                    "posLine1": "/a|b|f/",
+                    "posLine2": "   ^",
+                    "type": "charOrSet",
+                  },
+                ],
+                "followUp": Object {
+                  "atoms": Array [],
+                  "followUp": null,
+                  "functionName": "fiber0001",
+                  "hasCallback": false,
+                  "lastAtomReturns": false,
+                },
                 "functionName": "fiber0003",
-                "isClosed": false,
+                "hasCallback": false,
+                "lastAtomReturns": false,
+              },
+              Object {
+                "atoms": Array [
+                  Object {
+                    "data": Object {
+                      "chars": Array [
+                        102,
+                      ],
+                      "complement": false,
+                      "ranges": Array [],
+                    },
+                    "posLine1": "/a|b|f/",
+                    "posLine2": "     ^",
+                    "type": "charOrSet",
+                  },
+                ],
+                "followUp": Object {
+                  "atoms": Array [],
+                  "followUp": null,
+                  "functionName": "fiber0001",
+                  "hasCallback": false,
+                  "lastAtomReturns": false,
+                },
+                "functionName": "fiber0004",
+                "hasCallback": false,
+                "lastAtomReturns": false,
               },
             ],
           },
@@ -82,13 +179,106 @@ Object {
         },
       ],
       "followUp": null,
-      "functionName": "fiber0004",
+      "functionName": "fiber0005",
+      "hasCallback": false,
+      "lastAtomReturns": true,
     },
   ],
   "groupsCount": 1,
   "mainHandler": Object {
-    "functionName": "fiber0004",
-    "isClosed": false,
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "alternatives": Array [
+            Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "chars": Array [
+                      97,
+                    ],
+                    "complement": false,
+                    "ranges": Array [],
+                  },
+                  "posLine1": "/a|b|f/",
+                  "posLine2": " ^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "atoms": Array [],
+                "followUp": null,
+                "functionName": "fiber0001",
+                "hasCallback": false,
+                "lastAtomReturns": false,
+              },
+              "functionName": "fiber0002",
+              "hasCallback": false,
+              "lastAtomReturns": false,
+            },
+            Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "chars": Array [
+                      98,
+                    ],
+                    "complement": false,
+                    "ranges": Array [],
+                  },
+                  "posLine1": "/a|b|f/",
+                  "posLine2": "   ^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "atoms": Array [],
+                "followUp": null,
+                "functionName": "fiber0001",
+                "hasCallback": false,
+                "lastAtomReturns": false,
+              },
+              "functionName": "fiber0003",
+              "hasCallback": false,
+              "lastAtomReturns": false,
+            },
+            Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "chars": Array [
+                      102,
+                    ],
+                    "complement": false,
+                    "ranges": Array [],
+                  },
+                  "posLine1": "/a|b|f/",
+                  "posLine2": "     ^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "atoms": Array [],
+                "followUp": null,
+                "functionName": "fiber0001",
+                "hasCallback": false,
+                "lastAtomReturns": false,
+              },
+              "functionName": "fiber0004",
+              "hasCallback": false,
+              "lastAtomReturns": false,
+            },
+          ],
+        },
+        "posLine1": "/a|b|f/",
+        "posLine2": " ^^^^^",
+        "type": "disjunction",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0005",
+    "hasCallback": false,
+    "lastAtomReturns": true,
   },
   "regexStr": "/a|b|f/",
 }

@@ -12,7 +12,7 @@ const configFolder = `${__dirname}/config`;
 const configFiles = glob.sync('**/*.json', {
   cwd: configFolder,
 });
-const filter = process.argv[2];
+const filter = process.env.TEST_FILTER;
 
 rimraf.sync(`${__dirname}/generated/**/*.+(ts|json)`);
 configFiles

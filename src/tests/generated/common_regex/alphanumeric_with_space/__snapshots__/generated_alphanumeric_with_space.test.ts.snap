@@ -14,6 +14,8 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
     },
     Object {
       "atoms": Array [
@@ -45,9 +47,10 @@ Object {
       ],
       "followUp": Object {
         "functionName": "callback",
-        "isClosed": true,
       },
       "functionName": "fiber0002",
+      "hasCallback": true,
+      "lastAtomReturns": false,
     },
     Object {
       "atoms": Array [
@@ -60,13 +63,54 @@ Object {
         Object {
           "data": Object {
             "followUp": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {},
+                  "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                  "posLine2": "               ^",
+                  "type": "endAnchor",
+                },
+              ],
+              "followUp": null,
               "functionName": "fiber0001",
-              "isClosed": true,
+              "hasCallback": false,
+              "lastAtomReturns": false,
             },
             "maxOrMinCount": false,
             "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "chars": Array [
+                      32,
+                    ],
+                    "complement": false,
+                    "ranges": Array [
+                      Object {
+                        "from": 97,
+                        "to": 122,
+                      },
+                      Object {
+                        "from": 65,
+                        "to": 90,
+                      },
+                      Object {
+                        "from": 48,
+                        "to": 57,
+                      },
+                    ],
+                  },
+                  "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                  "posLine2": "  ^^^^^^^^^^^^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "functionName": "callback",
+              },
               "functionName": "fiber0002",
-              "isClosed": true,
+              "hasCallback": true,
+              "lastAtomReturns": false,
             },
           },
           "posLine1": "/^[a-zA-Z0-9 ]*$/",
@@ -76,12 +120,81 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0003",
+      "hasCallback": false,
+      "lastAtomReturns": true,
     },
   ],
   "groupsCount": 1,
   "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {},
+        "posLine1": "/^[a-zA-Z0-9 ]*$/",
+        "posLine2": " ^",
+        "type": "startAnchor",
+      },
+      Object {
+        "data": Object {
+          "followUp": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {},
+                "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                "posLine2": "               ^",
+                "type": "endAnchor",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0001",
+            "hasCallback": false,
+            "lastAtomReturns": false,
+          },
+          "maxOrMinCount": false,
+          "wrappedHandler": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "chars": Array [
+                    32,
+                  ],
+                  "complement": false,
+                  "ranges": Array [
+                    Object {
+                      "from": 97,
+                      "to": 122,
+                    },
+                    Object {
+                      "from": 65,
+                      "to": 90,
+                    },
+                    Object {
+                      "from": 48,
+                      "to": 57,
+                    },
+                  ],
+                },
+                "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                "posLine2": "  ^^^^^^^^^^^^",
+                "type": "charOrSet",
+              },
+            ],
+            "followUp": Object {
+              "functionName": "callback",
+            },
+            "functionName": "fiber0002",
+            "hasCallback": true,
+            "lastAtomReturns": false,
+          },
+        },
+        "posLine1": "/^[a-zA-Z0-9 ]*$/",
+        "posLine2": "              ^",
+        "type": "greedyQuantifier",
+      },
+    ],
+    "followUp": null,
     "functionName": "fiber0003",
-    "isClosed": false,
+    "hasCallback": false,
+    "lastAtomReturns": true,
   },
   "regexStr": "/^[a-zA-Z0-9 ]*$/",
 }

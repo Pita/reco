@@ -27,12 +27,37 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
     },
   ],
   "groupsCount": 1,
   "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "chars": Array [],
+          "complement": false,
+          "ranges": Array [
+            Object {
+              "from": 97,
+              "to": 122,
+            },
+            Object {
+              "from": 65,
+              "to": 90,
+            },
+          ],
+        },
+        "posLine1": "/[a-z]/i",
+        "posLine2": " ^^^^^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
     "functionName": "fiber0001",
-    "isClosed": false,
+    "hasCallback": false,
+    "lastAtomReturns": false,
   },
   "regexStr": "/[a-z]/i",
 }

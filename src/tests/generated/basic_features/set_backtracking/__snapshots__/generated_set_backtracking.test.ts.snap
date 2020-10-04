@@ -1,0 +1,640 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/set_backtracking template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 7,
+            "groupIndex": 3,
+            "groupStartMarkerIndex": 6,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                       ^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "groupIndex": 4,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                        ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 49,
+                "to": 51,
+              },
+            ],
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                         ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 9,
+            "groupIndex": 4,
+            "groupStartMarkerIndex": 8,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                              ^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 100,
+                "to": 122,
+              },
+            ],
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                 ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+      },
+      "functionName": "fiber0002",
+      "hasCallback": true,
+      "lastAtomReturns": false,
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 3,
+            "groupIndex": 1,
+            "groupStartMarkerIndex": 2,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "        ^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "groupIndex": 2,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "         ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 104,
+                "to": 111,
+              },
+            ],
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "          ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupEndMarkerIndex": 5,
+            "groupIndex": 2,
+            "groupStartMarkerIndex": 4,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "               ^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "groupIndex": 3,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "groupEndMarkerIndex": 7,
+                    "groupIndex": 3,
+                    "groupStartMarkerIndex": 6,
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                       ^",
+                  "type": "groupEndMarker",
+                },
+                Object {
+                  "data": Object {
+                    "groupIndex": 4,
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                        ^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "chars": Array [],
+                    "complement": false,
+                    "ranges": Array [
+                      Object {
+                        "from": 49,
+                        "to": 51,
+                      },
+                    ],
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                         ^^^^^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "groupEndMarkerIndex": 9,
+                    "groupIndex": 4,
+                    "groupStartMarkerIndex": 8,
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                              ^",
+                  "type": "groupEndMarker",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0001",
+              "hasCallback": false,
+              "lastAtomReturns": false,
+            },
+            "maxOrMinCount": false,
+            "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "chars": Array [],
+                    "complement": false,
+                    "ranges": Array [
+                      Object {
+                        "from": 100,
+                        "to": 122,
+                      },
+                    ],
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                 ^^^^^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "functionName": "callback",
+              },
+              "functionName": "fiber0002",
+              "hasCallback": true,
+              "lastAtomReturns": false,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                      ^",
+          "type": "greedyQuantifier",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0003",
+      "hasCallback": false,
+      "lastAtomReturns": true,
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "complement": false,
+            "ranges": Array [
+              Object {
+                "from": 97,
+                "to": 122,
+              },
+            ],
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "  ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+      },
+      "functionName": "fiber0004",
+      "hasCallback": true,
+      "lastAtomReturns": false,
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupIndex": 1,
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": " ^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "groupEndMarkerIndex": 3,
+                    "groupIndex": 1,
+                    "groupStartMarkerIndex": 2,
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "        ^",
+                  "type": "groupEndMarker",
+                },
+                Object {
+                  "data": Object {
+                    "groupIndex": 2,
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "         ^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "chars": Array [],
+                    "complement": false,
+                    "ranges": Array [
+                      Object {
+                        "from": 104,
+                        "to": 111,
+                      },
+                    ],
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "          ^^^^^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "groupEndMarkerIndex": 5,
+                    "groupIndex": 2,
+                    "groupStartMarkerIndex": 4,
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "               ^",
+                  "type": "groupEndMarker",
+                },
+                Object {
+                  "data": Object {
+                    "groupIndex": 3,
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                ^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "followUp": Object {
+                      "atoms": Array [
+                        Object {
+                          "data": Object {
+                            "groupEndMarkerIndex": 7,
+                            "groupIndex": 3,
+                            "groupStartMarkerIndex": 6,
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                       ^",
+                          "type": "groupEndMarker",
+                        },
+                        Object {
+                          "data": Object {
+                            "groupIndex": 4,
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                        ^",
+                          "type": "groupStartMarker",
+                        },
+                        Object {
+                          "data": Object {
+                            "chars": Array [],
+                            "complement": false,
+                            "ranges": Array [
+                              Object {
+                                "from": 49,
+                                "to": 51,
+                              },
+                            ],
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                         ^^^^^",
+                          "type": "charOrSet",
+                        },
+                        Object {
+                          "data": Object {
+                            "groupEndMarkerIndex": 9,
+                            "groupIndex": 4,
+                            "groupStartMarkerIndex": 8,
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                              ^",
+                          "type": "groupEndMarker",
+                        },
+                      ],
+                      "followUp": null,
+                      "functionName": "fiber0001",
+                      "hasCallback": false,
+                      "lastAtomReturns": false,
+                    },
+                    "maxOrMinCount": false,
+                    "wrappedHandler": Object {
+                      "atoms": Array [
+                        Object {
+                          "data": Object {
+                            "chars": Array [],
+                            "complement": false,
+                            "ranges": Array [
+                              Object {
+                                "from": 100,
+                                "to": 122,
+                              },
+                            ],
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                 ^^^^^",
+                          "type": "charOrSet",
+                        },
+                      ],
+                      "followUp": Object {
+                        "functionName": "callback",
+                      },
+                      "functionName": "fiber0002",
+                      "hasCallback": true,
+                      "lastAtomReturns": false,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                      ^",
+                  "type": "greedyQuantifier",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0003",
+              "hasCallback": false,
+              "lastAtomReturns": true,
+            },
+            "maxOrMinCount": true,
+            "minCount": 1,
+            "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "chars": Array [],
+                    "complement": false,
+                    "ranges": Array [
+                      Object {
+                        "from": 97,
+                        "to": 122,
+                      },
+                    ],
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "  ^^^^^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "functionName": "callback",
+              },
+              "functionName": "fiber0004",
+              "hasCallback": true,
+              "lastAtomReturns": false,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "       ^",
+          "type": "greedyQuantifier",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0005",
+      "hasCallback": false,
+      "lastAtomReturns": true,
+    },
+  ],
+  "groupsCount": 5,
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "groupIndex": 1,
+        },
+        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+        "posLine2": " ^",
+        "type": "groupStartMarker",
+      },
+      Object {
+        "data": Object {
+          "followUp": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "groupEndMarkerIndex": 3,
+                  "groupIndex": 1,
+                  "groupStartMarkerIndex": 2,
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "        ^",
+                "type": "groupEndMarker",
+              },
+              Object {
+                "data": Object {
+                  "groupIndex": 2,
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "         ^",
+                "type": "groupStartMarker",
+              },
+              Object {
+                "data": Object {
+                  "chars": Array [],
+                  "complement": false,
+                  "ranges": Array [
+                    Object {
+                      "from": 104,
+                      "to": 111,
+                    },
+                  ],
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "          ^^^^^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "groupEndMarkerIndex": 5,
+                  "groupIndex": 2,
+                  "groupStartMarkerIndex": 4,
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "               ^",
+                "type": "groupEndMarker",
+              },
+              Object {
+                "data": Object {
+                  "groupIndex": 3,
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "                ^",
+                "type": "groupStartMarker",
+              },
+              Object {
+                "data": Object {
+                  "followUp": Object {
+                    "atoms": Array [
+                      Object {
+                        "data": Object {
+                          "groupEndMarkerIndex": 7,
+                          "groupIndex": 3,
+                          "groupStartMarkerIndex": 6,
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                       ^",
+                        "type": "groupEndMarker",
+                      },
+                      Object {
+                        "data": Object {
+                          "groupIndex": 4,
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                        ^",
+                        "type": "groupStartMarker",
+                      },
+                      Object {
+                        "data": Object {
+                          "chars": Array [],
+                          "complement": false,
+                          "ranges": Array [
+                            Object {
+                              "from": 49,
+                              "to": 51,
+                            },
+                          ],
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                         ^^^^^",
+                        "type": "charOrSet",
+                      },
+                      Object {
+                        "data": Object {
+                          "groupEndMarkerIndex": 9,
+                          "groupIndex": 4,
+                          "groupStartMarkerIndex": 8,
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                              ^",
+                        "type": "groupEndMarker",
+                      },
+                    ],
+                    "followUp": null,
+                    "functionName": "fiber0001",
+                    "hasCallback": false,
+                    "lastAtomReturns": false,
+                  },
+                  "maxOrMinCount": false,
+                  "wrappedHandler": Object {
+                    "atoms": Array [
+                      Object {
+                        "data": Object {
+                          "chars": Array [],
+                          "complement": false,
+                          "ranges": Array [
+                            Object {
+                              "from": 100,
+                              "to": 122,
+                            },
+                          ],
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                 ^^^^^",
+                        "type": "charOrSet",
+                      },
+                    ],
+                    "followUp": Object {
+                      "functionName": "callback",
+                    },
+                    "functionName": "fiber0002",
+                    "hasCallback": true,
+                    "lastAtomReturns": false,
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "                      ^",
+                "type": "greedyQuantifier",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0003",
+            "hasCallback": false,
+            "lastAtomReturns": true,
+          },
+          "maxOrMinCount": true,
+          "minCount": 1,
+          "wrappedHandler": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "chars": Array [],
+                  "complement": false,
+                  "ranges": Array [
+                    Object {
+                      "from": 97,
+                      "to": 122,
+                    },
+                  ],
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "  ^^^^^",
+                "type": "charOrSet",
+              },
+            ],
+            "followUp": Object {
+              "functionName": "callback",
+            },
+            "functionName": "fiber0004",
+            "hasCallback": true,
+            "lastAtomReturns": false,
+          },
+        },
+        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+        "posLine2": "       ^",
+        "type": "greedyQuantifier",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0005",
+    "hasCallback": false,
+    "lastAtomReturns": true,
+  },
+  "regexStr": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+}
+`;

@@ -14,8 +14,6 @@ import {
   Quantifier,
 } from 'regexp-to-ast';
 import {
-  FunctionHandle,
-  FollowUpFunctionHandle,
   genCodeFromTemplate,
   TemplateValues,
   FiberTemplateDefinition,
@@ -24,12 +22,9 @@ import {
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 import * as _ from 'lodash';
 
-type SubDefinition<T> = Omit<T, 'posLine1' | 'posLine2'> & {
+type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   location: IRegExpAST['loc'];
-  followUp: FunctionHandle | null;
 };
-
-type AtomDefinition = SubDefinition<TemplateAtom>;
 
 class Collector {
   private regexStr: string;
@@ -55,23 +50,58 @@ class Collector {
     };
   }
 
-  addAtom(def: AtomDefinition): FunctionHandle {
-    let currentFiber: FiberTemplateDefinition | undefined = undefined;
-    if (def.followUp && def.followUp.isClosed === false) {
-      currentFiber = this.fiberHandlers.find(
-        (fiberHandler) =>
-          fiberHandler.functionName === def.followUp?.functionName,
-      );
-    }
-    if (currentFiber === undefined) {
-      currentFiber = {
-        followUp: def.followUp,
-        atoms: [],
-        functionName: `fiber${this.getNewCount()}`,
-      };
-      this.fiberHandlers.push(currentFiber);
-    }
+  createConnectedFiber(fiber: FiberTemplateDefinition) {
+    // TODO: there might be a special case where the fiber to close has zero atoms,
+    // therefore we might want to reuse it
 
+    const newFiber: FiberTemplateDefinition = {
+      followUp: fiber,
+      atoms: [],
+      functionName: `fiber${this.getNewCount()}`,
+      lastAtomReturns: false,
+      hasCallback: fiber.hasCallback,
+    };
+    this.fiberHandlers.push(newFiber);
+    return newFiber;
+  }
+
+  createFinalFiber() {
+    const newFiber: FiberTemplateDefinition = {
+      followUp: null,
+      atoms: [],
+      functionName: `fiber${this.getNewCount()}`,
+      lastAtomReturns: false,
+      hasCallback: false,
+    };
+    this.fiberHandlers.push(newFiber);
+    return newFiber;
+  }
+
+  createForkingFiber(fiber: FiberTemplateDefinition) {
+    const newFiber: FiberTemplateDefinition = {
+      followUp: null,
+      atoms: [],
+      functionName: `fiber${this.getNewCount()}`,
+      lastAtomReturns: true,
+      hasCallback: fiber.hasCallback,
+    };
+    this.fiberHandlers.push(newFiber);
+    return newFiber;
+  }
+
+  createCallbackFiber() {
+    const newFiber: FiberTemplateDefinition = {
+      followUp: { functionName: 'callback' },
+      atoms: [],
+      functionName: `fiber${this.getNewCount()}`,
+      lastAtomReturns: false,
+      hasCallback: true,
+    };
+    this.fiberHandlers.push(newFiber);
+    return newFiber;
+  }
+
+  addAtom(currentFiber: FiberTemplateDefinition, def: AtomDefinition) {
     // TODO: type this correctly
     const newAtom: any = {
       ...this.formatAstLocation(def.location),
@@ -80,13 +110,7 @@ class Collector {
     };
 
     currentFiber.atoms.unshift(newAtom);
-
-    // console.log(def, this.fiberHandlers);
-
-    return {
-      functionName: currentFiber.functionName,
-      isClosed: false,
-    };
+    return currentFiber;
   }
 
   getTemplateValues(): Omit<TemplateValues, 'mainHandler'> {
@@ -107,19 +131,19 @@ const withQuantifier = <T extends AstWithQuantifier>(
   func: (
     ast: T,
     collector: Collector,
-    followUp: FollowUpFunctionHandle,
+    currentFiber: FiberTemplateDefinition,
     flags: RegExpFlags,
-  ) => FunctionHandle,
+  ) => FiberTemplateDefinition,
 ): ((
   ast: T,
   collector: Collector,
-  followUp: FollowUpFunctionHandle,
+  currentFiber: FiberTemplateDefinition,
   flags: RegExpFlags,
-) => FunctionHandle) => {
-  return (ast, collector, followUp, flags) => {
+) => FiberTemplateDefinition) => {
+  return (ast, collector, currentFiber, flags) => {
     const quantifier = ast.quantifier;
     if (quantifier == null) {
-      return func(ast, collector, followUp, flags);
+      return func(ast, collector, currentFiber, flags);
     }
     if (!quantifier.greedy) {
       throw new Error('Non greedy quantifiers not implemented yet');
@@ -128,33 +152,28 @@ const withQuantifier = <T extends AstWithQuantifier>(
     const wrappedHandler = func(
       ast,
       collector,
-      { functionName: 'callback', isClosed: true },
+      collector.createCallbackFiber(),
       flags,
     );
-    wrappedHandler.isClosed = true;
-    if (followUp) {
-      followUp.isClosed = true;
-    }
     const minCount = quantifier.atLeast === 0 ? undefined : quantifier.atLeast;
     const maxCount =
       quantifier.atMost === Infinity ? undefined : quantifier.atMost;
     const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
 
-    if (maxOrMinCount) {
+    if (maxCount !== undefined) {
       throw new Error('Only supports infinite quantifiers so far');
     }
 
-    return collector.addAtom({
+    return collector.addAtom(collector.createForkingFiber(currentFiber), {
       type: 'greedyQuantifier',
       data: {
         minCount,
         maxCount,
         maxOrMinCount,
         wrappedHandler,
-        followUp,
+        followUp: currentFiber,
       },
       location: quantifier.loc,
-      followUp: null,
     });
   };
 };
@@ -163,9 +182,9 @@ const handleSetOrCharacter = withQuantifier(
   (
     term: RegexSet | Character,
     collector: Collector,
-    followUp: FollowUpFunctionHandle,
+    currentFiber: FiberTemplateDefinition,
     flags: RegExpFlags,
-  ): FunctionHandle => {
+  ): FiberTemplateDefinition => {
     const chars: number[] = [];
     const ranges: Range[] = [];
     let complement = false;
@@ -200,14 +219,13 @@ const handleSetOrCharacter = withQuantifier(
       addCharacter(term.value);
     }
 
-    return collector.addAtom({
+    return collector.addAtom(currentFiber, {
       type: 'charOrSet',
       data: {
         chars,
         ranges,
         complement,
       },
-      followUp,
       location: term.loc,
     });
   },
@@ -217,20 +235,19 @@ const handleGroup = withQuantifier(
   (
     group: Group,
     collector: Collector,
-    followUp: FollowUpFunctionHandle,
+    currentFiber: FiberTemplateDefinition,
     flags: RegExpFlags,
-  ): FunctionHandle => {
+  ): FiberTemplateDefinition => {
     if (!group.capturing) {
-      return handleDisjunction(group.value, collector, followUp, flags);
+      return handleDisjunction(group.value, collector, currentFiber, flags);
     }
     const idx = group.idx;
     if (idx == null) {
       throw new Error('Capturing group does not have an idx');
     }
 
-    const groupEndMarker = collector.addAtom({
+    const groupEndMarker = collector.addAtom(currentFiber, {
       type: 'groupEndMarker',
-      followUp,
       location: { begin: group.loc.end - 1, end: group.loc.end },
       data: {
         groupIndex: idx,
@@ -246,9 +263,8 @@ const handleGroup = withQuantifier(
       flags,
     );
 
-    const groupStartMarker = collector.addAtom({
+    const groupStartMarker = collector.addAtom(disjunction, {
       type: 'groupStartMarker',
-      followUp: disjunction,
       location: { begin: group.loc.begin, end: group.loc.begin + 1 },
       data: {
         groupIndex: idx,
@@ -262,15 +278,14 @@ const handleGroup = withQuantifier(
 const handleStartAnchor = (
   startAnchor: Assertion,
   collector: Collector,
-  followUp: FollowUpFunctionHandle,
+  currentFiber: FiberTemplateDefinition,
   flags: RegExpFlags,
-): FunctionHandle => {
+): FiberTemplateDefinition => {
   if (startAnchor.value) {
     throw new Error('Start Anchor has value!');
   }
-  return collector.addAtom({
+  return collector.addAtom(currentFiber, {
     type: 'startAnchor',
-    followUp,
     location: startAnchor.loc,
     data: {},
   });
@@ -279,15 +294,14 @@ const handleStartAnchor = (
 const handleEndAnchor = (
   endAnchor: Assertion,
   collector: Collector,
-  followUp: FollowUpFunctionHandle,
+  currentFiber: FiberTemplateDefinition,
   flags: RegExpFlags,
-): FunctionHandle => {
+): FiberTemplateDefinition => {
   if (endAnchor.value) {
     throw new Error('End Anchor has value!');
   }
-  return collector.addAtom({
+  return collector.addAtom(currentFiber, {
     type: 'endAnchor',
-    followUp,
     location: endAnchor.loc,
     data: {},
   });
@@ -296,19 +310,19 @@ const handleEndAnchor = (
 const handleTerm = (
   term: Term,
   collector: Collector,
-  followUp: FollowUpFunctionHandle,
+  currentFiber: FiberTemplateDefinition,
   flags: RegExpFlags,
-): FunctionHandle => {
+): FiberTemplateDefinition => {
   switch (term.type) {
     case 'Character':
     case 'Set':
-      return handleSetOrCharacter(term, collector, followUp, flags);
+      return handleSetOrCharacter(term, collector, currentFiber, flags);
     case 'Group':
-      return handleGroup(term, collector, followUp, flags);
+      return handleGroup(term, collector, currentFiber, flags);
     case 'StartAnchor':
-      return handleStartAnchor(term, collector, followUp, flags);
+      return handleStartAnchor(term, collector, currentFiber, flags);
     case 'EndAnchor':
-      return handleEndAnchor(term, collector, followUp, flags);
+      return handleEndAnchor(term, collector, currentFiber, flags);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }
@@ -317,44 +331,44 @@ const handleTerm = (
 const handleAlternative = (
   alternative: Alternative,
   collector: Collector,
-  followUp: FollowUpFunctionHandle,
+  currentFiber: FiberTemplateDefinition,
   flags: RegExpFlags,
-): FunctionHandle => {
-  let currentFollowUp = followUp;
+): FiberTemplateDefinition => {
+  let lastFiber = currentFiber;
   for (let i = alternative.value.length - 1; i >= 0; i--) {
-    currentFollowUp = handleTerm(
-      alternative.value[i],
-      collector,
-      currentFollowUp,
-      flags,
-    );
+    lastFiber = handleTerm(alternative.value[i], collector, lastFiber, flags);
   }
 
-  return currentFollowUp!;
+  return lastFiber;
 };
 
 const handleDisjunction = (
   disjunction: Disjunction,
   collector: Collector,
-  followUp: FollowUpFunctionHandle,
+  currentFiber: FiberTemplateDefinition,
   flags: RegExpFlags,
-): FunctionHandle => {
+): FiberTemplateDefinition => {
   if (disjunction.value.length === 1) {
-    return handleAlternative(disjunction.value[0], collector, followUp, flags);
-  }
-
-  if (followUp) {
-    followUp.isClosed = true;
+    return handleAlternative(
+      disjunction.value[0],
+      collector,
+      currentFiber,
+      flags,
+    );
   }
 
   const alternatives = disjunction.value.map((alternative) =>
-    handleAlternative(alternative, collector, followUp, flags),
+    handleAlternative(
+      alternative,
+      collector,
+      collector.createConnectedFiber(currentFiber),
+      flags,
+    ),
   );
 
-  return collector.addAtom({
+  return collector.addAtom(collector.createForkingFiber(currentFiber), {
     type: 'disjunction',
     data: { alternatives },
-    followUp: null,
     location: disjunction.loc,
   });
 };
@@ -403,7 +417,7 @@ export const genCode = (
   const mainHandler = handleDisjunction(
     disjunction,
     collector,
-    null,
+    collector.createFinalFiber(),
     pattern.flags,
   );
 

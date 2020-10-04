@@ -28,7 +28,7 @@ function generatedRegexMatcher(str: string) {
   {{#each fiberHandlers}}
     const {{{functionName}}} = (
       start: number,
-      {{#hasCallback}} callback: (start: number) => number {{/hasCallback}}
+      {{#if hasCallback}} callback: (start: number) => number {{/if}}
     ): number => {
       let i = start;
       {{#each atoms}}
@@ -59,7 +59,7 @@ function generatedRegexMatcher(str: string) {
           // TODO: Make that this does not require garbage collection
           // typed array or for loop
           // there might also be a possiblity to not copy all groups
-          const groupMarkersCopy = groupMarkers.slice();
+          const groupMarkersCopy = groupMarkers.slice() as any;
 
           {{#each alternatives}}
             const length{{{@index}}} = {{{functionName}}}(i);
@@ -88,9 +88,15 @@ function generatedRegexMatcher(str: string) {
           groupMarkers[{{{groupEndMarkerIndex}}}] = i;
         {{/atomCase}}
         {{#atomCase 'greedyQuantifier'}}
+          {{#if maxOrMinCount}}
+            let matchCount = -1;
+          {{/if}}
           const followUpCallback = (start: number) => {
             {{#if followUp}}
-              return {{{followUp.functionName}}}(start);
+              return {{{followUp.functionName}}}(
+                start, 
+                {{#if followUp.hasCallback}} callback, {{/if}}
+              );
             {{/if}}
             {{#unless followUp}}
               return start;
@@ -98,19 +104,33 @@ function generatedRegexMatcher(str: string) {
           }
 
           const recursiveCallback = (start: number): number => {
-            const groupMarkersCopy = groupMarkers.slice();
+            {{#if maxOrMinCount}}
+              matchCount++;
+            {{/if}}
+
+            const groupMarkersCopy = groupMarkers.slice() as any;
             const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, recursiveCallback);
             if (tryDeeperResult !== -1) {
               // we actually were able to go deeper, nice!
               return tryDeeperResult;
-            } else {
-              // recursion failed, reset groups
-              groupMarkers = groupMarkersCopy;
-            }
+            } 
+
+            // recursion failed, reset groups
+            groupMarkers = groupMarkersCopy;
+
+            {{#if minCount}}
+              if (matchCount < {{{minCount}}}) {
+                matchCount--;
+                return -1;
+              }
+            {{/if}}
 
             const followUpResult = followUpCallback(start);
             if (followUpResult === -1) {
               groupMarkers = groupMarkersCopy;
+              {{#if maxOrMinCount}}
+                matchCount--;
+              {{/if}}
             }
             return followUpResult;
           };
@@ -118,12 +138,13 @@ function generatedRegexMatcher(str: string) {
           return recursiveCallback(i);
         {{/atomCase}}        
       {{/each}}
-      // TODO: not needed in case last element is disjunction or quantifier
-      {{#if followUp}}
-        return {{{followUp.functionName}}}(i);
-      {{/if}}
-      {{#unless followUp}}
-        return i;
+      {{#unless lastAtomReturns}}
+        {{#if followUp}}
+          return {{{followUp.functionName}}}(i, {{#if followUp.hasCallback}} callback {{/if}});
+        {{/if}}
+        {{#unless followUp}}
+          return i;
+        {{/unless}}
       {{/unless}}
     }
   {{/each}}
@@ -153,17 +174,18 @@ function generatedRegexMatcher(str: string) {
 module.exports = {generatedRegexMatcher};
 `;
 
-export interface FunctionHandle {
+export interface FiberTemplateDefinition {
+  atoms: TemplateAtom[];
+  lastAtomReturns: boolean;
   functionName: string;
-  isClosed: boolean;
+  followUp: FollowUp;
+  hasCallback: boolean;
 }
 
-export type FollowUpFunctionHandle = FunctionHandle | null;
-
-export interface FunctionTemplateDefinition {
-  functionName: string;
-  followUp: FollowUpFunctionHandle;
-}
+export type FollowUp =
+  | FiberTemplateDefinition
+  | { functionName: 'callback' }
+  | null;
 
 export interface BaseTemplateAtom {
   posLine1: string;
@@ -182,7 +204,7 @@ export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
 export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
   type: 'disjunction';
   data: {
-    alternatives: FunctionHandle[];
+    alternatives: FiberTemplateDefinition[];
   };
 }
 
@@ -215,11 +237,11 @@ export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
 export interface GreedyQuantifierTemplateAtom extends BaseTemplateAtom {
   type: 'greedyQuantifier';
   data: {
-    wrappedHandler: FunctionHandle;
+    wrappedHandler: FiberTemplateDefinition;
     maxOrMinCount?: boolean;
     minCount?: number;
     maxCount?: number;
-    followUp: FollowUpFunctionHandle;
+    followUp: FollowUp;
   };
 }
 
@@ -232,16 +254,20 @@ export type TemplateAtom =
   | GroupEndMarkerTemplateAtom
   | GreedyQuantifierTemplateAtom;
 
-export interface FiberTemplateDefinition extends FunctionTemplateDefinition {
-  atoms: TemplateAtom[];
-}
-
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
-  mainHandler: FunctionHandle;
+  mainHandler: FiberTemplateDefinition;
   regexStr: string;
   groupsCount: number;
 }
+
+// Handlebars.registerHelper('followUpRequired', function (this: any, options) {
+//   if (this.followUp?.functionName !== 'tail') {
+//     return options.fn(this);
+//   } else {
+//     return options.inverse(this);
+//   }
+// });
 
 Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
   const isAtomType = this.type === atomType;
@@ -262,6 +288,10 @@ Handlebars.registerHelper('hasCallback', function (this: any, options) {
     return options.inverse(this);
   }
 });
+
+// Handlebars.registerHelper('log', function (this: any, value1, value2, options) {
+//   console.log('HANDLEBAR', value1, value2);
+// });
 
 Handlebars.registerHelper('times', function (n, block) {
   var accum = '';
