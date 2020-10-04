@@ -155,9 +155,6 @@ const withQuantifier = <T extends AstWithQuantifier>(
     if (quantifier == null) {
       return func(ast, collector, currentFiber, flags);
     }
-    if (!quantifier.greedy) {
-      throw new Error('Non greedy quantifiers not implemented yet');
-    }
 
     const wrappedHandler = func(
       ast,
@@ -171,7 +168,7 @@ const withQuantifier = <T extends AstWithQuantifier>(
     const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
 
     return collector.addAtom(collector.createForkingFiber(currentFiber), {
-      type: 'greedyQuantifier',
+      type: quantifier.greedy ? 'greedyQuantifier' : 'lazyQuantifier',
       data: {
         minCount,
         maxCount,

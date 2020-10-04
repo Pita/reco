@@ -145,7 +145,64 @@ function generatedRegexMatcher(str: string) {
           };
 
           return recursiveCallback(i);
-        {{/atomCase}}        
+        {{/atomCase}}
+        {{#atomCase 'lazyQuantifier'}}
+          {{#unless followUp}}
+            return i;
+          {{/unless}}
+          {{#if followUp}}
+            {{#if maxOrMinCount}}
+              let matchCount = -1;
+            {{/if}}
+            const groupMarkersCopy = groupMarkers.slice() as any;
+
+            const followUpCallback = (start: number) => {
+              return {{{followUp.functionName}}}(
+                start, 
+                {{#if followUp.hasCallback}} callback, {{/if}}
+              );
+            }
+
+            const recursiveCallback = (start: number): number => {
+              {{#if maxOrMinCount}}
+                matchCount++;
+              {{/if}}
+
+              {{#if minCount}}
+                if (matchCount > {{{minCount}}}) {
+              {{/if}}
+                const followUpResult = followUpCallback(start);
+                if (followUpResult === -1) {
+                  groupMarkers = groupMarkersCopy;
+                }
+                return followUpResult;
+
+                {{#if minCount}}
+                }
+              {{/if}}
+              
+              {{#if maxCount}}
+                if (matchCount < {{{maxCount}}}) {
+              {{/if}}
+                const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, recursiveCallback);
+                if (tryDeeperResult !== -1) {
+                  // we actually were able to go deeper, nice!
+                  return tryDeeperResult;
+                }
+                groupMarkers = groupMarkersCopy;
+              {{#if maxCount}}
+                }
+              {{/if}}
+
+              {{#if maxOrMinCount}}
+                matchCount--;
+              {{/if}}
+              return -1;
+            };
+
+            return recursiveCallback(i);
+          {{/if}}
+        {{/atomCase}}
       {{/each}}
       {{#unless lastAtomReturns}}
         {{#if followUp}}
@@ -254,6 +311,17 @@ export interface GreedyQuantifierTemplateAtom extends BaseTemplateAtom {
   };
 }
 
+export interface LazyQuantifierTemplateAtom extends BaseTemplateAtom {
+  type: 'lazyQuantifier';
+  data: {
+    wrappedHandler: FiberTemplateDefinition;
+    maxOrMinCount?: boolean;
+    minCount?: number;
+    maxCount?: number;
+    followUp: FollowUp;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | DisjunctionTemplateAtom
@@ -261,7 +329,8 @@ export type TemplateAtom =
   | EndAnchorTemplateAtom
   | GroupStartMarkerTemplateAtom
   | GroupEndMarkerTemplateAtom
-  | GreedyQuantifierTemplateAtom;
+  | GreedyQuantifierTemplateAtom
+  | LazyQuantifierTemplateAtom;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
