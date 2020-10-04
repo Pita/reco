@@ -17,5 +17,5 @@
     "email@example.co.jp",
     "firstname-lastname@example.com"
   ],
-  "mustPass": false
+  "mustPass": true
 }

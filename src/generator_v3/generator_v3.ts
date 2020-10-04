@@ -170,10 +170,6 @@ const withQuantifier = <T extends AstWithQuantifier>(
       quantifier.atMost === Infinity ? undefined : quantifier.atMost;
     const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
 
-    if (maxCount !== undefined) {
-      throw new Error('Only supports infinite quantifiers so far');
-    }
-
     return collector.addAtom(collector.createForkingFiber(currentFiber), {
       type: 'greedyQuantifier',
       data: {

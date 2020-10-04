@@ -11,5 +11,5 @@
     "hello!world",
     "hello-world"
   ],
-  "mustPass": false
+  "mustPass": true
 }

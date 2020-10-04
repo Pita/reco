@@ -62,7 +62,10 @@ function generatedRegexMatcher(str: string) {
           const groupMarkersCopy = groupMarkers.slice() as any;
 
           {{#each alternatives}}
-            const length{{{@index}}} = {{{functionName}}}(i);
+            const length{{{@index}}} = {{{functionName}}}(
+              i, 
+              {{#if hasCallback}} callback, {{/if}}
+            );
             if (length{{{@index}}} !== -1) {
               return length{{{@index}}};
             }
@@ -106,6 +109,12 @@ function generatedRegexMatcher(str: string) {
           const recursiveCallback = (start: number): number => {
             {{#if maxOrMinCount}}
               matchCount++;
+            {{/if}}
+
+            {{#if maxCount}}
+              if (matchCount === {{{maxCount}}}) {
+                return followUpCallback(start);
+              }
             {{/if}}
 
             const groupMarkersCopy = groupMarkers.slice() as any;
