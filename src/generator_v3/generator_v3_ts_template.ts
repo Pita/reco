@@ -271,7 +271,7 @@ export interface TemplateValues {
 }
 
 Handlebars.registerHelper('escapeComment', function (this: any, value) {
-  return value.replace(/\*/g, '﹡');
+  return value.replace(/\*/g, '✱');
 });
 
 Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
