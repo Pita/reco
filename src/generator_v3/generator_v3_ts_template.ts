@@ -169,15 +169,16 @@ function generatedRegexMatcher(str: string) {
               {{/if}}
 
               {{#if minCount}}
-                if (matchCount > {{{minCount}}}) {
+                if (matchCount >= {{{minCount}}}) {
               {{/if}}
                 const followUpResult = followUpCallback(start);
                 if (followUpResult === -1) {
                   groupMarkers = groupMarkersCopy;
+                } else {
+                  return followUpResult;
                 }
-                return followUpResult;
 
-                {{#if minCount}}
+              {{#if minCount}}
                 }
               {{/if}}
               
