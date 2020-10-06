@@ -90,6 +90,17 @@ function generatedRegexMatcher(str: string) {
           groupMarkers[{{{groupStartMarkerIndex}}}] = tempGroupStartMarkers[{{{groupIndex}}}];
           groupMarkers[{{{groupEndMarkerIndex}}}] = i;
         {{/atomCase}}
+        {{#atomCase 'lookAhead'}}
+          const lookAheadResult{{{@index}}} = {{{lookAheadFiber.functionName}}}(i);
+          {{#if negative}}
+            if (lookAheadResult{{{@index}}} !== -1) { 
+          {{/if}}
+          {{#unless negative}}
+            if (lookAheadResult{{{@index}}} === -1) { 
+          {{/unless}}
+            return -1;
+          }
+        {{/atomCase}}
         {{#atomCase 'greedyQuantifier'}}
           {{#if maxOrMinCount}}
             let matchCount = -1;
@@ -323,6 +334,14 @@ export interface LazyQuantifierTemplateAtom extends BaseTemplateAtom {
   };
 }
 
+export interface LookaheadTemplateAtom extends BaseTemplateAtom {
+  type: 'lookAhead';
+  data: {
+    lookAheadFiber: FiberTemplateDefinition;
+    negative: boolean;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | DisjunctionTemplateAtom
@@ -331,7 +350,8 @@ export type TemplateAtom =
   | GroupStartMarkerTemplateAtom
   | GroupEndMarkerTemplateAtom
   | GreedyQuantifierTemplateAtom
-  | LazyQuantifierTemplateAtom;
+  | LazyQuantifierTemplateAtom
+  | LookaheadTemplateAtom;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];

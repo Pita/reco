@@ -310,6 +310,34 @@ const handleEndAnchor = (
   });
 };
 
+const handleLookahead = (
+  lookahead: Assertion,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: RegExpFlags,
+): FiberTemplateDefinition => {
+  const lookAheadDisjunction = lookahead.value;
+  if (!lookAheadDisjunction) {
+    throw new Error('Lookahead without value');
+  }
+  const lookAheadFiber = handleDisjunction(
+    lookAheadDisjunction,
+    collector,
+    collector.createFinalFiber(),
+    flags,
+  );
+
+  const negative = lookahead.type === 'NegativeLookahead';
+  return collector.addAtom(currentFiber, {
+    type: 'lookAhead',
+    location: lookahead.loc,
+    data: {
+      lookAheadFiber,
+      negative,
+    },
+  });
+};
+
 const handleTerm = (
   term: Term,
   collector: Collector,
@@ -326,6 +354,9 @@ const handleTerm = (
       return handleStartAnchor(term, collector, currentFiber, flags);
     case 'EndAnchor':
       return handleEndAnchor(term, collector, currentFiber, flags);
+    case 'Lookahead':
+    case 'NegativeLookahead':
+      return handleLookahead(term, collector, currentFiber, flags);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }
