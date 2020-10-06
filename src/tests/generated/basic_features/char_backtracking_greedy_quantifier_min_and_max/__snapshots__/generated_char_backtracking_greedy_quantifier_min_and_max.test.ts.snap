@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic_features/char_backtracking_2 template values are as expected 1`] = `
+exports[`basic_features/char_backtracking_greedy_quantifier_min_and_max template values are as expected 1`] = `
 Object {
   "fiberHandlers": Array [
     Object {
