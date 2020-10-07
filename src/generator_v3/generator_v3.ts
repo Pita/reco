@@ -27,6 +27,10 @@ type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   location: IRegExpAST['loc'];
 };
 
+interface Flags extends RegExpFlags {
+  INTERNAL_backwards?: boolean;
+}
+
 class Collector {
   private regexStr: string;
   private counter = 0;
@@ -142,13 +146,13 @@ const withQuantifier = <T extends AstWithQuantifier>(
     ast: T,
     collector: Collector,
     currentFiber: FiberTemplateDefinition,
-    flags: RegExpFlags,
+    flags: Flags,
   ) => FiberTemplateDefinition,
 ): ((
   ast: T,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: RegExpFlags,
+  flags: Flags,
 ) => FiberTemplateDefinition) => {
   return (ast, collector, currentFiber, flags) => {
     const quantifier = ast.quantifier;
@@ -186,7 +190,7 @@ const handleSetOrCharacter = withQuantifier(
     term: RegexSet | Character,
     collector: Collector,
     currentFiber: FiberTemplateDefinition,
-    flags: RegExpFlags,
+    flags: Flags,
   ): FiberTemplateDefinition => {
     const chars: number[] = [];
     const ranges: Range[] = [];
@@ -239,7 +243,7 @@ const handleGroup = withQuantifier(
     group: Group,
     collector: Collector,
     currentFiber: FiberTemplateDefinition,
-    flags: RegExpFlags,
+    flags: Flags,
   ): FiberTemplateDefinition => {
     if (!group.capturing) {
       return handleDisjunction(group.value, collector, currentFiber, flags);
@@ -282,7 +286,7 @@ const handleStartAnchor = (
   startAnchor: Assertion,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: RegExpFlags,
+  flags: Flags,
 ): FiberTemplateDefinition => {
   if (startAnchor.value) {
     throw new Error('Start Anchor has value!');
@@ -298,7 +302,7 @@ const handleEndAnchor = (
   endAnchor: Assertion,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: RegExpFlags,
+  flags: Flags,
 ): FiberTemplateDefinition => {
   if (endAnchor.value) {
     throw new Error('End Anchor has value!');
@@ -314,7 +318,7 @@ const handleLookahead = (
   lookahead: Assertion,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: RegExpFlags,
+  flags: Flags,
 ): FiberTemplateDefinition => {
   const lookAheadDisjunction = lookahead.value;
   if (!lookAheadDisjunction) {
@@ -342,7 +346,7 @@ const handleTerm = (
   term: Term,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: RegExpFlags,
+  flags: Flags,
 ): FiberTemplateDefinition => {
   switch (term.type) {
     case 'Character':
@@ -357,6 +361,9 @@ const handleTerm = (
     case 'Lookahead':
     case 'NegativeLookahead':
       return handleLookahead(term, collector, currentFiber, flags);
+    case 'Lookbehind':
+    case 'NegativeLookahead':
+      return handleLookahead(term, collector, currentFiber, flags);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }
@@ -366,7 +373,7 @@ const handleAlternative = (
   alternative: Alternative,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: RegExpFlags,
+  flags: Flags,
 ): FiberTemplateDefinition => {
   let lastFiber = currentFiber;
   for (let i = alternative.value.length - 1; i >= 0; i--) {
@@ -380,7 +387,7 @@ const handleDisjunction = (
   disjunction: Disjunction,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: RegExpFlags,
+  flags: Flags,
 ): FiberTemplateDefinition => {
   if (disjunction.value.length === 1) {
     return handleAlternative(

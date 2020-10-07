@@ -38,9 +38,17 @@ function generatedRegexMatcher(str: string) {
          * {{{posLine2}}}
          */
         {{#atomCase 'charOrSet'}}
-          if (i >= strLength) {
-            return -1;
-          }
+          {{#if backwards}}
+            i--;
+            if (i < 0) {
+              return -1;
+            }
+          {{/if}}
+          {{unless backwards}}
+            if (i >= strLength) {
+              return -1;
+            }
+          {{/unless}}
           const charCode{{{@index}}} = str.charCodeAt(i);
           if({{#unless complement}}!{{/unless}}(
             {{#each ranges}}
@@ -53,7 +61,9 @@ function generatedRegexMatcher(str: string) {
           )) {
             return -1;
           };
-          i++;
+          {{unless backwards}}
+            i++;
+          {{/unless}}
         {{/atomCase}}
         {{#atomCase 'disjunction'}}
           // TODO: Make that this does not require garbage collection
