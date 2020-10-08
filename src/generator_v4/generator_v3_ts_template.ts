@@ -44,7 +44,7 @@ function generatedRegexMatcher(str: string) {
               return -1;
             }
           {{/if}}
-          {{#unless backwards}}
+          {{unless backwards}}
             if (i >= strLength) {
               return -1;
             }
@@ -61,7 +61,7 @@ function generatedRegexMatcher(str: string) {
           )) {
             return -1;
           };
-          {{#unless backwards}}
+          {{unless backwards}}
             i++;
           {{/unless}}
         {{/atomCase}}

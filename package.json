@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:all": "npm run test:generate && npm run test:run",
-    "test:generate": "ts-node ./src/tests/generate_tests.ts",
+    "test:generate": "ts-node -T ./src/tests/generate_tests.ts",
     "test:keep-snapshots": "npx jest",
     "test:run": "npx jest --updateSnapshot",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
@@ -59,6 +59,7 @@
     "handlebars": "^4.7.6",
     "js-string-escape": "^1.0.1",
     "lodash": "^4.17.20",
-    "regexp-to-ast": "^0.5.0"
+    "regexp-to-ast": "github:Pita/regexp-to-ast#lookbehind",
+    "regexpp": "^3.1.0"
   }
 }

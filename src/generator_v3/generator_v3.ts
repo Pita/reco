@@ -232,6 +232,7 @@ const handleSetOrCharacter = withQuantifier(
         chars,
         ranges,
         complement,
+        backwards: flags.INTERNAL_backwards,
       },
       location: term.loc,
     });
@@ -314,27 +315,36 @@ const handleEndAnchor = (
   });
 };
 
-const handleLookahead = (
-  lookahead: Assertion,
+const handleLookAheadOrBehind = (
+  lookAheadOrBehind: Assertion,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
-  const lookAheadDisjunction = lookahead.value;
-  if (!lookAheadDisjunction) {
-    throw new Error('Lookahead without value');
+  const disjunction = lookAheadOrBehind.value;
+  if (!disjunction) {
+    throw new Error('Lookahead/Lookbehind without value');
   }
+
+  const newFlags: Flags = {
+    ...flags,
+    INTERNAL_backwards: ['Lookbehind', 'NegativeLookbehind'].includes(
+      lookAheadOrBehind.type,
+    ),
+  };
   const lookAheadFiber = handleDisjunction(
-    lookAheadDisjunction,
+    disjunction,
     collector,
     collector.createFinalFiber(),
-    flags,
+    newFlags,
   );
 
-  const negative = lookahead.type === 'NegativeLookahead';
+  const negative = ['NegativeLookahead', 'NegativeLookbehind'].includes(
+    lookAheadOrBehind.type,
+  );
   return collector.addAtom(currentFiber, {
     type: 'lookAhead',
-    location: lookahead.loc,
+    location: lookAheadOrBehind.loc,
     data: {
       lookAheadFiber,
       negative,
@@ -360,10 +370,9 @@ const handleTerm = (
       return handleEndAnchor(term, collector, currentFiber, flags);
     case 'Lookahead':
     case 'NegativeLookahead':
-      return handleLookahead(term, collector, currentFiber, flags);
     case 'Lookbehind':
-    case 'NegativeLookahead':
-      return handleLookahead(term, collector, currentFiber, flags);
+    case 'NegativeLookbehind':
+      return handleLookAheadOrBehind(term, collector, currentFiber, flags);
     default:
       throw new Error(`${term.type} not implemented as a term type yet`);
   }
@@ -376,8 +385,13 @@ const handleAlternative = (
   flags: Flags,
 ): FiberTemplateDefinition => {
   let lastFiber = currentFiber;
-  for (let i = alternative.value.length - 1; i >= 0; i--) {
-    lastFiber = handleTerm(alternative.value[i], collector, lastFiber, flags);
+  let copiedTerms = alternative.value.slice();
+  if (flags.INTERNAL_backwards) {
+    copiedTerms = copiedTerms.reverse();
+  }
+
+  for (let i = copiedTerms.length - 1; i >= 0; i--) {
+    lastFiber = handleTerm(copiedTerms[i], collector, lastFiber, flags);
   }
 
   return lastFiber;
@@ -444,7 +458,6 @@ export const genCode = (
   regexStr: string,
 ): { code: string; templateValues: TemplateValues; pattern: RegExpPattern } => {
   const pattern = new RegExpParser().pattern(regexStr);
-  debugger;
 
   if (pattern.flags.unicode) {
     throw new Error('Does not support unicode yet');

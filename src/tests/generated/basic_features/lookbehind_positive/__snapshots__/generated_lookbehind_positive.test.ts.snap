@@ -1,36 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic_features/lookahead_negative template values are as expected 1`] = `
+exports[`basic_features/lookbehind_positive template values are as expected 1`] = `
 Object {
   "fiberHandlers": Array [
     Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              120,
-            ],
-            "complement": false,
-            "ranges": Array [],
-          },
-          "posLine1": "/x(?!y)/",
-          "posLine2": " ^",
-          "type": "charOrSet",
-        },
-        Object {
-          "data": Object {
             "lookAheadFiber": Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": false,
+                    "backwards": true,
                     "chars": Array [
                       121,
                     ],
                     "complement": false,
                     "ranges": Array [],
                   },
-                  "posLine1": "/x(?!y)/",
+                  "posLine1": "/(?<=y)x/",
                   "posLine2": "     ^",
                   "type": "charOrSet",
                 },
@@ -40,11 +28,23 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": false,
             },
-            "negative": true,
+            "negative": false,
           },
-          "posLine1": "/x(?!y)/",
-          "posLine2": "  ^^^^^",
+          "posLine1": "/(?<=y)x/",
+          "posLine2": " ^^^^^^",
           "type": "lookAhead",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              120,
+            ],
+            "complement": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/(?<=y)x/",
+          "posLine2": "       ^",
+          "type": "charOrSet",
         },
       ],
       "followUp": null,
@@ -56,14 +56,14 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
+            "backwards": true,
             "chars": Array [
               121,
             ],
             "complement": false,
             "ranges": Array [],
           },
-          "posLine1": "/x(?!y)/",
+          "posLine1": "/(?<=y)x/",
           "posLine2": "     ^",
           "type": "charOrSet",
         },
@@ -79,30 +79,18 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "chars": Array [
-            120,
-          ],
-          "complement": false,
-          "ranges": Array [],
-        },
-        "posLine1": "/x(?!y)/",
-        "posLine2": " ^",
-        "type": "charOrSet",
-      },
-      Object {
-        "data": Object {
           "lookAheadFiber": Object {
             "atoms": Array [
               Object {
                 "data": Object {
-                  "backwards": false,
+                  "backwards": true,
                   "chars": Array [
                     121,
                   ],
                   "complement": false,
                   "ranges": Array [],
                 },
-                "posLine1": "/x(?!y)/",
+                "posLine1": "/(?<=y)x/",
                 "posLine2": "     ^",
                 "type": "charOrSet",
               },
@@ -112,11 +100,23 @@ Object {
             "hasCallback": false,
             "lastAtomReturns": false,
           },
-          "negative": true,
+          "negative": false,
         },
-        "posLine1": "/x(?!y)/",
-        "posLine2": "  ^^^^^",
+        "posLine1": "/(?<=y)x/",
+        "posLine2": " ^^^^^^",
         "type": "lookAhead",
+      },
+      Object {
+        "data": Object {
+          "chars": Array [
+            120,
+          ],
+          "complement": false,
+          "ranges": Array [],
+        },
+        "posLine1": "/(?<=y)x/",
+        "posLine2": "       ^",
+        "type": "charOrSet",
       },
     ],
     "followUp": null,
@@ -124,6 +124,6 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": false,
   },
-  "regexStr": "/x(?!y)/",
+  "regexStr": "/(?<=y)x/",
 }
 `;

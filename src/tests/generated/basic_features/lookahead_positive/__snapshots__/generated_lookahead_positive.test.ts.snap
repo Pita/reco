@@ -23,6 +23,7 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
+                    "backwards": false,
                     "chars": Array [
                       121,
                     ],
@@ -55,6 +56,7 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
+            "backwards": false,
             "chars": Array [
               121,
             ],
@@ -93,6 +95,7 @@ Object {
             "atoms": Array [
               Object {
                 "data": Object {
+                  "backwards": false,
                   "chars": Array [
                     121,
                   ],
