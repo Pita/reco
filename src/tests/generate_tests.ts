@@ -31,111 +31,97 @@ configFiles
       regex: string;
       mustPass?: boolean;
     } = JSON.parse(fs.readFileSync(`${configFolder}/${configFile}`, 'utf8'));
-    let passed = true;
+    const testName = configFile.replace(/\.json$/, '');
 
-    try {
-      const testName = configFile.replace(/\.json$/, '');
+    const { code, templateValues, literal, error } = genCode(config.regex);
+    const nativeRegex: RegExp = eval(config.regex);
+    if (nativeRegex.global) {
+      throw new Error("Can't correctly test global regex yet");
+    }
 
-      const { code, templateValues, literal } = genCode(config.regex);
-      const nativeRegex: RegExp = eval(config.regex);
-      if (nativeRegex.global) {
-        throw new Error("Can't correctly test global regex yet");
-      }
-
-      if (config.regex.indexOf('\\W') !== -1) {
-        throw new Error(`Bug in regexp parser ${config.regex}`);
-      }
-
-      if (config.type === 'textSearch') {
-        const newTestInputs = config.testInputs.map((testInput) => {
-          let start = 0;
-          let partlyMatches = [];
-          let result: RegExpExecArray | null;
-          while (
-            (result = nativeRegex.exec(testInput.substr(start))) !== null
-          ) {
-            if (result === null) {
-              break;
-            }
-            const end = start + result.index + result[0].length;
-            partlyMatches.push(testInput.substring(start, end));
-            start = end + 1;
+    if (config.type === 'textSearch') {
+      const newTestInputs = config.testInputs.map((testInput) => {
+        let start = 0;
+        let partlyMatches = [];
+        let result: RegExpExecArray | null;
+        while ((result = nativeRegex.exec(testInput.substr(start))) !== null) {
+          if (result === null) {
+            break;
           }
+          const end = start + result.index + result[0].length;
+          partlyMatches.push(testInput.substring(start, end));
+          start = end + 1;
+        }
 
-          partlyMatches.push(testInput.substr(start));
-          return partlyMatches;
-        });
+        partlyMatches.push(testInput.substr(start));
+        return partlyMatches;
+      });
 
-        config.testInputs = _.flatten(newTestInputs);
+      config.testInputs = _.flatten(newTestInputs);
+    }
+
+    const testInputs = config.testInputs.map((testInput) => {
+      const result = nativeRegex.exec(testInput);
+
+      if (result === null) {
+        return { testInput, isNull: true };
       }
 
-      const testInputs = config.testInputs.map((testInput) => {
-        const result = nativeRegex.exec(testInput);
+      let groups = [];
+      for (let i = 0; i < result.length; i++) {
+        groups.push({
+          isUndefined: result[i] === undefined,
+          value: result[i],
+        });
+      }
 
-        if (result === null) {
-          return { testInput, isNull: true };
-        }
+      return { testInput, isNull: false, index: result.index, groups };
+    });
+    const fileName = `generated_${path.basename(testName)}`;
 
-        let groups = [];
-        for (let i = 0; i < result.length; i++) {
-          groups.push({
-            isUndefined: result[i] === undefined,
-            value: result[i],
-          });
-        }
+    const testCode = template({
+      fileName,
+      testName,
+      testInputs,
+      testRegex: config.regex,
+    });
 
-        return { testInput, isNull: false, index: result.index, groups };
-      });
-      const fileName = `generated_${path.basename(testName)}`;
+    const folderName = `${__dirname}/generated/${testName}`;
 
-      const testCode = template({
-        fileName,
-        testName,
-        testInputs,
-        testRegex: config.regex,
-      });
-
-      const folderName = `${__dirname}/generated/${testName}`;
-
-      mkdirp.sync(folderName);
+    mkdirp.sync(folderName);
+    fs.writeFileSync(
+      `${folderName}/${fileName}_pattern.json`,
+      safeStringify(literal, null, 2),
+      'utf8',
+    );
+    if (code && templateValues) {
       fs.writeFileSync(`${folderName}/${fileName}.ts`, code, 'utf8');
       fs.writeFileSync(
         `${folderName}/${fileName}_templateValues.json`,
         JSON.stringify(templateValues, null, 2),
         'utf8',
       );
-      fs.writeFileSync(
-        `${folderName}/${fileName}_pattern.json`,
-        safeStringify(literal, null, 2),
-        'utf8',
-      );
       fs.writeFileSync(`${folderName}/${fileName}.test.ts`, testCode, 'utf8');
-    } catch (e) {
-      passed = false;
 
-      if (config.mustPass) {
-        if (process.env.RESET) {
-          fs.writeFileSync(
-            `${configFolder}/${configFile}`,
-            JSON.stringify({ ...config, mustPass: false }, null, 2),
-            'utf8',
-          );
-        } else {
-          console.error(
-            `Can't generate previously passing test: ${configFile}`,
-          );
-          throw e;
-        }
+      if (process.env.RESET) {
+        fs.writeFileSync(
+          `${configFolder}/${configFile}`,
+          JSON.stringify({ ...config, mustPass: false }, null, 2),
+          'utf8',
+        );
       } else {
-        console.error(`Skipped: ${configFile}`, e.toString(), e.stack);
+        fs.writeFileSync(
+          `${configFolder}/${configFile}`,
+          JSON.stringify({ ...config, mustPass: true }, null, 2),
+          'utf8',
+        );
       }
-    }
-
-    if (passed) {
-      fs.writeFileSync(
-        `${configFolder}/${configFile}`,
-        JSON.stringify({ ...config, mustPass: true }, null, 2),
-        'utf8',
-      );
+    } else {
+      if (config.mustPass) {
+        throw new Error(
+          `Previously passing test does not pass anymore: ${configFile}`,
+        );
+      }
+      console.error(`Skipped: ${configFile}`, error.toString(), error.stack);
     }
   });

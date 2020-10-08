@@ -268,23 +268,27 @@ const handleDisjunction = (
 export const genCode = (regexStr: string) => {
   //: { code: string; templateValues: TemplateValues; pattern: RegExpPattern } => {
   const literal = new RegExpParser().parseLiteral(regexStr);
+  let templateValues, code, error;
+  try {
+    if (literal.flags.unicode) {
+      throw new Error('Does not support unicode yet');
+    }
+    if (literal.flags.multiline) {
+      throw new Error('Does not support multiline yet');
+    }
 
-  if (literal.flags.unicode) {
-    throw new Error('Does not support unicode yet');
+    const collector = new Collector(regexStr);
+    const mainHandler = handleDisjunction(
+      literal.pattern.alternatives,
+      collector,
+      collector.createFinalFiber(),
+      literal.flags,
+    );
+
+    templateValues = { ...collector.getTemplateValues(), mainHandler };
+    code = genCodeFromTemplate(templateValues);
+  } catch (e) {
+    error = e;
   }
-  if (literal.flags.multiline) {
-    throw new Error('Does not support multiline yet');
-  }
-
-  const collector = new Collector(regexStr);
-  const mainHandler = handleDisjunction(
-    literal.pattern.alternatives,
-    collector,
-    collector.createFinalFiber(),
-    literal.flags,
-  );
-
-  const templateValues = { ...collector.getTemplateValues(), mainHandler };
-  const code = genCodeFromTemplate(templateValues);
-  return { code, templateValues, literal };
+  return { code, templateValues, literal, error };
 };

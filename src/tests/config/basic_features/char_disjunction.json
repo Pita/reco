@@ -9,5 +9,5 @@
     "aabaa",
     "faaå"
   ],
-  "mustPass": false
+  "mustPass": true
 }
