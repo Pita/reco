@@ -18,5 +18,5 @@
     "",
     "\n<a notonmessage=\"nomatch-here\">\n<p>\n  things that are just onfoo=\"bar\" shouldn't match either, outside of a tag\n</p>"
   ],
-  "mustPass": true
+  "mustPass": false
 }

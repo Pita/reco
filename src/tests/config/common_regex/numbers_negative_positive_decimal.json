@@ -11,5 +11,5 @@
     "-100",
     "abcd"
   ],
-  "mustPass": true
+  "mustPass": false
 }

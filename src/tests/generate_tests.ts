@@ -1,11 +1,12 @@
 import * as glob from 'glob';
 import mkdirp from 'mkdirp';
 import * as fs from 'fs';
-import { genCode } from '../generator_v3/generator_v3';
+import { genCode } from '../generator_v4/generator_v4';
 import template from './generate_tests_template';
 import * as rimraf from 'rimraf';
 import * as path from 'path';
 import * as _ from 'lodash';
+const safeStringify = require('fast-safe-stringify');
 
 const configFolder = `${__dirname}/config`;
 
@@ -35,7 +36,7 @@ configFiles
     try {
       const testName = configFile.replace(/\.json$/, '');
 
-      const { code, templateValues, pattern } = genCode(config.regex);
+      const { code, templateValues, literal } = genCode(config.regex);
       const nativeRegex: RegExp = eval(config.regex);
       if (nativeRegex.global) {
         throw new Error("Can't correctly test global regex yet");
@@ -105,7 +106,7 @@ configFiles
       );
       fs.writeFileSync(
         `${folderName}/${fileName}_pattern.json`,
-        JSON.stringify(pattern, null, 2),
+        safeStringify(literal, null, 2),
         'utf8',
       );
       fs.writeFileSync(`${folderName}/${fileName}.test.ts`, testCode, 'utf8');
