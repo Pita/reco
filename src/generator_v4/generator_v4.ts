@@ -137,8 +137,8 @@ const handleSetOrCharacter = (
   flags: Flags,
 ): FiberTemplateDefinition => {
   const chars: number[] = [];
-  const ranges: { from: number; to: number }[] = [];
-  let complement = false;
+  const ranges: { min: number; max: number }[] = [];
+  let negate = false;
 
   // TODO: simplify ranges
 
@@ -148,12 +148,12 @@ const handleSetOrCharacter = (
     );
   };
 
-  const addRange = (range: { from: number; to: number }) => {
-    const from = normalizeUpperLowerCase(range.from, flags.ignoreCase);
-    const to = normalizeUpperLowerCase(range.to, flags.ignoreCase);
+  const addRange = (min: number, max: number) => {
+    const normalizedMin = normalizeUpperLowerCase(min, flags.ignoreCase);
+    const normalizedMax = normalizeUpperLowerCase(max, flags.ignoreCase);
 
-    for (let i = 0; i < from.length; i++) {
-      ranges.push({ from: from[i], to: to[i] });
+    for (let i = 0; i < normalizedMin.length; i++) {
+      ranges.push({ min: normalizedMin[i], max: normalizedMax[i] });
     }
   };
 
@@ -161,6 +161,20 @@ const handleSetOrCharacter = (
     case 'Character':
       addCharacter(element.value);
       break;
+    case 'CharacterClass':
+      negate = element.negate;
+      element.elements.forEach((element) => {
+        switch (element.type) {
+          case 'Character':
+            addCharacter(element.value);
+            break;
+          case 'CharacterClassRange':
+            addRange(element.min.value, element.max.value);
+            break;
+          default:
+            throw new Error(`${element.type} is not supported yet`);
+        }
+      });
     // case 'CharacterSet':
     //   element.
     // break;
@@ -169,7 +183,7 @@ const handleSetOrCharacter = (
   }
 
   // if (term.type === 'Set') {
-  //   complement = term.complement;
+  //   negate = term.negate;
   //   term.value.forEach((value) => {
   //     if (typeof value === 'number') {
   //       addCharacter(value);
@@ -186,7 +200,7 @@ const handleSetOrCharacter = (
     data: {
       chars,
       ranges,
-      complement,
+      negate,
     },
     ast: element,
   });

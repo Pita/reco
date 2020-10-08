@@ -50,9 +50,9 @@ function generatedRegexMatcher(str: string) {
             }
           {{/unless}}
           const charCode{{{@index}}} = str.charCodeAt(i);
-          if({{#unless complement}}!{{/unless}}(
+          if({{#unless negate}}!{{/unless}}(
             {{#each ranges}}
-              (charCode{{{@../index}}} >= {{{from}}} && charCode{{{@../index}}} <= {{{to}}}) ||
+              (charCode{{{@../index}}} >= {{{min}}} && charCode{{{@../index}}} <= {{{max}}}) ||
             {{/each}}
             {{#each chars}}
               charCode{{{@../index}}} === {{{this}}} ||
@@ -283,9 +283,9 @@ export interface BaseTemplateAtom {
 export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
   type: 'charOrSet';
   data: {
-    ranges: { from: number; to: number }[];
+    ranges: { min: number; max: number }[];
     chars: number[];
-    complement: boolean;
+    negate: boolean;
     backwards: boolean;
   };
 }

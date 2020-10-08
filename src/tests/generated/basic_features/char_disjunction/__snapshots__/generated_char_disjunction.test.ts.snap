@@ -10,7 +10,7 @@ Object {
             "chars": Array [
               97,
             ],
-            "complement": false,
+            "negate": false,
             "ranges": Array [],
           },
           "posLine1": "/a|b|f/",
@@ -30,7 +30,7 @@ Object {
             "chars": Array [
               98,
             ],
-            "complement": false,
+            "negate": false,
             "ranges": Array [],
           },
           "posLine1": "/a|b|f/",
@@ -50,7 +50,7 @@ Object {
             "chars": Array [
               102,
             ],
-            "complement": false,
+            "negate": false,
             "ranges": Array [],
           },
           "posLine1": "/a|b|f/",
@@ -75,7 +75,7 @@ Object {
                       "chars": Array [
                         97,
                       ],
-                      "complement": false,
+                      "negate": false,
                       "ranges": Array [],
                     },
                     "posLine1": "/a|b|f/",
@@ -95,7 +95,7 @@ Object {
                       "chars": Array [
                         98,
                       ],
-                      "complement": false,
+                      "negate": false,
                       "ranges": Array [],
                     },
                     "posLine1": "/a|b|f/",
@@ -115,7 +115,7 @@ Object {
                       "chars": Array [
                         102,
                       ],
-                      "complement": false,
+                      "negate": false,
                       "ranges": Array [],
                     },
                     "posLine1": "/a|b|f/",
@@ -154,7 +154,7 @@ Object {
                     "chars": Array [
                       97,
                     ],
-                    "complement": false,
+                    "negate": false,
                     "ranges": Array [],
                   },
                   "posLine1": "/a|b|f/",
@@ -174,7 +174,7 @@ Object {
                     "chars": Array [
                       98,
                     ],
-                    "complement": false,
+                    "negate": false,
                     "ranges": Array [],
                   },
                   "posLine1": "/a|b|f/",
@@ -194,7 +194,7 @@ Object {
                     "chars": Array [
                       102,
                     ],
-                    "complement": false,
+                    "negate": false,
                     "ranges": Array [],
                   },
                   "posLine1": "/a|b|f/",

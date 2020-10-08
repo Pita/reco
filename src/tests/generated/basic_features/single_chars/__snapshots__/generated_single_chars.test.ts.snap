@@ -10,7 +10,7 @@ Object {
             "chars": Array [
               100,
             ],
-            "complement": false,
+            "negate": false,
             "ranges": Array [],
           },
           "posLine1": "/def/",
@@ -22,7 +22,7 @@ Object {
             "chars": Array [
               101,
             ],
-            "complement": false,
+            "negate": false,
             "ranges": Array [],
           },
           "posLine1": "/def/",
@@ -34,7 +34,7 @@ Object {
             "chars": Array [
               102,
             ],
-            "complement": false,
+            "negate": false,
             "ranges": Array [],
           },
           "posLine1": "/def/",
@@ -56,7 +56,7 @@ Object {
           "chars": Array [
             100,
           ],
-          "complement": false,
+          "negate": false,
           "ranges": Array [],
         },
         "posLine1": "/def/",
@@ -68,7 +68,7 @@ Object {
           "chars": Array [
             101,
           ],
-          "complement": false,
+          "negate": false,
           "ranges": Array [],
         },
         "posLine1": "/def/",
@@ -80,7 +80,7 @@ Object {
           "chars": Array [
             102,
           ],
-          "complement": false,
+          "negate": false,
           "ranges": Array [],
         },
         "posLine1": "/def/",
