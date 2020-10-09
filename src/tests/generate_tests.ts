@@ -25,12 +25,20 @@ configFiles
     return configFile.indexOf(filter) !== -1;
   })
   .forEach((configFile) => {
-    const config: {
+    let config: {
       type: string;
       testInputs: string[];
       regex: string;
       mustPass?: boolean;
-    } = JSON.parse(fs.readFileSync(`${configFolder}/${configFile}`, 'utf8'));
+    };
+    try {
+      config = JSON.parse(
+        fs.readFileSync(`${configFolder}/${configFile}`, 'utf8'),
+      );
+    } catch (e) {
+      console.error(`Error parsing ${configFolder}/${configFile}`, e.message);
+      throw e;
+    }
     const testName = configFile.replace(/\.json$/, '');
 
     const { code, templateValues, literal, error } = genCode(config.regex);

@@ -1,0 +1,15 @@
+{
+  "regex": "/./",
+  "type": "groupMatch",
+  "testInputs": [
+    "a",
+    "b",
+    "D",
+    "\n",
+    "?",
+    "\r",
+    " ",
+    " "
+  ],
+  "mustPass": true
+}

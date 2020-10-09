@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_sets_ignoreCase template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "negate": false,
+            "ranges": Array [
+              Object {
+                "max": 122,
+                "min": 97,
+              },
+              Object {
+                "max": 90,
+                "min": 65,
+              },
+            ],
+          },
+          "posLine1": "/[a-z]/i",
+          "posLine2": " ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+    },
+  ],
+  "groupsCount": 1,
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "chars": Array [],
+          "negate": false,
+          "ranges": Array [
+            Object {
+              "max": 122,
+              "min": 97,
+            },
+            Object {
+              "max": 90,
+              "min": 65,
+            },
+          ],
+        },
+        "posLine1": "/[a-z]/i",
+        "posLine2": " ^^^^^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+    "hasCallback": false,
+    "lastAtomReturns": false,
+  },
+  "regexStr": "/[a-z]/i",
+}
+`;

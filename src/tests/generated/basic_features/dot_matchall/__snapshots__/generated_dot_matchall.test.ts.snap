@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/dot_matchall template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [],
+            "negate": true,
+            "ranges": Array [],
+          },
+          "posLine1": "/.x/s",
+          "posLine2": " ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "chars": Array [
+              120,
+            ],
+            "negate": false,
+            "ranges": Array [],
+          },
+          "posLine1": "/.x/s",
+          "posLine2": "  ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+    },
+  ],
+  "groupsCount": 1,
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "chars": Array [],
+          "negate": true,
+          "ranges": Array [],
+        },
+        "posLine1": "/.x/s",
+        "posLine2": " ^",
+        "type": "charOrSet",
+      },
+      Object {
+        "data": Object {
+          "chars": Array [
+            120,
+          ],
+          "negate": false,
+          "ranges": Array [],
+        },
+        "posLine1": "/.x/s",
+        "posLine2": "  ^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+    "hasCallback": false,
+    "lastAtomReturns": false,
+  },
+  "regexStr": "/.x/s",
+}
+`;

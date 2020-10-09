@@ -1,5 +1,6 @@
 {
   "regex": "/.x/s",
   "type": "groupMatch",
-  "testInputs": ["\nx", "bx", "x"]
+  "testInputs": ["\nx", "bx", "x"],
+  "mustPass": true
 }

@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_class_word_negated template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "chars": Array [
+              95,
+            ],
+            "negate": true,
+            "ranges": Array [
+              Object {
+                "max": 122,
+                "min": 97,
+              },
+              Object {
+                "max": 90,
+                "min": 65,
+              },
+              Object {
+                "max": 57,
+                "min": 48,
+              },
+            ],
+          },
+          "posLine1": "/\\\\W/",
+          "posLine2": " ^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+    },
+  ],
+  "groupsCount": 1,
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "chars": Array [
+            95,
+          ],
+          "negate": true,
+          "ranges": Array [
+            Object {
+              "max": 122,
+              "min": 97,
+            },
+            Object {
+              "max": 90,
+              "min": 65,
+            },
+            Object {
+              "max": 57,
+              "min": 48,
+            },
+          ],
+        },
+        "posLine1": "/\\\\W/",
+        "posLine2": " ^^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+    "hasCallback": false,
+    "lastAtomReturns": false,
+  },
+  "regexStr": "/\\\\W/",
+}
+`;

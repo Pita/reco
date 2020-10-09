@@ -124,6 +124,10 @@ class Collector {
   }
 }
 
+function cc(char: string) {
+  return char.charCodeAt(0);
+}
+
 // const handleSetOrCharacter = withQuantifier(
 const handleSetOrCharacter = (
   element:
@@ -157,6 +161,68 @@ const handleSetOrCharacter = (
     }
   };
 
+  const addCharacterSet = (
+    set:
+      | AST.EscapeCharacterSet
+      | AST.UnicodePropertyCharacterSet
+      | AST.AnyCharacterSet,
+  ) => {
+    switch (set.kind) {
+      case 'any':
+        negate = true;
+        if (!flags.dotAll) {
+          addCharacter(cc('\n'));
+          addCharacter(cc('\r'));
+          addCharacter(cc('\u2028'));
+          addCharacter(cc('\u2029'));
+        }
+        break;
+      case 'digit':
+        negate = set.negate;
+        addRange(cc('0'), cc('9'));
+        break;
+      case 'space':
+        negate = set.negate;
+        addCharacter(cc(' '));
+        addCharacter(cc('\f'));
+        addCharacter(cc('\n'));
+        addCharacter(cc('\r'));
+        addCharacter(cc('\t'));
+        addCharacter(cc('\v'));
+        addCharacter(cc('\t'));
+        addCharacter(cc('\u00a0'));
+        addCharacter(cc('\u1680'));
+        addCharacter(cc('\u2000'));
+        addCharacter(cc('\u2001'));
+        addCharacter(cc('\u2002'));
+        addCharacter(cc('\u2003'));
+        addCharacter(cc('\u2004'));
+        addCharacter(cc('\u2005'));
+        addCharacter(cc('\u2006'));
+        addCharacter(cc('\u2007'));
+        addCharacter(cc('\u2008'));
+        addCharacter(cc('\u2009'));
+        addCharacter(cc('\u200a'));
+        addCharacter(cc('\u2028'));
+        addCharacter(cc('\u2029'));
+        addCharacter(cc('\u202f'));
+        addCharacter(cc('\u205f'));
+        addCharacter(cc('\u3000'));
+        addCharacter(cc('\ufeff'));
+        break;
+      case 'word':
+        negate = set.negate;
+        addRange(cc('a'), cc('z'));
+        addRange(cc('A'), cc('Z'));
+        addRange(cc('0'), cc('9'));
+        addCharacter(cc('_'));
+        break;
+      case 'property':
+        negate = set.negate;
+        throw new Error('CharacterSet with property not supported yet');
+    }
+  };
+
   switch (element.type) {
     case 'Character':
       addCharacter(element.value);
@@ -171,29 +237,16 @@ const handleSetOrCharacter = (
           case 'CharacterClassRange':
             addRange(element.min.value, element.max.value);
             break;
-          default:
-            throw new Error(`${element.type} is not supported yet`);
+          case 'CharacterSet':
+            addCharacterSet(element);
+            break;
         }
       });
-    // case 'CharacterSet':
-    //   element.
-    // break;
-    default:
-      throw new Error(`Unsupported char type: ${element.type}`);
+      break;
+    case 'CharacterSet':
+      addCharacterSet(element);
+      break;
   }
-
-  // if (term.type === 'Set') {
-  //   negate = term.negate;
-  //   term.value.forEach((value) => {
-  //     if (typeof value === 'number') {
-  //       addCharacter(value);
-  //     } else {
-  //       addRange(value);
-  //     }
-  //   });
-  // } else {
-  //   addCharacter(term.value);
-  // }
 
   return collector.addAtom(currentFiber, {
     type: 'charOrSet',
