@@ -3,13 +3,21 @@
   "type": "textSearch",
   "testInputs": [
     "<h2 class=\"offscreen\">",
+    "",
     "ebontwikkeling leren</h2>",
+    "",
     "<h1>",
+    "",
     "egular Expressions</h1>",
+    "",
     "<p>",
+    "",
     "Alle onderdelen van MDN (documenten en de website zelf) worden gemaakt door een open gemeenschap.\"</p>",
+    "",
     "<a href=\"/nl/docs/MDN/Getting_started\">",
+    "",
     "an de slag</a>",
+    "",
     "<bed el = ekf\"eee>"
   ],
   "mustPass": true

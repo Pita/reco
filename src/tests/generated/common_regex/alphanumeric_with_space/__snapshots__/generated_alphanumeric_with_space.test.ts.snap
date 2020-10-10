@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common_regex/alphanumeric_with_space template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^[a-zA-Z0-9 ]*$/",
+          "posLine2": "               ^",
+          "type": "endAnchor",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 57,
+                "type": "lessOrEqual",
+              },
+              "comparisonFalse": Object {
+                "comparison": Object {
+                  "comparisonValue": 90,
+                  "type": "lessOrEqual",
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue": 122,
+                    "type": "lessOrEqual",
+                  },
+                  "comparisonTrue": Object {
+                    "comparison": Object {
+                      "comparisonValue": 97,
+                      "type": "moreOrEqual",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "type": "comparison",
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 65,
+                    "type": "moreOrEqual",
+                  },
+                  "type": "lastComparison",
+                },
+                "type": "comparison",
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 32,
+                  "type": "equal",
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue": 48,
+                    "type": "moreOrEqual",
+                  },
+                  "type": "lastComparison",
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "type": "true",
+                  },
+                  "type": "lastComparison",
+                },
+                "type": "comparison",
+              },
+              "type": "comparison",
+            },
+          },
+          "posLine1": "/^[a-zA-Z0-9 ]*$/",
+          "posLine2": "  ^^^^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+      },
+      "functionName": "fiber0002",
+      "hasCallback": true,
+      "lastAtomReturns": false,
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^[a-zA-Z0-9 ]*$/",
+          "posLine2": " ^",
+          "type": "startAnchor",
+        },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {},
+                  "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                  "posLine2": "               ^",
+                  "type": "endAnchor",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0001",
+              "hasCallback": false,
+              "lastAtomReturns": false,
+            },
+            "maxOrMinCount": false,
+            "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 57,
+                        "type": "lessOrEqual",
+                      },
+                      "comparisonFalse": Object {
+                        "comparison": Object {
+                          "comparisonValue": 90,
+                          "type": "lessOrEqual",
+                        },
+                        "comparisonFalse": Object {
+                          "comparison": Object {
+                            "comparisonValue": 122,
+                            "type": "lessOrEqual",
+                          },
+                          "comparisonTrue": Object {
+                            "comparison": Object {
+                              "comparisonValue": 97,
+                              "type": "moreOrEqual",
+                            },
+                            "type": "lastComparison",
+                          },
+                          "type": "comparison",
+                        },
+                        "comparisonTrue": Object {
+                          "comparison": Object {
+                            "comparisonValue": 65,
+                            "type": "moreOrEqual",
+                          },
+                          "type": "lastComparison",
+                        },
+                        "type": "comparison",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "comparisonValue": 32,
+                          "type": "equal",
+                        },
+                        "comparisonFalse": Object {
+                          "comparison": Object {
+                            "comparisonValue": 48,
+                            "type": "moreOrEqual",
+                          },
+                          "type": "lastComparison",
+                        },
+                        "comparisonTrue": Object {
+                          "comparison": Object {
+                            "type": "true",
+                          },
+                          "type": "lastComparison",
+                        },
+                        "type": "comparison",
+                      },
+                      "type": "comparison",
+                    },
+                  },
+                  "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                  "posLine2": "  ^^^^^^^^^^^^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "functionName": "callback",
+              },
+              "functionName": "fiber0002",
+              "hasCallback": true,
+              "lastAtomReturns": false,
+            },
+          },
+          "posLine1": "/^[a-zA-Z0-9 ]*$/",
+          "posLine2": "  ^^^^^^^^^^^^^",
+          "type": "greedyQuantifier",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0003",
+      "hasCallback": false,
+      "lastAtomReturns": true,
+    },
+  ],
+  "groupsCount": 1,
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {},
+        "posLine1": "/^[a-zA-Z0-9 ]*$/",
+        "posLine2": " ^",
+        "type": "startAnchor",
+      },
+      Object {
+        "data": Object {
+          "followUp": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {},
+                "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                "posLine2": "               ^",
+                "type": "endAnchor",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0001",
+            "hasCallback": false,
+            "lastAtomReturns": false,
+          },
+          "maxOrMinCount": false,
+          "wrappedHandler": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 57,
+                      "type": "lessOrEqual",
+                    },
+                    "comparisonFalse": Object {
+                      "comparison": Object {
+                        "comparisonValue": 90,
+                        "type": "lessOrEqual",
+                      },
+                      "comparisonFalse": Object {
+                        "comparison": Object {
+                          "comparisonValue": 122,
+                          "type": "lessOrEqual",
+                        },
+                        "comparisonTrue": Object {
+                          "comparison": Object {
+                            "comparisonValue": 97,
+                            "type": "moreOrEqual",
+                          },
+                          "type": "lastComparison",
+                        },
+                        "type": "comparison",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "comparisonValue": 65,
+                          "type": "moreOrEqual",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "type": "comparison",
+                    },
+                    "comparisonTrue": Object {
+                      "comparison": Object {
+                        "comparisonValue": 32,
+                        "type": "equal",
+                      },
+                      "comparisonFalse": Object {
+                        "comparison": Object {
+                          "comparisonValue": 48,
+                          "type": "moreOrEqual",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "type": "true",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "type": "comparison",
+                    },
+                    "type": "comparison",
+                  },
+                },
+                "posLine1": "/^[a-zA-Z0-9 ]*$/",
+                "posLine2": "  ^^^^^^^^^^^^",
+                "type": "charOrSet",
+              },
+            ],
+            "followUp": Object {
+              "functionName": "callback",
+            },
+            "functionName": "fiber0002",
+            "hasCallback": true,
+            "lastAtomReturns": false,
+          },
+        },
+        "posLine1": "/^[a-zA-Z0-9 ]*$/",
+        "posLine2": "  ^^^^^^^^^^^^^",
+        "type": "greedyQuantifier",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0003",
+    "hasCallback": false,
+    "lastAtomReturns": true,
+  },
+  "regexStr": "/^[a-zA-Z0-9 ]*$/",
+}
+`;

@@ -6,5 +6,5 @@
     "dedef",
     "de\ndef\nh"
   ],
-  "mustPass": false
+  "mustPass": true
 }

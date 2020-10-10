@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/start_anchor template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {},
+          "posLine1": "/^def/",
+          "posLine2": " ^",
+          "type": "startAnchor",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 100,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+          },
+          "posLine1": "/^def/",
+          "posLine2": "  ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 101,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+          },
+          "posLine1": "/^def/",
+          "posLine2": "   ^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 102,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+          },
+          "posLine1": "/^def/",
+          "posLine2": "    ^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+    },
+  ],
+  "groupsCount": 1,
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {},
+        "posLine1": "/^def/",
+        "posLine2": " ^",
+        "type": "startAnchor",
+      },
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 100,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+        },
+        "posLine1": "/^def/",
+        "posLine2": "  ^",
+        "type": "charOrSet",
+      },
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 101,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+        },
+        "posLine1": "/^def/",
+        "posLine2": "   ^",
+        "type": "charOrSet",
+      },
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 102,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+        },
+        "posLine1": "/^def/",
+        "posLine2": "    ^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+    "hasCallback": false,
+    "lastAtomReturns": false,
+  },
+  "regexStr": "/^def/",
+}
+`;

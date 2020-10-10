@@ -5,6 +5,7 @@ import { handleSetOrCharacter } from './Character';
 import { Flags } from '../generator_v4';
 import { handleDisjunction } from './Disjunction';
 import { handleQuantifier } from './Quantifier';
+import { handleAssertion } from './Assertion';
 
 export const handleElement = (
   element: AST.Element,
@@ -26,6 +27,8 @@ export const handleElement = (
       );
     case 'Quantifier':
       return handleQuantifier(element, collector, currentFiber, flags);
+    case 'Assertion':
+      return handleAssertion(element, collector, currentFiber, flags);
     // case 'StartAnchor':
     //   return handleStartAnchor(element, collector, currentFiber, flags);
     // case 'EndAnchor':
