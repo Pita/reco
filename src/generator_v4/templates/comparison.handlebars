@@ -1,0 +1,17 @@
+{{#with comparison}}
+  {{#if isTrue}}
+    true
+  {{/if}}
+  {{#if equalOneOfTwo}}
+    charCode{{{../atomIndex}}} === {{{comparisonValue1}}} || charCode{{{../atomIndex}}} === {{{comparisonValue2}}}
+  {{/if}}
+  {{#if equal}}
+    charCode{{{../atomIndex}}} === {{{comparisonValue}}}
+  {{/if}}
+  {{#if lessOrEqual}}
+    charCode{{{../atomIndex}}} <= {{{comparisonValue}}}
+  {{/if}}
+  {{#if moreOrEqual}}
+    charCode{{{../atomIndex}}} >= {{{comparisonValue}}}
+  {{/if}}
+{{/with}}

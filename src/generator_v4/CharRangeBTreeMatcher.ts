@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
-import { LeafTemplate } from './generator_v4_ts_template';
+import { LeafTemplate } from './templates/leaf';
 
 interface Leaf {
   min: number;
