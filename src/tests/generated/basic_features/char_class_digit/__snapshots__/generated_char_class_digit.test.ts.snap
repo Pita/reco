@@ -7,14 +7,21 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [],
             "negate": false,
-            "ranges": Array [
-              Object {
-                "max": 57,
-                "min": 48,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 57,
+                "lessOrEqual": true,
               },
-            ],
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 48,
+                  "moreOrEqual": true,
+                },
+                "lastComparison": true,
+              },
+              "lastComparison": false,
+            },
           },
           "posLine1": "/\\\\d/",
           "posLine2": " ^^",
@@ -32,14 +39,21 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "chars": Array [],
           "negate": false,
-          "ranges": Array [
-            Object {
-              "max": 57,
-              "min": 48,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 57,
+              "lessOrEqual": true,
             },
-          ],
+            "comparisonTrue": Object {
+              "comparison": Object {
+                "comparisonValue": 48,
+                "moreOrEqual": true,
+              },
+              "lastComparison": true,
+            },
+            "lastComparison": false,
+          },
         },
         "posLine1": "/\\\\d/",
         "posLine2": " ^^",

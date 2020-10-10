@@ -7,11 +7,14 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              100,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 100,
+                "equal": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/def/",
           "posLine2": " ^",
@@ -19,11 +22,14 @@ Object {
         },
         Object {
           "data": Object {
-            "chars": Array [
-              101,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 101,
+                "equal": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/def/",
           "posLine2": "  ^",
@@ -31,11 +37,14 @@ Object {
         },
         Object {
           "data": Object {
-            "chars": Array [
-              102,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 102,
+                "equal": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/def/",
           "posLine2": "   ^",
@@ -53,11 +62,14 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "chars": Array [
-            100,
-          ],
           "negate": false,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 100,
+              "equal": true,
+            },
+            "lastComparison": true,
+          },
         },
         "posLine1": "/def/",
         "posLine2": " ^",
@@ -65,11 +77,14 @@ Object {
       },
       Object {
         "data": Object {
-          "chars": Array [
-            101,
-          ],
           "negate": false,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 101,
+              "equal": true,
+            },
+            "lastComparison": true,
+          },
         },
         "posLine1": "/def/",
         "posLine2": "  ^",
@@ -77,11 +92,14 @@ Object {
       },
       Object {
         "data": Object {
-          "chars": Array [
-            102,
-          ],
           "negate": false,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 102,
+              "equal": true,
+            },
+            "lastComparison": true,
+          },
         },
         "posLine1": "/def/",
         "posLine2": "   ^",

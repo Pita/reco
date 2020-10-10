@@ -1,77 +1,6 @@
-import * as Handlebars from 'handlebars';
 import * as _ from 'lodash';
-const prettier = require('prettier');
-
-const comparisonTemplate = `
-{{#with comparison}}
-  {{#if isTrue}}
-    true
-  {{/if}}
-  {{#if equalOneOfTwo}}
-    char === {{{comparisonValue1}}} || char === {{{comparisonValue2}}}
-  {{/if}}
-  {{#if equal}}
-    char === {{{comparisonValue}}}
-  {{/if}}
-  {{#if lessOrEqual}}
-    char <= {{{comparisonValue}}}
-  {{/if}}
-  {{#if moreOrEqual}}
-    char >= {{{comparisonValue}}}
-  {{/if}}
-{{/with}}
-`;
-Handlebars.registerPartial('comparison', comparisonTemplate);
-
-Handlebars.registerHelper('log', function (this: any, value) {
-  console.log('templateLog', this);
-});
-
-const leafTemplate = `
-  {{#if lastComparison}}
-    result = {{>comparison}}
-  {{/if}}
-  {{#unless lastComparison}}
-    if ({{>comparison}}) {
-      {{>leaf comparisonTrue}}
-    }
-    {{#if comparisonFalse}}
-      else {
-        {{>leaf comparisonFalse}}
-      }
-    {{/if}}
-  {{/unless}}
-`;
-Handlebars.registerPartial('leaf', leafTemplate);
-
-const template = `
-  let result = false;
-
-  {{> leaf tree}}
-`;
-
-// TODO: fix type
-interface ComparsionValues {
-  lessOrEqual?: boolean;
-  moreOrEqual?: boolean;
-  equal?: boolean;
-  equalOneOfTwo?: boolean;
-  isTrue?: boolean;
-  comparisonValue?: number;
-  comparisonValue1?: number;
-  comparisonValue2?: number;
-}
-
-interface LeafValues {
-  lastComparison: boolean;
-  comparison: ComparsionValues;
-  comparisonTrue?: LeafValues;
-  comparisonFalse?: LeafValues;
-}
-
-function cc(char: string) {
-  return char.charCodeAt(0);
-}
+import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
+import { LeafTemplate } from './generator_v4_ts_template';
 
 interface Leaf {
   min: number;
@@ -79,20 +8,27 @@ interface Leaf {
   maxChecked?: boolean;
 }
 
-class CharRangeBTreeMatcher {
+export class CharRangeBTreeMatcher {
   private chars: number[] = [];
+  private ignoreCase: boolean;
+
+  constructor(ignoreCase: boolean) {
+    this.ignoreCase = ignoreCase;
+  }
 
   addChar(char: number) {
-    this.chars.push(char);
+    normalizeUpperLowerCase(char, this.ignoreCase).forEach((char) =>
+      this.chars.push(char),
+    );
   }
 
   addRange(min: number, max: number) {
     for (let char = min; char <= max; char++) {
-      this.chars.push(char);
+      this.addChar(char);
     }
   }
 
-  private processLeafs(leafs: Leaf[]): LeafValues | undefined {
+  private processLeafs(leafs: Leaf[]): LeafTemplate | undefined {
     if (leafs.length === 0) {
       return undefined;
     }
@@ -162,7 +98,7 @@ class CharRangeBTreeMatcher {
     };
   }
 
-  toLeafValues() {
+  toLeafValues(): LeafTemplate | undefined {
     const sortedChars = _.sortedUniq(_.sortBy(this.chars));
     const leafs: Leaf[] = [];
 
@@ -186,20 +122,15 @@ class CharRangeBTreeMatcher {
       }
     }
 
+    if (leafs.length === 0) {
+      // no op
+      return {
+        noop: true,
+        lastComparison: true,
+        comparison: {},
+      };
+    }
+
     return this.processLeafs(leafs);
   }
 }
-
-const bTree = new CharRangeBTreeMatcher();
-bTree.addChar(cc('_'));
-// bTree.addRange(cc('a'), cc('z'));
-// bTree.addRange(cc('A'), cc('Z'));
-bTree.addRange(cc('0'), cc('9'));
-
-const values = bTree.toLeafValues();
-const compiled = Handlebars.compile(template);
-const code = prettier.format(compiled({ tree: values }), {
-  semi: true,
-  parser: 'babel-ts',
-});
-console.log(code);

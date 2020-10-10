@@ -125,11 +125,11 @@ configFiles
         );
       }
     } else {
+      console.error(`Skipped: ${configFile}`, error.toString(), error.stack);
       if (config.mustPass) {
         throw new Error(
           `Previously passing test does not pass anymore: ${configFile}`,
         );
       }
-      console.error(`Skipped: ${configFile}`, error.toString(), error.stack);
     }
   });

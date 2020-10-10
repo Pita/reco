@@ -7,14 +7,36 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              10,
-              13,
-              8232,
-              8233,
-            ],
             "negate": true,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 13,
+                "lessOrEqual": true,
+              },
+              "comparisonFalse": Object {
+                "comparison": Object {
+                  "comparisonValue": 8233,
+                  "lessOrEqual": true,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 8232,
+                    "moreOrEqual": true,
+                  },
+                  "lastComparison": true,
+                },
+                "lastComparison": false,
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue1": 10,
+                  "comparisonValue2": 13,
+                  "equalOneOfTwo": true,
+                },
+                "lastComparison": true,
+              },
+              "lastComparison": false,
+            },
           },
           "posLine1": "/./",
           "posLine2": " ^",
@@ -32,14 +54,36 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "chars": Array [
-            10,
-            13,
-            8232,
-            8233,
-          ],
           "negate": true,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 13,
+              "lessOrEqual": true,
+            },
+            "comparisonFalse": Object {
+              "comparison": Object {
+                "comparisonValue": 8233,
+                "lessOrEqual": true,
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 8232,
+                  "moreOrEqual": true,
+                },
+                "lastComparison": true,
+              },
+              "lastComparison": false,
+            },
+            "comparisonTrue": Object {
+              "comparison": Object {
+                "comparisonValue1": 10,
+                "comparisonValue2": 13,
+                "equalOneOfTwo": true,
+              },
+              "lastComparison": true,
+            },
+            "lastComparison": false,
+          },
         },
         "posLine1": "/./",
         "posLine2": " ^",

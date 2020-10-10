@@ -7,11 +7,14 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              97,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 97,
+                "equal": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/a|b|f/",
           "posLine2": " ^",
@@ -27,11 +30,14 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              98,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 98,
+                "equal": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/a|b|f/",
           "posLine2": "   ^",
@@ -47,11 +53,14 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              102,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 102,
+                "equal": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/a|b|f/",
           "posLine2": "     ^",
@@ -72,11 +81,14 @@ Object {
                 "atoms": Array [
                   Object {
                     "data": Object {
-                      "chars": Array [
-                        97,
-                      ],
                       "negate": false,
-                      "ranges": Array [],
+                      "tree": Object {
+                        "comparison": Object {
+                          "comparisonValue": 97,
+                          "equal": true,
+                        },
+                        "lastComparison": true,
+                      },
                     },
                     "posLine1": "/a|b|f/",
                     "posLine2": " ^",
@@ -92,11 +104,14 @@ Object {
                 "atoms": Array [
                   Object {
                     "data": Object {
-                      "chars": Array [
-                        98,
-                      ],
                       "negate": false,
-                      "ranges": Array [],
+                      "tree": Object {
+                        "comparison": Object {
+                          "comparisonValue": 98,
+                          "equal": true,
+                        },
+                        "lastComparison": true,
+                      },
                     },
                     "posLine1": "/a|b|f/",
                     "posLine2": "   ^",
@@ -112,11 +127,14 @@ Object {
                 "atoms": Array [
                   Object {
                     "data": Object {
-                      "chars": Array [
-                        102,
-                      ],
                       "negate": false,
-                      "ranges": Array [],
+                      "tree": Object {
+                        "comparison": Object {
+                          "comparisonValue": 102,
+                          "equal": true,
+                        },
+                        "lastComparison": true,
+                      },
                     },
                     "posLine1": "/a|b|f/",
                     "posLine2": "     ^",
@@ -151,11 +169,14 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "chars": Array [
-                      97,
-                    ],
                     "negate": false,
-                    "ranges": Array [],
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 97,
+                        "equal": true,
+                      },
+                      "lastComparison": true,
+                    },
                   },
                   "posLine1": "/a|b|f/",
                   "posLine2": " ^",
@@ -171,11 +192,14 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "chars": Array [
-                      98,
-                    ],
                     "negate": false,
-                    "ranges": Array [],
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 98,
+                        "equal": true,
+                      },
+                      "lastComparison": true,
+                    },
                   },
                   "posLine1": "/a|b|f/",
                   "posLine2": "   ^",
@@ -191,11 +215,14 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "chars": Array [
-                      102,
-                    ],
                     "negate": false,
-                    "ranges": Array [],
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 102,
+                        "equal": true,
+                      },
+                      "lastComparison": true,
+                    },
                   },
                   "posLine1": "/a|b|f/",
                   "posLine2": "     ^",

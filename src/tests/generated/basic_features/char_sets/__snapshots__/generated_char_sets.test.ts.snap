@@ -7,22 +7,49 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [],
             "negate": false,
-            "ranges": Array [
-              Object {
-                "max": 122,
-                "min": 97,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 90,
+                "lessOrEqual": true,
               },
-              Object {
-                "max": 90,
-                "min": 65,
+              "comparisonFalse": Object {
+                "comparison": Object {
+                  "comparisonValue": 122,
+                  "lessOrEqual": true,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 97,
+                    "moreOrEqual": true,
+                  },
+                  "lastComparison": true,
+                },
+                "lastComparison": false,
               },
-              Object {
-                "max": 57,
-                "min": 48,
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 57,
+                  "lessOrEqual": true,
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue": 65,
+                    "moreOrEqual": true,
+                  },
+                  "lastComparison": true,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 48,
+                    "moreOrEqual": true,
+                  },
+                  "lastComparison": true,
+                },
+                "lastComparison": false,
               },
-            ],
+              "lastComparison": false,
+            },
           },
           "posLine1": "/[a-zA-Z0-9]/",
           "posLine2": " ^^^^^^^^^^^",
@@ -40,22 +67,49 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "chars": Array [],
           "negate": false,
-          "ranges": Array [
-            Object {
-              "max": 122,
-              "min": 97,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 90,
+              "lessOrEqual": true,
             },
-            Object {
-              "max": 90,
-              "min": 65,
+            "comparisonFalse": Object {
+              "comparison": Object {
+                "comparisonValue": 122,
+                "lessOrEqual": true,
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 97,
+                  "moreOrEqual": true,
+                },
+                "lastComparison": true,
+              },
+              "lastComparison": false,
             },
-            Object {
-              "max": 57,
-              "min": 48,
+            "comparisonTrue": Object {
+              "comparison": Object {
+                "comparisonValue": 57,
+                "lessOrEqual": true,
+              },
+              "comparisonFalse": Object {
+                "comparison": Object {
+                  "comparisonValue": 65,
+                  "moreOrEqual": true,
+                },
+                "lastComparison": true,
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 48,
+                  "moreOrEqual": true,
+                },
+                "lastComparison": true,
+              },
+              "lastComparison": false,
             },
-          ],
+            "lastComparison": false,
+          },
         },
         "posLine1": "/[a-zA-Z0-9]/",
         "posLine2": " ^^^^^^^^^^^",

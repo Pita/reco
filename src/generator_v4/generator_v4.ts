@@ -6,8 +6,8 @@ import {
   TemplateAtom,
   FollowUp,
 } from './generator_v4_ts_template';
-import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 import * as _ from 'lodash';
+import { CharRangeBTreeMatcher } from './CharRangeBTreeMatcher';
 
 type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   ast: AST.Node;
@@ -140,26 +140,8 @@ const handleSetOrCharacter = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
-  const chars: number[] = [];
-  const ranges: { min: number; max: number }[] = [];
+  const bTreeMatcher = new CharRangeBTreeMatcher(flags.ignoreCase);
   let negate = false;
-
-  // TODO: simplify ranges
-
-  const addCharacter = (char: number) => {
-    normalizeUpperLowerCase(char, flags.ignoreCase).forEach((char) =>
-      chars.push(char),
-    );
-  };
-
-  const addRange = (min: number, max: number) => {
-    const normalizedMin = normalizeUpperLowerCase(min, flags.ignoreCase);
-    const normalizedMax = normalizeUpperLowerCase(max, flags.ignoreCase);
-
-    for (let i = 0; i < normalizedMin.length; i++) {
-      ranges.push({ min: normalizedMin[i], max: normalizedMax[i] });
-    }
-  };
 
   const addCharacterSet = (
     set:
@@ -171,51 +153,51 @@ const handleSetOrCharacter = (
       case 'any':
         negate = true;
         if (!flags.dotAll) {
-          addCharacter(cc('\n'));
-          addCharacter(cc('\r'));
-          addCharacter(cc('\u2028'));
-          addCharacter(cc('\u2029'));
+          bTreeMatcher.addChar(cc('\n'));
+          bTreeMatcher.addChar(cc('\r'));
+          bTreeMatcher.addChar(cc('\u2028'));
+          bTreeMatcher.addChar(cc('\u2029'));
         }
         break;
       case 'digit':
         negate = set.negate;
-        addRange(cc('0'), cc('9'));
+        bTreeMatcher.addRange(cc('0'), cc('9'));
         break;
       case 'space':
         negate = set.negate;
-        addCharacter(cc(' '));
-        addCharacter(cc('\f'));
-        addCharacter(cc('\n'));
-        addCharacter(cc('\r'));
-        addCharacter(cc('\t'));
-        addCharacter(cc('\v'));
-        addCharacter(cc('\t'));
-        addCharacter(cc('\u00a0'));
-        addCharacter(cc('\u1680'));
-        addCharacter(cc('\u2000'));
-        addCharacter(cc('\u2001'));
-        addCharacter(cc('\u2002'));
-        addCharacter(cc('\u2003'));
-        addCharacter(cc('\u2004'));
-        addCharacter(cc('\u2005'));
-        addCharacter(cc('\u2006'));
-        addCharacter(cc('\u2007'));
-        addCharacter(cc('\u2008'));
-        addCharacter(cc('\u2009'));
-        addCharacter(cc('\u200a'));
-        addCharacter(cc('\u2028'));
-        addCharacter(cc('\u2029'));
-        addCharacter(cc('\u202f'));
-        addCharacter(cc('\u205f'));
-        addCharacter(cc('\u3000'));
-        addCharacter(cc('\ufeff'));
+        bTreeMatcher.addChar(cc(' '));
+        bTreeMatcher.addChar(cc('\f'));
+        bTreeMatcher.addChar(cc('\n'));
+        bTreeMatcher.addChar(cc('\r'));
+        bTreeMatcher.addChar(cc('\t'));
+        bTreeMatcher.addChar(cc('\v'));
+        bTreeMatcher.addChar(cc('\t'));
+        bTreeMatcher.addChar(cc('\u00a0'));
+        bTreeMatcher.addChar(cc('\u1680'));
+        bTreeMatcher.addChar(cc('\u2000'));
+        bTreeMatcher.addChar(cc('\u2001'));
+        bTreeMatcher.addChar(cc('\u2002'));
+        bTreeMatcher.addChar(cc('\u2003'));
+        bTreeMatcher.addChar(cc('\u2004'));
+        bTreeMatcher.addChar(cc('\u2005'));
+        bTreeMatcher.addChar(cc('\u2006'));
+        bTreeMatcher.addChar(cc('\u2007'));
+        bTreeMatcher.addChar(cc('\u2008'));
+        bTreeMatcher.addChar(cc('\u2009'));
+        bTreeMatcher.addChar(cc('\u200a'));
+        bTreeMatcher.addChar(cc('\u2028'));
+        bTreeMatcher.addChar(cc('\u2029'));
+        bTreeMatcher.addChar(cc('\u202f'));
+        bTreeMatcher.addChar(cc('\u205f'));
+        bTreeMatcher.addChar(cc('\u3000'));
+        bTreeMatcher.addChar(cc('\ufeff'));
         break;
       case 'word':
         negate = set.negate;
-        addRange(cc('a'), cc('z'));
-        addRange(cc('A'), cc('Z'));
-        addRange(cc('0'), cc('9'));
-        addCharacter(cc('_'));
+        bTreeMatcher.addRange(cc('a'), cc('z'));
+        bTreeMatcher.addRange(cc('A'), cc('Z'));
+        bTreeMatcher.addRange(cc('0'), cc('9'));
+        bTreeMatcher.addChar(cc('_'));
         break;
       case 'property':
         negate = set.negate;
@@ -225,17 +207,17 @@ const handleSetOrCharacter = (
 
   switch (element.type) {
     case 'Character':
-      addCharacter(element.value);
+      bTreeMatcher.addChar(element.value);
       break;
     case 'CharacterClass':
       negate = element.negate;
       element.elements.forEach((element) => {
         switch (element.type) {
           case 'Character':
-            addCharacter(element.value);
+            bTreeMatcher.addChar(element.value);
             break;
           case 'CharacterClassRange':
-            addRange(element.min.value, element.max.value);
+            bTreeMatcher.addRange(element.min.value, element.max.value);
             break;
           case 'CharacterSet':
             addCharacterSet(element);
@@ -251,8 +233,7 @@ const handleSetOrCharacter = (
   return collector.addAtom(currentFiber, {
     type: 'charOrSet',
     data: {
-      chars,
-      ranges,
+      tree: bTreeMatcher.toLeafValues(),
       negate,
     },
     ast: element,

@@ -7,36 +7,126 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              32,
-              12,
-              10,
-              13,
-              9,
-              11,
-              9,
-              160,
-              5760,
-              8192,
-              8193,
-              8194,
-              8195,
-              8196,
-              8197,
-              8198,
-              8199,
-              8200,
-              8201,
-              8202,
-              8232,
-              8233,
-              8239,
-              8287,
-              12288,
-              65279,
-            ],
             "negate": true,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 8202,
+                "lessOrEqual": true,
+              },
+              "comparisonFalse": Object {
+                "comparison": Object {
+                  "comparisonValue": 8287,
+                  "lessOrEqual": true,
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue1": 12288,
+                    "comparisonValue2": 65279,
+                    "equalOneOfTwo": true,
+                  },
+                  "lastComparison": true,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 8239,
+                    "lessOrEqual": true,
+                  },
+                  "comparisonFalse": Object {
+                    "comparison": Object {
+                      "comparisonValue": 8287,
+                      "equal": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "comparisonTrue": Object {
+                    "comparison": Object {
+                      "comparisonValue": 8233,
+                      "lessOrEqual": true,
+                    },
+                    "comparisonFalse": Object {
+                      "comparison": Object {
+                        "comparisonValue": 8239,
+                        "equal": true,
+                      },
+                      "lastComparison": true,
+                    },
+                    "comparisonTrue": Object {
+                      "comparison": Object {
+                        "comparisonValue": 8232,
+                        "moreOrEqual": true,
+                      },
+                      "lastComparison": true,
+                    },
+                    "lastComparison": false,
+                  },
+                  "lastComparison": false,
+                },
+                "lastComparison": false,
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 160,
+                  "lessOrEqual": true,
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue": 5760,
+                    "equal": true,
+                  },
+                  "comparisonFalse": Object {
+                    "comparison": Object {
+                      "comparisonValue": 8192,
+                      "moreOrEqual": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "comparisonTrue": Object {
+                    "comparison": Object {
+                      "isTrue": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "lastComparison": false,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 32,
+                    "lessOrEqual": true,
+                  },
+                  "comparisonFalse": Object {
+                    "comparison": Object {
+                      "comparisonValue": 160,
+                      "equal": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "comparisonTrue": Object {
+                    "comparison": Object {
+                      "comparisonValue": 13,
+                      "lessOrEqual": true,
+                    },
+                    "comparisonFalse": Object {
+                      "comparison": Object {
+                        "comparisonValue": 32,
+                        "equal": true,
+                      },
+                      "lastComparison": true,
+                    },
+                    "comparisonTrue": Object {
+                      "comparison": Object {
+                        "comparisonValue": 9,
+                        "moreOrEqual": true,
+                      },
+                      "lastComparison": true,
+                    },
+                    "lastComparison": false,
+                  },
+                  "lastComparison": false,
+                },
+                "lastComparison": false,
+              },
+              "lastComparison": false,
+            },
           },
           "posLine1": "/\\\\S/",
           "posLine2": " ^^",
@@ -54,36 +144,126 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "chars": Array [
-            32,
-            12,
-            10,
-            13,
-            9,
-            11,
-            9,
-            160,
-            5760,
-            8192,
-            8193,
-            8194,
-            8195,
-            8196,
-            8197,
-            8198,
-            8199,
-            8200,
-            8201,
-            8202,
-            8232,
-            8233,
-            8239,
-            8287,
-            12288,
-            65279,
-          ],
           "negate": true,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 8202,
+              "lessOrEqual": true,
+            },
+            "comparisonFalse": Object {
+              "comparison": Object {
+                "comparisonValue": 8287,
+                "lessOrEqual": true,
+              },
+              "comparisonFalse": Object {
+                "comparison": Object {
+                  "comparisonValue1": 12288,
+                  "comparisonValue2": 65279,
+                  "equalOneOfTwo": true,
+                },
+                "lastComparison": true,
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 8239,
+                  "lessOrEqual": true,
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue": 8287,
+                    "equal": true,
+                  },
+                  "lastComparison": true,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 8233,
+                    "lessOrEqual": true,
+                  },
+                  "comparisonFalse": Object {
+                    "comparison": Object {
+                      "comparisonValue": 8239,
+                      "equal": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "comparisonTrue": Object {
+                    "comparison": Object {
+                      "comparisonValue": 8232,
+                      "moreOrEqual": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "lastComparison": false,
+                },
+                "lastComparison": false,
+              },
+              "lastComparison": false,
+            },
+            "comparisonTrue": Object {
+              "comparison": Object {
+                "comparisonValue": 160,
+                "lessOrEqual": true,
+              },
+              "comparisonFalse": Object {
+                "comparison": Object {
+                  "comparisonValue": 5760,
+                  "equal": true,
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue": 8192,
+                    "moreOrEqual": true,
+                  },
+                  "lastComparison": true,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "isTrue": true,
+                  },
+                  "lastComparison": true,
+                },
+                "lastComparison": false,
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 32,
+                  "lessOrEqual": true,
+                },
+                "comparisonFalse": Object {
+                  "comparison": Object {
+                    "comparisonValue": 160,
+                    "equal": true,
+                  },
+                  "lastComparison": true,
+                },
+                "comparisonTrue": Object {
+                  "comparison": Object {
+                    "comparisonValue": 13,
+                    "lessOrEqual": true,
+                  },
+                  "comparisonFalse": Object {
+                    "comparison": Object {
+                      "comparisonValue": 32,
+                      "equal": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "comparisonTrue": Object {
+                    "comparison": Object {
+                      "comparisonValue": 9,
+                      "moreOrEqual": true,
+                    },
+                    "lastComparison": true,
+                  },
+                  "lastComparison": false,
+                },
+                "lastComparison": false,
+              },
+              "lastComparison": false,
+            },
+            "lastComparison": false,
+          },
         },
         "posLine1": "/\\\\S/",
         "posLine2": " ^^",

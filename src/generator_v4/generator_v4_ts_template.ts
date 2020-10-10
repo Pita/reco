@@ -2,6 +2,46 @@ import * as Handlebars from 'handlebars';
 // const jsStringEscape = require('js-string-escape');
 const prettier = require('prettier');
 
+const comparisonTemplate = `
+{{#with comparison}}
+  {{#if isTrue}}
+    true
+  {{/if}}
+  {{#if equalOneOfTwo}}
+    charCode{{{../atomIndex}}} === {{{comparisonValue1}}} || charCode{{{../atomIndex}}} === {{{comparisonValue2}}}
+  {{/if}}
+  {{#if equal}}
+    charCode{{{../atomIndex}}} === {{{comparisonValue}}}
+  {{/if}}
+  {{#if lessOrEqual}}
+    charCode{{{../atomIndex}}} <= {{{comparisonValue}}}
+  {{/if}}
+  {{#if moreOrEqual}}
+    charCode{{{../atomIndex}}} >= {{{comparisonValue}}}
+  {{/if}}
+{{/with}}
+`;
+Handlebars.registerPartial('comparison', comparisonTemplate);
+
+const leafTemplate = `
+  {{#unless noop}}
+    {{#if lastComparison}}
+      result{{{atomIndex}}} = {{>comparison atomIndex=atomIndex}}
+    {{/if}}
+    {{#unless lastComparison}}
+      if ({{>comparison atomIndex=atomIndex}}) {
+        {{>leaf comparisonTrue atomIndex=atomIndex}}
+      }
+      {{#if comparisonFalse}}
+        else {
+          {{>leaf comparisonFalse atomIndex=atomIndex}}
+        }
+      {{/if}}
+    {{/unless}}
+  {{/unless}}
+`;
+Handlebars.registerPartial('leaf', leafTemplate);
+
 const template = `
 // {{{regexStr}}}
 function generatedRegexMatcher(str: string) {
@@ -50,15 +90,9 @@ function generatedRegexMatcher(str: string) {
             }
           {{/unless}}
           const charCode{{{@index}}} = str.charCodeAt(i);
-          if({{#unless negate}}!{{/unless}}(
-            {{#each ranges}}
-              (charCode{{{@../index}}} >= {{{min}}} && charCode{{{@../index}}} <= {{{max}}}) ||
-            {{/each}}
-            {{#each chars}}
-              charCode{{{@../index}}} === {{{this}}} ||
-            {{/each}}
-            false
-          )) {
+          let result{{{@index}}} = false;
+          {{> leaf tree atomIndex=@index}}
+          if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
             return -1;
           };
           {{#unless backwards}}
@@ -262,6 +296,25 @@ function generatedRegexMatcher(str: string) {
 module.exports = {generatedRegexMatcher};
 `;
 
+export interface ComparsionTemplate {
+  lessOrEqual?: boolean;
+  moreOrEqual?: boolean;
+  equal?: boolean;
+  equalOneOfTwo?: boolean;
+  isTrue?: boolean;
+  comparisonValue?: number;
+  comparisonValue1?: number;
+  comparisonValue2?: number;
+}
+
+export interface LeafTemplate {
+  noop?: boolean;
+  lastComparison: boolean;
+  comparison: ComparsionTemplate;
+  comparisonTrue?: LeafTemplate;
+  comparisonFalse?: LeafTemplate;
+}
+
 export interface FiberTemplateDefinition {
   atoms: TemplateAtom[];
   lastAtomReturns: boolean;
@@ -283,8 +336,7 @@ export interface BaseTemplateAtom {
 export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
   type: 'charOrSet';
   data: {
-    ranges: { min: number; max: number }[];
-    chars: number[];
+    tree: LeafTemplate;
     negate: boolean;
     backwards: boolean;
   };

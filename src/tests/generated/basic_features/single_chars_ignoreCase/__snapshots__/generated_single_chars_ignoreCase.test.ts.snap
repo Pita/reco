@@ -7,12 +7,15 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "chars": Array [
-              100,
-              68,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue1": 68,
+                "comparisonValue2": 100,
+                "equalOneOfTwo": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/def/i",
           "posLine2": " ^",
@@ -20,12 +23,15 @@ Object {
         },
         Object {
           "data": Object {
-            "chars": Array [
-              101,
-              69,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue1": 69,
+                "comparisonValue2": 101,
+                "equalOneOfTwo": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/def/i",
           "posLine2": "  ^",
@@ -33,12 +39,15 @@ Object {
         },
         Object {
           "data": Object {
-            "chars": Array [
-              102,
-              70,
-            ],
             "negate": false,
-            "ranges": Array [],
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue1": 70,
+                "comparisonValue2": 102,
+                "equalOneOfTwo": true,
+              },
+              "lastComparison": true,
+            },
           },
           "posLine1": "/def/i",
           "posLine2": "   ^",
@@ -56,12 +65,15 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "chars": Array [
-            100,
-            68,
-          ],
           "negate": false,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue1": 68,
+              "comparisonValue2": 100,
+              "equalOneOfTwo": true,
+            },
+            "lastComparison": true,
+          },
         },
         "posLine1": "/def/i",
         "posLine2": " ^",
@@ -69,12 +81,15 @@ Object {
       },
       Object {
         "data": Object {
-          "chars": Array [
-            101,
-            69,
-          ],
           "negate": false,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue1": 69,
+              "comparisonValue2": 101,
+              "equalOneOfTwo": true,
+            },
+            "lastComparison": true,
+          },
         },
         "posLine1": "/def/i",
         "posLine2": "  ^",
@@ -82,12 +97,15 @@ Object {
       },
       Object {
         "data": Object {
-          "chars": Array [
-            102,
-            70,
-          ],
           "negate": false,
-          "ranges": Array [],
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue1": 70,
+              "comparisonValue2": 102,
+              "equalOneOfTwo": true,
+            },
+            "lastComparison": true,
+          },
         },
         "posLine1": "/def/i",
         "posLine2": "   ^",
