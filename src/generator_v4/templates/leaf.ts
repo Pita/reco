@@ -8,10 +8,14 @@ export const registerLeafPartial = () => {
   Handlebars.registerPartial('leaf', template);
 };
 
-export interface LeafTemplate {
-  noop?: boolean;
-  lastComparison: boolean;
-  comparison: ComparsionTemplate;
-  comparisonTrue?: LeafTemplate;
-  comparisonFalse?: LeafTemplate;
-}
+export type LeafTemplate =
+  | {
+      type: 'noop';
+    }
+  | { type: 'lastComparison'; comparison: ComparsionTemplate }
+  | {
+      type: 'comparison';
+      comparison: ComparsionTemplate;
+      comparisonTrue?: LeafTemplate;
+      comparisonFalse?: LeafTemplate;
+    };

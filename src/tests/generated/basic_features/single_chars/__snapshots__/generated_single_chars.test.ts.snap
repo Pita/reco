@@ -11,9 +11,9 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 100,
-                "equal": true,
+                "type": "equal",
               },
-              "lastComparison": true,
+              "type": "lastComparison",
             },
           },
           "posLine1": "/def/",
@@ -26,9 +26,9 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 101,
-                "equal": true,
+                "type": "equal",
               },
-              "lastComparison": true,
+              "type": "lastComparison",
             },
           },
           "posLine1": "/def/",
@@ -41,9 +41,9 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 102,
-                "equal": true,
+                "type": "equal",
               },
-              "lastComparison": true,
+              "type": "lastComparison",
             },
           },
           "posLine1": "/def/",
@@ -66,9 +66,9 @@ Object {
           "tree": Object {
             "comparison": Object {
               "comparisonValue": 100,
-              "equal": true,
+              "type": "equal",
             },
-            "lastComparison": true,
+            "type": "lastComparison",
           },
         },
         "posLine1": "/def/",
@@ -81,9 +81,9 @@ Object {
           "tree": Object {
             "comparison": Object {
               "comparisonValue": 101,
-              "equal": true,
+              "type": "equal",
             },
-            "lastComparison": true,
+            "type": "lastComparison",
           },
         },
         "posLine1": "/def/",
@@ -96,9 +96,9 @@ Object {
           "tree": Object {
             "comparison": Object {
               "comparisonValue": 102,
-              "equal": true,
+              "type": "equal",
             },
-            "lastComparison": true,
+            "type": "lastComparison",
           },
         },
         "posLine1": "/def/",

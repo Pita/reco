@@ -11,57 +11,57 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 90,
-                "lessOrEqual": true,
+                "type": "lessOrEqual",
               },
               "comparisonFalse": Object {
                 "comparison": Object {
                   "comparisonValue": 95,
-                  "equal": true,
+                  "type": "equal",
                 },
                 "comparisonFalse": Object {
                   "comparison": Object {
                     "comparisonValue": 122,
-                    "lessOrEqual": true,
+                    "type": "lessOrEqual",
                   },
                   "comparisonTrue": Object {
                     "comparison": Object {
                       "comparisonValue": 97,
-                      "moreOrEqual": true,
+                      "type": "moreOrEqual",
                     },
-                    "lastComparison": true,
+                    "type": "lastComparison",
                   },
-                  "lastComparison": false,
+                  "type": "comparison",
                 },
                 "comparisonTrue": Object {
                   "comparison": Object {
-                    "isTrue": true,
+                    "type": "true",
                   },
-                  "lastComparison": true,
+                  "type": "lastComparison",
                 },
-                "lastComparison": false,
+                "type": "comparison",
               },
               "comparisonTrue": Object {
                 "comparison": Object {
                   "comparisonValue": 57,
-                  "lessOrEqual": true,
+                  "type": "lessOrEqual",
                 },
                 "comparisonFalse": Object {
                   "comparison": Object {
                     "comparisonValue": 65,
-                    "moreOrEqual": true,
+                    "type": "moreOrEqual",
                   },
-                  "lastComparison": true,
+                  "type": "lastComparison",
                 },
                 "comparisonTrue": Object {
                   "comparison": Object {
                     "comparisonValue": 48,
-                    "moreOrEqual": true,
+                    "type": "moreOrEqual",
                   },
-                  "lastComparison": true,
+                  "type": "lastComparison",
                 },
-                "lastComparison": false,
+                "type": "comparison",
               },
-              "lastComparison": false,
+              "type": "comparison",
             },
           },
           "posLine1": "/\\\\w/",
@@ -84,57 +84,57 @@ Object {
           "tree": Object {
             "comparison": Object {
               "comparisonValue": 90,
-              "lessOrEqual": true,
+              "type": "lessOrEqual",
             },
             "comparisonFalse": Object {
               "comparison": Object {
                 "comparisonValue": 95,
-                "equal": true,
+                "type": "equal",
               },
               "comparisonFalse": Object {
                 "comparison": Object {
                   "comparisonValue": 122,
-                  "lessOrEqual": true,
+                  "type": "lessOrEqual",
                 },
                 "comparisonTrue": Object {
                   "comparison": Object {
                     "comparisonValue": 97,
-                    "moreOrEqual": true,
+                    "type": "moreOrEqual",
                   },
-                  "lastComparison": true,
+                  "type": "lastComparison",
                 },
-                "lastComparison": false,
+                "type": "comparison",
               },
               "comparisonTrue": Object {
                 "comparison": Object {
-                  "isTrue": true,
+                  "type": "true",
                 },
-                "lastComparison": true,
+                "type": "lastComparison",
               },
-              "lastComparison": false,
+              "type": "comparison",
             },
             "comparisonTrue": Object {
               "comparison": Object {
                 "comparisonValue": 57,
-                "lessOrEqual": true,
+                "type": "lessOrEqual",
               },
               "comparisonFalse": Object {
                 "comparison": Object {
                   "comparisonValue": 65,
-                  "moreOrEqual": true,
+                  "type": "moreOrEqual",
                 },
-                "lastComparison": true,
+                "type": "lastComparison",
               },
               "comparisonTrue": Object {
                 "comparison": Object {
                   "comparisonValue": 48,
-                  "moreOrEqual": true,
+                  "type": "moreOrEqual",
                 },
-                "lastComparison": true,
+                "type": "lastComparison",
               },
-              "lastComparison": false,
+              "type": "comparison",
             },
-            "lastComparison": false,
+            "type": "comparison",
           },
         },
         "posLine1": "/\\\\w/",

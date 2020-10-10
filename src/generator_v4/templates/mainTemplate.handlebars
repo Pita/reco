@@ -32,7 +32,7 @@ function generatedRegexMatcher(str: string) {
          * {{#escapeComment posLine1}}{{/escapeComment}}
          * {{{posLine2}}}
          */
-        {{#atomCase 'charOrSet'}}
+        {{#switchCase 'charOrSet'}}
           {{#if backwards}}
             i--;
             if (i < 0) {
@@ -53,8 +53,8 @@ function generatedRegexMatcher(str: string) {
           {{#unless backwards}}
             i++;
           {{/unless}}
-        {{/atomCase}}
-        {{#atomCase 'disjunction'}}
+        {{/switchCase}}
+        {{#switchCase 'disjunction'}}
           // TODO: Make that this does not require garbage collection
           // typed array or for loop
           // there might also be a possiblity to not copy all groups
@@ -71,25 +71,25 @@ function generatedRegexMatcher(str: string) {
             groupMarkers = groupMarkersCopy;
           {{/each}}
           return -1;
-        {{/atomCase}}
-        {{#atomCase 'startAnchor'}}
+        {{/switchCase}}
+        {{#switchCase 'startAnchor'}}
           if (i !== 0) {
             return -1;
           }
-        {{/atomCase}}
-        {{#atomCase 'endAnchor'}}
+        {{/switchCase}}
+        {{#switchCase 'endAnchor'}}
           if (i !== strLength) {
             return -1;
           }
-        {{/atomCase}}
-        {{#atomCase 'groupStartMarker'}}
+        {{/switchCase}}
+        {{#switchCase 'groupStartMarker'}}
           tempGroupStartMarkers[{{{groupIndex}}}] = i;
-        {{/atomCase}}
-        {{#atomCase 'groupEndMarker'}}
+        {{/switchCase}}
+        {{#switchCase 'groupEndMarker'}}
           groupMarkers[{{{groupStartMarkerIndex}}}] = tempGroupStartMarkers[{{{groupIndex}}}];
           groupMarkers[{{{groupEndMarkerIndex}}}] = i;
-        {{/atomCase}}
-        {{#atomCase 'lookAhead'}}
+        {{/switchCase}}
+        {{#switchCase 'lookAhead'}}
           const lookAheadResult{{{@index}}} = {{{lookAheadFiber.functionName}}}(i);
           {{#if negative}}
             if (lookAheadResult{{{@index}}} !== -1) { 
@@ -99,8 +99,8 @@ function generatedRegexMatcher(str: string) {
           {{/unless}}
             return -1;
           }
-        {{/atomCase}}
-        {{#atomCase 'greedyQuantifier'}}
+        {{/switchCase}}
+        {{#switchCase 'greedyQuantifier'}}
           {{#if maxOrMinCount}}
             let matchCount = -1;
           {{/if}}
@@ -155,8 +155,8 @@ function generatedRegexMatcher(str: string) {
           };
 
           return recursiveCallback(i);
-        {{/atomCase}}
-        {{#atomCase 'lazyQuantifier'}}
+        {{/switchCase}}
+        {{#switchCase 'lazyQuantifier'}}
           {{#unless followUp}}
             return i;
           {{/unless}}
@@ -213,7 +213,7 @@ function generatedRegexMatcher(str: string) {
 
             return recursiveCallback(i);
           {{/if}}
-        {{/atomCase}}
+        {{/switchCase}}
       {{/each}}
       {{#unless lastAtomReturns}}
         {{#if followUp}}

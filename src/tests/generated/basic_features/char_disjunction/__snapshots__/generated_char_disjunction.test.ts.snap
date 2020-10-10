@@ -11,9 +11,9 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 97,
-                "equal": true,
+                "type": "equal",
               },
-              "lastComparison": true,
+              "type": "lastComparison",
             },
           },
           "posLine1": "/a|b|f/",
@@ -34,9 +34,9 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 98,
-                "equal": true,
+                "type": "equal",
               },
-              "lastComparison": true,
+              "type": "lastComparison",
             },
           },
           "posLine1": "/a|b|f/",
@@ -57,9 +57,9 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 102,
-                "equal": true,
+                "type": "equal",
               },
-              "lastComparison": true,
+              "type": "lastComparison",
             },
           },
           "posLine1": "/a|b|f/",
@@ -85,9 +85,9 @@ Object {
                       "tree": Object {
                         "comparison": Object {
                           "comparisonValue": 97,
-                          "equal": true,
+                          "type": "equal",
                         },
-                        "lastComparison": true,
+                        "type": "lastComparison",
                       },
                     },
                     "posLine1": "/a|b|f/",
@@ -108,9 +108,9 @@ Object {
                       "tree": Object {
                         "comparison": Object {
                           "comparisonValue": 98,
-                          "equal": true,
+                          "type": "equal",
                         },
-                        "lastComparison": true,
+                        "type": "lastComparison",
                       },
                     },
                     "posLine1": "/a|b|f/",
@@ -131,9 +131,9 @@ Object {
                       "tree": Object {
                         "comparison": Object {
                           "comparisonValue": 102,
-                          "equal": true,
+                          "type": "equal",
                         },
-                        "lastComparison": true,
+                        "type": "lastComparison",
                       },
                     },
                     "posLine1": "/a|b|f/",
@@ -173,9 +173,9 @@ Object {
                     "tree": Object {
                       "comparison": Object {
                         "comparisonValue": 97,
-                        "equal": true,
+                        "type": "equal",
                       },
-                      "lastComparison": true,
+                      "type": "lastComparison",
                     },
                   },
                   "posLine1": "/a|b|f/",
@@ -196,9 +196,9 @@ Object {
                     "tree": Object {
                       "comparison": Object {
                         "comparisonValue": 98,
-                        "equal": true,
+                        "type": "equal",
                       },
-                      "lastComparison": true,
+                      "type": "lastComparison",
                     },
                   },
                   "posLine1": "/a|b|f/",
@@ -219,9 +219,9 @@ Object {
                     "tree": Object {
                       "comparison": Object {
                         "comparisonValue": 102,
-                        "equal": true,
+                        "type": "equal",
                       },
-                      "lastComparison": true,
+                      "type": "lastComparison",
                     },
                   },
                   "posLine1": "/a|b|f/",

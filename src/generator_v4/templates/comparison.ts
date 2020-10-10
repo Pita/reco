@@ -1,5 +1,6 @@
 import * as Handlebars from 'handlebars';
 import * as fs from 'fs';
+import './handleBarHelpers';
 
 export const registerComparisonPartial = () => {
   const template = fs.readFileSync(
@@ -9,13 +10,16 @@ export const registerComparisonPartial = () => {
   Handlebars.registerPartial('comparison', template);
 };
 
-export interface ComparsionTemplate {
-  lessOrEqual?: boolean;
-  moreOrEqual?: boolean;
-  equal?: boolean;
-  equalOneOfTwo?: boolean;
-  isTrue?: boolean;
-  comparisonValue?: number;
-  comparisonValue1?: number;
-  comparisonValue2?: number;
-}
+export type ComparsionTemplate =
+  | {
+      type: 'lessOrEqual' | 'moreOrEqual' | 'equal';
+      comparisonValue: number;
+    }
+  | {
+      type: 'equalOneOfTwo';
+      comparisonValue1: number;
+      comparisonValue2: number;
+    }
+  | {
+      type: 'true';
+    };

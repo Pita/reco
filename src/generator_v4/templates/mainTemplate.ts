@@ -111,39 +111,6 @@ export interface TemplateValues {
   groupsCount: number;
 }
 
-Handlebars.registerHelper('escapeComment', function (this: any, value) {
-  return value.replace(/\*/g, '✱');
-});
-
-Handlebars.registerHelper('atomCase', function (this: any, atomType, options) {
-  const isAtomType = this.type === atomType;
-
-  if (isAtomType) {
-    return options.fn(this.data);
-  } else {
-    return options.inverse(this);
-  }
-});
-
-Handlebars.registerHelper('hasCallback', function (this: any, options) {
-  const hasCallback = this.followUp?.functionName === 'callback';
-
-  if (hasCallback) {
-    return options.fn(this);
-  } else {
-    return options.inverse(this);
-  }
-});
-
-Handlebars.registerHelper('times', function (n, block) {
-  var accum = '';
-  for (var i = 0; i < n; ++i) {
-    block.data.index = i;
-    accum += block.fn(i);
-  }
-  return accum;
-});
-
 registerLeafPartial();
 const template = fs.readFileSync(
   __dirname + '/mainTemplate.handlebars',

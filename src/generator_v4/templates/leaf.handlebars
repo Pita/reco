@@ -1,15 +1,13 @@
-{{#unless noop}}
-  {{#if lastComparison}}
-    result{{{atomIndex}}} = {{>comparison atomIndex=atomIndex}}
-  {{/if}}
-  {{#unless lastComparison}}
-    if ({{>comparison atomIndex=atomIndex}}) {
-      {{>leaf comparisonTrue atomIndex=atomIndex}}
+{{#switchCase 'lastComparison'}}
+  result{{{atomIndex}}} = {{>comparison atomIndex=atomIndex}}
+{{/switchCase}}
+{{#switchCase 'comparison'}}
+  if ({{>comparison atomIndex=atomIndex}}) {
+    {{>leaf comparisonTrue atomIndex=atomIndex}}
+  }
+  {{#if comparisonFalse}}
+    else {
+      {{>leaf comparisonFalse atomIndex=atomIndex}}
     }
-    {{#if comparisonFalse}}
-      else {
-        {{>leaf comparisonFalse atomIndex=atomIndex}}
-      }
-    {{/if}}
-  {{/unless}}
-{{/unless}}
+  {{/if}}
+{{/switchCase}}

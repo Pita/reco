@@ -11,16 +11,16 @@ Object {
             "tree": Object {
               "comparison": Object {
                 "comparisonValue": 99,
-                "lessOrEqual": true,
+                "type": "lessOrEqual",
               },
               "comparisonTrue": Object {
                 "comparison": Object {
                   "comparisonValue": 97,
-                  "moreOrEqual": true,
+                  "type": "moreOrEqual",
                 },
-                "lastComparison": true,
+                "type": "lastComparison",
               },
-              "lastComparison": false,
+              "type": "comparison",
             },
           },
           "posLine1": "/[^ab-c]/",
@@ -43,16 +43,16 @@ Object {
           "tree": Object {
             "comparison": Object {
               "comparisonValue": 99,
-              "lessOrEqual": true,
+              "type": "lessOrEqual",
             },
             "comparisonTrue": Object {
               "comparison": Object {
                 "comparisonValue": 97,
-                "moreOrEqual": true,
+                "type": "moreOrEqual",
               },
-              "lastComparison": true,
+              "type": "lastComparison",
             },
-            "lastComparison": false,
+            "type": "comparison",
           },
         },
         "posLine1": "/[^ab-c]/",

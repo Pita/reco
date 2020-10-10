@@ -1,17 +1,17 @@
 {{#with comparison}}
-  {{#if isTrue}}
+  {{#switchCase 'true'}}
     true
-  {{/if}}
-  {{#if equalOneOfTwo}}
+  {{/switchCase}}
+  {{#switchCase 'equalOneOfTwo'}}
     charCode{{{../atomIndex}}} === {{{comparisonValue1}}} || charCode{{{../atomIndex}}} === {{{comparisonValue2}}}
-  {{/if}}
-  {{#if equal}}
+  {{/switchCase}}
+  {{#switchCase 'equal'}}
     charCode{{{../atomIndex}}} === {{{comparisonValue}}}
-  {{/if}}
-  {{#if lessOrEqual}}
+  {{/switchCase}}
+  {{#switchCase 'lessOrEqual'}}
     charCode{{{../atomIndex}}} <= {{{comparisonValue}}}
-  {{/if}}
-  {{#if moreOrEqual}}
+  {{/switchCase}}
+  {{#switchCase 'moreOrEqual'}}
     charCode{{{../atomIndex}}} >= {{{comparisonValue}}}
-  {{/if}}
+  {{/switchCase}}
 {{/with}}
