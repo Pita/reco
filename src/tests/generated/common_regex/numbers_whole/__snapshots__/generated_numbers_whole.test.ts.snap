@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "/^\\\\d+$/",
-          "posLine2": "     ^",
+          "posLine1": "$/",
+          "posLine2": "^",
           "type": "endAnchor",
         },
       ],
@@ -40,8 +40,8 @@ Object {
               "type": "comparison",
             },
           },
-          "posLine1": "/^\\\\d+$/",
-          "posLine2": "  ^^",
+          "posLine1": "\\\\d+$/",
+          "posLine2": "^^",
           "type": "charOrSet",
         },
       ],
@@ -59,8 +59,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "/^\\\\d+$/",
-          "posLine2": " ^",
+          "posLine1": "^\\\\d+$/",
+          "posLine2": "^",
           "type": "startAnchor",
         },
         Object {
@@ -69,8 +69,8 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {},
-                  "posLine1": "/^\\\\d+$/",
-                  "posLine2": "     ^",
+                  "posLine1": "$/",
+                  "posLine2": "^",
                   "type": "endAnchor",
                 },
               ],
@@ -104,8 +104,8 @@ Object {
                       "type": "comparison",
                     },
                   },
-                  "posLine1": "/^\\\\d+$/",
-                  "posLine2": "  ^^",
+                  "posLine1": "\\\\d+$/",
+                  "posLine2": "^^",
                   "type": "charOrSet",
                 },
               ],
@@ -120,8 +120,8 @@ Object {
               },
             },
           },
-          "posLine1": "/^\\\\d+$/",
-          "posLine2": "  ^^^",
+          "posLine1": "\\\\d+$/",
+          "posLine2": "^^^",
           "type": "greedyQuantifier",
         },
       ],
@@ -138,8 +138,8 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {},
-        "posLine1": "/^\\\\d+$/",
-        "posLine2": " ^",
+        "posLine1": "^\\\\d+$/",
+        "posLine2": "^",
         "type": "startAnchor",
       },
       Object {
@@ -148,8 +148,8 @@ Object {
             "atoms": Array [
               Object {
                 "data": Object {},
-                "posLine1": "/^\\\\d+$/",
-                "posLine2": "     ^",
+                "posLine1": "$/",
+                "posLine2": "^",
                 "type": "endAnchor",
               },
             ],
@@ -183,8 +183,8 @@ Object {
                     "type": "comparison",
                   },
                 },
-                "posLine1": "/^\\\\d+$/",
-                "posLine2": "  ^^",
+                "posLine1": "\\\\d+$/",
+                "posLine2": "^^",
                 "type": "charOrSet",
               },
             ],
@@ -199,8 +199,8 @@ Object {
             },
           },
         },
-        "posLine1": "/^\\\\d+$/",
-        "posLine2": "  ^^^",
+        "posLine1": "\\\\d+$/",
+        "posLine2": "^^^",
         "type": "greedyQuantifier",
       },
     ],

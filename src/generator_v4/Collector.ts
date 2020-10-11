@@ -28,9 +28,21 @@ export class Collector {
   }
 
   private formatAstLocation(ast: AST.Node) {
+    const startNeedsTruncation = ast.start > 10;
+    const regexStrStart = startNeedsTruncation ? 10 : ast.start;
+    const endNeedsTruncation = this.regexStr.length > ast.end + 10;
+    const regexStrEnd = endNeedsTruncation
+      ? ast.end + 10
+      : this.regexStr.length;
+
     return {
-      posLine1: this.regexStr,
-      posLine2: ' '.repeat(ast.start) + '^'.repeat(ast.end - ast.start),
+      posLine1:
+        (startNeedsTruncation ? '...' : '') +
+        this.regexStr.substring(regexStrStart, regexStrEnd) +
+        (endNeedsTruncation ? '...' : ''),
+      posLine2:
+        ' '.repeat(ast.start - regexStrStart + (startNeedsTruncation ? 3 : 0)) +
+        '^'.repeat(ast.end - ast.start),
     };
   }
 

@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "/^def/",
-          "posLine2": " ^",
+          "posLine1": "^def/",
+          "posLine2": "^",
           "type": "startAnchor",
         },
         Object {
@@ -22,8 +22,8 @@ Object {
               "type": "lastComparison",
             },
           },
-          "posLine1": "/^def/",
-          "posLine2": "  ^",
+          "posLine1": "def/",
+          "posLine2": "^",
           "type": "charOrSet",
         },
         Object {
@@ -37,8 +37,8 @@ Object {
               "type": "lastComparison",
             },
           },
-          "posLine1": "/^def/",
-          "posLine2": "   ^",
+          "posLine1": "ef/",
+          "posLine2": "^",
           "type": "charOrSet",
         },
         Object {
@@ -52,8 +52,8 @@ Object {
               "type": "lastComparison",
             },
           },
-          "posLine1": "/^def/",
-          "posLine2": "    ^",
+          "posLine1": "f/",
+          "posLine2": "^",
           "type": "charOrSet",
         },
       ],
@@ -70,8 +70,8 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {},
-        "posLine1": "/^def/",
-        "posLine2": " ^",
+        "posLine1": "^def/",
+        "posLine2": "^",
         "type": "startAnchor",
       },
       Object {
@@ -85,8 +85,8 @@ Object {
             "type": "lastComparison",
           },
         },
-        "posLine1": "/^def/",
-        "posLine2": "  ^",
+        "posLine1": "def/",
+        "posLine2": "^",
         "type": "charOrSet",
       },
       Object {
@@ -100,8 +100,8 @@ Object {
             "type": "lastComparison",
           },
         },
-        "posLine1": "/^def/",
-        "posLine2": "   ^",
+        "posLine1": "ef/",
+        "posLine2": "^",
         "type": "charOrSet",
       },
       Object {
@@ -115,8 +115,8 @@ Object {
             "type": "lastComparison",
           },
         },
-        "posLine1": "/^def/",
-        "posLine2": "    ^",
+        "posLine1": "f/",
+        "posLine2": "^",
         "type": "charOrSet",
       },
     ],
