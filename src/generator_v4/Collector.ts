@@ -12,6 +12,19 @@ type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   ast: AST.Node;
 };
 
+export function mergeGroupsOfFibers(forks: FiberTemplateDefinition[]) {
+  const groups: GroupReference[] = [];
+  forks.forEach((fork) => {
+    fork.meta.groups.forEach((group) => {
+      if (groups.indexOf(group) === -1) {
+        groups.push(group);
+      }
+    });
+  });
+  groups.sort((a, b) => a.idx - b.idx);
+  return groups;
+}
+
 export class Collector {
   private regexStr: string;
   private counter = 0;
@@ -91,18 +104,8 @@ export class Collector {
 
   createForkingFiber(
     followUpFiber: FiberTemplateDefinition,
-    forks: FiberTemplateDefinition[],
+    groups: GroupReference[],
   ) {
-    const groups: GroupReference[] = [];
-    forks.forEach((fork) => {
-      fork.meta.groups.forEach((group) => {
-        if (groups.indexOf(group) === -1) {
-          groups.push(group);
-        }
-      });
-    });
-    groups.sort((a, b) => a.idx - b.idx);
-
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
@@ -110,7 +113,7 @@ export class Collector {
       lastAtomReturns: true,
       hasCallback: followUpFiber.hasCallback,
       meta: {
-        groups,
+        groups: groups.slice(),
       },
     };
     this.fiberHandlers.push(newFiber);

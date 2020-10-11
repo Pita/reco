@@ -1,5 +1,5 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
+import { Collector, mergeGroupsOfFibers } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator_v4';
 import { handleElement } from './Element';
@@ -22,7 +22,10 @@ export const handleQuantifier = (
   const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
 
   return collector.addAtom(
-    collector.createForkingFiber(currentFiber, [wrappedHandler, currentFiber]),
+    collector.createForkingFiber(
+      currentFiber,
+      mergeGroupsOfFibers([wrappedHandler, currentFiber]),
+    ),
     {
       type: quantifier.greedy ? 'greedyQuantifier' : 'lazyQuantifier',
       data: {

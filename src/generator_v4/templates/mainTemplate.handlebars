@@ -129,11 +129,10 @@ function generatedRegexMatcher(str: string) {
               }
             {{/if}}
 
-            const groupMarkersCopy = groupMarkers.slice() as any;
-            {{!-- {{#each wrappedHandler.meta.groups}}
+            {{#each wrappedHandler.meta.groups}}
               const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
               const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
-            {{/each}} --}}
+            {{/each}}
             const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, recursiveCallback);
             if (tryDeeperResult !== -1) {
               // we actually were able to go deeper, nice!
@@ -141,7 +140,10 @@ function generatedRegexMatcher(str: string) {
             } 
 
             // recursion failed, reset groups
-            groupMarkers = groupMarkersCopy;
+            {{#each wrappedHandler.meta.groups}}
+              groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+              groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+            {{/each}}
 
             {{#if minCount}}
               if (matchCount < {{{minCount}}}) {
@@ -150,9 +152,16 @@ function generatedRegexMatcher(str: string) {
               }
             {{/if}}
 
+            {{#each followUp.meta.groups}}
+              const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+              const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+            {{/each}}
             const followUpResult = followUpCallback(start);
             if (followUpResult === -1) {
-              groupMarkers = groupMarkersCopy;
+              {{#each followUp.meta.groups}}
+                groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+                groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+              {{/each}}
               {{#if maxOrMinCount}}
                 matchCount--;
               {{/if}}
@@ -170,8 +179,6 @@ function generatedRegexMatcher(str: string) {
             {{#if maxOrMinCount}}
               let matchCount = -1;
             {{/if}}
-            const groupMarkersCopy = groupMarkers.slice() as any;
-
             const followUpCallback = (start: number) => {
               return {{{followUp.functionName}}}(
                 start, 
@@ -187,9 +194,16 @@ function generatedRegexMatcher(str: string) {
               {{#if minCount}}
                 if (matchCount >= {{{minCount}}}) {
               {{/if}}
+                {{#each followUp.meta.groups}}
+                  const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+                  const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+                {{/each}}
                 const followUpResult = followUpCallback(start);
                 if (followUpResult === -1) {
-                  groupMarkers = groupMarkersCopy;
+                  {{#each followUp.meta.groups}}
+                    groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+                    groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+                  {{/each}}
                 } else {
                   return followUpResult;
                 }
@@ -201,12 +215,19 @@ function generatedRegexMatcher(str: string) {
               {{#if maxCount}}
                 if (matchCount < {{{maxCount}}}) {
               {{/if}}
+                {{#each wrappedHandler.meta.groups}}
+                  const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+                  const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+                {{/each}}
                 const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, recursiveCallback);
                 if (tryDeeperResult !== -1) {
                   // we actually were able to go deeper, nice!
                   return tryDeeperResult;
                 }
-                groupMarkers = groupMarkersCopy;
+                {{#each wrappedHandler.meta.groups}}
+                  groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+                  groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+                {{/each}}
               {{#if maxCount}}
                 }
               {{/if}}

@@ -1,5 +1,5 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
+import { Collector, mergeGroupsOfFibers } from '../Collector';
 import {
   FiberTemplateDefinition,
   GroupReference,
@@ -26,18 +26,10 @@ export const handleDisjunction = (
     ),
   );
 
-  const groupsToRestore: GroupReference[] = [];
-  mappedAlternatives.forEach((alternative) => {
-    alternative.meta.groups.forEach((group) => {
-      if (groupsToRestore.indexOf(group) === -1) {
-        groupsToRestore.push(group);
-      }
-    });
-  });
-  groupsToRestore.sort((a, b) => a.idx - b.idx);
+  const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
 
   return collector.addAtom(
-    collector.createForkingFiber(currentFiber, mappedAlternatives),
+    collector.createForkingFiber(currentFiber, groupsToRestore),
     {
       type: 'disjunction',
       data: { alternatives: mappedAlternatives, groupsToRestore },
