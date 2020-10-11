@@ -16,6 +16,9 @@ Object {
       "functionName": "fiber0001",
       "hasCallback": false,
       "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -89,6 +92,9 @@ Object {
       "functionName": "fiber0002",
       "hasCallback": true,
       "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -113,6 +119,9 @@ Object {
               "functionName": "fiber0001",
               "hasCallback": false,
               "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
             "maxOrMinCount": false,
             "wrappedHandler": Object {
@@ -187,6 +196,9 @@ Object {
               "functionName": "fiber0002",
               "hasCallback": true,
               "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
           },
           "posLine1": "/^[a-zA-Z0-9 ]*$/",
@@ -198,9 +210,11 @@ Object {
       "functionName": "fiber0003",
       "hasCallback": false,
       "lastAtomReturns": true,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
   ],
-  "groupsCount": 1,
   "mainHandler": Object {
     "atoms": Array [
       Object {
@@ -224,6 +238,9 @@ Object {
             "functionName": "fiber0001",
             "hasCallback": false,
             "lastAtomReturns": false,
+            "meta": Object {
+              "groups": Array [],
+            },
           },
           "maxOrMinCount": false,
           "wrappedHandler": Object {
@@ -298,6 +315,9 @@ Object {
             "functionName": "fiber0002",
             "hasCallback": true,
             "lastAtomReturns": false,
+            "meta": Object {
+              "groups": Array [],
+            },
           },
         },
         "posLine1": "/^[a-zA-Z0-9 ]*$/",
@@ -309,6 +329,9 @@ Object {
     "functionName": "fiber0003",
     "hasCallback": false,
     "lastAtomReturns": true,
+    "meta": Object {
+      "groups": Array [],
+    },
   },
   "regexStr": "/^[a-zA-Z0-9 ]*$/",
 }

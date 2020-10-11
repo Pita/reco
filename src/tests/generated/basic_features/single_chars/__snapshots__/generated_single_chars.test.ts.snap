@@ -55,9 +55,11 @@ Object {
       "functionName": "fiber0001",
       "hasCallback": false,
       "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
   ],
-  "groupsCount": 1,
   "mainHandler": Object {
     "atoms": Array [
       Object {
@@ -110,6 +112,9 @@ Object {
     "functionName": "fiber0001",
     "hasCallback": false,
     "lastAtomReturns": false,
+    "meta": Object {
+      "groups": Array [],
+    },
   },
   "regexStr": "/def/",
 }

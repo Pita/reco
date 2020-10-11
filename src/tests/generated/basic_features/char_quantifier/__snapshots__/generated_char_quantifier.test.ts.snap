@@ -9,6 +9,9 @@ Object {
       "functionName": "fiber0001",
       "hasCallback": false,
       "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -34,6 +37,9 @@ Object {
       "functionName": "fiber0002",
       "hasCallback": true,
       "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -45,6 +51,9 @@ Object {
               "functionName": "fiber0001",
               "hasCallback": false,
               "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
             "maxCount": 1,
             "maxOrMinCount": true,
@@ -72,6 +81,9 @@ Object {
               "functionName": "fiber0002",
               "hasCallback": true,
               "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
           },
           "posLine1": "/a*B+c?/",
@@ -83,6 +95,9 @@ Object {
       "functionName": "fiber0003",
       "hasCallback": false,
       "lastAtomReturns": true,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -108,6 +123,9 @@ Object {
       "functionName": "fiber0004",
       "hasCallback": true,
       "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -123,6 +141,9 @@ Object {
                       "functionName": "fiber0001",
                       "hasCallback": false,
                       "lastAtomReturns": false,
+                      "meta": Object {
+                        "groups": Array [],
+                      },
                     },
                     "maxCount": 1,
                     "maxOrMinCount": true,
@@ -150,6 +171,9 @@ Object {
                       "functionName": "fiber0002",
                       "hasCallback": true,
                       "lastAtomReturns": false,
+                      "meta": Object {
+                        "groups": Array [],
+                      },
                     },
                   },
                   "posLine1": "/a*B+c?/",
@@ -161,6 +185,9 @@ Object {
               "functionName": "fiber0003",
               "hasCallback": false,
               "lastAtomReturns": true,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
             "maxOrMinCount": true,
             "minCount": 1,
@@ -188,6 +215,9 @@ Object {
               "functionName": "fiber0004",
               "hasCallback": true,
               "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
           },
           "posLine1": "/a*B+c?/",
@@ -199,6 +229,9 @@ Object {
       "functionName": "fiber0005",
       "hasCallback": false,
       "lastAtomReturns": true,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -224,6 +257,9 @@ Object {
       "functionName": "fiber0006",
       "hasCallback": true,
       "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
     Object {
       "atoms": Array [
@@ -243,6 +279,9 @@ Object {
                               "functionName": "fiber0001",
                               "hasCallback": false,
                               "lastAtomReturns": false,
+                              "meta": Object {
+                                "groups": Array [],
+                              },
                             },
                             "maxCount": 1,
                             "maxOrMinCount": true,
@@ -270,6 +309,9 @@ Object {
                               "functionName": "fiber0002",
                               "hasCallback": true,
                               "lastAtomReturns": false,
+                              "meta": Object {
+                                "groups": Array [],
+                              },
                             },
                           },
                           "posLine1": "/a*B+c?/",
@@ -281,6 +323,9 @@ Object {
                       "functionName": "fiber0003",
                       "hasCallback": false,
                       "lastAtomReturns": true,
+                      "meta": Object {
+                        "groups": Array [],
+                      },
                     },
                     "maxOrMinCount": true,
                     "minCount": 1,
@@ -308,6 +353,9 @@ Object {
                       "functionName": "fiber0004",
                       "hasCallback": true,
                       "lastAtomReturns": false,
+                      "meta": Object {
+                        "groups": Array [],
+                      },
                     },
                   },
                   "posLine1": "/a*B+c?/",
@@ -319,6 +367,9 @@ Object {
               "functionName": "fiber0005",
               "hasCallback": false,
               "lastAtomReturns": true,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
             "maxOrMinCount": false,
             "wrappedHandler": Object {
@@ -345,6 +396,9 @@ Object {
               "functionName": "fiber0006",
               "hasCallback": true,
               "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
             },
           },
           "posLine1": "/a*B+c?/",
@@ -356,9 +410,11 @@ Object {
       "functionName": "fiber0007",
       "hasCallback": false,
       "lastAtomReturns": true,
+      "meta": Object {
+        "groups": Array [],
+      },
     },
   ],
-  "groupsCount": 1,
   "mainHandler": Object {
     "atoms": Array [
       Object {
@@ -377,6 +433,9 @@ Object {
                             "functionName": "fiber0001",
                             "hasCallback": false,
                             "lastAtomReturns": false,
+                            "meta": Object {
+                              "groups": Array [],
+                            },
                           },
                           "maxCount": 1,
                           "maxOrMinCount": true,
@@ -404,6 +463,9 @@ Object {
                             "functionName": "fiber0002",
                             "hasCallback": true,
                             "lastAtomReturns": false,
+                            "meta": Object {
+                              "groups": Array [],
+                            },
                           },
                         },
                         "posLine1": "/a*B+c?/",
@@ -415,6 +477,9 @@ Object {
                     "functionName": "fiber0003",
                     "hasCallback": false,
                     "lastAtomReturns": true,
+                    "meta": Object {
+                      "groups": Array [],
+                    },
                   },
                   "maxOrMinCount": true,
                   "minCount": 1,
@@ -442,6 +507,9 @@ Object {
                     "functionName": "fiber0004",
                     "hasCallback": true,
                     "lastAtomReturns": false,
+                    "meta": Object {
+                      "groups": Array [],
+                    },
                   },
                 },
                 "posLine1": "/a*B+c?/",
@@ -453,6 +521,9 @@ Object {
             "functionName": "fiber0005",
             "hasCallback": false,
             "lastAtomReturns": true,
+            "meta": Object {
+              "groups": Array [],
+            },
           },
           "maxOrMinCount": false,
           "wrappedHandler": Object {
@@ -479,6 +550,9 @@ Object {
             "functionName": "fiber0006",
             "hasCallback": true,
             "lastAtomReturns": false,
+            "meta": Object {
+              "groups": Array [],
+            },
           },
         },
         "posLine1": "/a*B+c?/",
@@ -490,6 +564,9 @@ Object {
     "functionName": "fiber0007",
     "hasCallback": false,
     "lastAtomReturns": true,
+    "meta": Object {
+      "groups": Array [],
+    },
   },
   "regexStr": "/a*B+c?/",
 }

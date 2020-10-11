@@ -2,22 +2,22 @@
 function generatedRegexMatcher(str: string) {
   const strLength = str.length;
   let groupMarkers:[
-    {{#times groupsCount}}
+    {{#each groups}}
       number, number,
-    {{/times}}
+    {{/each}}
   ] = [
-    {{#times groupsCount}}
+    {{#each groups}}
       -1, -1,
-    {{/times}}
+    {{/each}}
   ];
   const tempGroupStartMarkers: [
-    {{#times groupsCount}}
+    {{#each groups}}
       number, 
-    {{/times}}
+    {{/each}}
   ] = [
-    {{#times groupsCount}}
+    {{#each groups}}
       -1,
-    {{/times}}
+    {{/each}}
   ];
 
   {{#each fiberHandlers}}
@@ -29,7 +29,7 @@ function generatedRegexMatcher(str: string) {
       {{#each atoms}}
         /*
          * {{{type}}}
-         * {{#escapeComment posLine1}}{{/escapeComment}}
+         * {{escapeComment posLine1}}
          * {{{posLine2}}}
          */
         {{#switchCase 'charOrSet'}}
@@ -83,11 +83,11 @@ function generatedRegexMatcher(str: string) {
           }
         {{/switchCase}}
         {{#switchCase 'groupStartMarker'}}
-          tempGroupStartMarkers[{{{groupIndex}}}] = i;
+          tempGroupStartMarkers[{{{groupReference.idx}}}] = i;
         {{/switchCase}}
         {{#switchCase 'groupEndMarker'}}
-          groupMarkers[{{{groupStartMarkerIndex}}}] = tempGroupStartMarkers[{{{groupIndex}}}];
-          groupMarkers[{{{groupEndMarkerIndex}}}] = i;
+          groupMarkers[{{groupStartArrayIndex groupReference}}] = tempGroupStartMarkers[{{{groupReference.idx}}}];
+          groupMarkers[{{groupEndArrayIndex groupReference}}] = i;
         {{/switchCase}}
         {{#switchCase 'lookAhead'}}
           const lookAheadResult{{{@index}}} = {{{lookAheadFiber.functionName}}}(i);
@@ -227,19 +227,17 @@ function generatedRegexMatcher(str: string) {
   {{/each}}
 
   for (let i = 0; i < strLength; i++) {
-    const length = {{{mainHandler.functionName}}}(i);
-    if (length !== -1) {
-      // TODO: why do we do this?!
-      groupMarkers[0] = i;
-      groupMarkers[1] = length;
+    const posAfterMatch = {{{mainHandler.functionName}}}(i);
+    if (posAfterMatch !== -1) {
       return {
         index: i,
         matches: [
-          {{#times groupsCount}}
-            groupMarkers[{{@index}} * 2 + 1] !== -1 
-              ? str.substring(groupMarkers[{{@index}} * 2], groupMarkers[{{@index}} * 2 + 1])
+          str.substring(i, posAfterMatch),
+          {{#each groups}}
+            groupMarkers[{{groupEndArrayIndex @this}}] !== -1 // TODO: is this check still necassary?
+              ? str.substring(groupMarkers[{{groupStartArrayIndex @this}}], groupMarkers[{{groupEndArrayIndex @this}}])
               : undefined,
-          {{/times}}
+          {{/each}}
         ]
       }
     }

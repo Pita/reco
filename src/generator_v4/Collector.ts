@@ -4,6 +4,7 @@ import {
   FiberTemplateDefinition,
   TemplateAtom,
   FollowUp,
+  GroupReference,
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
 
@@ -14,7 +15,7 @@ type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
 export class Collector {
   private regexStr: string;
   private counter = 0;
-  private groupCount: number = 1;
+  private groups: Array<GroupReference & { astStart: number }> = [];
   private fiberHandlers: FiberTemplateDefinition[] = [];
 
   constructor(regexStr: string) {
@@ -33,14 +34,11 @@ export class Collector {
     };
   }
 
-  bumpGroupCount() {
-    this.groupCount++;
-  }
-
   createConnectedFiber(fiber: FiberTemplateDefinition) {
     // Special case where the fiber to close has zero atoms,
     // therefore we can delete it
     let followUp: FollowUp = fiber;
+    const groups = fiber.meta.groups.slice();
     const hasCallback = fiber.hasCallback;
     if (fiber.atoms.length === 0) {
       followUp = fiber.followUp;
@@ -56,6 +54,9 @@ export class Collector {
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
       hasCallback,
+      meta: {
+        groups,
+      },
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
@@ -68,6 +69,9 @@ export class Collector {
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
       hasCallback: false,
+      meta: {
+        groups: [],
+      },
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
@@ -80,6 +84,9 @@ export class Collector {
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: true,
       hasCallback: fiber.hasCallback,
+      meta: {
+        groups: fiber.meta.groups.slice(),
+      },
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
@@ -92,6 +99,9 @@ export class Collector {
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
       hasCallback: true,
+      meta: {
+        groups: [],
+      },
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
@@ -109,11 +119,30 @@ export class Collector {
     return currentFiber;
   }
 
+  addCapturingGroup(
+    currentFiber: FiberTemplateDefinition,
+    ast: AST.CapturingGroup,
+  ) {
+    const newGroup = {
+      idx: -1,
+      astStart: ast.start,
+    };
+
+    this.groups.push(newGroup);
+    this.groups.sort((a, b) => a.astStart - b.astStart);
+    this.groups.forEach((group, i) => {
+      group.idx = i;
+    });
+
+    currentFiber.meta.groups.push(newGroup);
+    return newGroup;
+  }
+
   getTemplateValues(): Omit<TemplateValues, 'mainHandler'> {
     return {
       regexStr: this.regexStr,
       fiberHandlers: this.fiberHandlers,
-      groupsCount: this.groupCount,
+      groups: this.groups,
     };
   }
 }

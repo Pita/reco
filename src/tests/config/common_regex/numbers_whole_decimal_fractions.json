@@ -12,5 +12,5 @@
     "-4,55/2345.24",
     "4.33/"
   ],
-  "mustPass": false
+  "mustPass": true
 }

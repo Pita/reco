@@ -3,12 +3,19 @@ import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 const prettier = require('prettier');
 
+export interface GroupReference {
+  idx: number;
+}
+
 export interface FiberTemplateDefinition {
   atoms: TemplateAtom[];
   lastAtomReturns: boolean;
   functionName: string;
   followUp: FollowUp;
   hasCallback: boolean;
+  meta: {
+    groups: GroupReference[];
+  };
 }
 
 export type FollowUp =
@@ -50,16 +57,14 @@ export interface EndAnchorTemplateAtom extends BaseTemplateAtom {
 export interface GroupStartMarkerTemplateAtom extends BaseTemplateAtom {
   type: 'groupStartMarker';
   data: {
-    groupIndex: number;
+    groupReference: GroupReference;
   };
 }
 
 export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
   type: 'groupEndMarker';
   data: {
-    groupIndex: number;
-    groupStartMarkerIndex: number;
-    groupEndMarkerIndex: number;
+    groupReference: GroupReference;
   };
 }
 
@@ -108,7 +113,7 @@ export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
   mainHandler: FiberTemplateDefinition;
   regexStr: string;
-  groupsCount: number;
+  groups: GroupReference[];
 }
 
 registerLeafPartial();

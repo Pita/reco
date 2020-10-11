@@ -11,5 +11,5 @@
     "-3",
     "100"
   ],
-  "mustPass": false
+  "mustPass": true
 }

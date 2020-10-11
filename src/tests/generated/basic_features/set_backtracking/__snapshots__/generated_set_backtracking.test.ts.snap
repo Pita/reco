@@ -1,0 +1,974 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/set_backtracking template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 16,
+              "idx": 2,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                ^^^^^^^^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 24,
+              "idx": 3,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                        ^^^^^^^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 51,
+                "type": "lessOrEqual",
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 49,
+                  "type": "moreOrEqual",
+                },
+                "type": "lastComparison",
+              },
+              "type": "comparison",
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                         ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 24,
+              "idx": 3,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                        ^^^^^^^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [
+          Object {
+            "astStart": 24,
+            "idx": 3,
+          },
+          Object {
+            "astStart": 16,
+            "idx": 2,
+          },
+        ],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 122,
+                "type": "lessOrEqual",
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 100,
+                  "type": "moreOrEqual",
+                },
+                "type": "lastComparison",
+              },
+              "type": "comparison",
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                 ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+      },
+      "functionName": "fiber0002",
+      "hasCallback": true,
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": " ^^^^^^^^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 9,
+              "idx": 1,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "         ^^^^^^^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 111,
+                "type": "lessOrEqual",
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 104,
+                  "type": "moreOrEqual",
+                },
+                "type": "lastComparison",
+              },
+              "type": "comparison",
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "          ^^^^^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 9,
+              "idx": 1,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "         ^^^^^^^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 16,
+              "idx": 2,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                ^^^^^^^^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 16,
+                      "idx": 2,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                ^^^^^^^^",
+                  "type": "groupEndMarker",
+                },
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 24,
+                      "idx": 3,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                        ^^^^^^^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 51,
+                        "type": "lessOrEqual",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "comparisonValue": 49,
+                          "type": "moreOrEqual",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "type": "comparison",
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                         ^^^^^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 24,
+                      "idx": 3,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                        ^^^^^^^",
+                  "type": "groupEndMarker",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0001",
+              "hasCallback": false,
+              "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [
+                  Object {
+                    "astStart": 24,
+                    "idx": 3,
+                  },
+                  Object {
+                    "astStart": 16,
+                    "idx": 2,
+                  },
+                ],
+              },
+            },
+            "maxOrMinCount": false,
+            "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 122,
+                        "type": "lessOrEqual",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "comparisonValue": 100,
+                          "type": "moreOrEqual",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "type": "comparison",
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                 ^^^^^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "functionName": "callback",
+              },
+              "functionName": "fiber0002",
+              "hasCallback": true,
+              "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "                 ^^^^^^",
+          "type": "greedyQuantifier",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0003",
+      "hasCallback": false,
+      "lastAtomReturns": true,
+      "meta": Object {
+        "groups": Array [
+          Object {
+            "astStart": 24,
+            "idx": 3,
+          },
+          Object {
+            "astStart": 16,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 9,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        ],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 122,
+                "type": "lessOrEqual",
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 97,
+                  "type": "moreOrEqual",
+                },
+                "type": "lastComparison",
+              },
+              "type": "comparison",
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "  ^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "functionName": "callback",
+      },
+      "functionName": "fiber0004",
+      "hasCallback": true,
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": " ^^^^^^^^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "followUp": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 1,
+                      "idx": 0,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": " ^^^^^^^^",
+                  "type": "groupEndMarker",
+                },
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 9,
+                      "idx": 1,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "         ^^^^^^^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 111,
+                        "type": "lessOrEqual",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "comparisonValue": 104,
+                          "type": "moreOrEqual",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "type": "comparison",
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "          ^^^^^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 9,
+                      "idx": 1,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "         ^^^^^^^",
+                  "type": "groupEndMarker",
+                },
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 16,
+                      "idx": 2,
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                ^^^^^^^^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "followUp": Object {
+                      "atoms": Array [
+                        Object {
+                          "data": Object {
+                            "groupReference": Object {
+                              "astStart": 16,
+                              "idx": 2,
+                            },
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                ^^^^^^^^",
+                          "type": "groupEndMarker",
+                        },
+                        Object {
+                          "data": Object {
+                            "groupReference": Object {
+                              "astStart": 24,
+                              "idx": 3,
+                            },
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                        ^^^^^^^",
+                          "type": "groupStartMarker",
+                        },
+                        Object {
+                          "data": Object {
+                            "negate": false,
+                            "tree": Object {
+                              "comparison": Object {
+                                "comparisonValue": 51,
+                                "type": "lessOrEqual",
+                              },
+                              "comparisonTrue": Object {
+                                "comparison": Object {
+                                  "comparisonValue": 49,
+                                  "type": "moreOrEqual",
+                                },
+                                "type": "lastComparison",
+                              },
+                              "type": "comparison",
+                            },
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                         ^^^^^",
+                          "type": "charOrSet",
+                        },
+                        Object {
+                          "data": Object {
+                            "groupReference": Object {
+                              "astStart": 24,
+                              "idx": 3,
+                            },
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                        ^^^^^^^",
+                          "type": "groupEndMarker",
+                        },
+                      ],
+                      "followUp": null,
+                      "functionName": "fiber0001",
+                      "hasCallback": false,
+                      "lastAtomReturns": false,
+                      "meta": Object {
+                        "groups": Array [
+                          Object {
+                            "astStart": 24,
+                            "idx": 3,
+                          },
+                          Object {
+                            "astStart": 16,
+                            "idx": 2,
+                          },
+                        ],
+                      },
+                    },
+                    "maxOrMinCount": false,
+                    "wrappedHandler": Object {
+                      "atoms": Array [
+                        Object {
+                          "data": Object {
+                            "negate": false,
+                            "tree": Object {
+                              "comparison": Object {
+                                "comparisonValue": 122,
+                                "type": "lessOrEqual",
+                              },
+                              "comparisonTrue": Object {
+                                "comparison": Object {
+                                  "comparisonValue": 100,
+                                  "type": "moreOrEqual",
+                                },
+                                "type": "lastComparison",
+                              },
+                              "type": "comparison",
+                            },
+                          },
+                          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                          "posLine2": "                 ^^^^^",
+                          "type": "charOrSet",
+                        },
+                      ],
+                      "followUp": Object {
+                        "functionName": "callback",
+                      },
+                      "functionName": "fiber0002",
+                      "hasCallback": true,
+                      "lastAtomReturns": false,
+                      "meta": Object {
+                        "groups": Array [],
+                      },
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "                 ^^^^^^",
+                  "type": "greedyQuantifier",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0003",
+              "hasCallback": false,
+              "lastAtomReturns": true,
+              "meta": Object {
+                "groups": Array [
+                  Object {
+                    "astStart": 24,
+                    "idx": 3,
+                  },
+                  Object {
+                    "astStart": 16,
+                    "idx": 2,
+                  },
+                  Object {
+                    "astStart": 9,
+                    "idx": 1,
+                  },
+                  Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                ],
+              },
+            },
+            "maxOrMinCount": true,
+            "minCount": 1,
+            "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 122,
+                        "type": "lessOrEqual",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "comparisonValue": 97,
+                          "type": "moreOrEqual",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "type": "comparison",
+                    },
+                  },
+                  "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                  "posLine2": "  ^^^^^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": Object {
+                "functionName": "callback",
+              },
+              "functionName": "fiber0004",
+              "hasCallback": true,
+              "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
+            },
+          },
+          "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+          "posLine2": "  ^^^^^^",
+          "type": "greedyQuantifier",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0005",
+      "hasCallback": false,
+      "lastAtomReturns": true,
+      "meta": Object {
+        "groups": Array [
+          Object {
+            "astStart": 24,
+            "idx": 3,
+          },
+          Object {
+            "astStart": 16,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 9,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        ],
+      },
+    },
+  ],
+  "groups": Array [
+    Object {
+      "astStart": 1,
+      "idx": 0,
+    },
+    Object {
+      "astStart": 9,
+      "idx": 1,
+    },
+    Object {
+      "astStart": 16,
+      "idx": 2,
+    },
+    Object {
+      "astStart": 24,
+      "idx": 3,
+    },
+  ],
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "groupReference": Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        },
+        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+        "posLine2": " ^^^^^^^^",
+        "type": "groupStartMarker",
+      },
+      Object {
+        "data": Object {
+          "followUp": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": " ^^^^^^^^",
+                "type": "groupEndMarker",
+              },
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 9,
+                    "idx": 1,
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "         ^^^^^^^",
+                "type": "groupStartMarker",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 111,
+                      "type": "lessOrEqual",
+                    },
+                    "comparisonTrue": Object {
+                      "comparison": Object {
+                        "comparisonValue": 104,
+                        "type": "moreOrEqual",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "type": "comparison",
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "          ^^^^^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 9,
+                    "idx": 1,
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "         ^^^^^^^",
+                "type": "groupEndMarker",
+              },
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 16,
+                    "idx": 2,
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "                ^^^^^^^^",
+                "type": "groupStartMarker",
+              },
+              Object {
+                "data": Object {
+                  "followUp": Object {
+                    "atoms": Array [
+                      Object {
+                        "data": Object {
+                          "groupReference": Object {
+                            "astStart": 16,
+                            "idx": 2,
+                          },
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                ^^^^^^^^",
+                        "type": "groupEndMarker",
+                      },
+                      Object {
+                        "data": Object {
+                          "groupReference": Object {
+                            "astStart": 24,
+                            "idx": 3,
+                          },
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                        ^^^^^^^",
+                        "type": "groupStartMarker",
+                      },
+                      Object {
+                        "data": Object {
+                          "negate": false,
+                          "tree": Object {
+                            "comparison": Object {
+                              "comparisonValue": 51,
+                              "type": "lessOrEqual",
+                            },
+                            "comparisonTrue": Object {
+                              "comparison": Object {
+                                "comparisonValue": 49,
+                                "type": "moreOrEqual",
+                              },
+                              "type": "lastComparison",
+                            },
+                            "type": "comparison",
+                          },
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                         ^^^^^",
+                        "type": "charOrSet",
+                      },
+                      Object {
+                        "data": Object {
+                          "groupReference": Object {
+                            "astStart": 24,
+                            "idx": 3,
+                          },
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                        ^^^^^^^",
+                        "type": "groupEndMarker",
+                      },
+                    ],
+                    "followUp": null,
+                    "functionName": "fiber0001",
+                    "hasCallback": false,
+                    "lastAtomReturns": false,
+                    "meta": Object {
+                      "groups": Array [
+                        Object {
+                          "astStart": 24,
+                          "idx": 3,
+                        },
+                        Object {
+                          "astStart": 16,
+                          "idx": 2,
+                        },
+                      ],
+                    },
+                  },
+                  "maxOrMinCount": false,
+                  "wrappedHandler": Object {
+                    "atoms": Array [
+                      Object {
+                        "data": Object {
+                          "negate": false,
+                          "tree": Object {
+                            "comparison": Object {
+                              "comparisonValue": 122,
+                              "type": "lessOrEqual",
+                            },
+                            "comparisonTrue": Object {
+                              "comparison": Object {
+                                "comparisonValue": 100,
+                                "type": "moreOrEqual",
+                              },
+                              "type": "lastComparison",
+                            },
+                            "type": "comparison",
+                          },
+                        },
+                        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                        "posLine2": "                 ^^^^^",
+                        "type": "charOrSet",
+                      },
+                    ],
+                    "followUp": Object {
+                      "functionName": "callback",
+                    },
+                    "functionName": "fiber0002",
+                    "hasCallback": true,
+                    "lastAtomReturns": false,
+                    "meta": Object {
+                      "groups": Array [],
+                    },
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "                 ^^^^^^",
+                "type": "greedyQuantifier",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0003",
+            "hasCallback": false,
+            "lastAtomReturns": true,
+            "meta": Object {
+              "groups": Array [
+                Object {
+                  "astStart": 24,
+                  "idx": 3,
+                },
+                Object {
+                  "astStart": 16,
+                  "idx": 2,
+                },
+                Object {
+                  "astStart": 9,
+                  "idx": 1,
+                },
+                Object {
+                  "astStart": 1,
+                  "idx": 0,
+                },
+              ],
+            },
+          },
+          "maxOrMinCount": true,
+          "minCount": 1,
+          "wrappedHandler": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 122,
+                      "type": "lessOrEqual",
+                    },
+                    "comparisonTrue": Object {
+                      "comparison": Object {
+                        "comparisonValue": 97,
+                        "type": "moreOrEqual",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "type": "comparison",
+                  },
+                },
+                "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+                "posLine2": "  ^^^^^",
+                "type": "charOrSet",
+              },
+            ],
+            "followUp": Object {
+              "functionName": "callback",
+            },
+            "functionName": "fiber0004",
+            "hasCallback": true,
+            "lastAtomReturns": false,
+            "meta": Object {
+              "groups": Array [],
+            },
+          },
+        },
+        "posLine1": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+        "posLine2": "  ^^^^^^",
+        "type": "greedyQuantifier",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0005",
+    "hasCallback": false,
+    "lastAtomReturns": true,
+    "meta": Object {
+      "groups": Array [
+        Object {
+          "astStart": 24,
+          "idx": 3,
+        },
+        Object {
+          "astStart": 16,
+          "idx": 2,
+        },
+        Object {
+          "astStart": 9,
+          "idx": 1,
+        },
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+      ],
+    },
+  },
+  "regexStr": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+}
+`;
