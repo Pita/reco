@@ -21,15 +21,18 @@ export const handleQuantifier = (
   const maxCount = quantifier.max === Infinity ? undefined : quantifier.max;
   const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
 
-  return collector.addAtom(collector.createForkingFiber(currentFiber), {
-    type: quantifier.greedy ? 'greedyQuantifier' : 'lazyQuantifier',
-    data: {
-      minCount,
-      maxCount,
-      maxOrMinCount,
-      wrappedHandler,
-      followUp: currentFiber,
+  return collector.addAtom(
+    collector.createForkingFiber(currentFiber, [wrappedHandler, currentFiber]),
+    {
+      type: quantifier.greedy ? 'greedyQuantifier' : 'lazyQuantifier',
+      data: {
+        minCount,
+        maxCount,
+        maxOrMinCount,
+        wrappedHandler,
+        followUp: currentFiber,
+      },
+      ast: quantifier,
     },
-    ast: quantifier,
-  });
+  );
 };

@@ -55,12 +55,12 @@ function generatedRegexMatcher(str: string) {
           {{/unless}}
         {{/switchCase}}
         {{#switchCase 'disjunction'}}
-          // TODO: Make that this does not require garbage collection
-          // typed array or for loop
-          // there might also be a possiblity to not copy all groups
-          const groupMarkersCopy = groupMarkers.slice() as any;
-
-          {{#each alternatives}}
+          {{#each groupsToRestore}}
+            const tempGroupStartMarkerCopy{{{idx}}} = tempGroupStartMarkers[{{{idx}}}];
+            const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+            const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+          {{/each}}
+          {{#each alternatives}}            
             const length{{{@index}}} = {{{functionName}}}(
               i, 
               {{#if hasCallback}} callback, {{/if}}
@@ -68,7 +68,11 @@ function generatedRegexMatcher(str: string) {
             if (length{{{@index}}} !== -1) {
               return length{{{@index}}};
             }
-            groupMarkers = groupMarkersCopy;
+            {{#each meta.groups}}
+              tempGroupStartMarkers[{{{idx}}}] = tempGroupStartMarkerCopy{{{idx}}};
+              groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+              groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+            {{/each}}
           {{/each}}
           return -1;
         {{/switchCase}}

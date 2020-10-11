@@ -348,7 +348,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 7,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -539,7 +544,12 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 7,
+                    "idx": 0,
+                  },
+                ],
               },
             },
             "maxOrMinCount": false,
@@ -589,7 +599,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 7,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -783,7 +798,12 @@ Object {
                       "hasCallback": false,
                       "lastAtomReturns": true,
                       "meta": Object {
-                        "groups": Array [],
+                        "groups": Array [
+                          Object {
+                            "astStart": 7,
+                            "idx": 0,
+                          },
+                        ],
                       },
                     },
                     "maxOrMinCount": false,
@@ -833,7 +853,12 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 7,
+                    "idx": 0,
+                  },
+                ],
               },
             },
             "maxCount": 1,
@@ -877,7 +902,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 7,
+            "idx": 0,
+          },
+        ],
       },
     },
   ],
@@ -1050,7 +1080,12 @@ Object {
                     "hasCallback": false,
                     "lastAtomReturns": true,
                     "meta": Object {
-                      "groups": Array [],
+                      "groups": Array [
+                        Object {
+                          "astStart": 7,
+                          "idx": 0,
+                        },
+                      ],
                     },
                   },
                   "maxOrMinCount": false,
@@ -1100,7 +1135,12 @@ Object {
             "hasCallback": false,
             "lastAtomReturns": true,
             "meta": Object {
-              "groups": Array [],
+              "groups": Array [
+                Object {
+                  "astStart": 7,
+                  "idx": 0,
+                },
+              ],
             },
           },
           "maxCount": 1,
@@ -1144,7 +1184,12 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
-      "groups": Array [],
+      "groups": Array [
+        Object {
+          "astStart": 7,
+          "idx": 0,
+        },
+      ],
     },
   },
   "regexStr": "/^-?\\\\d*(\\\\.\\\\d+)?$/",

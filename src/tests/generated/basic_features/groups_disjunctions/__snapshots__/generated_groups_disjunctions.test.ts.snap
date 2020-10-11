@@ -628,6 +628,24 @@ Object {
                 },
               },
             ],
+            "groupsToRestore": Array [
+              Object {
+                "astStart": 18,
+                "idx": 3,
+              },
+              Object {
+                "astStart": 1,
+                "idx": 0,
+              },
+              Object {
+                "astStart": 2,
+                "idx": 1,
+              },
+              Object {
+                "astStart": 10,
+                "idx": 2,
+              },
+            ],
           },
           "posLine1": "(([a-c])|([d-f]))(a)/",
           "posLine2": "^^^^^^^^^^^^^^^^^",
@@ -647,6 +665,14 @@ Object {
           Object {
             "astStart": 1,
             "idx": 0,
+          },
+          Object {
+            "astStart": 2,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 10,
+            "idx": 2,
           },
         ],
       },
@@ -957,6 +983,24 @@ Object {
               },
             },
           ],
+          "groupsToRestore": Array [
+            Object {
+              "astStart": 18,
+              "idx": 3,
+            },
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
+              "astStart": 2,
+              "idx": 1,
+            },
+            Object {
+              "astStart": 10,
+              "idx": 2,
+            },
+          ],
         },
         "posLine1": "(([a-c])|([d-f]))(a)/",
         "posLine2": "^^^^^^^^^^^^^^^^^",
@@ -976,6 +1020,14 @@ Object {
         Object {
           "astStart": 1,
           "idx": 0,
+        },
+        Object {
+          "astStart": 2,
+          "idx": 1,
+        },
+        Object {
+          "astStart": 10,
+          "idx": 2,
         },
       ],
     },

@@ -1,6 +1,9 @@
 import { AST } from 'regexpp';
 import { Collector } from '../Collector';
-import { FiberTemplateDefinition } from '../templates/mainTemplate';
+import {
+  FiberTemplateDefinition,
+  GroupReference,
+} from '../templates/mainTemplate';
 import { Flags } from '../generator_v4';
 import { handleAlternative } from './Alternative';
 
@@ -23,9 +26,21 @@ export const handleDisjunction = (
     ),
   );
 
-  return collector.addAtom(collector.createForkingFiber(currentFiber), {
-    type: 'disjunction',
-    data: { alternatives: mappedAlternatives },
-    ast: alternatives[0].parent,
+  const groupsToRestore: GroupReference[] = [];
+  mappedAlternatives.forEach((alternative) => {
+    alternative.meta.groups.forEach((group) => {
+      if (groupsToRestore.indexOf(group) === -1) {
+        groupsToRestore.push(group);
+      }
+    });
   });
+
+  return collector.addAtom(
+    collector.createForkingFiber(currentFiber, mappedAlternatives),
+    {
+      type: 'disjunction',
+      data: { alternatives: mappedAlternatives, groupsToRestore },
+      ast: alternatives[0].parent,
+    },
+  );
 };

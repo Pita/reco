@@ -982,6 +982,12 @@ Object {
                 },
               },
             ],
+            "groupsToRestore": Array [
+              Object {
+                "astStart": 2,
+                "idx": 0,
+              },
+            ],
           },
           "posLine1": "(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9...",
           "posLine2": "^^^^^^^^^^^^^^^^^^^^^^",
@@ -1461,6 +1467,12 @@ Object {
                   },
                 ],
               },
+            },
+          ],
+          "groupsToRestore": Array [
+            Object {
+              "astStart": 2,
+              "idx": 0,
             },
           ],
         },

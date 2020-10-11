@@ -314,7 +314,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        ],
       },
     },
   ],
@@ -460,7 +465,12 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
-      "groups": Array [],
+      "groups": Array [
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+      ],
     },
   },
   "regexStr": "/(aa?){3}?/",

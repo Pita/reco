@@ -225,7 +225,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 12,
+            "idx": 1,
+          },
+        ],
       },
     },
     Object {
@@ -421,7 +426,12 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 12,
+                    "idx": 1,
+                  },
+                ],
               },
             },
             "maxCount": 2,
@@ -500,7 +510,16 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 12,
+            "idx": 1,
+          },
+        ],
       },
     },
   ],
@@ -645,7 +664,12 @@ Object {
             "hasCallback": false,
             "lastAtomReturns": true,
             "meta": Object {
-              "groups": Array [],
+              "groups": Array [
+                Object {
+                  "astStart": 12,
+                  "idx": 1,
+                },
+              ],
             },
           },
           "maxCount": 2,
@@ -724,7 +748,16 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
-      "groups": Array [],
+      "groups": Array [
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+        Object {
+          "astStart": 12,
+          "idx": 1,
+        },
+      ],
     },
   },
   "regexStr": "/([a-y]){2}k(123)+/",

@@ -40,6 +40,7 @@ export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
 export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
   type: 'disjunction';
   data: {
+    groupsToRestore: GroupReference[];
     alternatives: FiberTemplateDefinition[];
   };
 }

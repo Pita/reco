@@ -387,6 +387,10 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
             "astStart": 7,
             "idx": 1,
           },
@@ -604,6 +608,10 @@ Object {
     "lastAtomReturns": true,
     "meta": Object {
       "groups": Array [
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
         Object {
           "astStart": 7,
           "idx": 1,

@@ -2731,6 +2731,12 @@ Object {
                 },
               },
             ],
+            "groupsToRestore": Array [
+              Object {
+                "astStart": 148,
+                "idx": 2,
+              },
+            ],
           },
           "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\...",
           "posLine2": "                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -3855,6 +3861,12 @@ Object {
                             },
                           ],
                         },
+                      },
+                    ],
+                    "groupsToRestore": Array [
+                      Object {
+                        "astStart": 148,
+                        "idx": 2,
                       },
                     ],
                   },
@@ -5038,6 +5050,12 @@ Object {
                                 },
                               },
                             ],
+                            "groupsToRestore": Array [
+                              Object {
+                                "astStart": 148,
+                                "idx": 2,
+                              },
+                            ],
                           },
                           "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\...",
                           "posLine2": "                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -5145,6 +5163,10 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
+          Object {
+            "astStart": 148,
+            "idx": 2,
+          },
           Object {
             "astStart": 60,
             "idx": 1,
@@ -7061,6 +7083,12 @@ Object {
                                         },
                                       },
                                     ],
+                                    "groupsToRestore": Array [
+                                      Object {
+                                        "astStart": 148,
+                                        "idx": 2,
+                                      },
+                                    ],
                                   },
                                   "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\...",
                                   "posLine2": "                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -7168,6 +7196,10 @@ Object {
               "lastAtomReturns": true,
               "meta": Object {
                 "groups": Array [
+                  Object {
+                    "astStart": 148,
+                    "idx": 2,
+                  },
                   Object {
                     "astStart": 60,
                     "idx": 1,
@@ -7426,6 +7458,10 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
+          Object {
+            "astStart": 148,
+            "idx": 2,
+          },
           Object {
             "astStart": 60,
             "idx": 1,
@@ -8503,6 +8539,12 @@ Object {
                 },
               },
             ],
+            "groupsToRestore": Array [
+              Object {
+                "astStart": 20,
+                "idx": 0,
+              },
+            ],
           },
           "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
           "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -8901,6 +8943,12 @@ Object {
                   },
                 },
               ],
+              "groupsToRestore": Array [
+                Object {
+                  "astStart": 20,
+                  "idx": 0,
+                },
+              ],
             },
             "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
             "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -9294,6 +9342,12 @@ Object {
                       },
                     ],
                   },
+                },
+              ],
+              "groupsToRestore": Array [
+                Object {
+                  "astStart": 20,
+                  "idx": 0,
                 },
               ],
             },
@@ -9711,6 +9765,12 @@ Object {
                             },
                           },
                         ],
+                        "groupsToRestore": Array [
+                          Object {
+                            "astStart": 20,
+                            "idx": 0,
+                          },
+                        ],
                       },
                       "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                       "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -10106,6 +10166,12 @@ Object {
                             },
                           },
                         ],
+                        "groupsToRestore": Array [
+                          Object {
+                            "astStart": 20,
+                            "idx": 0,
+                          },
+                        ],
                       },
                       "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                       "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -10136,6 +10202,12 @@ Object {
                     },
                   ],
                 },
+              },
+            ],
+            "groupsToRestore": Array [
+              Object {
+                "astStart": 20,
+                "idx": 0,
               },
             ],
           },
@@ -10573,6 +10645,12 @@ Object {
                                     },
                                   },
                                 ],
+                                "groupsToRestore": Array [
+                                  Object {
+                                    "astStart": 20,
+                                    "idx": 0,
+                                  },
+                                ],
                               },
                               "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                               "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -10968,6 +11046,12 @@ Object {
                                     },
                                   },
                                 ],
+                                "groupsToRestore": Array [
+                                  Object {
+                                    "astStart": 20,
+                                    "idx": 0,
+                                  },
+                                ],
                               },
                               "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                               "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -10998,6 +11082,12 @@ Object {
                             },
                           ],
                         },
+                      },
+                    ],
+                    "groupsToRestore": Array [
+                      Object {
+                        "astStart": 20,
+                        "idx": 0,
                       },
                     ],
                   },
@@ -11549,6 +11639,12 @@ Object {
                                             },
                                           },
                                         ],
+                                        "groupsToRestore": Array [
+                                          Object {
+                                            "astStart": 20,
+                                            "idx": 0,
+                                          },
+                                        ],
                                       },
                                       "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                                       "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -11944,6 +12040,12 @@ Object {
                                             },
                                           },
                                         ],
+                                        "groupsToRestore": Array [
+                                          Object {
+                                            "astStart": 20,
+                                            "idx": 0,
+                                          },
+                                        ],
                                       },
                                       "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                                       "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -11974,6 +12076,12 @@ Object {
                                     },
                                   ],
                                 },
+                              },
+                            ],
+                            "groupsToRestore": Array [
+                              Object {
+                                "astStart": 20,
+                                "idx": 0,
                               },
                             ],
                           },
@@ -12055,7 +12163,12 @@ Object {
       "hasCallback": true,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 20,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -13169,6 +13282,12 @@ Object {
                                                 },
                                               },
                                             ],
+                                            "groupsToRestore": Array [
+                                              Object {
+                                                "astStart": 148,
+                                                "idx": 2,
+                                              },
+                                            ],
                                           },
                                           "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\...",
                                           "posLine2": "                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -13276,6 +13395,10 @@ Object {
                       "lastAtomReturns": true,
                       "meta": Object {
                         "groups": Array [
+                          Object {
+                            "astStart": 148,
+                            "idx": 2,
+                          },
                           Object {
                             "astStart": 60,
                             "idx": 1,
@@ -13534,6 +13657,10 @@ Object {
               "lastAtomReturns": true,
               "meta": Object {
                 "groups": Array [
+                  Object {
+                    "astStart": 148,
+                    "idx": 2,
+                  },
                   Object {
                     "astStart": 60,
                     "idx": 1,
@@ -14024,6 +14151,12 @@ Object {
                                                     },
                                                   },
                                                 ],
+                                                "groupsToRestore": Array [
+                                                  Object {
+                                                    "astStart": 20,
+                                                    "idx": 0,
+                                                  },
+                                                ],
                                               },
                                               "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                                               "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -14419,6 +14552,12 @@ Object {
                                                     },
                                                   },
                                                 ],
+                                                "groupsToRestore": Array [
+                                                  Object {
+                                                    "astStart": 20,
+                                                    "idx": 0,
+                                                  },
+                                                ],
                                               },
                                               "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                                               "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -14449,6 +14588,12 @@ Object {
                                             },
                                           ],
                                         },
+                                      },
+                                    ],
+                                    "groupsToRestore": Array [
+                                      Object {
+                                        "astStart": 20,
+                                        "idx": 0,
                                       },
                                     ],
                                   },
@@ -14530,7 +14675,12 @@ Object {
               "hasCallback": true,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 20,
+                    "idx": 0,
+                  },
+                ],
               },
             },
           },
@@ -14545,6 +14695,14 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
+          Object {
+            "astStart": 20,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 148,
+            "idx": 2,
+          },
           Object {
             "astStart": 60,
             "idx": 1,
@@ -15678,6 +15836,12 @@ Object {
                                               },
                                             },
                                           ],
+                                          "groupsToRestore": Array [
+                                            Object {
+                                              "astStart": 148,
+                                              "idx": 2,
+                                            },
+                                          ],
                                         },
                                         "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?)?((?:\\\\(?\\\\d{1,}\\\\)?[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?){0,})(?:[\\\\-\\\\.\\\\ \\\\\\\\\\\\/]?(?:#|ext\\\\.?|extension|x)[\\\\-\\\\.\\\\ \\\\\\\\\\\\...",
                                         "posLine2": "                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -15785,6 +15949,10 @@ Object {
                     "lastAtomReturns": true,
                     "meta": Object {
                       "groups": Array [
+                        Object {
+                          "astStart": 148,
+                          "idx": 2,
+                        },
                         Object {
                           "astStart": 60,
                           "idx": 1,
@@ -16043,6 +16211,10 @@ Object {
             "lastAtomReturns": true,
             "meta": Object {
               "groups": Array [
+                Object {
+                  "astStart": 148,
+                  "idx": 2,
+                },
                 Object {
                   "astStart": 60,
                   "idx": 1,
@@ -16533,6 +16705,12 @@ Object {
                                                   },
                                                 },
                                               ],
+                                              "groupsToRestore": Array [
+                                                Object {
+                                                  "astStart": 20,
+                                                  "idx": 0,
+                                                },
+                                              ],
                                             },
                                             "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                                             "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -16928,6 +17106,12 @@ Object {
                                                   },
                                                 },
                                               ],
+                                              "groupsToRestore": Array [
+                                                Object {
+                                                  "astStart": 20,
+                                                  "idx": 0,
+                                                },
+                                              ],
                                             },
                                             "posLine1": "...?(?:00|\\\\+)([1-4]\\\\d\\\\d|[1-9]\\\\d?)\\\\)?)?[\\\\-\\\\....",
                                             "posLine2": "             ^^^^^^^^^^^^^^^^^^^^",
@@ -16958,6 +17142,12 @@ Object {
                                           },
                                         ],
                                       },
+                                    },
+                                  ],
+                                  "groupsToRestore": Array [
+                                    Object {
+                                      "astStart": 20,
+                                      "idx": 0,
                                     },
                                   ],
                                 },
@@ -17039,7 +17229,12 @@ Object {
             "hasCallback": true,
             "lastAtomReturns": true,
             "meta": Object {
-              "groups": Array [],
+              "groups": Array [
+                Object {
+                  "astStart": 20,
+                  "idx": 0,
+                },
+              ],
             },
           },
         },
@@ -17054,6 +17249,14 @@ Object {
     "lastAtomReturns": true,
     "meta": Object {
       "groups": Array [
+        Object {
+          "astStart": 20,
+          "idx": 0,
+        },
+        Object {
+          "astStart": 148,
+          "idx": 2,
+        },
         Object {
           "astStart": 60,
           "idx": 1,

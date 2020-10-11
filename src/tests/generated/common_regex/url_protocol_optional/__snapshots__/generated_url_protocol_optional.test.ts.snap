@@ -1987,6 +1987,10 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
+            "astStart": 15,
+            "idx": 1,
+          },
+          Object {
             "astStart": 65,
             "idx": 2,
           },
@@ -2874,6 +2878,10 @@ Object {
               "meta": Object {
                 "groups": Array [
                   Object {
+                    "astStart": 15,
+                    "idx": 1,
+                  },
+                  Object {
                     "astStart": 65,
                     "idx": 2,
                   },
@@ -3092,6 +3100,14 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 15,
+            "idx": 1,
+          },
           Object {
             "astStart": 65,
             "idx": 2,
@@ -3695,6 +3711,10 @@ Object {
             "meta": Object {
               "groups": Array [
                 Object {
+                  "astStart": 15,
+                  "idx": 1,
+                },
+                Object {
                   "astStart": 65,
                   "idx": 2,
                 },
@@ -3913,6 +3933,14 @@ Object {
     "lastAtomReturns": true,
     "meta": Object {
       "groups": Array [
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+        Object {
+          "astStart": 15,
+          "idx": 1,
+        },
         Object {
           "astStart": 65,
           "idx": 2,

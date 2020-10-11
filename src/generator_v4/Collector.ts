@@ -89,15 +89,27 @@ export class Collector {
     return newFiber;
   }
 
-  createForkingFiber(fiber: FiberTemplateDefinition) {
+  createForkingFiber(
+    followUpFiber: FiberTemplateDefinition,
+    forks: FiberTemplateDefinition[],
+  ) {
+    const groups: GroupReference[] = [];
+    forks.forEach((fork) => {
+      fork.meta.groups.forEach((group) => {
+        if (groups.indexOf(group) === -1) {
+          groups.push(group);
+        }
+      });
+    });
+
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: true,
-      hasCallback: fiber.hasCallback,
+      hasCallback: followUpFiber.hasCallback,
       meta: {
-        groups: fiber.meta.groups.slice(),
+        groups,
       },
     };
     this.fiberHandlers.push(newFiber);
