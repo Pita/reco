@@ -56,7 +56,6 @@ function generatedRegexMatcher(str: string) {
         {{/switchCase}}
         {{#switchCase 'disjunction'}}
           {{#each groupsToRestore}}
-            const tempGroupStartMarkerCopy{{{idx}}} = tempGroupStartMarkers[{{{idx}}}];
             const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
             const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
           {{/each}}
@@ -69,7 +68,6 @@ function generatedRegexMatcher(str: string) {
               return length{{{@index}}};
             }
             {{#each meta.groups}}
-              tempGroupStartMarkers[{{{idx}}}] = tempGroupStartMarkerCopy{{{idx}}};
               groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
               groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
             {{/each}}
@@ -132,6 +130,10 @@ function generatedRegexMatcher(str: string) {
             {{/if}}
 
             const groupMarkersCopy = groupMarkers.slice() as any;
+            {{!-- {{#each wrappedHandler.meta.groups}}
+              const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+              const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+            {{/each}} --}}
             const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, recursiveCallback);
             if (tryDeeperResult !== -1) {
               // we actually were able to go deeper, nice!
