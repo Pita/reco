@@ -101,6 +101,7 @@ export class Collector {
         }
       });
     });
+    groups.sort((a, b) => a.idx - b.idx);
 
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
@@ -159,6 +160,7 @@ export class Collector {
     });
 
     currentFiber.meta.groups.push(newGroup);
+    currentFiber.meta.groups.sort((a, b) => a.idx - b.idx);
     return newGroup;
   }
 

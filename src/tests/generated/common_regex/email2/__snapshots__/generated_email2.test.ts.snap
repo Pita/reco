@@ -222,12 +222,12 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
-            "astStart": 35,
-            "idx": 2,
-          },
-          Object {
             "astStart": 20,
             "idx": 1,
+          },
+          Object {
+            "astStart": 35,
+            "idx": 2,
           },
         ],
       },
@@ -474,12 +474,12 @@ Object {
               "meta": Object {
                 "groups": Array [
                   Object {
-                    "astStart": 35,
-                    "idx": 2,
-                  },
-                  Object {
                     "astStart": 20,
                     "idx": 1,
+                  },
+                  Object {
+                    "astStart": 35,
+                    "idx": 2,
                   },
                 ],
               },
@@ -562,16 +562,16 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
-            "astStart": 35,
-            "idx": 2,
+            "astStart": 2,
+            "idx": 0,
           },
           Object {
             "astStart": 20,
             "idx": 1,
           },
           Object {
-            "astStart": 2,
-            "idx": 0,
+            "astStart": 35,
+            "idx": 2,
           },
         ],
       },
@@ -865,12 +865,12 @@ Object {
                       "meta": Object {
                         "groups": Array [
                           Object {
-                            "astStart": 35,
-                            "idx": 2,
-                          },
-                          Object {
                             "astStart": 20,
                             "idx": 1,
+                          },
+                          Object {
+                            "astStart": 35,
+                            "idx": 2,
                           },
                         ],
                       },
@@ -953,16 +953,16 @@ Object {
               "meta": Object {
                 "groups": Array [
                   Object {
-                    "astStart": 35,
-                    "idx": 2,
+                    "astStart": 2,
+                    "idx": 0,
                   },
                   Object {
                     "astStart": 20,
                     "idx": 1,
                   },
                   Object {
-                    "astStart": 2,
-                    "idx": 0,
+                    "astStart": 35,
+                    "idx": 2,
                   },
                 ],
               },
@@ -1071,16 +1071,16 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
-            "astStart": 35,
-            "idx": 2,
+            "astStart": 2,
+            "idx": 0,
           },
           Object {
             "astStart": 20,
             "idx": 1,
           },
           Object {
-            "astStart": 2,
-            "idx": 0,
+            "astStart": 35,
+            "idx": 2,
           },
         ],
       },
@@ -1300,12 +1300,12 @@ Object {
                     "meta": Object {
                       "groups": Array [
                         Object {
-                          "astStart": 35,
-                          "idx": 2,
-                        },
-                        Object {
                           "astStart": 20,
                           "idx": 1,
+                        },
+                        Object {
+                          "astStart": 35,
+                          "idx": 2,
                         },
                       ],
                     },
@@ -1388,16 +1388,16 @@ Object {
             "meta": Object {
               "groups": Array [
                 Object {
-                  "astStart": 35,
-                  "idx": 2,
+                  "astStart": 2,
+                  "idx": 0,
                 },
                 Object {
                   "astStart": 20,
                   "idx": 1,
                 },
                 Object {
-                  "astStart": 2,
-                  "idx": 0,
+                  "astStart": 35,
+                  "idx": 2,
                 },
               ],
             },
@@ -1506,16 +1506,16 @@ Object {
     "meta": Object {
       "groups": Array [
         Object {
-          "astStart": 35,
-          "idx": 2,
+          "astStart": 2,
+          "idx": 0,
         },
         Object {
           "astStart": 20,
           "idx": 1,
         },
         Object {
-          "astStart": 2,
-          "idx": 0,
+          "astStart": 35,
+          "idx": 2,
         },
       ],
     },

@@ -34,6 +34,7 @@ export const handleDisjunction = (
       }
     });
   });
+  groupsToRestore.sort((a, b) => a.idx - b.idx);
 
   return collector.addAtom(
     collector.createForkingFiber(currentFiber, mappedAlternatives),

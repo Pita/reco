@@ -5164,12 +5164,12 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
-            "astStart": 148,
-            "idx": 2,
-          },
-          Object {
             "astStart": 60,
             "idx": 1,
+          },
+          Object {
+            "astStart": 148,
+            "idx": 2,
           },
         ],
       },
@@ -7197,12 +7197,12 @@ Object {
               "meta": Object {
                 "groups": Array [
                   Object {
-                    "astStart": 148,
-                    "idx": 2,
-                  },
-                  Object {
                     "astStart": 60,
                     "idx": 1,
+                  },
+                  Object {
+                    "astStart": 148,
+                    "idx": 2,
                   },
                 ],
               },
@@ -7459,12 +7459,12 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
-            "astStart": 148,
-            "idx": 2,
-          },
-          Object {
             "astStart": 60,
             "idx": 1,
+          },
+          Object {
+            "astStart": 148,
+            "idx": 2,
           },
         ],
       },
@@ -13396,12 +13396,12 @@ Object {
                       "meta": Object {
                         "groups": Array [
                           Object {
-                            "astStart": 148,
-                            "idx": 2,
-                          },
-                          Object {
                             "astStart": 60,
                             "idx": 1,
+                          },
+                          Object {
+                            "astStart": 148,
+                            "idx": 2,
                           },
                         ],
                       },
@@ -13658,12 +13658,12 @@ Object {
               "meta": Object {
                 "groups": Array [
                   Object {
-                    "astStart": 148,
-                    "idx": 2,
-                  },
-                  Object {
                     "astStart": 60,
                     "idx": 1,
+                  },
+                  Object {
+                    "astStart": 148,
+                    "idx": 2,
                   },
                 ],
               },
@@ -14700,12 +14700,12 @@ Object {
             "idx": 0,
           },
           Object {
-            "astStart": 148,
-            "idx": 2,
-          },
-          Object {
             "astStart": 60,
             "idx": 1,
+          },
+          Object {
+            "astStart": 148,
+            "idx": 2,
           },
         ],
       },
@@ -15950,12 +15950,12 @@ Object {
                     "meta": Object {
                       "groups": Array [
                         Object {
-                          "astStart": 148,
-                          "idx": 2,
-                        },
-                        Object {
                           "astStart": 60,
                           "idx": 1,
+                        },
+                        Object {
+                          "astStart": 148,
+                          "idx": 2,
                         },
                       ],
                     },
@@ -16212,12 +16212,12 @@ Object {
             "meta": Object {
               "groups": Array [
                 Object {
-                  "astStart": 148,
-                  "idx": 2,
-                },
-                Object {
                   "astStart": 60,
                   "idx": 1,
+                },
+                Object {
+                  "astStart": 148,
+                  "idx": 2,
                 },
               ],
             },
@@ -17254,12 +17254,12 @@ Object {
           "idx": 0,
         },
         Object {
-          "astStart": 148,
-          "idx": 2,
-        },
-        Object {
           "astStart": 60,
           "idx": 1,
+        },
+        Object {
+          "astStart": 148,
+          "idx": 2,
         },
       ],
     },

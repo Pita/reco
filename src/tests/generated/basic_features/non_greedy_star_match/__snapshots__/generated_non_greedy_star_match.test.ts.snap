@@ -61,12 +61,12 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
-            "astStart": 6,
-            "idx": 1,
-          },
-          Object {
             "astStart": 1,
             "idx": 0,
+          },
+          Object {
+            "astStart": 6,
+            "idx": 1,
           },
         ],
       },
@@ -194,12 +194,12 @@ Object {
               "meta": Object {
                 "groups": Array [
                   Object {
-                    "astStart": 6,
-                    "idx": 1,
-                  },
-                  Object {
                     "astStart": 1,
                     "idx": 0,
+                  },
+                  Object {
+                    "astStart": 6,
+                    "idx": 1,
                   },
                 ],
               },
@@ -268,12 +268,12 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
-            "astStart": 6,
-            "idx": 1,
-          },
-          Object {
             "astStart": 1,
             "idx": 0,
+          },
+          Object {
+            "astStart": 6,
+            "idx": 1,
           },
         ],
       },
@@ -362,12 +362,12 @@ Object {
             "meta": Object {
               "groups": Array [
                 Object {
-                  "astStart": 6,
-                  "idx": 1,
-                },
-                Object {
                   "astStart": 1,
                   "idx": 0,
+                },
+                Object {
+                  "astStart": 6,
+                  "idx": 1,
                 },
               ],
             },
@@ -436,12 +436,12 @@ Object {
     "meta": Object {
       "groups": Array [
         Object {
-          "astStart": 6,
-          "idx": 1,
-        },
-        Object {
           "astStart": 1,
           "idx": 0,
+        },
+        Object {
+          "astStart": 6,
+          "idx": 1,
         },
       ],
     },
