@@ -89,13 +89,13 @@ function generatedRegexMatcher(str: string) {
           groupMarkers[{{groupStartArrayIndex groupReference}}] = tempGroupStartMarkers[{{{groupReference.idx}}}];
           groupMarkers[{{groupEndArrayIndex groupReference}}] = i;
         {{/switchCase}}
-        {{#switchCase 'lookAhead'}}
-          const lookAheadResult{{{@index}}} = {{{lookAheadFiber.functionName}}}(i);
-          {{#if negative}}
-            if (lookAheadResult{{{@index}}} !== -1) { 
+        {{#switchCase 'lookaround'}}
+          const lookaroundResult{{{@index}}} = {{{lookaroundFiber.functionName}}}(i);
+          {{#if negate}}
+            if (lookaroundResult{{{@index}}} !== -1) { 
           {{/if}}
-          {{#unless negative}}
-            if (lookAheadResult{{{@index}}} === -1) { 
+          {{#unless negate}}
+            if (lookaroundResult{{{@index}}} === -1) { 
           {{/unless}}
             return -1;
           }

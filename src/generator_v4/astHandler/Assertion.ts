@@ -2,6 +2,7 @@ import { AST } from 'regexpp';
 import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator_v4';
+import { handleLookaroundAssertion } from './LookaroundAssertion';
 
 export const handleAssertion = (
   assertion: AST.Assertion,
@@ -28,6 +29,14 @@ export const handleAssertion = (
         ast: assertion,
         data: {},
       });
+    case 'lookahead':
+    case 'lookbehind':
+      return handleLookaroundAssertion(
+        assertion,
+        collector,
+        currentFiber,
+        flags,
+      );
     default:
       throw new Error(`Unsupported Assertion kind: ${assertion.kind}`);
   }

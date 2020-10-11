@@ -114,6 +114,7 @@ export const handleSetOrCharacter = (
     data: {
       tree: bTreeMatcher.toLeafValues(),
       negate,
+      backwards: flags.INTERNAL_backwards,
     },
     ast: element,
   });

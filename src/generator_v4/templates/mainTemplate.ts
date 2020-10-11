@@ -90,11 +90,11 @@ export interface LazyQuantifierTemplateAtom extends BaseTemplateAtom {
   };
 }
 
-export interface LookaheadTemplateAtom extends BaseTemplateAtom {
-  type: 'lookAhead';
+export interface LookaroundTemplateAtom extends BaseTemplateAtom {
+  type: 'lookaround';
   data: {
-    lookAheadFiber: FiberTemplateDefinition;
-    negative: boolean;
+    lookaroundFiber: FiberTemplateDefinition;
+    negate: boolean;
   };
 }
 
@@ -107,7 +107,7 @@ export type TemplateAtom =
   | GroupEndMarkerTemplateAtom
   | GreedyQuantifierTemplateAtom
   | LazyQuantifierTemplateAtom
-  | LookaheadTemplateAtom;
+  | LookaroundTemplateAtom;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
