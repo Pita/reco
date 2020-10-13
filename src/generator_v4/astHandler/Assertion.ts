@@ -23,7 +23,6 @@ export const handleAssertion = (
         ast: assertion,
         data: {},
       });
-
     case 'lookahead':
     case 'lookbehind':
       return handleLookaroundAssertion(

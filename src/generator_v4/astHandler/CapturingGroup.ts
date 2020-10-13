@@ -10,6 +10,10 @@ export const handleCapturingGroup = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
+  if (capturingGroup.name) {
+    throw new Error('No supported for named capturing groups yet');
+  }
+
   const groupReference = collector.addCapturingGroup(
     currentFiber,
     capturingGroup,

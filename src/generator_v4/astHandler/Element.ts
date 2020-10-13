@@ -7,6 +7,7 @@ import { handleDisjunction } from './Disjunction';
 import { handleQuantifier } from './Quantifier';
 import { handleAssertion } from './Assertion';
 import { handleCapturingGroup } from './CapturingGroup';
+import { handleBackReference } from './BackReference';
 
 export const handleElement = (
   element: AST.Element,
@@ -32,17 +33,7 @@ export const handleElement = (
       return handleAssertion(element, collector, currentFiber, flags);
     case 'CapturingGroup':
       return handleCapturingGroup(element, collector, currentFiber, flags);
-    // case 'StartAnchor':
-    //   return handleStartAnchor(element, collector, currentFiber, flags);
-    // case 'EndAnchor':
-    //   return handleEndAnchor(element, collector, currentFiber, flags);
-    // case 'Lookahead':
-    // case 'NegativeLookahead':
-    //   return handleLookahead(element, collector, currentFiber, flags);
-    // case 'Lookbehind':
-    // case 'NegativeLookahead':
-    //   return handleLookahead(element, collector, currentFiber, flags);
-    default:
-      throw new Error(`${element.type} not implemented as a element type yet`);
+    case 'Backreference':
+      return handleBackReference(element, collector, currentFiber, flags);
   }
 };

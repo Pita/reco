@@ -116,6 +116,14 @@ export interface WordBoundaryTemplateAtom extends BaseTemplateAtom {
   };
 }
 
+export interface GroupBackReferenceTemplateAtom extends BaseTemplateAtom {
+  type: 'groupBackReference';
+  data: {
+    startGroupMarkerIndex: number;
+    endGroupMarkerIndex: number;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | DisjunctionTemplateAtom
@@ -128,7 +136,8 @@ export type TemplateAtom =
   | GreedyQuantifierTemplateAtom
   | LazyQuantifierTemplateAtom
   | LookaroundTemplateAtom
-  | WordBoundaryTemplateAtom;
+  | WordBoundaryTemplateAtom
+  | GroupBackReferenceTemplateAtom;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];

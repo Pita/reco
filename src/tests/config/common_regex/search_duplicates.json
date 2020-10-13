@@ -2,6 +2,17 @@
   "regex": "/(\\b\\w+\\b)(?=.*\\b\\1\\b)/",
   "type": "textSearch",
   "testInputs": [
-    "hello world\nhello world hello\nhello ihello hellos\nworld world world world world\n4545 xyz 4545 4545 45\nabc abcde abc abc\ndollar$ euro dollar$ \nhiiiiiiii hiii hii hi\ndigital fortress fort digit forty"
-  ]
+    "hello world\nhello",
+    "world hello\nhello ihello hellos\nworld",
+    "world",
+    "world",
+    "world",
+    "world\n4545",
+    "xyz 4545",
+    "4545 45\nabc",
+    "abcde abc",
+    "abc\ndollar",
+    " euro dollar$ \nhiiiiiiii hiii hii hi\ndigital fortress fort digit forty"
+  ],
+  "mustPass": true
 }
