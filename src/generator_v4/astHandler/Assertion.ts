@@ -37,7 +37,14 @@ export const handleAssertion = (
         currentFiber,
         flags,
       );
-    default:
-      throw new Error(`Unsupported Assertion kind: ${assertion.kind}`);
+    case 'word':
+      return collector.addAtom(currentFiber, {
+        type: 'wordBoundary',
+        ast: assertion,
+        data: {
+          negate: assertion.negate,
+        },
+      });
+      break;
   }
 };

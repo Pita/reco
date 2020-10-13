@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/word_boundry template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+          },
+          "posLine1": "\\\\bfoo/",
+          "posLine2": "^^",
+          "type": "wordBoundary",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 102,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+          },
+          "posLine1": "foo/",
+          "posLine2": "^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 111,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+          },
+          "posLine1": "oo/",
+          "posLine2": "^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 111,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+          },
+          "posLine1": "o/",
+          "posLine2": "^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+    },
+  ],
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "negate": false,
+        },
+        "posLine1": "\\\\bfoo/",
+        "posLine2": "^^",
+        "type": "wordBoundary",
+      },
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 102,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+        },
+        "posLine1": "foo/",
+        "posLine2": "^",
+        "type": "charOrSet",
+      },
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 111,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+        },
+        "posLine1": "oo/",
+        "posLine2": "^",
+        "type": "charOrSet",
+      },
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 111,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+        },
+        "posLine1": "o/",
+        "posLine2": "^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+    "hasCallback": false,
+    "lastAtomReturns": false,
+    "meta": Object {
+      "groups": Array [],
+    },
+  },
+  "regexStr": "/\\\\bfoo/",
+}
+`;

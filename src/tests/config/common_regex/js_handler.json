@@ -2,6 +2,11 @@
   "regex": "/\\bon\\w+=\\S+(?=.*>)/",
   "type": "textSearch",
   "testInputs": [
-    "<img src=\"foo.jpg\" onload=function_xyz />\n<img onmessage=\"javascript:execute()\">\n<a notonmessage=\"nomatch-here\" onfocus=\"alert('hey')\" onclick=foo() disabled>\n<p>\n  Things that are just onfoo=\"something\" shouldn't match either, since they are outside of a tag\n</p>"
-  ]
+    "<img src=\"foo.jpg\" onload=function_xyz",
+    "/>\n<img onmessage=\"javascript:execute()\"",
+    "\n<a notonmessage=\"nomatch-here\" onfocus=\"alert('hey')\"",
+    "onclick=foo()",
+    "disabled>\n<p>\n  Things that are just onfoo=\"something\" shouldn't match either, since they are outside of a tag\n</p>"
+  ],
+  "mustPass": true
 }

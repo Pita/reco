@@ -10,5 +10,6 @@
     "bfoo",
     "_foo",
     "blaFoo"
-  ]
+  ],
+  "mustPass": true
 }

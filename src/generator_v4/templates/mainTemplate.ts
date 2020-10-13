@@ -99,6 +99,13 @@ export interface LookaroundTemplateAtom extends BaseTemplateAtom {
   };
 }
 
+export interface WordBoundaryTemplateAtom extends BaseTemplateAtom {
+  type: 'wordBoundary';
+  data: {
+    negate: boolean;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | DisjunctionTemplateAtom
@@ -108,7 +115,8 @@ export type TemplateAtom =
   | GroupEndMarkerTemplateAtom
   | GreedyQuantifierTemplateAtom
   | LazyQuantifierTemplateAtom
-  | LookaroundTemplateAtom;
+  | LookaroundTemplateAtom
+  | WordBoundaryTemplateAtom;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
