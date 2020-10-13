@@ -84,6 +84,41 @@ function generatedRegexMatcher(str: string) {
             return -1;
           }
         {{/switchCase}}
+        {{#switchCase 'multiLineStartAnchor'}}
+          if (i !== 0) {
+            const charCodeMultiLineStartAnchor{{{index}}} = str.charCodeAt(i - 1);
+            let isNewLineChar{{{index}}} = false;
+            // TODO: find way to generate these trees
+            if (charCodeMultiLineStartAnchor{{{index}}} <= 13) {
+              isNewLineChar{{{index}}} = charCodeMultiLineStartAnchor{{{index}}} === 10 || charCodeMultiLineStartAnchor{{{index}}} === 13;
+            } else {
+              if (charCodeMultiLineStartAnchor{{{index}}} <= 8233) {
+                isNewLineChar{{{index}}} = charCodeMultiLineStartAnchor{{{index}}} >= 8232;
+              }
+            }
+            if (!isNewLineChar{{{index}}}) {
+              return -1;
+            }
+          }
+
+        {{/switchCase}}
+        {{#switchCase 'multiLineEndAnchor'}}
+          if (i !== strLength) {
+            const charCodeMultiLineEndAnchor{{{index}}} = str.charCodeAt(i);
+            let isNewLineChar{{{index}}} = false;
+            // TODO: find way to generate these trees
+            if (charCodeMultiLineEndAnchor{{{index}}} <= 13) {
+              isNewLineChar{{{index}}} = charCodeMultiLineEndAnchor{{{index}}} === 10 || charCodeMultiLineEndAnchor{{{index}}} === 13;
+            } else {
+              if (charCodeMultiLineEndAnchor{{{index}}} <= 8233) {
+                isNewLineChar{{{index}}} = charCodeMultiLineEndAnchor{{{index}}} >= 8232;
+              }
+            }
+            if (!isNewLineChar{{{index}}}) {
+              return -1;
+            }
+          }
+        {{/switchCase}}
         {{#switchCase 'groupStartMarker'}}
           tempGroupStartMarkers[{{{groupReference.idx}}}] = i;
         {{/switchCase}}

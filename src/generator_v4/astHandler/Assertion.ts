@@ -12,23 +12,18 @@ export const handleAssertion = (
 ): FiberTemplateDefinition => {
   switch (assertion.kind) {
     case 'start':
-      if (flags.multiline) {
-        throw new Error(`Multiline is not supported yet`);
-      }
       return collector.addAtom(currentFiber, {
-        type: 'startAnchor',
+        type: flags.multiline ? 'multiLineStartAnchor' : 'startAnchor',
         ast: assertion,
         data: {},
       });
     case 'end':
-      if (flags.multiline) {
-        throw new Error(`Multiline is not supported yet`);
-      }
       return collector.addAtom(currentFiber, {
-        type: 'endAnchor',
+        type: flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
         ast: assertion,
         data: {},
       });
+
     case 'lookahead':
     case 'lookbehind':
       return handleLookaroundAssertion(

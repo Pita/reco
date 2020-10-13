@@ -55,6 +55,16 @@ export interface EndAnchorTemplateAtom extends BaseTemplateAtom {
   data: {};
 }
 
+export interface MultiLineStartAnchorTemplateAtom extends BaseTemplateAtom {
+  type: 'multiLineStartAnchor';
+  data: {};
+}
+
+export interface MultiLineEndAnchorTemplateAtom extends BaseTemplateAtom {
+  type: 'multiLineEndAnchor';
+  data: {};
+}
+
 export interface GroupStartMarkerTemplateAtom extends BaseTemplateAtom {
   type: 'groupStartMarker';
   data: {
@@ -111,6 +121,8 @@ export type TemplateAtom =
   | DisjunctionTemplateAtom
   | StartAnchorTemplateAtom
   | EndAnchorTemplateAtom
+  | MultiLineStartAnchorTemplateAtom
+  | MultiLineEndAnchorTemplateAtom
   | GroupStartMarkerTemplateAtom
   | GroupEndMarkerTemplateAtom
   | GreedyQuantifierTemplateAtom

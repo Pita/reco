@@ -14,9 +14,6 @@ export const genCode = (regexStr: string) => {
     if (literal.flags.unicode) {
       throw new Error('Does not support unicode yet');
     }
-    if (literal.flags.multiline) {
-      throw new Error('Does not support multiline yet');
-    }
 
     const collector = new Collector(regexStr);
     const mainHandler = handleDisjunction(
