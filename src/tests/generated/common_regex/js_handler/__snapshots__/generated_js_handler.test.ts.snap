@@ -15,7 +15,6 @@ Object {
                       "atoms": Array [
                         Object {
                           "data": Object {
-                            "backwards": false,
                             "negate": false,
                             "tree": Object {
                               "comparison": Object {
@@ -24,6 +23,7 @@ Object {
                               },
                               "type": "lastComparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...S+(?=.*>)/",
                           "posLine2": "          ^",
@@ -43,7 +43,6 @@ Object {
                       "atoms": Array [
                         Object {
                           "data": Object {
-                            "backwards": false,
                             "negate": true,
                             "tree": Object {
                               "comparison": Object {
@@ -74,6 +73,7 @@ Object {
                               },
                               "type": "comparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...S+(?=.*>)/",
                           "posLine2": "        ^",
@@ -123,7 +123,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
             "negate": false,
             "tree": Object {
               "comparison": Object {
@@ -132,6 +131,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...S+(?=.*>)/",
           "posLine2": "          ^",
@@ -150,7 +150,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
             "negate": true,
             "tree": Object {
               "comparison": Object {
@@ -181,6 +180,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "...S+(?=.*>)/",
           "posLine2": "        ^",
@@ -205,7 +205,6 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": false,
                     "negate": false,
                     "tree": Object {
                       "comparison": Object {
@@ -214,6 +213,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...S+(?=.*>)/",
                   "posLine2": "          ^",
@@ -233,7 +233,6 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": false,
                     "negate": true,
                     "tree": Object {
                       "comparison": Object {
@@ -264,6 +263,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...S+(?=.*>)/",
                   "posLine2": "        ^",
@@ -418,6 +418,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "\\\\S+(?=.*>)/",
           "posLine2": "^^",
@@ -446,6 +447,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "=\\\\S+(?=.*>)...",
           "posLine2": "^",
@@ -465,7 +467,6 @@ Object {
                               "atoms": Array [
                                 Object {
                                   "data": Object {
-                                    "backwards": false,
                                     "negate": false,
                                     "tree": Object {
                                       "comparison": Object {
@@ -474,6 +475,7 @@ Object {
                                       },
                                       "type": "lastComparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...S+(?=.*>)/",
                                   "posLine2": "          ^",
@@ -493,7 +495,6 @@ Object {
                               "atoms": Array [
                                 Object {
                                   "data": Object {
-                                    "backwards": false,
                                     "negate": true,
                                     "tree": Object {
                                       "comparison": Object {
@@ -524,6 +525,7 @@ Object {
                                       },
                                       "type": "comparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...S+(?=.*>)/",
                                   "posLine2": "        ^",
@@ -695,6 +697,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "\\\\S+(?=.*>)/",
                   "posLine2": "^^",
@@ -785,6 +788,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "\\\\w+=\\\\S+(?=.*...",
           "posLine2": "^^",
@@ -821,6 +825,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "on\\\\w+=\\\\S+(?...",
           "posLine2": "^",
@@ -836,6 +841,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "n\\\\w+=\\\\S+(?=...",
           "posLine2": "^",
@@ -855,6 +861,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "=\\\\S+(?=.*>)...",
                   "posLine2": "^",
@@ -874,7 +881,6 @@ Object {
                                       "atoms": Array [
                                         Object {
                                           "data": Object {
-                                            "backwards": false,
                                             "negate": false,
                                             "tree": Object {
                                               "comparison": Object {
@@ -883,6 +889,7 @@ Object {
                                               },
                                               "type": "lastComparison",
                                             },
+                                            "unicode": false,
                                           },
                                           "posLine1": "...S+(?=.*>)/",
                                           "posLine2": "          ^",
@@ -902,7 +909,6 @@ Object {
                                       "atoms": Array [
                                         Object {
                                           "data": Object {
-                                            "backwards": false,
                                             "negate": true,
                                             "tree": Object {
                                               "comparison": Object {
@@ -933,6 +939,7 @@ Object {
                                               },
                                               "type": "comparison",
                                             },
+                                            "unicode": false,
                                           },
                                           "posLine1": "...S+(?=.*>)/",
                                           "posLine2": "        ^",
@@ -1104,6 +1111,7 @@ Object {
                               },
                               "type": "comparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "\\\\S+(?=.*>)/",
                           "posLine2": "^^",
@@ -1196,6 +1204,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "\\\\w+=\\\\S+(?=.*...",
                   "posLine2": "^^",
@@ -1247,6 +1256,7 @@ Object {
             },
             "type": "lastComparison",
           },
+          "unicode": false,
         },
         "posLine1": "on\\\\w+=\\\\S+(?...",
         "posLine2": "^",
@@ -1262,6 +1272,7 @@ Object {
             },
             "type": "lastComparison",
           },
+          "unicode": false,
         },
         "posLine1": "n\\\\w+=\\\\S+(?=...",
         "posLine2": "^",
@@ -1281,6 +1292,7 @@ Object {
                     },
                     "type": "lastComparison",
                   },
+                  "unicode": false,
                 },
                 "posLine1": "=\\\\S+(?=.*>)...",
                 "posLine2": "^",
@@ -1300,7 +1312,6 @@ Object {
                                     "atoms": Array [
                                       Object {
                                         "data": Object {
-                                          "backwards": false,
                                           "negate": false,
                                           "tree": Object {
                                             "comparison": Object {
@@ -1309,6 +1320,7 @@ Object {
                                             },
                                             "type": "lastComparison",
                                           },
+                                          "unicode": false,
                                         },
                                         "posLine1": "...S+(?=.*>)/",
                                         "posLine2": "          ^",
@@ -1328,7 +1340,6 @@ Object {
                                     "atoms": Array [
                                       Object {
                                         "data": Object {
-                                          "backwards": false,
                                           "negate": true,
                                           "tree": Object {
                                             "comparison": Object {
@@ -1359,6 +1370,7 @@ Object {
                                             },
                                             "type": "comparison",
                                           },
+                                          "unicode": false,
                                         },
                                         "posLine1": "...S+(?=.*>)/",
                                         "posLine2": "        ^",
@@ -1530,6 +1542,7 @@ Object {
                             },
                             "type": "comparison",
                           },
+                          "unicode": false,
                         },
                         "posLine1": "\\\\S+(?=.*>)/",
                         "posLine2": "^^",
@@ -1622,6 +1635,7 @@ Object {
                     },
                     "type": "comparison",
                   },
+                  "unicode": false,
                 },
                 "posLine1": "\\\\w+=\\\\S+(?=.*...",
                 "posLine2": "^^",

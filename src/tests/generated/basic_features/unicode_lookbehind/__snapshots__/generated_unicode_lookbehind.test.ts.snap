@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/unicode_lookbehind template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "lookaroundFiber": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 119988,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": true,
+                  },
+                  "posLine1": "𝒴)x/u",
+                  "posLine2": "^^",
+                  "type": "charOrSetBackward",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0002",
+              "hasCallback": false,
+              "lastAtomReturns": false,
+              "meta": Object {
+                "groups": Array [],
+              },
+            },
+            "negate": true,
+          },
+          "posLine1": "(?<!𝒴)x/u",
+          "posLine2": "^^^^^^^",
+          "type": "lookaround",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 120,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+            "unicode": true,
+          },
+          "posLine1": "x/u",
+          "posLine2": "^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 119988,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+            "unicode": true,
+          },
+          "posLine1": "𝒴)x/u",
+          "posLine2": "^^",
+          "type": "charOrSetBackward",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0002",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+    },
+  ],
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "lookaroundFiber": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 119988,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": true,
+                },
+                "posLine1": "𝒴)x/u",
+                "posLine2": "^^",
+                "type": "charOrSetBackward",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0002",
+            "hasCallback": false,
+            "lastAtomReturns": false,
+            "meta": Object {
+              "groups": Array [],
+            },
+          },
+          "negate": true,
+        },
+        "posLine1": "(?<!𝒴)x/u",
+        "posLine2": "^^^^^^^",
+        "type": "lookaround",
+      },
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 120,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+          "unicode": true,
+        },
+        "posLine1": "x/u",
+        "posLine2": "^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+    "hasCallback": false,
+    "lastAtomReturns": false,
+    "meta": Object {
+      "groups": Array [],
+    },
+  },
+  "regexStr": "/(?<!𝒴)x/u",
+}
+`;

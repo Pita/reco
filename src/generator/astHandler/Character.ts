@@ -109,13 +109,25 @@ export const handleSetOrCharacter = (
       break;
   }
 
-  return collector.addAtom(currentFiber, {
-    type: 'charOrSet',
-    data: {
-      tree: bTreeMatcher.toLeafValues(),
-      negate,
-      backwards: flags.INTERNAL_backwards,
-    },
-    ast: element,
-  });
+  if (flags.INTERNAL_backwards) {
+    return collector.addAtom(currentFiber, {
+      type: 'charOrSetBackward',
+      data: {
+        tree: bTreeMatcher.toLeafValues(),
+        negate,
+        unicode: flags.unicode,
+      },
+      ast: element,
+    });
+  } else {
+    return collector.addAtom(currentFiber, {
+      type: 'charOrSet',
+      data: {
+        tree: bTreeMatcher.toLeafValues(),
+        negate,
+        unicode: flags.unicode,
+      },
+      ast: element,
+    });
+  }
 };

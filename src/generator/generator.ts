@@ -11,10 +11,6 @@ export const genCode = (regexStr: string) => {
   const literal = new RegExpParser().parseLiteral(regexStr);
   let templateValues, code, error;
   try {
-    if (literal.flags.unicode) {
-      throw new Error('Does not support unicode yet');
-    }
-
     const collector = new Collector(regexStr);
     const mainHandler = handleDisjunction(
       literal.pattern.alternatives,

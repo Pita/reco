@@ -1,0 +1,14 @@
+{
+  "regex": "/.a/u",
+  "type": "groupMatch",
+  "testInputs": [
+    "a",
+    "ba",
+    "Da",
+    "\na",
+    "?a",
+    "\ra",
+    "𝒴a"
+  ],
+  "mustPass": true
+}

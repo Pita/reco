@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/unicode_4byte template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 128516,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+            "unicode": true,
+          },
+          "posLine1": "\\\\u{1f604}/u",
+          "posLine2": "^^^^^^^^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "hasCallback": false,
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+    },
+  ],
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "negate": false,
+          "tree": Object {
+            "comparison": Object {
+              "comparisonValue": 128516,
+              "type": "equal",
+            },
+            "type": "lastComparison",
+          },
+          "unicode": true,
+        },
+        "posLine1": "\\\\u{1f604}/u",
+        "posLine2": "^^^^^^^^^",
+        "type": "charOrSet",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0001",
+    "hasCallback": false,
+    "lastAtomReturns": false,
+    "meta": Object {
+      "groups": Array [],
+    },
+  },
+  "regexStr": "/\\\\u{1f604}/u",
+}
+`;

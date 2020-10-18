@@ -33,7 +33,16 @@ export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
   data: {
     tree: LeafTemplate;
     negate: boolean;
-    backwards: boolean;
+    unicode: boolean;
+  };
+}
+
+export interface CharOrSetBackwardTemplateAtom extends BaseTemplateAtom {
+  type: 'charOrSetBackward';
+  data: {
+    tree: LeafTemplate;
+    negate: boolean;
+    unicode: boolean;
   };
 }
 
@@ -126,6 +135,7 @@ export interface GroupBackReferenceTemplateAtom extends BaseTemplateAtom {
 
 export type TemplateAtom =
   | CharOrSetTemplateAtom
+  | CharOrSetBackwardTemplateAtom
   | DisjunctionTemplateAtom
   | StartAnchorTemplateAtom
   | EndAnchorTemplateAtom

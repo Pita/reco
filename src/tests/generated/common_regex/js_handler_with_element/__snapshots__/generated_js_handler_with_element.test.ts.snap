@@ -26,6 +26,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
           "posLine2": "                                                      ^^^^",
@@ -76,6 +77,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
           "posLine2": "                                                    ^",
@@ -119,6 +121,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                   "posLine2": "                                                      ^^^^",
@@ -188,6 +191,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s...",
           "posLine2": "                       ^",
@@ -216,7 +220,6 @@ Object {
                                                 "atoms": Array [
                                                   Object {
                                                     "data": Object {
-                                                      "backwards": false,
                                                       "negate": false,
                                                       "tree": Object {
                                                         "comparison": Object {
@@ -225,6 +228,7 @@ Object {
                                                         },
                                                         "type": "lastComparison",
                                                       },
+                                                      "unicode": false,
                                                     },
                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                                     "posLine2": "                                          ^",
@@ -245,7 +249,6 @@ Object {
                                                 "atoms": Array [
                                                   Object {
                                                     "data": Object {
-                                                      "backwards": false,
                                                       "negate": true,
                                                       "tree": Object {
                                                         "comparison": Object {
@@ -366,6 +369,7 @@ Object {
                                                         },
                                                         "type": "comparison",
                                                       },
+                                                      "unicode": false,
                                                     },
                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                                     "posLine2": "                                      ^^",
@@ -402,7 +406,6 @@ Object {
                                         "atoms": Array [
                                           Object {
                                             "data": Object {
-                                              "backwards": false,
                                               "negate": false,
                                               "tree": Object {
                                                 "comparison": Object {
@@ -523,6 +526,7 @@ Object {
                                                 },
                                                 "type": "comparison",
                                               },
+                                              "unicode": false,
                                             },
                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                                             "posLine2": "                                ^^",
@@ -559,7 +563,6 @@ Object {
                                 "atoms": Array [
                                   Object {
                                     "data": Object {
-                                      "backwards": false,
                                       "negate": false,
                                       "tree": Object {
                                         "comparison": Object {
@@ -569,6 +572,7 @@ Object {
                                         },
                                         "type": "lastComparison",
                                       },
+                                      "unicode": false,
                                     },
                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                                     "posLine2": "                           ^^^^",
@@ -603,7 +607,6 @@ Object {
                         "atoms": Array [
                           Object {
                             "data": Object {
-                              "backwards": false,
                               "negate": false,
                               "tree": Object {
                                 "comparison": Object {
@@ -627,6 +630,7 @@ Object {
                                 },
                                 "type": "comparison",
                               },
+                              "unicode": false,
                             },
                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
                             "posLine2": "                                            ^^^^^",
@@ -678,7 +682,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
             "negate": false,
             "tree": Object {
               "comparison": Object {
@@ -687,6 +690,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
           "posLine2": "                                          ^",
@@ -705,7 +709,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
             "negate": true,
             "tree": Object {
               "comparison": Object {
@@ -826,6 +829,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
           "posLine2": "                                      ^^",
@@ -850,7 +854,6 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": false,
                     "negate": false,
                     "tree": Object {
                       "comparison": Object {
@@ -859,6 +862,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                   "posLine2": "                                          ^",
@@ -879,7 +883,6 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": false,
                     "negate": true,
                     "tree": Object {
                       "comparison": Object {
@@ -1000,6 +1003,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                   "posLine2": "                                      ^^",
@@ -1034,7 +1038,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
             "negate": false,
             "tree": Object {
               "comparison": Object {
@@ -1155,6 +1158,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
           "posLine2": "                                ^^",
@@ -1183,7 +1187,6 @@ Object {
                       "atoms": Array [
                         Object {
                           "data": Object {
-                            "backwards": false,
                             "negate": false,
                             "tree": Object {
                               "comparison": Object {
@@ -1192,6 +1195,7 @@ Object {
                               },
                               "type": "lastComparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                           "posLine2": "                                          ^",
@@ -1212,7 +1216,6 @@ Object {
                       "atoms": Array [
                         Object {
                           "data": Object {
-                            "backwards": false,
                             "negate": true,
                             "tree": Object {
                               "comparison": Object {
@@ -1333,6 +1336,7 @@ Object {
                               },
                               "type": "comparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                           "posLine2": "                                      ^^",
@@ -1369,7 +1373,6 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": false,
                     "negate": false,
                     "tree": Object {
                       "comparison": Object {
@@ -1490,6 +1493,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                   "posLine2": "                                ^^",
@@ -1524,7 +1528,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
             "negate": false,
             "tree": Object {
               "comparison": Object {
@@ -1534,6 +1537,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
           "posLine2": "                           ^^^^",
@@ -1566,7 +1570,6 @@ Object {
                               "atoms": Array [
                                 Object {
                                   "data": Object {
-                                    "backwards": false,
                                     "negate": false,
                                     "tree": Object {
                                       "comparison": Object {
@@ -1575,6 +1578,7 @@ Object {
                                       },
                                       "type": "lastComparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                   "posLine2": "                                          ^",
@@ -1595,7 +1599,6 @@ Object {
                               "atoms": Array [
                                 Object {
                                   "data": Object {
-                                    "backwards": false,
                                     "negate": true,
                                     "tree": Object {
                                       "comparison": Object {
@@ -1716,6 +1719,7 @@ Object {
                                       },
                                       "type": "comparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                   "posLine2": "                                      ^^",
@@ -1752,7 +1756,6 @@ Object {
                       "atoms": Array [
                         Object {
                           "data": Object {
-                            "backwards": false,
                             "negate": false,
                             "tree": Object {
                               "comparison": Object {
@@ -1873,6 +1876,7 @@ Object {
                               },
                               "type": "comparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                           "posLine2": "                                ^^",
@@ -1909,7 +1913,6 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": false,
                     "negate": false,
                     "tree": Object {
                       "comparison": Object {
@@ -1919,6 +1922,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                   "posLine2": "                           ^^^^",
@@ -1953,7 +1957,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": false,
             "negate": false,
             "tree": Object {
               "comparison": Object {
@@ -1977,6 +1980,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
           "posLine2": "                                            ^^^^^",
@@ -2012,7 +2016,6 @@ Object {
                                         "atoms": Array [
                                           Object {
                                             "data": Object {
-                                              "backwards": false,
                                               "negate": false,
                                               "tree": Object {
                                                 "comparison": Object {
@@ -2021,6 +2024,7 @@ Object {
                                                 },
                                                 "type": "lastComparison",
                                               },
+                                              "unicode": false,
                                             },
                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                             "posLine2": "                                          ^",
@@ -2041,7 +2045,6 @@ Object {
                                         "atoms": Array [
                                           Object {
                                             "data": Object {
-                                              "backwards": false,
                                               "negate": true,
                                               "tree": Object {
                                                 "comparison": Object {
@@ -2162,6 +2165,7 @@ Object {
                                                 },
                                                 "type": "comparison",
                                               },
+                                              "unicode": false,
                                             },
                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                             "posLine2": "                                      ^^",
@@ -2198,7 +2202,6 @@ Object {
                                 "atoms": Array [
                                   Object {
                                     "data": Object {
-                                      "backwards": false,
                                       "negate": false,
                                       "tree": Object {
                                         "comparison": Object {
@@ -2319,6 +2322,7 @@ Object {
                                         },
                                         "type": "comparison",
                                       },
+                                      "unicode": false,
                                     },
                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                                     "posLine2": "                                ^^",
@@ -2355,7 +2359,6 @@ Object {
                         "atoms": Array [
                           Object {
                             "data": Object {
-                              "backwards": false,
                               "negate": false,
                               "tree": Object {
                                 "comparison": Object {
@@ -2365,6 +2368,7 @@ Object {
                                 },
                                 "type": "lastComparison",
                               },
+                              "unicode": false,
                             },
                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                             "posLine2": "                           ^^^^",
@@ -2399,7 +2403,6 @@ Object {
                 "atoms": Array [
                   Object {
                     "data": Object {
-                      "backwards": false,
                       "negate": false,
                       "tree": Object {
                         "comparison": Object {
@@ -2423,6 +2426,7 @@ Object {
                         },
                         "type": "comparison",
                       },
+                      "unicode": false,
                     },
                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
                     "posLine2": "                                            ^^^^^",
@@ -2502,6 +2506,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                   "posLine2": "                                                    ^",
@@ -2545,6 +2550,7 @@ Object {
                               },
                               "type": "lastComparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                           "posLine2": "                                                      ^^^^",
@@ -2616,6 +2622,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s...",
                   "posLine2": "                       ^",
@@ -2644,7 +2651,6 @@ Object {
                                                         "atoms": Array [
                                                           Object {
                                                             "data": Object {
-                                                              "backwards": false,
                                                               "negate": false,
                                                               "tree": Object {
                                                                 "comparison": Object {
@@ -2653,6 +2659,7 @@ Object {
                                                                 },
                                                                 "type": "lastComparison",
                                                               },
+                                                              "unicode": false,
                                                             },
                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                                             "posLine2": "                                          ^",
@@ -2673,7 +2680,6 @@ Object {
                                                         "atoms": Array [
                                                           Object {
                                                             "data": Object {
-                                                              "backwards": false,
                                                               "negate": true,
                                                               "tree": Object {
                                                                 "comparison": Object {
@@ -2794,6 +2800,7 @@ Object {
                                                                 },
                                                                 "type": "comparison",
                                                               },
+                                                              "unicode": false,
                                                             },
                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                                             "posLine2": "                                      ^^",
@@ -2830,7 +2837,6 @@ Object {
                                                 "atoms": Array [
                                                   Object {
                                                     "data": Object {
-                                                      "backwards": false,
                                                       "negate": false,
                                                       "tree": Object {
                                                         "comparison": Object {
@@ -2951,6 +2957,7 @@ Object {
                                                         },
                                                         "type": "comparison",
                                                       },
+                                                      "unicode": false,
                                                     },
                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                                                     "posLine2": "                                ^^",
@@ -2987,7 +2994,6 @@ Object {
                                         "atoms": Array [
                                           Object {
                                             "data": Object {
-                                              "backwards": false,
                                               "negate": false,
                                               "tree": Object {
                                                 "comparison": Object {
@@ -2997,6 +3003,7 @@ Object {
                                                 },
                                                 "type": "lastComparison",
                                               },
+                                              "unicode": false,
                                             },
                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                                             "posLine2": "                           ^^^^",
@@ -3031,7 +3038,6 @@ Object {
                                 "atoms": Array [
                                   Object {
                                     "data": Object {
-                                      "backwards": false,
                                       "negate": false,
                                       "tree": Object {
                                         "comparison": Object {
@@ -3055,6 +3061,7 @@ Object {
                                         },
                                         "type": "comparison",
                                       },
+                                      "unicode": false,
                                     },
                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
                                     "posLine2": "                                            ^^^^^",
@@ -3134,6 +3141,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![...",
           "posLine2": "              ^^^^",
@@ -3173,6 +3181,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:....",
           "posLine2": "             ^",
@@ -3229,6 +3238,7 @@ Object {
                               },
                               "type": "comparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                           "posLine2": "                                                    ^",
@@ -3272,6 +3282,7 @@ Object {
                                       },
                                       "type": "lastComparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                                   "posLine2": "                                                      ^^^^",
@@ -3343,6 +3354,7 @@ Object {
                               },
                               "type": "comparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s...",
                           "posLine2": "                       ^",
@@ -3371,7 +3383,6 @@ Object {
                                                                 "atoms": Array [
                                                                   Object {
                                                                     "data": Object {
-                                                                      "backwards": false,
                                                                       "negate": false,
                                                                       "tree": Object {
                                                                         "comparison": Object {
@@ -3380,6 +3391,7 @@ Object {
                                                                         },
                                                                         "type": "lastComparison",
                                                                       },
+                                                                      "unicode": false,
                                                                     },
                                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                                                     "posLine2": "                                          ^",
@@ -3400,7 +3412,6 @@ Object {
                                                                 "atoms": Array [
                                                                   Object {
                                                                     "data": Object {
-                                                                      "backwards": false,
                                                                       "negate": true,
                                                                       "tree": Object {
                                                                         "comparison": Object {
@@ -3521,6 +3532,7 @@ Object {
                                                                         },
                                                                         "type": "comparison",
                                                                       },
+                                                                      "unicode": false,
                                                                     },
                                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                                                     "posLine2": "                                      ^^",
@@ -3557,7 +3569,6 @@ Object {
                                                         "atoms": Array [
                                                           Object {
                                                             "data": Object {
-                                                              "backwards": false,
                                                               "negate": false,
                                                               "tree": Object {
                                                                 "comparison": Object {
@@ -3678,6 +3689,7 @@ Object {
                                                                 },
                                                                 "type": "comparison",
                                                               },
+                                                              "unicode": false,
                                                             },
                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                                                             "posLine2": "                                ^^",
@@ -3714,7 +3726,6 @@ Object {
                                                 "atoms": Array [
                                                   Object {
                                                     "data": Object {
-                                                      "backwards": false,
                                                       "negate": false,
                                                       "tree": Object {
                                                         "comparison": Object {
@@ -3724,6 +3735,7 @@ Object {
                                                         },
                                                         "type": "lastComparison",
                                                       },
+                                                      "unicode": false,
                                                     },
                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                                                     "posLine2": "                           ^^^^",
@@ -3758,7 +3770,6 @@ Object {
                                         "atoms": Array [
                                           Object {
                                             "data": Object {
-                                              "backwards": false,
                                               "negate": false,
                                               "tree": Object {
                                                 "comparison": Object {
@@ -3782,6 +3793,7 @@ Object {
                                                 },
                                                 "type": "comparison",
                                               },
+                                              "unicode": false,
                                             },
                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
                                             "posLine2": "                                            ^^^^^",
@@ -3863,6 +3875,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![...",
                   "posLine2": "              ^^^^",
@@ -4026,6 +4039,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((...",
           "posLine2": "         ^^",
@@ -4166,6 +4180,7 @@ Object {
               },
               "type": "comparison",
             },
+            "unicode": false,
           },
           "posLine1": "\\\\s)(on\\\\S+)=[...",
           "posLine2": "^^",
@@ -4192,6 +4207,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']...",
           "posLine2": "       ^",
@@ -4207,6 +4223,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?...",
           "posLine2": "        ^",
@@ -4237,6 +4254,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:....",
                   "posLine2": "             ^",
@@ -4293,6 +4311,7 @@ Object {
                                       },
                                       "type": "comparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                                   "posLine2": "                                                    ^",
@@ -4336,6 +4355,7 @@ Object {
                                               },
                                               "type": "lastComparison",
                                             },
+                                            "unicode": false,
                                           },
                                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                                           "posLine2": "                                                      ^^^^",
@@ -4407,6 +4427,7 @@ Object {
                                       },
                                       "type": "comparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s...",
                                   "posLine2": "                       ^",
@@ -4435,7 +4456,6 @@ Object {
                                                                         "atoms": Array [
                                                                           Object {
                                                                             "data": Object {
-                                                                              "backwards": false,
                                                                               "negate": false,
                                                                               "tree": Object {
                                                                                 "comparison": Object {
@@ -4444,6 +4464,7 @@ Object {
                                                                                 },
                                                                                 "type": "lastComparison",
                                                                               },
+                                                                              "unicode": false,
                                                                             },
                                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                                                             "posLine2": "                                          ^",
@@ -4464,7 +4485,6 @@ Object {
                                                                         "atoms": Array [
                                                                           Object {
                                                                             "data": Object {
-                                                                              "backwards": false,
                                                                               "negate": true,
                                                                               "tree": Object {
                                                                                 "comparison": Object {
@@ -4585,6 +4605,7 @@ Object {
                                                                                 },
                                                                                 "type": "comparison",
                                                                               },
+                                                                              "unicode": false,
                                                                             },
                                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                                                             "posLine2": "                                      ^^",
@@ -4621,7 +4642,6 @@ Object {
                                                                 "atoms": Array [
                                                                   Object {
                                                                     "data": Object {
-                                                                      "backwards": false,
                                                                       "negate": false,
                                                                       "tree": Object {
                                                                         "comparison": Object {
@@ -4742,6 +4762,7 @@ Object {
                                                                         },
                                                                         "type": "comparison",
                                                                       },
+                                                                      "unicode": false,
                                                                     },
                                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                                                                     "posLine2": "                                ^^",
@@ -4778,7 +4799,6 @@ Object {
                                                         "atoms": Array [
                                                           Object {
                                                             "data": Object {
-                                                              "backwards": false,
                                                               "negate": false,
                                                               "tree": Object {
                                                                 "comparison": Object {
@@ -4788,6 +4808,7 @@ Object {
                                                                 },
                                                                 "type": "lastComparison",
                                                               },
+                                                              "unicode": false,
                                                             },
                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                                                             "posLine2": "                           ^^^^",
@@ -4822,7 +4843,6 @@ Object {
                                                 "atoms": Array [
                                                   Object {
                                                     "data": Object {
-                                                      "backwards": false,
                                                       "negate": false,
                                                       "tree": Object {
                                                         "comparison": Object {
@@ -4846,6 +4866,7 @@ Object {
                                                         },
                                                         "type": "comparison",
                                                       },
+                                                      "unicode": false,
                                                     },
                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
                                                     "posLine2": "                                            ^^^^^",
@@ -4927,6 +4948,7 @@ Object {
                               },
                               "type": "lastComparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![...",
                           "posLine2": "              ^^^^",
@@ -5092,6 +5114,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((...",
                   "posLine2": "         ^^",
@@ -5143,6 +5166,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "[^>]+\\\\s)(on\\\\S+...",
           "posLine2": "^^^^",
@@ -5171,6 +5195,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "<[^>]+\\\\s)(o...",
           "posLine2": "^",
@@ -5302,6 +5327,7 @@ Object {
                       },
                       "type": "comparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "\\\\s)(on\\\\S+)=[...",
                   "posLine2": "^^",
@@ -5328,6 +5354,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']...",
                   "posLine2": "       ^",
@@ -5343,6 +5370,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?...",
                   "posLine2": "        ^",
@@ -5373,6 +5401,7 @@ Object {
                               },
                               "type": "lastComparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:....",
                           "posLine2": "             ^",
@@ -5429,6 +5458,7 @@ Object {
                                               },
                                               "type": "comparison",
                                             },
+                                            "unicode": false,
                                           },
                                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                                           "posLine2": "                                                    ^",
@@ -5472,6 +5502,7 @@ Object {
                                                       },
                                                       "type": "lastComparison",
                                                     },
+                                                    "unicode": false,
                                                   },
                                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                                                   "posLine2": "                                                      ^^^^",
@@ -5543,6 +5574,7 @@ Object {
                                               },
                                               "type": "comparison",
                                             },
+                                            "unicode": false,
                                           },
                                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s...",
                                           "posLine2": "                       ^",
@@ -5571,7 +5603,6 @@ Object {
                                                                                 "atoms": Array [
                                                                                   Object {
                                                                                     "data": Object {
-                                                                                      "backwards": false,
                                                                                       "negate": false,
                                                                                       "tree": Object {
                                                                                         "comparison": Object {
@@ -5580,6 +5611,7 @@ Object {
                                                                                         },
                                                                                         "type": "lastComparison",
                                                                                       },
+                                                                                      "unicode": false,
                                                                                     },
                                                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                                                                     "posLine2": "                                          ^",
@@ -5600,7 +5632,6 @@ Object {
                                                                                 "atoms": Array [
                                                                                   Object {
                                                                                     "data": Object {
-                                                                                      "backwards": false,
                                                                                       "negate": true,
                                                                                       "tree": Object {
                                                                                         "comparison": Object {
@@ -5721,6 +5752,7 @@ Object {
                                                                                         },
                                                                                         "type": "comparison",
                                                                                       },
+                                                                                      "unicode": false,
                                                                                     },
                                                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                                                                     "posLine2": "                                      ^^",
@@ -5757,7 +5789,6 @@ Object {
                                                                         "atoms": Array [
                                                                           Object {
                                                                             "data": Object {
-                                                                              "backwards": false,
                                                                               "negate": false,
                                                                               "tree": Object {
                                                                                 "comparison": Object {
@@ -5878,6 +5909,7 @@ Object {
                                                                                 },
                                                                                 "type": "comparison",
                                                                               },
+                                                                              "unicode": false,
                                                                             },
                                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                                                                             "posLine2": "                                ^^",
@@ -5914,7 +5946,6 @@ Object {
                                                                 "atoms": Array [
                                                                   Object {
                                                                     "data": Object {
-                                                                      "backwards": false,
                                                                       "negate": false,
                                                                       "tree": Object {
                                                                         "comparison": Object {
@@ -5924,6 +5955,7 @@ Object {
                                                                         },
                                                                         "type": "lastComparison",
                                                                       },
+                                                                      "unicode": false,
                                                                     },
                                                                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                                                                     "posLine2": "                           ^^^^",
@@ -5958,7 +5990,6 @@ Object {
                                                         "atoms": Array [
                                                           Object {
                                                             "data": Object {
-                                                              "backwards": false,
                                                               "negate": false,
                                                               "tree": Object {
                                                                 "comparison": Object {
@@ -5982,6 +6013,7 @@ Object {
                                                                 },
                                                                 "type": "comparison",
                                                               },
+                                                              "unicode": false,
                                                             },
                                                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
                                                             "posLine2": "                                            ^^^^^",
@@ -6063,6 +6095,7 @@ Object {
                                       },
                                       "type": "lastComparison",
                                     },
+                                    "unicode": false,
                                   },
                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![...",
                                   "posLine2": "              ^^^^",
@@ -6228,6 +6261,7 @@ Object {
                               },
                               "type": "comparison",
                             },
+                            "unicode": false,
                           },
                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((...",
                           "posLine2": "         ^^",
@@ -6281,6 +6315,7 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "[^>]+\\\\s)(on\\\\S+...",
                   "posLine2": "^^^^",
@@ -6343,6 +6378,7 @@ Object {
             },
             "type": "lastComparison",
           },
+          "unicode": false,
         },
         "posLine1": "<[^>]+\\\\s)(o...",
         "posLine2": "^",
@@ -6474,6 +6510,7 @@ Object {
                     },
                     "type": "comparison",
                   },
+                  "unicode": false,
                 },
                 "posLine1": "\\\\s)(on\\\\S+)=[...",
                 "posLine2": "^^",
@@ -6500,6 +6537,7 @@ Object {
                     },
                     "type": "lastComparison",
                   },
+                  "unicode": false,
                 },
                 "posLine1": "...\\\\s)(on\\\\S+)=[\\"']...",
                 "posLine2": "       ^",
@@ -6515,6 +6553,7 @@ Object {
                     },
                     "type": "lastComparison",
                   },
+                  "unicode": false,
                 },
                 "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?...",
                 "posLine2": "        ^",
@@ -6545,6 +6584,7 @@ Object {
                             },
                             "type": "lastComparison",
                           },
+                          "unicode": false,
                         },
                         "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:....",
                         "posLine2": "             ^",
@@ -6601,6 +6641,7 @@ Object {
                                             },
                                             "type": "comparison",
                                           },
+                                          "unicode": false,
                                         },
                                         "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                                         "posLine2": "                                                    ^",
@@ -6644,6 +6685,7 @@ Object {
                                                     },
                                                     "type": "lastComparison",
                                                   },
+                                                  "unicode": false,
                                                 },
                                                 "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
                                                 "posLine2": "                                                      ^^^^",
@@ -6715,6 +6757,7 @@ Object {
                                             },
                                             "type": "comparison",
                                           },
+                                          "unicode": false,
                                         },
                                         "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s...",
                                         "posLine2": "                       ^",
@@ -6743,7 +6786,6 @@ Object {
                                                                               "atoms": Array [
                                                                                 Object {
                                                                                   "data": Object {
-                                                                                    "backwards": false,
                                                                                     "negate": false,
                                                                                     "tree": Object {
                                                                                       "comparison": Object {
@@ -6752,6 +6794,7 @@ Object {
                                                                                       },
                                                                                       "type": "lastComparison",
                                                                                     },
+                                                                                    "unicode": false,
                                                                                   },
                                                                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+....",
                                                                                   "posLine2": "                                          ^",
@@ -6772,7 +6815,6 @@ Object {
                                                                               "atoms": Array [
                                                                                 Object {
                                                                                   "data": Object {
-                                                                                    "backwards": false,
                                                                                     "negate": true,
                                                                                     "tree": Object {
                                                                                       "comparison": Object {
@@ -6893,6 +6935,7 @@ Object {
                                                                                       },
                                                                                       "type": "comparison",
                                                                                     },
+                                                                                    "unicode": false,
                                                                                   },
                                                                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"'])...",
                                                                                   "posLine2": "                                      ^^",
@@ -6929,7 +6972,6 @@ Object {
                                                                       "atoms": Array [
                                                                         Object {
                                                                           "data": Object {
-                                                                            "backwards": false,
                                                                             "negate": false,
                                                                             "tree": Object {
                                                                               "comparison": Object {
@@ -7050,6 +7092,7 @@ Object {
                                                                               },
                                                                               "type": "comparison",
                                                                             },
+                                                                            "unicode": false,
                                                                           },
                                                                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|...",
                                                                           "posLine2": "                                ^^",
@@ -7086,7 +7129,6 @@ Object {
                                                               "atoms": Array [
                                                                 Object {
                                                                   "data": Object {
-                                                                    "backwards": false,
                                                                     "negate": false,
                                                                     "tree": Object {
                                                                       "comparison": Object {
@@ -7096,6 +7138,7 @@ Object {
                                                                       },
                                                                       "type": "lastComparison",
                                                                     },
+                                                                    "unicode": false,
                                                                   },
                                                                   "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+...",
                                                                   "posLine2": "                           ^^^^",
@@ -7130,7 +7173,6 @@ Object {
                                                       "atoms": Array [
                                                         Object {
                                                           "data": Object {
-                                                            "backwards": false,
                                                             "negate": false,
                                                             "tree": Object {
                                                               "comparison": Object {
@@ -7154,6 +7196,7 @@ Object {
                                                               },
                                                               "type": "comparison",
                                                             },
+                                                            "unicode": false,
                                                           },
                                                           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?...",
                                                           "posLine2": "                                            ^^^^^",
@@ -7235,6 +7278,7 @@ Object {
                                     },
                                     "type": "lastComparison",
                                   },
+                                  "unicode": false,
                                 },
                                 "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![...",
                                 "posLine2": "              ^^^^",
@@ -7400,6 +7444,7 @@ Object {
                             },
                             "type": "comparison",
                           },
+                          "unicode": false,
                         },
                         "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((...",
                         "posLine2": "         ^^",
@@ -7453,6 +7498,7 @@ Object {
                     },
                     "type": "lastComparison",
                   },
+                  "unicode": false,
                 },
                 "posLine1": "[^>]+\\\\s)(on\\\\S+...",
                 "posLine2": "^^^^",

@@ -33,26 +33,58 @@ function generatedRegexMatcher(str: string) {
          * {{{posLine2}}}
          */
         {{#switchCase 'charOrSet'}}
-          {{#if backwards}}
-            i--;
-            if (i < 0) {
-              return -1;
-            }
+          if (i >= strLength) {
+            return -1;
+          }
+          const charCode{{{@index}}} =
+          {{#if unicode}}
+            str.codePointAt(i)!;
           {{/if}}
-          {{#unless backwards}}
-            if (i >= strLength) {
-              return -1;
-            }
+          {{#unless unicode}}
+            str.charCodeAt(i);
           {{/unless}}
-          const charCode{{{@index}}} = str.charCodeAt(i);
           let result{{{@index}}} = false;
           {{> leaf tree atomIndex=@index}}
           if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
             return -1;
           };
-          {{#unless backwards}}
+          {{#if unicode}}
+            // surrogate pair might require moving 2 chars ahead
+            i += charCode{{{@index}}} >= 0x10000 ? 2 : 1
+          {{/if}}
+          {{#unless unicode}}
             i++;
           {{/unless}}
+        {{/switchCase}}
+        {{#switchCase 'charOrSetBackward'}}
+          {{#if unicode}}
+            let isSurrogatePair{{{@index}}} = false;
+            if (i >= 2) {
+              const charCodeBefore{{{@index}}} = str.charCodeAt(i - 2);
+              if (charCodeBefore{{{@index}}} >= 0xD800 && charCodeBefore{{{@index}}} <= 0xDBFF) {
+                isSurrogatePair{{{@index}}} = true;
+              }
+            } 
+            i -= isSurrogatePair{{{@index}}} ? 2 : 1;
+          {{/if}}
+          {{#unless unicode}}
+            i--;
+          {{/unless}}
+          if (i < 0) {
+            return -1;
+          }
+          const charCode{{{@index}}} =
+            {{#if unicode}}
+              str.codePointAt(i);
+            {{/if}}
+            {{#unless unicode}}
+              str.charCodeAt(i);
+            {{/unless}}
+          let result{{{@index}}} = false;
+          {{> leaf tree atomIndex=@index}}
+          if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
+            return -1;
+          };
         {{/switchCase}}
         {{#switchCase 'disjunction'}}
           {{#each groupsToRestore}}

@@ -11,7 +11,6 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {
-                    "backwards": true,
                     "negate": false,
                     "tree": Object {
                       "comparison": Object {
@@ -20,10 +19,11 @@ Object {
                       },
                       "type": "lastComparison",
                     },
+                    "unicode": false,
                   },
                   "posLine1": "y)x/",
                   "posLine2": "^",
-                  "type": "charOrSet",
+                  "type": "charOrSetBackward",
                 },
               ],
               "followUp": null,
@@ -50,6 +50,7 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "x/",
           "posLine2": "^",
@@ -68,7 +69,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "backwards": true,
             "negate": false,
             "tree": Object {
               "comparison": Object {
@@ -77,10 +77,11 @@ Object {
               },
               "type": "lastComparison",
             },
+            "unicode": false,
           },
           "posLine1": "y)x/",
           "posLine2": "^",
-          "type": "charOrSet",
+          "type": "charOrSetBackward",
         },
       ],
       "followUp": null,
@@ -100,7 +101,6 @@ Object {
             "atoms": Array [
               Object {
                 "data": Object {
-                  "backwards": true,
                   "negate": false,
                   "tree": Object {
                     "comparison": Object {
@@ -109,10 +109,11 @@ Object {
                     },
                     "type": "lastComparison",
                   },
+                  "unicode": false,
                 },
                 "posLine1": "y)x/",
                 "posLine2": "^",
-                "type": "charOrSet",
+                "type": "charOrSetBackward",
               },
             ],
             "followUp": null,
@@ -139,6 +140,7 @@ Object {
             },
             "type": "lastComparison",
           },
+          "unicode": false,
         },
         "posLine1": "x/",
         "posLine2": "^",
