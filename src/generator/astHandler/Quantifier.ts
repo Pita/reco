@@ -1,7 +1,7 @@
 import { AST } from 'regexpp';
 import { Collector, mergeGroupsOfFibers } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { Flags } from '../generator_v4';
+import { Flags } from '../generator';
 import { handleElement } from './Element';
 
 export const handleQuantifier = (

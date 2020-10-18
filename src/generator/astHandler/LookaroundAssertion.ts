@@ -1,7 +1,7 @@
 import { AST } from 'regexpp';
 import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { Flags } from '../generator_v4';
+import { Flags } from '../generator';
 import { handleDisjunction } from './Disjunction';
 
 export const handleLookaroundAssertion = (

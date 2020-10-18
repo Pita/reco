@@ -2,7 +2,7 @@ import { AST } from 'regexpp';
 import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { handleSetOrCharacter } from './Character';
-import { Flags } from '../generator_v4';
+import { Flags } from '../generator';
 import { handleDisjunction } from './Disjunction';
 import { handleQuantifier } from './Quantifier';
 import { handleAssertion } from './Assertion';

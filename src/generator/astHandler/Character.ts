@@ -2,7 +2,7 @@ import { AST } from 'regexpp';
 import { CharRangeBTreeMatcher } from '../CharRangeBTreeMatcher';
 import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { Flags } from '../generator_v4';
+import { Flags } from '../generator';
 
 function cc(char: string) {
   return char.charCodeAt(0);

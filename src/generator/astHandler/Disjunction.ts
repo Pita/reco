@@ -4,7 +4,7 @@ import {
   FiberTemplateDefinition,
   GroupReference,
 } from '../templates/mainTemplate';
-import { Flags } from '../generator_v4';
+import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 
 export const handleDisjunction = (
