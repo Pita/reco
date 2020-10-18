@@ -3,6 +3,7 @@ import { CharRangeBTreeMatcher } from '../CharRangeBTreeMatcher';
 import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
+import matchPropertyValue from 'unicode-match-property-value-ecmascript';
 
 function cc(char: string) {
   return char.charCodeAt(0);
@@ -80,7 +81,14 @@ export const handleSetOrCharacter = (
         break;
       case 'property':
         negate = set.negate;
-        throw new Error('CharacterSet with property not supported yet');
+        const fullValue = matchPropertyValue(set.key, set.value!);
+        const regenerateSet: {
+          toArray: () => number[];
+        } = require(`regenerate-unicode-properties/${set.key}/${fullValue}.js`);
+        regenerateSet.toArray().forEach((char) => {
+          bTreeMatcher.addChar(char);
+        });
+        break;
     }
   };
 

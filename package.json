@@ -60,7 +60,9 @@
     "handlebars": "^4.7.6",
     "js-string-escape": "^1.0.1",
     "lodash": "^4.17.20",
+    "regenerate-unicode-properties": "^8.2.0",
     "regexp-to-ast": "github:Pita/regexp-to-ast#lookbehind",
-    "regexpp": "^3.1.0"
+    "regexpp": "^3.1.0",
+    "unicode-match-property-value-ecmascript": "^1.2.0"
   }
 }
