@@ -1,5 +1,4 @@
 import * as Handlebars from 'handlebars';
-const jsStringEscape = require('js-string-escape');
 const prettier = require('prettier');
 
 const template = `
@@ -41,11 +40,6 @@ describe('{{{string testName}}}', () => {
   {{/each}}
 })
 `;
-
-Handlebars.registerHelper(
-  'string',
-  (str) => new Handlebars.SafeString(jsStringEscape(str)),
-);
 
 const compiled = Handlebars.compile(template);
 export default (context: any) => {

@@ -2,18 +2,27 @@ import * as glob from 'glob';
 import mkdirp from 'mkdirp';
 import * as fs from 'fs';
 import { genCode } from '../generator/generator';
-import template from './generate_tests_template';
+import testTemplate from './test_template';
+import benchmarkTemplate from './benchmark_template';
 import * as rimraf from 'rimraf';
 import * as path from 'path';
 import * as _ from 'lodash';
+import * as Handlebars from 'handlebars';
+const jsStringEscape = require('js-string-escape');
 const safeStringify = require('fast-safe-stringify');
+
+Handlebars.registerHelper(
+  'string',
+  (str) => new Handlebars.SafeString(jsStringEscape(str)),
+);
 
 const configFolder = `${__dirname}/config`;
 
 const configFiles = glob.sync('**/*.json', {
   cwd: configFolder,
 });
-const filter = process.env.TEST_FILTER;
+const filter = process.env.FILTER;
+let benchmarkAllScript = '#!/bin/sh\n\n';
 
 rimraf.sync(`${__dirname}/generated/**/*.+(ts|json)`);
 configFiles
@@ -87,7 +96,13 @@ configFiles
     });
     const fileName = `generated_${path.basename(testName)}`;
 
-    const testCode = template({
+    const testCode = testTemplate({
+      fileName,
+      testName,
+      testInputs,
+      testRegex: config.regex,
+    });
+    const benchmarkCode = benchmarkTemplate({
       fileName,
       testName,
       testInputs,
@@ -110,6 +125,12 @@ configFiles
         'utf8',
       );
       fs.writeFileSync(`${folderName}/${fileName}.test.ts`, testCode, 'utf8');
+      fs.writeFileSync(
+        `${folderName}/${fileName}.benchmark.ts`,
+        benchmarkCode,
+        'utf8',
+      );
+      benchmarkAllScript += `npx ts-node -T ${folderName}/${fileName}.benchmark.ts\n`;
 
       if (process.env.RESET) {
         fs.writeFileSync(
@@ -133,3 +154,10 @@ configFiles
       }
     }
   });
+
+const benchmarkAllPath = path.resolve(
+  __dirname,
+  '../../generated_benchmark_all.sh',
+);
+fs.writeFileSync(benchmarkAllPath, benchmarkAllScript, 'utf8');
+fs.chmodSync(benchmarkAllPath, '755');

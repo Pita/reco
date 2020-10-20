@@ -4,8 +4,8 @@
   "description": "Regular Expression COmpiler",
   "main": "index.js",
   "scripts": {
-    "test:all": "npm run test:generate && npm run test:run",
-    "test:generate": "ts-node -T ./src/tests/generate_tests.ts",
+    "test:all": "npm run generate && npm run test:run",
+    "generate": "ts-node -T ./src/tests_and_benchmarks/generate_tests_and_benchmarks.ts",
     "test:keep-snapshots": "npx jest",
     "test:run": "npx jest --updateSnapshot",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
