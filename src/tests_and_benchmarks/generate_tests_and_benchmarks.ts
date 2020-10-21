@@ -22,7 +22,6 @@ const configFiles = glob.sync('**/*.json', {
   cwd: configFolder,
 });
 const filter = process.env.FILTER;
-let benchmarkAllScript = '#!/bin/sh\n\n';
 
 rimraf.sync(`${__dirname}/generated/**/*.+(ts|json)`);
 configFiles
@@ -130,7 +129,6 @@ configFiles
         benchmarkCode,
         'utf8',
       );
-      benchmarkAllScript += `npx ts-node -T ${folderName}/${fileName}.benchmark.ts\n`;
 
       if (process.env.RESET) {
         fs.writeFileSync(
@@ -154,10 +152,3 @@ configFiles
       }
     }
   });
-
-const benchmarkAllPath = path.resolve(
-  __dirname,
-  '../../generated_benchmark_all.sh',
-);
-fs.writeFileSync(benchmarkAllPath, benchmarkAllScript, 'utf8');
-fs.chmodSync(benchmarkAllPath, '755');

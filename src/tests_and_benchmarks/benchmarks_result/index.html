@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Benchmark results</title>
+    <style>
+      .chart {
+        width: 1200px;
+        height: 800px;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+  </head>
+
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="./benchmark_data.js"></script>
+
+    <div>
+      <h2>Average Common Regex: <span id="average"></span></h2>
+    </div>
+    <div class="char">
+      <canvas id="chart" width="1200" height="800"></canvas>
+    </div>
+
+    <script>
+      var ctx = document.getElementById('chart').getContext('2d');
+      var char = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+          labels: Object.keys(benchmarkData),
+          datasets: [
+            {
+              label: 'Times slower than V8 native regex',
+              data: Object.values(benchmarkData),
+              backgroundColor: function (context) {
+                var index = context.dataIndex;
+                var value = context.dataset.data[index];
+
+                if (value > 1) {
+                  return 'red';
+                } else {
+                  return 'green';
+                }
+              },
+            },
+          ],
+        },
+        options: {
+          responsive: false,
+          scales: {
+            xAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  stepSize: 1,
+                  suggestedMax: 1,
+                },
+              },
+            ],
+          },
+        },
+      });
+
+      let sum = 0;
+      let count = 0;
+      Object.entries(benchmarkData).forEach(([name, value]) => {
+        if (!name.startsWith('common_regex')) {
+          return;
+        }
+        sum += parseFloat(value);
+        count++;
+      });
+
+      document.getElementById('average').textContent = (sum / count).toFixed(2);
+    </script>
+  </body>
+</html>
