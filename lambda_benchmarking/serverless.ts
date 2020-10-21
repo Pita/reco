@@ -1,8 +1,8 @@
-import type { Serverless } from 'serverless/aws';
+import { Serverless } from 'serverless/aws';
 
 const serverlessConfiguration: Serverless = {
   service: {
-    name: 'benchmark',
+    name: 'reco-benchmark',
     // app and org for use with dashboard.serverless.com
     // app: your-app-name,
     // org: your-org-name,
@@ -11,11 +11,16 @@ const serverlessConfiguration: Serverless = {
   custom: {
     webpack: {
       webpackConfig: './webpack.config.js',
-      includeModules: true
-    }
+      includeModules: true,
+    },
+    exportEndpoints: {
+      output: {
+        path: './endpoints.json',
+      },
+    },
   },
   // Add the serverless-webpack plugin
-  plugins: ['serverless-webpack'],
+  plugins: ['serverless-webpack', 'serverless-plugin-export-endpoints'],
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
@@ -25,20 +30,22 @@ const serverlessConfiguration: Serverless = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
     },
+    memorySize: 1024,
+    timeout: 15,
   },
   functions: {
-    hello: {
-      handler: 'handler.hello',
+    benchmark: {
+      handler: 'handler.benchmark',
       events: [
         {
           http: {
             method: 'get',
-            path: 'hello',
-          }
-        }
-      ]
-    }
-  }
-}
+            path: 'benchmark',
+          },
+        },
+      ],
+    },
+  },
+};
 
 module.exports = serverlessConfiguration;

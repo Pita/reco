@@ -1,5 +1,5 @@
 // {{{regexStr}}}
-function generatedRegexMatcher(str: string) {
+export function generatedRegexMatcher(str: string) {
   const strLength = str.length;
   const groupMarkers:[
     {{#each groups}}
@@ -416,5 +416,3 @@ function generatedRegexMatcher(str: string) {
 
   return null;
 };
-
-module.exports = {generatedRegexMatcher};

@@ -23,7 +23,10 @@ const configFiles = glob.sync('**/*.json', {
 });
 const filter = process.env.FILTER;
 
+let importAllBenchmarksCode = '';
 rimraf.sync(`${__dirname}/generated/**/*.+(ts|json)`);
+rimraf.sync(`${__dirname}/../../lambda_benchmarking/generated/**/*.+(ts)`);
+
 configFiles
   .filter((configFile) => {
     if (!filter) {
@@ -32,7 +35,7 @@ configFiles
 
     return configFile.indexOf(filter) !== -1;
   })
-  .forEach((configFile) => {
+  .forEach((configFile, configIndex) => {
     let config: {
       type: string;
       testInputs: string[];
@@ -108,27 +111,40 @@ configFiles
       testRegex: config.regex,
     });
 
-    const folderName = `${__dirname}/generated/${testName}`;
+    const testFolderName = `${__dirname}/generated/${testName}`;
+    const benchmarkFolderName = `${__dirname}/../../lambda_benchmarking/generated/${testName}`;
 
-    mkdirp.sync(folderName);
+    mkdirp.sync(testFolderName);
+    mkdirp.sync(benchmarkFolderName);
+
     fs.writeFileSync(
-      `${folderName}/${fileName}_pattern.json`,
+      `${testFolderName}/${fileName}_pattern.json`,
       safeStringify(literal, null, 2),
       'utf8',
     );
     if (code && templateValues) {
-      fs.writeFileSync(`${folderName}/${fileName}.ts`, code, 'utf8');
+      fs.writeFileSync(`${testFolderName}/${fileName}.ts`, code, 'utf8');
       fs.writeFileSync(
-        `${folderName}/${fileName}_templateValues.json`,
+        `${testFolderName}/${fileName}_templateValues.json`,
         JSON.stringify(templateValues, null, 2),
         'utf8',
       );
-      fs.writeFileSync(`${folderName}/${fileName}.test.ts`, testCode, 'utf8');
       fs.writeFileSync(
-        `${folderName}/${fileName}.benchmark.ts`,
+        `${testFolderName}/${fileName}.test.ts`,
+        testCode,
+        'utf8',
+      );
+
+      fs.writeFileSync(`${benchmarkFolderName}/${fileName}.ts`, code, 'utf8');
+      fs.writeFileSync(
+        `${benchmarkFolderName}/${fileName}.benchmark.ts`,
         benchmarkCode,
         'utf8',
       );
+      importAllBenchmarksCode += `export { benchmark as ${testName.replace(
+        '/',
+        '___',
+      )} } from "./${testName}/${fileName}.benchmark";\n`;
 
       if (process.env.RESET) {
         fs.writeFileSync(
@@ -152,3 +168,9 @@ configFiles
       }
     }
   });
+
+fs.writeFileSync(
+  `${__dirname}/../../lambda_benchmarking/generated/generated_all.ts`,
+  importAllBenchmarksCode,
+  'utf8',
+);
