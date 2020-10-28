@@ -33,10 +33,29 @@ Object {
         },
       ],
       "followUp": Object {
-        "functionName": "callback",
+        "followUp": Object {
+          "atoms": Array [],
+          "followUp": null,
+          "functionName": "fiber0001",
+          "hasCallback": false,
+          "lastAtomReturns": false,
+          "meta": Object {
+            "groups": Array [],
+          },
+        },
+        "functionName": "greedyQuantifier0003",
+        "hasCallback": false,
+        "maxCount": 1,
+        "maxOrMinCount": true,
+        "meta": Object {
+          "groups": Array [],
+        },
+        "posLine1": "...X]+[c]?/",
+        "posLine2": "      ^^^^",
+        "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0002",
-      "hasCallback": true,
+      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -46,55 +65,16 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "followUp": Object {
-              "atoms": Array [],
-              "followUp": null,
-              "functionName": "fiber0001",
-              "hasCallback": false,
-              "lastAtomReturns": false,
-              "meta": Object {
-                "groups": Array [],
-              },
-            },
-            "maxCount": 1,
+            "functionName": "greedyQuantifier0003",
             "maxOrMinCount": true,
-            "wrappedHandler": Object {
-              "atoms": Array [
-                Object {
-                  "data": Object {
-                    "negate": false,
-                    "tree": Object {
-                      "comparison": Object {
-                        "comparisonValue": 99,
-                        "type": "equal",
-                      },
-                      "type": "lastComparison",
-                    },
-                    "unicode": false,
-                  },
-                  "posLine1": "...X]+[c]?/",
-                  "posLine2": "      ^^^",
-                  "type": "charOrSet",
-                },
-              ],
-              "followUp": Object {
-                "functionName": "callback",
-              },
-              "functionName": "fiber0002",
-              "hasCallback": true,
-              "lastAtomReturns": false,
-              "meta": Object {
-                "groups": Array [],
-              },
-            },
           },
           "posLine1": "...X]+[c]?/",
           "posLine2": "      ^^^^",
-          "type": "greedyQuantifier",
+          "type": "greedyQuantifierStarter",
         },
       ],
       "followUp": null,
-      "functionName": "fiber0003",
+      "functionName": "fiber0004",
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
@@ -128,10 +108,39 @@ Object {
         },
       ],
       "followUp": Object {
-        "functionName": "callback",
+        "followUp": Object {
+          "atoms": Array [
+            Object {
+              "data": Object {
+                "functionName": "greedyQuantifier0003",
+                "maxOrMinCount": true,
+              },
+              "posLine1": "...X]+[c]?/",
+              "posLine2": "      ^^^^",
+              "type": "greedyQuantifierStarter",
+            },
+          ],
+          "followUp": null,
+          "functionName": "fiber0004",
+          "hasCallback": false,
+          "lastAtomReturns": true,
+          "meta": Object {
+            "groups": Array [],
+          },
+        },
+        "functionName": "greedyQuantifier0006",
+        "hasCallback": false,
+        "maxOrMinCount": true,
+        "meta": Object {
+          "groups": Array [],
+        },
+        "minCount": 1,
+        "posLine1": "[B-X]+[c]?/",
+        "posLine2": "^^^^^^",
+        "wrappedHandler": "[Circular]",
       },
-      "functionName": "fiber0004",
-      "hasCallback": true,
+      "functionName": "fiber0005",
+      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -141,111 +150,16 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "followUp": Object {
-              "atoms": Array [
-                Object {
-                  "data": Object {
-                    "followUp": Object {
-                      "atoms": Array [],
-                      "followUp": null,
-                      "functionName": "fiber0001",
-                      "hasCallback": false,
-                      "lastAtomReturns": false,
-                      "meta": Object {
-                        "groups": Array [],
-                      },
-                    },
-                    "maxCount": 1,
-                    "maxOrMinCount": true,
-                    "wrappedHandler": Object {
-                      "atoms": Array [
-                        Object {
-                          "data": Object {
-                            "negate": false,
-                            "tree": Object {
-                              "comparison": Object {
-                                "comparisonValue": 99,
-                                "type": "equal",
-                              },
-                              "type": "lastComparison",
-                            },
-                            "unicode": false,
-                          },
-                          "posLine1": "...X]+[c]?/",
-                          "posLine2": "      ^^^",
-                          "type": "charOrSet",
-                        },
-                      ],
-                      "followUp": Object {
-                        "functionName": "callback",
-                      },
-                      "functionName": "fiber0002",
-                      "hasCallback": true,
-                      "lastAtomReturns": false,
-                      "meta": Object {
-                        "groups": Array [],
-                      },
-                    },
-                  },
-                  "posLine1": "...X]+[c]?/",
-                  "posLine2": "      ^^^^",
-                  "type": "greedyQuantifier",
-                },
-              ],
-              "followUp": null,
-              "functionName": "fiber0003",
-              "hasCallback": false,
-              "lastAtomReturns": true,
-              "meta": Object {
-                "groups": Array [],
-              },
-            },
+            "functionName": "greedyQuantifier0006",
             "maxOrMinCount": true,
-            "minCount": 1,
-            "wrappedHandler": Object {
-              "atoms": Array [
-                Object {
-                  "data": Object {
-                    "negate": false,
-                    "tree": Object {
-                      "comparison": Object {
-                        "comparisonValue": 88,
-                        "type": "lessOrEqual",
-                      },
-                      "comparisonTrue": Object {
-                        "comparison": Object {
-                          "comparisonValue": 66,
-                          "type": "moreOrEqual",
-                        },
-                        "type": "lastComparison",
-                      },
-                      "type": "comparison",
-                    },
-                    "unicode": false,
-                  },
-                  "posLine1": "[B-X]+[c]?/",
-                  "posLine2": "^^^^^",
-                  "type": "charOrSet",
-                },
-              ],
-              "followUp": Object {
-                "functionName": "callback",
-              },
-              "functionName": "fiber0004",
-              "hasCallback": true,
-              "lastAtomReturns": false,
-              "meta": Object {
-                "groups": Array [],
-              },
-            },
           },
           "posLine1": "[B-X]+[c]?/",
           "posLine2": "^^^^^^",
-          "type": "greedyQuantifier",
+          "type": "greedyQuantifierStarter",
         },
       ],
       "followUp": null,
-      "functionName": "fiber0005",
+      "functionName": "fiber0007",
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
@@ -279,10 +193,38 @@ Object {
         },
       ],
       "followUp": Object {
-        "functionName": "callback",
+        "followUp": Object {
+          "atoms": Array [
+            Object {
+              "data": Object {
+                "functionName": "greedyQuantifier0006",
+                "maxOrMinCount": true,
+              },
+              "posLine1": "[B-X]+[c]?/",
+              "posLine2": "^^^^^^",
+              "type": "greedyQuantifierStarter",
+            },
+          ],
+          "followUp": null,
+          "functionName": "fiber0007",
+          "hasCallback": false,
+          "lastAtomReturns": true,
+          "meta": Object {
+            "groups": Array [],
+          },
+        },
+        "functionName": "greedyQuantifier0009",
+        "hasCallback": false,
+        "maxOrMinCount": false,
+        "meta": Object {
+          "groups": Array [],
+        },
+        "posLine1": "[a-c]*[B-X]+[c]?...",
+        "posLine2": "^^^^^^",
+        "wrappedHandler": "[Circular]",
       },
-      "functionName": "fiber0006",
-      "hasCallback": true,
+      "functionName": "fiber0008",
+      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -292,166 +234,16 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "followUp": Object {
-              "atoms": Array [
-                Object {
-                  "data": Object {
-                    "followUp": Object {
-                      "atoms": Array [
-                        Object {
-                          "data": Object {
-                            "followUp": Object {
-                              "atoms": Array [],
-                              "followUp": null,
-                              "functionName": "fiber0001",
-                              "hasCallback": false,
-                              "lastAtomReturns": false,
-                              "meta": Object {
-                                "groups": Array [],
-                              },
-                            },
-                            "maxCount": 1,
-                            "maxOrMinCount": true,
-                            "wrappedHandler": Object {
-                              "atoms": Array [
-                                Object {
-                                  "data": Object {
-                                    "negate": false,
-                                    "tree": Object {
-                                      "comparison": Object {
-                                        "comparisonValue": 99,
-                                        "type": "equal",
-                                      },
-                                      "type": "lastComparison",
-                                    },
-                                    "unicode": false,
-                                  },
-                                  "posLine1": "...X]+[c]?/",
-                                  "posLine2": "      ^^^",
-                                  "type": "charOrSet",
-                                },
-                              ],
-                              "followUp": Object {
-                                "functionName": "callback",
-                              },
-                              "functionName": "fiber0002",
-                              "hasCallback": true,
-                              "lastAtomReturns": false,
-                              "meta": Object {
-                                "groups": Array [],
-                              },
-                            },
-                          },
-                          "posLine1": "...X]+[c]?/",
-                          "posLine2": "      ^^^^",
-                          "type": "greedyQuantifier",
-                        },
-                      ],
-                      "followUp": null,
-                      "functionName": "fiber0003",
-                      "hasCallback": false,
-                      "lastAtomReturns": true,
-                      "meta": Object {
-                        "groups": Array [],
-                      },
-                    },
-                    "maxOrMinCount": true,
-                    "minCount": 1,
-                    "wrappedHandler": Object {
-                      "atoms": Array [
-                        Object {
-                          "data": Object {
-                            "negate": false,
-                            "tree": Object {
-                              "comparison": Object {
-                                "comparisonValue": 88,
-                                "type": "lessOrEqual",
-                              },
-                              "comparisonTrue": Object {
-                                "comparison": Object {
-                                  "comparisonValue": 66,
-                                  "type": "moreOrEqual",
-                                },
-                                "type": "lastComparison",
-                              },
-                              "type": "comparison",
-                            },
-                            "unicode": false,
-                          },
-                          "posLine1": "[B-X]+[c]?/",
-                          "posLine2": "^^^^^",
-                          "type": "charOrSet",
-                        },
-                      ],
-                      "followUp": Object {
-                        "functionName": "callback",
-                      },
-                      "functionName": "fiber0004",
-                      "hasCallback": true,
-                      "lastAtomReturns": false,
-                      "meta": Object {
-                        "groups": Array [],
-                      },
-                    },
-                  },
-                  "posLine1": "[B-X]+[c]?/",
-                  "posLine2": "^^^^^^",
-                  "type": "greedyQuantifier",
-                },
-              ],
-              "followUp": null,
-              "functionName": "fiber0005",
-              "hasCallback": false,
-              "lastAtomReturns": true,
-              "meta": Object {
-                "groups": Array [],
-              },
-            },
+            "functionName": "greedyQuantifier0009",
             "maxOrMinCount": false,
-            "wrappedHandler": Object {
-              "atoms": Array [
-                Object {
-                  "data": Object {
-                    "negate": false,
-                    "tree": Object {
-                      "comparison": Object {
-                        "comparisonValue": 99,
-                        "type": "lessOrEqual",
-                      },
-                      "comparisonTrue": Object {
-                        "comparison": Object {
-                          "comparisonValue": 97,
-                          "type": "moreOrEqual",
-                        },
-                        "type": "lastComparison",
-                      },
-                      "type": "comparison",
-                    },
-                    "unicode": false,
-                  },
-                  "posLine1": "[a-c]*[B-X]+[c]...",
-                  "posLine2": "^^^^^",
-                  "type": "charOrSet",
-                },
-              ],
-              "followUp": Object {
-                "functionName": "callback",
-              },
-              "functionName": "fiber0006",
-              "hasCallback": true,
-              "lastAtomReturns": false,
-              "meta": Object {
-                "groups": Array [],
-              },
-            },
           },
           "posLine1": "[a-c]*[B-X]+[c]?...",
           "posLine2": "^^^^^^",
-          "type": "greedyQuantifier",
+          "type": "greedyQuantifierStarter",
         },
       ],
       "followUp": null,
-      "functionName": "fiber0007",
+      "functionName": "fiber0010",
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
@@ -459,170 +251,107 @@ Object {
       },
     },
   ],
+  "greedyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "atoms": Array [],
+        "followUp": null,
+        "functionName": "fiber0001",
+        "hasCallback": false,
+        "lastAtomReturns": false,
+        "meta": Object {
+          "groups": Array [],
+        },
+      },
+      "functionName": "greedyQuantifier0003",
+      "hasCallback": false,
+      "maxCount": 1,
+      "maxOrMinCount": true,
+      "meta": Object {
+        "groups": Array [],
+      },
+      "posLine1": "...X]+[c]?/",
+      "posLine2": "      ^^^^",
+      "wrappedHandler": "[Circular]",
+    },
+    Object {
+      "followUp": Object {
+        "atoms": Array [
+          Object {
+            "data": Object {
+              "functionName": "greedyQuantifier0003",
+              "maxOrMinCount": true,
+            },
+            "posLine1": "...X]+[c]?/",
+            "posLine2": "      ^^^^",
+            "type": "greedyQuantifierStarter",
+          },
+        ],
+        "followUp": null,
+        "functionName": "fiber0004",
+        "hasCallback": false,
+        "lastAtomReturns": true,
+        "meta": Object {
+          "groups": Array [],
+        },
+      },
+      "functionName": "greedyQuantifier0006",
+      "hasCallback": false,
+      "maxOrMinCount": true,
+      "meta": Object {
+        "groups": Array [],
+      },
+      "minCount": 1,
+      "posLine1": "[B-X]+[c]?/",
+      "posLine2": "^^^^^^",
+      "wrappedHandler": "[Circular]",
+    },
+    Object {
+      "followUp": Object {
+        "atoms": Array [
+          Object {
+            "data": Object {
+              "functionName": "greedyQuantifier0006",
+              "maxOrMinCount": true,
+            },
+            "posLine1": "[B-X]+[c]?/",
+            "posLine2": "^^^^^^",
+            "type": "greedyQuantifierStarter",
+          },
+        ],
+        "followUp": null,
+        "functionName": "fiber0007",
+        "hasCallback": false,
+        "lastAtomReturns": true,
+        "meta": Object {
+          "groups": Array [],
+        },
+      },
+      "functionName": "greedyQuantifier0009",
+      "hasCallback": false,
+      "maxOrMinCount": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+      "posLine1": "[a-c]*[B-X]+[c]?...",
+      "posLine2": "^^^^^^",
+      "wrappedHandler": "[Circular]",
+    },
+  ],
   "mainHandler": Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "followUp": Object {
-            "atoms": Array [
-              Object {
-                "data": Object {
-                  "followUp": Object {
-                    "atoms": Array [
-                      Object {
-                        "data": Object {
-                          "followUp": Object {
-                            "atoms": Array [],
-                            "followUp": null,
-                            "functionName": "fiber0001",
-                            "hasCallback": false,
-                            "lastAtomReturns": false,
-                            "meta": Object {
-                              "groups": Array [],
-                            },
-                          },
-                          "maxCount": 1,
-                          "maxOrMinCount": true,
-                          "wrappedHandler": Object {
-                            "atoms": Array [
-                              Object {
-                                "data": Object {
-                                  "negate": false,
-                                  "tree": Object {
-                                    "comparison": Object {
-                                      "comparisonValue": 99,
-                                      "type": "equal",
-                                    },
-                                    "type": "lastComparison",
-                                  },
-                                  "unicode": false,
-                                },
-                                "posLine1": "...X]+[c]?/",
-                                "posLine2": "      ^^^",
-                                "type": "charOrSet",
-                              },
-                            ],
-                            "followUp": Object {
-                              "functionName": "callback",
-                            },
-                            "functionName": "fiber0002",
-                            "hasCallback": true,
-                            "lastAtomReturns": false,
-                            "meta": Object {
-                              "groups": Array [],
-                            },
-                          },
-                        },
-                        "posLine1": "...X]+[c]?/",
-                        "posLine2": "      ^^^^",
-                        "type": "greedyQuantifier",
-                      },
-                    ],
-                    "followUp": null,
-                    "functionName": "fiber0003",
-                    "hasCallback": false,
-                    "lastAtomReturns": true,
-                    "meta": Object {
-                      "groups": Array [],
-                    },
-                  },
-                  "maxOrMinCount": true,
-                  "minCount": 1,
-                  "wrappedHandler": Object {
-                    "atoms": Array [
-                      Object {
-                        "data": Object {
-                          "negate": false,
-                          "tree": Object {
-                            "comparison": Object {
-                              "comparisonValue": 88,
-                              "type": "lessOrEqual",
-                            },
-                            "comparisonTrue": Object {
-                              "comparison": Object {
-                                "comparisonValue": 66,
-                                "type": "moreOrEqual",
-                              },
-                              "type": "lastComparison",
-                            },
-                            "type": "comparison",
-                          },
-                          "unicode": false,
-                        },
-                        "posLine1": "[B-X]+[c]?/",
-                        "posLine2": "^^^^^",
-                        "type": "charOrSet",
-                      },
-                    ],
-                    "followUp": Object {
-                      "functionName": "callback",
-                    },
-                    "functionName": "fiber0004",
-                    "hasCallback": true,
-                    "lastAtomReturns": false,
-                    "meta": Object {
-                      "groups": Array [],
-                    },
-                  },
-                },
-                "posLine1": "[B-X]+[c]?/",
-                "posLine2": "^^^^^^",
-                "type": "greedyQuantifier",
-              },
-            ],
-            "followUp": null,
-            "functionName": "fiber0005",
-            "hasCallback": false,
-            "lastAtomReturns": true,
-            "meta": Object {
-              "groups": Array [],
-            },
-          },
+          "functionName": "greedyQuantifier0009",
           "maxOrMinCount": false,
-          "wrappedHandler": Object {
-            "atoms": Array [
-              Object {
-                "data": Object {
-                  "negate": false,
-                  "tree": Object {
-                    "comparison": Object {
-                      "comparisonValue": 99,
-                      "type": "lessOrEqual",
-                    },
-                    "comparisonTrue": Object {
-                      "comparison": Object {
-                        "comparisonValue": 97,
-                        "type": "moreOrEqual",
-                      },
-                      "type": "lastComparison",
-                    },
-                    "type": "comparison",
-                  },
-                  "unicode": false,
-                },
-                "posLine1": "[a-c]*[B-X]+[c]...",
-                "posLine2": "^^^^^",
-                "type": "charOrSet",
-              },
-            ],
-            "followUp": Object {
-              "functionName": "callback",
-            },
-            "functionName": "fiber0006",
-            "hasCallback": true,
-            "lastAtomReturns": false,
-            "meta": Object {
-              "groups": Array [],
-            },
-          },
         },
         "posLine1": "[a-c]*[B-X]+[c]?...",
         "posLine2": "^^^^^^",
-        "type": "greedyQuantifier",
+        "type": "greedyQuantifierStarter",
       },
     ],
     "followUp": null,
-    "functionName": "fiber0007",
+    "functionName": "fiber0010",
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {

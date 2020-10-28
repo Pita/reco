@@ -7,9 +7,7 @@ export interface GroupReference {
   idx: number;
 }
 
-export interface FiberTemplateDefinition {
-  atoms: TemplateAtom[];
-  lastAtomReturns: boolean;
+export interface FunctionDefinition {
   functionName: string;
   followUp: FollowUp;
   hasCallback: boolean;
@@ -18,10 +16,21 @@ export interface FiberTemplateDefinition {
   };
 }
 
-export type FollowUp =
-  | FiberTemplateDefinition
-  | { functionName: 'callback' }
-  | null;
+export interface FiberTemplateDefinition extends FunctionDefinition {
+  atoms: TemplateAtom[];
+  lastAtomReturns: boolean;
+}
+
+export interface GreedyQuantifierTemplateDefinition extends FunctionDefinition {
+  wrappedHandler: FunctionDefinition;
+  maxOrMinCount?: boolean;
+  minCount?: number;
+  maxCount?: number;
+  posLine1: string;
+  posLine2: string;
+}
+
+export type FollowUp = FunctionDefinition | { functionName: 'callback' } | null;
 
 export interface BaseTemplateAtom {
   posLine1: string;
@@ -88,14 +97,11 @@ export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
   };
 }
 
-export interface GreedyQuantifierTemplateAtom extends BaseTemplateAtom {
-  type: 'greedyQuantifier';
+export interface GreedyQuantifierStarterTemplateAtom extends BaseTemplateAtom {
+  type: 'greedyQuantifierStarter';
   data: {
-    wrappedHandler: FiberTemplateDefinition;
     maxOrMinCount?: boolean;
-    minCount?: number;
-    maxCount?: number;
-    followUp: FollowUp;
+    functionName: string;
   };
 }
 
@@ -143,7 +149,7 @@ export type TemplateAtom =
   | MultiLineEndAnchorTemplateAtom
   | GroupStartMarkerTemplateAtom
   | GroupEndMarkerTemplateAtom
-  | GreedyQuantifierTemplateAtom
+  | GreedyQuantifierStarterTemplateAtom
   | LazyQuantifierTemplateAtom
   | LookaroundTemplateAtom
   | WordBoundaryTemplateAtom
@@ -151,6 +157,7 @@ export type TemplateAtom =
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
+  greedyQuantifierHandlers: GreedyQuantifierTemplateDefinition[];
   mainHandler: FiberTemplateDefinition;
   regexStr: string;
   groups: GroupReference[];

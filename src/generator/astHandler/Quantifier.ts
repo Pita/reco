@@ -10,30 +10,42 @@ export const handleQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
+  if (!quantifier.greedy) {
+    throw new Error('Lazy quantifiers are temporarly not supported anymore');
+  }
+
+  // TODO: clean this mess up
+  const {
+    quantifierFinalFiber,
+    greedyQuantifier,
+  } = collector.createQuantifierFiberPair(currentFiber, quantifier);
+
+  greedyQuantifier.minCount = quantifier.min === 0 ? undefined : quantifier.min;
+  greedyQuantifier.maxCount =
+    quantifier.max === Infinity ? undefined : quantifier.max;
+  greedyQuantifier.maxOrMinCount =
+    greedyQuantifier.minCount !== undefined ||
+    greedyQuantifier.maxCount !== undefined;
+
   const wrappedHandler = handleElement(
     quantifier.element,
     collector,
-    collector.createCallbackFiber(),
+    quantifierFinalFiber,
     flags,
   );
-
-  const minCount = quantifier.min === 0 ? undefined : quantifier.min;
-  const maxCount = quantifier.max === Infinity ? undefined : quantifier.max;
-  const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
+  greedyQuantifier.meta.groups = wrappedHandler.meta.groups.slice();
+  greedyQuantifier.wrappedHandler = wrappedHandler;
 
   return collector.addAtom(
     collector.createForkingFiber(
-      currentFiber,
-      mergeGroupsOfFibers([wrappedHandler, currentFiber]),
+      greedyQuantifier,
+      greedyQuantifier.meta.groups,
     ),
     {
-      type: quantifier.greedy ? 'greedyQuantifier' : 'lazyQuantifier',
+      type: 'greedyQuantifierStarter',
       data: {
-        minCount,
-        maxCount,
-        maxOrMinCount,
-        wrappedHandler,
-        followUp: currentFiber,
+        maxOrMinCount: greedyQuantifier.maxOrMinCount,
+        functionName: greedyQuantifier.functionName,
       },
       ast: quantifier,
     },

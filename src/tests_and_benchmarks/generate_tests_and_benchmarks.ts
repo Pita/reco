@@ -126,7 +126,7 @@ configFiles
       fs.writeFileSync(`${testFolderName}/${fileName}.ts`, code, 'utf8');
       fs.writeFileSync(
         `${testFolderName}/${fileName}_templateValues.json`,
-        JSON.stringify(templateValues, null, 2),
+        safeStringify(templateValues, null, 2),
         'utf8',
       );
       fs.writeFileSync(
@@ -146,25 +146,25 @@ configFiles
         '___',
       )} } from "./${testName}/${fileName}.benchmark";\n`;
 
-      if (process.env.RESET) {
-        fs.writeFileSync(
-          `${configFolder}/${configFile}`,
-          JSON.stringify({ ...config, mustPass: false }, null, 2),
-          'utf8',
-        );
-      } else {
-        fs.writeFileSync(
-          `${configFolder}/${configFile}`,
-          JSON.stringify({ ...config, mustPass: true }, null, 2),
-          'utf8',
-        );
-      }
+      fs.writeFileSync(
+        `${configFolder}/${configFile}`,
+        JSON.stringify({ ...config, mustPass: true }, null, 2),
+        'utf8',
+      );
     } else {
       console.error(`Skipped: ${configFile}`, error.toString(), error.stack);
       if (config.mustPass) {
-        throw new Error(
-          `Previously passing test does not pass anymore: ${configFile}`,
-        );
+        if (process.env.RESET) {
+          fs.writeFileSync(
+            `${configFolder}/${configFile}`,
+            JSON.stringify({ ...config, mustPass: false }, null, 2),
+            'utf8',
+          );
+        } else {
+          throw new Error(
+            `Previously passing test does not pass anymore: ${configFile}`,
+          );
+        }
       }
     }
   });

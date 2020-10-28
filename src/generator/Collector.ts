@@ -5,6 +5,8 @@ import {
   TemplateAtom,
   FollowUp,
   GroupReference,
+  FunctionDefinition,
+  GreedyQuantifierTemplateDefinition,
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
 
@@ -30,6 +32,7 @@ export class Collector {
   private counter = 0;
   private groups: Array<GroupReference & { astStart: number }> = [];
   private fiberHandlers: FiberTemplateDefinition[] = [];
+  private greedyQuantifierHandlers: GreedyQuantifierTemplateDefinition[] = [];
 
   constructor(regexStr: string) {
     this.regexStr = regexStr;
@@ -147,6 +150,37 @@ export class Collector {
     return currentFiber;
   }
 
+  createQuantifierFiberPair(followUp: FiberTemplateDefinition, ast: AST.Node) {
+    const quantifierFinalFiber: FiberTemplateDefinition = {
+      followUp: null,
+      atoms: [],
+      functionName: `fiber${this.getNewCount()}`,
+      lastAtomReturns: false,
+      hasCallback: false,
+      meta: {
+        groups: [],
+      },
+    };
+
+    const greedyQuantifier: any = {
+      followUp,
+      functionName: `greedyQuantifier${this.getNewCount()}`,
+      hasCallback: false,
+      wrappedHandler: quantifierFinalFiber,
+      meta: {
+        groups: [],
+      },
+      ...this.formatAstLocation(ast),
+    };
+
+    quantifierFinalFiber.followUp = greedyQuantifier;
+
+    this.fiberHandlers.push(quantifierFinalFiber);
+    this.greedyQuantifierHandlers.push(greedyQuantifier);
+
+    return { quantifierFinalFiber, greedyQuantifier };
+  }
+
   addCapturingGroup(
     currentFiber: FiberTemplateDefinition,
     ast: AST.CapturingGroup,
@@ -171,6 +205,7 @@ export class Collector {
     return {
       regexStr: this.regexStr,
       fiberHandlers: this.fiberHandlers,
+      greedyQuantifierHandlers: this.greedyQuantifierHandlers,
       groups: this.groups,
     };
   }
