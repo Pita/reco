@@ -7,7 +7,6 @@ Object {
       "atoms": Array [],
       "followUp": null,
       "functionName": "fiber0001",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -38,14 +37,12 @@ Object {
           "atoms": Array [],
           "followUp": null,
           "functionName": "fiber0001",
-          "hasCallback": false,
           "lastAtomReturns": false,
           "meta": Object {
             "groups": Array [],
           },
         },
         "functionName": "greedyQuantifier0003",
-        "hasCallback": false,
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
@@ -56,7 +53,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0002",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -120,12 +116,11 @@ Object {
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
           "posLine2": "                                                      ^^^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0004",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
@@ -192,12 +187,11 @@ Object {
                             },
                             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)...",
                             "posLine2": "                           ^^^^^",
-                            "type": "greedyQuantifierStarter",
+                            "type": "quantifierStarter",
                           },
                         ],
                         "followUp": null,
                         "functionName": "fiber0017",
-                        "hasCallback": false,
                         "lastAtomReturns": true,
                         "meta": Object {
                           "groups": Array [],
@@ -239,7 +233,6 @@ Object {
                         ],
                         "followUp": null,
                         "functionName": "fiber0018",
-                        "hasCallback": false,
                         "lastAtomReturns": false,
                         "meta": Object {
                           "groups": Array [],
@@ -255,7 +248,6 @@ Object {
               ],
               "followUp": null,
               "functionName": "fiber0019",
-              "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
                 "groups": Array [],
@@ -327,12 +319,11 @@ Object {
               },
               "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
               "posLine2": "                                                      ^^^^^",
-              "type": "greedyQuantifierStarter",
+              "type": "quantifierStarter",
             },
           ],
           "followUp": null,
           "functionName": "fiber0004",
-          "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
             "groups": Array [
@@ -344,7 +335,6 @@ Object {
           },
         },
         "functionName": "greedyQuantifier0006",
-        "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
           "groups": Array [
@@ -360,7 +350,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0005",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -387,7 +376,6 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0008",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -546,14 +534,12 @@ Object {
           ],
           "followUp": null,
           "functionName": "fiber0008",
-          "hasCallback": false,
           "lastAtomReturns": false,
           "meta": Object {
             "groups": Array [],
           },
         },
         "functionName": "greedyQuantifier0010",
-        "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
           "groups": Array [],
@@ -564,7 +550,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0009",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -579,12 +564,11 @@ Object {
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
           "posLine2": "                                      ^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0011",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [],
@@ -731,19 +715,17 @@ Object {
               },
               "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
               "posLine2": "                                      ^^^",
-              "type": "greedyQuantifierStarter",
+              "type": "quantifierStarter",
             },
           ],
           "followUp": null,
           "functionName": "fiber0011",
-          "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
             "groups": Array [],
           },
         },
         "functionName": "greedyQuantifier0013",
-        "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
           "groups": Array [],
@@ -754,7 +736,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0012",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -769,12 +750,11 @@ Object {
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[...",
           "posLine2": "                                ^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0014",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [],
@@ -810,19 +790,17 @@ Object {
               },
               "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[...",
               "posLine2": "                                ^^^",
-              "type": "greedyQuantifierStarter",
+              "type": "quantifierStarter",
             },
           ],
           "followUp": null,
           "functionName": "fiber0014",
-          "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
             "groups": Array [],
           },
         },
         "functionName": "greedyQuantifier0016",
-        "hasCallback": false,
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
@@ -833,7 +811,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0015",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -848,12 +825,11 @@ Object {
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)...",
           "posLine2": "                           ^^^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0017",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [],
@@ -895,7 +871,6 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0018",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -915,12 +890,11 @@ Object {
                     },
                     "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)...",
                     "posLine2": "                           ^^^^^",
-                    "type": "greedyQuantifierStarter",
+                    "type": "quantifierStarter",
                   },
                 ],
                 "followUp": null,
                 "functionName": "fiber0017",
-                "hasCallback": false,
                 "lastAtomReturns": true,
                 "meta": Object {
                   "groups": Array [],
@@ -962,7 +936,6 @@ Object {
                 ],
                 "followUp": null,
                 "functionName": "fiber0018",
-                "hasCallback": false,
                 "lastAtomReturns": false,
                 "meta": Object {
                   "groups": Array [],
@@ -978,7 +951,6 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0019",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [],
@@ -1004,12 +976,11 @@ Object {
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
           "posLine2": "                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0020",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
@@ -1061,12 +1032,11 @@ Object {
               },
               "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
               "posLine2": "                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-              "type": "greedyQuantifierStarter",
+              "type": "quantifierStarter",
             },
           ],
           "followUp": null,
           "functionName": "fiber0020",
-          "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
             "groups": Array [
@@ -1078,7 +1048,6 @@ Object {
           },
         },
         "functionName": "greedyQuantifier0022",
-        "hasCallback": false,
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
@@ -1094,7 +1063,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0021",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -1136,12 +1104,11 @@ Object {
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
           "posLine2": "              ^^^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0023",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
@@ -1324,12 +1291,11 @@ Object {
               },
               "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
               "posLine2": "              ^^^^^",
-              "type": "greedyQuantifierStarter",
+              "type": "quantifierStarter",
             },
           ],
           "followUp": null,
           "functionName": "fiber0023",
-          "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
             "groups": Array [
@@ -1345,7 +1311,6 @@ Object {
           },
         },
         "functionName": "greedyQuantifier0025",
-        "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
           "groups": Array [
@@ -1365,7 +1330,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0024",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -1551,12 +1515,11 @@ Object {
           },
           "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?...",
           "posLine2": "         ^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0026",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
@@ -1771,12 +1734,11 @@ Object {
               },
               "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?...",
               "posLine2": "         ^^^",
-              "type": "greedyQuantifierStarter",
+              "type": "quantifierStarter",
             },
           ],
           "followUp": null,
           "functionName": "fiber0026",
-          "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
             "groups": Array [
@@ -1792,7 +1754,6 @@ Object {
           },
         },
         "functionName": "greedyQuantifier0028",
-        "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
           "groups": Array [
@@ -1812,7 +1773,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0027",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -1843,12 +1803,11 @@ Object {
           },
           "posLine1": "[^>]+\\\\s)(on\\\\S+)...",
           "posLine2": "^^^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0029",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [
@@ -1870,14 +1829,12 @@ Object {
         "atoms": Array [],
         "followUp": null,
         "functionName": "fiber0001",
-        "hasCallback": false,
         "lastAtomReturns": false,
         "meta": Object {
           "groups": Array [],
         },
       },
       "functionName": "greedyQuantifier0003",
-      "hasCallback": false,
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
@@ -1946,12 +1903,11 @@ Object {
             },
             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
             "posLine2": "                                                      ^^^^^",
-            "type": "greedyQuantifierStarter",
+            "type": "quantifierStarter",
           },
         ],
         "followUp": null,
         "functionName": "fiber0004",
-        "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
           "groups": Array [
@@ -1963,7 +1919,6 @@ Object {
         },
       },
       "functionName": "greedyQuantifier0006",
-      "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
         "groups": Array [
@@ -2000,14 +1955,12 @@ Object {
         ],
         "followUp": null,
         "functionName": "fiber0008",
-        "hasCallback": false,
         "lastAtomReturns": false,
         "meta": Object {
           "groups": Array [],
         },
       },
       "functionName": "greedyQuantifier0010",
-      "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
         "groups": Array [],
@@ -2027,19 +1980,17 @@ Object {
             },
             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
             "posLine2": "                                      ^^^",
-            "type": "greedyQuantifierStarter",
+            "type": "quantifierStarter",
           },
         ],
         "followUp": null,
         "functionName": "fiber0011",
-        "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
           "groups": Array [],
         },
       },
       "functionName": "greedyQuantifier0013",
-      "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
         "groups": Array [],
@@ -2059,19 +2010,17 @@ Object {
             },
             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[...",
             "posLine2": "                                ^^^",
-            "type": "greedyQuantifierStarter",
+            "type": "quantifierStarter",
           },
         ],
         "followUp": null,
         "functionName": "fiber0014",
-        "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
           "groups": Array [],
         },
       },
       "functionName": "greedyQuantifier0016",
-      "hasCallback": false,
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
@@ -2102,12 +2051,11 @@ Object {
             },
             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
             "posLine2": "                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-            "type": "greedyQuantifierStarter",
+            "type": "quantifierStarter",
           },
         ],
         "followUp": null,
         "functionName": "fiber0020",
-        "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
           "groups": Array [
@@ -2119,7 +2067,6 @@ Object {
         },
       },
       "functionName": "greedyQuantifier0022",
-      "hasCallback": false,
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
@@ -2171,12 +2118,11 @@ Object {
             },
             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
             "posLine2": "              ^^^^^",
-            "type": "greedyQuantifierStarter",
+            "type": "quantifierStarter",
           },
         ],
         "followUp": null,
         "functionName": "fiber0023",
-        "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
           "groups": Array [
@@ -2192,7 +2138,6 @@ Object {
         },
       },
       "functionName": "greedyQuantifier0025",
-      "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
         "groups": Array [
@@ -2392,12 +2337,11 @@ Object {
             },
             "posLine1": "...\\\\s)(on\\\\S+)=[\\"']?((?...",
             "posLine2": "         ^^^",
-            "type": "greedyQuantifierStarter",
+            "type": "quantifierStarter",
           },
         ],
         "followUp": null,
         "functionName": "fiber0026",
-        "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
           "groups": Array [
@@ -2413,7 +2357,6 @@ Object {
         },
       },
       "functionName": "greedyQuantifier0028",
-      "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
         "groups": Array [
@@ -2468,12 +2411,11 @@ Object {
         },
         "posLine1": "[^>]+\\\\s)(on\\\\S+)...",
         "posLine2": "^^^^^",
-        "type": "greedyQuantifierStarter",
+        "type": "quantifierStarter",
       },
     ],
     "followUp": null,
     "functionName": "fiber0029",
-    "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
       "groups": Array [

@@ -72,7 +72,6 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0001",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -148,7 +147,6 @@ Object {
     ],
     "followUp": null,
     "functionName": "fiber0001",
-    "hasCallback": false,
     "lastAtomReturns": false,
     "meta": Object {
       "groups": Array [],

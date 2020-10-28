@@ -1,0 +1,370 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic_features/char_non_greedy_min template values are as expected 1`] = `
+Object {
+  "fiberHandlers": Array [
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+          },
+          "posLine1": "(a{3}?)(a)/",
+          "posLine2": "^^^^^^^",
+          "type": "groupEndMarker",
+        },
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 8,
+              "idx": 1,
+            },
+          },
+          "posLine1": "(a)/",
+          "posLine2": "^^^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 97,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+            "unicode": false,
+          },
+          "posLine1": "a)/",
+          "posLine2": "^",
+          "type": "charOrSet",
+        },
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 8,
+              "idx": 1,
+            },
+          },
+          "posLine1": "(a)/",
+          "posLine2": "^^^",
+          "type": "groupEndMarker",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0001",
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 8,
+            "idx": 1,
+          },
+        ],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 97,
+                "type": "equal",
+              },
+              "type": "lastComparison",
+            },
+            "unicode": false,
+          },
+          "posLine1": "a{3}?)(a)/",
+          "posLine2": "^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": Object {
+        "followUp": Object {
+          "atoms": Array [
+            Object {
+              "data": Object {
+                "groupReference": Object {
+                  "astStart": 1,
+                  "idx": 0,
+                },
+              },
+              "posLine1": "(a{3}?)(a)/",
+              "posLine2": "^^^^^^^",
+              "type": "groupEndMarker",
+            },
+            Object {
+              "data": Object {
+                "groupReference": Object {
+                  "astStart": 8,
+                  "idx": 1,
+                },
+              },
+              "posLine1": "(a)/",
+              "posLine2": "^^^",
+              "type": "groupStartMarker",
+            },
+            Object {
+              "data": Object {
+                "negate": false,
+                "tree": Object {
+                  "comparison": Object {
+                    "comparisonValue": 97,
+                    "type": "equal",
+                  },
+                  "type": "lastComparison",
+                },
+                "unicode": false,
+              },
+              "posLine1": "a)/",
+              "posLine2": "^",
+              "type": "charOrSet",
+            },
+            Object {
+              "data": Object {
+                "groupReference": Object {
+                  "astStart": 8,
+                  "idx": 1,
+                },
+              },
+              "posLine1": "(a)/",
+              "posLine2": "^^^",
+              "type": "groupEndMarker",
+            },
+          ],
+          "followUp": null,
+          "functionName": "fiber0001",
+          "lastAtomReturns": false,
+          "meta": Object {
+            "groups": Array [
+              Object {
+                "astStart": 1,
+                "idx": 0,
+              },
+              Object {
+                "astStart": 8,
+                "idx": 1,
+              },
+            ],
+          },
+        },
+        "functionName": "lazyQuantifier0003",
+        "maxCount": 3,
+        "maxOrMinCount": true,
+        "meta": Object {
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
+              "astStart": 8,
+              "idx": 1,
+            },
+          ],
+        },
+        "minCount": 3,
+        "posLine1": "a{3}?)(a)/",
+        "posLine2": "^^^^^",
+        "wrappedHandler": "[Circular]",
+      },
+      "functionName": "fiber0002",
+      "lastAtomReturns": false,
+      "meta": Object {
+        "groups": Array [],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "groupReference": Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+          },
+          "posLine1": "(a{3}?)(a)/",
+          "posLine2": "^^^^^^^",
+          "type": "groupStartMarker",
+        },
+        Object {
+          "data": Object {
+            "functionName": "lazyQuantifier0003",
+            "maxOrMinCount": true,
+          },
+          "posLine1": "a{3}?)(a)/",
+          "posLine2": "^^^^^",
+          "type": "quantifierStarter",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0004",
+      "lastAtomReturns": true,
+      "meta": Object {
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 8,
+            "idx": 1,
+          },
+        ],
+      },
+    },
+  ],
+  "groups": Array [
+    Object {
+      "astStart": 1,
+      "idx": 0,
+    },
+    Object {
+      "astStart": 8,
+      "idx": 1,
+    },
+  ],
+  "lazyQuantifierHandlers": Array [
+    Object {
+      "followUp": Object {
+        "atoms": Array [
+          Object {
+            "data": Object {
+              "groupReference": Object {
+                "astStart": 1,
+                "idx": 0,
+              },
+            },
+            "posLine1": "(a{3}?)(a)/",
+            "posLine2": "^^^^^^^",
+            "type": "groupEndMarker",
+          },
+          Object {
+            "data": Object {
+              "groupReference": Object {
+                "astStart": 8,
+                "idx": 1,
+              },
+            },
+            "posLine1": "(a)/",
+            "posLine2": "^^^",
+            "type": "groupStartMarker",
+          },
+          Object {
+            "data": Object {
+              "negate": false,
+              "tree": Object {
+                "comparison": Object {
+                  "comparisonValue": 97,
+                  "type": "equal",
+                },
+                "type": "lastComparison",
+              },
+              "unicode": false,
+            },
+            "posLine1": "a)/",
+            "posLine2": "^",
+            "type": "charOrSet",
+          },
+          Object {
+            "data": Object {
+              "groupReference": Object {
+                "astStart": 8,
+                "idx": 1,
+              },
+            },
+            "posLine1": "(a)/",
+            "posLine2": "^^^",
+            "type": "groupEndMarker",
+          },
+        ],
+        "followUp": null,
+        "functionName": "fiber0001",
+        "lastAtomReturns": false,
+        "meta": Object {
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
+              "astStart": 8,
+              "idx": 1,
+            },
+          ],
+        },
+      },
+      "functionName": "lazyQuantifier0003",
+      "maxCount": 3,
+      "maxOrMinCount": true,
+      "meta": Object {
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 8,
+            "idx": 1,
+          },
+        ],
+      },
+      "minCount": 3,
+      "posLine1": "a{3}?)(a)/",
+      "posLine2": "^^^^^",
+      "wrappedHandler": "[Circular]",
+    },
+  ],
+  "mainHandler": Object {
+    "atoms": Array [
+      Object {
+        "data": Object {
+          "groupReference": Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        },
+        "posLine1": "(a{3}?)(a)/",
+        "posLine2": "^^^^^^^",
+        "type": "groupStartMarker",
+      },
+      Object {
+        "data": Object {
+          "functionName": "lazyQuantifier0003",
+          "maxOrMinCount": true,
+        },
+        "posLine1": "a{3}?)(a)/",
+        "posLine2": "^^^^^",
+        "type": "quantifierStarter",
+      },
+    ],
+    "followUp": null,
+    "functionName": "fiber0004",
+    "lastAtomReturns": true,
+    "meta": Object {
+      "groups": Array [
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+        Object {
+          "astStart": 8,
+          "idx": 1,
+        },
+      ],
+    },
+  },
+  "regexStr": "/(a{3}?)(a)/",
+}
+`;

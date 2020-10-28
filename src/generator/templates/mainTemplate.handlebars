@@ -23,7 +23,6 @@ export function generatedRegexMatcher(str: string) {
   {{#each fiberHandlers}}
     const {{{functionName}}} = (
       start: number,
-      {{#if hasCallback}} callback: (start: number) => number {{/if}}
     ): number => {
       let i = start;
       {{#each atoms}}
@@ -92,10 +91,7 @@ export function generatedRegexMatcher(str: string) {
             const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
           {{/each}}
           {{#each alternatives}}            
-            const length{{{@index}}} = {{{functionName}}}(
-              i, 
-              {{#if hasCallback}} callback, {{/if}}
-            );
+            const length{{{@index}}} = {{{functionName}}}(i);
             if (length{{{@index}}} !== -1) {
               return length{{{@index}}};
             }
@@ -246,97 +242,98 @@ export function generatedRegexMatcher(str: string) {
           }
         }
         {{/switchCase}}
-        {{#switchCase 'greedyQuantifierStarter'}}
+        {{#switchCase 'quantifierStarter'}}
           {{#if maxOrMinCount}}
             let matchCountCopy{{{functionName}}} = {{{functionName}}}matchCount;
             {{{functionName}}}matchCount = -1;
           {{/if}}
-          const cursorAfterGreedyQuantifier = {{{functionName}}}(i);
+          const cursorAfterQuantifier = {{{functionName}}}(i);
           {{#if maxOrMinCount}}
             {{{functionName}}}matchCount = matchCountCopy{{{functionName}}};
           {{/if}}
 
-          return cursorAfterGreedyQuantifier;
-        {{/switchCase}}
-        {{#switchCase 'lazyQuantifier'}}
-          {{#unless followUp}}
-            return i;
-          {{/unless}}
-          {{#if followUp}}
-            {{#if maxOrMinCount}}
-              let matchCount = -1;
-            {{/if}}
-            const followUpCallback = (start: number) => {
-              return {{{followUp.functionName}}}(
-                start, 
-                {{#if followUp.hasCallback}} callback, {{/if}}
-              );
-            }
-
-            const recursiveCallback = (start: number): number => {
-              {{#if maxOrMinCount}}
-                matchCount++;
-              {{/if}}
-
-              {{#if minCount}}
-                if (matchCount >= {{{minCount}}}) {
-              {{/if}}
-                {{#each followUp.meta.groups}}
-                  const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
-                  const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
-                {{/each}}
-                const followUpResult = followUpCallback(start);
-                if (followUpResult === -1) {
-                  {{#each followUp.meta.groups}}
-                    groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
-                    groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
-                  {{/each}}
-                } else {
-                  return followUpResult;
-                }
-
-              {{#if minCount}}
-                }
-              {{/if}}
-              
-              {{#if maxCount}}
-                if (matchCount < {{{maxCount}}}) {
-              {{/if}}
-                {{#each wrappedHandler.meta.groups}}
-                  const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
-                  const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
-                {{/each}}
-                const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, recursiveCallback);
-                if (tryDeeperResult !== -1) {
-                  // we actually were able to go deeper, nice!
-                  return tryDeeperResult;
-                }
-                {{#each wrappedHandler.meta.groups}}
-                  groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
-                  groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
-                {{/each}}
-              {{#if maxCount}}
-                }
-              {{/if}}
-
-              {{#if maxOrMinCount}}
-                matchCount--;
-              {{/if}}
-              return -1;
-            };
-
-            return recursiveCallback(i);
-          {{/if}}
+          return cursorAfterQuantifier;
         {{/switchCase}}
       {{/each}}
       {{#unless lastAtomReturns}}
         {{#if followUp}}
-          return {{{followUp.functionName}}}(i, {{#if followUp.hasCallback}} callback {{/if}});
+          return {{{followUp.functionName}}}(i);
         {{/if}}
         {{#unless followUp}}
           return i;
         {{/unless}}
       {{/unless}}
+    }
+  {{/each}}
+
+  {{#each lazyQuantifierHandlers}}
+     /*
+      * {{escapeComment posLine1}}
+      * {{{posLine2}}}
+      */
+    {{#if maxOrMinCount}}
+      let {{{functionName}}}matchCount = -1;
+    {{/if}}
+
+    const {{{functionName}}} = (
+      start: number,
+    ): number => {
+      {{#unless followUp}}
+        return start;
+      {{/unless}}
+      {{#if followUp}}
+        {{#if maxOrMinCount}}
+          {{{functionName}}}matchCount++;
+        {{/if}}
+
+        {{#if minCount}}
+          if ({{{functionName}}}matchCount >= {{{minCount}}}) {
+        {{/if}}
+          {{#each followUp.meta.groups}}
+            const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+            const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+          {{/each}}
+          const followUpResult = {{{followUp.functionName}}}(
+            start, 
+          );
+          if (followUpResult === -1) {
+            {{#each followUp.meta.groups}}
+              groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+              groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+            {{/each}}
+          } else {
+            return followUpResult;
+          }
+
+        {{#if minCount}}
+          }
+        {{/if}}
+        
+        {{#if maxCount}}
+          if ({{{functionName}}}matchCount < {{{maxCount}}}) {
+        {{/if}}
+          {{#each wrappedHandler.meta.groups}}
+            const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+            const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+          {{/each}}
+          const tryDeeperResult = {{{wrappedHandler.functionName}}}(start);
+          if (tryDeeperResult !== -1) {
+            // we actually were able to go deeper, nice!
+            return tryDeeperResult;
+          }
+          {{#each wrappedHandler.meta.groups}}
+            groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+            groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+          {{/each}}
+        {{#if maxCount}}
+          }
+        {{/if}}
+
+        {{#if maxOrMinCount}}
+          {{{functionName}}}matchCount--;
+        {{/if}}
+        return -1;
+      {{/if}}
     }
   {{/each}}
 
@@ -361,7 +358,6 @@ export function generatedRegexMatcher(str: string) {
           {{#if followUp}}
             return {{{followUp.functionName}}}(
               start, 
-              {{#if followUp.hasCallback}} callback, {{/if}}
             );
           {{/if}}
           {{#unless followUp}}

@@ -10,22 +10,22 @@ export const handleQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
-  if (!quantifier.greedy) {
-    throw new Error('Lazy quantifiers are temporarly not supported anymore');
-  }
-
-  // TODO: clean this mess up
   const {
     quantifierFinalFiber,
-    greedyQuantifier,
-  } = collector.createQuantifierFiberPair(currentFiber, quantifier);
+    quantifierHandler,
+  } = collector.createQuantifierFiberPair(
+    currentFiber,
+    quantifier.greedy ? 'greedy' : 'lazy',
+    quantifier,
+  );
 
-  greedyQuantifier.minCount = quantifier.min === 0 ? undefined : quantifier.min;
-  greedyQuantifier.maxCount =
+  quantifierHandler.minCount =
+    quantifier.min === 0 ? undefined : quantifier.min;
+  quantifierHandler.maxCount =
     quantifier.max === Infinity ? undefined : quantifier.max;
-  greedyQuantifier.maxOrMinCount =
-    greedyQuantifier.minCount !== undefined ||
-    greedyQuantifier.maxCount !== undefined;
+  quantifierHandler.maxOrMinCount =
+    quantifierHandler.minCount !== undefined ||
+    quantifierHandler.maxCount !== undefined;
 
   const wrappedHandler = handleElement(
     quantifier.element,
@@ -34,22 +34,22 @@ export const handleQuantifier = (
     flags,
   );
 
-  greedyQuantifier.meta.groups = mergeGroupsOfFibers([
+  quantifierHandler.meta.groups = mergeGroupsOfFibers([
     wrappedHandler,
     currentFiber,
   ]);
-  greedyQuantifier.wrappedHandler = wrappedHandler;
+  quantifierHandler.wrappedHandler = wrappedHandler;
 
   return collector.addAtom(
     collector.createForkingFiber(
-      greedyQuantifier,
-      greedyQuantifier.meta.groups,
+      quantifierHandler,
+      quantifierHandler.meta.groups,
     ),
     {
-      type: 'greedyQuantifierStarter',
+      type: 'quantifierStarter',
       data: {
-        maxOrMinCount: greedyQuantifier.maxOrMinCount,
-        functionName: greedyQuantifier.functionName,
+        maxOrMinCount: quantifierHandler.maxOrMinCount,
+        functionName: quantifierHandler.functionName,
       },
       ast: quantifier,
     },

@@ -5,8 +5,7 @@ import {
   TemplateAtom,
   FollowUp,
   GroupReference,
-  FunctionDefinition,
-  GreedyQuantifierTemplateDefinition,
+  QuantifierTemplateDefinition,
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
 
@@ -32,7 +31,8 @@ export class Collector {
   private counter = 0;
   private groups: Array<GroupReference & { astStart: number }> = [];
   private fiberHandlers: FiberTemplateDefinition[] = [];
-  private greedyQuantifierHandlers: GreedyQuantifierTemplateDefinition[] = [];
+  private greedyQuantifierHandlers: QuantifierTemplateDefinition[] = [];
+  private lazyQuantifierHandlers: QuantifierTemplateDefinition[] = [];
 
   constructor(regexStr: string) {
     this.regexStr = regexStr;
@@ -67,7 +67,6 @@ export class Collector {
     // therefore we can delete it
     let followUp: FollowUp = fiber;
     const groups = fiber.meta.groups.slice();
-    const hasCallback = fiber.hasCallback;
     if (fiber.atoms.length === 0) {
       followUp = fiber.followUp;
       const index = this.fiberHandlers.indexOf(fiber);
@@ -81,7 +80,6 @@ export class Collector {
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
-      hasCallback,
       meta: {
         groups,
       },
@@ -96,7 +94,6 @@ export class Collector {
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
-      hasCallback: false,
       meta: {
         groups: [],
       },
@@ -114,24 +111,8 @@ export class Collector {
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: true,
-      hasCallback: followUpFiber.hasCallback,
       meta: {
         groups: groups.slice(),
-      },
-    };
-    this.fiberHandlers.push(newFiber);
-    return newFiber;
-  }
-
-  createCallbackFiber() {
-    const newFiber: FiberTemplateDefinition = {
-      followUp: { functionName: 'callback' },
-      atoms: [],
-      functionName: `fiber${this.getNewCount()}`,
-      lastAtomReturns: false,
-      hasCallback: true,
-      meta: {
-        groups: [],
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -150,22 +131,27 @@ export class Collector {
     return currentFiber;
   }
 
-  createQuantifierFiberPair(followUp: FiberTemplateDefinition, ast: AST.Node) {
+  createQuantifierFiberPair(
+    followUp: FiberTemplateDefinition,
+    type: 'greedy' | 'lazy',
+    ast: AST.Node,
+  ) {
     const quantifierFinalFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
-      hasCallback: false,
       meta: {
         groups: [],
       },
     };
 
-    const greedyQuantifier: any = {
+    const quantifierHandler: any = {
       followUp,
-      functionName: `greedyQuantifier${this.getNewCount()}`,
-      hasCallback: false,
+      functionName:
+        type === 'greedy'
+          ? `greedyQuantifier${this.getNewCount()}`
+          : `lazyQuantifier${this.getNewCount()}`,
       wrappedHandler: quantifierFinalFiber,
       meta: {
         groups: [],
@@ -173,12 +159,16 @@ export class Collector {
       ...this.formatAstLocation(ast),
     };
 
-    quantifierFinalFiber.followUp = greedyQuantifier;
+    quantifierFinalFiber.followUp = quantifierHandler;
 
     this.fiberHandlers.push(quantifierFinalFiber);
-    this.greedyQuantifierHandlers.push(greedyQuantifier);
+    if (type === 'greedy') {
+      this.greedyQuantifierHandlers.push(quantifierHandler);
+    } else {
+      this.lazyQuantifierHandlers.push(quantifierHandler);
+    }
 
-    return { quantifierFinalFiber, greedyQuantifier };
+    return { quantifierFinalFiber, quantifierHandler };
   }
 
   addCapturingGroup(
@@ -206,6 +196,7 @@ export class Collector {
       regexStr: this.regexStr,
       fiberHandlers: this.fiberHandlers,
       greedyQuantifierHandlers: this.greedyQuantifierHandlers,
+      lazyQuantifierHandlers: this.lazyQuantifierHandlers,
       groups: this.groups,
     };
   }

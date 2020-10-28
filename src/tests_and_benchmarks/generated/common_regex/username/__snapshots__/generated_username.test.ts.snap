@@ -14,7 +14,6 @@ Object {
       ],
       "followUp": null,
       "functionName": "fiber0001",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -98,14 +97,12 @@ Object {
           ],
           "followUp": null,
           "functionName": "fiber0001",
-          "hasCallback": false,
           "lastAtomReturns": false,
           "meta": Object {
             "groups": Array [],
           },
         },
         "functionName": "greedyQuantifier0003",
-        "hasCallback": false,
         "maxCount": 16,
         "maxOrMinCount": true,
         "meta": Object {
@@ -117,7 +114,6 @@ Object {
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0002",
-      "hasCallback": false,
       "lastAtomReturns": false,
       "meta": Object {
         "groups": Array [],
@@ -138,12 +134,11 @@ Object {
           },
           "posLine1": "[a-z0-9_-]{3,16}$/",
           "posLine2": "^^^^^^^^^^^^^^^^",
-          "type": "greedyQuantifierStarter",
+          "type": "quantifierStarter",
         },
       ],
       "followUp": null,
       "functionName": "fiber0004",
-      "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
         "groups": Array [],
@@ -163,14 +158,12 @@ Object {
         ],
         "followUp": null,
         "functionName": "fiber0001",
-        "hasCallback": false,
         "lastAtomReturns": false,
         "meta": Object {
           "groups": Array [],
         },
       },
       "functionName": "greedyQuantifier0003",
-      "hasCallback": false,
       "maxCount": 16,
       "maxOrMinCount": true,
       "meta": Object {
@@ -197,12 +190,11 @@ Object {
         },
         "posLine1": "[a-z0-9_-]{3,16}$/",
         "posLine2": "^^^^^^^^^^^^^^^^",
-        "type": "greedyQuantifierStarter",
+        "type": "quantifierStarter",
       },
     ],
     "followUp": null,
     "functionName": "fiber0004",
-    "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
       "groups": Array [],

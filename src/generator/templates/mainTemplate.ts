@@ -10,7 +10,6 @@ export interface GroupReference {
 export interface FunctionDefinition {
   functionName: string;
   followUp: FollowUp;
-  hasCallback: boolean;
   meta: {
     groups: GroupReference[];
   };
@@ -21,7 +20,7 @@ export interface FiberTemplateDefinition extends FunctionDefinition {
   lastAtomReturns: boolean;
 }
 
-export interface GreedyQuantifierTemplateDefinition extends FunctionDefinition {
+export interface QuantifierTemplateDefinition extends FunctionDefinition {
   wrappedHandler: FunctionDefinition;
   maxOrMinCount?: boolean;
   minCount?: number;
@@ -30,7 +29,7 @@ export interface GreedyQuantifierTemplateDefinition extends FunctionDefinition {
   posLine2: string;
 }
 
-export type FollowUp = FunctionDefinition | { functionName: 'callback' } | null;
+export type FollowUp = FunctionDefinition | null;
 
 export interface BaseTemplateAtom {
   posLine1: string;
@@ -97,22 +96,11 @@ export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
   };
 }
 
-export interface GreedyQuantifierStarterTemplateAtom extends BaseTemplateAtom {
-  type: 'greedyQuantifierStarter';
+export interface QuantifierStarterTemplateAtom extends BaseTemplateAtom {
+  type: 'quantifierStarter';
   data: {
     maxOrMinCount?: boolean;
     functionName: string;
-  };
-}
-
-export interface LazyQuantifierTemplateAtom extends BaseTemplateAtom {
-  type: 'lazyQuantifier';
-  data: {
-    wrappedHandler: FiberTemplateDefinition;
-    maxOrMinCount?: boolean;
-    minCount?: number;
-    maxCount?: number;
-    followUp: FollowUp;
   };
 }
 
@@ -149,15 +137,15 @@ export type TemplateAtom =
   | MultiLineEndAnchorTemplateAtom
   | GroupStartMarkerTemplateAtom
   | GroupEndMarkerTemplateAtom
-  | GreedyQuantifierStarterTemplateAtom
-  | LazyQuantifierTemplateAtom
+  | QuantifierStarterTemplateAtom
   | LookaroundTemplateAtom
   | WordBoundaryTemplateAtom
   | GroupBackReferenceTemplateAtom;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
-  greedyQuantifierHandlers: GreedyQuantifierTemplateDefinition[];
+  greedyQuantifierHandlers: QuantifierTemplateDefinition[];
+  lazyQuantifierHandlers: QuantifierTemplateDefinition[];
   mainHandler: FiberTemplateDefinition;
   regexStr: string;
   groups: GroupReference[];
