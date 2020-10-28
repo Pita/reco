@@ -114,7 +114,12 @@ Object {
         "maxCount": 6,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 35,
+              "idx": 2,
+            },
+          ],
         },
         "minCount": 2,
         "posLine1": "..._\\\\.\\\\+-]+)@([\\\\da-z\\\\.-]+)\\\\.([a-z\\\\.]{2,6})$/",
@@ -187,6 +192,10 @@ Object {
           Object {
             "astStart": 20,
             "idx": 1,
+          },
+          Object {
+            "astStart": 35,
+            "idx": 2,
           },
         ],
       },
@@ -306,6 +315,10 @@ Object {
                 "astStart": 20,
                 "idx": 1,
               },
+              Object {
+                "astStart": 35,
+                "idx": 2,
+              },
             ],
           },
         },
@@ -313,7 +326,16 @@ Object {
         "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 20,
+              "idx": 1,
+            },
+            Object {
+              "astStart": 35,
+              "idx": 2,
+            },
+          ],
         },
         "minCount": 1,
         "posLine1": "..._\\\\.\\\\+-]+)@([\\\\da-z\\\\.-]+)\\\\.([a-z\\\\....",
@@ -386,6 +408,14 @@ Object {
           Object {
             "astStart": 2,
             "idx": 0,
+          },
+          Object {
+            "astStart": 20,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 35,
+            "idx": 2,
           },
         ],
       },
@@ -531,6 +561,14 @@ Object {
                 "astStart": 2,
                 "idx": 0,
               },
+              Object {
+                "astStart": 20,
+                "idx": 1,
+              },
+              Object {
+                "astStart": 35,
+                "idx": 2,
+              },
             ],
           },
         },
@@ -538,7 +576,20 @@ Object {
         "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 2,
+              "idx": 0,
+            },
+            Object {
+              "astStart": 20,
+              "idx": 1,
+            },
+            Object {
+              "astStart": 35,
+              "idx": 2,
+            },
+          ],
         },
         "minCount": 1,
         "posLine1": "[a-z0-9_\\\\.\\\\+-]+)@([\\\\da-z\\\\...",
@@ -586,7 +637,20 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 2,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 20,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 35,
+            "idx": 2,
+          },
+        ],
       },
     },
   ],
@@ -630,7 +694,12 @@ Object {
       "maxCount": 6,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 35,
+            "idx": 2,
+          },
+        ],
       },
       "minCount": 2,
       "posLine1": "..._\\\\.\\\\+-]+)@([\\\\da-z\\\\.-]+)\\\\.([a-z\\\\.]{2,6})$/",
@@ -698,6 +767,10 @@ Object {
               "astStart": 20,
               "idx": 1,
             },
+            Object {
+              "astStart": 35,
+              "idx": 2,
+            },
           ],
         },
       },
@@ -705,7 +778,16 @@ Object {
       "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 20,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 35,
+            "idx": 2,
+          },
+        ],
       },
       "minCount": 1,
       "posLine1": "..._\\\\.\\\\+-]+)@([\\\\da-z\\\\.-]+)\\\\.([a-z\\\\....",
@@ -773,6 +855,14 @@ Object {
               "astStart": 2,
               "idx": 0,
             },
+            Object {
+              "astStart": 20,
+              "idx": 1,
+            },
+            Object {
+              "astStart": 35,
+              "idx": 2,
+            },
           ],
         },
       },
@@ -780,7 +870,20 @@ Object {
       "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 2,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 20,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 35,
+            "idx": 2,
+          },
+        ],
       },
       "minCount": 1,
       "posLine1": "[a-z0-9_\\\\.\\\\+-]+)@([\\\\da-z\\\\...",
@@ -836,7 +939,20 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
-      "groups": Array [],
+      "groups": Array [
+        Object {
+          "astStart": 2,
+          "idx": 0,
+        },
+        Object {
+          "astStart": 20,
+          "idx": 1,
+        },
+        Object {
+          "astStart": 35,
+          "idx": 2,
+        },
+      ],
     },
   },
   "regexStr": "/^([a-z0-9_\\\\.\\\\+-]+)@([\\\\da-z\\\\.-]+)\\\\.([a-z\\\\.]{2,6})$/",

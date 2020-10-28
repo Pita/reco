@@ -232,7 +232,16 @@ Object {
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
+              "astStart": 33,
+              "idx": 3,
+            },
+          ],
         },
         "posLine1": "...0?[1-9]):([0-5][0-9]) ?([AaPp][Mm...",
         "posLine2": "                        ^^",
@@ -359,12 +368,20 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
             "astStart": 2,
             "idx": 1,
           },
           Object {
             "astStart": 19,
             "idx": 2,
+          },
+          Object {
+            "astStart": 33,
+            "idx": 3,
           },
         ],
       },
@@ -525,12 +542,20 @@ Object {
         "meta": Object {
           "groups": Array [
             Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
               "astStart": 2,
               "idx": 1,
             },
             Object {
               "astStart": 19,
               "idx": 2,
+            },
+            Object {
+              "astStart": 33,
+              "idx": 3,
             },
           ],
         },
@@ -541,12 +566,20 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
             "astStart": 2,
             "idx": 1,
           },
           Object {
             "astStart": 19,
             "idx": 2,
+          },
+          Object {
+            "astStart": 33,
+            "idx": 3,
           },
         ],
       },
@@ -691,12 +724,20 @@ Object {
         "meta": Object {
           "groups": Array [
             Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
               "astStart": 2,
               "idx": 1,
             },
             Object {
               "astStart": 19,
               "idx": 2,
+            },
+            Object {
+              "astStart": 33,
+              "idx": 3,
             },
           ],
         },
@@ -707,12 +748,20 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
             "astStart": 2,
             "idx": 1,
           },
           Object {
             "astStart": 19,
             "idx": 2,
+          },
+          Object {
+            "astStart": 33,
+            "idx": 3,
           },
         ],
       },
@@ -877,12 +926,20 @@ Object {
             "meta": Object {
               "groups": Array [
                 Object {
+                  "astStart": 1,
+                  "idx": 0,
+                },
+                Object {
                   "astStart": 2,
                   "idx": 1,
                 },
                 Object {
                   "astStart": 19,
                   "idx": 2,
+                },
+                Object {
+                  "astStart": 33,
+                  "idx": 3,
                 },
               ],
             },
@@ -893,12 +950,20 @@ Object {
           "meta": Object {
             "groups": Array [
               Object {
+                "astStart": 1,
+                "idx": 0,
+              },
+              Object {
                 "astStart": 2,
                 "idx": 1,
               },
               Object {
                 "astStart": 19,
                 "idx": 2,
+              },
+              Object {
+                "astStart": 33,
+                "idx": 3,
               },
             ],
           },
@@ -908,7 +973,24 @@ Object {
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
+              "astStart": 2,
+              "idx": 1,
+            },
+            Object {
+              "astStart": 19,
+              "idx": 2,
+            },
+            Object {
+              "astStart": 33,
+              "idx": 3,
+            },
+          ],
         },
         "posLine1": "0?[1-9]):([0...",
         "posLine2": "^^",
@@ -938,7 +1020,24 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 2,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 19,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 33,
+            "idx": 3,
+          },
+        ],
       },
     },
     Object {
@@ -1124,12 +1223,20 @@ Object {
                   "meta": Object {
                     "groups": Array [
                       Object {
+                        "astStart": 1,
+                        "idx": 0,
+                      },
+                      Object {
                         "astStart": 2,
                         "idx": 1,
                       },
                       Object {
                         "astStart": 19,
                         "idx": 2,
+                      },
+                      Object {
+                        "astStart": 33,
+                        "idx": 3,
                       },
                     ],
                   },
@@ -1140,12 +1247,20 @@ Object {
                 "meta": Object {
                   "groups": Array [
                     Object {
+                      "astStart": 1,
+                      "idx": 0,
+                    },
+                    Object {
                       "astStart": 2,
                       "idx": 1,
                     },
                     Object {
                       "astStart": 19,
                       "idx": 2,
+                    },
+                    Object {
+                      "astStart": 33,
+                      "idx": 3,
                     },
                   ],
                 },
@@ -1167,11 +1282,32 @@ Object {
                 "hasCallback": false,
                 "lastAtomReturns": true,
                 "meta": Object {
-                  "groups": Array [],
+                  "groups": Array [
+                    Object {
+                      "astStart": 1,
+                      "idx": 0,
+                    },
+                    Object {
+                      "astStart": 2,
+                      "idx": 1,
+                    },
+                    Object {
+                      "astStart": 19,
+                      "idx": 2,
+                    },
+                    Object {
+                      "astStart": 33,
+                      "idx": 3,
+                    },
+                  ],
                 },
               },
             ],
             "groupsToRestore": Array [
+              Object {
+                "astStart": 1,
+                "idx": 0,
+              },
               Object {
                 "astStart": 2,
                 "idx": 1,
@@ -1179,6 +1315,10 @@ Object {
               Object {
                 "astStart": 19,
                 "idx": 2,
+              },
+              Object {
+                "astStart": 33,
+                "idx": 3,
               },
             ],
           },
@@ -1194,12 +1334,20 @@ Object {
       "meta": Object {
         "groups": Array [
           Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
             "astStart": 2,
             "idx": 1,
           },
           Object {
             "astStart": 19,
             "idx": 2,
+          },
+          Object {
+            "astStart": 33,
+            "idx": 3,
           },
         ],
       },
@@ -1314,7 +1462,16 @@ Object {
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 33,
+            "idx": 3,
+          },
+        ],
       },
       "posLine1": "...0?[1-9]):([0-5][0-9]) ?([AaPp][Mm...",
       "posLine2": "                        ^^",
@@ -1461,12 +1618,20 @@ Object {
           "meta": Object {
             "groups": Array [
               Object {
+                "astStart": 1,
+                "idx": 0,
+              },
+              Object {
                 "astStart": 2,
                 "idx": 1,
               },
               Object {
                 "astStart": 19,
                 "idx": 2,
+              },
+              Object {
+                "astStart": 33,
+                "idx": 3,
               },
             ],
           },
@@ -1477,12 +1642,20 @@ Object {
         "meta": Object {
           "groups": Array [
             Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
               "astStart": 2,
               "idx": 1,
             },
             Object {
               "astStart": 19,
               "idx": 2,
+            },
+            Object {
+              "astStart": 33,
+              "idx": 3,
             },
           ],
         },
@@ -1492,7 +1665,24 @@ Object {
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 2,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 19,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 33,
+            "idx": 3,
+          },
+        ],
       },
       "posLine1": "0?[1-9]):([0...",
       "posLine2": "^^",
@@ -1700,12 +1890,20 @@ Object {
                 "meta": Object {
                   "groups": Array [
                     Object {
+                      "astStart": 1,
+                      "idx": 0,
+                    },
+                    Object {
                       "astStart": 2,
                       "idx": 1,
                     },
                     Object {
                       "astStart": 19,
                       "idx": 2,
+                    },
+                    Object {
+                      "astStart": 33,
+                      "idx": 3,
                     },
                   ],
                 },
@@ -1716,12 +1914,20 @@ Object {
               "meta": Object {
                 "groups": Array [
                   Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                  Object {
                     "astStart": 2,
                     "idx": 1,
                   },
                   Object {
                     "astStart": 19,
                     "idx": 2,
+                  },
+                  Object {
+                    "astStart": 33,
+                    "idx": 3,
                   },
                 ],
               },
@@ -1743,11 +1949,32 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                  Object {
+                    "astStart": 2,
+                    "idx": 1,
+                  },
+                  Object {
+                    "astStart": 19,
+                    "idx": 2,
+                  },
+                  Object {
+                    "astStart": 33,
+                    "idx": 3,
+                  },
+                ],
               },
             },
           ],
           "groupsToRestore": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
             Object {
               "astStart": 2,
               "idx": 1,
@@ -1755,6 +1982,10 @@ Object {
             Object {
               "astStart": 19,
               "idx": 2,
+            },
+            Object {
+              "astStart": 33,
+              "idx": 3,
             },
           ],
         },
@@ -1770,12 +2001,20 @@ Object {
     "meta": Object {
       "groups": Array [
         Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+        Object {
           "astStart": 2,
           "idx": 1,
         },
         Object {
           "astStart": 19,
           "idx": 2,
+        },
+        Object {
+          "astStart": 33,
+          "idx": 3,
         },
       ],
     },

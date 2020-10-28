@@ -43,7 +43,12 @@ Object {
         "maxCount": 3,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "(aa?){0,3}/",
         "posLine2": "^^^^^^^^^^",
@@ -91,7 +96,12 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 1,
+                "idx": 0,
+              },
+            ],
           },
         },
       },
@@ -157,7 +167,12 @@ Object {
             "maxCount": 3,
             "maxOrMinCount": true,
             "meta": Object {
-              "groups": Array [],
+              "groups": Array [
+                Object {
+                  "astStart": 1,
+                  "idx": 0,
+                },
+              ],
             },
             "posLine1": "(aa?){0,3}/",
             "posLine2": "^^^^^^^^^^",
@@ -205,7 +220,12 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                ],
               },
             },
           },
@@ -226,7 +246,12 @@ Object {
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "a?){0,3}/",
         "posLine2": "^^",
@@ -283,7 +308,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -303,7 +333,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        ],
       },
     },
   ],
@@ -324,7 +359,12 @@ Object {
       "maxCount": 3,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "(aa?){0,3}/",
       "posLine2": "^^^^^^^^^^",
@@ -372,7 +412,12 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+          ],
         },
       },
     },
@@ -407,7 +452,12 @@ Object {
           "maxCount": 3,
           "maxOrMinCount": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 1,
+                "idx": 0,
+              },
+            ],
           },
           "posLine1": "(aa?){0,3}/",
           "posLine2": "^^^^^^^^^^",
@@ -455,7 +505,12 @@ Object {
             "hasCallback": false,
             "lastAtomReturns": true,
             "meta": Object {
-              "groups": Array [],
+              "groups": Array [
+                Object {
+                  "astStart": 1,
+                  "idx": 0,
+                },
+              ],
             },
           },
         },
@@ -476,7 +531,12 @@ Object {
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "a?){0,3}/",
       "posLine2": "^^",
@@ -506,7 +566,12 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
-      "groups": Array [],
+      "groups": Array [
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+      ],
     },
   },
   "regexStr": "/(aa?){0,3}/",

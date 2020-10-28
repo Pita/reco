@@ -42,7 +42,12 @@ Object {
         "hasCallback": false,
         "maxOrMinCount": false,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
         "posLine2": "               ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -90,7 +95,12 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
         },
       },
@@ -162,7 +172,12 @@ Object {
             "hasCallback": false,
             "maxOrMinCount": false,
             "meta": Object {
-              "groups": Array [],
+              "groups": Array [
+                Object {
+                  "astStart": 22,
+                  "idx": 0,
+                },
+              ],
             },
             "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
             "posLine2": "               ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -210,7 +225,12 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 22,
+                    "idx": 0,
+                  },
+                ],
               },
             },
           },
@@ -230,7 +250,12 @@ Object {
         "hasCallback": false,
         "maxOrMinCount": false,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
         "posLine2": "                               ^^^^^^",
@@ -260,7 +285,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -301,7 +331,12 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
         },
         "functionName": "greedyQuantifier0008",
@@ -309,7 +344,12 @@ Object {
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
         "posLine2": "                          ^^^^^",
@@ -339,7 +379,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -386,14 +431,24 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
         },
         "functionName": "greedyQuantifier0011",
         "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "minCount": 1,
         "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]...",
@@ -451,7 +506,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -471,7 +531,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -518,14 +583,24 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
         },
         "functionName": "greedyQuantifier0015",
         "hasCallback": false,
         "maxOrMinCount": false,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]...",
         "posLine2": "         ^^^^^^",
@@ -555,7 +630,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -596,7 +676,12 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
         },
         "functionName": "greedyQuantifier0018",
@@ -604,7 +689,12 @@ Object {
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "...+[,.]?[0-9]*([\\\\/...",
         "posLine2": "    ^^^^^",
@@ -634,7 +724,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -681,14 +776,24 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
         },
         "functionName": "greedyQuantifier0021",
         "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "minCount": 1,
         "posLine1": "[0-9]+[,.]?[0-9]...",
@@ -719,7 +824,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -759,7 +869,12 @@ Object {
           "hasCallback": false,
           "lastAtomReturns": true,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
         },
         "functionName": "greedyQuantifier0024",
@@ -767,7 +882,12 @@ Object {
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "[-]?[0-9]+[,.]...",
         "posLine2": "^^^^",
@@ -797,7 +917,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
     },
   ],
@@ -817,7 +942,12 @@ Object {
       "hasCallback": false,
       "maxOrMinCount": false,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
       "posLine2": "               ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -865,7 +995,12 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
       },
     },
@@ -899,7 +1034,12 @@ Object {
           "hasCallback": false,
           "maxOrMinCount": false,
           "meta": Object {
-            "groups": Array [],
+            "groups": Array [
+              Object {
+                "astStart": 22,
+                "idx": 0,
+              },
+            ],
           },
           "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
           "posLine2": "               ^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -947,7 +1087,12 @@ Object {
             "hasCallback": false,
             "lastAtomReturns": true,
             "meta": Object {
-              "groups": Array [],
+              "groups": Array [
+                Object {
+                  "astStart": 22,
+                  "idx": 0,
+                },
+              ],
             },
           },
         },
@@ -967,7 +1112,12 @@ Object {
       "hasCallback": false,
       "maxOrMinCount": false,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
       "posLine2": "                               ^^^^^^",
@@ -991,7 +1141,12 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
       },
       "functionName": "greedyQuantifier0008",
@@ -999,7 +1154,12 @@ Object {
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",
       "posLine2": "                          ^^^^^",
@@ -1023,14 +1183,24 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
       },
       "functionName": "greedyQuantifier0011",
       "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "minCount": 1,
       "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]...",
@@ -1055,14 +1225,24 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
       },
       "functionName": "greedyQuantifier0015",
       "hasCallback": false,
       "maxOrMinCount": false,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "...+[,.]?[0-9]*([\\\\/][0-9]...",
       "posLine2": "         ^^^^^^",
@@ -1086,7 +1266,12 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
       },
       "functionName": "greedyQuantifier0018",
@@ -1094,7 +1279,12 @@ Object {
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "...+[,.]?[0-9]*([\\\\/...",
       "posLine2": "    ^^^^^",
@@ -1118,14 +1308,24 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
       },
       "functionName": "greedyQuantifier0021",
       "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "minCount": 1,
       "posLine1": "[0-9]+[,.]?[0-9]...",
@@ -1150,7 +1350,12 @@ Object {
         "hasCallback": false,
         "lastAtomReturns": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 22,
+              "idx": 0,
+            },
+          ],
         },
       },
       "functionName": "greedyQuantifier0024",
@@ -1158,7 +1363,12 @@ Object {
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 22,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "[-]?[0-9]+[,.]...",
       "posLine2": "^^^^",
@@ -1188,7 +1398,12 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
-      "groups": Array [],
+      "groups": Array [
+        Object {
+          "astStart": 22,
+          "idx": 0,
+        },
+      ],
     },
   },
   "regexStr": "/[-]?[0-9]+[,.]?[0-9]*([\\\\/][0-9]+[,.]?[0-9]*)*/",

@@ -165,7 +165,16 @@ Object {
         "hasCallback": false,
         "maxOrMinCount": false,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 8,
+              "idx": 2,
+            },
+            Object {
+              "astStart": 12,
+              "idx": 3,
+            },
+          ],
         },
         "posLine1": "a*)(a)/",
         "posLine2": "^^",
@@ -263,6 +272,14 @@ Object {
           Object {
             "astStart": 5,
             "idx": 1,
+          },
+          Object {
+            "astStart": 8,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 12,
+            "idx": 3,
           },
         ],
       },
@@ -373,6 +390,14 @@ Object {
                 "astStart": 5,
                 "idx": 1,
               },
+              Object {
+                "astStart": 8,
+                "idx": 2,
+              },
+              Object {
+                "astStart": 12,
+                "idx": 3,
+              },
             ],
           },
         },
@@ -380,7 +405,24 @@ Object {
         "hasCallback": false,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 1,
+              "idx": 0,
+            },
+            Object {
+              "astStart": 5,
+              "idx": 1,
+            },
+            Object {
+              "astStart": 8,
+              "idx": 2,
+            },
+            Object {
+              "astStart": 12,
+              "idx": 3,
+            },
+          ],
         },
         "minCount": 1,
         "posLine1": "a+)(a)(a*)(a...",
@@ -422,7 +464,24 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 5,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 8,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 12,
+            "idx": 3,
+          },
+        ],
       },
     },
   ],
@@ -501,7 +560,16 @@ Object {
       "hasCallback": false,
       "maxOrMinCount": false,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 8,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 12,
+            "idx": 3,
+          },
+        ],
       },
       "posLine1": "a*)(a)/",
       "posLine2": "^^",
@@ -594,6 +662,14 @@ Object {
               "astStart": 5,
               "idx": 1,
             },
+            Object {
+              "astStart": 8,
+              "idx": 2,
+            },
+            Object {
+              "astStart": 12,
+              "idx": 3,
+            },
           ],
         },
       },
@@ -601,7 +677,24 @@ Object {
       "hasCallback": false,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 1,
+            "idx": 0,
+          },
+          Object {
+            "astStart": 5,
+            "idx": 1,
+          },
+          Object {
+            "astStart": 8,
+            "idx": 2,
+          },
+          Object {
+            "astStart": 12,
+            "idx": 3,
+          },
+        ],
       },
       "minCount": 1,
       "posLine1": "a+)(a)(a*)(a...",
@@ -655,7 +748,24 @@ Object {
     "hasCallback": false,
     "lastAtomReturns": true,
     "meta": Object {
-      "groups": Array [],
+      "groups": Array [
+        Object {
+          "astStart": 1,
+          "idx": 0,
+        },
+        Object {
+          "astStart": 5,
+          "idx": 1,
+        },
+        Object {
+          "astStart": 8,
+          "idx": 2,
+        },
+        Object {
+          "astStart": 12,
+          "idx": 3,
+        },
+      ],
     },
   },
   "regexStr": "/(a+)(a)(a*)(a)/",

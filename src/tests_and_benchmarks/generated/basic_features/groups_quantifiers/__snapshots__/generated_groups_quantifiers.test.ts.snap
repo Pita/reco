@@ -266,6 +266,10 @@ Object {
               "astStart": 1,
               "idx": 0,
             },
+            Object {
+              "astStart": 12,
+              "idx": 1,
+            },
           ],
         },
         "minCount": 2,
@@ -306,6 +310,10 @@ Object {
           Object {
             "astStart": 1,
             "idx": 0,
+          },
+          Object {
+            "astStart": 12,
+            "idx": 1,
           },
         ],
       },
@@ -391,6 +399,10 @@ Object {
             "astStart": 1,
             "idx": 0,
           },
+          Object {
+            "astStart": 12,
+            "idx": 1,
+          },
         ],
       },
       "minCount": 2,
@@ -430,6 +442,10 @@ Object {
         Object {
           "astStart": 1,
           "idx": 0,
+        },
+        Object {
+          "astStart": 12,
+          "idx": 1,
         },
       ],
     },

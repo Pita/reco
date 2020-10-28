@@ -33,7 +33,11 @@ export const handleQuantifier = (
     quantifierFinalFiber,
     flags,
   );
-  greedyQuantifier.meta.groups = wrappedHandler.meta.groups.slice();
+
+  greedyQuantifier.meta.groups = mergeGroupsOfFibers([
+    wrappedHandler,
+    currentFiber,
+  ]);
   greedyQuantifier.wrappedHandler = wrappedHandler;
 
   return collector.addAtom(

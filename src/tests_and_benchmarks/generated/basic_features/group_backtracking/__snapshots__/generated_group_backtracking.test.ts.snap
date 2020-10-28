@@ -290,6 +290,10 @@ Object {
               "astStart": 1,
               "idx": 0,
             },
+            Object {
+              "astStart": 7,
+              "idx": 1,
+            },
           ],
         },
         "posLine1": "(aa3)*(aa3a)/",
@@ -329,6 +333,10 @@ Object {
           Object {
             "astStart": 1,
             "idx": 0,
+          },
+          Object {
+            "astStart": 7,
+            "idx": 1,
           },
         ],
       },
@@ -447,6 +455,10 @@ Object {
             "astStart": 1,
             "idx": 0,
           },
+          Object {
+            "astStart": 7,
+            "idx": 1,
+          },
         ],
       },
       "posLine1": "(aa3)*(aa3a)/",
@@ -485,6 +497,10 @@ Object {
         Object {
           "astStart": 1,
           "idx": 0,
+        },
+        Object {
+          "astStart": 7,
+          "idx": 1,
         },
       ],
     },

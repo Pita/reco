@@ -389,7 +389,12 @@ Object {
         "maxCount": 1,
         "maxOrMinCount": true,
         "meta": Object {
-          "groups": Array [],
+          "groups": Array [
+            Object {
+              "astStart": 2,
+              "idx": 0,
+            },
+          ],
         },
         "posLine1": "0?[1-9]|1[0-...",
         "posLine2": "^^",
@@ -419,7 +424,12 @@ Object {
       "hasCallback": false,
       "lastAtomReturns": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 2,
+            "idx": 0,
+          },
+        ],
       },
     },
     Object {
@@ -610,7 +620,12 @@ Object {
                 "hasCallback": false,
                 "lastAtomReturns": true,
                 "meta": Object {
-                  "groups": Array [],
+                  "groups": Array [
+                    Object {
+                      "astStart": 2,
+                      "idx": 0,
+                    },
+                  ],
                 },
               },
               Object {
@@ -929,7 +944,12 @@ Object {
       "maxCount": 1,
       "maxOrMinCount": true,
       "meta": Object {
-        "groups": Array [],
+        "groups": Array [
+          Object {
+            "astStart": 2,
+            "idx": 0,
+          },
+        ],
       },
       "posLine1": "0?[1-9]|1[0-...",
       "posLine2": "^^",
@@ -981,7 +1001,12 @@ Object {
               "hasCallback": false,
               "lastAtomReturns": true,
               "meta": Object {
-                "groups": Array [],
+                "groups": Array [
+                  Object {
+                    "astStart": 2,
+                    "idx": 0,
+                  },
+                ],
               },
             },
             Object {
