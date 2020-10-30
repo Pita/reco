@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "lib": ["es2017"],
+    "lib": ["ES2018"],
     "removeComments": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,
-    "target": "es2017",
-    "outDir": "lib"
+    "target": "ES2018",
+    "outDir": "lib",
+    "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
   },
   "include": ["./**/*.ts"],
   "exclude": [

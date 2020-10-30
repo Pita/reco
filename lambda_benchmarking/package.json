@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy:function": "serverless deploy function -f benchmark",
-    "benchmark": "time npx ts-node -T ./run_benchmarks.ts; open benchmarks_result/index.html"
+    "benchmark": "time npx ts-node -T ./run_benchmarks.ts; open benchmarks_result/index.html",
+    "benchmark:single": "time node -r ts-node/register/transpile-only --trace-deopt cli.ts"
   },
   "dependencies": {
     "benchmark": "^2.1.4",
