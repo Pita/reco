@@ -97,7 +97,7 @@ export const handleSetOrCharacter = (
       bTreeMatcher.addChar(element.value);
       break;
     case 'CharacterClass':
-      negate = element.negate;
+      // TODO: there is a bug here where the children might have a different negate attribute than the parent
       element.elements.forEach((element) => {
         switch (element.type) {
           case 'Character':
@@ -111,6 +111,7 @@ export const handleSetOrCharacter = (
             break;
         }
       });
+      negate = element.negate;
       break;
     case 'CharacterSet':
       addCharacterSet(element);
