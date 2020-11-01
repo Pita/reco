@@ -44,9 +44,9 @@ export class Collector {
   }
 
   private formatAstLocation(ast: AST.Node) {
-    const startNeedsTruncation = ast.start > 10;
-    const regexStrStart = startNeedsTruncation ? 10 : ast.start;
-    const endNeedsTruncation = this.regexStr.length > ast.end + 10;
+    const startNeedsTruncation = ast.start > 13;
+    const regexStrStart = startNeedsTruncation ? ast.start - 10 : ast.start;
+    const endNeedsTruncation = this.regexStr.length > ast.end + 13;
     const regexStrEnd = endNeedsTruncation
       ? ast.end + 10
       : this.regexStr.length;

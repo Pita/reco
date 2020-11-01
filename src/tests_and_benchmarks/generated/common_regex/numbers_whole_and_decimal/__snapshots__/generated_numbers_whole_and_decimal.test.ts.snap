@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "...+)?$/",
-          "posLine2": "      ^",
+          "posLine1": "$/",
+          "posLine2": "^",
           "type": "endAnchor",
         },
       ],
@@ -38,8 +38,8 @@ Object {
           "atoms": Array [
             Object {
               "data": Object {},
-              "posLine1": "...+)?$/",
-              "posLine2": "      ^",
+              "posLine1": "$/",
+              "posLine2": "^",
               "type": "endAnchor",
             },
           ],
@@ -172,8 +172,8 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {},
-                  "posLine1": "...+)?$/",
-                  "posLine2": "      ^",
+                  "posLine1": "$/",
+                  "posLine2": "^",
                   "type": "endAnchor",
                 },
               ],
@@ -377,7 +377,7 @@ Object {
             },
             "unicode": false,
           },
-          "posLine1": "\\\\d*(\\\\.\\\\d+)?$...",
+          "posLine1": "\\\\d*(\\\\.\\\\d+)?$/",
           "posLine2": "^^",
           "type": "charOrSet",
         },
@@ -431,7 +431,7 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "^\\\\d*(\\\\.\\\\d+)...",
+          "posLine1": "^\\\\d*(\\\\.\\\\d+)?$/",
           "posLine2": "^",
           "type": "startAnchor",
         },
@@ -464,8 +464,8 @@ Object {
         "atoms": Array [
           Object {
             "data": Object {},
-            "posLine1": "...+)?$/",
-            "posLine2": "      ^",
+            "posLine1": "$/",
+            "posLine2": "^",
             "type": "endAnchor",
           },
         ],
@@ -561,8 +561,8 @@ Object {
             "atoms": Array [
               Object {
                 "data": Object {},
-                "posLine1": "...+)?$/",
-                "posLine2": "      ^",
+                "posLine1": "$/",
+                "posLine2": "^",
                 "type": "endAnchor",
               },
             ],
@@ -714,7 +714,7 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {},
-        "posLine1": "^\\\\d*(\\\\.\\\\d+)...",
+        "posLine1": "^\\\\d*(\\\\.\\\\d+)?$/",
         "posLine2": "^",
         "type": "startAnchor",
       },

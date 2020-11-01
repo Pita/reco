@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "...\\\\d+)?$/",
-          "posLine2": "        ^",
+          "posLine1": "...d*(\\\\.\\\\d+)?$/",
+          "posLine2": "             ^",
           "type": "endAnchor",
         },
       ],
@@ -38,8 +38,8 @@ Object {
           "atoms": Array [
             Object {
               "data": Object {},
-              "posLine1": "...\\\\d+)?$/",
-              "posLine2": "        ^",
+              "posLine1": "...d*(\\\\.\\\\d+)?$/",
+              "posLine2": "             ^",
               "type": "endAnchor",
             },
           ],
@@ -172,8 +172,8 @@ Object {
               "atoms": Array [
                 Object {
                   "data": Object {},
-                  "posLine1": "...\\\\d+)?$/",
-                  "posLine2": "        ^",
+                  "posLine1": "...d*(\\\\.\\\\d+)?$/",
+                  "posLine2": "             ^",
                   "type": "endAnchor",
                 },
               ],
@@ -377,7 +377,7 @@ Object {
             },
             "unicode": false,
           },
-          "posLine1": "\\\\d*(\\\\.\\\\d+)?$...",
+          "posLine1": "\\\\d*(\\\\.\\\\d+)?$/",
           "posLine2": "^^",
           "type": "charOrSet",
         },
@@ -506,7 +506,7 @@ Object {
             },
           ],
         },
-        "posLine1": "-?\\\\d*(\\\\.\\\\d+)...",
+        "posLine1": "-?\\\\d*(\\\\.\\\\d+)?$/",
         "posLine2": "^^",
         "wrappedHandler": "[Circular]",
       },
@@ -529,7 +529,7 @@ Object {
             "functionName": "greedyQuantifier0012",
             "maxOrMinCount": true,
           },
-          "posLine1": "-?\\\\d*(\\\\.\\\\d+)...",
+          "posLine1": "-?\\\\d*(\\\\.\\\\d+)?$/",
           "posLine2": "^^",
           "type": "quantifierStarter",
         },
@@ -553,8 +553,8 @@ Object {
         "atoms": Array [
           Object {
             "data": Object {},
-            "posLine1": "...\\\\d+)?$/",
-            "posLine2": "        ^",
+            "posLine1": "...d*(\\\\.\\\\d+)?$/",
+            "posLine2": "             ^",
             "type": "endAnchor",
           },
         ],
@@ -650,8 +650,8 @@ Object {
             "atoms": Array [
               Object {
                 "data": Object {},
-                "posLine1": "...\\\\d+)?$/",
-                "posLine2": "        ^",
+                "posLine1": "...d*(\\\\.\\\\d+)?$/",
+                "posLine2": "             ^",
                 "type": "endAnchor",
               },
             ],
@@ -828,7 +828,7 @@ Object {
           },
         ],
       },
-      "posLine1": "-?\\\\d*(\\\\.\\\\d+)...",
+      "posLine1": "-?\\\\d*(\\\\.\\\\d+)?$/",
       "posLine2": "^^",
       "wrappedHandler": "[Circular]",
     },
@@ -852,7 +852,7 @@ Object {
           "functionName": "greedyQuantifier0012",
           "maxOrMinCount": true,
         },
-        "posLine1": "-?\\\\d*(\\\\.\\\\d+)...",
+        "posLine1": "-?\\\\d*(\\\\.\\\\d+)?$/",
         "posLine2": "^^",
         "type": "quantifierStarter",
       },

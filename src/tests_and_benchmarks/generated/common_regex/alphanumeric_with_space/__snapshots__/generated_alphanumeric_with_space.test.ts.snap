@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "...-9 ]*$/",
-          "posLine2": "        ^",
+          "posLine1": "...zA-Z0-9 ]*$/",
+          "posLine2": "             ^",
           "type": "endAnchor",
         },
       ],
@@ -91,8 +91,8 @@ Object {
           "atoms": Array [
             Object {
               "data": Object {},
-              "posLine1": "...-9 ]*$/",
-              "posLine2": "        ^",
+              "posLine1": "...zA-Z0-9 ]*$/",
+              "posLine2": "             ^",
               "type": "endAnchor",
             },
           ],
@@ -150,8 +150,8 @@ Object {
         "atoms": Array [
           Object {
             "data": Object {},
-            "posLine1": "...-9 ]*$/",
-            "posLine2": "        ^",
+            "posLine1": "...zA-Z0-9 ]*$/",
+            "posLine2": "             ^",
             "type": "endAnchor",
           },
         ],
