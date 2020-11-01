@@ -71,7 +71,7 @@ const configs = [
 configs.forEach(({ filename, fakerFunction }) => {
   faker.seed(93475);
   const values: string[] = [];
-  const TOTAL = 100000;
+  const TOTAL = 2000000;
   const TOTAL_PER_LOCALE = Math.floor(TOTAL / LOCALES.length);
 
   for (let i = 0; i < TOTAL_PER_LOCALE; i++) {
