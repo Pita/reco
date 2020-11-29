@@ -1,33 +1,39 @@
-import { Character, Set as RegexSet } from 'regexp-to-ast';
 import _ from 'lodash';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 
+const stringToCharCode = (str: string) => {
+  if (str.length > 1) {
+    throw new Error(`Invalid char length: ${str.length}: '${str}'`);
+  }
+  return str.charCodeAt(0);
+};
+
 export class CharRange {
   private chars: number[];
-  // complement = true means all chars are included except the listed ones
-  private complement: boolean;
+  private negate: boolean;
 
-  private constructor(options: { chars: number[]; complement: boolean }) {
+  constructor(options: { chars: number[]; negate: boolean }) {
     this.chars = options.chars;
-    this.complement = options.complement;
+    this.negate = options.negate;
   }
 
-  static fromCharacter(char: Character, ignoreCase: boolean) {
-    return new CharRange({
-      complement: false,
-      chars: normalizeUpperLowerCase(char.value, ignoreCase),
-    });
-  }
-
-  static fromSet(set: RegexSet, ignoreCase: boolean) {
+  static create(
+    definitions: Array<string | { from: string; to: string }>,
+    options: { ignoreCase: boolean; negate: boolean },
+  ) {
+    const { ignoreCase, negate } = options;
     const chars: number[] = [];
-    set.value.forEach((setValue) => {
-      if (typeof setValue === 'number') {
-        normalizeUpperLowerCase(setValue, ignoreCase).forEach((char) =>
-          chars.push(char),
-        );
+
+    definitions.forEach((definition) => {
+      if (typeof definition === 'string') {
+        normalizeUpperLowerCase(
+          stringToCharCode(definition),
+          ignoreCase,
+        ).forEach((char) => chars.push(char));
       } else {
-        const { from, to } = setValue;
+        const from = stringToCharCode(definition.from);
+        const to = stringToCharCode(definition.to);
+
         for (let i = from; i <= to; i++) {
           normalizeUpperLowerCase(i, ignoreCase).forEach((char) =>
             chars.push(char),
@@ -37,28 +43,28 @@ export class CharRange {
     });
 
     return new CharRange({
+      negate,
       chars,
-      complement: set.complement,
     });
   }
 
   static createEmptyRange() {
     return new CharRange({
       chars: [],
-      complement: false,
+      negate: false,
     });
   }
 
   hasOverlap(other: CharRange): boolean {
-    if (this.complement && other.complement) {
+    if (this.negate && other.negate) {
       return true;
     }
 
-    if (this.complement) {
+    if (this.negate) {
       const onlyInOther = _.difference(other.chars, this.chars);
       return onlyInOther.length !== 0;
     }
-    if (other.complement) {
+    if (other.negate) {
       const onlyInThis = _.difference(this.chars, other.chars);
       return onlyInThis.length !== 0;
     }
@@ -68,60 +74,60 @@ export class CharRange {
   }
 
   smallestInCommon(other: CharRange): CharRange {
-    if (this.complement && other.complement) {
+    if (this.negate && other.negate) {
       return new CharRange({
-        complement: true,
+        negate: true,
         chars: _.union(this.chars, other.chars),
       });
     }
-    if (this.complement) {
+    if (this.negate) {
       return new CharRange({
-        complement: false,
+        negate: false,
         chars: _.difference(other.chars, this.chars),
       });
     }
-    if (other.complement) {
+    if (other.negate) {
       return new CharRange({
-        complement: false,
+        negate: false,
         chars: _.difference(this.chars, other.chars),
       });
     }
 
     return new CharRange({
-      complement: false,
+      negate: false,
       chars: _.intersection(this.chars, other.chars),
     });
   }
 
   union(other: CharRange): CharRange {
-    if (this.complement && other.complement) {
+    if (this.negate && other.negate) {
       return new CharRange({
-        complement: true,
+        negate: true,
         chars: _.intersection(this.chars, other.chars),
       });
     }
-    if (this.complement) {
+    if (this.negate) {
       return new CharRange({
-        complement: true,
+        negate: true,
         chars: _.difference(this.chars, other.chars),
       });
     }
-    if (other.complement) {
+    if (other.negate) {
       return new CharRange({
-        complement: true,
+        negate: true,
         chars: _.difference(other.chars, this.chars),
       });
     }
 
     return new CharRange({
-      complement: false,
+      negate: false,
       chars: _.union(this.chars, other.chars),
     });
   }
 
   toJSON() {
     return {
-      complement: this.complement,
+      negate: this.negate,
       chars: this.chars.sort(),
     };
   }

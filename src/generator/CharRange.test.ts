@@ -1,33 +1,24 @@
-import { RegExpParser, Character, Set } from 'regexp-to-ast';
 import { CharRange } from './CharRange';
-
-const createFromSet = (regex: string) => {
-  const regexpParser = new RegExpParser();
-  const pattern = regexpParser.pattern(regex);
-  const regexSet = pattern.value.value[0].value[0] as Set;
-  return CharRange.fromSet(regexSet, pattern.flags.ignoreCase);
-};
-
-const createFromCharacter = (regex: string) => {
-  const regexpParser = new RegExpParser();
-  const pattern = regexpParser.pattern(regex);
-  const regexSet = pattern.value.value[0].value[0] as Character;
-  return CharRange.fromCharacter(regexSet, pattern.flags.ignoreCase);
-};
 
 describe('CharRange', () => {
   describe('fromCharachter', () => {
     test('can add a single charachter', () => {
-      const charRange = createFromCharacter('/a/');
+      const charRange = CharRange.create(['a'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
-      expect(charRange.toJSON()).toEqual({ complement: false, chars: [97] });
+      expect(charRange.toJSON()).toEqual({ negate: false, chars: [97] });
     });
 
     test('adds two charachters when ignoreCase is set', () => {
-      const charRange = createFromCharacter('/a/i');
+      const charRange = CharRange.create(['a'], {
+        negate: false,
+        ignoreCase: true,
+      });
 
       expect(charRange.toJSON()).toEqual({
-        complement: false,
+        negate: false,
         chars: [65, 97],
       });
     });
@@ -35,37 +26,61 @@ describe('CharRange', () => {
 
   describe('fromSet', () => {
     test('can take a single inclusive set', () => {
-      const charRange = createFromSet('/[0-9a]/');
+      const charRange = CharRange.create([{ from: '0', to: '9' }, 'a'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       expect(charRange.toJSON()).toEqual({
-        complement: false,
+        negate: false,
         chars: [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97],
       });
     });
 
     test('can take a single inclusive set with ignoreCase', () => {
-      const charRange = createFromSet('/[0-9a]/i');
+      const charRange = CharRange.create([{ from: '0', to: '9' }, 'a'], {
+        negate: false,
+        ignoreCase: true,
+      });
 
       expect(charRange.toJSON()).toEqual({
-        complement: false,
+        negate: false,
         chars: [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 97],
       });
     });
 
     test('can take a single exclusive set', () => {
-      const charRange = createFromSet('/[^0-9a-c]/');
+      const charRange = CharRange.create(
+        [
+          { from: '0', to: '9' },
+          { from: 'a', to: 'c' },
+        ],
+        {
+          negate: true,
+          ignoreCase: false,
+        },
+      );
 
       expect(charRange.toJSON()).toEqual({
-        complement: true,
+        negate: true,
         chars: [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99],
       });
     });
 
     test('can take a single exclusive set with ignoreCase', () => {
-      const charRange = createFromSet('/[^0-9a-c]/i');
+      const charRange = CharRange.create(
+        [
+          { from: '0', to: '9' },
+          { from: 'a', to: 'c' },
+        ],
+        {
+          negate: true,
+          ignoreCase: true,
+        },
+      );
 
       expect(charRange.toJSON()).toEqual({
-        complement: true,
+        negate: true,
         chars: [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 97, 98, 99],
       });
     });
@@ -73,40 +88,70 @@ describe('CharRange', () => {
 
   describe('hasOverlap', () => {
     test('can recognize overlap between two inclusive', () => {
-      const set1 = createFromSet('/[ac]/');
-      const set2 = createFromSet('/[a-z]/');
+      const set1 = CharRange.create([{ from: 'a', to: 'c' }], {
+        negate: false,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create([{ from: 'a', to: 'z' }], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       expect(set1.hasOverlap(set2)).toBe(true);
       expect(set2.hasOverlap(set1)).toBe(true);
     });
 
     test('can recognize non overlap between two inclusive', () => {
-      const set1 = createFromSet('/[0-9]/');
-      const set2 = createFromSet('/[a-z]/');
+      const set1 = CharRange.create([{ from: '0', to: '9' }], {
+        negate: false,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create([{ from: 'a', to: 'z' }], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       expect(set1.hasOverlap(set2)).toBe(false);
       expect(set2.hasOverlap(set1)).toBe(false);
     });
 
     test('can recognize non overlap between inclusive & exclusive', () => {
-      const set1 = createFromSet('/[^b]/');
-      const set2 = createFromSet('/[b]/');
+      const set1 = CharRange.create(['b'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['b'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       expect(set1.hasOverlap(set2)).toBe(false);
       expect(set2.hasOverlap(set1)).toBe(false);
     });
 
     test('can recognize overlap between inclusive & exclusive', () => {
-      const set1 = createFromSet('/[^b]/');
-      const set2 = createFromSet('/[bc]/');
+      const set1 = CharRange.create(['b'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['b', 'c'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       expect(set1.hasOverlap(set2)).toBe(true);
       expect(set2.hasOverlap(set1)).toBe(true);
     });
 
     test('can recognize overlap between two exclusive', () => {
-      const set1 = createFromSet('/[^b]/');
-      const set2 = createFromSet('/[^c]/');
+      const set1 = CharRange.create(['b'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['c'], {
+        negate: true,
+        ignoreCase: false,
+      });
 
       expect(set1.hasOverlap(set2)).toBe(true);
       expect(set2.hasOverlap(set1)).toBe(true);
@@ -115,11 +160,17 @@ describe('CharRange', () => {
 
   describe('smallestInCommon', () => {
     test('can recognize smallest in common between two inclusive', () => {
-      const set1 = createFromSet('/[ac]/');
-      const set2 = createFromSet('/[a-z]/');
+      const set1 = CharRange.create(['a', 'c'], {
+        negate: false,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create([{ from: 'a', to: 'z' }], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: false,
+        negate: false,
         chars: [97, 99],
       };
 
@@ -128,11 +179,17 @@ describe('CharRange', () => {
     });
 
     test('can recognize smallest in common between two inclusive', () => {
-      const set1 = createFromSet('/[0-9]/');
-      const set2 = createFromSet('/[a-z]/');
+      const set1 = CharRange.create([{ from: '0', to: '9' }], {
+        negate: false,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create([{ from: 'a', to: 'z' }], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: false,
+        negate: false,
         chars: [],
       };
 
@@ -141,11 +198,17 @@ describe('CharRange', () => {
     });
 
     test('can recognize smallest in common between inclusive & exclusive', () => {
-      const set1 = createFromSet('/[^b]/');
-      const set2 = createFromSet('/[b]/');
+      const set1 = CharRange.create(['b'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['b'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: false,
+        negate: false,
         chars: [],
       };
 
@@ -154,11 +217,17 @@ describe('CharRange', () => {
     });
 
     test('can recognize smallest in common between inclusive & exclusive', () => {
-      const set1 = createFromSet('/[^b]/');
-      const set2 = createFromSet('/[bc]/');
+      const set1 = CharRange.create(['b'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['b', 'c'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: false,
+        negate: false,
         chars: [99],
       };
 
@@ -167,11 +236,17 @@ describe('CharRange', () => {
     });
 
     test('can recognize smallest in common between two exclusive', () => {
-      const set1 = createFromSet('/[^b]/');
-      const set2 = createFromSet('/[^c]/');
+      const set1 = CharRange.create(['b'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['c'], {
+        negate: true,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: true,
+        negate: true,
         chars: [98, 99],
       };
 
@@ -182,8 +257,14 @@ describe('CharRange', () => {
 
   describe('union', () => {
     test('can create union between two inclusive', () => {
-      const set1 = createFromSet('/[ac]/');
-      const set2 = createFromSet('/[a-z]/');
+      const set1 = CharRange.create(['a', 'c'], {
+        negate: false,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create([{ from: 'a', to: 'z' }], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       // a - z
       let chars = [];
@@ -193,7 +274,7 @@ describe('CharRange', () => {
       chars = chars.sort();
 
       const result = {
-        complement: false,
+        negate: false,
         chars,
       };
 
@@ -202,8 +283,14 @@ describe('CharRange', () => {
     });
 
     test('can create union between two inclusive', () => {
-      const set1 = createFromSet('/[0-9]/');
-      const set2 = createFromSet('/[a-z]/');
+      const set1 = CharRange.create([{ from: '0', to: '9' }], {
+        negate: false,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create([{ from: 'a', to: 'z' }], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       // a - z
       let chars = [];
@@ -217,7 +304,7 @@ describe('CharRange', () => {
       chars = chars.sort();
 
       const result = {
-        complement: false,
+        negate: false,
         chars,
       };
 
@@ -226,11 +313,17 @@ describe('CharRange', () => {
     });
 
     test('can create union between inclusive & exclusive', () => {
-      const set1 = createFromSet('/[^bc]/');
-      const set2 = createFromSet('/[b]/');
+      const set1 = CharRange.create(['b', 'c'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['b'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: true,
+        negate: true,
         chars: [99],
       };
 
@@ -239,11 +332,17 @@ describe('CharRange', () => {
     });
 
     test('can create union between inclusive & exclusive', () => {
-      const set1 = createFromSet('/[^bd]/');
-      const set2 = createFromSet('/[bc]/');
+      const set1 = CharRange.create(['b', 'd'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['b', 'c'], {
+        negate: false,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: true,
+        negate: true,
         chars: [100],
       };
 
@@ -252,11 +351,17 @@ describe('CharRange', () => {
     });
 
     test('can create union between two exclusive', () => {
-      const set1 = createFromSet('/[^bc]/');
-      const set2 = createFromSet('/[^c]/');
+      const set1 = CharRange.create(['b', 'c'], {
+        negate: true,
+        ignoreCase: false,
+      });
+      const set2 = CharRange.create(['c'], {
+        negate: true,
+        ignoreCase: false,
+      });
 
       const result = {
-        complement: true,
+        negate: true,
         chars: [99],
       };
 
