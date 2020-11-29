@@ -1,11 +1,14 @@
 import _ from 'lodash';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 
-const stringToCharCode = (str: string) => {
-  if (str.length > 1) {
-    throw new Error(`Invalid char length: ${str.length}: '${str}'`);
+const toCharCode = (element: string | number) => {
+  if (typeof element === 'number') {
+    return element;
   }
-  return str.charCodeAt(0);
+  if (element.length > 1) {
+    throw new Error(`Invalid char length: ${element.length}: '${element}'`);
+  }
+  return element.charCodeAt(0);
 };
 
 export class CharRange {
@@ -13,26 +16,31 @@ export class CharRange {
   private negate: boolean;
 
   constructor(options: { chars: number[]; negate: boolean }) {
-    this.chars = options.chars;
+    this.chars = _.sortedUniq(_.sortBy(options.chars));
     this.negate = options.negate;
   }
 
   static create(
-    definitions: Array<string | { from: string; to: string }>,
+    definitions: Array<
+      | number
+      | string
+      | { from: string; to: string }
+      | { from: number; to: number }
+    >,
     options: { ignoreCase: boolean; negate: boolean },
   ) {
     const { ignoreCase, negate } = options;
     const chars: number[] = [];
 
     definitions.forEach((definition) => {
-      if (typeof definition === 'string') {
+      if (typeof definition === 'string' || typeof definition === 'number') {
         normalizeUpperLowerCase(
-          stringToCharCode(definition),
+          toCharCode(definition),
           ignoreCase,
         ).forEach((char) => chars.push(char));
       } else {
-        const from = stringToCharCode(definition.from);
-        const to = stringToCharCode(definition.to);
+        const from = toCharCode(definition.from);
+        const to = toCharCode(definition.to);
 
         for (let i = from; i <= to; i++) {
           normalizeUpperLowerCase(i, ignoreCase).forEach((char) =>
@@ -52,6 +60,20 @@ export class CharRange {
     return new CharRange({
       chars: [],
       negate: false,
+    });
+  }
+
+  static createFullRange() {
+    return new CharRange({
+      chars: [],
+      negate: true,
+    });
+  }
+
+  invert(): CharRange {
+    return new CharRange({
+      chars: this.chars,
+      negate: !this.negate,
     });
   }
 
@@ -128,7 +150,7 @@ export class CharRange {
   toJSON() {
     return {
       negate: this.negate,
-      chars: this.chars.sort(),
+      chars: this.chars.slice(),
     };
   }
 }

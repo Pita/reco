@@ -1,4 +1,5 @@
 import { CharRange } from './CharRange';
+import _ from 'lodash';
 
 describe('CharRange', () => {
   describe('fromCharachter', () => {
@@ -271,7 +272,6 @@ describe('CharRange', () => {
       for (let i = 97; i <= 122; i++) {
         chars.push(i);
       }
-      chars = chars.sort();
 
       const result = {
         negate: false,
@@ -301,7 +301,6 @@ describe('CharRange', () => {
       for (let i = 97; i <= 122; i++) {
         chars.push(i);
       }
-      chars = chars.sort();
 
       const result = {
         negate: false,
