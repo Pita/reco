@@ -61,6 +61,24 @@ Object {
       "functionName": "fiber0001",
       "lastAtomReturns": false,
       "meta": Object {
+        "combinedCharRange": Object {
+          "chars": Array [
+            68,
+            69,
+            70,
+            100,
+            101,
+            102,
+          ],
+          "negate": false,
+        },
+        "firstCharRange": Object {
+          "chars": Array [
+            68,
+            100,
+          ],
+          "negate": false,
+        },
         "groups": Array [],
       },
     },
@@ -123,6 +141,24 @@ Object {
     "functionName": "fiber0001",
     "lastAtomReturns": false,
     "meta": Object {
+      "combinedCharRange": Object {
+        "chars": Array [
+          68,
+          69,
+          70,
+          100,
+          101,
+          102,
+        ],
+        "negate": false,
+      },
+      "firstCharRange": Object {
+        "chars": Array [
+          68,
+          100,
+        ],
+        "negate": false,
+      },
       "groups": Array [],
     },
   },

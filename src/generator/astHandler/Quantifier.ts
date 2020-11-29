@@ -53,5 +53,6 @@ export const handleQuantifier = (
       },
       ast: quantifier,
     },
+    quantifierHandler.meta.firstCharRange,
   );
 };

@@ -46,6 +46,18 @@ Object {
               "functionName": "fiber0002",
               "lastAtomReturns": false,
               "meta": Object {
+                "combinedCharRange": Object {
+                  "chars": Array [
+                    121,
+                  ],
+                  "negate": false,
+                },
+                "firstCharRange": Object {
+                  "chars": Array [
+                    121,
+                  ],
+                  "negate": false,
+                },
                 "groups": Array [],
               },
             },
@@ -60,6 +72,18 @@ Object {
       "functionName": "fiber0001",
       "lastAtomReturns": false,
       "meta": Object {
+        "combinedCharRange": Object {
+          "chars": Array [
+            120,
+          ],
+          "negate": false,
+        },
+        "firstCharRange": Object {
+          "chars": Array [
+            120,
+          ],
+          "negate": false,
+        },
         "groups": Array [],
       },
     },
@@ -86,6 +110,18 @@ Object {
       "functionName": "fiber0002",
       "lastAtomReturns": false,
       "meta": Object {
+        "combinedCharRange": Object {
+          "chars": Array [
+            121,
+          ],
+          "negate": false,
+        },
+        "firstCharRange": Object {
+          "chars": Array [
+            121,
+          ],
+          "negate": false,
+        },
         "groups": Array [],
       },
     },
@@ -133,6 +169,18 @@ Object {
             "functionName": "fiber0002",
             "lastAtomReturns": false,
             "meta": Object {
+              "combinedCharRange": Object {
+                "chars": Array [
+                  121,
+                ],
+                "negate": false,
+              },
+              "firstCharRange": Object {
+                "chars": Array [
+                  121,
+                ],
+                "negate": false,
+              },
               "groups": Array [],
             },
           },
@@ -147,6 +195,18 @@ Object {
     "functionName": "fiber0001",
     "lastAtomReturns": false,
     "meta": Object {
+      "combinedCharRange": Object {
+        "chars": Array [
+          120,
+        ],
+        "negate": false,
+      },
+      "firstCharRange": Object {
+        "chars": Array [
+          120,
+        ],
+        "negate": false,
+      },
       "groups": Array [],
     },
   },

@@ -6,6 +6,7 @@ import {
 } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
+import { CharRange } from '../CharRange';
 
 export const handleDisjunction = (
   alternatives: AST.Alternative[],
@@ -27,6 +28,11 @@ export const handleDisjunction = (
   );
 
   const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
+  const firstCharRangesCombined = mappedAlternatives.reduce(
+    (charRange, alternative) =>
+      charRange.union(alternative.meta.firstCharRange),
+    CharRange.createEmptyRange(),
+  );
 
   return collector.addAtom(
     collector.createForkingFiber(currentFiber, groupsToRestore),
@@ -35,5 +41,6 @@ export const handleDisjunction = (
       data: { alternatives: mappedAlternatives, groupsToRestore },
       ast: alternatives[0].parent,
     },
+    firstCharRangesCombined,
   );
 };

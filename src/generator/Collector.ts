@@ -8,6 +8,7 @@ import {
   QuantifierTemplateDefinition,
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
+import { CharRange } from './CharRange';
 
 type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   ast: AST.Node;
@@ -82,6 +83,8 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups,
+        combinedCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createEmptyRange(),
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -96,6 +99,8 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups: [],
+        combinedCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createEmptyRange(),
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -113,13 +118,19 @@ export class Collector {
       lastAtomReturns: true,
       meta: {
         groups: groups.slice(),
+        combinedCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createEmptyRange(),
       },
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
   }
 
-  addAtom(currentFiber: FiberTemplateDefinition, def: AtomDefinition) {
+  addAtom(
+    currentFiber: FiberTemplateDefinition,
+    def: AtomDefinition,
+    atomCharRange: CharRange | 'noCharRange',
+  ) {
     // TODO: type this correctly
     const newAtom: any = {
       ...this.formatAstLocation(def.ast),
@@ -128,6 +139,12 @@ export class Collector {
     };
 
     currentFiber.atoms.unshift(newAtom);
+    if (atomCharRange !== 'noCharRange') {
+      currentFiber.meta.combinedCharRange = currentFiber.meta.combinedCharRange.union(
+        atomCharRange,
+      );
+      currentFiber.meta.firstCharRange = atomCharRange;
+    }
     return currentFiber;
   }
 
@@ -143,6 +160,8 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups: [],
+        combinedCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createEmptyRange(),
       },
     };
 
@@ -155,6 +174,8 @@ export class Collector {
       wrappedHandler: quantifierFinalFiber,
       meta: {
         groups: [],
+        combinedCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createEmptyRange(),
       },
       ...this.formatAstLocation(ast),
     };

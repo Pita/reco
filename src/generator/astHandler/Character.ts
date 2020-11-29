@@ -132,24 +132,32 @@ export const handleSetOrCharacter = (
   })();
 
   if (flags.INTERNAL_backwards) {
-    return collector.addAtom(currentFiber, {
-      type: 'charOrSetBackward',
-      data: {
-        tree: charRangeToLeafValues(newCharRange),
-        negate: newCharRange.toJSON().negate,
-        unicode: flags.unicode,
+    return collector.addAtom(
+      currentFiber,
+      {
+        type: 'charOrSetBackward',
+        data: {
+          tree: charRangeToLeafValues(newCharRange),
+          negate: newCharRange.toJSON().negate,
+          unicode: flags.unicode,
+        },
+        ast: element,
       },
-      ast: element,
-    });
+      newCharRange,
+    );
   } else {
-    return collector.addAtom(currentFiber, {
-      type: 'charOrSet',
-      data: {
-        tree: charRangeToLeafValues(newCharRange),
-        negate: newCharRange.toJSON().negate,
-        unicode: flags.unicode,
+    return collector.addAtom(
+      currentFiber,
+      {
+        type: 'charOrSet',
+        data: {
+          tree: charRangeToLeafValues(newCharRange),
+          negate: newCharRange.toJSON().negate,
+          unicode: flags.unicode,
+        },
+        ast: element,
       },
-      ast: element,
-    });
+      newCharRange,
+    );
   }
 };

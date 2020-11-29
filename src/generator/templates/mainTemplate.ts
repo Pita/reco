@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
+import { CharRange } from '../CharRange';
 const prettier = require('prettier');
 
 export interface GroupReference {
@@ -12,6 +13,8 @@ export interface FunctionDefinition {
   followUp: FollowUp;
   meta: {
     groups: GroupReference[];
+    combinedCharRange: CharRange;
+    firstCharRange: CharRange;
   };
 }
 

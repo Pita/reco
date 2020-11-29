@@ -12,17 +12,25 @@ export const handleAssertion = (
 ): FiberTemplateDefinition => {
   switch (assertion.kind) {
     case 'start':
-      return collector.addAtom(currentFiber, {
-        type: flags.multiline ? 'multiLineStartAnchor' : 'startAnchor',
-        ast: assertion,
-        data: {},
-      });
+      return collector.addAtom(
+        currentFiber,
+        {
+          type: flags.multiline ? 'multiLineStartAnchor' : 'startAnchor',
+          ast: assertion,
+          data: {},
+        },
+        'noCharRange',
+      );
     case 'end':
-      return collector.addAtom(currentFiber, {
-        type: flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
-        ast: assertion,
-        data: {},
-      });
+      return collector.addAtom(
+        currentFiber,
+        {
+          type: flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
+          ast: assertion,
+          data: {},
+        },
+        'noCharRange',
+      );
     case 'lookahead':
     case 'lookbehind':
       return handleLookaroundAssertion(
@@ -32,13 +40,17 @@ export const handleAssertion = (
         flags,
       );
     case 'word':
-      return collector.addAtom(currentFiber, {
-        type: 'wordBoundary',
-        ast: assertion,
-        data: {
-          negate: assertion.negate,
+      return collector.addAtom(
+        currentFiber,
+        {
+          type: 'wordBoundary',
+          ast: assertion,
+          data: {
+            negate: assertion.negate,
+          },
         },
-      });
+        'noCharRange',
+      );
       break;
   }
 };

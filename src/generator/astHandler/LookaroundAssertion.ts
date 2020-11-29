@@ -21,12 +21,16 @@ export const handleLookaroundAssertion = (
     newFlags,
   );
 
-  return collector.addAtom(currentFiber, {
-    type: 'lookaround',
-    ast: lookaroundAssertion,
-    data: {
-      lookaroundFiber,
-      negate: lookaroundAssertion.negate,
+  return collector.addAtom(
+    currentFiber,
+    {
+      type: 'lookaround',
+      ast: lookaroundAssertion,
+      data: {
+        lookaroundFiber,
+        negate: lookaroundAssertion.negate,
+      },
     },
-  });
+    'noCharRange',
+  );
 };

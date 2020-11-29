@@ -18,13 +18,17 @@ export const handleCapturingGroup = (
     currentFiber,
     capturingGroup,
   );
-  const groupEndMarker = collector.addAtom(currentFiber, {
-    type: 'groupEndMarker',
-    ast: capturingGroup,
-    data: {
-      groupReference,
+  const groupEndMarker = collector.addAtom(
+    currentFiber,
+    {
+      type: 'groupEndMarker',
+      ast: capturingGroup,
+      data: {
+        groupReference,
+      },
     },
-  });
+    'noCharRange',
+  );
 
   const disjunction = handleDisjunction(
     capturingGroup.alternatives,
@@ -33,13 +37,17 @@ export const handleCapturingGroup = (
     flags,
   );
 
-  const groupStartMarker = collector.addAtom(disjunction, {
-    type: 'groupStartMarker',
-    ast: capturingGroup,
-    data: {
-      groupReference,
+  const groupStartMarker = collector.addAtom(
+    disjunction,
+    {
+      type: 'groupStartMarker',
+      ast: capturingGroup,
+      data: {
+        groupReference,
+      },
     },
-  });
+    'noCharRange',
+  );
 
   return groupStartMarker;
 };
