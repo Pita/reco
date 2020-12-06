@@ -28,9 +28,9 @@ export const handleDisjunction = (
   );
 
   const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
-  const firstCharRangesCombined = mappedAlternatives.reduce(
+  const combinedCharRange = mappedAlternatives.reduce(
     (charRange, alternative) =>
-      charRange.union(alternative.meta.firstCharRange),
+      charRange.union(alternative.meta.combinedCharRange),
     CharRange.createEmptyRange(),
   );
 
@@ -41,6 +41,6 @@ export const handleDisjunction = (
       data: { alternatives: mappedAlternatives, groupsToRestore },
       ast: alternatives[0].parent,
     },
-    firstCharRangesCombined,
+    combinedCharRange,
   );
 };

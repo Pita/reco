@@ -130,6 +130,15 @@ export interface GroupBackReferenceTemplateAtom extends BaseTemplateAtom {
   };
 }
 
+export interface NonBacktrackingQuantifier extends BaseTemplateAtom {
+  type: 'nonBacktrackingQuantifier';
+  data: {
+    maxOrMinCount?: boolean;
+    minCount?: number;
+    maxCount?: number;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
@@ -143,7 +152,8 @@ export type TemplateAtom =
   | QuantifierStarterTemplateAtom
   | LookaroundTemplateAtom
   | WordBoundaryTemplateAtom
-  | GroupBackReferenceTemplateAtom;
+  | GroupBackReferenceTemplateAtom
+  | NonBacktrackingQuantifier;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];

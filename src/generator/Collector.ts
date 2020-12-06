@@ -196,6 +196,13 @@ export class Collector {
     currentFiber: FiberTemplateDefinition,
     ast: AST.CapturingGroup,
   ) {
+    const existingGroup = this.groups.find(
+      (group) => group.astStart === ast.start,
+    );
+    if (existingGroup !== undefined) {
+      return existingGroup;
+    }
+
     const newGroup = {
       idx: -1,
       astStart: ast.start,
@@ -210,6 +217,10 @@ export class Collector {
     currentFiber.meta.groups.push(newGroup);
     currentFiber.meta.groups.sort((a, b) => a.idx - b.idx);
     return newGroup;
+  }
+
+  fakeCollector() {
+    return new Collector(this.regexStr);
   }
 
   getTemplateValues(): Omit<TemplateValues, 'mainHandler'> {

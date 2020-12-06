@@ -165,6 +165,36 @@ export function generatedRegexMatcher(str: string) {
             return -1;
           }
         {{/switchCase}}
+        {{#switchCase 'nonBacktrackingQuantifier'}}
+          {{#if maxOrMinCount}}
+            let matches{{{@index}}} = 0;
+          {{/if}}
+          while(true) {
+            const wrappedResult = {{{wrappedHandler.functionName}}}(i);
+
+            if (wrappedResult === -1) {
+              {{#if minCount}}
+                if (matches{{{@index}}} < {{{minCount}}}) {
+                  return -1;
+                }
+              {{/if}}
+
+              break;
+            } else {
+              i = wrappedResult;
+
+              {{#if maxOrMinCount}}
+                matches{{{@index}}}++;
+              {{/if}}
+
+              {{#if maxCount}}
+                if (matches{{{@index}}} === {{{maxCount}}}) {
+                  break;
+                }
+              {{/if}}
+            }
+          }
+        {{/switchCase}}
         {{#switchCase 'wordBoundary'}}
           if (i !== 0 && (i + 1) !== strLength) {
             // TODO: find way to generate these trees
