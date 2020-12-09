@@ -80,20 +80,6 @@ Object {
       "functionName": "fiber0001",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            97,
-            98,
-            99,
-          ],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [
-            97,
-          ],
-          "negate": false,
-        },
         "groups": Array [
           Object {
             "astStart": 6,
@@ -186,20 +172,6 @@ Object {
     "functionName": "fiber0001",
     "lastAtomReturns": false,
     "meta": Object {
-      "combinedCharRange": Object {
-        "chars": Array [
-          97,
-          98,
-          99,
-        ],
-        "negate": false,
-      },
-      "firstCharRange": Object {
-        "chars": Array [
-          97,
-        ],
-        "negate": false,
-      },
       "groups": Array [
         Object {
           "astStart": 6,

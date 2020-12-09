@@ -26,18 +26,6 @@ Object {
       "functionName": "fiber0002",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            97,
-          ],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [
-            97,
-          ],
-          "negate": false,
-        },
         "groups": Array [],
       },
     },
@@ -64,18 +52,6 @@ Object {
       "functionName": "fiber0003",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            98,
-          ],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [
-            98,
-          ],
-          "negate": false,
-        },
         "groups": Array [],
       },
     },
@@ -102,18 +78,6 @@ Object {
       "functionName": "fiber0004",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            102,
-          ],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [
-            102,
-          ],
-          "negate": false,
-        },
         "groups": Array [],
       },
     },
@@ -145,18 +109,6 @@ Object {
                 "functionName": "fiber0002",
                 "lastAtomReturns": false,
                 "meta": Object {
-                  "combinedCharRange": Object {
-                    "chars": Array [
-                      97,
-                    ],
-                    "negate": false,
-                  },
-                  "firstCharRange": Object {
-                    "chars": Array [
-                      97,
-                    ],
-                    "negate": false,
-                  },
                   "groups": Array [],
                 },
               },
@@ -183,18 +135,6 @@ Object {
                 "functionName": "fiber0003",
                 "lastAtomReturns": false,
                 "meta": Object {
-                  "combinedCharRange": Object {
-                    "chars": Array [
-                      98,
-                    ],
-                    "negate": false,
-                  },
-                  "firstCharRange": Object {
-                    "chars": Array [
-                      98,
-                    ],
-                    "negate": false,
-                  },
                   "groups": Array [],
                 },
               },
@@ -221,18 +161,6 @@ Object {
                 "functionName": "fiber0004",
                 "lastAtomReturns": false,
                 "meta": Object {
-                  "combinedCharRange": Object {
-                    "chars": Array [
-                      102,
-                    ],
-                    "negate": false,
-                  },
-                  "firstCharRange": Object {
-                    "chars": Array [
-                      102,
-                    ],
-                    "negate": false,
-                  },
                   "groups": Array [],
                 },
               },
@@ -248,22 +176,6 @@ Object {
       "functionName": "fiber0005",
       "lastAtomReturns": true,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            97,
-            98,
-            102,
-          ],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [
-            97,
-            98,
-            102,
-          ],
-          "negate": false,
-        },
         "groups": Array [],
       },
     },
@@ -296,18 +208,6 @@ Object {
               "functionName": "fiber0002",
               "lastAtomReturns": false,
               "meta": Object {
-                "combinedCharRange": Object {
-                  "chars": Array [
-                    97,
-                  ],
-                  "negate": false,
-                },
-                "firstCharRange": Object {
-                  "chars": Array [
-                    97,
-                  ],
-                  "negate": false,
-                },
                 "groups": Array [],
               },
             },
@@ -334,18 +234,6 @@ Object {
               "functionName": "fiber0003",
               "lastAtomReturns": false,
               "meta": Object {
-                "combinedCharRange": Object {
-                  "chars": Array [
-                    98,
-                  ],
-                  "negate": false,
-                },
-                "firstCharRange": Object {
-                  "chars": Array [
-                    98,
-                  ],
-                  "negate": false,
-                },
                 "groups": Array [],
               },
             },
@@ -372,18 +260,6 @@ Object {
               "functionName": "fiber0004",
               "lastAtomReturns": false,
               "meta": Object {
-                "combinedCharRange": Object {
-                  "chars": Array [
-                    102,
-                  ],
-                  "negate": false,
-                },
-                "firstCharRange": Object {
-                  "chars": Array [
-                    102,
-                  ],
-                  "negate": false,
-                },
                 "groups": Array [],
               },
             },
@@ -399,22 +275,6 @@ Object {
     "functionName": "fiber0005",
     "lastAtomReturns": true,
     "meta": Object {
-      "combinedCharRange": Object {
-        "chars": Array [
-          97,
-          98,
-          102,
-        ],
-        "negate": false,
-      },
-      "firstCharRange": Object {
-        "chars": Array [
-          97,
-          98,
-          102,
-        ],
-        "negate": false,
-      },
       "groups": Array [],
     },
   },
