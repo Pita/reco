@@ -5,6 +5,7 @@ import { handleDisjunction } from './astHandler/Disjunction';
 
 export interface Flags extends AST.Flags {
   INTERNAL_backwards?: boolean;
+  INTERNAL_no_backtracking?: boolean;
 }
 
 export const genCode = (regexStr: string) => {

@@ -63,6 +63,7 @@ export class Collector {
     };
   }
 
+  // used by disjunction to create single thread
   createConnectedFiber(fiber: FiberTemplateDefinition) {
     // Special case where the fiber to close has zero atoms,
     // therefore we can delete it
@@ -84,7 +85,7 @@ export class Collector {
       meta: {
         groups,
         combinedCharRange: CharRange.createEmptyRange(),
-        firstCharRange: CharRange.createEmptyRange(),
+        firstCharRange: fiber.meta.firstCharRange,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -100,13 +101,14 @@ export class Collector {
       meta: {
         groups: [],
         combinedCharRange: CharRange.createEmptyRange(),
-        firstCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createFullRange(),
       },
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
   }
 
+  // used by disjunction and quantifier
   createForkingFiber(
     followUpFiber: FiberTemplateDefinition,
     groups: GroupReference[],

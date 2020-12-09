@@ -3,6 +3,7 @@ import { Collector, mergeGroupsOfFibers } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleElement } from './Element';
+import { BacktrackingError } from '../BacktrackingException';
 
 const canQuantifierBacktrack = (
   quantifier: AST.Quantifier,
@@ -11,16 +12,28 @@ const canQuantifierBacktrack = (
   flags: Flags,
 ) => {
   const fakeCollector = collector.fakeCollector();
-  const wrappedHandler = handleElement(
-    quantifier.element,
-    fakeCollector,
-    fakeCollector.createFinalFiber(),
-    flags,
-  );
+  try {
+    const wrappedHandler = handleElement(
+      quantifier.element,
+      fakeCollector,
+      fakeCollector.createFinalFiber(),
+      {
+        ...flags,
+        // INTERNAL_no_backtracking: true,
+      },
+    );
 
-  return wrappedHandler.meta.combinedCharRange.hasOverlap(
-    currentFiber.meta.firstCharRange,
-  );
+    return wrappedHandler.meta.combinedCharRange.hasOverlap(
+      currentFiber.meta.firstCharRange,
+    );
+  } catch (e) {
+    if (e instanceof BacktrackingError) {
+      console.log('internal backtracking');
+      return true;
+    }
+
+    throw e;
+  }
 };
 
 const generateBacktrackingQuantifier = (
@@ -125,6 +138,9 @@ export const handleQuantifier = (
   // console.log('canBacktrack', canBacktrack);
 
   if (canBacktrack) {
+    if (flags.INTERNAL_no_backtracking) {
+      throw new BacktrackingError();
+    }
     return generateBacktrackingQuantifier(
       quantifier,
       collector,
