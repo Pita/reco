@@ -19,13 +19,19 @@ const canQuantifierBacktrack = (
       fakeCollector.createFinalFiber(),
       {
         ...flags,
-        // INTERNAL_no_backtracking: true,
+        INTERNAL_no_backtracking: true,
       },
     );
 
-    return wrappedHandler.meta.combinedCharRange.hasOverlap(
+    // console.log(quantifier);
+    // console.log('currentFiber', currentFiber);
+
+    const hasOverlap = wrappedHandler.meta.combinedCharRange.hasOverlap(
       currentFiber.meta.firstCharRange,
     );
+    // console.log('hasOverlap', hasOverlap);
+
+    return hasOverlap;
   } catch (e) {
     if (e instanceof BacktrackingError) {
       console.log('internal backtracking');

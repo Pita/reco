@@ -163,7 +163,7 @@ export class Collector {
       meta: {
         groups: [],
         combinedCharRange: CharRange.createEmptyRange(),
-        firstCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createFullRange(),
       },
     };
 

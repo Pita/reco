@@ -136,6 +136,7 @@ export interface NonBacktrackingQuantifier extends BaseTemplateAtom {
     maxOrMinCount?: boolean;
     minCount?: number;
     maxCount?: number;
+    wrappedHandler: FiberTemplateDefinition;
   };
 }
 
