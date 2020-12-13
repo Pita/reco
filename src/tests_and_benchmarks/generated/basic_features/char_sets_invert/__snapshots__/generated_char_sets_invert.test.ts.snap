@@ -33,14 +33,6 @@ Object {
       "functionName": "fiber0001",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            97,
-            98,
-            99,
-          ],
-          "negate": true,
-        },
         "firstCharRange": Object {
           "chars": Array [
             97,
@@ -83,14 +75,6 @@ Object {
     "functionName": "fiber0001",
     "lastAtomReturns": false,
     "meta": Object {
-      "combinedCharRange": Object {
-        "chars": Array [
-          97,
-          98,
-          99,
-        ],
-        "negate": true,
-      },
       "firstCharRange": Object {
         "chars": Array [
           97,

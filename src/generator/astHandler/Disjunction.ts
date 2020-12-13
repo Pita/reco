@@ -30,7 +30,7 @@ export const handleDisjunction = (
   const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
   const combinedCharRange = mappedAlternatives.reduce(
     (charRange, alternative) =>
-      charRange.union(alternative.meta.combinedCharRange),
+      charRange.union(alternative.meta.firstCharRange),
     CharRange.createEmptyRange(),
   );
 

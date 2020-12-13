@@ -31,12 +31,6 @@ Object {
               "functionName": "fiber0004",
               "lastAtomReturns": false,
               "meta": Object {
-                "combinedCharRange": Object {
-                  "chars": Array [
-                    97,
-                  ],
-                  "negate": false,
-                },
                 "firstCharRange": Object {
                   "chars": Array [
                     97,
@@ -78,12 +72,6 @@ Object {
               "functionName": "fiber0003",
               "lastAtomReturns": false,
               "meta": Object {
-                "combinedCharRange": Object {
-                  "chars": Array [
-                    66,
-                  ],
-                  "negate": false,
-                },
                 "firstCharRange": Object {
                   "chars": Array [
                     66,
@@ -125,12 +113,6 @@ Object {
               "functionName": "fiber0002",
               "lastAtomReturns": false,
               "meta": Object {
-                "combinedCharRange": Object {
-                  "chars": Array [
-                    99,
-                  ],
-                  "negate": false,
-                },
                 "firstCharRange": Object {
                   "chars": Array [
                     99,
@@ -150,14 +132,6 @@ Object {
       "functionName": "fiber0001",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            66,
-            97,
-            99,
-          ],
-          "negate": false,
-        },
         "firstCharRange": Object {
           "chars": Array [
             66,
@@ -191,12 +165,6 @@ Object {
       "functionName": "fiber0002",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            99,
-          ],
-          "negate": false,
-        },
         "firstCharRange": Object {
           "chars": Array [
             99,
@@ -229,12 +197,6 @@ Object {
       "functionName": "fiber0003",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            66,
-          ],
-          "negate": false,
-        },
         "firstCharRange": Object {
           "chars": Array [
             66,
@@ -267,12 +229,6 @@ Object {
       "functionName": "fiber0004",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            97,
-          ],
-          "negate": false,
-        },
         "firstCharRange": Object {
           "chars": Array [
             97,
@@ -311,12 +267,6 @@ Object {
             "functionName": "fiber0004",
             "lastAtomReturns": false,
             "meta": Object {
-              "combinedCharRange": Object {
-                "chars": Array [
-                  97,
-                ],
-                "negate": false,
-              },
               "firstCharRange": Object {
                 "chars": Array [
                   97,
@@ -358,12 +308,6 @@ Object {
             "functionName": "fiber0003",
             "lastAtomReturns": false,
             "meta": Object {
-              "combinedCharRange": Object {
-                "chars": Array [
-                  66,
-                ],
-                "negate": false,
-              },
               "firstCharRange": Object {
                 "chars": Array [
                   66,
@@ -405,12 +349,6 @@ Object {
             "functionName": "fiber0002",
             "lastAtomReturns": false,
             "meta": Object {
-              "combinedCharRange": Object {
-                "chars": Array [
-                  99,
-                ],
-                "negate": false,
-              },
               "firstCharRange": Object {
                 "chars": Array [
                   99,
@@ -430,14 +368,6 @@ Object {
     "functionName": "fiber0001",
     "lastAtomReturns": false,
     "meta": Object {
-      "combinedCharRange": Object {
-        "chars": Array [
-          66,
-          97,
-          99,
-        ],
-        "negate": false,
-      },
       "firstCharRange": Object {
         "chars": Array [
           66,

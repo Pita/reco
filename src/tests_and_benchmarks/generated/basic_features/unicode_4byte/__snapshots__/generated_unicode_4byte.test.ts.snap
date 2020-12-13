@@ -26,12 +26,6 @@ Object {
       "functionName": "fiber0001",
       "lastAtomReturns": false,
       "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            128516,
-          ],
-          "negate": false,
-        },
         "firstCharRange": Object {
           "chars": Array [
             128516,
@@ -65,12 +59,6 @@ Object {
     "functionName": "fiber0001",
     "lastAtomReturns": false,
     "meta": Object {
-      "combinedCharRange": Object {
-        "chars": Array [
-          128516,
-        ],
-        "negate": false,
-      },
       "firstCharRange": Object {
         "chars": Array [
           128516,

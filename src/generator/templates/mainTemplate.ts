@@ -13,7 +13,6 @@ export interface FunctionDefinition {
   followUp: FollowUp;
   meta: {
     groups: GroupReference[];
-    combinedCharRange: CharRange;
     firstCharRange: CharRange;
   };
 }

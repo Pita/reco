@@ -84,7 +84,6 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups,
-        combinedCharRange: CharRange.createEmptyRange(),
         firstCharRange: fiber.meta.firstCharRange,
       },
     };
@@ -101,7 +100,6 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups: [],
-        combinedCharRange: CharRange.createEmptyRange(),
         firstCharRange,
       },
     };
@@ -121,7 +119,6 @@ export class Collector {
       lastAtomReturns: true,
       meta: {
         groups: groups.slice(),
-        combinedCharRange: CharRange.createEmptyRange(),
         firstCharRange: followUpFiber.meta.firstCharRange,
       },
     };
@@ -142,7 +139,6 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups: [],
-        combinedCharRange: CharRange.createEmptyRange(),
         firstCharRange: followUpFirstChar,
       },
     };
@@ -156,8 +152,6 @@ export class Collector {
       wrappedHandler: quantifierFinalFiber,
       meta: {
         groups: [],
-        // TODO: why?!
-        combinedCharRange: CharRange.createEmptyRange(),
         firstCharRange: CharRange.createEmptyRange(),
       },
       ...this.formatAstLocation(ast),
@@ -189,9 +183,6 @@ export class Collector {
 
     currentFiber.atoms.unshift(newAtom);
     if (atomCharRange !== 'noCharRange') {
-      currentFiber.meta.combinedCharRange = currentFiber.meta.combinedCharRange.union(
-        atomCharRange,
-      );
       currentFiber.meta.firstCharRange = atomCharRange;
     }
     return currentFiber;
