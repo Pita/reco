@@ -11,7 +11,8 @@
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "build": "tsc --build",
     "start": "ts-node ./src/index",
-    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix"
+    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix",
+    "benchmark:faker": "ts-node -T ./src/benchmarking_with_faker/benchmark_fake_data.ts"
   },
   "repository": {
     "type": "git",
