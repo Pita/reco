@@ -544,11 +544,15 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "combinedCharRange": Object {
-          "chars": Array [],
+          "chars": Array [
+            97,
+          ],
           "negate": false,
         },
         "firstCharRange": Object {
-          "chars": Array [],
+          "chars": Array [
+            97,
+          ],
           "negate": false,
         },
         "groups": Array [
@@ -871,11 +875,15 @@ Object {
     "lastAtomReturns": true,
     "meta": Object {
       "combinedCharRange": Object {
-        "chars": Array [],
+        "chars": Array [
+          97,
+        ],
         "negate": false,
       },
       "firstCharRange": Object {
-        "chars": Array [],
+        "chars": Array [
+          97,
+        ],
         "negate": false,
       },
       "groups": Array [

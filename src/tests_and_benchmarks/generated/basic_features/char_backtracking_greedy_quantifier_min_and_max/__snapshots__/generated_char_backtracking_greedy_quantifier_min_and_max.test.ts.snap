@@ -15,7 +15,7 @@ Object {
         },
         "firstCharRange": Object {
           "chars": Array [],
-          "negate": true,
+          "negate": false,
         },
         "groups": Array [],
       },
@@ -47,7 +47,7 @@ Object {
             },
             "firstCharRange": Object {
               "chars": Array [],
-              "negate": true,
+              "negate": false,
             },
             "groups": Array [],
           },
@@ -146,8 +146,10 @@ Object {
           "negate": false,
         },
         "firstCharRange": Object {
-          "chars": Array [],
-          "negate": true,
+          "chars": Array [
+            97,
+          ],
+          "negate": false,
         },
         "groups": Array [
           Object {
@@ -204,7 +206,7 @@ Object {
                 },
                 "firstCharRange": Object {
                   "chars": Array [],
-                  "negate": true,
+                  "negate": false,
                 },
                 "groups": Array [],
               },
@@ -303,8 +305,10 @@ Object {
               "negate": false,
             },
             "firstCharRange": Object {
-              "chars": Array [],
-              "negate": true,
+              "chars": Array [
+                97,
+              ],
+              "negate": false,
             },
             "groups": Array [
               Object {
@@ -435,11 +439,15 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "combinedCharRange": Object {
-          "chars": Array [],
+          "chars": Array [
+            97,
+          ],
           "negate": false,
         },
         "firstCharRange": Object {
-          "chars": Array [],
+          "chars": Array [
+            97,
+          ],
           "negate": false,
         },
         "groups": Array [
@@ -465,7 +473,7 @@ Object {
           },
           "firstCharRange": Object {
             "chars": Array [],
-            "negate": true,
+            "negate": false,
           },
           "groups": Array [],
         },
@@ -584,7 +592,7 @@ Object {
               },
               "firstCharRange": Object {
                 "chars": Array [],
-                "negate": true,
+                "negate": false,
               },
               "groups": Array [],
             },
@@ -683,8 +691,10 @@ Object {
             "negate": false,
           },
           "firstCharRange": Object {
-            "chars": Array [],
-            "negate": true,
+            "chars": Array [
+              97,
+            ],
+            "negate": false,
           },
           "groups": Array [
             Object {
@@ -741,11 +751,15 @@ Object {
     "lastAtomReturns": true,
     "meta": Object {
       "combinedCharRange": Object {
-        "chars": Array [],
+        "chars": Array [
+          97,
+        ],
         "negate": false,
       },
       "firstCharRange": Object {
-        "chars": Array [],
+        "chars": Array [
+          97,
+        ],
         "negate": false,
       },
       "groups": Array [

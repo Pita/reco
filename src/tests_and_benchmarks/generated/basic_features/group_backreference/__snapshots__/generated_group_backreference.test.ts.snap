@@ -244,11 +244,8 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "combinedCharRange": Object {
-          "chars": Array [
-            34,
-            39,
-          ],
-          "negate": false,
+          "chars": Array [],
+          "negate": true,
         },
         "firstCharRange": Object {
           "chars": Array [
@@ -415,11 +412,8 @@ Object {
     "lastAtomReturns": true,
     "meta": Object {
       "combinedCharRange": Object {
-        "chars": Array [
-          34,
-          39,
-        ],
-        "negate": false,
+        "chars": Array [],
+        "negate": true,
       },
       "firstCharRange": Object {
         "chars": Array [

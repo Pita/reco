@@ -3,6 +3,7 @@ import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleDisjunction } from './Disjunction';
+import { CharRange } from '../CharRange';
 
 export const handleLookaroundAssertion = (
   lookaroundAssertion: AST.LookaroundAssertion,
@@ -17,7 +18,7 @@ export const handleLookaroundAssertion = (
   const lookaroundFiber = handleDisjunction(
     lookaroundAssertion.alternatives,
     collector,
-    collector.createFinalFiber(),
+    collector.createFinalFiber(CharRange.createEmptyRange()),
     newFlags,
   );
 

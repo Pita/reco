@@ -391,11 +391,19 @@ Object {
       "lastAtomReturns": true,
       "meta": Object {
         "combinedCharRange": Object {
-          "chars": Array [],
+          "chars": Array [
+            97,
+            98,
+            99,
+          ],
           "negate": false,
         },
         "firstCharRange": Object {
-          "chars": Array [],
+          "chars": Array [
+            97,
+            98,
+            99,
+          ],
           "negate": false,
         },
         "groups": Array [
@@ -665,11 +673,19 @@ Object {
                 "lastAtomReturns": true,
                 "meta": Object {
                   "combinedCharRange": Object {
-                    "chars": Array [],
+                    "chars": Array [
+                      97,
+                      98,
+                      99,
+                    ],
                     "negate": false,
                   },
                   "firstCharRange": Object {
-                    "chars": Array [],
+                    "chars": Array [
+                      97,
+                      98,
+                      99,
+                    ],
                     "negate": false,
                   },
                   "groups": Array [
@@ -880,6 +896,9 @@ Object {
       "meta": Object {
         "combinedCharRange": Object {
           "chars": Array [
+            97,
+            98,
+            99,
             100,
             101,
             102,
@@ -888,6 +907,9 @@ Object {
         },
         "firstCharRange": Object {
           "chars": Array [
+            97,
+            98,
+            99,
             100,
             101,
             102,
@@ -1088,11 +1110,19 @@ Object {
               "lastAtomReturns": true,
               "meta": Object {
                 "combinedCharRange": Object {
-                  "chars": Array [],
+                  "chars": Array [
+                    97,
+                    98,
+                    99,
+                  ],
                   "negate": false,
                 },
                 "firstCharRange": Object {
-                  "chars": Array [],
+                  "chars": Array [
+                    97,
+                    98,
+                    99,
+                  ],
                   "negate": false,
                 },
                 "groups": Array [
@@ -1303,6 +1333,9 @@ Object {
     "meta": Object {
       "combinedCharRange": Object {
         "chars": Array [
+          97,
+          98,
+          99,
           100,
           101,
           102,
@@ -1311,6 +1344,9 @@ Object {
       },
       "firstCharRange": Object {
         "chars": Array [
+          97,
+          98,
+          99,
           100,
           101,
           102,

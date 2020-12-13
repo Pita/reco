@@ -4,42 +4,147 @@ import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleElement } from './Element';
 import { BacktrackingError } from '../BacktrackingException';
+import { CharRange } from '../CharRange';
 
-const canQuantifierBacktrack = (
+const deriveFirstCharOfQuantifierIsolated = (
   quantifier: AST.Quantifier,
   collector: Collector,
-  currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ) => {
-  const fakeCollector = collector.fakeCollector();
+  const firstCharFakeCollector = collector.fakeCollector();
+  const firstCharFiber = handleElement(
+    quantifier.element,
+    firstCharFakeCollector,
+    firstCharFakeCollector.createFinalFiber(CharRange.createEmptyRange()),
+    {
+      ...flags,
+    },
+  );
+  return firstCharFiber.meta.firstCharRange;
+};
+
+const deriveFirstCharForQuantifierFollowUp = (
+  quantifier: AST.Quantifier,
+  currentFiber: FiberTemplateDefinition,
+  firstCharOfQuantifierIsolated: CharRange,
+) => {
+  return quantifier.max > 1
+    ? firstCharOfQuantifierIsolated.union(currentFiber.meta.firstCharRange)
+    : currentFiber.meta.firstCharRange;
+};
+
+const checkIfQuantifierHasInternalBacktracking = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  flags: Flags,
+  followUpFirstChar: CharRange,
+) => {
   try {
-    const wrappedHandler = handleElement(
+    const fakeCollector = collector.fakeCollector();
+    handleElement(
       quantifier.element,
       fakeCollector,
-      fakeCollector.createFinalFiber(),
+      fakeCollector.createFinalFiber(followUpFirstChar),
       {
         ...flags,
         INTERNAL_no_backtracking: true,
       },
     );
-
-    // console.log(quantifier);
-    // console.log('currentFiber', currentFiber);
-
-    const hasOverlap = wrappedHandler.meta.combinedCharRange.hasOverlap(
-      currentFiber.meta.firstCharRange,
-    );
-    // console.log('hasOverlap', hasOverlap);
-
-    return hasOverlap;
   } catch (e) {
     if (e instanceof BacktrackingError) {
-      console.log('internal backtracking');
       return true;
     }
 
     throw e;
   }
+
+  return false;
+};
+
+const checkIfQuantifierHasExternalBacktracking = (
+  firstCharOfQuantifierIsolated: CharRange,
+  currentFiber: FiberTemplateDefinition,
+) => {
+  return firstCharOfQuantifierIsolated.hasOverlap(
+    currentFiber.meta.firstCharRange,
+  );
+};
+
+const deriveFirstCharAfterQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  followUpFirstChar: CharRange,
+) => {
+  const fakeCollector = collector.fakeCollector();
+  const quantifierFiber = handleElement(
+    quantifier.element,
+    fakeCollector,
+    fakeCollector.createFinalFiber(followUpFirstChar),
+    {
+      ...flags,
+    },
+  );
+
+  return quantifier.min > 0
+    ? quantifierFiber.meta.firstCharRange
+    : quantifierFiber.meta.firstCharRange.union(
+        currentFiber.meta.firstCharRange,
+      );
+};
+
+const analyzeQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+) => {
+  // get first char isolated
+  // for forther analyzation generate
+  // followUpChar for one iteration
+  // check if its backtracking internally
+  // get resulting firstChar (independend of backtracking)
+
+  /* Results: 
+    - is backtracking internally
+    - is backtracking to the coming char
+    - the first char that comes out of this (if min 1, quantifier, else union)
+  */
+
+  const firstCharOfQuantifierIsolated = deriveFirstCharOfQuantifierIsolated(
+    quantifier,
+    collector,
+    flags,
+  );
+  const followUpFirstChar = deriveFirstCharForQuantifierFollowUp(
+    quantifier,
+    currentFiber,
+    firstCharOfQuantifierIsolated,
+  );
+  const hasInternalBacktracking = checkIfQuantifierHasInternalBacktracking(
+    quantifier,
+    collector,
+    flags,
+    followUpFirstChar,
+  );
+  const hasExternalBackTracking = checkIfQuantifierHasExternalBacktracking(
+    firstCharOfQuantifierIsolated,
+    currentFiber,
+  );
+  const firstCharAfterQuantifier = deriveFirstCharAfterQuantifier(
+    quantifier,
+    collector,
+    currentFiber,
+    flags,
+    followUpFirstChar,
+  );
+
+  return {
+    firstCharAfterQuantifier,
+    needsBacktracking: hasInternalBacktracking || hasExternalBackTracking,
+    followUpFirstChar,
+  };
 };
 
 const generateBacktrackingQuantifier = (
@@ -47,6 +152,8 @@ const generateBacktrackingQuantifier = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  firstCharAfterQuantifier: CharRange,
+  followUpFirstChar: CharRange,
 ) => {
   const {
     quantifierFinalFiber,
@@ -55,6 +162,7 @@ const generateBacktrackingQuantifier = (
     currentFiber,
     quantifier.greedy ? 'greedy' : 'lazy',
     quantifier,
+    followUpFirstChar,
   );
 
   const countParams = generateCountParams(quantifier);
@@ -88,7 +196,7 @@ const generateBacktrackingQuantifier = (
       },
       ast: quantifier,
     },
-    quantifierHandler.meta.firstCharRange,
+    firstCharAfterQuantifier,
   );
 };
 
@@ -105,11 +213,13 @@ const generateNonBacktrackingQuantifier = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  firstCharAfterQuantifier: CharRange,
+  followUpFirstChar: CharRange,
 ) => {
   const wrappedHandler = handleElement(
     quantifier.element,
     collector,
-    collector.createFinalFiber(),
+    collector.createFinalFiber(followUpFirstChar),
     flags,
   );
 
@@ -125,7 +235,7 @@ const generateNonBacktrackingQuantifier = (
       },
       ast: quantifier,
     },
-    wrappedHandler.meta.firstCharRange,
+    firstCharAfterQuantifier,
   );
 };
 
@@ -135,15 +245,13 @@ export const handleQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
-  const canBacktrack = canQuantifierBacktrack(
-    quantifier,
-    collector,
-    currentFiber,
-    flags,
-  );
-  // console.log('canBacktrack', canBacktrack);
+  const {
+    firstCharAfterQuantifier,
+    needsBacktracking,
+    followUpFirstChar,
+  } = analyzeQuantifier(quantifier, collector, currentFiber, flags);
 
-  if (canBacktrack) {
+  if (needsBacktracking) {
     if (flags.INTERNAL_no_backtracking) {
       throw new BacktrackingError();
     }
@@ -152,6 +260,8 @@ export const handleQuantifier = (
       collector,
       currentFiber,
       flags,
+      firstCharAfterQuantifier,
+      followUpFirstChar,
     );
   } else {
     return generateNonBacktrackingQuantifier(
@@ -159,6 +269,8 @@ export const handleQuantifier = (
       collector,
       currentFiber,
       flags,
+      firstCharAfterQuantifier,
+      followUpFirstChar,
     );
   }
 };

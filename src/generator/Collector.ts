@@ -92,7 +92,8 @@ export class Collector {
     return newFiber;
   }
 
-  createFinalFiber() {
+  // used by lookaround & non backtracking quantifier
+  createFinalFiber(firstCharRange: CharRange) {
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
@@ -101,7 +102,7 @@ export class Collector {
       meta: {
         groups: [],
         combinedCharRange: CharRange.createEmptyRange(),
-        firstCharRange: CharRange.createFullRange(),
+        firstCharRange,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -121,11 +122,57 @@ export class Collector {
       meta: {
         groups: groups.slice(),
         combinedCharRange: CharRange.createEmptyRange(),
-        firstCharRange: CharRange.createEmptyRange(),
+        firstCharRange: followUpFiber.meta.firstCharRange,
       },
     };
     this.fiberHandlers.push(newFiber);
     return newFiber;
+  }
+
+  createQuantifierFiberPair(
+    followUp: FiberTemplateDefinition,
+    type: 'greedy' | 'lazy',
+    ast: AST.Node,
+    followUpFirstChar: CharRange,
+  ) {
+    const quantifierFinalFiber: FiberTemplateDefinition = {
+      followUp: null,
+      atoms: [],
+      functionName: `fiber${this.getNewCount()}`,
+      lastAtomReturns: false,
+      meta: {
+        groups: [],
+        combinedCharRange: CharRange.createEmptyRange(),
+        firstCharRange: followUpFirstChar,
+      },
+    };
+
+    const quantifierHandler: any = {
+      followUp,
+      functionName:
+        type === 'greedy'
+          ? `greedyQuantifier${this.getNewCount()}`
+          : `lazyQuantifier${this.getNewCount()}`,
+      wrappedHandler: quantifierFinalFiber,
+      meta: {
+        groups: [],
+        // TODO: why?!
+        combinedCharRange: CharRange.createEmptyRange(),
+        firstCharRange: CharRange.createEmptyRange(),
+      },
+      ...this.formatAstLocation(ast),
+    };
+
+    quantifierFinalFiber.followUp = quantifierHandler;
+
+    this.fiberHandlers.push(quantifierFinalFiber);
+    if (type === 'greedy') {
+      this.greedyQuantifierHandlers.push(quantifierHandler);
+    } else {
+      this.lazyQuantifierHandlers.push(quantifierHandler);
+    }
+
+    return { quantifierFinalFiber, quantifierHandler };
   }
 
   addAtom(
@@ -148,50 +195,6 @@ export class Collector {
       currentFiber.meta.firstCharRange = atomCharRange;
     }
     return currentFiber;
-  }
-
-  createQuantifierFiberPair(
-    followUp: FiberTemplateDefinition,
-    type: 'greedy' | 'lazy',
-    ast: AST.Node,
-  ) {
-    const quantifierFinalFiber: FiberTemplateDefinition = {
-      followUp: null,
-      atoms: [],
-      functionName: `fiber${this.getNewCount()}`,
-      lastAtomReturns: false,
-      meta: {
-        groups: [],
-        combinedCharRange: CharRange.createEmptyRange(),
-        firstCharRange: CharRange.createFullRange(),
-      },
-    };
-
-    const quantifierHandler: any = {
-      followUp,
-      functionName:
-        type === 'greedy'
-          ? `greedyQuantifier${this.getNewCount()}`
-          : `lazyQuantifier${this.getNewCount()}`,
-      wrappedHandler: quantifierFinalFiber,
-      meta: {
-        groups: [],
-        combinedCharRange: CharRange.createEmptyRange(),
-        firstCharRange: CharRange.createEmptyRange(),
-      },
-      ...this.formatAstLocation(ast),
-    };
-
-    quantifierFinalFiber.followUp = quantifierHandler;
-
-    this.fiberHandlers.push(quantifierFinalFiber);
-    if (type === 'greedy') {
-      this.greedyQuantifierHandlers.push(quantifierHandler);
-    } else {
-      this.lazyQuantifierHandlers.push(quantifierHandler);
-    }
-
-    return { quantifierFinalFiber, quantifierHandler };
   }
 
   addCapturingGroup(

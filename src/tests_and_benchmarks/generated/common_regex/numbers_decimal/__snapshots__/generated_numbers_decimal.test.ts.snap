@@ -7,135 +7,6 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "$/",
-          "posLine2": "^",
-          "type": "endAnchor",
-        },
-      ],
-      "followUp": null,
-      "functionName": "fiber0001",
-      "lastAtomReturns": false,
-      "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [],
-          "negate": true,
-        },
-        "groups": Array [],
-      },
-    },
-    Object {
-      "atoms": Array [
-        Object {
-          "data": Object {
-            "negate": false,
-            "tree": Object {
-              "comparison": Object {
-                "comparisonValue": 57,
-                "type": "lessOrEqual",
-              },
-              "comparisonTrue": Object {
-                "comparison": Object {
-                  "comparisonValue": 48,
-                  "type": "moreOrEqual",
-                },
-                "type": "lastComparison",
-              },
-              "type": "comparison",
-            },
-            "unicode": false,
-          },
-          "posLine1": "\\\\d+$/",
-          "posLine2": "^^",
-          "type": "charOrSet",
-        },
-      ],
-      "followUp": Object {
-        "followUp": Object {
-          "atoms": Array [
-            Object {
-              "data": Object {},
-              "posLine1": "$/",
-              "posLine2": "^",
-              "type": "endAnchor",
-            },
-          ],
-          "followUp": null,
-          "functionName": "fiber0001",
-          "lastAtomReturns": false,
-          "meta": Object {
-            "combinedCharRange": Object {
-              "chars": Array [],
-              "negate": false,
-            },
-            "firstCharRange": Object {
-              "chars": Array [],
-              "negate": true,
-            },
-            "groups": Array [],
-          },
-        },
-        "functionName": "greedyQuantifier0003",
-        "maxOrMinCount": true,
-        "meta": Object {
-          "combinedCharRange": Object {
-            "chars": Array [],
-            "negate": false,
-          },
-          "firstCharRange": Object {
-            "chars": Array [],
-            "negate": false,
-          },
-          "groups": Array [],
-        },
-        "minCount": 1,
-        "posLine1": "\\\\d+$/",
-        "posLine2": "^^^",
-        "wrappedHandler": "[Circular]",
-      },
-      "functionName": "fiber0002",
-      "lastAtomReturns": false,
-      "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [
-            48,
-            49,
-            50,
-            51,
-            52,
-            53,
-            54,
-            55,
-            56,
-            57,
-          ],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [
-            48,
-            49,
-            50,
-            51,
-            52,
-            53,
-            54,
-            55,
-            56,
-            57,
-          ],
-          "negate": false,
-        },
-        "groups": Array [],
-      },
-    },
-    Object {
-      "atoms": Array [
-        Object {
-          "data": Object {},
           "posLine1": "^\\\\d*\\\\.\\\\d+$/",
           "posLine2": "^",
           "type": "startAnchor",
@@ -170,7 +41,7 @@ Object {
                 },
               ],
               "followUp": null,
-              "functionName": "fiber0005",
+              "functionName": "fiber0003",
               "lastAtomReturns": false,
               "meta": Object {
                 "combinedCharRange": Object {
@@ -229,21 +100,154 @@ Object {
         },
         Object {
           "data": Object {
-            "functionName": "greedyQuantifier0003",
             "maxOrMinCount": true,
+            "minCount": 1,
+            "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 57,
+                        "type": "lessOrEqual",
+                      },
+                      "comparisonTrue": Object {
+                        "comparison": Object {
+                          "comparisonValue": 48,
+                          "type": "moreOrEqual",
+                        },
+                        "type": "lastComparison",
+                      },
+                      "type": "comparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "\\\\d+$/",
+                  "posLine2": "^^",
+                  "type": "charOrSet",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0002",
+              "lastAtomReturns": false,
+              "meta": Object {
+                "combinedCharRange": Object {
+                  "chars": Array [
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                  ],
+                  "negate": false,
+                },
+                "firstCharRange": Object {
+                  "chars": Array [
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                  ],
+                  "negate": false,
+                },
+                "groups": Array [],
+              },
+            },
           },
           "posLine1": "\\\\d+$/",
           "posLine2": "^^^",
-          "type": "quantifierStarter",
+          "type": "nonBacktrackingQuantifier",
+        },
+        Object {
+          "data": Object {},
+          "posLine1": "$/",
+          "posLine2": "^",
+          "type": "endAnchor",
         },
       ],
       "followUp": null,
-      "functionName": "fiber0004",
-      "lastAtomReturns": true,
+      "functionName": "fiber0001",
+      "lastAtomReturns": false,
       "meta": Object {
         "combinedCharRange": Object {
           "chars": Array [
             46,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+          ],
+          "negate": false,
+        },
+        "firstCharRange": Object {
+          "chars": Array [
+            46,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+          ],
+          "negate": false,
+        },
+        "groups": Array [],
+      },
+    },
+    Object {
+      "atoms": Array [
+        Object {
+          "data": Object {
+            "negate": false,
+            "tree": Object {
+              "comparison": Object {
+                "comparisonValue": 57,
+                "type": "lessOrEqual",
+              },
+              "comparisonTrue": Object {
+                "comparison": Object {
+                  "comparisonValue": 48,
+                  "type": "moreOrEqual",
+                },
+                "type": "lastComparison",
+              },
+              "type": "comparison",
+            },
+            "unicode": false,
+          },
+          "posLine1": "\\\\d+$/",
+          "posLine2": "^^",
+          "type": "charOrSet",
+        },
+      ],
+      "followUp": null,
+      "functionName": "fiber0002",
+      "lastAtomReturns": false,
+      "meta": Object {
+        "combinedCharRange": Object {
+          "chars": Array [
             48,
             49,
             50,
@@ -302,7 +306,7 @@ Object {
         },
       ],
       "followUp": null,
-      "functionName": "fiber0005",
+      "functionName": "fiber0003",
       "lastAtomReturns": false,
       "meta": Object {
         "combinedCharRange": Object {
@@ -337,51 +341,6 @@ Object {
         },
         "groups": Array [],
       },
-    },
-  ],
-  "greedyQuantifierHandlers": Array [
-    Object {
-      "followUp": Object {
-        "atoms": Array [
-          Object {
-            "data": Object {},
-            "posLine1": "$/",
-            "posLine2": "^",
-            "type": "endAnchor",
-          },
-        ],
-        "followUp": null,
-        "functionName": "fiber0001",
-        "lastAtomReturns": false,
-        "meta": Object {
-          "combinedCharRange": Object {
-            "chars": Array [],
-            "negate": false,
-          },
-          "firstCharRange": Object {
-            "chars": Array [],
-            "negate": true,
-          },
-          "groups": Array [],
-        },
-      },
-      "functionName": "greedyQuantifier0003",
-      "maxOrMinCount": true,
-      "meta": Object {
-        "combinedCharRange": Object {
-          "chars": Array [],
-          "negate": false,
-        },
-        "firstCharRange": Object {
-          "chars": Array [],
-          "negate": false,
-        },
-        "groups": Array [],
-      },
-      "minCount": 1,
-      "posLine1": "\\\\d+$/",
-      "posLine2": "^^^",
-      "wrappedHandler": "[Circular]",
     },
   ],
   "mainHandler": Object {
@@ -422,7 +381,7 @@ Object {
               },
             ],
             "followUp": null,
-            "functionName": "fiber0005",
+            "functionName": "fiber0003",
             "lastAtomReturns": false,
             "meta": Object {
               "combinedCharRange": Object {
@@ -481,17 +440,86 @@ Object {
       },
       Object {
         "data": Object {
-          "functionName": "greedyQuantifier0003",
           "maxOrMinCount": true,
+          "minCount": 1,
+          "wrappedHandler": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 57,
+                      "type": "lessOrEqual",
+                    },
+                    "comparisonTrue": Object {
+                      "comparison": Object {
+                        "comparisonValue": 48,
+                        "type": "moreOrEqual",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "type": "comparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "\\\\d+$/",
+                "posLine2": "^^",
+                "type": "charOrSet",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0002",
+            "lastAtomReturns": false,
+            "meta": Object {
+              "combinedCharRange": Object {
+                "chars": Array [
+                  48,
+                  49,
+                  50,
+                  51,
+                  52,
+                  53,
+                  54,
+                  55,
+                  56,
+                  57,
+                ],
+                "negate": false,
+              },
+              "firstCharRange": Object {
+                "chars": Array [
+                  48,
+                  49,
+                  50,
+                  51,
+                  52,
+                  53,
+                  54,
+                  55,
+                  56,
+                  57,
+                ],
+                "negate": false,
+              },
+              "groups": Array [],
+            },
+          },
         },
         "posLine1": "\\\\d+$/",
         "posLine2": "^^^",
-        "type": "quantifierStarter",
+        "type": "nonBacktrackingQuantifier",
+      },
+      Object {
+        "data": Object {},
+        "posLine1": "$/",
+        "posLine2": "^",
+        "type": "endAnchor",
       },
     ],
     "followUp": null,
-    "functionName": "fiber0004",
-    "lastAtomReturns": true,
+    "functionName": "fiber0001",
+    "lastAtomReturns": false,
     "meta": Object {
       "combinedCharRange": Object {
         "chars": Array [
@@ -511,6 +539,7 @@ Object {
       },
       "firstCharRange": Object {
         "chars": Array [
+          46,
           48,
           49,
           50,

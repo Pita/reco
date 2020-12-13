@@ -2,6 +2,7 @@ import { AST, RegExpParser } from 'regexpp';
 import { Collector } from './Collector';
 import { genCodeFromTemplate } from './templates/mainTemplate';
 import { handleDisjunction } from './astHandler/Disjunction';
+import { CharRange } from './CharRange';
 
 export interface Flags extends AST.Flags {
   INTERNAL_backwards?: boolean;
@@ -16,7 +17,7 @@ export const genCode = (regexStr: string) => {
     const mainHandler = handleDisjunction(
       literal.pattern.alternatives,
       collector,
-      collector.createFinalFiber(),
+      collector.createFinalFiber(CharRange.createEmptyRange()),
       literal.flags,
     );
 

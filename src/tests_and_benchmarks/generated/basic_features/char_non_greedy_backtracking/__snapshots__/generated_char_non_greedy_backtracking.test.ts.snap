@@ -300,9 +300,12 @@ Object {
       "meta": Object {
         "combinedCharRange": Object {
           "chars": Array [
-            98,
+            10,
+            13,
+            8232,
+            8233,
           ],
-          "negate": false,
+          "negate": true,
         },
         "firstCharRange": Object {
           "chars": Array [
@@ -487,9 +490,12 @@ Object {
     "meta": Object {
       "combinedCharRange": Object {
         "chars": Array [
-          98,
+          10,
+          13,
+          8232,
+          8233,
         ],
-        "negate": false,
+        "negate": true,
       },
       "firstCharRange": Object {
         "chars": Array [
