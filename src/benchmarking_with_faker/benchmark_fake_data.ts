@@ -16,7 +16,7 @@ function runFakeDataBenchmark(file: string, regex: string) {
       __dirname,
       '../tests_and_benchmarks/generated',
       regex,
-      `generated_${regex.split('/')[1]}.ts`,
+      `generated_${regex.split('/')[1]}.min`,
     );
     return require(generatedRegexCodePath).generatedRegexMatcher;
   }

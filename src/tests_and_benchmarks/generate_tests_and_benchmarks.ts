@@ -8,6 +8,8 @@ import * as rimraf from 'rimraf';
 import * as path from 'path';
 import * as _ from 'lodash';
 import * as Handlebars from 'handlebars';
+import * as babel from '@babel/core';
+import * as uglify from 'uglify-js';
 const jsStringEscape = require('js-string-escape');
 const safeStringify = require('fast-safe-stringify');
 
@@ -132,6 +134,25 @@ configFiles
       fs.writeFileSync(
         `${testFolderName}/${fileName}.test.ts`,
         testCode,
+        'utf8',
+      );
+
+      const transformResult = babel.transformFileSync(
+        `${testFolderName}/${fileName}.ts`,
+        {
+          presets: [
+            [
+              '@babel/preset-env',
+              { targets: { node: 'current' }, forceAllTransforms: true },
+            ],
+            '@babel/preset-typescript',
+          ],
+        },
+      );
+      const uglifiedCode = uglify.minify(transformResult!.code!);
+      fs.writeFileSync(
+        `${testFolderName}/${fileName}.min.js`,
+        uglifiedCode.code,
         'utf8',
       );
 
