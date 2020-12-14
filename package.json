@@ -9,9 +9,7 @@
     "test:keep-snapshots": "npx jest",
     "test:run": "npx jest --updateSnapshot",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "build": "tsc --build",
-    "start": "ts-node ./src/index",
-    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix",
+    "typecheck": "tsc --noEmit",
     "benchmark:faker": "ts-node -T ./src/benchmarking_with_faker/benchmark_fake_data.ts",
     "faker:generate": "ts-node -T ./src/benchmarking_with_faker/generate_fake_data.ts"
   },

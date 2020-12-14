@@ -8,12 +8,6 @@ import templateValues from './{{{string fileName}}}_templateValues.json';
 // {{{testRegex}}}
 describe('{{{string testName}}}', () => {
   test('template values are as expected', () => {
-    Object.keys(templateValues).forEach(key => {
-      if (Array.isArray(templateValues[key]) && templateValues[key].length === 0) {
-        delete templateValues[key];
-      }
-    })
-
     expect(templateValues).toMatchSnapshot();
   });
   
@@ -25,14 +19,14 @@ describe('{{{string testName}}}', () => {
         expect(result).toBeNull();
       {{/if}}
       {{#unless isNull}}
-        expect(result.index).toBe({{{index}}});
+        expect(result?.index).toBe({{{index}}});
 
         {{#each groups}}
           {{#if isUndefined}}
-            expect(result.matches[{{@index}}]).toBeUndefined();
+            expect(result?.matches[{{@index}}]).toBeUndefined();
           {{/if}}
           {{#unless isUndefined}}
-            expect(result.matches[{{@index}}]).toBe('{{string value}}');
+            expect(result?.matches[{{@index}}]).toBe('{{string value}}');
           {{/unless}}
         {{/each}}
       {{/unless}}

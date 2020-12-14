@@ -279,6 +279,7 @@ Object {
       },
     },
   ],
+  "greedyQuantifierHandlers": Array [],
   "groups": Array [
     Object {
       "astStart": 1,

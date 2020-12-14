@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
 
 const toCharCode = (element: string | number) => {

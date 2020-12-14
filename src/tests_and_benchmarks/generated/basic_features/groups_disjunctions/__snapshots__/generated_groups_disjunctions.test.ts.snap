@@ -750,6 +750,7 @@ Object {
       },
     },
   ],
+  "greedyQuantifierHandlers": Array [],
   "groups": Array [
     Object {
       "astStart": 1,
@@ -768,6 +769,7 @@ Object {
       "idx": 3,
     },
   ],
+  "lazyQuantifierHandlers": Array [],
   "mainHandler": Object {
     "atoms": Array [
       Object {

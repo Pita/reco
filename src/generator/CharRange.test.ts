@@ -268,7 +268,7 @@ describe('CharRange', () => {
       });
 
       // a - z
-      let chars = [];
+      const chars = [];
       for (let i = 97; i <= 122; i++) {
         chars.push(i);
       }
@@ -293,7 +293,7 @@ describe('CharRange', () => {
       });
 
       // a - z
-      let chars = [];
+      const chars = [];
       for (let i = 48; i <= 57; i++) {
         chars.push(i);
       }

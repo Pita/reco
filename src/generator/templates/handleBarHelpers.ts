@@ -23,14 +23,16 @@ Handlebars.registerHelper('hasCallback', function (this: any, options) {
   }
 });
 
-Handlebars.registerHelper('groupStartArrayIndex', function (
-  groupReference: GroupReference,
-) {
-  return new Handlebars.SafeString('' + groupReference.idx * 2);
-});
+Handlebars.registerHelper(
+  'groupStartArrayIndex',
+  function (groupReference: GroupReference) {
+    return new Handlebars.SafeString('' + groupReference.idx * 2);
+  },
+);
 
-Handlebars.registerHelper('groupEndArrayIndex', function (
-  groupReference: GroupReference,
-) {
-  return new Handlebars.SafeString('' + (groupReference.idx * 2 + 1));
-});
+Handlebars.registerHelper(
+  'groupEndArrayIndex',
+  function (groupReference: GroupReference) {
+    return new Handlebars.SafeString('' + (groupReference.idx * 2 + 1));
+  },
+);

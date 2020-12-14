@@ -386,6 +386,9 @@ Object {
       },
     },
   ],
+  "greedyQuantifierHandlers": Array [],
+  "groups": Array [],
+  "lazyQuantifierHandlers": Array [],
   "mainHandler": Object {
     "atoms": Array [
       Object {

@@ -1,5 +1,5 @@
 import * as glob from 'glob';
-import mkdirp from 'mkdirp';
+import * as mkdirp from 'mkdirp';
 import * as fs from 'fs';
 import { genCode } from '../generator/generator';
 import testTemplate from './test_template';
@@ -63,7 +63,7 @@ configFiles
     if (config.type === 'textSearch') {
       const newTestInputs = config.testInputs.map((testInput) => {
         let start = 0;
-        let partlyMatches = [];
+        const partlyMatches = [];
         let result: RegExpExecArray | null;
         while ((result = nativeRegex.exec(testInput.substr(start))) !== null) {
           if (result === null) {
@@ -88,7 +88,7 @@ configFiles
         return { testInput, isNull: true };
       }
 
-      let groups = [];
+      const groups = [];
       for (let i = 0; i < result.length; i++) {
         groups.push({
           isUndefined: result[i] === undefined,

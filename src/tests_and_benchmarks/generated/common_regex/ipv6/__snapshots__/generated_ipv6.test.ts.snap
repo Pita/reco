@@ -34006,6 +34006,7 @@ Object {
       "idx": 29,
     },
   ],
+  "lazyQuantifierHandlers": Array [],
   "mainHandler": Object {
     "atoms": Array [
       Object {

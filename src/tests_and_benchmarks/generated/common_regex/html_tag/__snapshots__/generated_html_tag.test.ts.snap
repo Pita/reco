@@ -1758,6 +1758,8 @@ Object {
       "wrappedHandler": "[Circular]",
     },
   ],
+  "groups": Array [],
+  "lazyQuantifierHandlers": Array [],
   "mainHandler": Object {
     "atoms": Array [
       Object {

@@ -777,6 +777,7 @@ Object {
       "idx": 3,
     },
   ],
+  "lazyQuantifierHandlers": Array [],
   "mainHandler": Object {
     "atoms": Array [
       Object {
