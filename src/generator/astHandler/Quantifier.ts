@@ -100,18 +100,6 @@ const analyzeQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ) => {
-  // get first char isolated
-  // for forther analyzation generate
-  // followUpChar for one iteration
-  // check if its backtracking internally
-  // get resulting firstChar (independend of backtracking)
-
-  /* Results: 
-    - is backtracking internally
-    - is backtracking to the coming char
-    - the first char that comes out of this (if min 1, quantifier, else union)
-  */
-
   const firstCharOfQuantifierIsolated = deriveFirstCharOfQuantifierIsolated(
     quantifier,
     collector,
