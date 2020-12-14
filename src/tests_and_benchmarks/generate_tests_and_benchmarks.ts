@@ -54,7 +54,15 @@ configFiles
     }
     const testName = configFile.replace(/\.json$/, '');
 
-    const { code, templateValues, literal, error } = genCode(config.regex);
+    let code, templateValues, literal, error;
+    try {
+      const result = genCode(config.regex);
+      code = result.code;
+      templateValues = result.templateValues;
+      literal = result.literal;
+    } catch (e) {
+      error = e;
+    }
     const nativeRegex: RegExp = eval(config.regex);
     if (nativeRegex.global) {
       throw new Error("Can't correctly test global regex yet");

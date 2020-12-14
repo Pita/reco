@@ -11,20 +11,17 @@ export interface Flags extends AST.Flags {
 
 export const genCode = (regexStr: string) => {
   const literal = new RegExpParser().parseLiteral(regexStr);
-  let templateValues, code, error;
-  try {
-    const collector = new Collector(regexStr);
-    const mainHandler = handleDisjunction(
-      literal.pattern.alternatives,
-      collector,
-      collector.createFinalFiber(CharRange.createEmptyRange()),
-      literal.flags,
-    );
 
-    templateValues = { ...collector.getTemplateValues(), mainHandler };
-    code = genCodeFromTemplate(templateValues);
-  } catch (e) {
-    error = e;
-  }
-  return { code, templateValues, literal, error };
+  const collector = new Collector(regexStr);
+  const mainHandler = handleDisjunction(
+    literal.pattern.alternatives,
+    collector,
+    collector.createFinalFiber(CharRange.createEmptyRange()),
+    literal.flags,
+  );
+
+  const templateValues = { ...collector.getTemplateValues(), mainHandler };
+  const code = genCodeFromTemplate(templateValues);
+
+  return { code, templateValues, literal };
 };
