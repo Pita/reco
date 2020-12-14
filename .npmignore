@@ -2,3 +2,7 @@
 src
 lambda_benchmarking
 .github
+dist/tests_and_benchmarks
+dist/benchmarking_with_faker
+nextTodos.txt
+jest.config.js
