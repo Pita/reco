@@ -4,7 +4,10 @@ on: push
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: .
     steps:
       - uses: actions/setup-node@v2-beta
         with:
