@@ -5,14 +5,10 @@ on: push
 jobs:
   tests:
     runs-on: ubuntu-20.04
-    defaults:
-      run:
-        working-directory: .
     steps:
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/setup-node@v1
         with:
-          node-version: '15'
-          check-latest: true
+          node-version: '15.x'
       - run: npm install
       - run: npm run generate
       - run: npm run test:keep-snapshots
