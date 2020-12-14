@@ -1,0 +1,16 @@
+name: Push Workflow
+
+on: push
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '15'
+          check-latest: true
+      - run: npm install
+      - run: npm run generate
+      - run: npm run test:keep-snapshots
+      - run: npx tsc --noEmit
