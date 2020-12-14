@@ -14,3 +14,4 @@ jobs:
       - run: npm run generate
       - run: npm run test:keep-snapshots
       - run: npm run typecheck
+      - run: npm run prettier:check
