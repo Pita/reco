@@ -28,13 +28,16 @@ function runFakeDataBenchmark(file: string, regex: string) {
 
   function benchmarkNativeRegex(testData: string[]) {
     const originalRegex = getOriginalRegex();
+    console.log('originalRegex', originalRegex);
 
     const startOriginalRegex = Date.now();
     let sum = 0;
     testData.forEach((testValue: string) => {
       const match = originalRegex.exec(testValue);
       if (match) {
-        sum += match[0].length;
+        for (let i = 0; i < match.length; i++) {
+          sum += typeof match[i] === 'string' ? match[i].length : 0;
+        }
       }
     });
     const durationOriginalRegex = Date.now() - startOriginalRegex;
@@ -50,8 +53,11 @@ function runFakeDataBenchmark(file: string, regex: string) {
     let sum = 0;
     testData.forEach((testValue: string) => {
       const result = generatedRegex(testValue);
-      if (result) {
-        sum += result.matches[0].length;
+      if (result && result.match) {
+        for (let i = 0; i < result.match.length; i++) {
+          sum +=
+            typeof result.match[i] === 'string' ? result.match[i].length : 0;
+        }
       }
     });
     const durationGeneratedRegex = Date.now() - startGeneratedRegex;
@@ -70,12 +76,12 @@ function runFakeDataBenchmark(file: string, regex: string) {
   return factor;
 }
 
-runFakeDataBenchmark('emails', 'common_regex/email1');
-runFakeDataBenchmark('emails', 'common_regex/email2');
-runFakeDataBenchmark('emails', 'common_regex/email3');
-runFakeDataBenchmark('ip_v4', 'common_regex/ipv4');
-runFakeDataBenchmark('ip_v6', 'common_regex/ipv6');
-runFakeDataBenchmark('ip_v4', 'common_regex/ipv4_and_ipv6');
-runFakeDataBenchmark('ip_v6', 'common_regex/ipv4_and_ipv6');
+// runFakeDataBenchmark('emails', 'common_regex/email1');
+// runFakeDataBenchmark('emails', 'common_regex/email2');
+// runFakeDataBenchmark('emails', 'common_regex/email3');
+// runFakeDataBenchmark('ip_v4', 'common_regex/ipv4');
+// runFakeDataBenchmark('ip_v6', 'common_regex/ipv6');
+// runFakeDataBenchmark('ip_v4', 'common_regex/ipv4_and_ipv6');
+// runFakeDataBenchmark('ip_v6', 'common_regex/ipv4_and_ipv6');
 runFakeDataBenchmark('urls', 'common_regex/url_http');
 runFakeDataBenchmark('urls', 'common_regex/url_protocol_optional');

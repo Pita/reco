@@ -50,22 +50,22 @@ const LOCALES = [
 ];
 
 const configs = [
-  {
-    filename: 'emails',
-    fakerFunction: faker.internet.email,
-  },
+  // {
+  //   filename: 'emails',
+  //   fakerFunction: faker.internet.email,
+  // },
   {
     filename: 'urls',
-    fakerFunction: faker.internet.url,
+    fakerFunction: () => faker.fake('{{internet.url}}{{system.directoryPath}}'),
   },
-  {
-    filename: 'ip_v4',
-    fakerFunction: faker.internet.ip,
-  },
-  {
-    filename: 'ip_v6',
-    fakerFunction: faker.internet.ipv6,
-  },
+  // {
+  //   filename: 'ip_v4',
+  //   fakerFunction: faker.internet.ip,
+  // },
+  // {
+  //   filename: 'ip_v6',
+  //   fakerFunction: faker.internet.ipv6,
+  // },
 ];
 
 configs.forEach(({ filename, fakerFunction }) => {

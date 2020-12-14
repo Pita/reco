@@ -196,7 +196,7 @@ export function generatedRegexMatcher(str: string) {
           }
         {{/switchCase}}
         {{#switchCase 'wordBoundary'}}
-          if (i !== 0 && (i + 1) !== strLength) {
+          if (i !== 0 && i !== strLength) {
             // TODO: find way to generate these trees
             const charCodeBefore{{{@index}}} = str.charCodeAt(i-1);
             let isBeforeWord{{{@index}}} = false;
@@ -216,7 +216,7 @@ export function generatedRegexMatcher(str: string) {
               }
             }
 
-            const charCodeAfter{{{@index}}} = str.charCodeAt(i+1);
+            const charCodeAfter{{{@index}}} = str.charCodeAt(i);
             let isAfterWord{{{@index}}} = false;
             if (charCodeAfter{{{@index}}} <= 90) {
               if (charCodeAfter{{{@index}}} <= 57) {
