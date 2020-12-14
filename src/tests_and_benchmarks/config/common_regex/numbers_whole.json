@@ -1,12 +1,6 @@
 {
   "regex": "/^\\d+$/",
   "type": "groupMatch",
-  "testInputs": [
-    "45",
-    "45.5",
-    "+99",
-    "-100",
-    "0"
-  ],
+  "testInputs": ["45", "45.5", "+99", "-100", "0"],
   "mustPass": true
 }

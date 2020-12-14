@@ -1,12 +1,6 @@
 {
   "regex": "/(a{3}?)(a)/",
   "type": "groupMatch",
-  "testInputs": [
-    "a",
-    "aa",
-    "aaa",
-    "aaaa",
-    "aaaaa"
-  ],
+  "testInputs": ["a", "aa", "aaa", "aaaa", "aaaaa"],
   "mustPass": true
 }

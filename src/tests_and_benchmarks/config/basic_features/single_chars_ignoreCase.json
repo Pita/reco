@@ -1,11 +1,6 @@
 {
   "regex": "/def/i",
   "type": "groupMatch",
-  "testInputs": [
-    "deF",
-    "wDef",
-    "blDehf",
-    "Ee"
-  ],
+  "testInputs": ["deF", "wDef", "blDehf", "Ee"],
   "mustPass": true
 }

@@ -1,13 +1,6 @@
 {
   "regex": "/[a-c]*[B-X]+[c]?/",
   "type": "groupMatch",
-  "testInputs": [
-    "aacaB",
-    "D",
-    "Hc",
-    "aaaabbaaac",
-    "aaaaaB",
-    "Bcaaaa"
-  ],
+  "testInputs": ["aacaB", "D", "Hc", "aaaabbaaac", "aaaaaB", "Bcaaaa"],
   "mustPass": true
 }

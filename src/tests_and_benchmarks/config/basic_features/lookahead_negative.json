@@ -1,11 +1,6 @@
 {
   "regex": "/x(?!y)/",
   "type": "groupMatch",
-  "testInputs": [
-    "x",
-    "sdfsdx",
-    "xx",
-    "xksxy"
-  ],
+  "testInputs": ["x", "sdfsdx", "xx", "xksxy"],
   "mustPass": true
 }

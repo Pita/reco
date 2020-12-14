@@ -1,9 +1,6 @@
 {
   "regex": "/(['\"])(.*?)\\1/",
   "type": "groupMatch",
-  "testInputs": [
-    "He said: \"She's the one!\".",
-    "'aa'"
-  ],
+  "testInputs": ["He said: \"She's the one!\".", "'aa'"],
   "mustPass": true
 }
