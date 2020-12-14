@@ -1,6 +1,11 @@
 {
   "regex": "/\\D/",
   "type": "groupMatch",
-  "testInputs": ["0", "3", "a", "9"],
+  "testInputs": [
+    "0",
+    "3",
+    "a",
+    "9"
+  ],
   "mustPass": true
 }

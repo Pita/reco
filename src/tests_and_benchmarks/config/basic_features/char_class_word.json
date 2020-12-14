@@ -1,6 +1,14 @@
 {
   "regex": "/\\w/",
   "type": "groupMatch",
-  "testInputs": ["\t", " ", "a", "9", "\r", "\n", "\f"],
+  "testInputs": [
+    "\t",
+    " ",
+    "a",
+    "9",
+    "\r",
+    "\n",
+    "\f"
+  ],
   "mustPass": true
 }

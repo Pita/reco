@@ -1,4 +1,4 @@
 fake_data
 generated_*
 *.handlebars
-tests_and_benchmarks/config
+src/tests_and_benchmarks/config

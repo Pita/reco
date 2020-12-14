@@ -1,6 +1,12 @@
 {
   "regex": "/[a-zA-Z0-9]/",
   "type": "groupMatch",
-  "testInputs": ["hello", "what", "03aasdf90", "1223!8", ";,2342abc"],
+  "testInputs": [
+    "hello",
+    "what",
+    "03aasdf90",
+    "1223!8",
+    ";,2342abc"
+  ],
   "mustPass": true
 }

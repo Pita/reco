@@ -1,6 +1,10 @@
 {
   "regex": "/\\p{L}/u",
   "type": "groupMatch",
-  "testInputs": ["A", "ბ", "ㄱ"],
+  "testInputs": [
+    "A",
+    "ბ",
+    "ㄱ"
+  ],
   "mustPass": true
 }

@@ -1,6 +1,12 @@
 {
   "regex": "/(b.*?)(a)/",
   "type": "groupMatch",
-  "testInputs": ["b", "ba", "b9798798a", "bcda", "ab"],
+  "testInputs": [
+    "b",
+    "ba",
+    "b9798798a",
+    "bcda",
+    "ab"
+  ],
   "mustPass": true
 }
