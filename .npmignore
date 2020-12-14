@@ -6,3 +6,6 @@ dist/tests_and_benchmarks
 dist/benchmarking_with_faker
 nextTodos.txt
 jest.config.js
+test_cli_generated_code.js
+tsconfig.json
+babel.config.js
