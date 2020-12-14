@@ -30,6 +30,9 @@ const argv = yargs(process.argv.slice(2))
     }
     const regexStr = argv._[0];
     try {
+      if (typeof regexStr !== 'string') {
+        throw new Error('Invalid regex');
+      }
       validateRegExpLiteral(regexStr);
     } catch (e) {
       throw new Error(
@@ -64,7 +67,7 @@ const minify = (code: string) => {
   return uglify.minify(code).code;
 };
 
-const regexStr = argv._[0];
+const regexStr = argv._[0] as string;
 const { type, out } = argv;
 const { code } = genCode(regexStr);
 let processedCode;
