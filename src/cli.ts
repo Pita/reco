@@ -82,27 +82,24 @@ switch (type) {
 }
 
 const disclaimer = `
-/**
-  * This code was generated with RECO v${packageJSON.version}
-  * A Regular Expression to Code Compiler
-  * Visit: https://github.com/pita/reco
-  * 
-  * Generated from: '${regexStr}'
-  * 
-  * Use like this:
-  * 
-  * import { generatedRegexMatcher } from './THIS_FILE';
-  * const result = generatedRegexMatcher(str);
-  * console.log(result);
-  * 
-  * Outputs:
-  * {
-  *   index: 0, // position of the string that matched
-  *   matches: [ 'foo', 'bar'] // groups that matched
-  * }
-  * or null in case there is no match
-  * 
-  */
+// This code was generated with RECO v${packageJSON.version}
+// A Regular Expression to Code Compiler
+// Visit: https://github.com/pita/reco
+// 
+// Generated from: '${regexStr}'
+// 
+// Use like this:
+// 
+// import { generatedRegexMatcher } from './THIS_FILE';
+// const result = generatedRegexMatcher(str);
+// console.log(result);
+// 
+// Outputs:
+// {
+//   index: 0, // position of the string that matched
+//   matches: [ 'foo', 'bar'] // groups that matched
+// }
+// or null in case there is no match
 `;
 
 fs.writeFileSync(out, disclaimer + processedCode, 'utf8');

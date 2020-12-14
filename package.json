@@ -17,7 +17,7 @@
     "build": "rm -rf dist && tsc &&  cp -v src/generator/templates/*.handlebars dist/generator/templates/ && chmod +x ./dist/cli.js"
   },
   "bin": {
-    "reco": "./dist/cli.js"
+    "reco.io": "./dist/cli.js"
   },
   "repository": {
     "type": "git",

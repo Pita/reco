@@ -15,3 +15,10 @@ jobs:
       - run: npm run test:keep-snapshots
       - run: npm run typecheck
       - run: npm run prettier:check
+
+      # verify cli
+      - run: npm run build
+      - run: rm -rf node_modules; npm install --production
+      - run: npm install -g
+      - run: reco.io -o test.js '/[0-9a-z]*/i'
+      - run: node test_cli_generated_code.js
