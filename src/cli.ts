@@ -1,4 +1,9 @@
 #!/usr/bin/env node
+// Hack to workaround with an issue requiring a babel preset within npx
+import * as path from 'path';
+process.env.NODE_PATH = path.resolve(__dirname, '../..');
+require('module').Module._initPaths();
+
 import yargs from 'yargs';
 import { validateRegExpLiteral } from 'regexpp';
 import { genCode } from './generator/generator';
