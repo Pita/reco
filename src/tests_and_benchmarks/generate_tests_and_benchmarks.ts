@@ -164,7 +164,11 @@ configFiles
         'utf8',
       );
 
-      fs.writeFileSync(`${benchmarkFolderName}/${fileName}.ts`, code, 'utf8');
+      fs.writeFileSync(
+        `${benchmarkFolderName}/${fileName}.min.js`,
+        uglifiedCode.code,
+        'utf8',
+      );
       fs.writeFileSync(
         `${benchmarkFolderName}/${fileName}.benchmark.ts`,
         benchmarkCode,

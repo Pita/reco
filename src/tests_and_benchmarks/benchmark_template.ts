@@ -3,7 +3,7 @@ import * as Handlebars from 'handlebars';
 
 const template = `
   const Benchmark = require('benchmark');
-  import { generatedRegexMatcher } from './{{{string fileName}}}';
+  import { generatedRegexMatcher } from './{{{string fileName}}}.min.js';
 
   export function benchmark() {
     return new Promise((resolve, reject) => {
