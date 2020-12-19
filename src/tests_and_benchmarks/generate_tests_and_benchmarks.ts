@@ -61,6 +61,7 @@ configFiles
       templateValues = result.templateValues;
       literal = result.literal;
     } catch (e) {
+      console.error(e);
       error = e;
     }
     const nativeRegex: RegExp = eval(config.regex);
@@ -127,12 +128,13 @@ configFiles
     mkdirp.sync(testFolderName);
     mkdirp.sync(benchmarkFolderName);
 
-    fs.writeFileSync(
-      `${testFolderName}/${fileName}_pattern.json`,
-      safeStringify(literal, null, 2),
-      'utf8',
-    );
     if (code && templateValues) {
+      fs.writeFileSync(
+        `${testFolderName}/${fileName}_pattern.json`,
+        safeStringify(literal, null, 2),
+        'utf8',
+      );
+
       fs.writeFileSync(`${testFolderName}/${fileName}.ts`, code, 'utf8');
       fs.writeFileSync(
         `${testFolderName}/${fileName}_templateValues.json`,

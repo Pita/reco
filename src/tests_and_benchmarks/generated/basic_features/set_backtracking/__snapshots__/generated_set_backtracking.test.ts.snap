@@ -584,6 +584,7 @@ Object {
         "minCount": 1,
         "posLine1": "[a-z]+)([h-o])([...",
         "posLine2": "^^^^^^",
+        "quantifierCounterIndex": 0,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0003",
@@ -640,6 +641,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0004",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 0,
           },
           "posLine1": "[a-z]+)([h-o])([...",
           "posLine2": "^^^^^^",
@@ -965,6 +967,7 @@ Object {
       "minCount": 1,
       "posLine1": "[a-z]+)([h-o])([...",
       "posLine2": "^^^^^^",
+      "quantifierCounterIndex": 0,
       "wrappedHandler": "[Circular]",
     },
   ],
@@ -1004,6 +1007,7 @@ Object {
         "data": Object {
           "functionName": "greedyQuantifier0004",
           "maxOrMinCount": true,
+          "quantifierCounterIndex": 0,
         },
         "posLine1": "[a-z]+)([h-o])([...",
         "posLine2": "^^^^^^",
@@ -1065,6 +1069,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 1,
   "regexStr": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
 }
 `;

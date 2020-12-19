@@ -437,6 +437,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/(.*?)(a)/",
 }
 `;

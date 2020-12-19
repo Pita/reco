@@ -398,6 +398,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/(['\\"])(.*?)\\\\1/",
 }
 `;

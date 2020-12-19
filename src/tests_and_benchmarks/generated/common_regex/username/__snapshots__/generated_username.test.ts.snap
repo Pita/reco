@@ -505,6 +505,7 @@ Object {
       "groups": Array [],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/^[a-z0-9_-]{3,16}$/",
 }
 `;

@@ -243,6 +243,7 @@ Object {
       "groups": Array [],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/^\\\\d+$/",
 }
 `;

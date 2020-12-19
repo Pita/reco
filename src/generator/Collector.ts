@@ -9,6 +9,7 @@ import {
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
 import { CharRange } from './CharRange';
+import { Quantifier } from 'regexpp/ast';
 
 type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   ast: AST.Node;
@@ -27,6 +28,10 @@ export function mergeGroupsOfFibers(forks: FiberTemplateDefinition[]) {
   return groups;
 }
 
+interface QuantifierCounter {
+  ast: AST.Quantifier;
+}
+
 export class Collector {
   private regexStr: string;
   private counter = 0;
@@ -34,6 +39,7 @@ export class Collector {
   private fiberHandlers: FiberTemplateDefinition[] = [];
   private greedyQuantifierHandlers: QuantifierTemplateDefinition[] = [];
   private lazyQuantifierHandlers: QuantifierTemplateDefinition[] = [];
+  private quantifierCounters: QuantifierCounter[] = [];
 
   constructor(regexStr: string) {
     this.regexStr = regexStr;
@@ -129,7 +135,7 @@ export class Collector {
   createQuantifierFiberPair(
     followUp: FiberTemplateDefinition,
     type: 'greedy' | 'lazy',
-    ast: AST.Node,
+    ast: AST.Quantifier,
     followUpFirstChar: CharRange,
   ) {
     const quantifierFinalFiber: FiberTemplateDefinition = {
@@ -167,6 +173,17 @@ export class Collector {
     }
 
     return { quantifierFinalFiber, quantifierHandler };
+  }
+
+  addQuantifierCounter(ast: Quantifier) {
+    let quantifierCounterIndex = this.quantifierCounters.findIndex(
+      (counter) => counter.ast.start === ast.start,
+    );
+    if (quantifierCounterIndex === -1) {
+      this.quantifierCounters.push({ ast });
+      quantifierCounterIndex = this.quantifierCounters.length - 1;
+    }
+    return quantifierCounterIndex;
   }
 
   addAtom(
@@ -226,6 +243,7 @@ export class Collector {
       greedyQuantifierHandlers: this.greedyQuantifierHandlers,
       lazyQuantifierHandlers: this.lazyQuantifierHandlers,
       groups: this.groups,
+      quantifierCountersLength: this.quantifierCounters.length,
     };
   }
 }

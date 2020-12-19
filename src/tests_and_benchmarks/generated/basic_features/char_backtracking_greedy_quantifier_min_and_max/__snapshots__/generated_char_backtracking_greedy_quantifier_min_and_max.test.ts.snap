@@ -62,6 +62,7 @@ Object {
         "minCount": 3,
         "posLine1": "(aa?){3}/",
         "posLine2": "^^^^^^^^",
+        "quantifierCounterIndex": 0,
         "wrappedHandler": Object {
           "atoms": Array [
             Object {
@@ -95,6 +96,7 @@ Object {
               "data": Object {
                 "functionName": "greedyQuantifier0005",
                 "maxOrMinCount": true,
+                "quantifierCounterIndex": 1,
               },
               "posLine1": "a?){3}/",
               "posLine2": "^^",
@@ -203,6 +205,7 @@ Object {
             "minCount": 3,
             "posLine1": "(aa?){3}/",
             "posLine2": "^^^^^^^^",
+            "quantifierCounterIndex": 0,
             "wrappedHandler": Object {
               "atoms": Array [
                 Object {
@@ -236,6 +239,7 @@ Object {
                   "data": Object {
                     "functionName": "greedyQuantifier0005",
                     "maxOrMinCount": true,
+                    "quantifierCounterIndex": 1,
                   },
                   "posLine1": "a?){3}/",
                   "posLine2": "^^",
@@ -295,6 +299,7 @@ Object {
         },
         "posLine1": "a?){3}/",
         "posLine2": "^^",
+        "quantifierCounterIndex": 1,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0004",
@@ -342,6 +347,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0005",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 1,
           },
           "posLine1": "a?){3}/",
           "posLine2": "^^",
@@ -372,6 +378,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0003",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 0,
           },
           "posLine1": "(aa?){3}/",
           "posLine2": "^^^^^^^^",
@@ -430,6 +437,7 @@ Object {
       "minCount": 3,
       "posLine1": "(aa?){3}/",
       "posLine2": "^^^^^^^^",
+      "quantifierCounterIndex": 0,
       "wrappedHandler": Object {
         "atoms": Array [
           Object {
@@ -463,6 +471,7 @@ Object {
             "data": Object {
               "functionName": "greedyQuantifier0005",
               "maxOrMinCount": true,
+              "quantifierCounterIndex": 1,
             },
             "posLine1": "a?){3}/",
             "posLine2": "^^",
@@ -535,6 +544,7 @@ Object {
           "minCount": 3,
           "posLine1": "(aa?){3}/",
           "posLine2": "^^^^^^^^",
+          "quantifierCounterIndex": 0,
           "wrappedHandler": Object {
             "atoms": Array [
               Object {
@@ -568,6 +578,7 @@ Object {
                 "data": Object {
                   "functionName": "greedyQuantifier0005",
                   "maxOrMinCount": true,
+                  "quantifierCounterIndex": 1,
                 },
                 "posLine1": "a?){3}/",
                 "posLine2": "^^",
@@ -627,6 +638,7 @@ Object {
       },
       "posLine1": "a?){3}/",
       "posLine2": "^^",
+      "quantifierCounterIndex": 1,
       "wrappedHandler": "[Circular]",
     },
   ],
@@ -643,6 +655,7 @@ Object {
         "data": Object {
           "functionName": "greedyQuantifier0003",
           "maxOrMinCount": true,
+          "quantifierCounterIndex": 0,
         },
         "posLine1": "(aa?){3}/",
         "posLine2": "^^^^^^^^",
@@ -667,6 +680,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 2,
   "regexStr": "/(aa?){3}/",
 }
 `;

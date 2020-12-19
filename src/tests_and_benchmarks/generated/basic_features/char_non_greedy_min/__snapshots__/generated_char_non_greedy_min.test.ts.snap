@@ -193,6 +193,7 @@ Object {
         "minCount": 3,
         "posLine1": "a{3}?)(a)/",
         "posLine2": "^^^^^",
+        "quantifierCounterIndex": 0,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0002",
@@ -224,6 +225,7 @@ Object {
           "data": Object {
             "functionName": "lazyQuantifier0003",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 0,
           },
           "posLine1": "a{3}?)(a)/",
           "posLine2": "^^^^^",
@@ -362,6 +364,7 @@ Object {
       "minCount": 3,
       "posLine1": "a{3}?)(a)/",
       "posLine2": "^^^^^",
+      "quantifierCounterIndex": 0,
       "wrappedHandler": "[Circular]",
     },
   ],
@@ -382,6 +385,7 @@ Object {
         "data": Object {
           "functionName": "lazyQuantifier0003",
           "maxOrMinCount": true,
+          "quantifierCounterIndex": 0,
         },
         "posLine1": "a{3}?)(a)/",
         "posLine2": "^^^^^",
@@ -410,6 +414,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 1,
   "regexStr": "/(a{3}?)(a)/",
 }
 `;

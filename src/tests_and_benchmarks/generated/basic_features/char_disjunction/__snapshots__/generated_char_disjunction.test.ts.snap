@@ -351,6 +351,7 @@ Object {
       "groups": Array [],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/a|b|f/",
 }
 `;

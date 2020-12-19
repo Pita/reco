@@ -1938,6 +1938,7 @@ Object {
         "minCount": 3,
         "posLine1": "(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-...",
         "posLine2": "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "quantifierCounterIndex": 0,
         "wrappedHandler": Object {
           "atoms": Array [
             Object {
@@ -3376,6 +3377,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0010",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 0,
           },
           "posLine1": "(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-...",
           "posLine2": "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -4059,6 +4061,7 @@ Object {
       "minCount": 3,
       "posLine1": "(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-...",
       "posLine2": "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "quantifierCounterIndex": 0,
       "wrappedHandler": Object {
         "atoms": Array [
           Object {
@@ -4565,6 +4568,7 @@ Object {
         "data": Object {
           "functionName": "greedyQuantifier0010",
           "maxOrMinCount": true,
+          "quantifierCounterIndex": 0,
         },
         "posLine1": "(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-...",
         "posLine2": "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -4606,6 +4610,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 1,
   "regexStr": "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",
 }
 `;

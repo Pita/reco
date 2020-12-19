@@ -629,6 +629,7 @@ Object {
       "groups": Array [],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/^[a-zA-Z0-9 ]*$/",
 }
 `;

@@ -13,16 +13,6 @@ Handlebars.registerHelper('switchCase', function (this: any, type, options) {
   }
 });
 
-Handlebars.registerHelper('hasCallback', function (this: any, options) {
-  const hasCallback = this.followUp?.functionName === 'callback';
-
-  if (hasCallback) {
-    return options.fn(this);
-  } else {
-    return options.inverse(this);
-  }
-});
-
 Handlebars.registerHelper(
   'groupStartArrayIndex',
   function (groupReference: GroupReference) {
@@ -36,3 +26,9 @@ Handlebars.registerHelper(
     return new Handlebars.SafeString('' + (groupReference.idx * 2 + 1));
   },
 );
+
+Handlebars.registerHelper('times', function (n, block) {
+  let accum = '';
+  for (let i = 0; i < n; i++) accum += block.fn(i);
+  return accum;
+});

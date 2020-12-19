@@ -965,6 +965,7 @@ Object {
         "minCount": 2,
         "posLine1": "...]{2,256}\\\\.[a-z]{2,6}\\\\b([-a-zA-...",
         "posLine2": "             ^^^^^^^^^^",
+        "quantifierCounterIndex": 0,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0003",
@@ -1026,6 +1027,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0004",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 0,
           },
           "posLine1": "...]{2,256}\\\\.[a-z]{2,6}\\\\b([-a-zA-...",
           "posLine2": "             ^^^^^^^^^^",
@@ -1204,6 +1206,7 @@ Object {
               "data": Object {
                 "functionName": "greedyQuantifier0004",
                 "maxOrMinCount": true,
+                "quantifierCounterIndex": 0,
               },
               "posLine1": "...]{2,256}\\\\.[a-z]{2,6}\\\\b([-a-zA-...",
               "posLine2": "             ^^^^^^^^^^",
@@ -1246,6 +1249,7 @@ Object {
         "minCount": 2,
         "posLine1": "...)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,...",
         "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "quantifierCounterIndex": 1,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0006",
@@ -1337,6 +1341,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0007",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 1,
           },
           "posLine1": "...)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,...",
           "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -1528,6 +1533,7 @@ Object {
               "data": Object {
                 "functionName": "greedyQuantifier0007",
                 "maxOrMinCount": true,
+                "quantifierCounterIndex": 1,
               },
               "posLine1": "...)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,...",
               "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -1644,6 +1650,7 @@ Object {
         },
         "posLine1": "...ps?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-...",
         "posLine2": "             ^^^^^^^^",
+        "quantifierCounterIndex": 2,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0009",
@@ -1669,6 +1676,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0010",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 2,
           },
           "posLine1": "...ps?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-...",
           "posLine2": "             ^^^^^^^^",
@@ -1953,6 +1961,7 @@ Object {
               "data": Object {
                 "functionName": "greedyQuantifier0010",
                 "maxOrMinCount": true,
+                "quantifierCounterIndex": 2,
               },
               "posLine1": "...ps?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-...",
               "posLine2": "             ^^^^^^^^",
@@ -2077,6 +2086,7 @@ Object {
         },
         "posLine1": "(https?:\\\\/\\\\/)?(www\\\\.)?[-...",
         "posLine2": "^^^^^^^^^^^^^^",
+        "quantifierCounterIndex": 3,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0012",
@@ -2134,6 +2144,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0013",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 3,
           },
           "posLine1": "(https?:\\\\/\\\\/)?(www\\\\.)?[-...",
           "posLine2": "^^^^^^^^^^^^^^",
@@ -2608,6 +2619,7 @@ Object {
       "minCount": 2,
       "posLine1": "...]{2,256}\\\\.[a-z]{2,6}\\\\b([-a-zA-...",
       "posLine2": "             ^^^^^^^^^^",
+      "quantifierCounterIndex": 0,
       "wrappedHandler": "[Circular]",
     },
     Object {
@@ -2633,6 +2645,7 @@ Object {
             "data": Object {
               "functionName": "greedyQuantifier0004",
               "maxOrMinCount": true,
+              "quantifierCounterIndex": 0,
             },
             "posLine1": "...]{2,256}\\\\.[a-z]{2,6}\\\\b([-a-zA-...",
             "posLine2": "             ^^^^^^^^^^",
@@ -2675,6 +2688,7 @@ Object {
       "minCount": 2,
       "posLine1": "...)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,...",
       "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "quantifierCounterIndex": 1,
       "wrappedHandler": "[Circular]",
     },
     Object {
@@ -2684,6 +2698,7 @@ Object {
             "data": Object {
               "functionName": "greedyQuantifier0007",
               "maxOrMinCount": true,
+              "quantifierCounterIndex": 1,
             },
             "posLine1": "...)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,...",
             "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -2800,6 +2815,7 @@ Object {
       },
       "posLine1": "...ps?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-...",
       "posLine2": "             ^^^^^^^^",
+      "quantifierCounterIndex": 2,
       "wrappedHandler": "[Circular]",
     },
     Object {
@@ -2809,6 +2825,7 @@ Object {
             "data": Object {
               "functionName": "greedyQuantifier0010",
               "maxOrMinCount": true,
+              "quantifierCounterIndex": 2,
             },
             "posLine1": "...ps?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-...",
             "posLine2": "             ^^^^^^^^",
@@ -2933,6 +2950,7 @@ Object {
       },
       "posLine1": "(https?:\\\\/\\\\/)?(www\\\\.)?[-...",
       "posLine2": "^^^^^^^^^^^^^^",
+      "quantifierCounterIndex": 3,
       "wrappedHandler": "[Circular]",
     },
   ],
@@ -2957,6 +2975,7 @@ Object {
         "data": Object {
           "functionName": "greedyQuantifier0013",
           "maxOrMinCount": true,
+          "quantifierCounterIndex": 3,
         },
         "posLine1": "(https?:\\\\/\\\\/)?(www\\\\.)?[-...",
         "posLine2": "^^^^^^^^^^^^^^",
@@ -3060,6 +3079,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 4,
   "regexStr": "/(https?:\\\\/\\\\/)?(www\\\\.)?[-a-zA-Z0-9@:%._\\\\+~#=]{2,256}\\\\.[a-z]{2,6}\\\\b([-a-zA-Z0-9@:%_\\\\+.~#?&//=]*)/",
 }
 `;

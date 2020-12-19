@@ -158,6 +158,12 @@ const generateBacktrackingQuantifier = (
   quantifierHandler.maxCount = countParams.maxCount;
   quantifierHandler.maxOrMinCount = countParams.maxOrMinCount;
 
+  if (countParams.maxOrMinCount) {
+    quantifierHandler.quantifierCounterIndex = collector.addQuantifierCounter(
+      quantifier,
+    );
+  }
+
   const wrappedHandler = handleElement(
     quantifier.element,
     collector,
@@ -181,6 +187,7 @@ const generateBacktrackingQuantifier = (
       data: {
         maxOrMinCount: quantifierHandler.maxOrMinCount,
         functionName: quantifierHandler.functionName,
+        quantifierCounterIndex: quantifierHandler.quantifierCounterIndex,
       },
       ast: quantifier,
     },

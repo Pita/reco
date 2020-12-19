@@ -320,6 +320,7 @@ Object {
         "minCount": 2,
         "posLine1": "[a-c]{2}|[d-f]{2})...",
         "posLine2": "^^^^^^^^",
+        "quantifierCounterIndex": 0,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0003",
@@ -342,6 +343,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0004",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 0,
           },
           "posLine1": "[a-c]{2}|[d-f]{2})...",
           "posLine2": "^^^^^^^^",
@@ -586,6 +588,7 @@ Object {
                     "data": Object {
                       "functionName": "greedyQuantifier0004",
                       "maxOrMinCount": true,
+                      "quantifierCounterIndex": 0,
                     },
                     "posLine1": "[a-c]{2}|[d-f]{2})...",
                     "posLine2": "^^^^^^^^",
@@ -933,6 +936,7 @@ Object {
       "minCount": 2,
       "posLine1": "[a-c]{2}|[d-f]{2})...",
       "posLine2": "^^^^^^^^",
+      "quantifierCounterIndex": 0,
       "wrappedHandler": "[Circular]",
     },
   ],
@@ -969,6 +973,7 @@ Object {
                   "data": Object {
                     "functionName": "greedyQuantifier0004",
                     "maxOrMinCount": true,
+                    "quantifierCounterIndex": 0,
                   },
                   "posLine1": "[a-c]{2}|[d-f]{2})...",
                   "posLine2": "^^^^^^^^",
@@ -1194,6 +1199,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 1,
   "regexStr": "/([a-c]{2}|[d-f]{2})(a)/",
 }
 `;

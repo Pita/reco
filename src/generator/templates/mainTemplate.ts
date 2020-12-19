@@ -29,6 +29,7 @@ export interface QuantifierTemplateDefinition extends FunctionDefinition {
   maxCount?: number;
   posLine1: string;
   posLine2: string;
+  quantifierCounterIndex?: number;
 }
 
 export type FollowUp = FunctionDefinition | null;
@@ -162,6 +163,7 @@ export interface TemplateValues {
   mainHandler: FiberTemplateDefinition;
   regexStr: string;
   groups: GroupReference[];
+  quantifierCountersLength: number;
 }
 
 registerLeafPartial();

@@ -71,6 +71,7 @@ Object {
       "groups": Array [],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/\\\\u{1f604}/u",
 }
 `;

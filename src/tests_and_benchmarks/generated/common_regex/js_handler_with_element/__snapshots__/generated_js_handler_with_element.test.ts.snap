@@ -426,6 +426,7 @@ Object {
                             "data": Object {
                               "functionName": "greedyQuantifier0008",
                               "maxOrMinCount": true,
+                              "quantifierCounterIndex": 1,
                             },
                             "posLine1": "...\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
                             "posLine2": "             ^^^",
@@ -709,6 +710,7 @@ Object {
         "minCount": 1,
         "posLine1": "...S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
         "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "quantifierCounterIndex": 0,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0003",
@@ -934,6 +936,7 @@ Object {
         "minCount": 1,
         "posLine1": "...\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
         "posLine2": "             ^^^",
+        "quantifierCounterIndex": 1,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0007",
@@ -1198,6 +1201,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0008",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 1,
           },
           "posLine1": "...\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
           "posLine2": "             ^^^",
@@ -1725,6 +1729,7 @@ Object {
                     "data": Object {
                       "functionName": "greedyQuantifier0008",
                       "maxOrMinCount": true,
+                      "quantifierCounterIndex": 1,
                     },
                     "posLine1": "...\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
                     "posLine2": "             ^^^",
@@ -1884,6 +1889,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0004",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 0,
           },
           "posLine1": "...S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
           "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -1949,6 +1955,7 @@ Object {
               "data": Object {
                 "functionName": "greedyQuantifier0004",
                 "maxOrMinCount": true,
+                "quantifierCounterIndex": 0,
               },
               "posLine1": "...S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
               "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -1993,6 +2000,7 @@ Object {
         },
         "posLine1": "...s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
         "posLine2": "             ^^^^^",
+        "quantifierCounterIndex": 2,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0015",
@@ -2041,6 +2049,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0016",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 2,
           },
           "posLine1": "...s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
           "posLine2": "             ^^^^^",
@@ -2234,6 +2243,7 @@ Object {
               "data": Object {
                 "functionName": "greedyQuantifier0016",
                 "maxOrMinCount": true,
+                "quantifierCounterIndex": 2,
               },
               "posLine1": "...s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
               "posLine2": "             ^^^^^",
@@ -2283,6 +2293,7 @@ Object {
         "minCount": 1,
         "posLine1": "...^>]+\\\\s)(on\\\\S+)=[\\"']?((?...",
         "posLine2": "             ^^^",
+        "quantifierCounterIndex": 3,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0018",
@@ -2498,6 +2509,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0019",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 3,
           },
           "posLine1": "...^>]+\\\\s)(on\\\\S+)=[\\"']?((?...",
           "posLine2": "             ^^^",
@@ -2747,6 +2759,7 @@ Object {
               "data": Object {
                 "functionName": "greedyQuantifier0019",
                 "maxOrMinCount": true,
+                "quantifierCounterIndex": 3,
               },
               "posLine1": "...^>]+\\\\s)(on\\\\S+)=[\\"']?((?...",
               "posLine2": "             ^^^",
@@ -2820,6 +2833,7 @@ Object {
         "minCount": 1,
         "posLine1": "[^>]+\\\\s)(on\\\\S+)...",
         "posLine2": "^^^^^",
+        "quantifierCounterIndex": 4,
         "wrappedHandler": "[Circular]",
       },
       "functionName": "fiber0021",
@@ -2856,6 +2870,7 @@ Object {
           "data": Object {
             "functionName": "greedyQuantifier0022",
             "maxOrMinCount": true,
+            "quantifierCounterIndex": 4,
           },
           "posLine1": "[^>]+\\\\s)(on\\\\S+)...",
           "posLine2": "^^^^^",
@@ -3020,6 +3035,7 @@ Object {
       "minCount": 1,
       "posLine1": "...S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
       "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "quantifierCounterIndex": 0,
       "wrappedHandler": "[Circular]",
     },
     Object {
@@ -3067,6 +3083,7 @@ Object {
       "minCount": 1,
       "posLine1": "...\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))...",
       "posLine2": "             ^^^",
+      "quantifierCounterIndex": 1,
       "wrappedHandler": "[Circular]",
     },
     Object {
@@ -3087,6 +3104,7 @@ Object {
             "data": Object {
               "functionName": "greedyQuantifier0004",
               "maxOrMinCount": true,
+              "quantifierCounterIndex": 0,
             },
             "posLine1": "...S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
             "posLine2": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -3131,6 +3149,7 @@ Object {
       },
       "posLine1": "...s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
       "posLine2": "             ^^^^^",
+      "quantifierCounterIndex": 2,
       "wrappedHandler": "[Circular]",
     },
     Object {
@@ -3167,6 +3186,7 @@ Object {
             "data": Object {
               "functionName": "greedyQuantifier0016",
               "maxOrMinCount": true,
+              "quantifierCounterIndex": 2,
             },
             "posLine1": "...s)(on\\\\S+)=[\\"']?((?:.(?![\\"...",
             "posLine2": "             ^^^^^",
@@ -3216,6 +3236,7 @@ Object {
       "minCount": 1,
       "posLine1": "...^>]+\\\\s)(on\\\\S+)=[\\"']?((?...",
       "posLine2": "             ^^^",
+      "quantifierCounterIndex": 3,
       "wrappedHandler": "[Circular]",
     },
     Object {
@@ -3396,6 +3417,7 @@ Object {
             "data": Object {
               "functionName": "greedyQuantifier0019",
               "maxOrMinCount": true,
+              "quantifierCounterIndex": 3,
             },
             "posLine1": "...^>]+\\\\s)(on\\\\S+)=[\\"']?((?...",
             "posLine2": "             ^^^",
@@ -3469,6 +3491,7 @@ Object {
       "minCount": 1,
       "posLine1": "[^>]+\\\\s)(on\\\\S+)...",
       "posLine2": "^^^^^",
+      "quantifierCounterIndex": 4,
       "wrappedHandler": "[Circular]",
     },
   ],
@@ -3505,6 +3528,7 @@ Object {
         "data": Object {
           "functionName": "greedyQuantifier0022",
           "maxOrMinCount": true,
+          "quantifierCounterIndex": 4,
         },
         "posLine1": "[^>]+\\\\s)(on\\\\S+)...",
         "posLine2": "^^^^^",
@@ -3533,6 +3557,7 @@ Object {
       ],
     },
   },
+  "quantifierCountersLength": 5,
   "regexStr": "/(?:<[^>]+\\\\s)(on\\\\S+)=[\\"']?((?:.(?![\\"']?\\\\s+(?:\\\\S+)=|[>\\"']))+.)[\\"']?/",
 }
 `;

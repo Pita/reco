@@ -906,6 +906,7 @@ Object {
       "groups": Array [],
     },
   },
+  "quantifierCountersLength": 0,
   "regexStr": "/^[a-z0-9]+(?:-[a-z0-9]+)*$/",
 }
 `;
