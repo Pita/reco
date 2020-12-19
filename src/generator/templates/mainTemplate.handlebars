@@ -42,7 +42,7 @@ export function generatedRegexMatcher(str: string) {
         matches: [
           str.substring(i, posAfterMatch),
           {{#each groups}}
-            groupMarkers[{{groupEndArrayIndex @this}}] !== -1 // TODO: is this check still necassary?
+            groupMarkers[{{groupEndArrayIndex @this}}] !== -1
               ? str.substring(groupMarkers[{{groupStartArrayIndex @this}}], groupMarkers[{{groupEndArrayIndex @this}}])
               : undefined,
           {{/each}}

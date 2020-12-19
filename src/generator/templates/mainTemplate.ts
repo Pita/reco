@@ -2,8 +2,6 @@ import * as fs from 'fs';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 import { CharRange } from '../CharRange';
-const prettier = require('prettier');
-
 export interface GroupReference {
   idx: number;
 }
@@ -168,14 +166,8 @@ export interface TemplateValues {
 }
 
 registerLeafPartial();
-const template = fs.readFileSync(
+const templateFile = fs.readFileSync(
   __dirname + '/mainTemplate.handlebars',
   'utf8',
 );
-const compiled = Handlebars.compile(template);
-export function genCodeFromTemplate(context: TemplateValues): string {
-  return prettier.format(compiled(context), {
-    semi: true,
-    parser: 'babel-ts',
-  });
-}
+export const template = Handlebars.compile(templateFile);

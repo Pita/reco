@@ -1,15 +1,15 @@
 import * as glob from 'glob';
 import * as mkdirp from 'mkdirp';
 import * as fs from 'fs';
-import { genCode } from '../generator/generator';
+import { genTemplateValues } from '../generator/generator';
 import testTemplate from './test_template';
 import benchmarkTemplate from './benchmark_template';
 import * as rimraf from 'rimraf';
 import * as path from 'path';
 import * as _ from 'lodash';
 import * as Handlebars from 'handlebars';
-import * as babel from '@babel/core';
-import * as uglify from 'uglify-js';
+import { template } from '../generator/templates/mainTemplate';
+import { transformCode } from '../generator/transformCode';
 const jsStringEscape = require('js-string-escape');
 const safeStringify = require('fast-safe-stringify');
 
@@ -54,12 +54,10 @@ configFiles
     }
     const testName = configFile.replace(/\.json$/, '');
 
-    let code, templateValues, literal, error;
+    let unformattedCode, templateValues, error;
     try {
-      const result = genCode(config.regex);
-      code = result.code;
-      templateValues = result.templateValues;
-      literal = result.literal;
+      templateValues = genTemplateValues(config.regex);
+      unformattedCode = template(templateValues);
     } catch (e) {
       console.error(e);
       error = e;
@@ -128,14 +126,17 @@ configFiles
     mkdirp.sync(testFolderName);
     mkdirp.sync(benchmarkFolderName);
 
-    if (code && templateValues) {
+    if (unformattedCode && templateValues) {
       fs.writeFileSync(
-        `${testFolderName}/${fileName}_pattern.json`,
-        safeStringify(literal, null, 2),
+        `${testFolderName}/${fileName}.ts`,
+        transformCode(unformattedCode, 'ts'),
         'utf8',
       );
-
-      fs.writeFileSync(`${testFolderName}/${fileName}.ts`, code, 'utf8');
+      fs.writeFileSync(
+        `${testFolderName}/${fileName}.js`,
+        transformCode(unformattedCode, 'js'),
+        'utf8',
+      );
       fs.writeFileSync(
         `${testFolderName}/${fileName}_templateValues.json`,
         safeStringify(templateValues, null, 2),
@@ -147,30 +148,6 @@ configFiles
         'utf8',
       );
 
-      const transformResult = babel.transformFileSync(
-        `${testFolderName}/${fileName}.ts`,
-        {
-          presets: [
-            [
-              '@babel/preset-env',
-              { targets: { node: 'current' }, forceAllTransforms: true },
-            ],
-            '@babel/preset-typescript',
-          ],
-        },
-      );
-      const uglifiedCode = uglify.minify(transformResult!.code!);
-      fs.writeFileSync(
-        `${testFolderName}/${fileName}.min.js`,
-        uglifiedCode.code,
-        'utf8',
-      );
-
-      fs.writeFileSync(
-        `${benchmarkFolderName}/${fileName}.min.js`,
-        uglifiedCode.code,
-        'utf8',
-      );
       fs.writeFileSync(
         `${benchmarkFolderName}/${fileName}.benchmark.ts`,
         benchmarkCode,

@@ -1,6 +1,5 @@
 import { AST, RegExpParser } from 'regexpp';
 import { Collector } from './Collector';
-import { genCodeFromTemplate } from './templates/mainTemplate';
 import { handleDisjunction } from './astHandler/Disjunction';
 import { CharRange } from './CharRange';
 
@@ -9,7 +8,7 @@ export interface Flags extends AST.Flags {
   INTERNAL_no_backtracking?: boolean;
 }
 
-export const genCode = (regexStr: string) => {
+export const genTemplateValues = (regexStr: string) => {
   const literal = new RegExpParser().parseLiteral(regexStr);
 
   const collector = new Collector(regexStr);
@@ -20,8 +19,5 @@ export const genCode = (regexStr: string) => {
     literal.flags,
   );
 
-  const templateValues = { ...collector.getTemplateValues(), mainHandler };
-  const code = genCodeFromTemplate(templateValues);
-
-  return { code, templateValues, literal };
+  return { ...collector.getTemplateValues(), mainHandler };
 };

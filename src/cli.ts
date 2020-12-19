@@ -6,9 +6,9 @@ require('module').Module._initPaths();
 
 import yargs from 'yargs';
 import { validateRegExpLiteral } from 'regexpp';
-import { genCode } from './generator/generator';
-import * as babel from '@babel/core';
-import * as uglify from 'uglify-js';
+import { genTemplateValues } from './generator/generator';
+import { template } from './generator/templates/mainTemplate';
+import { transformCode } from './generator/transformCode';
 import * as fs from 'fs';
 const packageJSON = require('../package.json');
 
@@ -17,15 +17,15 @@ const argv = yargs(process.argv.slice(2))
   .options({
     out: {
       alias: 'o',
-      default: 'generatedRegex.js',
-      describe: 'The filename to write to',
+      default: '-',
+      describe: 'The filename to write to, - to write stdout',
       type: 'string',
     },
     type: {
       alias: 't',
-      default: 'minified-js',
+      default: 'js',
       describe: 'The kind of file to generate',
-      choices: ['minified-js', 'js', 'ts'],
+      choices: ['js', 'ts'],
       type: 'string',
     },
   })
@@ -49,41 +49,18 @@ const argv = yargs(process.argv.slice(2))
   })
   .help().argv;
 
-const transformTS = (code: string) => {
-  const transformedResult = babel.transformSync(code, {
-    filename: 'generatedRegex.ts',
-    presets: [
-      [
-        '@babel/preset-env',
-        { targets: { node: 'current' }, forceAllTransforms: true },
-      ],
-      '@babel/preset-typescript',
-    ],
-  });
-
-  const transformedCode = transformedResult?.code;
-  if (!transformedCode) {
-    throw new Error('Could not transform typescript code!');
-  }
-  return transformedCode;
-};
-
-const minify = (code: string) => {
-  return uglify.minify(code).code;
-};
-
 const regexStr = argv._[0] as string;
 const { type, out } = argv;
-const { code } = genCode(regexStr);
-let processedCode;
+const templateValues = genTemplateValues(regexStr);
+const unformattedCode = template(templateValues);
+let transormedCode;
 switch (type) {
   case 'ts':
-    processedCode = code;
   case 'js':
-    processedCode = transformTS(code);
-  case 'minified-js':
-    processedCode = minify(transformTS(code));
+    transormedCode = transformCode(unformattedCode, type);
     break;
+  default:
+    throw new Error(`Unkown type: ${type}`);
 }
 
 const disclaimer = `
@@ -107,5 +84,9 @@ const disclaimer = `
 // or null in case there is no match
 `;
 
-fs.writeFileSync(out, disclaimer + processedCode, 'utf8');
-console.log(`Regex matcher code successfully written to ${out}`);
+if (out === '-') {
+  console.log(disclaimer + transormedCode);
+} else {
+  fs.writeFileSync(out, disclaimer + transormedCode, 'utf8');
+  console.log(`Regex matcher code successfully written to ${out}`);
+}
