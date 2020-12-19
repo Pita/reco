@@ -3,9 +3,45 @@ import * as fs from 'fs';
 import * as path from 'path';
 import axios from 'axios';
 import * as _ from 'lodash';
+const cgf = require('changed-git-files');
 const endpoints = require('./endpoints.json');
 
+const hasOldBenchmarkdDataChanged = () => {
+  return new Promise((resolve, reject) => {
+    cgf((err, gitFilesChanged: Array<{ filename: string; status: string }>) => {
+      if (err) {
+        return reject(err);
+      }
+
+      const hasOldBenchmarkdDataChanged = gitFilesChanged.some(
+        (gitFileChanged) => {
+          gitFileChanged.filename ===
+            'lambda_benchmarking/benchmarks_result/old_benchmark_data.js';
+        },
+      );
+      resolve(hasOldBenchmarkdDataChanged);
+    });
+  });
+};
+
+const copyNewToOldBenchmarkData = () => {
+  let oldData = fs.readFileSync(
+    path.resolve(__dirname, 'benchmarks_result/benchmark_data.js'),
+    'utf8',
+  );
+  fs.writeFileSync(
+    path.resolve(__dirname, 'benchmarks_result/old_benchmark_data.js'),
+    oldData.replace('benchmarkData', 'oldBenchmarkData'),
+    'utf8',
+  );
+};
+
 (async () => {
+  const hasOldBenchmarkDataChanged = await hasOldBenchmarkdDataChanged();
+  if (!hasOldBenchmarkDataChanged) {
+    copyNewToOldBenchmarkData();
+  }
+
   const cwd = `${__dirname}/generated`;
   const folders = glob.sync('*/*', { cwd });
 

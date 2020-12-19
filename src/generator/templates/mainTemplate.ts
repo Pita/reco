@@ -104,6 +104,7 @@ export interface QuantifierStarterTemplateAtom extends BaseTemplateAtom {
   data: {
     maxOrMinCount?: boolean;
     functionName: string;
+    quantifierCounterIndex?: number;
   };
 }
 

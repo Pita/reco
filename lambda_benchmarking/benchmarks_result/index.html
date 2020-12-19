@@ -15,6 +15,7 @@
 
   <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="./old_benchmark_data.js"></script>
     <script src="./benchmark_data.js"></script>
 
     <div>
@@ -26,13 +27,24 @@
 
     <script>
       var ctx = document.getElementById('chart').getContext('2d');
+      console.log(
+        Object.values(benchmarkData).map((data) => [
+          parseFloat(data),
+          parseFloat(data) + 1,
+        ]),
+      );
       var char = new Chart(ctx, {
         type: 'horizontalBar',
         data: {
           labels: Object.keys(benchmarkData),
           datasets: [
             {
-              label: 'Times slower than V8 native regex',
+              label: 'Old',
+              data: Object.values(oldBenchmarkData),
+              backgroundColor: 'grey',
+            },
+            {
+              label: 'New',
               data: Object.values(benchmarkData),
               backgroundColor: function (context) {
                 var index = context.dataIndex;
@@ -55,7 +67,7 @@
                 ticks: {
                   beginAtZero: true,
                   stepSize: 1,
-                  suggestedMax: 1,
+                  suggestedMax: 10,
                 },
               },
             ],

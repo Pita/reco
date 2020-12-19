@@ -18,6 +18,7 @@
     "@types/node": "^10.12.18",
     "@types/serverless": "^1.72.5",
     "axios": "^0.20.0",
+    "changed-git-files": "^0.0.1",
     "fork-ts-checker-webpack-plugin": "^3.0.1",
     "glob": "^7.1.6",
     "lodash": "^4.17.20",
