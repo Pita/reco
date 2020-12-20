@@ -2,3 +2,4 @@ fake_data
 generated_*
 *.handlebars
 src/tests_and_benchmarks/config
+lambda_benchmarking/benchmarks_result
