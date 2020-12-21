@@ -22,3 +22,7 @@ jobs:
       - run: npm install -g
       - run: reco.io -o test.js '/[0-9a-z]*/i'
       - run: node test_cli_generated_code.js
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
