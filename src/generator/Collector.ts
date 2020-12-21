@@ -52,7 +52,7 @@ export class Collector {
 
   private formatAstLocation(ast: AST.Node) {
     const startNeedsTruncation = ast.start > 13;
-    const regexStrStart = startNeedsTruncation ? ast.start - 10 : ast.start;
+    const regexStrStart = startNeedsTruncation ? ast.start - 10 : 0;
     const endNeedsTruncation = this.regexStr.length > ast.end + 13;
     const regexStrEnd = endNeedsTruncation
       ? ast.end + 10

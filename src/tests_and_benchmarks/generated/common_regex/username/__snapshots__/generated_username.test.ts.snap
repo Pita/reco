@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "^[a-z0-9_-]...",
-          "posLine2": "^",
+          "posLine1": "/^[a-z0-9_-]...",
+          "posLine2": " ^",
           "type": "startAnchor",
         },
         Object {
@@ -77,8 +77,8 @@ Object {
                     },
                     "unicode": false,
                   },
-                  "posLine1": "[a-z0-9_-]{3,16}$/",
-                  "posLine2": "^^^^^^^^^^",
+                  "posLine1": "/^[a-z0-9_-]{3,16}$/",
+                  "posLine2": "  ^^^^^^^^^^",
                   "type": "charOrSet",
                 },
               ],
@@ -133,8 +133,8 @@ Object {
               },
             },
           },
-          "posLine1": "[a-z0-9_-]{3,16}$/",
-          "posLine2": "^^^^^^^^^^^^^^^^",
+          "posLine1": "/^[a-z0-9_-]{3,16}$/",
+          "posLine2": "  ^^^^^^^^^^^^^^^^",
           "type": "nonBacktrackingQuantifier",
         },
         Object {
@@ -255,8 +255,8 @@ Object {
             },
             "unicode": false,
           },
-          "posLine1": "[a-z0-9_-]{3,16}$/",
-          "posLine2": "^^^^^^^^^^",
+          "posLine1": "/^[a-z0-9_-]{3,16}$/",
+          "posLine2": "  ^^^^^^^^^^",
           "type": "charOrSet",
         },
       ],
@@ -318,8 +318,8 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {},
-        "posLine1": "^[a-z0-9_-]...",
-        "posLine2": "^",
+        "posLine1": "/^[a-z0-9_-]...",
+        "posLine2": " ^",
         "type": "startAnchor",
       },
       Object {
@@ -388,8 +388,8 @@ Object {
                   },
                   "unicode": false,
                 },
-                "posLine1": "[a-z0-9_-]{3,16}$/",
-                "posLine2": "^^^^^^^^^^",
+                "posLine1": "/^[a-z0-9_-]{3,16}$/",
+                "posLine2": "  ^^^^^^^^^^",
                 "type": "charOrSet",
               },
             ],
@@ -444,8 +444,8 @@ Object {
             },
           },
         },
-        "posLine1": "[a-z0-9_-]{3,16}$/",
-        "posLine2": "^^^^^^^^^^^^^^^^",
+        "posLine1": "/^[a-z0-9_-]{3,16}$/",
+        "posLine2": "  ^^^^^^^^^^^^^^^^",
         "type": "nonBacktrackingQuantifier",
       },
       Object {

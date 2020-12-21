@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "^[a-z0-9]+(...",
-          "posLine2": "^",
+          "posLine1": "/^[a-z0-9]+(...",
+          "posLine2": " ^",
           "type": "startAnchor",
         },
         Object {
@@ -50,8 +50,8 @@ Object {
                     },
                     "unicode": false,
                   },
-                  "posLine1": "[a-z0-9]+(?:-[a-z0...",
-                  "posLine2": "^^^^^^^^",
+                  "posLine1": "/^[a-z0-9]+(?:-[a-z0...",
+                  "posLine2": "  ^^^^^^^^",
                   "type": "charOrSet",
                 },
               ],
@@ -104,8 +104,8 @@ Object {
               },
             },
           },
-          "posLine1": "[a-z0-9]+(?:-[a-z0-...",
-          "posLine2": "^^^^^^^^^",
+          "posLine1": "/^[a-z0-9]+(?:-[a-z0-...",
+          "posLine2": "  ^^^^^^^^^",
           "type": "nonBacktrackingQuantifier",
         },
         Object {
@@ -241,8 +241,8 @@ Object {
               },
             },
           },
-          "posLine1": "(?:-[a-z0-9]+)*$/",
-          "posLine2": "^^^^^^^^^^^^^^^",
+          "posLine1": "/^[a-z0-9]+(?:-[a-z0-9]+)*$/",
+          "posLine2": "           ^^^^^^^^^^^^^^^",
           "type": "nonBacktrackingQuantifier",
         },
         Object {
@@ -552,8 +552,8 @@ Object {
             },
             "unicode": false,
           },
-          "posLine1": "[a-z0-9]+(?:-[a-z0...",
-          "posLine2": "^^^^^^^^",
+          "posLine1": "/^[a-z0-9]+(?:-[a-z0...",
+          "posLine2": "  ^^^^^^^^",
           "type": "charOrSet",
         },
       ],
@@ -613,8 +613,8 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {},
-        "posLine1": "^[a-z0-9]+(...",
-        "posLine2": "^",
+        "posLine1": "/^[a-z0-9]+(...",
+        "posLine2": " ^",
         "type": "startAnchor",
       },
       Object {
@@ -656,8 +656,8 @@ Object {
                   },
                   "unicode": false,
                 },
-                "posLine1": "[a-z0-9]+(?:-[a-z0...",
-                "posLine2": "^^^^^^^^",
+                "posLine1": "/^[a-z0-9]+(?:-[a-z0...",
+                "posLine2": "  ^^^^^^^^",
                 "type": "charOrSet",
               },
             ],
@@ -710,8 +710,8 @@ Object {
             },
           },
         },
-        "posLine1": "[a-z0-9]+(?:-[a-z0-...",
-        "posLine2": "^^^^^^^^^",
+        "posLine1": "/^[a-z0-9]+(?:-[a-z0-...",
+        "posLine2": "  ^^^^^^^^^",
         "type": "nonBacktrackingQuantifier",
       },
       Object {
@@ -847,8 +847,8 @@ Object {
             },
           },
         },
-        "posLine1": "(?:-[a-z0-9]+)*$/",
-        "posLine2": "^^^^^^^^^^^^^^^",
+        "posLine1": "/^[a-z0-9]+(?:-[a-z0-9]+)*$/",
+        "posLine2": "           ^^^^^^^^^^^^^^^",
         "type": "nonBacktrackingQuantifier",
       },
       Object {

@@ -7,8 +7,8 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {},
-          "posLine1": "^def/m",
-          "posLine2": "^",
+          "posLine1": "/^def/m",
+          "posLine2": " ^",
           "type": "multiLineStartAnchor",
         },
         Object {
@@ -23,8 +23,8 @@ Object {
             },
             "unicode": false,
           },
-          "posLine1": "def/m",
-          "posLine2": "^",
+          "posLine1": "/^def/m",
+          "posLine2": "  ^",
           "type": "charOrSet",
         },
         Object {
@@ -39,8 +39,8 @@ Object {
             },
             "unicode": false,
           },
-          "posLine1": "ef/m",
-          "posLine2": "^",
+          "posLine1": "/^def/m",
+          "posLine2": "   ^",
           "type": "charOrSet",
         },
         Object {
@@ -55,8 +55,8 @@ Object {
             },
             "unicode": false,
           },
-          "posLine1": "f/m",
-          "posLine2": "^",
+          "posLine1": "/^def/m",
+          "posLine2": "    ^",
           "type": "charOrSet",
         },
       ],
@@ -81,8 +81,8 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {},
-        "posLine1": "^def/m",
-        "posLine2": "^",
+        "posLine1": "/^def/m",
+        "posLine2": " ^",
         "type": "multiLineStartAnchor",
       },
       Object {
@@ -97,8 +97,8 @@ Object {
           },
           "unicode": false,
         },
-        "posLine1": "def/m",
-        "posLine2": "^",
+        "posLine1": "/^def/m",
+        "posLine2": "  ^",
         "type": "charOrSet",
       },
       Object {
@@ -113,8 +113,8 @@ Object {
           },
           "unicode": false,
         },
-        "posLine1": "ef/m",
-        "posLine2": "^",
+        "posLine1": "/^def/m",
+        "posLine2": "   ^",
         "type": "charOrSet",
       },
       Object {
@@ -129,8 +129,8 @@ Object {
           },
           "unicode": false,
         },
-        "posLine1": "f/m",
-        "posLine2": "^",
+        "posLine1": "/^def/m",
+        "posLine2": "    ^",
         "type": "charOrSet",
       },
     ],
