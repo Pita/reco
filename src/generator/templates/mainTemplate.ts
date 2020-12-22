@@ -163,6 +163,7 @@ export interface TemplateValues {
   regexStr: string;
   groups: GroupReference[];
   quantifierCountersLength: number;
+  version: string;
 }
 
 registerLeafPartial();

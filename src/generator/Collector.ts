@@ -10,6 +10,7 @@ import {
 import * as _ from 'lodash';
 import { CharRange } from './CharRange';
 import { Quantifier } from 'regexpp/ast';
+const { version } = require('../../package.json');
 
 type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   ast: AST.Node;
@@ -244,6 +245,7 @@ export class Collector {
       lazyQuantifierHandlers: this.lazyQuantifierHandlers,
       groups: this.groups,
       quantifierCountersLength: this.quantifierCounters.length,
+      version,
     };
   }
 }

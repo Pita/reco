@@ -149,5 +149,6 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/def$/m",
+  "version": "0.2.0",
 }
 `;

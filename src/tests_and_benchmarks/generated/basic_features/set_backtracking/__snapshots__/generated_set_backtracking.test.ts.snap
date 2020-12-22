@@ -1071,5 +1071,6 @@ Object {
   },
   "quantifierCountersLength": 1,
   "regexStr": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
+  "version": "0.2.0",
 }
 `;

@@ -545,5 +545,6 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/[a-c]*[B-X]+[c]?/",
+  "version": "0.2.0",
 }
 `;

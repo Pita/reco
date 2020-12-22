@@ -2217,5 +2217,6 @@ Object {
   },
   "quantifierCountersLength": 1,
   "regexStr": "/<\\\\/?[\\\\w\\\\s]*>|<.+[\\\\W]>/",
+  "version": "0.2.0",
 }
 `;

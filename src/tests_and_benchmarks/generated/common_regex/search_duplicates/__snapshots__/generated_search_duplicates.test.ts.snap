@@ -987,5 +987,6 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/(\\\\b\\\\w+\\\\b)(?=.*\\\\b\\\\1\\\\b)/",
+  "version": "0.2.0",
 }
 `;

@@ -544,5 +544,6 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/(aa3)*(aa3a)/",
+  "version": "0.2.0",
 }
 `;

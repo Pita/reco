@@ -10,7 +10,6 @@ import { genTemplateValues } from './generator/generator';
 import { template } from './generator/templates/mainTemplate';
 import { transformCode } from './generator/transformCode';
 import * as fs from 'fs';
-const packageJSON = require('../package.json');
 
 const argv = yargs(process.argv.slice(2))
   .usage('reco --out [filename].js [regex]')
@@ -63,30 +62,9 @@ switch (type) {
     throw new Error(`Unkown type: ${type}`);
 }
 
-const disclaimer = `
-// This code was generated with RECO v${packageJSON.version}
-// A Regular Expression to Code Compiler
-// Visit: https://github.com/pita/reco
-// 
-// Generated from: '${regexStr}'
-// 
-// Use like this:
-// 
-// import { generatedRegexMatcher } from './THIS_FILE';
-// const result = generatedRegexMatcher(str);
-// console.log(result);
-// 
-// Outputs:
-// {
-//   index: 0, // position of the string that matched
-//   matches: [ 'foo', 'bar'] // groups that matched
-// }
-// or null in case there is no match
-`;
-
 if (out === '-') {
-  console.log(disclaimer + transormedCode);
+  console.log(transormedCode);
 } else {
-  fs.writeFileSync(out, disclaimer + transormedCode, 'utf8');
+  fs.writeFileSync(out, transormedCode, 'utf8');
   console.log(`Regex matcher code successfully written to ${out}`);
 }

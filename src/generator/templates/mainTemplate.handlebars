@@ -1,4 +1,22 @@
-// {{{regexStr}}}
+// This code was generated with RECO v{{{version}}}
+// A Regular Expression to Code Compiler
+// Visit: https://github.com/pita/reco
+// 
+// Generated from: '{{{regexStr}}}'
+// 
+// Use like this:
+// 
+// import { generatedRegexMatcher } from './THIS_FILE';
+// const result = generatedRegexMatcher(str);
+// console.log(result);
+// 
+// Outputs:
+// {
+//   index: 0, // position of the string that matched
+//   matches: [ 'foo', 'bar'] // groups that matched
+// }
+// or null in case there is no match
+
 type GroupMarkers = [
   {{#each groups}}
     number, number,
