@@ -1,6 +1,6 @@
-import * as babel from '@babel/standalone';
+const babel = require('@babel/standalone');
 import * as prettier from 'prettier';
-import * as typescriptPreset from '@babel/preset-typescript';
+const typescriptPreset = require('@babel/preset-typescript');
 
 export type ExportType = 'js' | 'ts';
 
