@@ -1,6 +1,6 @@
 const babel = require('@babel/standalone');
-import * as prettier from 'prettier';
-const typescriptPreset = require('@babel/preset-typescript');
+import * as prettier from 'prettier/standalone';
+import * as plugins from 'prettier/parser-babel';
 
 export type ExportType = 'js' | 'ts';
 
@@ -23,6 +23,8 @@ const prettify = (code: string): string => {
   return prettier.format(code, {
     semi: true,
     parser: 'babel-ts',
+    // @ts-ignore
+    plugins,
   });
 };
 
