@@ -47,19 +47,19 @@ const regexStr = argv._[0] as string;
 const { type, out } = argv;
 const templateValues = genTemplateValues(regexStr);
 const unformattedCode = template(templateValues);
-let transformedCode;
+let transormedCode;
 switch (type) {
   case 'ts':
   case 'js':
-    transformedCode = transformCode(unformattedCode, type);
+    transormedCode = transformCode(unformattedCode, type);
     break;
   default:
     throw new Error(`Unkown type: ${type}`);
 }
 
 if (out === '-') {
-  console.log(transformedCode);
+  console.log(transormedCode);
 } else {
-  fs.writeFileSync(out, transformedCode, 'utf8');
+  fs.writeFileSync(out, transormedCode, 'utf8');
   console.log(`Regex matcher code successfully written to ${out}`);
 }

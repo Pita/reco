@@ -18,8 +18,6 @@ export default `
 // }
 // or null in case there is no match
 
-"use strict";
-
 type GroupMarkers = [
   {{#each groups}}
     number, number,
@@ -38,12 +36,7 @@ type QuantifierCounters = [
   {{/times}}
 ]
 
-Object.defineProperty(exports, "__esModule", {
-  value: true,
-});
-exports.generatedRegexMatcher = generatedRegexMatcher;
-
-function generatedRegexMatcher(str: string) {
+export function generatedRegexMatcher(str: string) {
   const groupMarkers: GroupMarkers = [
     {{#each groups}}
       -1, -1,
