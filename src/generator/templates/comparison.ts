@@ -1,13 +1,9 @@
 import * as Handlebars from 'handlebars';
-import * as fs from 'fs';
 import './handleBarHelpers';
+import templateFile from './comparison.handlebars';
 
 export const registerComparisonPartial = () => {
-  const template = fs.readFileSync(
-    __dirname + '/comparison.handlebars',
-    'utf8',
-  );
-  Handlebars.registerPartial('comparison', template);
+  Handlebars.registerPartial('comparison', templateFile);
 };
 
 export type ComparsionTemplate =

@@ -1,3 +1,4 @@
+export default `
 {{#switchCase 'lastComparison'}}
   result{{{atomIndex}}} = {{>comparison atomIndex=atomIndex}}
 {{/switchCase}}
@@ -10,4 +11,4 @@
       {{>leaf comparisonFalse atomIndex=atomIndex}}
     }
   {{/if}}
-{{/switchCase}}
+{{/switchCase}}`;

@@ -2372,6 +2372,6 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/((?:\\\\*[0-9a-z]+)*)(?:\\\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\\\?/",
-  "version": "0.2.0",
+  "version": "0.2.2",
 }
 `;

@@ -1,3 +1,4 @@
+export default `
 // This code was generated with RECO v{{{version}}}
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
@@ -512,6 +513,4 @@ export function generatedRegexMatcher(str: string) {
       return start;
     {{/unless}}
   }
-{{/each}}
-
-  
+{{/each}}`;

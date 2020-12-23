@@ -1,3 +1,4 @@
+export default `
 {{#with comparison}}
   {{#switchCase 'true'}}
     true
@@ -14,4 +15,4 @@
   {{#switchCase 'moreOrEqual'}}
     charCode{{{../atomIndex}}} >= {{{comparisonValue}}}
   {{/switchCase}}
-{{/with}}
+{{/with}}`;

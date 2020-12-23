@@ -1,8 +1,9 @@
 {
   "name": "reco.io",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Regular Expression COmpiler",
   "main": "./dist/api.js",
+  "types": "./dist/api.d.ts",
   "scripts": {
     "test:all": "npm run generate && npm run test:run",
     "generate": "ts-node -T ./src/tests_and_benchmarks/generate_tests_and_benchmarks.ts",

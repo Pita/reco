@@ -749,6 +749,6 @@ Object {
   },
   "quantifierCountersLength": 1,
   "regexStr": "/([a-y]){2}k(123)+/",
-  "version": "0.2.0",
+  "version": "0.2.2",
 }
 `;

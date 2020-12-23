@@ -837,6 +837,6 @@ Object {
   },
   "quantifierCountersLength": 1,
   "regexStr": "/(a+)(a)(a*)(a)/",
-  "version": "0.2.0",
+  "version": "0.2.2",
 }
 `;

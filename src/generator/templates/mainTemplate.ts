@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import templateFile from './mainTemplate.handlebars';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 import { CharRange } from '../CharRange';
@@ -167,8 +167,4 @@ export interface TemplateValues {
 }
 
 registerLeafPartial();
-const templateFile = fs.readFileSync(
-  __dirname + '/mainTemplate.handlebars',
-  'utf8',
-);
 export const template = Handlebars.compile(templateFile);
