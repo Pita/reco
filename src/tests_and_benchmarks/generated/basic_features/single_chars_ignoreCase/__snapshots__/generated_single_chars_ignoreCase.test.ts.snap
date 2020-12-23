@@ -145,6 +145,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/def/i",
-  "version": "0.2.2",
 }
 `;

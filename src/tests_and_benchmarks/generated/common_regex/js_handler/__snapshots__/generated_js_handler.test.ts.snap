@@ -1400,6 +1400,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/\\\\bon\\\\w+=\\\\S+(?=.*>)/",
-  "version": "0.2.2",
 }
 `;

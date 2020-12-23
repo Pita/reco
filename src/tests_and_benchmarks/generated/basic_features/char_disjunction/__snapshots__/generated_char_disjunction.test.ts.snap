@@ -353,6 +353,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/a|b|f/",
-  "version": "0.2.2",
 }
 `;

@@ -1,14 +1,14 @@
-import * as babel from '@babel/core';
+import * as babel from '@babel/standalone';
 import * as prettier from 'prettier';
+import * as typescriptPreset from '@babel/preset-typescript';
 
 export type ExportType = 'js' | 'ts';
 
 const stripTypes = (code: string) => {
-  const transformedResult = babel.transformSync(code, {
+  const transformedResult = babel.transform(code, {
     filename: 'generatedRegex.ts',
     presets: [
-      // ['@babel/preset-env', { targets: { node: 'current' } }],
-      '@babel/preset-typescript',
+      typescriptPreset
     ],
   });
 

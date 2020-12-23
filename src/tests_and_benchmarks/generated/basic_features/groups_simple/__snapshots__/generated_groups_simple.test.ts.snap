@@ -348,6 +348,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/(ab)k(123)/",
-  "version": "0.2.2",
 }
 `;

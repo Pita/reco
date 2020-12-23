@@ -465,6 +465,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/(b.*?)(a)/",
-  "version": "0.2.2",
 }
 `;

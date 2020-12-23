@@ -345,6 +345,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/\\\\s/",
-  "version": "0.2.2",
 }
 `;

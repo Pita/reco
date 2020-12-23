@@ -73,6 +73,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/\\\\u{1f604}/u",
-  "version": "0.2.2",
 }
 `;

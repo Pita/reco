@@ -507,6 +507,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/^[a-z0-9_-]{3,16}$/",
-  "version": "0.2.2",
 }
 `;

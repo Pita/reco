@@ -1146,6 +1146,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/(([a-c])|([d-f]))(a)/",
-  "version": "0.2.2",
 }
 `;

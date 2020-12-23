@@ -8,6 +8,7 @@ import templateValues from './{{{string fileName}}}_templateValues.json';
 // {{{testRegex}}}
 describe('{{{string testName}}}', () => {
   test('template values are as expected', () => {
+    delete templateValues['version'];
     expect(templateValues).toMatchSnapshot();
   });
   

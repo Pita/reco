@@ -383,6 +383,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/a*B+c?/",
-  "version": "0.2.2",
 }
 `;

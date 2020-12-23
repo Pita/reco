@@ -185,6 +185,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/(?<!𝒴)x/u",
-  "version": "0.2.2",
 }
 `;

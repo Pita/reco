@@ -105,6 +105,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/\\\\D/",
-  "version": "0.2.2",
 }
 `;

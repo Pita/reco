@@ -217,6 +217,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/[a-z]/i",
-  "version": "0.2.2",
 }
 `;

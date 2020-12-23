@@ -664,6 +664,5 @@ Object {
   },
   "quantifierCountersLength": 0,
   "regexStr": "/^\\\\d*(\\\\.\\\\d+)?$/",
-  "version": "0.2.2",
 }
 `;

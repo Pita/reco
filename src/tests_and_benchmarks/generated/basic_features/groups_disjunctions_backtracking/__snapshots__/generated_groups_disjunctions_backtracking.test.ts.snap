@@ -1201,6 +1201,5 @@ Object {
   },
   "quantifierCountersLength": 1,
   "regexStr": "/([a-c]{2}|[d-f]{2})(a)/",
-  "version": "0.2.2",
 }
 `;
