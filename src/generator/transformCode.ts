@@ -6,8 +6,10 @@ export type ExportType = 'js' | 'ts';
 
 const stripTypes = (code: string) => {
   const transformedResult = babel.transform(code, {
-    filename: 'generatedRegex.ts',
-    presets: [typescriptPreset],
+    presets: [
+      ['env', { targets: { node: 'current' } }],
+      ['typescript', { allExtensions: true }],
+    ],
   });
 
   const transformedCode = transformedResult?.code;
