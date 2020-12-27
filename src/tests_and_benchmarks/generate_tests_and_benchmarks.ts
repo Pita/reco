@@ -127,11 +127,9 @@ configFiles
     mkdirp.sync(benchmarkFolderName);
 
     if (unformattedCode && templateValues) {
-      fs.writeFileSync(
-        `${testFolderName}/${fileName}.ts`,
-        transformCode(unformattedCode, 'ts'),
-        'utf8',
-      );
+      const tsCode = transformCode(unformattedCode, 'ts');
+      fs.writeFileSync(`${testFolderName}/${fileName}.ts`, tsCode, 'utf8');
+      fs.writeFileSync(`${benchmarkFolderName}/${fileName}.ts`, tsCode, 'utf8');
       fs.writeFileSync(
         `${testFolderName}/${fileName}.js`,
         transformCode(unformattedCode, 'js'),
@@ -146,11 +144,9 @@ configFiles
               return 'Infinity';
             }
             if (v === -Infinity) {
-              console.log(k, '-Infinity');
               return '-Infinity';
             }
             if (Number.isNaN(v)) {
-              console.log(k, 'NaN');
               return 'NaN';
             }
 
