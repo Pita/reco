@@ -94,6 +94,34 @@ const deriveFirstCharAfterQuantifier = (
       );
 };
 
+const checkIfQuantifierHasFixedLength = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  flags: Flags,
+  followUpFirstChar: CharRange,
+) => {
+  const fakeCollector = collector.fakeCollector();
+  const quantifierFiber = handleElement(
+    quantifier.element,
+    fakeCollector,
+    fakeCollector.createFinalFiber(followUpFirstChar),
+    flags,
+  );
+
+  const { minCharLength, maxCharLength } = quantifierFiber.meta;
+
+  if (minCharLength === maxCharLength) {
+    return {
+      fixedLengthOptimizable: true,
+      fixedLength: minCharLength,
+    };
+  } else {
+    return {
+      fixedLengthOptimizable: false,
+    };
+  }
+};
+
 const analyzeQuantifier = (
   quantifier: AST.Quantifier,
   collector: Collector,
@@ -128,10 +156,22 @@ const analyzeQuantifier = (
     followUpFirstChar,
   );
 
+  const {
+    fixedLengthOptimizable,
+    fixedLength,
+  } = checkIfQuantifierHasFixedLength(
+    quantifier,
+    collector,
+    flags,
+    followUpFirstChar,
+  );
+
   return {
     firstCharAfterQuantifier,
     needsBacktracking: hasInternalBacktracking || hasExternalBackTracking,
     followUpFirstChar,
+    fixedLengthOptimizable,
+    fixedLength,
   };
 };
 
@@ -184,21 +224,6 @@ const generateBacktrackingQuantifier = (
   const maxCharLength =
     currentFiber.meta.maxCharLength +
     quantifier.max * wrappedHandler.meta.maxCharLength;
-  if (
-    Number.isNaN(maxCharLength) &&
-    !Number.isNaN(quantifierHandler.meta.maxCharLength)
-  ) {
-    console.log(
-      'NaN',
-      currentFiber.meta.maxCharLength,
-      '+',
-      quantifier.max,
-      '*',
-      wrappedHandler.meta.maxCharLength,
-    );
-  }
-
-  // quantifier
 
   return collector.addAtom(
     collector.createForkingFiber(
@@ -211,6 +236,44 @@ const generateBacktrackingQuantifier = (
         maxOrMinCount: quantifierHandler.maxOrMinCount,
         functionName: quantifierHandler.functionName,
         quantifierCounterIndex: quantifierHandler.quantifierCounterIndex,
+      },
+      ast: quantifier,
+    },
+    firstCharAfterQuantifier,
+    minCharLength,
+    maxCharLength,
+  );
+};
+
+const generateBacktrackingFixedLengthQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  firstCharAfterQuantifier: CharRange,
+  followUpFirstChar: CharRange,
+  fixedLength: number,
+) => {
+  const wrappedHandler = handleElement(
+    quantifier.element,
+    collector,
+    collector.createFinalFiber(followUpFirstChar),
+    flags,
+  );
+
+  const countParams = generateCountParams(quantifier);
+  const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
+  const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
+
+  return collector.addAtom(
+    collector.createForkingFiber(currentFiber, currentFiber.meta.groups),
+    {
+      type: 'backtrackingFixedLengthQuantifier',
+      data: {
+        ...countParams,
+        fixedLength,
+        wrappedHandler,
+        followUp: currentFiber,
       },
       ast: quantifier,
     },
@@ -273,20 +336,35 @@ export const handleQuantifier = (
     firstCharAfterQuantifier,
     needsBacktracking,
     followUpFirstChar,
+    fixedLengthOptimizable,
+    fixedLength,
   } = analyzeQuantifier(quantifier, collector, currentFiber, flags);
 
   if (needsBacktracking) {
     if (flags.INTERNAL_no_backtracking) {
       throw new BacktrackingError();
     }
-    return generateBacktrackingQuantifier(
-      quantifier,
-      collector,
-      currentFiber,
-      flags,
-      firstCharAfterQuantifier,
-      followUpFirstChar,
-    );
+    if (fixedLengthOptimizable && fixedLength) {
+      // TODO: make it work for non greedy
+      return generateBacktrackingFixedLengthQuantifier(
+        quantifier,
+        collector,
+        currentFiber,
+        flags,
+        firstCharAfterQuantifier,
+        followUpFirstChar,
+        fixedLength,
+      );
+    } else {
+      return generateBacktrackingQuantifier(
+        quantifier,
+        collector,
+        currentFiber,
+        flags,
+        firstCharAfterQuantifier,
+        followUpFirstChar,
+      );
+    }
   } else {
     return generateNonBacktrackingQuantifier(
       quantifier,

@@ -252,6 +252,56 @@ export function generatedRegexMatcher(str: string) {
           }
         }
       {{/switchCase}}
+      {{#switchCase 'backtrackingFixedLengthQuantifier'}}
+        let matches{{{@index}}} = 0;
+
+        while(true) {
+          const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+
+          if (wrappedResult === -1) {
+            {{#if minCount}}
+              if (matches{{{@index}}} < {{{minCount}}}) {
+                return -1;
+              }
+            {{/if}}
+
+            break;
+          } else {
+            i = wrappedResult;
+            matches{{{@index}}}++;
+
+            {{#if maxCount}}
+              if (matches{{{@index}}} === {{{maxCount}}}) {
+                break;
+              }
+            {{/if}}
+          }
+        }
+
+        // needs followUp & forkingFiber
+        {{#unless followUp}}
+          return i;
+        {{/unless}}
+        {{#if followUp}}
+          {{#if minCount}}
+            while(matches{{{@index}}} >= {{{minCount}}}) {
+          {{/if}}
+          {{#unless minCount}}
+            while(matches{{{@index}}} >= 0) {
+          {{/unless}}
+              const directFollowUpResult{{{@index}}} = {{{followUp.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+
+              if (directFollowUpResult{{{@index}}} !== -1) {
+                return directFollowUpResult{{{@index}}};
+              }
+
+              matches{{{@index}}}--;
+              i-={{{fixedLength}}};
+            }
+
+            return -1;
+        {{/if}}
+      {{/switchCase}}
       {{#switchCase 'wordBoundary'}}
         if (i !== 0 && i !== str.length) {
           // TODO: find way to generate these trees

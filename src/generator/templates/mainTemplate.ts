@@ -141,6 +141,17 @@ export interface NonBacktrackingQuantifier extends BaseTemplateAtom {
   };
 }
 
+export interface BacktrackingFixedLengthQuantifier extends BaseTemplateAtom {
+  type: 'backtrackingFixedLengthQuantifier';
+  data: {
+    maxOrMinCount?: boolean;
+    minCount?: number;
+    maxCount?: number;
+    wrappedHandler: FiberTemplateDefinition;
+    followUp: FollowUp;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
@@ -155,7 +166,8 @@ export type TemplateAtom =
   | LookaroundTemplateAtom
   | WordBoundaryTemplateAtom
   | GroupBackReferenceTemplateAtom
-  | NonBacktrackingQuantifier;
+  | NonBacktrackingQuantifier
+  | BacktrackingFixedLengthQuantifier;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];

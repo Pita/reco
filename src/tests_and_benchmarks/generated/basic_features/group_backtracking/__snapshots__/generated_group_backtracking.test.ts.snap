@@ -185,140 +185,7 @@ Object {
           "type": "groupEndMarker",
         },
       ],
-      "followUp": Object {
-        "followUp": Object {
-          "atoms": Array [
-            Object {
-              "data": Object {
-                "groupReference": Object {
-                  "astStart": 7,
-                  "idx": 1,
-                },
-              },
-              "posLine1": "/(aa3)*(aa3a)/",
-              "posLine2": "       ^^^^^^",
-              "type": "groupStartMarker",
-            },
-            Object {
-              "data": Object {
-                "negate": false,
-                "tree": Object {
-                  "comparison": Object {
-                    "comparisonValue": 97,
-                    "type": "equal",
-                  },
-                  "type": "lastComparison",
-                },
-                "unicode": false,
-              },
-              "posLine1": "/(aa3)*(aa3a)/",
-              "posLine2": "        ^",
-              "type": "charOrSet",
-            },
-            Object {
-              "data": Object {
-                "negate": false,
-                "tree": Object {
-                  "comparison": Object {
-                    "comparisonValue": 97,
-                    "type": "equal",
-                  },
-                  "type": "lastComparison",
-                },
-                "unicode": false,
-              },
-              "posLine1": "/(aa3)*(aa3a)/",
-              "posLine2": "         ^",
-              "type": "charOrSet",
-            },
-            Object {
-              "data": Object {
-                "negate": false,
-                "tree": Object {
-                  "comparison": Object {
-                    "comparisonValue": 51,
-                    "type": "equal",
-                  },
-                  "type": "lastComparison",
-                },
-                "unicode": false,
-              },
-              "posLine1": "/(aa3)*(aa3a)/",
-              "posLine2": "          ^",
-              "type": "charOrSet",
-            },
-            Object {
-              "data": Object {
-                "negate": false,
-                "tree": Object {
-                  "comparison": Object {
-                    "comparisonValue": 97,
-                    "type": "equal",
-                  },
-                  "type": "lastComparison",
-                },
-                "unicode": false,
-              },
-              "posLine1": "/(aa3)*(aa3a)/",
-              "posLine2": "           ^",
-              "type": "charOrSet",
-            },
-            Object {
-              "data": Object {
-                "groupReference": Object {
-                  "astStart": 7,
-                  "idx": 1,
-                },
-              },
-              "posLine1": "/(aa3)*(aa3a)/",
-              "posLine2": "       ^^^^^^",
-              "type": "groupEndMarker",
-            },
-          ],
-          "followUp": null,
-          "functionName": "fiber0001",
-          "lastAtomReturns": false,
-          "meta": Object {
-            "firstCharRange": Object {
-              "chars": Array [
-                97,
-              ],
-              "negate": false,
-            },
-            "groups": Array [
-              Object {
-                "astStart": 7,
-                "idx": 1,
-              },
-            ],
-            "maxCharLength": 4,
-            "minCharLength": 4,
-          },
-        },
-        "functionName": "greedyQuantifier0003",
-        "maxOrMinCount": false,
-        "meta": Object {
-          "firstCharRange": Object {
-            "chars": Array [],
-            "negate": false,
-          },
-          "groups": Array [
-            Object {
-              "astStart": 1,
-              "idx": 0,
-            },
-            Object {
-              "astStart": 7,
-              "idx": 1,
-            },
-          ],
-          "maxCharLength": 0,
-          "minCharLength": 0,
-        },
-        "posLine1": "/(aa3)*(aa3a)/",
-        "posLine2": " ^^^^^^",
-        "wrappedHandler": "[Circular]",
-      },
+      "followUp": null,
       "functionName": "fiber0002",
       "lastAtomReturns": false,
       "meta": Object {
@@ -342,16 +209,218 @@ Object {
       "atoms": Array [
         Object {
           "data": Object {
-            "functionName": "greedyQuantifier0003",
+            "fixedLength": 3,
+            "followUp": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 7,
+                      "idx": 1,
+                    },
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "       ^^^^^^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 97,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "        ^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 97,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "         ^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 51,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "          ^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 97,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "           ^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 7,
+                      "idx": 1,
+                    },
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "       ^^^^^^",
+                  "type": "groupEndMarker",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0001",
+              "lastAtomReturns": false,
+              "meta": Object {
+                "firstCharRange": Object {
+                  "chars": Array [
+                    97,
+                  ],
+                  "negate": false,
+                },
+                "groups": Array [
+                  Object {
+                    "astStart": 7,
+                    "idx": 1,
+                  },
+                ],
+                "maxCharLength": 4,
+                "minCharLength": 4,
+              },
+            },
             "maxOrMinCount": false,
+            "wrappedHandler": Object {
+              "atoms": Array [
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 1,
+                      "idx": 0,
+                    },
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": " ^^^^^",
+                  "type": "groupStartMarker",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 97,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "  ^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 97,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "   ^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "negate": false,
+                    "tree": Object {
+                      "comparison": Object {
+                        "comparisonValue": 51,
+                        "type": "equal",
+                      },
+                      "type": "lastComparison",
+                    },
+                    "unicode": false,
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": "    ^",
+                  "type": "charOrSet",
+                },
+                Object {
+                  "data": Object {
+                    "groupReference": Object {
+                      "astStart": 1,
+                      "idx": 0,
+                    },
+                  },
+                  "posLine1": "/(aa3)*(aa3a)/",
+                  "posLine2": " ^^^^^",
+                  "type": "groupEndMarker",
+                },
+              ],
+              "followUp": null,
+              "functionName": "fiber0002",
+              "lastAtomReturns": false,
+              "meta": Object {
+                "firstCharRange": Object {
+                  "chars": Array [
+                    97,
+                  ],
+                  "negate": false,
+                },
+                "groups": Array [
+                  Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                ],
+                "maxCharLength": 3,
+                "minCharLength": 3,
+              },
+            },
           },
           "posLine1": "/(aa3)*(aa3a)/",
           "posLine2": " ^^^^^^",
-          "type": "quantifierStarter",
+          "type": "backtrackingFixedLengthQuantifier",
         },
       ],
       "followUp": null,
-      "functionName": "fiber0004",
+      "functionName": "fiber0003",
       "lastAtomReturns": true,
       "meta": Object {
         "firstCharRange": Object {
@@ -362,155 +431,16 @@ Object {
         },
         "groups": Array [
           Object {
-            "astStart": 1,
-            "idx": 0,
-          },
-          Object {
             "astStart": 7,
             "idx": 1,
           },
         ],
         "maxCharLength": "Infinity",
-        "minCharLength": 4,
-      },
-    },
-  ],
-  "greedyQuantifierHandlers": Array [
-    Object {
-      "followUp": Object {
-        "atoms": Array [
-          Object {
-            "data": Object {
-              "groupReference": Object {
-                "astStart": 7,
-                "idx": 1,
-              },
-            },
-            "posLine1": "/(aa3)*(aa3a)/",
-            "posLine2": "       ^^^^^^",
-            "type": "groupStartMarker",
-          },
-          Object {
-            "data": Object {
-              "negate": false,
-              "tree": Object {
-                "comparison": Object {
-                  "comparisonValue": 97,
-                  "type": "equal",
-                },
-                "type": "lastComparison",
-              },
-              "unicode": false,
-            },
-            "posLine1": "/(aa3)*(aa3a)/",
-            "posLine2": "        ^",
-            "type": "charOrSet",
-          },
-          Object {
-            "data": Object {
-              "negate": false,
-              "tree": Object {
-                "comparison": Object {
-                  "comparisonValue": 97,
-                  "type": "equal",
-                },
-                "type": "lastComparison",
-              },
-              "unicode": false,
-            },
-            "posLine1": "/(aa3)*(aa3a)/",
-            "posLine2": "         ^",
-            "type": "charOrSet",
-          },
-          Object {
-            "data": Object {
-              "negate": false,
-              "tree": Object {
-                "comparison": Object {
-                  "comparisonValue": 51,
-                  "type": "equal",
-                },
-                "type": "lastComparison",
-              },
-              "unicode": false,
-            },
-            "posLine1": "/(aa3)*(aa3a)/",
-            "posLine2": "          ^",
-            "type": "charOrSet",
-          },
-          Object {
-            "data": Object {
-              "negate": false,
-              "tree": Object {
-                "comparison": Object {
-                  "comparisonValue": 97,
-                  "type": "equal",
-                },
-                "type": "lastComparison",
-              },
-              "unicode": false,
-            },
-            "posLine1": "/(aa3)*(aa3a)/",
-            "posLine2": "           ^",
-            "type": "charOrSet",
-          },
-          Object {
-            "data": Object {
-              "groupReference": Object {
-                "astStart": 7,
-                "idx": 1,
-              },
-            },
-            "posLine1": "/(aa3)*(aa3a)/",
-            "posLine2": "       ^^^^^^",
-            "type": "groupEndMarker",
-          },
-        ],
-        "followUp": null,
-        "functionName": "fiber0001",
-        "lastAtomReturns": false,
-        "meta": Object {
-          "firstCharRange": Object {
-            "chars": Array [
-              97,
-            ],
-            "negate": false,
-          },
-          "groups": Array [
-            Object {
-              "astStart": 7,
-              "idx": 1,
-            },
-          ],
-          "maxCharLength": 4,
-          "minCharLength": 4,
-        },
-      },
-      "functionName": "greedyQuantifier0003",
-      "maxOrMinCount": false,
-      "meta": Object {
-        "firstCharRange": Object {
-          "chars": Array [],
-          "negate": false,
-        },
-        "groups": Array [
-          Object {
-            "astStart": 1,
-            "idx": 0,
-          },
-          Object {
-            "astStart": 7,
-            "idx": 1,
-          },
-        ],
-        "maxCharLength": 0,
         "minCharLength": 0,
       },
-      "posLine1": "/(aa3)*(aa3a)/",
-      "posLine2": " ^^^^^^",
-      "wrappedHandler": "[Circular]",
     },
   ],
+  "greedyQuantifierHandlers": Array [],
   "groups": Array [
     Object {
       "astStart": 1,
@@ -526,16 +456,218 @@ Object {
     "atoms": Array [
       Object {
         "data": Object {
-          "functionName": "greedyQuantifier0003",
+          "fixedLength": 3,
+          "followUp": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 7,
+                    "idx": 1,
+                  },
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "       ^^^^^^",
+                "type": "groupStartMarker",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 97,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "        ^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 97,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "         ^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 51,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "          ^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 97,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "           ^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 7,
+                    "idx": 1,
+                  },
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "       ^^^^^^",
+                "type": "groupEndMarker",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0001",
+            "lastAtomReturns": false,
+            "meta": Object {
+              "firstCharRange": Object {
+                "chars": Array [
+                  97,
+                ],
+                "negate": false,
+              },
+              "groups": Array [
+                Object {
+                  "astStart": 7,
+                  "idx": 1,
+                },
+              ],
+              "maxCharLength": 4,
+              "minCharLength": 4,
+            },
+          },
           "maxOrMinCount": false,
+          "wrappedHandler": Object {
+            "atoms": Array [
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": " ^^^^^",
+                "type": "groupStartMarker",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 97,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "  ^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 97,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "   ^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "negate": false,
+                  "tree": Object {
+                    "comparison": Object {
+                      "comparisonValue": 51,
+                      "type": "equal",
+                    },
+                    "type": "lastComparison",
+                  },
+                  "unicode": false,
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": "    ^",
+                "type": "charOrSet",
+              },
+              Object {
+                "data": Object {
+                  "groupReference": Object {
+                    "astStart": 1,
+                    "idx": 0,
+                  },
+                },
+                "posLine1": "/(aa3)*(aa3a)/",
+                "posLine2": " ^^^^^",
+                "type": "groupEndMarker",
+              },
+            ],
+            "followUp": null,
+            "functionName": "fiber0002",
+            "lastAtomReturns": false,
+            "meta": Object {
+              "firstCharRange": Object {
+                "chars": Array [
+                  97,
+                ],
+                "negate": false,
+              },
+              "groups": Array [
+                Object {
+                  "astStart": 1,
+                  "idx": 0,
+                },
+              ],
+              "maxCharLength": 3,
+              "minCharLength": 3,
+            },
+          },
         },
         "posLine1": "/(aa3)*(aa3a)/",
         "posLine2": " ^^^^^^",
-        "type": "quantifierStarter",
+        "type": "backtrackingFixedLengthQuantifier",
       },
     ],
     "followUp": null,
-    "functionName": "fiber0004",
+    "functionName": "fiber0003",
     "lastAtomReturns": true,
     "meta": Object {
       "firstCharRange": Object {
@@ -546,16 +678,12 @@ Object {
       },
       "groups": Array [
         Object {
-          "astStart": 1,
-          "idx": 0,
-        },
-        Object {
           "astStart": 7,
           "idx": 1,
         },
       ],
       "maxCharLength": "Infinity",
-      "minCharLength": 4,
+      "minCharLength": 0,
     },
   },
   "quantifierCountersLength": 0,
