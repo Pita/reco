@@ -33,5 +33,7 @@ export const handleLookaroundAssertion = (
       },
     },
     'noCharRange',
+    0,
+    0,
   );
 };

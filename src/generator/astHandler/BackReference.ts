@@ -27,5 +27,7 @@ export const handleBackReference = (
     },
     // TODO: ideally this would be the char range of the group
     CharRange.createFullRange(),
+    0,
+    Infinity,
   );
 };

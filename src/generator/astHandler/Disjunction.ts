@@ -33,6 +33,12 @@ export const handleDisjunction = (
       charRange.union(alternative.meta.firstCharRange),
     CharRange.createEmptyRange(),
   );
+  let minLength = Infinity;
+  let maxLength = -Infinity;
+  mappedAlternatives.forEach((alternative) => {
+    minLength = Math.min(minLength, alternative.meta.minCharLength);
+    maxLength = Math.max(maxLength, alternative.meta.maxCharLength);
+  });
 
   return collector.addAtom(
     collector.createForkingFiber(currentFiber, groupsToRestore),
@@ -42,5 +48,7 @@ export const handleDisjunction = (
       ast: alternatives[0].parent,
     },
     combinedCharRange,
+    minLength,
+    maxLength,
   );
 };

@@ -177,6 +177,29 @@ const generateBacktrackingQuantifier = (
   ]);
   quantifierHandler.wrappedHandler = wrappedHandler;
 
+  const minCharLength =
+    currentFiber.meta.minCharLength +
+    quantifier.min * wrappedHandler.meta.minCharLength;
+
+  const maxCharLength =
+    currentFiber.meta.maxCharLength +
+    quantifier.max * wrappedHandler.meta.maxCharLength;
+  if (
+    Number.isNaN(maxCharLength) &&
+    !Number.isNaN(quantifierHandler.meta.maxCharLength)
+  ) {
+    console.log(
+      'NaN',
+      currentFiber.meta.maxCharLength,
+      '+',
+      quantifier.max,
+      '*',
+      wrappedHandler.meta.maxCharLength,
+    );
+  }
+
+  // quantifier
+
   return collector.addAtom(
     collector.createForkingFiber(
       quantifierHandler,
@@ -192,6 +215,8 @@ const generateBacktrackingQuantifier = (
       ast: quantifier,
     },
     firstCharAfterQuantifier,
+    minCharLength,
+    maxCharLength,
   );
 };
 
@@ -219,6 +244,8 @@ const generateNonBacktrackingQuantifier = (
   );
 
   const countParams = generateCountParams(quantifier);
+  const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
+  const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
 
   return collector.addAtom(
     currentFiber,
@@ -231,6 +258,8 @@ const generateNonBacktrackingQuantifier = (
       ast: quantifier,
     },
     firstCharAfterQuantifier,
+    minCharLength,
+    maxCharLength,
   );
 };
 

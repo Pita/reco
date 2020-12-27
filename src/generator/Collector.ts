@@ -92,6 +92,8 @@ export class Collector {
       meta: {
         groups,
         firstCharRange: fiber.meta.firstCharRange,
+        minCharLength: fiber.meta.minCharLength,
+        maxCharLength: fiber.meta.maxCharLength,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -108,6 +110,8 @@ export class Collector {
       meta: {
         groups: [],
         firstCharRange,
+        minCharLength: 0,
+        maxCharLength: 0,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -127,6 +131,8 @@ export class Collector {
       meta: {
         groups: groups.slice(),
         firstCharRange: followUpFiber.meta.firstCharRange,
+        minCharLength: 0,
+        maxCharLength: 0,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -147,6 +153,8 @@ export class Collector {
       meta: {
         groups: [],
         firstCharRange: followUpFirstChar,
+        minCharLength: 0,
+        maxCharLength: 0,
       },
     };
 
@@ -160,6 +168,8 @@ export class Collector {
       meta: {
         groups: [],
         firstCharRange: CharRange.createEmptyRange(),
+        minCharLength: 0,
+        maxCharLength: 0,
       },
       ...this.formatAstLocation(ast),
     };
@@ -191,6 +201,8 @@ export class Collector {
     currentFiber: FiberTemplateDefinition,
     def: AtomDefinition,
     atomCharRange: CharRange | 'noCharRange',
+    minLength: number,
+    maxLength: number,
   ) {
     // TODO: type this correctly
     const newAtom: any = {
@@ -198,6 +210,9 @@ export class Collector {
       type: def.type,
       data: def.data,
     };
+
+    currentFiber.meta.minCharLength += minLength;
+    currentFiber.meta.maxCharLength += maxLength;
 
     currentFiber.atoms.unshift(newAtom);
     if (atomCharRange !== 'noCharRange') {

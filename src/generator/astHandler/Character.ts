@@ -144,6 +144,8 @@ export const handleSetOrCharacter = (
         ast: element,
       },
       newCharRange,
+      1,
+      1,
     );
   } else {
     return collector.addAtom(
@@ -158,6 +160,8 @@ export const handleSetOrCharacter = (
         ast: element,
       },
       newCharRange,
+      1,
+      1,
     );
   }
 };

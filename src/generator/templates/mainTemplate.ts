@@ -12,6 +12,8 @@ export interface FunctionDefinition {
   meta: {
     groups: GroupReference[];
     firstCharRange: CharRange;
+    minCharLength: number;
+    maxCharLength: number;
   };
 }
 

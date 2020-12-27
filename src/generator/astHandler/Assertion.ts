@@ -20,6 +20,8 @@ export const handleAssertion = (
           data: {},
         },
         'noCharRange',
+        0,
+        0,
       );
     case 'end':
       return collector.addAtom(
@@ -30,6 +32,8 @@ export const handleAssertion = (
           data: {},
         },
         'noCharRange',
+        0,
+        0,
       );
     case 'lookahead':
     case 'lookbehind':
@@ -50,6 +54,8 @@ export const handleAssertion = (
           },
         },
         'noCharRange',
+        0,
+        0,
       );
       break;
   }

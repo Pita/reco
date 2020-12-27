@@ -28,6 +28,8 @@ export const handleCapturingGroup = (
       },
     },
     'noCharRange',
+    0,
+    0,
   );
 
   const disjunction = handleDisjunction(
@@ -47,6 +49,8 @@ export const handleCapturingGroup = (
       },
     },
     'noCharRange',
+    0,
+    0,
   );
 
   return groupStartMarker;
