@@ -2,6 +2,7 @@ import templateFile from './mainTemplate.handlebars';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 import { CharRange } from '../CharRange';
+import { registerBailPartial } from './bail';
 export interface GroupReference {
   idx: number;
 }
@@ -37,6 +38,7 @@ export type FollowUp = FunctionDefinition | null;
 export interface BaseTemplateAtom {
   posLine1: string;
   posLine2: string;
+  inlinedFunction?: string;
 }
 
 export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
@@ -182,4 +184,5 @@ export interface TemplateValues {
 }
 
 registerLeafPartial();
+registerBailPartial();
 export const template = Handlebars.compile(templateFile);

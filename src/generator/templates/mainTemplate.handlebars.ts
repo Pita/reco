@@ -90,7 +90,7 @@ export function generatedRegexMatcher(str: string) {
         */
       {{#switchCase 'charOrSet'}}
         if (i >= str.length) {
-          return -1;
+          {{>bail}}
         }
         const charCode{{{@index}}} =
         {{#if unicode}}
@@ -102,7 +102,7 @@ export function generatedRegexMatcher(str: string) {
         let result{{{@index}}} = false;
         {{> leaf tree atomIndex=@index}}
         if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
-          return -1;
+          {{>bail}}
         };
         {{#if unicode}}
           // surrogate pair might require moving 2 chars ahead
@@ -127,7 +127,7 @@ export function generatedRegexMatcher(str: string) {
           i--;
         {{/unless}}
         if (i < 0) {
-          return -1;
+          {{>bail}}
         }
         const charCode{{{@index}}} =
           {{#if unicode}}
@@ -139,7 +139,7 @@ export function generatedRegexMatcher(str: string) {
         let result{{{@index}}} = false;
         {{> leaf tree atomIndex=@index}}
         if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
-          return -1;
+          {{>bail}}
         };
       {{/switchCase}}
       {{#switchCase 'disjunction'}}
@@ -157,16 +157,16 @@ export function generatedRegexMatcher(str: string) {
             groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
           {{/each}}
         {{/each}}
-        return -1;
+        {{>bail}}
       {{/switchCase}}
       {{#switchCase 'startAnchor'}}
         if (i !== 0) {
-          return -1;
+          {{>bail}}
         }
       {{/switchCase}}
       {{#switchCase 'endAnchor'}}
         if (i !== str.length) {
-          return -1;
+          {{>bail}}
         }
       {{/switchCase}}
       {{#switchCase 'multiLineStartAnchor'}}
@@ -182,7 +182,7 @@ export function generatedRegexMatcher(str: string) {
             }
           }
           if (!isNewLineChar{{{index}}}) {
-            return -1;
+            {{>bail}}
           }
         }
 
@@ -200,7 +200,7 @@ export function generatedRegexMatcher(str: string) {
             }
           }
           if (!isNewLineChar{{{index}}}) {
-            return -1;
+            {{>bail}}
           }
         }
       {{/switchCase}}
@@ -219,7 +219,7 @@ export function generatedRegexMatcher(str: string) {
         {{#unless negate}}
           if (lookaroundResult{{{@index}}} === -1) { 
         {{/unless}}
-          return -1;
+          {{>bail}}
         }
       {{/switchCase}}
       {{#switchCase 'nonBacktrackingQuantifier'}}
@@ -232,7 +232,7 @@ export function generatedRegexMatcher(str: string) {
           if (wrappedResult === -1) {
             {{#if minCount}}
               if (matches{{{@index}}} < {{{minCount}}}) {
-                return -1;
+                {{>bail}}
               }
             {{/if}}
 
@@ -261,7 +261,7 @@ export function generatedRegexMatcher(str: string) {
           if (wrappedResult === -1) {
             {{#if minCount}}
               if (matches{{{@index}}} < {{{minCount}}}) {
-                return -1;
+                {{>bail}}
               }
             {{/if}}
 
@@ -299,7 +299,7 @@ export function generatedRegexMatcher(str: string) {
               i-={{{fixedLength}}};
             }
 
-            return -1;
+            {{>bail}}
         {{/if}}
       {{/switchCase}}
       {{#switchCase 'wordBoundary'}}
@@ -343,18 +343,18 @@ export function generatedRegexMatcher(str: string) {
 
           {{#if negate}}
             if (isBeforeWord{{{@index}}} !== isAfterWord{{{@index}}}) {
-              return -1;
+              {{>bail}}
             }
           {{/if}}
           {{#unless negate}}
             if (isBeforeWord{{{@index}}} === isAfterWord{{{@index}}}) {
-              return -1;
+              {{>bail}}
             }
           {{/unless}}
         }
         {{#if negate}}
         else {
-          return -1;
+          {{>bail}}
         }
         {{/if}}
       {{/switchCase}}
@@ -364,14 +364,14 @@ export function generatedRegexMatcher(str: string) {
         const backReferenceEnd{{{index}}} = groupMarkers[{{{endGroupMarkerIndex}}}];
         while(backReferenceI{{{index}}} < backReferenceEnd{{{index}}}) {
           if (i >= str.length) {
-            return -1;
+            {{>bail}}
           }
 
           const backReferenceCharCode = str.charCodeAt(backReferenceI{{{index}}});
           const currentCharCode = str.charCodeAt(i);
 
           if (backReferenceCharCode !== currentCharCode) {
-            return -1;
+            {{>bail}}
           }
 
           backReferenceI{{{index}}}++;
