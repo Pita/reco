@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -110,7 +110,13 @@ const fiber0004 = (
     return -1;
   }
   i++;
-  return i;
+  return fiber0002(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0005 = (
   start: number,
@@ -144,52 +150,29 @@ const fiber0005 = (
   }
   i++;
   /*
-   * backtrackingFixedLengthQuantifier
+   * optionalQuantifier
    * /(aa?){3,}/
    *    ^^
    */
-  let matches2 = 0;
 
-  while (true) {
-    const wrappedResult = fiber0004(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-      matches2++;
-
-      if (matches2 === 1) {
-        break;
-      }
-    }
+  const withOptionalResult2 = fiber0004(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
+  if (withOptionalResult2 !== -1) {
+    return withOptionalResult2;
   }
 
-  // needs followUp & forkingFiber
-  while (matches2 >= 0) {
-    const directFollowUpResult2 = fiber0002(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
-
-    if (directFollowUpResult2 !== -1) {
-      return directFollowUpResult2;
-    }
-
-    matches2--;
-    i -= 1;
-  }
-
-  return -1;
+  return fiber0002(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0006 = (
   start: number,

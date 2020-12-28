@@ -76,13 +76,6 @@ export class Collector {
     // therefore we can delete it
     let followUp: FollowUp = fiber;
     const groups = fiber.meta.groups.slice();
-    if (fiber.atoms.length === 0) {
-      followUp = fiber.followUp;
-      const index = this.fiberHandlers.indexOf(fiber);
-      if (index !== -1) {
-        this.fiberHandlers.splice(index, 1);
-      }
-    }
 
     const newFiber: FiberTemplateDefinition = {
       followUp,

@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -21,15 +21,15 @@ type GroupMarkers = [number, number, number, number];
 
 type TempGroupMarkers = [number, number];
 
-type QuantifierCounters = [number];
+type QuantifierCounters = [];
 
 export function generatedRegexMatcher(str: string) {
   const groupMarkers: GroupMarkers = [-1, -1, -1, -1];
   const tempGroupStartMarkers: TempGroupMarkers = [-1, -1];
-  const quantifierCounters: QuantifierCounters = [-1];
+  const quantifierCounters: QuantifierCounters = [];
 
   for (let i = 0; i < str.length; i++) {
-    const posAfterMatch = fiber0009(
+    const posAfterMatch = fiber0008(
       i,
       str,
       groupMarkers,
@@ -519,7 +519,7 @@ const fiber0007 = (
    */
   groupMarkers[0] = tempGroupStartMarkers[0];
   groupMarkers[1] = i;
-  return greedyQuantifier0008(
+  return fiber0006(
     i,
     str,
     groupMarkers,
@@ -527,7 +527,7 @@ const fiber0007 = (
     quantifierCounters
   );
 };
-const fiber0009 = (
+const fiber0008 = (
   start: number,
   str: string,
   groupMarkers: GroupMarkers,
@@ -610,7 +610,7 @@ const fiber0009 = (
    */
   let matches4 = 0;
   while (true) {
-    const wrappedResult = fiber0010(
+    const wrappedResult = fiber0009(
       i,
       str,
       groupMarkers,
@@ -682,24 +682,36 @@ const fiber0009 = (
   }
   i++;
   /*
-   * quantifierStarter
+   * optionalQuantifier
    * /https?:\/\/(www\.)?[-a-zA-Z0-...
    *             ^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0008 = quantifierCounters[0];
-  quantifierCounters[0] = -1;
-  const cursorAfterQuantifier = greedyQuantifier0008(
+  const groupMarkerCopy0 = groupMarkers[0];
+  const groupMarkerCopy1 = groupMarkers[1];
+
+  const withOptionalResult8 = fiber0007(
     i,
     str,
     groupMarkers,
     tempGroupStartMarkers,
     quantifierCounters
   );
-  quantifierCounters[0] = matchCountCopygreedyQuantifier0008;
+  if (withOptionalResult8 !== -1) {
+    return withOptionalResult8;
+  }
 
-  return cursorAfterQuantifier;
+  groupMarkers[0] = groupMarkerCopy0;
+  groupMarkers[1] = groupMarkerCopy1;
+
+  return fiber0006(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
-const fiber0010 = (
+const fiber0009 = (
   start: number,
   str: string,
   groupMarkers: GroupMarkers,
@@ -725,64 +737,4 @@ const fiber0010 = (
   }
   i++;
   return i;
-};
-
-/*
- * /https?:\/\/(www\.)?[-a-zA-Z0-...
- *             ^^^^^^^^
- */
-const greedyQuantifier0008 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  quantifierCounters[0]++;
-
-  if (quantifierCounters[0] === 1) {
-    return fiber0006(
-      start,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
-  }
-
-  const groupMarkerCopy0 = groupMarkers[0];
-  const groupMarkerCopy1 = groupMarkers[1];
-  const tryDeeperResult = fiber0007(
-    start,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
-  }
-
-  // recursion failed, reset groups
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-
-  const groupMarkerCopy2 = groupMarkers[2];
-  const groupMarkerCopy3 = groupMarkers[3];
-
-  const followUpResult = fiber0006(
-    start,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-
-  if (followUpResult === -1) {
-    groupMarkers[2] = groupMarkerCopy2;
-    groupMarkers[3] = groupMarkerCopy3;
-    quantifierCounters[0]--;
-  }
-  return followUpResult;
 };

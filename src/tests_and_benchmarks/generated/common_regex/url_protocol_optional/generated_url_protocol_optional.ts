@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -21,15 +21,15 @@ type GroupMarkers = [number, number, number, number, number, number];
 
 type TempGroupMarkers = [number, number, number];
 
-type QuantifierCounters = [number, number];
+type QuantifierCounters = [];
 
 export function generatedRegexMatcher(str: string) {
   const groupMarkers: GroupMarkers = [-1, -1, -1, -1, -1, -1];
   const tempGroupStartMarkers: TempGroupMarkers = [-1, -1, -1];
-  const quantifierCounters: QuantifierCounters = [-1, -1];
+  const quantifierCounters: QuantifierCounters = [];
 
   for (let i = 0; i < str.length; i++) {
-    const posAfterMatch = fiber0013(
+    const posAfterMatch = fiber0008(
       i,
       str,
       groupMarkers,
@@ -518,7 +518,7 @@ const fiber0007 = (
    */
   groupMarkers[2] = tempGroupStartMarkers[1];
   groupMarkers[3] = i;
-  return greedyQuantifier0008(
+  return fiber0006(
     i,
     str,
     groupMarkers,
@@ -526,7 +526,7 @@ const fiber0007 = (
     quantifierCounters
   );
 };
-const fiber0009 = (
+const fiber0008 = (
   start: number,
   str: string,
   groupMarkers: GroupMarkers,
@@ -535,24 +535,63 @@ const fiber0009 = (
 ): number => {
   let i = start;
   /*
-   * quantifierStarter
+   * nonBacktrackingQuantifier
+   * /(https?:\/\/)?(www\.)?[-...
+   *  ^^^^^^^^^^^^^^
+   */
+  let matches0 = 0;
+  while (true) {
+    const wrappedResult = fiber0009(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+
+      matches0++;
+
+      if (matches0 === 1) {
+        break;
+      }
+    }
+  }
+  /*
+   * optionalQuantifier
    * ...ps?:\/\/)?(www\.)?[-a-zA-Z0-...
    *              ^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0008 = quantifierCounters[0];
-  quantifierCounters[0] = -1;
-  const cursorAfterQuantifier = greedyQuantifier0008(
+  const groupMarkerCopy0 = groupMarkers[0];
+  const groupMarkerCopy1 = groupMarkers[1];
+
+  const withOptionalResult1 = fiber0007(
     i,
     str,
     groupMarkers,
     tempGroupStartMarkers,
     quantifierCounters
   );
-  quantifierCounters[0] = matchCountCopygreedyQuantifier0008;
+  if (withOptionalResult1 !== -1) {
+    return withOptionalResult1;
+  }
 
-  return cursorAfterQuantifier;
+  groupMarkers[0] = groupMarkerCopy0;
+  groupMarkers[1] = groupMarkerCopy1;
+
+  return fiber0006(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
-const fiber0010 = (
+const fiber0009 = (
   start: number,
   str: string,
   groupMarkers: GroupMarkers,
@@ -641,7 +680,7 @@ const fiber0010 = (
    */
   let matches5 = 0;
   while (true) {
-    const wrappedResult = fiber0012(
+    const wrappedResult = fiber0010(
       i,
       str,
       groupMarkers,
@@ -719,15 +758,9 @@ const fiber0010 = (
    */
   groupMarkers[0] = tempGroupStartMarkers[0];
   groupMarkers[1] = i;
-  return greedyQuantifier0011(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
-const fiber0012 = (
+const fiber0010 = (
   start: number,
   str: string,
   groupMarkers: GroupMarkers,
@@ -753,153 +786,4 @@ const fiber0012 = (
   }
   i++;
   return i;
-};
-const fiber0013 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-  /*
-   * quantifierStarter
-   * /(https?:\/\/)?(www\.)?[-...
-   *  ^^^^^^^^^^^^^^
-   */
-  let matchCountCopygreedyQuantifier0011 = quantifierCounters[1];
-  quantifierCounters[1] = -1;
-  const cursorAfterQuantifier = greedyQuantifier0011(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  quantifierCounters[1] = matchCountCopygreedyQuantifier0011;
-
-  return cursorAfterQuantifier;
-};
-
-/*
- * ...ps?:\/\/)?(www\.)?[-a-zA-Z0-...
- *              ^^^^^^^^
- */
-const greedyQuantifier0008 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  quantifierCounters[0]++;
-
-  if (quantifierCounters[0] === 1) {
-    return fiber0006(
-      start,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
-  }
-
-  const groupMarkerCopy2 = groupMarkers[2];
-  const groupMarkerCopy3 = groupMarkers[3];
-  const tryDeeperResult = fiber0007(
-    start,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
-  }
-
-  // recursion failed, reset groups
-  groupMarkers[2] = groupMarkerCopy2;
-  groupMarkers[3] = groupMarkerCopy3;
-
-  const groupMarkerCopy4 = groupMarkers[4];
-  const groupMarkerCopy5 = groupMarkers[5];
-
-  const followUpResult = fiber0006(
-    start,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-
-  if (followUpResult === -1) {
-    groupMarkers[4] = groupMarkerCopy4;
-    groupMarkers[5] = groupMarkerCopy5;
-    quantifierCounters[0]--;
-  }
-  return followUpResult;
-};
-/*
- * /(https?:\/\/)?(www\.)?[-...
- *  ^^^^^^^^^^^^^^
- */
-const greedyQuantifier0011 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  quantifierCounters[1]++;
-
-  if (quantifierCounters[1] === 1) {
-    return fiber0009(
-      start,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
-  }
-
-  const groupMarkerCopy0 = groupMarkers[0];
-  const groupMarkerCopy1 = groupMarkers[1];
-  const tryDeeperResult = fiber0010(
-    start,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
-  }
-
-  // recursion failed, reset groups
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-
-  const groupMarkerCopy2 = groupMarkers[2];
-  const groupMarkerCopy3 = groupMarkers[3];
-  const groupMarkerCopy4 = groupMarkers[4];
-  const groupMarkerCopy5 = groupMarkers[5];
-
-  const followUpResult = fiber0009(
-    start,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-
-  if (followUpResult === -1) {
-    groupMarkers[2] = groupMarkerCopy2;
-    groupMarkers[3] = groupMarkerCopy3;
-    groupMarkers[4] = groupMarkerCopy4;
-    groupMarkers[5] = groupMarkerCopy5;
-    quantifierCounters[1]--;
-  }
-  return followUpResult;
 };

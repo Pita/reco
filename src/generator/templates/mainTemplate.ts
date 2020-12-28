@@ -153,6 +153,15 @@ export interface BacktrackingFixedLengthQuantifier extends BaseTemplateAtom {
   };
 }
 
+export interface OptionalQuantifier extends BaseTemplateAtom {
+  type: 'optionalQuantifier';
+  data: {
+    wrappedHandler: FiberTemplateDefinition;
+    followUp: FollowUp;
+    groupsToRestore: GroupReference[];
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
@@ -168,7 +177,8 @@ export type TemplateAtom =
   | WordBoundaryTemplateAtom
   | GroupBackReferenceTemplateAtom
   | NonBacktrackingQuantifier
-  | BacktrackingFixedLengthQuantifier;
+  | BacktrackingFixedLengthQuantifier
+  | OptionalQuantifier;
 
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];

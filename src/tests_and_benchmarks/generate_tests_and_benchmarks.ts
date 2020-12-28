@@ -135,27 +135,27 @@ configFiles
         transformCode(unformattedCode, 'js'),
         'utf8',
       );
-      fs.writeFileSync(
-        `${testFolderName}/${fileName}_templateValues.json`,
-        safeStringify(
-          templateValues,
-          (k: string, v: any) => {
-            if (v === Infinity) {
-              return 'Infinity';
-            }
-            if (v === -Infinity) {
-              return '-Infinity';
-            }
-            if (Number.isNaN(v)) {
-              return 'NaN';
-            }
+      // fs.writeFileSync(
+      //   `${testFolderName}/${fileName}_templateValues.json`,
+      //   safeStringify(
+      //     templateValues,
+      //     (k: string, v: any) => {
+      //       if (v === Infinity) {
+      //         return 'Infinity';
+      //       }
+      //       if (v === -Infinity) {
+      //         return '-Infinity';
+      //       }
+      //       if (Number.isNaN(v)) {
+      //         return 'NaN';
+      //       }
 
-            return v;
-          },
-          2,
-        ),
-        'utf8',
-      );
+      //       return v;
+      //     },
+      //     2,
+      //   ),
+      //   'utf8',
+      // );
       fs.writeFileSync(
         `${testFolderName}/${fileName}.test.ts`,
         testCode,

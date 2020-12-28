@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -195,6 +195,16 @@ const fiber0003 = (
   }
   return i;
 };
+const fiber0004 = (
+  start: number,
+  str: string,
+  groupMarkers: GroupMarkers,
+  tempGroupStartMarkers: TempGroupMarkers,
+  quantifierCounters: QuantifierCounters
+): number => {
+  let i = start;
+  return i;
+};
 const fiber0005 = (
   start: number,
   str: string,
@@ -220,7 +230,13 @@ const fiber0005 = (
     return -1;
   }
   i++;
-  return i;
+  return fiber0004(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0006 = (
   start: number,
@@ -503,7 +519,13 @@ const fiber0010 = (
     return -1;
   }
   i++;
-  return i;
+  return fiber0004(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0011 = (
   start: number,
@@ -627,7 +649,13 @@ const fiber0013 = (
     return -1;
   }
   i++;
-  return i;
+  return fiber0012(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0014 = (
   start: number,
@@ -662,52 +690,29 @@ const fiber0014 = (
   }
   i++;
   /*
-   * backtrackingFixedLengthQuantifier
+   * optionalQuantifier
    * ...s)(on\S+)=["']?((?:.(?!["...
    *              ^^^^^
    */
-  let matches2 = 0;
 
-  while (true) {
-    const wrappedResult = fiber0013(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-      matches2++;
-
-      if (matches2 === 1) {
-        break;
-      }
-    }
+  const withOptionalResult2 = fiber0013(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
+  if (withOptionalResult2 !== -1) {
+    return withOptionalResult2;
   }
 
-  // needs followUp & forkingFiber
-  while (matches2 >= 0) {
-    const directFollowUpResult2 = fiber0012(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
-
-    if (directFollowUpResult2 !== -1) {
-      return directFollowUpResult2;
-    }
-
-    matches2--;
-    i -= 1;
-  }
-
-  return -1;
+  return fiber0012(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0015 = (
   start: number,

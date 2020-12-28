@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -70,6 +70,16 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0001 = (
+  start: number,
+  str: string,
+  groupMarkers: GroupMarkers,
+  tempGroupStartMarkers: TempGroupMarkers,
+  quantifierCounters: QuantifierCounters
+): number => {
+  let i = start;
+  return i;
+};
 const fiber0002 = (
   start: number,
   str: string,
@@ -211,7 +221,13 @@ const fiber0002 = (
    */
   groupMarkers[6] = tempGroupStartMarkers[3];
   groupMarkers[7] = i;
-  return i;
+  return fiber0001(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0003 = (
   start: number,
@@ -455,7 +471,13 @@ const fiber0008 = (
     return -1;
   }
   i++;
-  return i;
+  return fiber0001(
+    i,
+    str,
+    groupMarkers,
+    tempGroupStartMarkers,
+    quantifierCounters
+  );
 };
 const fiber0009 = (
   start: number,

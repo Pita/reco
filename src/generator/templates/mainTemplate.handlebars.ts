@@ -391,6 +391,29 @@ export function generatedRegexMatcher(str: string) {
 
         return cursorAfterQuantifier;
       {{/switchCase}}
+      {{#switchCase 'optionalQuantifier'}}
+        {{#each groupsToRestore}}
+          const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+          const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+        {{/each}}
+
+        const withOptionalResult{{{@index}}} = {{{wrappedHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+        if (withOptionalResult{{{@index}}} !== -1) {
+          return withOptionalResult{{{@index}}};
+        }
+
+        {{#each groupsToRestore}}
+          groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+          groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+        {{/each}}
+
+        {{#if followUp}}
+          return {{{followUp.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+        {{/if}}
+        {{#unless followUp}}
+          return i;
+        {{/unless}}        
+      {{/switchCase}}
     {{/each}}
     {{#unless lastAtomReturns}}
       {{#if followUp}}

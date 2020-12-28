@@ -330,12 +330,51 @@ const generateNonBacktrackingQuantifier = (
   );
 };
 
+const generateOptionalQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+) => {
+  const wrappedHandler = handleElement(
+    quantifier.element,
+    collector,
+    collector.createConnectedFiber(currentFiber),
+    flags,
+  );
+
+  const fakeCollector = collector.fakeCollector();
+  const groupsToRestore = handleElement(
+    quantifier.element,
+    fakeCollector,
+    fakeCollector.createFinalFiber(currentFiber.meta.firstCharRange),
+    flags,
+  ).meta.groups;
+
+  return collector.addAtom(
+    collector.createForkingFiber(currentFiber, currentFiber.meta.groups),
+    {
+      type: 'optionalQuantifier',
+      data: {
+        groupsToRestore,
+        followUp: currentFiber,
+        wrappedHandler,
+      },
+      ast: quantifier,
+    },
+    wrappedHandler.meta.firstCharRange,
+    wrappedHandler.meta.minCharLength,
+    wrappedHandler.meta.maxCharLength,
+  );
+};
+
 export const handleQuantifier = (
   quantifier: AST.Quantifier,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
+  // fixed length quantifier, just unroll it
   if (quantifier.min === quantifier.max && quantifier.max < 10) {
     let currentAppendableFiber = currentFiber;
     for (let i = 0; i < quantifier.max; i++) {
@@ -358,10 +397,20 @@ export const handleQuantifier = (
     fixedLength,
   } = analyzeQuantifier(quantifier, collector, currentFiber, flags);
 
+  if (needsBacktracking && flags.INTERNAL_no_backtracking) {
+    throw new BacktrackingError();
+  }
+
   if (needsBacktracking) {
-    if (flags.INTERNAL_no_backtracking) {
-      throw new BacktrackingError();
+    if (quantifier.min === 0 && quantifier.max === 1 && quantifier.greedy) {
+      return generateOptionalQuantifier(
+        quantifier,
+        collector,
+        currentFiber,
+        flags,
+      );
     }
+
     if (fixedLengthOptimizable && fixedLength) {
       // TODO: make it work for non greedy
       return generateBacktrackingFixedLengthQuantifier(
