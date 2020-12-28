@@ -1,5 +1,9 @@
 import { AST } from 'regexpp';
-import { Collector, mergeGroupsOfFibers } from '../Collector';
+import {
+  Collector,
+  mergeGroupsOfFibers,
+  TriedToForkInlinedFiberError,
+} from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleElement } from './Element';
@@ -258,12 +262,26 @@ const generateBacktrackingFixedLengthQuantifier = (
   followUpFirstChar: CharRange,
   fixedLength: number,
 ) => {
-  const wrappedHandler = handleElement(
-    quantifier.element,
-    collector,
-    collector.createFinalFiber(followUpFirstChar),
-    flags,
-  );
+  let wrappedHandler;
+  try {
+    wrappedHandler = handleElement(
+      quantifier.element,
+      collector,
+      collector.createInlineFiber(followUpFirstChar),
+      flags,
+    );
+  } catch (e) {
+    if (!(e instanceof TriedToForkInlinedFiberError)) {
+      throw e;
+    }
+
+    wrappedHandler = handleElement(
+      quantifier.element,
+      collector,
+      collector.createFinalFiber(followUpFirstChar),
+      flags,
+    );
+  }
 
   const countParams = generateCountParams(quantifier);
   const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
@@ -364,6 +382,7 @@ export const handleQuantifier = (
     }
     if (fixedLengthOptimizable && fixedLength) {
       // TODO: make it work for non greedy
+      // TODO: should have inlined version
       return generateBacktrackingFixedLengthQuantifier(
         quantifier,
         collector,
@@ -384,6 +403,7 @@ export const handleQuantifier = (
       );
     }
   } else {
+    // TODO: should have inlined version
     return generateNonBacktrackingQuantifier(
       quantifier,
       collector,

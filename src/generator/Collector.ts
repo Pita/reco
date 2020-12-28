@@ -77,7 +77,7 @@ export class Collector {
     };
   }
 
-  createInlineFiber(currentFiber: FiberTemplateDefinition) {
+  createInlineFiber(firstCharRange: CharRange) {
     const newInlineFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
@@ -86,7 +86,7 @@ export class Collector {
       inline: true,
       meta: {
         groups: [],
-        firstCharRange: currentFiber.meta.firstCharRange,
+        firstCharRange,
         minCharLength: 0,
         maxCharLength: 0,
       },

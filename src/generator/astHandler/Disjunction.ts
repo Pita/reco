@@ -76,7 +76,7 @@ const attemptInlineDisjunction = (
     handleAlternative(
       alternative,
       collector,
-      collector.createInlineFiber(currentFiber),
+      collector.createInlineFiber(currentFiber.meta.firstCharRange),
       flags,
     ),
   );

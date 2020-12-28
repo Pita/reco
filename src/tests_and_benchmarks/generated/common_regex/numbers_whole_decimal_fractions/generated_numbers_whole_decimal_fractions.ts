@@ -191,35 +191,6 @@ const fiber0005 = (
   i++;
   return i;
 };
-const fiber0006 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * charOrSet
-   * ...0-9]✱([\/][0-9]+[,.]?[0-9...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
 const fiber0007 = (
   start: number,
   str: string,
@@ -260,13 +231,31 @@ const fiber0007 = (
   let matches2 = 0;
 
   while (true) {
-    const wrappedResult = fiber0006(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0006 = i;
+    inlineFiber0006: {
+      let i = startinlineFiber0006;
+
+      /*
+       * charOrSet
+       * ...0-9]✱([\/][0-9]+[,.]?[0-9...
+       *              ^^^^^
+       */
+      if (i >= str.length) {
+        break inlineFiber0006;
+      }
+      const charCode0 = str.charCodeAt(i);
+      let result0 = false;
+
+      if (charCode0 <= 57) {
+        result0 = charCode0 >= 48;
+      }
+      if (!result0) {
+        break inlineFiber0006;
+      }
+      i++;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       if (matches2 < 1) {
@@ -428,35 +417,6 @@ const fiber0010 = (
   i++;
   return i;
 };
-const fiber0011 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * charOrSet
-   * /[-]?[0-9]+[,.]?[0-9...
-   *      ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
 const fiber0012 = (
   start: number,
   str: string,
@@ -501,13 +461,31 @@ const fiber0012 = (
   let matches1 = 0;
 
   while (true) {
-    const wrappedResult = fiber0011(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0011 = i;
+    inlineFiber0011: {
+      let i = startinlineFiber0011;
+
+      /*
+       * charOrSet
+       * /[-]?[0-9]+[,.]?[0-9...
+       *      ^^^^^
+       */
+      if (i >= str.length) {
+        break inlineFiber0011;
+      }
+      const charCode0 = str.charCodeAt(i);
+      let result0 = false;
+
+      if (charCode0 <= 57) {
+        result0 = charCode0 >= 48;
+      }
+      if (!result0) {
+        break inlineFiber0011;
+      }
+      i++;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       if (matches1 < 1) {
