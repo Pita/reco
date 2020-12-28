@@ -332,6 +332,20 @@ export const handleQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
 ): FiberTemplateDefinition => {
+  if (quantifier.min === quantifier.max && quantifier.max < 10) {
+    let currentAppendableFiber = currentFiber;
+    for (let i = 0; i < quantifier.max; i++) {
+      currentAppendableFiber = handleElement(
+        quantifier.element,
+        collector,
+        currentAppendableFiber,
+        flags,
+      );
+    }
+
+    return currentAppendableFiber;
+  }
+
   const {
     firstCharAfterQuantifier,
     needsBacktracking,
