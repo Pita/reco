@@ -110,7 +110,11 @@ const checkIfQuantifierHasFixedLength = (
 
   const { minCharLength, maxCharLength } = quantifierFiber.meta;
 
-  if (minCharLength === maxCharLength) {
+  if (
+    minCharLength === maxCharLength &&
+    quantifierFiber.meta.groups.length === 0 &&
+    quantifier.greedy
+  ) {
     return {
       fixedLengthOptimizable: true,
       fixedLength: minCharLength,

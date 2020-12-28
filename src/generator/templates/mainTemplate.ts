@@ -149,6 +149,7 @@ export interface BacktrackingFixedLengthQuantifier extends BaseTemplateAtom {
     maxCount?: number;
     wrappedHandler: FiberTemplateDefinition;
     followUp: FollowUp;
+    groups: GroupReference[];
   };
 }
 
