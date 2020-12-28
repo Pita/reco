@@ -106,5 +106,9 @@ dist
 .tern-port
 
 nextTodos.txt
-generated_*
 !*.snap
+
+**/generated/**/*.js
+**/generated/**/*.min.js
+**/generated/**/*.test.ts
+**/generated/**/*_templateValues.json
