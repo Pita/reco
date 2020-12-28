@@ -1,7 +1,7 @@
 export default `
 let {{{returnVar}}} = -1;
 
-{{{inlinedLabel}}}: {
+{{{functionName}}}: {
   {{>atoms}}
   {{{returnVar}}} = i;
 }

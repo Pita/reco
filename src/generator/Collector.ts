@@ -33,6 +33,13 @@ interface QuantifierCounter {
   ast: AST.Quantifier;
 }
 
+export class TriedToForkInlinedFiberError extends Error {
+  constructor() {
+    super();
+    this.name = 'TriedToForkInlinedFiberError';
+  }
+}
+
 export class Collector {
   private regexStr: string;
   private counter = 0;
@@ -70,8 +77,28 @@ export class Collector {
     };
   }
 
+  createInlineFiber(currentFiber: FiberTemplateDefinition) {
+    const newInlineFiber: FiberTemplateDefinition = {
+      followUp: null,
+      atoms: [],
+      functionName: `inlineFiber${this.getNewCount()}`,
+      lastAtomReturns: false,
+      meta: {
+        groups: [],
+        firstCharRange: currentFiber.meta.firstCharRange,
+        minCharLength: 0,
+        maxCharLength: 0,
+      },
+    };
+
+    return newInlineFiber;
+  }
+
   // used by disjunction to create single thread
   createConnectedFiber(fiber: FiberTemplateDefinition) {
+    if (fiber.inline) {
+      throw new TriedToForkInlinedFiberError();
+    }
     // Special case where the fiber to close has zero atoms,
     // therefore we can delete it
     let followUp: FollowUp = fiber;
@@ -123,6 +150,10 @@ export class Collector {
     followUpFiber: FiberTemplateDefinition,
     groups: GroupReference[],
   ) {
+    if (followUpFiber.inline) {
+      throw new TriedToForkInlinedFiberError();
+    }
+
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
@@ -145,6 +176,10 @@ export class Collector {
     ast: AST.Quantifier,
     followUpFirstChar: CharRange,
   ) {
+    if (followUp.inline) {
+      throw new TriedToForkInlinedFiberError();
+    }
+
     const quantifierFinalFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],

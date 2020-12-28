@@ -4,6 +4,7 @@ import * as Handlebars from 'handlebars';
 import { CharRange } from '../CharRange';
 import { registerBailPartial } from './bail';
 import { registerAtomsPartial } from './atoms';
+import { registerInlineFiberPartial } from './inlineFiber';
 export interface GroupReference {
   idx: number;
 }
@@ -22,6 +23,7 @@ export interface FunctionDefinition {
 export interface FiberTemplateDefinition extends FunctionDefinition {
   atoms: TemplateAtom[];
   lastAtomReturns: boolean;
+  inline?: boolean;
 }
 
 export interface QuantifierTemplateDefinition extends FunctionDefinition {
@@ -62,6 +64,14 @@ export interface CharOrSetBackwardTemplateAtom extends BaseTemplateAtom {
 
 export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
   type: 'disjunction';
+  data: {
+    groupsToRestore: GroupReference[];
+    alternatives: FiberTemplateDefinition[];
+  };
+}
+
+export interface InlineDisjunctionTemplateAtom extends BaseTemplateAtom {
+  type: 'inlineDisjunction';
   data: {
     groupsToRestore: GroupReference[];
     alternatives: FiberTemplateDefinition[];
@@ -156,10 +166,12 @@ export interface BacktrackingFixedLengthQuantifier extends BaseTemplateAtom {
   };
 }
 
+// TODO: group by kind of atom (assertion, group, tailing, charCheck)
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
   | DisjunctionTemplateAtom
+  | InlineDisjunctionTemplateAtom
   | StartAnchorTemplateAtom
   | EndAnchorTemplateAtom
   | MultiLineStartAnchorTemplateAtom
@@ -187,4 +199,5 @@ export interface TemplateValues {
 registerLeafPartial();
 registerBailPartial();
 registerAtomsPartial();
+registerInlineFiberPartial();
 export const template = Handlebars.compile(templateFile);

@@ -76,6 +76,27 @@ export default `
     {{/each}}
     {{>bail}}
   {{/switchCase}}
+  {{#switchCase 'inlineDisjunction'}}
+    {{#each groupsToRestore}}
+      const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+      const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+    {{/each}}
+    alternatives{{{@index}}}: {
+      {{#each alternatives}}
+        {{>inlinedFiber returnVar=length{{{@index}}}}}
+        if (length{{{@index}}} !== -1) {
+          i = length{{{@index}}};
+          break alternatives{{{@../index}}};
+        }
+        {{#each meta.groups}}
+          groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+          groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+        {{/each}}
+      {{/each}}
+
+      {{>bail}}
+    }
+  {{/switchCase}}
   {{#switchCase 'startAnchor'}}
     if (i !== 0) {
       {{>bail}}
