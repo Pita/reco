@@ -60,6 +60,7 @@ const fiber0001 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * groupStartMarker
    * /(\b\w+\b)(?=.✱\b\1\b)/
@@ -219,6 +220,7 @@ const fiber0002 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * wordBoundary
    * ...w+\b)(?=.✱\b\1\b)/
@@ -347,6 +349,7 @@ const fiber0003 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /(\b\w+\b)(?=.✱\b\1\b)/
@@ -379,6 +382,7 @@ const fiber0004 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * backtrackingFixedLengthQuantifier
    * /(\b\w+\b)(?=.✱\b\1\b)/
@@ -431,6 +435,7 @@ const fiber0005 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /(\b\w+\b)(?=.✱\...

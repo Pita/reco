@@ -63,6 +63,7 @@ const fiber0001 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * lookaround
    * /(?=(.✱[0-9]))((?=.✱[A-Z...
@@ -189,6 +190,7 @@ const fiber0002 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ....✱[a-z]))^.{8,}$/
@@ -221,6 +223,7 @@ const fiber0003 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...A-Z])(?=.✱[a-z]))^.{8,}$/
@@ -249,6 +252,7 @@ const fiber0004 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...✱[A-Z])(?=.✱[a-z]))^....
@@ -281,6 +285,7 @@ const fiber0005 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * backtrackingFixedLengthQuantifier
    * ...✱[A-Z])(?=.✱[a-z]))^.{...
@@ -333,6 +338,7 @@ const fiber0006 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...0-9])(?=.✱[A-Z])(?=.✱[a-z...
@@ -361,6 +367,7 @@ const fiber0007 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...-z0-9])(?=.✱[A-Z])(?=...
@@ -393,6 +400,7 @@ const fiber0008 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * backtrackingFixedLengthQuantifier
    * ...-z0-9])(?=.✱[A-Z])(?=....
@@ -445,6 +453,7 @@ const fiber0009 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...9]))((?=.✱[A-Za-z0-9])(?=.✱[A-Z...
@@ -481,6 +490,7 @@ const fiber0010 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...0-9]))((?=.✱[A-Za-z0-...
@@ -513,6 +523,7 @@ const fiber0011 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * backtrackingFixedLengthQuantifier
    * ...0-9]))((?=.✱[A-Za-z0-9...
@@ -565,6 +576,7 @@ const fiber0012 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /(?=(.✱[0-9]))((?=.✱[A...
@@ -600,6 +612,7 @@ const fiber0013 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /(?=(.✱[0-9]))((...
@@ -632,6 +645,7 @@ const fiber0014 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * groupStartMarker
    * /(?=(.✱[0-9]))((?=.✱[A-...

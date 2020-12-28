@@ -60,6 +60,7 @@ const fiber0001 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   return i;
 };
 const fiber0002 = (
@@ -70,6 +71,7 @@ const fiber0002 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * groupEndMarker
    * /(aa?){0,3}?/
@@ -93,6 +95,7 @@ const fiber0004 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /(aa?){0,3}?/
@@ -120,6 +123,7 @@ const fiber0005 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * groupStartMarker
    * /(aa?){0,3}?/
@@ -199,6 +203,7 @@ const fiber0006 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * quantifierStarter
    * /(aa?){0,3}?/
@@ -262,6 +267,5 @@ const lazyQuantifier0003 = (
   }
 
   quantifierCounters[0]--;
-
   return -1;
 };

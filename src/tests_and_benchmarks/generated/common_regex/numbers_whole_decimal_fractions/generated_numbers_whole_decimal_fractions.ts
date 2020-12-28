@@ -60,6 +60,7 @@ const fiber0001 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   return i;
 };
 const fiber0002 = (
@@ -70,6 +71,7 @@ const fiber0002 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * nonBacktrackingQuantifier
    * ...[\/][0-9]+[,.]?[0-9]✱)✱/
@@ -140,6 +142,7 @@ const fiber0004 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...0-9]+[,.]?[0-9]✱)✱/
@@ -168,6 +171,7 @@ const fiber0005 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...[\/][0-9]+[,.]?[0-9]✱)✱/
@@ -195,6 +199,7 @@ const fiber0006 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...0-9]✱([\/][0-9]+[,.]?[0-9...
@@ -223,6 +228,7 @@ const fiber0007 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * groupStartMarker
    * ...,.]?[0-9]✱([\/][0-9]+[,.]?[0-9]✱)✱/
@@ -302,6 +308,7 @@ const fiber0008 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * nonBacktrackingQuantifier
    * /[-]?[0-9]+[,.]?[0-9]✱([\/...
@@ -372,6 +379,7 @@ const fiber0009 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...0-9]+[,.]?[0-9]✱([\/][0-9...
@@ -400,6 +408,7 @@ const fiber0010 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /[-]?[0-9]+[,.]?[0-9]✱([\...
@@ -427,6 +436,7 @@ const fiber0011 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /[-]?[0-9]+[,.]?[0-9...
@@ -455,6 +465,7 @@ const fiber0012 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * nonBacktrackingQuantifier
    * /[-]?[0-9]+[,.]...
@@ -538,6 +549,7 @@ const fiber0013 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /[-]?[0-9]+[,....

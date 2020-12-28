@@ -63,6 +63,7 @@ const fiber0001 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * wordBoundary
    * ...[a-z]{2,6}\b([-a-zA-Z0...
@@ -153,6 +154,7 @@ const fiber0002 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]✱)/
@@ -215,6 +217,7 @@ const fiber0003 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...]{2,256}\.[a-z]{2,6}\b([-...
@@ -243,6 +246,7 @@ const fiber0004 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...#=]{2,256}\.[a-z]{2,6}...
@@ -320,6 +324,7 @@ const fiber0005 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[...
@@ -378,6 +383,7 @@ const fiber0006 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * backtrackingFixedLengthQuantifier
    * ...\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,...
@@ -438,6 +444,7 @@ const fiber0007 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * groupStartMarker
    * /https?:\/\/(www\.)?[-a-zA-Z0...
@@ -535,6 +542,7 @@ const fiber0009 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /https?:\/\/...
@@ -707,6 +715,7 @@ const fiber0010 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /https?:\/\/(www...

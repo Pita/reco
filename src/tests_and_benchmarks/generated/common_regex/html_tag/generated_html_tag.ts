@@ -55,6 +55,7 @@ const fiber0002 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /<\/?[\w\s]✱...
@@ -146,6 +147,7 @@ const fiber0003 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /<\/?[\w\s]✱>|<.+[\W]>/
@@ -220,6 +222,7 @@ const fiber0004 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * /<\/?[\w\s]✱>|...
@@ -247,6 +250,7 @@ const fiber0005 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...w\s]✱>|<.+[\W]>/
@@ -304,6 +308,7 @@ const fiber0006 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...[\w\s]✱>|<.+[\W]>/
@@ -336,6 +341,7 @@ const fiber0007 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * charOrSet
    * ...?[\w\s]✱>|<.+[\W]>/
@@ -409,6 +415,7 @@ const fiber0008 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
+
   /*
    * disjunction
    * /<\/?[\w\s]✱>|<.+[\W]>/

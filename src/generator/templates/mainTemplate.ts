@@ -3,6 +3,7 @@ import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 import { CharRange } from '../CharRange';
 import { registerBailPartial } from './bail';
+import { registerAtomsPartial } from './atoms';
 export interface GroupReference {
   idx: number;
 }
@@ -185,4 +186,5 @@ export interface TemplateValues {
 
 registerLeafPartial();
 registerBailPartial();
+registerAtomsPartial();
 export const template = Handlebars.compile(templateFile);
