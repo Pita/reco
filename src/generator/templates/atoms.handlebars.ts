@@ -165,7 +165,12 @@ export default `
       let matches{{{@index}}} = 0;
     {{/if}}
     while(true) {
-      const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+      {{#if wrappedHandler.inline}}
+        {{>inlineFiber wrappedHandler returnVarPrefix='wrappedResult' returnVarCounter=''}}
+      {{/if}}
+      {{#unless wrappedHandler.inline}}
+        const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+      {{/unless}}
 
       if (wrappedResult === -1) {
         {{#if minCount}}

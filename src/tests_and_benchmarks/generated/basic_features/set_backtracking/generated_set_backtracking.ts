@@ -129,13 +129,31 @@ const fiber0001 = (
    *              ^^^^^^
    */
   while (true) {
-    const wrappedResult = fiber0002(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0002 = i;
+    inlineFiber0002: {
+      let i = startinlineFiber0002;
+
+      /*
+       * charOrSet
+       * ...+)([h-o])([d-z]✱)([1-3])/
+       *              ^^^^^
+       */
+      if (i >= str.length) {
+        break inlineFiber0002;
+      }
+      const charCode0 = str.charCodeAt(i);
+      let result0 = false;
+
+      if (charCode0 <= 122) {
+        result0 = charCode0 >= 100;
+      }
+      if (!result0) {
+        break inlineFiber0002;
+      }
+      i++;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       break;
@@ -181,35 +199,6 @@ const fiber0001 = (
    */
   groupMarkers[6] = tempGroupStartMarkers[3];
   groupMarkers[7] = i;
-  return i;
-};
-const fiber0002 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * charOrSet
-   * ...+)([h-o])([d-z]✱)([1-3])/
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  if (charCode0 <= 122) {
-    result0 = charCode0 >= 100;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0004 = (

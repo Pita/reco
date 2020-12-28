@@ -321,12 +321,26 @@ const generateNonBacktrackingQuantifier = (
   firstCharAfterQuantifier: CharRange,
   followUpFirstChar: CharRange,
 ) => {
-  const wrappedHandler = handleElement(
-    quantifier.element,
-    collector,
-    collector.createFinalFiber(followUpFirstChar),
-    flags,
-  );
+  let wrappedHandler;
+  try {
+    wrappedHandler = handleElement(
+      quantifier.element,
+      collector,
+      collector.createInlineFiber(followUpFirstChar),
+      flags,
+    );
+  } catch (e) {
+    if (!(e instanceof TriedToForkInlinedFiberError)) {
+      throw e;
+    }
+
+    wrappedHandler = handleElement(
+      quantifier.element,
+      collector,
+      collector.createFinalFiber(followUpFirstChar),
+      flags,
+    );
+  }
 
   const countParams = generateCountParams(quantifier);
   const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;

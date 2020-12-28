@@ -150,13 +150,77 @@ const fiber0001 = (
    */
   let matches7 = 0;
   while (true) {
-    const wrappedResult = fiber0002(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0002 = i;
+    inlineFiber0002: {
+      let i = startinlineFiber0002;
+
+      /*
+       * groupStartMarker
+       * /([a-y]){2}k(123)+/
+       *             ^^^^^
+       */
+      tempGroupStartMarkers[1] = i;
+      /*
+       * charOrSet
+       * /([a-y]){2}k(123)+/
+       *              ^
+       */
+      if (i >= str.length) {
+        break inlineFiber0002;
+      }
+      const charCode1 = str.charCodeAt(i);
+      let result1 = false;
+
+      result1 = charCode1 === 49;
+
+      if (!result1) {
+        break inlineFiber0002;
+      }
+      i++;
+      /*
+       * charOrSet
+       * ...-y]){2}k(123)+/
+       *              ^
+       */
+      if (i >= str.length) {
+        break inlineFiber0002;
+      }
+      const charCode2 = str.charCodeAt(i);
+      let result2 = false;
+
+      result2 = charCode2 === 50;
+
+      if (!result2) {
+        break inlineFiber0002;
+      }
+      i++;
+      /*
+       * charOrSet
+       * ...y]){2}k(123)+/
+       *              ^
+       */
+      if (i >= str.length) {
+        break inlineFiber0002;
+      }
+      const charCode3 = str.charCodeAt(i);
+      let result3 = false;
+
+      result3 = charCode3 === 51;
+
+      if (!result3) {
+        break inlineFiber0002;
+      }
+      i++;
+      /*
+       * groupEndMarker
+       * /([a-y]){2}k(123)+/
+       *             ^^^^^
+       */
+      groupMarkers[2] = tempGroupStartMarkers[1];
+      groupMarkers[3] = i;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       if (matches7 < 1) {
@@ -170,80 +234,5 @@ const fiber0001 = (
       matches7++;
     }
   }
-  return i;
-};
-const fiber0002 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * groupStartMarker
-   * /([a-y]){2}k(123)+/
-   *             ^^^^^
-   */
-  tempGroupStartMarkers[1] = i;
-  /*
-   * charOrSet
-   * /([a-y]){2}k(123)+/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
-
-  result1 = charCode1 === 49;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...-y]){2}k(123)+/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2 = false;
-
-  result2 = charCode2 === 50;
-
-  if (!result2) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...y]){2}k(123)+/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode3 = str.charCodeAt(i);
-  let result3 = false;
-
-  result3 = charCode3 === 51;
-
-  if (!result3) {
-    return -1;
-  }
-  i++;
-  /*
-   * groupEndMarker
-   * /([a-y]){2}k(123)+/
-   *             ^^^^^
-   */
-  groupMarkers[2] = tempGroupStartMarkers[1];
-  groupMarkers[3] = i;
   return i;
 };

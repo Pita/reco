@@ -104,13 +104,35 @@ const fiber0001 = (
    */
   let matches3 = 0;
   while (true) {
-    const wrappedResult = fiber0002(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0002 = i;
+    inlineFiber0002: {
+      let i = startinlineFiber0002;
+
+      /*
+       * charOrSet
+       * ...z\.-]+)\.([a-z\.]{2,6})$/
+       *              ^^^^^^^
+       */
+      if (i >= str.length) {
+        break inlineFiber0002;
+      }
+      const charCode0 = str.charCodeAt(i);
+      let result0 = false;
+
+      if (charCode0 === 46) {
+        result0 = true;
+      } else {
+        if (charCode0 <= 122) {
+          result0 = charCode0 >= 97;
+        }
+      }
+      if (!result0) {
+        break inlineFiber0002;
+      }
+      i++;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       if (matches3 < 2) {
@@ -145,39 +167,6 @@ const fiber0001 = (
   }
   return i;
 };
-const fiber0002 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * charOrSet
-   * ...z\.-]+)\.([a-z\.]{2,6})$/
-   *              ^^^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  if (charCode0 === 46) {
-    result0 = true;
-  } else {
-    if (charCode0 <= 122) {
-      result0 = charCode0 >= 97;
-    }
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
 const fiber0004 = (
   start: number,
   str: string,
@@ -208,13 +197,47 @@ const fiber0004 = (
    */
   let matches2 = 0;
   while (true) {
-    const wrappedResult = fiber0005(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0005 = i;
+    inlineFiber0005: {
+      let i = startinlineFiber0005;
+
+      /*
+       * charOrSet
+       * /^([a-z0-9_\.\+-]+)@([\da-z...
+       *    ^^^^^^^^^^^^^^
+       */
+      if (i >= str.length) {
+        break inlineFiber0005;
+      }
+      const charCode0 = str.charCodeAt(i);
+      let result0 = false;
+
+      if (charCode0 <= 57) {
+        if (charCode0 <= 46) {
+          if (charCode0 === 43) {
+            result0 = true;
+          } else {
+            result0 = charCode0 >= 45;
+          }
+        } else {
+          result0 = charCode0 >= 48;
+        }
+      } else {
+        if (charCode0 === 95) {
+          result0 = true;
+        } else {
+          if (charCode0 <= 122) {
+            result0 = charCode0 >= 97;
+          }
+        }
+      }
+      if (!result0) {
+        break inlineFiber0005;
+      }
+      i++;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       if (matches2 < 1) {
@@ -331,49 +354,4 @@ const fiber0004 = (
   }
 
   return -1;
-};
-const fiber0005 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * charOrSet
-   * /^([a-z0-9_\.\+-]+)@([\da-z...
-   *    ^^^^^^^^^^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  if (charCode0 <= 57) {
-    if (charCode0 <= 46) {
-      if (charCode0 === 43) {
-        result0 = true;
-      } else {
-        result0 = charCode0 >= 45;
-      }
-    } else {
-      result0 = charCode0 >= 48;
-    }
-  } else {
-    if (charCode0 === 95) {
-      result0 = true;
-    } else {
-      if (charCode0 <= 122) {
-        result0 = charCode0 >= 97;
-      }
-    }
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
 };

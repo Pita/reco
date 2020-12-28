@@ -80,13 +80,30 @@ const fiber0002 = (
    */
   let matches1 = 0;
   while (true) {
-    const wrappedResult = fiber0004(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0004 = i;
+    inlineFiber0004: {
+      let i = startinlineFiber0004;
+
+      /*
+       * charOrSet
+       * /<\/?[\w\s]✱>|...
+       *   ^^
+       */
+      if (i >= str.length) {
+        break inlineFiber0004;
+      }
+      const charCode0 = str.charCodeAt(i);
+      let result0 = false;
+
+      result0 = charCode0 === 47;
+
+      if (!result0) {
+        break inlineFiber0004;
+      }
+      i++;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       break;
@@ -106,13 +123,77 @@ const fiber0002 = (
    *      ^^^^^^^
    */
   while (true) {
-    const wrappedResult = fiber0003(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    let wrappedResult = -1;
+    const startinlineFiber0003 = i;
+    inlineFiber0003: {
+      let i = startinlineFiber0003;
+
+      /*
+       * charOrSet
+       * /<\/?[\w\s]✱>|<.+[\W]>/
+       *      ^^^^^^
+       */
+      if (i >= str.length) {
+        break inlineFiber0003;
+      }
+      const charCode0 = str.charCodeAt(i);
+      let result0 = false;
+
+      if (charCode0 <= 160) {
+        if (charCode0 <= 90) {
+          if (charCode0 <= 32) {
+            if (charCode0 <= 13) {
+              result0 = charCode0 >= 9;
+            } else {
+              result0 = charCode0 === 32;
+            }
+          } else {
+            if (charCode0 <= 57) {
+              result0 = charCode0 >= 48;
+            } else {
+              result0 = charCode0 >= 65;
+            }
+          }
+        } else {
+          if (charCode0 <= 122) {
+            if (charCode0 === 95) {
+              result0 = true;
+            } else {
+              result0 = charCode0 >= 97;
+            }
+          } else {
+            result0 = charCode0 === 160;
+          }
+        }
+      } else {
+        if (charCode0 <= 8239) {
+          if (charCode0 <= 8202) {
+            if (charCode0 === 5760) {
+              result0 = true;
+            } else {
+              result0 = charCode0 >= 8192;
+            }
+          } else {
+            if (charCode0 <= 8233) {
+              result0 = charCode0 >= 8232;
+            } else {
+              result0 = charCode0 === 8239;
+            }
+          }
+        } else {
+          if (charCode0 <= 12288) {
+            result0 = charCode0 === 8287 || charCode0 === 12288;
+          } else {
+            result0 = charCode0 === 65279;
+          }
+        }
+      }
+      if (!result0) {
+        break inlineFiber0003;
+      }
+      i++;
+      wrappedResult = i;
+    }
 
     if (wrappedResult === -1) {
       break;
@@ -134,109 +215,6 @@ const fiber0002 = (
   result3 = charCode3 === 62;
 
   if (!result3) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0003 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * charOrSet
-   * /<\/?[\w\s]✱>|<.+[\W]>/
-   *      ^^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  if (charCode0 <= 160) {
-    if (charCode0 <= 90) {
-      if (charCode0 <= 32) {
-        if (charCode0 <= 13) {
-          result0 = charCode0 >= 9;
-        } else {
-          result0 = charCode0 === 32;
-        }
-      } else {
-        if (charCode0 <= 57) {
-          result0 = charCode0 >= 48;
-        } else {
-          result0 = charCode0 >= 65;
-        }
-      }
-    } else {
-      if (charCode0 <= 122) {
-        if (charCode0 === 95) {
-          result0 = true;
-        } else {
-          result0 = charCode0 >= 97;
-        }
-      } else {
-        result0 = charCode0 === 160;
-      }
-    }
-  } else {
-    if (charCode0 <= 8239) {
-      if (charCode0 <= 8202) {
-        if (charCode0 === 5760) {
-          result0 = true;
-        } else {
-          result0 = charCode0 >= 8192;
-        }
-      } else {
-        if (charCode0 <= 8233) {
-          result0 = charCode0 >= 8232;
-        } else {
-          result0 = charCode0 === 8239;
-        }
-      }
-    } else {
-      if (charCode0 <= 12288) {
-        result0 = charCode0 === 8287 || charCode0 === 12288;
-      } else {
-        result0 = charCode0 === 65279;
-      }
-    }
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0004 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-
-  /*
-   * charOrSet
-   * /<\/?[\w\s]✱>|...
-   *   ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 47;
-
-  if (!result0) {
     return -1;
   }
   i++;
