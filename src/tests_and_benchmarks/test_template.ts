@@ -3,16 +3,9 @@ const prettier = require('prettier');
 
 const template = `
 import { generatedRegexMatcher } from './{{{string fileName}}}';
-import templateValues from './{{{string fileName}}}_templateValues.json';
 
 // {{{testRegex}}}
-describe('{{{string testName}}}', () => {
-  test('template values are as expected', () => {
-    // @ts-ignore
-    delete templateValues['version'];
-    expect(templateValues).toMatchSnapshot();
-  });
-  
+describe('{{{string testName}}}', () => {  
   {{#each testInputs}}
     test('processes test input \\'{{string testInput}}\\' correctly', () => {
       const result = generatedRegexMatcher('{{string testInput}}');
