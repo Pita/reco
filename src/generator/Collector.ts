@@ -53,7 +53,7 @@ export class Collector {
     this.regexStr = regexStr;
   }
 
-  private getNewCount() {
+  getNewCount() {
     this.counter++;
     return (this.counter + '').padStart(4, '0');
   }
@@ -83,6 +83,7 @@ export class Collector {
       atoms: [],
       functionName: `inlineFiber${this.getNewCount()}`,
       lastAtomReturns: false,
+      inline: true,
       meta: {
         groups: [],
         firstCharRange: currentFiber.meta.firstCharRange,

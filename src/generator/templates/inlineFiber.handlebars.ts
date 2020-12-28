@@ -1,8 +1,9 @@
 export default `
-let {{{returnVar}}} = -1;
-
+let {{{returnVarPrefix}}}{{{returnVarCounter}}} = -1;
+const start{{{functionName}}} = i;
 {{{functionName}}}: {
+  let i = start{{{functionName}}};
   {{>atoms}}
-  {{{returnVar}}} = i;
+  {{{returnVarPrefix}}}{{{returnVarCounter}}} = i;
 }
 `;

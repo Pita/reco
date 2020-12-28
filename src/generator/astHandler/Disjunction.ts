@@ -92,7 +92,11 @@ const attemptInlineDisjunction = (
     currentFiber,
     {
       type: 'inlineDisjunction',
-      data: { alternatives: mappedAlternatives, groupsToRestore },
+      data: {
+        alternatives: mappedAlternatives,
+        groupsToRestore,
+        counter: collector.getNewCount(),
+      },
       ast: alternatives[0].parent,
     },
     combinedCharRange,
@@ -111,23 +115,18 @@ export const handleDisjunction = (
     return handleAlternative(alternatives[0], collector, currentFiber, flags);
   }
 
-  try {
-    return attemptInlineDisjunction(
-      alternatives,
-      collector,
-      currentFiber,
-      flags,
-    );
-  } catch (e) {
-    if (!(e instanceof TriedToForkInlinedFiberError)) {
-      throw e;
-    }
+  // try {
+  //   return attemptInlineDisjunction(
+  //     alternatives,
+  //     collector,
+  //     currentFiber,
+  //     flags,
+  //   );
+  // } catch (e) {
+  //   if (!(e instanceof TriedToForkInlinedFiberError)) {
+  //     throw e;
+  //   }
 
-    return handleForkingDisjunction(
-      alternatives,
-      collector,
-      currentFiber,
-      flags,
-    );
-  }
+  return handleForkingDisjunction(alternatives, collector, currentFiber, flags);
+  // }
 };

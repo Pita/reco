@@ -1,8 +1,8 @@
 export default `
-{{#if ../inlinedLabel}}
-  break {{{../inlinedLabel}}};
+{{#if inline}}
+  break {{{functionName}}};
 {{/if}}
-{{#unless ../inlinedLabel}}
+{{#unless inline}}
   return -1;
 {{/unless}}
 `;

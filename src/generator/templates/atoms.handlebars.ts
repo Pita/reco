@@ -7,7 +7,7 @@ export default `
     */
   {{#switchCase 'charOrSet'}}
     if (i >= str.length) {
-      {{>bail}}
+      {{>bail ../..}}
     }
     const charCode{{{@index}}} =
     {{#if unicode}}
@@ -19,7 +19,7 @@ export default `
     let result{{{@index}}} = false;
     {{> leaf tree atomIndex=@index}}
     if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
-      {{>bail}}
+      {{>bail ../..}}
     };
     {{#if unicode}}
       // surrogate pair might require moving 2 chars ahead
@@ -44,7 +44,7 @@ export default `
       i--;
     {{/unless}}
     if (i < 0) {
-      {{>bail}}
+      {{>bail ../..}}
     }
     const charCode{{{@index}}} =
       {{#if unicode}}
@@ -56,7 +56,7 @@ export default `
     let result{{{@index}}} = false;
     {{> leaf tree atomIndex=@index}}
     if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
-      {{>bail}}
+      {{>bail ../..}}
     };
   {{/switchCase}}
   {{#switchCase 'disjunction'}}
@@ -74,19 +74,19 @@ export default `
         groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
       {{/each}}
     {{/each}}
-    {{>bail}}
+    {{>bail ../..}}
   {{/switchCase}}
   {{#switchCase 'inlineDisjunction'}}
     {{#each groupsToRestore}}
       const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
       const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
     {{/each}}
-    alternatives{{{@index}}}: {
+    alternatives{{{counter}}}: {
       {{#each alternatives}}
-        {{>inlinedFiber returnVar=length{{{@index}}}}}
+        {{>inlineFiber returnVarPrefix='length' returnVarCounter=@index}}
         if (length{{{@index}}} !== -1) {
           i = length{{{@index}}};
-          break alternatives{{{@../index}}};
+          break alternatives{{{../counter}}};
         }
         {{#each meta.groups}}
           groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
@@ -94,17 +94,17 @@ export default `
         {{/each}}
       {{/each}}
 
-      {{>bail}}
+      {{>bail ../..}}
     }
   {{/switchCase}}
   {{#switchCase 'startAnchor'}}
     if (i !== 0) {
-      {{>bail}}
+      {{>bail ../..}}
     }
   {{/switchCase}}
   {{#switchCase 'endAnchor'}}
     if (i !== str.length) {
-      {{>bail}}
+      {{>bail ../..}}
     }
   {{/switchCase}}
   {{#switchCase 'multiLineStartAnchor'}}
@@ -120,7 +120,7 @@ export default `
         }
       }
       if (!isNewLineChar{{{index}}}) {
-        {{>bail}}
+        {{>bail ../..}}
       }
     }
 
@@ -138,7 +138,7 @@ export default `
         }
       }
       if (!isNewLineChar{{{index}}}) {
-        {{>bail}}
+        {{>bail ../..}}
       }
     }
   {{/switchCase}}
@@ -157,7 +157,7 @@ export default `
     {{#unless negate}}
       if (lookaroundResult{{{@index}}} === -1) { 
     {{/unless}}
-      {{>bail}}
+      {{>bail ../..}}
     }
   {{/switchCase}}
   {{#switchCase 'nonBacktrackingQuantifier'}}
@@ -170,7 +170,7 @@ export default `
       if (wrappedResult === -1) {
         {{#if minCount}}
           if (matches{{{@index}}} < {{{minCount}}}) {
-            {{>bail}}
+            {{>bail ../..}}
           }
         {{/if}}
 
@@ -199,7 +199,7 @@ export default `
       if (wrappedResult === -1) {
         {{#if minCount}}
           if (matches{{{@index}}} < {{{minCount}}}) {
-            {{>bail}}
+            {{>bail ../..}}
           }
         {{/if}}
 
@@ -237,7 +237,7 @@ export default `
           i-={{{fixedLength}}};
         }
 
-        {{>bail}}
+        {{>bail ../..}}
     {{/if}}
   {{/switchCase}}
   {{#switchCase 'wordBoundary'}}
@@ -281,18 +281,18 @@ export default `
 
       {{#if negate}}
         if (isBeforeWord{{{@index}}} !== isAfterWord{{{@index}}}) {
-          {{>bail}}
+          {{>bail ../..}}
         }
       {{/if}}
       {{#unless negate}}
         if (isBeforeWord{{{@index}}} === isAfterWord{{{@index}}}) {
-          {{>bail}}
+          {{>bail ../..}}
         }
       {{/unless}}
     }
     {{#if negate}}
     else {
-      {{>bail}}
+      {{>bail ../..}}
     }
     {{/if}}
   {{/switchCase}}
@@ -302,14 +302,14 @@ export default `
     const backReferenceEnd{{{index}}} = groupMarkers[{{{endGroupMarkerIndex}}}];
     while(backReferenceI{{{index}}} < backReferenceEnd{{{index}}}) {
       if (i >= str.length) {
-        {{>bail}}
+        {{>bail ../..}}
       }
 
       const backReferenceCharCode = str.charCodeAt(backReferenceI{{{index}}});
       const currentCharCode = str.charCodeAt(i);
 
       if (backReferenceCharCode !== currentCharCode) {
-        {{>bail}}
+        {{>bail ../..}}
       }
 
       backReferenceI{{{index}}}++;
