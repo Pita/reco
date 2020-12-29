@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -29,7 +29,7 @@ export function generatedRegexMatcher(str: string) {
   const quantifierCounters: QuantifierCounters = [];
 
   for (let i = 0; i < str.length; i++) {
-    const posAfterMatch = fiber0005(
+    const posAfterMatch = fiber0001(
       i,
       str,
       groupMarkers,
@@ -61,6 +61,52 @@ const fiber0001 = (
 ): number => {
   let i = start;
   /*
+   * startAnchor
+   * /^(0?[1-9]|1...
+   *  ^
+   */
+  if (i !== 0) {
+    return -1;
+  }
+  /*
+   * groupStartMarker
+   * /^(0?[1-9]|1[0-2]):[0-5][0-9]$/
+   *   ^^^^^^^^^^^^^^^^
+   */
+  tempGroupStartMarkers[0] = i;
+  /*
+   * nonBacktrackingDisjunction
+   * /^(0?[1-9]|1[0-2]):[0-5][0-9]$/
+   *   ^^^^^^^^^^^^^^^^
+   */
+  nonBacktrackingDisjunction2: {
+    const length0 = fiber0002(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+    if (length0 !== -1) {
+      i = length0;
+      break nonBacktrackingDisjunction2;
+    }
+
+    const length1 = fiber0004(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+    if (length1 !== -1) {
+      i = length1;
+      break nonBacktrackingDisjunction2;
+    }
+
+    return -1;
+  }
+  /*
    * groupEndMarker
    * /^(0?[1-9]|1[0-2]):[0-5][0-9]$/
    *   ^^^^^^^^^^^^^^^^
@@ -75,12 +121,12 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
+  const charCode4 = str.charCodeAt(i);
+  let result4 = false;
 
-  result1 = charCode1 === 58;
+  result4 = charCode4 === 58;
 
-  if (!result1) {
+  if (!result4) {
     return -1;
   }
   i++;
@@ -92,13 +138,13 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode2 = str.charCodeAt(i);
-  let result2 = false;
+  const charCode5 = str.charCodeAt(i);
+  let result5 = false;
 
-  if (charCode2 <= 53) {
-    result2 = charCode2 >= 48;
+  if (charCode5 <= 53) {
+    result5 = charCode5 >= 48;
   }
-  if (!result2) {
+  if (!result5) {
     return -1;
   }
   i++;
@@ -110,13 +156,13 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode3 = str.charCodeAt(i);
-  let result3 = false;
+  const charCode6 = str.charCodeAt(i);
+  let result6 = false;
 
-  if (charCode3 <= 57) {
-    result3 = charCode3 >= 48;
+  if (charCode6 <= 57) {
+    result6 = charCode6 >= 48;
   }
-  if (!result3) {
+  if (!result6) {
     return -1;
   }
   i++;
@@ -183,13 +229,7 @@ const fiber0002 = (
     return -1;
   }
   i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
 const fiber0003 = (
   start: number,
@@ -261,66 +301,5 @@ const fiber0004 = (
     return -1;
   }
   i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-};
-const fiber0005 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-  /*
-   * startAnchor
-   * /^(0?[1-9]|1...
-   *  ^
-   */
-  if (i !== 0) {
-    return -1;
-  }
-  /*
-   * groupStartMarker
-   * /^(0?[1-9]|1[0-2]):[0-5][0-9]$/
-   *   ^^^^^^^^^^^^^^^^
-   */
-  tempGroupStartMarkers[0] = i;
-  /*
-   * disjunction
-   * /^(0?[1-9]|1[0-2]):[0-5][0-9]$/
-   *   ^^^^^^^^^^^^^^^^
-   */
-  const groupMarkerCopy0 = groupMarkers[0];
-  const groupMarkerCopy1 = groupMarkers[1];
-  const length0 = fiber0002(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length0 !== -1) {
-    return length0;
-  }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  const length1 = fiber0004(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length1 !== -1) {
-    return length1;
-  }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  return -1;
+  return i;
 };

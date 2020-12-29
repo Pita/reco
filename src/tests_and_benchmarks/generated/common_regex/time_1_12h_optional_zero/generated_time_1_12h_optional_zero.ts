@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -38,7 +38,7 @@ export function generatedRegexMatcher(str: string) {
   const quantifierCounters: QuantifierCounters = [];
 
   for (let i = 0; i < str.length; i++) {
-    const posAfterMatch = fiber0006(
+    const posAfterMatch = fiber0001(
       i,
       str,
       groupMarkers,
@@ -79,6 +79,50 @@ const fiber0001 = (
 ): number => {
   let i = start;
   /*
+   * groupStartMarker
+   * /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/
+   *  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   */
+  tempGroupStartMarkers[0] = i;
+  /*
+   * groupStartMarker
+   * /((1[0-2]|0?[1-9]):([0-5][0-...
+   *   ^^^^^^^^^^^^^^^^
+   */
+  tempGroupStartMarkers[1] = i;
+  /*
+   * nonBacktrackingDisjunction
+   * /((1[0-2]|0?[1-9]):([0-5][0-...
+   *   ^^^^^^^^^^^^^^^^
+   */
+  nonBacktrackingDisjunction2: {
+    const length0 = fiber0003(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+    if (length0 !== -1) {
+      i = length0;
+      break nonBacktrackingDisjunction2;
+    }
+
+    const length1 = fiber0004(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+    if (length1 !== -1) {
+      i = length1;
+      break nonBacktrackingDisjunction2;
+    }
+
+    return -1;
+  }
+  /*
    * groupEndMarker
    * /((1[0-2]|0?[1-9]):([0-5][0-...
    *   ^^^^^^^^^^^^^^^^
@@ -93,12 +137,12 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
+  const charCode4 = str.charCodeAt(i);
+  let result4 = false;
 
-  result1 = charCode1 === 58;
+  result4 = charCode4 === 58;
 
-  if (!result1) {
+  if (!result4) {
     return -1;
   }
   i++;
@@ -116,13 +160,13 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode3 = str.charCodeAt(i);
-  let result3 = false;
+  const charCode6 = str.charCodeAt(i);
+  let result6 = false;
 
-  if (charCode3 <= 53) {
-    result3 = charCode3 >= 48;
+  if (charCode6 <= 53) {
+    result6 = charCode6 >= 48;
   }
-  if (!result3) {
+  if (!result6) {
     return -1;
   }
   i++;
@@ -134,13 +178,13 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode4 = str.charCodeAt(i);
-  let result4 = false;
+  const charCode7 = str.charCodeAt(i);
+  let result7 = false;
 
-  if (charCode4 <= 57) {
-    result4 = charCode4 >= 48;
+  if (charCode7 <= 57) {
+    result7 = charCode7 >= 48;
   }
-  if (!result4) {
+  if (!result7) {
     return -1;
   }
   i++;
@@ -156,7 +200,7 @@ const fiber0001 = (
    * ...0-5][0-9]) ?([AaPp][Mm...
    *              ^^
    */
-  let matches6 = 0;
+  let matches9 = 0;
   while (true) {
     const wrappedResult = fiber0002(
       i,
@@ -171,9 +215,9 @@ const fiber0001 = (
     } else {
       i = wrappedResult;
 
-      matches6++;
+      matches9++;
 
-      if (matches6 === 1) {
+      if (matches9 === 1) {
         break;
       }
     }
@@ -192,15 +236,15 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode8 = str.charCodeAt(i);
-  let result8 = false;
+  const charCode11 = str.charCodeAt(i);
+  let result11 = false;
 
-  if (charCode8 <= 80) {
-    result8 = charCode8 === 65 || charCode8 === 80;
+  if (charCode11 <= 80) {
+    result11 = charCode11 === 65 || charCode11 === 80;
   } else {
-    result8 = charCode8 === 97 || charCode8 === 112;
+    result11 = charCode11 === 97 || charCode11 === 112;
   }
-  if (!result8) {
+  if (!result11) {
     return -1;
   }
   i++;
@@ -212,12 +256,12 @@ const fiber0001 = (
   if (i >= str.length) {
     return -1;
   }
-  const charCode9 = str.charCodeAt(i);
-  let result9 = false;
+  const charCode12 = str.charCodeAt(i);
+  let result12 = false;
 
-  result9 = charCode9 === 77 || charCode9 === 109;
+  result12 = charCode12 === 77 || charCode12 === 109;
 
-  if (!result9) {
+  if (!result12) {
     return -1;
   }
   i++;
@@ -307,13 +351,7 @@ const fiber0003 = (
     return -1;
   }
   i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
 const fiber0004 = (
   start: number,
@@ -368,13 +406,7 @@ const fiber0004 = (
     return -1;
   }
   i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
 const fiber0005 = (
   start: number,
@@ -402,75 +434,4 @@ const fiber0005 = (
   }
   i++;
   return i;
-};
-const fiber0006 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-  /*
-   * groupStartMarker
-   * /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/
-   *  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   */
-  tempGroupStartMarkers[0] = i;
-  /*
-   * groupStartMarker
-   * /((1[0-2]|0?[1-9]):([0-5][0-...
-   *   ^^^^^^^^^^^^^^^^
-   */
-  tempGroupStartMarkers[1] = i;
-  /*
-   * disjunction
-   * /((1[0-2]|0?[1-9]):([0-5][0-...
-   *   ^^^^^^^^^^^^^^^^
-   */
-  const groupMarkerCopy0 = groupMarkers[0];
-  const groupMarkerCopy1 = groupMarkers[1];
-  const groupMarkerCopy2 = groupMarkers[2];
-  const groupMarkerCopy3 = groupMarkers[3];
-  const groupMarkerCopy4 = groupMarkers[4];
-  const groupMarkerCopy5 = groupMarkers[5];
-  const groupMarkerCopy6 = groupMarkers[6];
-  const groupMarkerCopy7 = groupMarkers[7];
-  const length0 = fiber0003(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length0 !== -1) {
-    return length0;
-  }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  groupMarkers[2] = groupMarkerCopy2;
-  groupMarkers[3] = groupMarkerCopy3;
-  groupMarkers[4] = groupMarkerCopy4;
-  groupMarkers[5] = groupMarkerCopy5;
-  groupMarkers[6] = groupMarkerCopy6;
-  groupMarkers[7] = groupMarkerCopy7;
-  const length1 = fiber0004(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length1 !== -1) {
-    return length1;
-  }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  groupMarkers[2] = groupMarkerCopy2;
-  groupMarkers[3] = groupMarkerCopy3;
-  groupMarkers[4] = groupMarkerCopy4;
-  groupMarkers[5] = groupMarkerCopy5;
-  groupMarkers[6] = groupMarkerCopy6;
-  groupMarkers[7] = groupMarkerCopy7;
-  return -1;
 };

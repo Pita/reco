@@ -159,6 +159,29 @@ export function generatedRegexMatcher(str: string) {
         {{/each}}
         return -1;
       {{/switchCase}}
+      {{#switchCase 'nonBacktrackingDisjunction'}}
+        nonBacktrackingDisjunction{{{@index}}}: {
+          {{#each groupsToRestore}}
+            const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
+            const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+          {{/each}}
+
+          {{#each alternatives}}                    
+            const length{{{@index}}} = {{{functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+            if (length{{{@index}}} !== -1) {
+              i = length{{{@index}}};
+              break nonBacktrackingDisjunction{{{@../index}}};
+            }
+
+            {{#each meta.groups}}
+              groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
+              groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+            {{/each}}
+          {{/each}}
+
+          return -1;
+        }
+      {{/switchCase}}
       {{#switchCase 'startAnchor'}}
         if (i !== 0) {
           return -1;

@@ -65,6 +65,14 @@ export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
   };
 }
 
+export interface NonBacktrackingDisjunctionTemplateAtom
+  extends BaseTemplateAtom {
+  type: 'nonBacktrackingDisjunction';
+  data: {
+    groupsToRestore: GroupReference[];
+    alternatives: FiberTemplateDefinition[];
+  };
+}
 export interface StartAnchorTemplateAtom extends BaseTemplateAtom {
   type: 'startAnchor';
   data: {};
@@ -157,6 +165,7 @@ export type TemplateAtom =
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
   | DisjunctionTemplateAtom
+  | NonBacktrackingDisjunctionTemplateAtom
   | StartAnchorTemplateAtom
   | EndAnchorTemplateAtom
   | MultiLineStartAnchorTemplateAtom

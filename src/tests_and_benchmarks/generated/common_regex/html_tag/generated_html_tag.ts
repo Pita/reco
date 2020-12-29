@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.2.4
+// This code was generated with RECO v0.3.0
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -29,7 +29,7 @@ export function generatedRegexMatcher(str: string) {
   const quantifierCounters: QuantifierCounters = [];
 
   for (let i = 0; i < str.length; i++) {
-    const posAfterMatch = fiber0008(
+    const posAfterMatch = fiber0001(
       i,
       str,
       groupMarkers,
@@ -47,6 +47,48 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0001 = (
+  start: number,
+  str: string,
+  groupMarkers: GroupMarkers,
+  tempGroupStartMarkers: TempGroupMarkers,
+  quantifierCounters: QuantifierCounters
+): number => {
+  let i = start;
+  /*
+   * nonBacktrackingDisjunction
+   * /<\/?[\w\s]✱>|<.+[\W]>/
+   *  ^^^^^^^^^^^^^^^^^^^^^
+   */
+  nonBacktrackingDisjunction0: {
+    const length0 = fiber0002(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+    if (length0 !== -1) {
+      i = length0;
+      break nonBacktrackingDisjunction0;
+    }
+
+    const length1 = fiber0007(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+    if (length1 !== -1) {
+      i = length1;
+      break nonBacktrackingDisjunction0;
+    }
+
+    return -1;
+  }
+  return i;
+};
 const fiber0002 = (
   start: number,
   str: string,
@@ -399,40 +441,5 @@ const fiber0007 = (
     i -= 1;
   }
 
-  return -1;
-};
-const fiber0008 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-  /*
-   * disjunction
-   * /<\/?[\w\s]✱>|<.+[\W]>/
-   *  ^^^^^^^^^^^^^^^^^^^^^
-   */
-  const length0 = fiber0002(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length0 !== -1) {
-    return length0;
-  }
-  const length1 = fiber0007(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length1 !== -1) {
-    return length1;
-  }
   return -1;
 };
