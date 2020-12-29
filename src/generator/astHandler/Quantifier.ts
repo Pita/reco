@@ -397,18 +397,9 @@ export const handleQuantifier = (
     fixedLength,
   } = analyzeQuantifier(quantifier, collector, currentFiber, flags);
 
-  if (needsBacktracking && flags.INTERNAL_no_backtracking) {
-    throw new BacktrackingError();
-  }
-
   if (needsBacktracking) {
-    if (quantifier.min === 0 && quantifier.max === 1 && quantifier.greedy) {
-      return generateOptionalQuantifier(
-        quantifier,
-        collector,
-        currentFiber,
-        flags,
-      );
+    if (flags.INTERNAL_no_backtracking) {
+      throw new BacktrackingError();
     }
 
     if (fixedLengthOptimizable && fixedLength) {
@@ -421,6 +412,17 @@ export const handleQuantifier = (
         firstCharAfterQuantifier,
         followUpFirstChar,
         fixedLength,
+      );
+    } else if (
+      quantifier.min === 0 &&
+      quantifier.max === 1 &&
+      quantifier.greedy
+    ) {
+      return generateOptionalQuantifier(
+        quantifier,
+        collector,
+        currentFiber,
+        flags,
       );
     } else {
       return generateBacktrackingQuantifier(

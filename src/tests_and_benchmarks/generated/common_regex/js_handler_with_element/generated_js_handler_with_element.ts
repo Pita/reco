@@ -649,13 +649,7 @@ const fiber0013 = (
     return -1;
   }
   i++;
-  return fiber0012(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
 const fiber0014 = (
   start: number,
@@ -690,29 +684,52 @@ const fiber0014 = (
   }
   i++;
   /*
-   * optionalQuantifier
+   * backtrackingFixedLengthQuantifier
    * ...s)(on\S+)=["']?((?:.(?!["...
    *              ^^^^^
    */
+  let matches2 = 0;
 
-  const withOptionalResult2 = fiber0013(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (withOptionalResult2 !== -1) {
-    return withOptionalResult2;
+  while (true) {
+    const wrappedResult = fiber0013(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+      matches2++;
+
+      if (matches2 === 1) {
+        break;
+      }
+    }
   }
 
-  return fiber0012(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  // needs followUp & forkingFiber
+  while (matches2 >= 0) {
+    const directFollowUpResult2 = fiber0012(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (directFollowUpResult2 !== -1) {
+      return directFollowUpResult2;
+    }
+
+    matches2--;
+    i -= 1;
+  }
+
+  return -1;
 };
 const fiber0015 = (
   start: number,

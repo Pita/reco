@@ -148,13 +148,7 @@ const fiber0003 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
-  return fiber0002(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
 const fiber0004 = (
   start: number,
@@ -303,29 +297,52 @@ const fiber0007 = (
 ): number => {
   let i = start;
   /*
-   * optionalQuantifier
+   * backtrackingFixedLengthQuantifier
    * ...c))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(...
    *              ^^^^^^^^^^^^^^^^^^^
    */
+  let matches0 = 0;
 
-  const withOptionalResult0 = fiber0006(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (withOptionalResult0 !== -1) {
-    return withOptionalResult0;
+  while (true) {
+    const wrappedResult = fiber0006(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+      matches0++;
+
+      if (matches0 === 1) {
+        break;
+      }
+    }
   }
 
-  return fiber0002(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  // needs followUp & forkingFiber
+  while (matches0 >= 0) {
+    const directFollowUpResult0 = fiber0002(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (directFollowUpResult0 !== -1) {
+      return directFollowUpResult0;
+    }
+
+    matches0--;
+    i -= 2;
+  }
+
+  return -1;
 };
 const fiber0008 = (
   start: number,
@@ -3046,13 +3063,7 @@ const fiber0058 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
-  return fiber0057(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
 const fiber0059 = (
   start: number,
@@ -3201,29 +3212,52 @@ const fiber0062 = (
 ): number => {
   let i = start;
   /*
-   * optionalQuantifier
+   * backtrackingFixedLengthQuantifier
    * ...))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[...
    *              ^^^^^^^^^^^^^^^^^^^
    */
+  let matches0 = 0;
 
-  const withOptionalResult0 = fiber0061(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (withOptionalResult0 !== -1) {
-    return withOptionalResult0;
+  while (true) {
+    const wrappedResult = fiber0061(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+      matches0++;
+
+      if (matches0 === 1) {
+        break;
+      }
+    }
   }
 
-  return fiber0057(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  // needs followUp & forkingFiber
+  while (matches0 >= 0) {
+    const directFollowUpResult0 = fiber0057(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (directFollowUpResult0 !== -1) {
+      return directFollowUpResult0;
+    }
+
+    matches0--;
+    i -= 2;
+  }
+
+  return -1;
 };
 const fiber0063 = (
   start: number,
@@ -4002,13 +4036,7 @@ const fiber0078 = (
   quantifierCounters: QuantifierCounters
 ): number => {
   let i = start;
-  return fiber0077(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return i;
 };
 const fiber0079 = (
   start: number,
@@ -4181,29 +4209,52 @@ const fiber0082 = (
     }
   }
   /*
-   * optionalQuantifier
+   * backtrackingFixedLengthQuantifier
    * ...ec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
    *              ^^^^^^^^^^^^^^^^^^^
    */
+  let matches1 = 0;
 
-  const withOptionalResult1 = fiber0081(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (withOptionalResult1 !== -1) {
-    return withOptionalResult1;
+  while (true) {
+    const wrappedResult = fiber0081(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+      matches1++;
+
+      if (matches1 === 1) {
+        break;
+      }
+    }
   }
 
-  return fiber0077(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  // needs followUp & forkingFiber
+  while (matches1 >= 0) {
+    const directFollowUpResult1 = fiber0077(
+      i,
+      str,
+      groupMarkers,
+      tempGroupStartMarkers,
+      quantifierCounters
+    );
+
+    if (directFollowUpResult1 !== -1) {
+      return directFollowUpResult1;
+    }
+
+    matches1--;
+    i -= 2;
+  }
+
+  return -1;
 };
 const fiber0083 = (
   start: number,
