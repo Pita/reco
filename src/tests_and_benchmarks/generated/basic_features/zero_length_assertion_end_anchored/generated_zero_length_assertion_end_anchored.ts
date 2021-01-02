@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/[a-z]/i'
+// Generated from: '/$/'
 //
 // Use like this:
 //
@@ -28,9 +28,9 @@ export function generatedRegexMatcher(str: string) {
   const tempGroupStartMarkers: TempGroupMarkers = [];
   const quantifierCounters: QuantifierCounters = [];
 
-  // minCharsLeft
-  const min = 0;
-  const max = str.length - 1;
+  // endAnchored
+  const min = str.length - 0;
+  const max = str.length - 0;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0001(
@@ -60,26 +60,12 @@ const fiber0001 = (
 ): number => {
   let i = start;
   /*
-   * charOrSet
-   * /[a-z]/i
-   *  ^^^^^
+   * endAnchor
+   * /$/
+   *  ^
    */
-  if (i >= str.length) {
+  if (i !== str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  if (charCode0 <= 90) {
-    result0 = charCode0 >= 65;
-  } else {
-    if (charCode0 <= 122) {
-      result0 = charCode0 >= 97;
-    }
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
   return i;
 };

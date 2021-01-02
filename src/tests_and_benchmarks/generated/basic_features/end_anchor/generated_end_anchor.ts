@@ -28,8 +28,8 @@ export function generatedRegexMatcher(str: string) {
   const tempGroupStartMarkers: TempGroupMarkers = [];
   const quantifierCounters: QuantifierCounters = [];
 
-  // minCharsLeft
-  const min = 0;
+  // endAnchored
+  const min = str.length - 3;
   const max = str.length - 3;
 
   for (let i = min; i <= max; i++) {

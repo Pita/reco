@@ -59,6 +59,11 @@ export function generatedRegexMatcher(str: string) {
       const min = 0;
       const max = 0;
     {{/switchCase}}
+    {{#switchCase 'endAnchored'}}
+      // endAnchored
+      const min = str.length - {{{maxCharsLeft}}};
+      const max = str.length - {{{minCharsLeft}}};;
+    {{/switchCase}}
     {{#switchCase 'minCharsLeft'}}
       // minCharsLeft
       const min = 0;
@@ -67,7 +72,7 @@ export function generatedRegexMatcher(str: string) {
     {{#switchCase 'fullScan'}}
       // fullScan
       const min = 0;
-      const max = str.length - 1;
+      const max = str.length;
     {{/switchCase}}
   {{/with}}
 

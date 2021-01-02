@@ -1,13 +1,9 @@
 import { AST } from 'regexpp';
 import { Collector, mergeGroupsOfFibers } from '../Collector';
-import {
-  FiberTemplateDefinition,
-  GroupReference,
-} from '../templates/mainTemplate';
+import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 import { CharRange } from '../CharRange';
-import { map } from 'lodash';
 
 export const handleDisjunction = (
   alternatives: AST.Alternative[],
@@ -45,11 +41,16 @@ export const handleDisjunction = (
     (mappedAlternative) => mappedAlternative.meta.anchorsAtStartOfLine,
   );
 
+  const anchorsAtEndOfLine = mappedAlternatives.every(
+    (mappedAlternative) => mappedAlternative.meta.anchorsAtEndOfLine,
+  );
+
   return collector.addAtom(
     collector.createForkingFiber(
       currentFiber,
       groupsToRestore,
       anchorsAtStartOfLine,
+      anchorsAtEndOfLine,
     ),
     {
       type: 'disjunction',

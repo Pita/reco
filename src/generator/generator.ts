@@ -21,14 +21,23 @@ const deriveMatchPositioning = (
     };
   }
 
-  if (mainHandler.meta.minCharLength > 1) {
+  if (
+    mainHandler.meta.anchorsAtEndOfLine &&
+    mainHandler.meta.maxCharLength !== Infinity
+  ) {
+    return {
+      type: 'endAnchored',
+      maxCharsLeft: mainHandler.meta.maxCharLength,
+      minCharsLeft: mainHandler.meta.minCharLength,
+    };
+  }
+
+  if (mainHandler.meta.minCharLength > 0) {
     return {
       type: 'minCharsLeft',
       minCharsLeft: mainHandler.meta.minCharLength,
     };
   }
-
-  // TODO: endAnchored
 
   return {
     type: 'fullScan',

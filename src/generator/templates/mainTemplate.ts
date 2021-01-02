@@ -15,6 +15,7 @@ export interface FunctionDefinition {
     minCharLength: number;
     maxCharLength: number;
     anchorsAtStartOfLine: boolean;
+    anchorsAtEndOfLine: boolean;
   };
 }
 

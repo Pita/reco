@@ -28,7 +28,7 @@ export function generatedRegexMatcher(str: string) {
   const tempGroupStartMarkers: TempGroupMarkers = [-1];
   const quantifierCounters: QuantifierCounters = [];
 
-  // fullScan
+  // minCharsLeft
   const min = 0;
   const max = str.length - 1;
 

@@ -6,7 +6,6 @@ import {
   FollowUp,
   GroupReference,
   QuantifierTemplateDefinition,
-  MatchPositioning,
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
 import { CharRange } from './CharRange';
@@ -96,6 +95,7 @@ export class Collector {
         minCharLength: fiber.meta.minCharLength,
         maxCharLength: fiber.meta.maxCharLength,
         anchorsAtStartOfLine: false,
+        anchorsAtEndOfLine: fiber.meta.anchorsAtEndOfLine,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -115,6 +115,7 @@ export class Collector {
         minCharLength: 0,
         maxCharLength: 0,
         anchorsAtStartOfLine: false,
+        anchorsAtEndOfLine: false,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -126,6 +127,7 @@ export class Collector {
     followUpFiber: FiberTemplateDefinition,
     groups: GroupReference[],
     anchorsAtStartOfLine: boolean,
+    anchorsAtEndOfLine: boolean,
   ) {
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
@@ -138,6 +140,7 @@ export class Collector {
         minCharLength: 0,
         maxCharLength: 0,
         anchorsAtStartOfLine,
+        anchorsAtEndOfLine,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -161,6 +164,7 @@ export class Collector {
         minCharLength: 0,
         maxCharLength: 0,
         anchorsAtStartOfLine: false,
+        anchorsAtEndOfLine: false,
       },
     };
 
@@ -226,6 +230,9 @@ export class Collector {
     }
 
     currentFiber.meta.anchorsAtStartOfLine = def.type === 'startAnchor';
+    if (def.type === 'endAnchor') {
+      currentFiber.meta.anchorsAtEndOfLine = true;
+    }
 
     return currentFiber;
   }

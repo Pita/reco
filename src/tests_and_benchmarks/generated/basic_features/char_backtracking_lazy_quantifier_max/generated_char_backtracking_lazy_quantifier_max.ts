@@ -30,7 +30,7 @@ export function generatedRegexMatcher(str: string) {
 
   // fullScan
   const min = 0;
-  const max = str.length - 1;
+  const max = str.length;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0006(
