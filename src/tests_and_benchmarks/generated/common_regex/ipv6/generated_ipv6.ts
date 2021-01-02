@@ -212,7 +212,8 @@ export function generatedRegexMatcher(str: string) {
   ];
   const quantifierCounters: QuantifierCounters = [-1, -1, -1, -1, -1, -1];
 
-  for (let i = 0; i < str.length; i++) {
+  const max = str.length - 1;
+  for (let i = 0; i < max; i++) {
     const posAfterMatch = fiber0151(
       i,
       str,

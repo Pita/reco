@@ -179,6 +179,7 @@ export interface TemplateValues {
   groups: GroupReference[];
   quantifierCountersLength: number;
   version: string;
+  matchMinCharLength: number;
 }
 
 registerLeafPartial();

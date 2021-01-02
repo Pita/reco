@@ -145,7 +145,7 @@ export const handleSetOrCharacter = (
       },
       newCharRange,
       1,
-      1,
+      flags.unicode ? 2 : 1,
     );
   } else {
     return collector.addAtom(
@@ -161,7 +161,7 @@ export const handleSetOrCharacter = (
       },
       newCharRange,
       1,
-      1,
+      flags.unicode ? 2 : 1,
     );
   }
 };

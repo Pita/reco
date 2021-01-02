@@ -19,5 +19,10 @@ export const genTemplateValues = (regexStr: string) => {
     literal.flags,
   );
 
-  return { ...collector.getTemplateValues(), mainHandler };
+  const matchMinCharLength =
+    mainHandler.meta.minCharLength === 0
+      ? 0
+      : mainHandler.meta.minCharLength - 1;
+
+  return { ...collector.getTemplateValues(), matchMinCharLength, mainHandler };
 };

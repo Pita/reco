@@ -53,7 +53,8 @@ export function generatedRegexMatcher(str: string) {
     {{/times}}
   ]
 
-  for (let i = 0; i < str.length; i++) {
+  const max = str.length - {{{matchMinCharLength}}};
+  for (let i = 0; i < max; i++) {
     const posAfterMatch = {{{mainHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
     if (posAfterMatch !== -1) {
       return {

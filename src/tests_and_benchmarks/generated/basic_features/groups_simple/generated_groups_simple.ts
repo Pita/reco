@@ -28,7 +28,8 @@ export function generatedRegexMatcher(str: string) {
   const tempGroupStartMarkers: TempGroupMarkers = [-1, -1];
   const quantifierCounters: QuantifierCounters = [];
 
-  for (let i = 0; i < str.length; i++) {
+  const max = str.length - 5;
+  for (let i = 0; i < max; i++) {
     const posAfterMatch = fiber0001(
       i,
       str,
