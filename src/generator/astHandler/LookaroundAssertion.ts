@@ -10,6 +10,7 @@ export const handleLookaroundAssertion = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   const newFlags: Flags = {
     ...flags,
@@ -20,6 +21,7 @@ export const handleLookaroundAssertion = (
     collector,
     collector.createFinalFiber(CharRange.createEmptyRange()),
     newFlags,
+    literal,
   );
 
   return collector.addAtom(

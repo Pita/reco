@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.3.0
+// This code was generated with RECO v0.3.1
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -30,7 +30,7 @@ export function generatedRegexMatcher(str: string) {
 
   // minCharsLeft
   const min = 0;
-  const max = str.length - 1;
+  const max = str.length - 2;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0004(

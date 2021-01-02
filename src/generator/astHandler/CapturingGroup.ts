@@ -9,6 +9,7 @@ export const handleCapturingGroup = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   if (capturingGroup.name) {
     throw new Error('No supported for named capturing groups yet');
@@ -37,6 +38,7 @@ export const handleCapturingGroup = (
     collector,
     groupEndMarker,
     flags,
+    literal,
   );
 
   const groupStartMarker = collector.addAtom(

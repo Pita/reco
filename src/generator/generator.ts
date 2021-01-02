@@ -53,6 +53,7 @@ export const genTemplateValues = (regexStr: string) => {
     collector,
     collector.createFinalFiber(CharRange.createEmptyRange()),
     literal.flags,
+    literal,
   );
 
   const matchPositioning = deriveMatchPositioning(mainHandler);

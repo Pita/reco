@@ -1,4 +1,4 @@
-// This code was generated with RECO v0.3.0
+// This code was generated with RECO v0.3.1
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
@@ -37,9 +37,9 @@ export function generatedRegexMatcher(str: string) {
   const tempGroupStartMarkers: TempGroupMarkers = [-1, -1, -1, -1];
   const quantifierCounters: QuantifierCounters = [];
 
-  // minCharsLeft
-  const min = 0;
-  const max = str.length - 3;
+  // endAnchored
+  const min = Math.max(str.length - 11, 0);
+  const max = str.length - 4;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0116(

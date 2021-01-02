@@ -10,9 +10,16 @@ export const handleDisjunction = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   if (alternatives.length === 1) {
-    return handleAlternative(alternatives[0], collector, currentFiber, flags);
+    return handleAlternative(
+      alternatives[0],
+      collector,
+      currentFiber,
+      flags,
+      literal,
+    );
   }
 
   const mappedAlternatives = alternatives.map((alternative) =>
@@ -21,6 +28,7 @@ export const handleDisjunction = (
       collector,
       collector.createConnectedFiber(currentFiber),
       flags,
+      literal,
     ),
   );
 

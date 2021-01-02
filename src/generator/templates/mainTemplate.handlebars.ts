@@ -61,8 +61,8 @@ export function generatedRegexMatcher(str: string) {
     {{/switchCase}}
     {{#switchCase 'endAnchored'}}
       // endAnchored
-      const min = str.length - {{{maxCharsLeft}}};
-      const max = str.length - {{{minCharsLeft}}};;
+      const min = Math.max(str.length - {{{maxCharsLeft}}}, 0);
+      const max = str.length - {{{minCharsLeft}}};
     {{/switchCase}}
     {{#switchCase 'minCharsLeft'}}
       // minCharsLeft

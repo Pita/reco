@@ -9,6 +9,7 @@ export const handleAssertion = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   switch (assertion.kind) {
     case 'start':
@@ -42,6 +43,7 @@ export const handleAssertion = (
         collector,
         currentFiber,
         flags,
+        literal,
       );
     case 'word':
       return collector.addAtom(

@@ -10,6 +10,7 @@ const deriveFirstCharOfQuantifierIsolated = (
   quantifier: AST.Quantifier,
   collector: Collector,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ) => {
   const firstCharFakeCollector = collector.fakeCollector();
   const firstCharFiber = handleElement(
@@ -19,6 +20,7 @@ const deriveFirstCharOfQuantifierIsolated = (
     {
       ...flags,
     },
+    literal,
   );
   return firstCharFiber.meta.firstCharRange;
 };
@@ -38,6 +40,7 @@ const checkIfQuantifierHasInternalBacktracking = (
   collector: Collector,
   flags: Flags,
   followUpFirstChar: CharRange,
+  literal: AST.RegExpLiteral,
 ) => {
   try {
     const fakeCollector = collector.fakeCollector();
@@ -49,6 +52,7 @@ const checkIfQuantifierHasInternalBacktracking = (
         ...flags,
         INTERNAL_no_backtracking: true,
       },
+      literal,
     );
   } catch (e) {
     if (e instanceof BacktrackingError) {
@@ -76,6 +80,7 @@ const deriveFirstCharAfterQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   followUpFirstChar: CharRange,
+  literal: AST.RegExpLiteral,
 ) => {
   const fakeCollector = collector.fakeCollector();
   const quantifierFiber = handleElement(
@@ -85,6 +90,7 @@ const deriveFirstCharAfterQuantifier = (
     {
       ...flags,
     },
+    literal,
   );
 
   return quantifier.min > 0
@@ -99,6 +105,7 @@ const checkIfQuantifierHasFixedLength = (
   collector: Collector,
   flags: Flags,
   followUpFirstChar: CharRange,
+  literal: AST.RegExpLiteral,
 ) => {
   const fakeCollector = collector.fakeCollector();
   const quantifierFiber = handleElement(
@@ -106,6 +113,7 @@ const checkIfQuantifierHasFixedLength = (
     fakeCollector,
     fakeCollector.createFinalFiber(followUpFirstChar),
     flags,
+    literal,
   );
 
   const { minCharLength, maxCharLength } = quantifierFiber.meta;
@@ -131,11 +139,13 @@ const analyzeQuantifier = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ) => {
   const firstCharOfQuantifierIsolated = deriveFirstCharOfQuantifierIsolated(
     quantifier,
     collector,
     flags,
+    literal,
   );
   const followUpFirstChar = deriveFirstCharForQuantifierFollowUp(
     quantifier,
@@ -147,6 +157,7 @@ const analyzeQuantifier = (
     collector,
     flags,
     followUpFirstChar,
+    literal,
   );
   const hasExternalBackTracking = checkIfQuantifierHasExternalBacktracking(
     firstCharOfQuantifierIsolated,
@@ -158,6 +169,7 @@ const analyzeQuantifier = (
     currentFiber,
     flags,
     followUpFirstChar,
+    literal,
   );
 
   const {
@@ -168,6 +180,7 @@ const analyzeQuantifier = (
     collector,
     flags,
     followUpFirstChar,
+    literal,
   );
 
   return {
@@ -186,6 +199,7 @@ const generateBacktrackingQuantifier = (
   flags: Flags,
   firstCharAfterQuantifier: CharRange,
   followUpFirstChar: CharRange,
+  literal: AST.RegExpLiteral,
 ) => {
   const {
     quantifierFinalFiber,
@@ -213,6 +227,7 @@ const generateBacktrackingQuantifier = (
     collector,
     quantifierFinalFiber,
     flags,
+    literal,
   );
 
   quantifierHandler.meta.groups = mergeGroupsOfFibers([
@@ -259,12 +274,14 @@ const generateBacktrackingFixedLengthQuantifier = (
   firstCharAfterQuantifier: CharRange,
   followUpFirstChar: CharRange,
   fixedLength: number,
+  literal: AST.RegExpLiteral,
 ) => {
   const wrappedHandler = handleElement(
     quantifier.element,
     collector,
     collector.createFinalFiber(followUpFirstChar),
     flags,
+    literal,
   );
 
   const countParams = generateCountParams(quantifier);
@@ -309,12 +326,14 @@ const generateNonBacktrackingQuantifier = (
   flags: Flags,
   firstCharAfterQuantifier: CharRange,
   followUpFirstChar: CharRange,
+  literal: AST.RegExpLiteral,
 ) => {
   const wrappedHandler = handleElement(
     quantifier.element,
     collector,
     collector.createFinalFiber(followUpFirstChar),
     flags,
+    literal,
   );
 
   const countParams = generateCountParams(quantifier);
@@ -342,6 +361,7 @@ export const handleQuantifier = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   if (quantifier.min === quantifier.max && quantifier.max < 10) {
     let currentAppendableFiber = currentFiber;
@@ -351,6 +371,7 @@ export const handleQuantifier = (
         collector,
         currentAppendableFiber,
         flags,
+        literal,
       );
     }
 
@@ -363,7 +384,7 @@ export const handleQuantifier = (
     followUpFirstChar,
     fixedLengthOptimizable,
     fixedLength,
-  } = analyzeQuantifier(quantifier, collector, currentFiber, flags);
+  } = analyzeQuantifier(quantifier, collector, currentFiber, flags, literal);
 
   if (needsBacktracking) {
     if (flags.INTERNAL_no_backtracking) {
@@ -379,6 +400,7 @@ export const handleQuantifier = (
         firstCharAfterQuantifier,
         followUpFirstChar,
         fixedLength,
+        literal,
       );
     } else {
       return generateBacktrackingQuantifier(
@@ -388,6 +410,7 @@ export const handleQuantifier = (
         flags,
         firstCharAfterQuantifier,
         followUpFirstChar,
+        literal,
       );
     }
   } else {
@@ -398,6 +421,7 @@ export const handleQuantifier = (
       flags,
       firstCharAfterQuantifier,
       followUpFirstChar,
+      literal,
     );
   }
 };

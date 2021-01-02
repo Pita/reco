@@ -9,6 +9,7 @@ export const handleAlternative = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   let lastFiber = currentFiber;
   for (let i = alternative.elements.length - 1; i >= 0; i--) {
@@ -17,6 +18,7 @@ export const handleAlternative = (
       collector,
       lastFiber,
       flags,
+      literal,
     );
   }
 

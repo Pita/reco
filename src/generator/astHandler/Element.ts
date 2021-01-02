@@ -14,26 +14,46 @@ export const handleElement = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   switch (element.type) {
     case 'Character':
     case 'CharacterSet':
     case 'CharacterClass':
-      return handleSetOrCharacter(element, collector, currentFiber, flags);
+      return handleSetOrCharacter(
+        element,
+        collector,
+        currentFiber,
+        flags,
+        literal,
+      );
     case 'Group':
       return handleDisjunction(
         element.alternatives,
         collector,
         currentFiber,
         flags,
+        literal,
       );
     case 'Quantifier':
-      return handleQuantifier(element, collector, currentFiber, flags);
+      return handleQuantifier(element, collector, currentFiber, flags, literal);
     case 'Assertion':
-      return handleAssertion(element, collector, currentFiber, flags);
+      return handleAssertion(element, collector, currentFiber, flags, literal);
     case 'CapturingGroup':
-      return handleCapturingGroup(element, collector, currentFiber, flags);
+      return handleCapturingGroup(
+        element,
+        collector,
+        currentFiber,
+        flags,
+        literal,
+      );
     case 'Backreference':
-      return handleBackReference(element, collector, currentFiber, flags);
+      return handleBackReference(
+        element,
+        collector,
+        currentFiber,
+        flags,
+        literal,
+      );
   }
 };

@@ -16,6 +16,7 @@ export const handleSetOrCharacter = (
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
+  literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   const { ignoreCase } = flags;
 
