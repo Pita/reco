@@ -7,6 +7,7 @@ import {
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 import { CharRange } from '../CharRange';
+import { map } from 'lodash';
 
 export const handleDisjunction = (
   alternatives: AST.Alternative[],
@@ -40,8 +41,16 @@ export const handleDisjunction = (
     maxLength = Math.max(maxLength, alternative.meta.maxCharLength);
   });
 
+  const anchorsAtStartOfLine = mappedAlternatives.every(
+    (mappedAlternative) => mappedAlternative.meta.anchorsAtStartOfLine,
+  );
+
   return collector.addAtom(
-    collector.createForkingFiber(currentFiber, groupsToRestore),
+    collector.createForkingFiber(
+      currentFiber,
+      groupsToRestore,
+      anchorsAtStartOfLine,
+    ),
     {
       type: 'disjunction',
       data: { alternatives: mappedAlternatives, groupsToRestore },

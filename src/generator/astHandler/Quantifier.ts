@@ -233,6 +233,7 @@ const generateBacktrackingQuantifier = (
     collector.createForkingFiber(
       quantifierHandler,
       quantifierHandler.meta.groups,
+      false,
     ),
     {
       type: 'quantifierStarter',
@@ -270,7 +271,7 @@ const generateBacktrackingFixedLengthQuantifier = (
   const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
 
   return collector.addAtom(
-    collector.createForkingFiber(currentFiber, currentFiber.meta.groups),
+    collector.createForkingFiber(currentFiber, currentFiber.meta.groups, false),
     {
       type: 'backtrackingFixedLengthQuantifier',
       data: {

@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/'
+// Generated from: '/(^deg|def)/'
 //
 // Use like this:
 //
@@ -28,12 +28,12 @@ export function generatedRegexMatcher(str: string) {
   const tempGroupStartMarkers: TempGroupMarkers = [-1];
   const quantifierCounters: QuantifierCounters = [];
 
-  // startAnchored
+  // minCharsLeft
   const min = 0;
-  const max = 0;
+  const max = str.length - 3;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0006(
+    const posAfterMatch = fiber0004(
       i,
       str,
       groupMarkers,
@@ -66,72 +66,11 @@ const fiber0001 = (
   let i = start;
   /*
    * groupEndMarker
-   * /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-   *   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   * /(^deg|def)/
+   *  ^^^^^^^^^^
    */
   groupMarkers[0] = tempGroupStartMarkers[0];
   groupMarkers[1] = i;
-  /*
-   * charOrSet
-   * ...9]|2[0-3]):[0-5][0-9]$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
-
-  result1 = charCode1 === 58;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...]|2[0-3]):[0-5][0-9]$/
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2 = false;
-
-  if (charCode2 <= 53) {
-    result2 = charCode2 >= 48;
-  }
-  if (!result2) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...-3]):[0-5][0-9]$/
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode3 = str.charCodeAt(i);
-  let result3 = false;
-
-  if (charCode3 <= 57) {
-    result3 = charCode3 >= 48;
-  }
-  if (!result3) {
-    return -1;
-  }
-  i++;
-  /*
-   * endAnchor
-   * ...[0-5][0-9]$/
-   *              ^
-   */
-  if (i !== str.length) {
-    return -1;
-  }
   return i;
 };
 const fiber0002 = (
@@ -143,20 +82,61 @@ const fiber0002 = (
 ): number => {
   let i = start;
   /*
+   * startAnchor
+   * /(^deg|def)/
+   *   ^
+   */
+  if (i !== 0) {
+    return -1;
+  }
+  /*
    * charOrSet
-   * /^([0-9]|0[0-9]|1[...
-   *    ^^^^^
+   * /(^deg|def)/
+   *    ^
    */
   if (i >= str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
 
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
+  result1 = charCode1 === 100;
+
+  if (!result1) {
+    return -1;
   }
-  if (!result0) {
+  i++;
+  /*
+   * charOrSet
+   * /(^deg|def)/
+   *     ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode2 = str.charCodeAt(i);
+  let result2 = false;
+
+  result2 = charCode2 === 101;
+
+  if (!result2) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * /(^deg|def)/
+   *      ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode3 = str.charCodeAt(i);
+  let result3 = false;
+
+  result3 = charCode3 === 103;
+
+  if (!result3) {
     return -1;
   }
   i++;
@@ -178,8 +158,8 @@ const fiber0003 = (
   let i = start;
   /*
    * charOrSet
-   * /^([0-9]|0[0-9]|1[0-...
-   *          ^
+   * /(^deg|def)/
+   *        ^
    */
   if (i >= str.length) {
     return -1;
@@ -187,7 +167,7 @@ const fiber0003 = (
   const charCode0 = str.charCodeAt(i);
   let result0 = false;
 
-  result0 = charCode0 === 48;
+  result0 = charCode0 === 100;
 
   if (!result0) {
     return -1;
@@ -195,8 +175,8 @@ const fiber0003 = (
   i++;
   /*
    * charOrSet
-   * /^([0-9]|0[0-9]|1[0-9]|2[...
-   *           ^^^^^
+   * /(^deg|def)/
+   *         ^
    */
   if (i >= str.length) {
     return -1;
@@ -204,10 +184,26 @@ const fiber0003 = (
   const charCode1 = str.charCodeAt(i);
   let result1 = false;
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  }
+  result1 = charCode1 === 101;
+
   if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * /(^deg|def)/
+   *          ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode2 = str.charCodeAt(i);
+  let result2 = false;
+
+  result2 = charCode2 === 102;
+
+  if (!result2) {
     return -1;
   }
   i++;
@@ -228,125 +224,15 @@ const fiber0004 = (
 ): number => {
   let i = start;
   /*
-   * charOrSet
-   * ...9]|0[0-9]|1[0-9]|2[0-...
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 49;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...]|0[0-9]|1[0-9]|2[0-3]):[...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
-
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  }
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-};
-const fiber0005 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-  /*
-   * charOrSet
-   * ...9]|1[0-9]|2[0-3]):[0-...
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 50;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...]|1[0-9]|2[0-3]):[0-5][0-...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
-
-  if (charCode1 <= 51) {
-    result1 = charCode1 >= 48;
-  }
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-};
-const fiber0006 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
-  let i = start;
-  /*
-   * startAnchor
-   * /^([0-9]|0[0...
-   *  ^
-   */
-  if (i !== 0) {
-    return -1;
-  }
-  /*
    * groupStartMarker
-   * /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-   *   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   * /(^deg|def)/
+   *  ^^^^^^^^^^
    */
   tempGroupStartMarkers[0] = i;
   /*
    * disjunction
-   * /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-   *   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   * /(^deg|def)/
+   *  ^^^^^^^^^^
    */
   const groupMarkerCopy0 = groupMarkers[0];
   const groupMarkerCopy1 = groupMarkers[1];
@@ -371,30 +257,6 @@ const fiber0006 = (
   );
   if (length1 !== -1) {
     return length1;
-  }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  const length2 = fiber0004(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length2 !== -1) {
-    return length2;
-  }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  const length3 = fiber0005(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
-  if (length3 !== -1) {
-    return length3;
   }
   groupMarkers[0] = groupMarkerCopy0;
   groupMarkers[1] = groupMarkerCopy1;

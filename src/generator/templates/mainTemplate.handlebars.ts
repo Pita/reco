@@ -53,8 +53,25 @@ export function generatedRegexMatcher(str: string) {
     {{/times}}
   ]
 
-  const max = str.length - {{{matchMinCharLength}}};
-  for (let i = 0; i < max; i++) {
+  {{#with matchPositioning}}
+    {{#switchCase 'startAnchored'}}
+      // startAnchored
+      const min = 0;
+      const max = 0;
+    {{/switchCase}}
+    {{#switchCase 'minCharsLeft'}}
+      // minCharsLeft
+      const min = 0;
+      const max = str.length - {{{minCharsLeft}}};
+    {{/switchCase}}
+    {{#switchCase 'fullScan'}}
+      // fullScan
+      const min = 0;
+      const max = str.length - 1;
+    {{/switchCase}}
+  {{/with}}
+
+  for (let i = min; i <= max; i++) {
     const posAfterMatch = {{{mainHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
     if (posAfterMatch !== -1) {
       return {

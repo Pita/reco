@@ -6,6 +6,7 @@ import {
   FollowUp,
   GroupReference,
   QuantifierTemplateDefinition,
+  MatchPositioning,
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
 import { CharRange } from './CharRange';
@@ -94,6 +95,7 @@ export class Collector {
         firstCharRange: fiber.meta.firstCharRange,
         minCharLength: fiber.meta.minCharLength,
         maxCharLength: fiber.meta.maxCharLength,
+        anchorsAtStartOfLine: false,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -112,6 +114,7 @@ export class Collector {
         firstCharRange,
         minCharLength: 0,
         maxCharLength: 0,
+        anchorsAtStartOfLine: false,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -122,6 +125,7 @@ export class Collector {
   createForkingFiber(
     followUpFiber: FiberTemplateDefinition,
     groups: GroupReference[],
+    anchorsAtStartOfLine: boolean,
   ) {
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
@@ -133,6 +137,7 @@ export class Collector {
         firstCharRange: followUpFiber.meta.firstCharRange,
         minCharLength: 0,
         maxCharLength: 0,
+        anchorsAtStartOfLine,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -155,6 +160,7 @@ export class Collector {
         firstCharRange: followUpFirstChar,
         minCharLength: 0,
         maxCharLength: 0,
+        anchorsAtStartOfLine: false,
       },
     };
 
@@ -218,6 +224,9 @@ export class Collector {
     if (atomCharRange !== 'noCharRange') {
       currentFiber.meta.firstCharRange = atomCharRange;
     }
+
+    currentFiber.meta.anchorsAtStartOfLine = def.type === 'startAnchor';
+
     return currentFiber;
   }
 
@@ -252,7 +261,10 @@ export class Collector {
     return new Collector(this.regexStr);
   }
 
-  getTemplateValues(): Omit<TemplateValues, 'mainHandler'> {
+  getTemplateValues(): Omit<
+    TemplateValues,
+    'mainHandler' | 'matchPositioning'
+  > {
     return {
       regexStr: this.regexStr,
       fiberHandlers: this.fiberHandlers,

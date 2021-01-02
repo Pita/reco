@@ -11,7 +11,6 @@ import * as Handlebars from 'handlebars';
 import { template } from '../generator/templates/mainTemplate';
 import { transformCode } from '../generator/transformCode';
 const jsStringEscape = require('js-string-escape');
-const safeStringify = require('fast-safe-stringify');
 
 Handlebars.registerHelper(
   'string',
@@ -133,27 +132,6 @@ configFiles
       fs.writeFileSync(
         `${testFolderName}/${fileName}.js`,
         transformCode(unformattedCode, 'js'),
-        'utf8',
-      );
-      fs.writeFileSync(
-        `${testFolderName}/${fileName}_templateValues.json`,
-        safeStringify(
-          templateValues,
-          (k: string, v: any) => {
-            if (v === Infinity) {
-              return 'Infinity';
-            }
-            if (v === -Infinity) {
-              return '-Infinity';
-            }
-            if (Number.isNaN(v)) {
-              return 'NaN';
-            }
-
-            return v;
-          },
-          2,
-        ),
         'utf8',
       );
       fs.writeFileSync(

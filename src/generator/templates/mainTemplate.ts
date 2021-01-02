@@ -14,6 +14,7 @@ export interface FunctionDefinition {
     firstCharRange: CharRange;
     minCharLength: number;
     maxCharLength: number;
+    anchorsAtStartOfLine: boolean;
   };
 }
 
@@ -170,6 +171,15 @@ export type TemplateAtom =
   | NonBacktrackingQuantifier
   | BacktrackingFixedLengthQuantifier;
 
+// TODO: generate switch in template
+// TODO: add endAnchored
+export type MatchPositioning =
+  | {
+      type: 'startAnchored';
+    }
+  | { type: 'endAnchored'; maxCharsLeft: number; minCharsLeft: number }
+  | { type: 'minCharsLeft'; minCharsLeft: number }
+  | { type: 'fullScan' };
 export interface TemplateValues {
   fiberHandlers: FiberTemplateDefinition[];
   greedyQuantifierHandlers: QuantifierTemplateDefinition[];
@@ -179,7 +189,7 @@ export interface TemplateValues {
   groups: GroupReference[];
   quantifierCountersLength: number;
   version: string;
-  matchMinCharLength: number;
+  matchPositioning: MatchPositioning;
 }
 
 registerLeafPartial();

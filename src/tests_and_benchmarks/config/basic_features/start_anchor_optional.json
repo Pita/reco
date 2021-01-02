@@ -1,0 +1,13 @@
+{
+  "regex": "/(^deg|def)/",
+  "type": "groupMatch",
+  "testInputs": [
+    " def",
+    "def",
+    "de\ndef",
+    " deg",
+    "deg",
+    "de\ndeg"
+  ],
+  "mustPass": true
+}
