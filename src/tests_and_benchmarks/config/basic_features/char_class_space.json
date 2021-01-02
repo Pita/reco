@@ -1,13 +1,5 @@
 {
   "regex": "/\\s/",
-  "testInputs": [
-    "\t",
-    " ",
-    "a",
-    "9",
-    "\r",
-    "\n",
-    "\f"
-  ],
+  "testInputs": ["\t", " ", "a", "9", "\r", "\n", "\f"],
   "mustPass": true
 }

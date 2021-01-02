@@ -1,13 +1,5 @@
 {
   "regex": "/\\bfoo/",
-  "testInputs": [
-    "foo",
-    "34foo",
-    " foo",
-    ".foo",
-    "!foo",
-    "bfoo",
-    "_foo"
-  ],
+  "testInputs": ["foo", "34foo", " foo", ".foo", "!foo", "bfoo", "_foo"],
   "mustPass": true
 }

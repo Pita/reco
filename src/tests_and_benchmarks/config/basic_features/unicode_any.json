@@ -1,13 +1,5 @@
 {
   "regex": "/.a/u",
-  "testInputs": [
-    "a",
-    "ba",
-    "Da",
-    "\na",
-    "?a",
-    "\ra",
-    "𝒴a"
-  ],
+  "testInputs": ["a", "ba", "Da", "\na", "?a", "\ra", "𝒴a"],
   "mustPass": true
 }

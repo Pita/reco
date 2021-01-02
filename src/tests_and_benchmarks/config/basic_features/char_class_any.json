@@ -1,14 +1,5 @@
 {
   "regex": "/./",
-  "testInputs": [
-    "a",
-    "b",
-    "D",
-    "\n",
-    "?",
-    "\r",
-    " ",
-    " "
-  ],
+  "testInputs": ["a", "b", "D", "\n", "?", "\r", " ", " "],
   "mustPass": true
 }

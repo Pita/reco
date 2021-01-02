@@ -1,11 +1,5 @@
 {
   "regex": "/[^ab-c]/",
-  "testInputs": [
-    "d",
-    "a",
-    "bsd",
-    "!8asdf",
-    ";,asd"
-  ],
+  "testInputs": ["d", "a", "bsd", "!8asdf", ";,asd"],
   "mustPass": true
 }

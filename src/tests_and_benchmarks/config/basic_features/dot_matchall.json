@@ -1,9 +1,5 @@
 {
   "regex": "/.x/s",
-  "testInputs": [
-    "\nx",
-    "bx",
-    "x"
-  ],
+  "testInputs": ["\nx", "bx", "x"],
   "mustPass": true
 }

@@ -1,12 +1,5 @@
 {
   "regex": "/(a+)(a)(a*)(a)/",
-  "testInputs": [
-    "aaaaaa",
-    "aa",
-    "Bf",
-    "aaaaaaac",
-    "abaa",
-    "aaaa"
-  ],
+  "testInputs": ["aaaaaa", "aa", "Bf", "aaaaaaac", "abaa", "aaaa"],
   "mustPass": true
 }

@@ -1,9 +1,5 @@
 {
   "regex": "/def$/m",
-  "testInputs": [
-    "def ",
-    "dedef",
-    "de\ndef\nh"
-  ],
+  "testInputs": ["def ", "dedef", "de\ndef\nh"],
   "mustPass": true
 }

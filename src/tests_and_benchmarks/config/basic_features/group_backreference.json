@@ -1,8 +1,5 @@
 {
   "regex": "/(['\"])(.*?)\\1/",
-  "testInputs": [
-    "He said: \"She's the one!\".",
-    "'aa'"
-  ],
+  "testInputs": ["He said: \"She's the one!\".", "'aa'"],
   "mustPass": true
 }

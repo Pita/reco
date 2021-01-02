@@ -1,7 +1,5 @@
 {
   "regex": "/\\u{1f604}/u",
-  "testInputs": [
-    "𝒳😄"
-  ],
+  "testInputs": ["𝒳😄"],
   "mustPass": true
 }

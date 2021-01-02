@@ -1,10 +1,5 @@
 {
   "regex": "/(?<=y)x/",
-  "testInputs": [
-    "xx",
-    "xsdfsd",
-    "yx",
-    "xksxyx"
-  ],
+  "testInputs": ["xx", "xsdfsd", "yx", "xksxyx"],
   "mustPass": true
 }

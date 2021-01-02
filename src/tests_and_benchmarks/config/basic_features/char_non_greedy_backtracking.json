@@ -1,11 +1,5 @@
 {
   "regex": "/(b.*?)(a)/",
-  "testInputs": [
-    "b",
-    "ba",
-    "b9798798a",
-    "bcda",
-    "ab"
-  ],
+  "testInputs": ["b", "ba", "b9798798a", "bcda", "ab"],
   "mustPass": true
 }

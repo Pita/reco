@@ -1,12 +1,5 @@
 {
   "regex": "/(([a-c])|([d-f]))(a)/",
-  "testInputs": [
-    "ba",
-    "fa",
-    "fd",
-    "za",
-    "da",
-    "ca"
-  ],
+  "testInputs": ["ba", "fa", "fd", "za", "da", "ca"],
   "mustPass": true
 }

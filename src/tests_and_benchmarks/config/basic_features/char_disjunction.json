@@ -1,12 +1,5 @@
 {
   "regex": "/a|b|f/",
-  "testInputs": [
-    "a",
-    "Ba",
-    "Bf",
-    "aaaaaaac",
-    "aabaa",
-    "faaå"
-  ],
+  "testInputs": ["a", "Ba", "Bf", "aaaaaaac", "aabaa", "faaå"],
   "mustPass": true
 }

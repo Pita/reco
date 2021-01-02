@@ -1,9 +1,5 @@
 {
   "regex": "/(?:a)(b)c/",
-  "testInputs": [
-    "abc",
-    "cabc",
-    "asdfab"
-  ],
+  "testInputs": ["abc", "cabc", "asdfab"],
   "mustPass": true
 }

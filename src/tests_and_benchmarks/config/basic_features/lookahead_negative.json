@@ -1,10 +1,5 @@
 {
   "regex": "/x(?!y)/",
-  "testInputs": [
-    "x",
-    "sdfsdx",
-    "xx",
-    "xksxy"
-  ],
+  "testInputs": ["x", "sdfsdx", "xx", "xksxy"],
   "mustPass": true
 }

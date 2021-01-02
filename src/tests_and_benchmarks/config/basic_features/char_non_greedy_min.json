@@ -1,11 +1,5 @@
 {
   "regex": "/(a{3}?)(a)/",
-  "testInputs": [
-    "a",
-    "aa",
-    "aaa",
-    "aaaa",
-    "aaaaa"
-  ],
+  "testInputs": ["a", "aa", "aaa", "aaaa", "aaaaa"],
   "mustPass": true
 }

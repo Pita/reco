@@ -1,10 +1,5 @@
 {
   "regex": "/(.*?)(a)/",
-  "testInputs": [
-    "foooada",
-    "aa",
-    "bbbba",
-    "asdfa"
-  ],
+  "testInputs": ["foooada", "aa", "bbbba", "asdfa"],
   "mustPass": true
 }

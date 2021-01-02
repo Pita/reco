@@ -1,12 +1,5 @@
 {
   "regex": "/(def$|deg)/",
-  "testInputs": [
-    "def ",
-    "dedef",
-    "de\ndef\nh",
-    "deg ",
-    "dedeg",
-    "de\ndeg\nh"
-  ],
+  "testInputs": ["def ", "dedef", "de\ndef\nh", "deg ", "dedeg", "de\ndeg\nh"],
   "mustPass": true
 }

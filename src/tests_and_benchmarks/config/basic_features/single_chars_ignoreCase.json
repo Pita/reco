@@ -1,10 +1,5 @@
 {
   "regex": "/def/i",
-  "testInputs": [
-    "deF",
-    "wDef",
-    "blDehf",
-    "Ee"
-  ],
+  "testInputs": ["deF", "wDef", "blDehf", "Ee"],
   "mustPass": true
 }
