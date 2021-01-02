@@ -6,7 +6,7 @@ import {
   FiberTemplateDefinition,
   MatchPositioning,
 } from './templates/mainTemplate';
-
+const { version } = require('../../package.json');
 export interface Flags extends AST.Flags {
   INTERNAL_backwards?: boolean;
   INTERNAL_no_backtracking?: boolean;
@@ -44,7 +44,7 @@ const deriveMatchPositioning = (
   };
 };
 
-export const genTemplateValues = (regexStr: string) => {
+const genTemplateValuesPrivate = (regexStr: string, version: string) => {
   const literal = new RegExpParser().parseLiteral(regexStr);
 
   const collector = new Collector(regexStr);
@@ -58,5 +58,18 @@ export const genTemplateValues = (regexStr: string) => {
 
   const matchPositioning = deriveMatchPositioning(mainHandler);
 
-  return { ...collector.getTemplateValues(), mainHandler, matchPositioning };
+  return {
+    ...collector.getTemplateValues(),
+    mainHandler,
+    matchPositioning,
+    version,
+  };
+};
+
+export const genTemplateValues = (regexStr: string) => {
+  return genTemplateValuesPrivate(regexStr, version);
+};
+
+export const genDevTemplateValues = (regexStr: string) => {
+  return genTemplateValuesPrivate(regexStr, 'DEV');
 };

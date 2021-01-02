@@ -1,7 +1,7 @@
 import * as glob from 'glob';
 import * as mkdirp from 'mkdirp';
 import * as fs from 'fs';
-import { genTemplateValues } from '../generator/generator';
+import { genDevTemplateValues } from '../generator/generator';
 import testTemplate from './test_template';
 import benchmarkTemplate from './benchmark_template';
 import * as rimraf from 'rimraf';
@@ -53,7 +53,7 @@ configFiles
 
     let unformattedCode, templateValues, error;
     try {
-      templateValues = genTemplateValues(config.regex);
+      templateValues = genDevTemplateValues(config.regex);
       unformattedCode = template(templateValues);
     } catch (e) {
       console.error(e);
