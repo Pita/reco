@@ -17,39 +17,41 @@
 // }
 // or null in case there is no match
 
-type GroupMarkers = [number, number, number, number];
-
-type TempGroupMarkers = [number, number];
-
-type QuantifierCounters = [];
+interface Context {
+  groupMarkerStart0: number;
+  groupMarkerStartTemp0: number;
+  groupMarkerEnd0: number;
+  groupMarkerStart1: number;
+  groupMarkerStartTemp1: number;
+  groupMarkerEnd1: number;
+}
 
 export function generatedRegexMatcher(str: string) {
-  const groupMarkers: GroupMarkers = [-1, -1, -1, -1];
-  const tempGroupStartMarkers: TempGroupMarkers = [-1, -1];
-  const quantifierCounters: QuantifierCounters = [];
+  const context: Context = {
+    groupMarkerStart0: -1,
+    groupMarkerStartTemp0: -1,
+    groupMarkerEnd0: -1,
+    groupMarkerStart1: -1,
+    groupMarkerStartTemp1: -1,
+    groupMarkerEnd1: -1,
+  };
 
   // minCharsLeft
   const min = 0;
   const max = str.length - 6;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0001(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    const posAfterMatch = fiber0001(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
         matches: [
           str.substring(i, posAfterMatch),
-          groupMarkers[1] !== -1
-            ? str.substring(groupMarkers[0], groupMarkers[1])
+          context.groupMarkerEnd0 !== -1
+            ? str.substring(context.groupMarkerStart0, context.groupMarkerEnd0)
             : undefined,
-          groupMarkers[3] !== -1
-            ? str.substring(groupMarkers[2], groupMarkers[3])
+          context.groupMarkerEnd1 !== -1
+            ? str.substring(context.groupMarkerStart1, context.groupMarkerEnd1)
             : undefined,
         ],
       };
@@ -59,20 +61,14 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0001 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * groupStartMarker
    * /([a-y]){2}k(123)+/
    *  ^^^^^^^
    */
-  tempGroupStartMarkers[0] = i;
+  context.groupMarkerStartTemp0 = i;
   /*
    * charOrSet
    * /([a-y]){2}k(123)+/
@@ -96,14 +92,14 @@ const fiber0001 = (
    * /([a-y]){2}k(123)+/
    *  ^^^^^^^
    */
-  groupMarkers[0] = tempGroupStartMarkers[0];
-  groupMarkers[1] = i;
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
    * /([a-y]){2}k(123)+/
    *  ^^^^^^^
    */
-  tempGroupStartMarkers[0] = i;
+  context.groupMarkerStartTemp0 = i;
   /*
    * charOrSet
    * /([a-y]){2}k(123)+/
@@ -127,8 +123,8 @@ const fiber0001 = (
    * /([a-y]){2}k(123)+/
    *  ^^^^^^^
    */
-  groupMarkers[0] = tempGroupStartMarkers[0];
-  groupMarkers[1] = i;
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
   /*
    * charOrSet
    * /([a-y]){2}k(123)+/
@@ -153,13 +149,7 @@ const fiber0001 = (
    */
   let matches7 = 0;
   while (true) {
-    const wrappedResult = fiber0002(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    const wrappedResult = fiber0002(i, str, context);
 
     if (wrappedResult === -1) {
       if (matches7 < 1) {
@@ -175,20 +165,14 @@ const fiber0001 = (
   }
   return i;
 };
-const fiber0002 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0002 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * groupStartMarker
    * /([a-y]){2}k(123)+/
    *             ^^^^^
    */
-  tempGroupStartMarkers[1] = i;
+  context.groupMarkerStartTemp1 = i;
   /*
    * charOrSet
    * /([a-y]){2}k(123)+/
@@ -245,7 +229,7 @@ const fiber0002 = (
    * /([a-y]){2}k(123)+/
    *             ^^^^^
    */
-  groupMarkers[2] = tempGroupStartMarkers[1];
-  groupMarkers[3] = i;
+  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
+  context.groupMarkerEnd1 = i;
   return i;
 };

@@ -17,42 +17,50 @@
 // }
 // or null in case there is no match
 
-type GroupMarkers = [number, number, number, number, number, number];
-
-type TempGroupMarkers = [number, number, number];
-
-type QuantifierCounters = [];
+interface Context {
+  groupMarkerStart0: number;
+  groupMarkerStartTemp0: number;
+  groupMarkerEnd0: number;
+  groupMarkerStart1: number;
+  groupMarkerStartTemp1: number;
+  groupMarkerEnd1: number;
+  groupMarkerStart2: number;
+  groupMarkerStartTemp2: number;
+  groupMarkerEnd2: number;
+}
 
 export function generatedRegexMatcher(str: string) {
-  const groupMarkers: GroupMarkers = [-1, -1, -1, -1, -1, -1];
-  const tempGroupStartMarkers: TempGroupMarkers = [-1, -1, -1];
-  const quantifierCounters: QuantifierCounters = [];
+  const context: Context = {
+    groupMarkerStart0: -1,
+    groupMarkerStartTemp0: -1,
+    groupMarkerEnd0: -1,
+    groupMarkerStart1: -1,
+    groupMarkerStartTemp1: -1,
+    groupMarkerEnd1: -1,
+    groupMarkerStart2: -1,
+    groupMarkerStartTemp2: -1,
+    groupMarkerEnd2: -1,
+  };
 
   // minCharsLeft
   const min = 0;
   const max = str.length - 10;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0008(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    const posAfterMatch = fiber0008(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
         matches: [
           str.substring(i, posAfterMatch),
-          groupMarkers[1] !== -1
-            ? str.substring(groupMarkers[0], groupMarkers[1])
+          context.groupMarkerEnd0 !== -1
+            ? str.substring(context.groupMarkerStart0, context.groupMarkerEnd0)
             : undefined,
-          groupMarkers[3] !== -1
-            ? str.substring(groupMarkers[2], groupMarkers[3])
+          context.groupMarkerEnd1 !== -1
+            ? str.substring(context.groupMarkerStart1, context.groupMarkerEnd1)
             : undefined,
-          groupMarkers[5] !== -1
-            ? str.substring(groupMarkers[4], groupMarkers[5])
+          context.groupMarkerEnd2 !== -1
+            ? str.substring(context.groupMarkerStart2, context.groupMarkerEnd2)
             : undefined,
         ],
       };
@@ -62,37 +70,25 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0001 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * groupEndMarker
    * ...]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
    *              ^^^^^^^^^^^^^^^^^^^^^
    */
-  groupMarkers[4] = tempGroupStartMarkers[2];
-  groupMarkers[5] = i;
+  context.groupMarkerStart2 = context.groupMarkerStartTemp2;
+  context.groupMarkerEnd2 = i;
   /*
    * groupEndMarker
    * /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
    *  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  groupMarkers[0] = tempGroupStartMarkers[0];
-  groupMarkers[1] = i;
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
   return i;
 };
-const fiber0002 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0002 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -129,21 +125,9 @@ const fiber0002 = (
     return -1;
   }
   i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return fiber0001(i, str, context);
 };
-const fiber0003 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0003 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -181,21 +165,9 @@ const fiber0003 = (
     return -1;
   }
   i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return fiber0001(i, str, context);
 };
-const fiber0004 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0004 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -232,29 +204,17 @@ const fiber0004 = (
     return -1;
   }
   i++;
-  return fiber0001(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return fiber0001(i, str, context);
 };
-const fiber0005 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0005 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * groupEndMarker
    * /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[...
    *             ^^^^^^^^^^^^^^^
    */
-  groupMarkers[2] = tempGroupStartMarkers[1];
-  groupMarkers[3] = i;
+  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
+  context.groupMarkerEnd1 = i;
   /*
    * charOrSet
    * ...9]|1[0-2])-(0[1-9]|[1...
@@ -277,67 +237,43 @@ const fiber0005 = (
    * ...]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
    *              ^^^^^^^^^^^^^^^^^^^^^
    */
-  tempGroupStartMarkers[2] = i;
+  context.groupMarkerStartTemp2 = i;
   /*
    * disjunction
    * ...]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
    *              ^^^^^^^^^^^^^^^^^^^^^
    */
-  const groupMarkerCopy0 = groupMarkers[0];
-  const groupMarkerCopy1 = groupMarkers[1];
-  const groupMarkerCopy4 = groupMarkers[4];
-  const groupMarkerCopy5 = groupMarkers[5];
-  const length0 = fiber0002(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  const groupMarkerStartCopy0 = context.groupMarkerStart0;
+  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
+  const groupMarkerStartCopy2 = context.groupMarkerStart2;
+  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
+  const length0 = fiber0002(i, str, context);
   if (length0 !== -1) {
     return length0;
   }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  groupMarkers[4] = groupMarkerCopy4;
-  groupMarkers[5] = groupMarkerCopy5;
-  const length1 = fiber0003(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  context.groupMarkerStart0 = groupMarkerStartCopy0;
+  context.groupMarkerEnd0 = groupMarkerEndCopy0;
+  context.groupMarkerStart2 = groupMarkerStartCopy2;
+  context.groupMarkerEnd2 = groupMarkerEndCopy2;
+  const length1 = fiber0003(i, str, context);
   if (length1 !== -1) {
     return length1;
   }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  groupMarkers[4] = groupMarkerCopy4;
-  groupMarkers[5] = groupMarkerCopy5;
-  const length2 = fiber0004(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  context.groupMarkerStart0 = groupMarkerStartCopy0;
+  context.groupMarkerEnd0 = groupMarkerEndCopy0;
+  context.groupMarkerStart2 = groupMarkerStartCopy2;
+  context.groupMarkerEnd2 = groupMarkerEndCopy2;
+  const length2 = fiber0004(i, str, context);
   if (length2 !== -1) {
     return length2;
   }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  groupMarkers[4] = groupMarkerCopy4;
-  groupMarkers[5] = groupMarkerCopy5;
+  context.groupMarkerStart0 = groupMarkerStartCopy0;
+  context.groupMarkerEnd0 = groupMarkerEndCopy0;
+  context.groupMarkerStart2 = groupMarkerStartCopy2;
+  context.groupMarkerEnd2 = groupMarkerEndCopy2;
   return -1;
 };
-const fiber0006 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0006 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -374,21 +310,9 @@ const fiber0006 = (
     return -1;
   }
   i++;
-  return fiber0005(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return fiber0005(i, str, context);
 };
-const fiber0007 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0007 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -425,28 +349,16 @@ const fiber0007 = (
     return -1;
   }
   i++;
-  return fiber0005(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  return fiber0005(i, str, context);
 };
-const fiber0008 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0008 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * groupStartMarker
    * /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
    *  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  tempGroupStartMarkers[0] = i;
+  context.groupMarkerStartTemp0 = i;
   /*
    * charOrSet
    * /([12]\d{3}-(0[1...
@@ -541,49 +453,37 @@ const fiber0008 = (
    * /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[...
    *             ^^^^^^^^^^^^^^^
    */
-  tempGroupStartMarkers[1] = i;
+  context.groupMarkerStartTemp1 = i;
   /*
    * disjunction
    * /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[...
    *             ^^^^^^^^^^^^^^^
    */
-  const groupMarkerCopy0 = groupMarkers[0];
-  const groupMarkerCopy1 = groupMarkers[1];
-  const groupMarkerCopy2 = groupMarkers[2];
-  const groupMarkerCopy3 = groupMarkers[3];
-  const groupMarkerCopy4 = groupMarkers[4];
-  const groupMarkerCopy5 = groupMarkers[5];
-  const length0 = fiber0006(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  const groupMarkerStartCopy0 = context.groupMarkerStart0;
+  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
+  const groupMarkerStartCopy1 = context.groupMarkerStart1;
+  const groupMarkerEndCopy1 = context.groupMarkerEnd1;
+  const groupMarkerStartCopy2 = context.groupMarkerStart2;
+  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
+  const length0 = fiber0006(i, str, context);
   if (length0 !== -1) {
     return length0;
   }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  groupMarkers[2] = groupMarkerCopy2;
-  groupMarkers[3] = groupMarkerCopy3;
-  groupMarkers[4] = groupMarkerCopy4;
-  groupMarkers[5] = groupMarkerCopy5;
-  const length1 = fiber0007(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  context.groupMarkerStart0 = groupMarkerStartCopy0;
+  context.groupMarkerEnd0 = groupMarkerEndCopy0;
+  context.groupMarkerStart1 = groupMarkerStartCopy1;
+  context.groupMarkerEnd1 = groupMarkerEndCopy1;
+  context.groupMarkerStart2 = groupMarkerStartCopy2;
+  context.groupMarkerEnd2 = groupMarkerEndCopy2;
+  const length1 = fiber0007(i, str, context);
   if (length1 !== -1) {
     return length1;
   }
-  groupMarkers[0] = groupMarkerCopy0;
-  groupMarkers[1] = groupMarkerCopy1;
-  groupMarkers[2] = groupMarkerCopy2;
-  groupMarkers[3] = groupMarkerCopy3;
-  groupMarkers[4] = groupMarkerCopy4;
-  groupMarkers[5] = groupMarkerCopy5;
+  context.groupMarkerStart0 = groupMarkerStartCopy0;
+  context.groupMarkerEnd0 = groupMarkerEndCopy0;
+  context.groupMarkerStart1 = groupMarkerStartCopy1;
+  context.groupMarkerEnd1 = groupMarkerEndCopy1;
+  context.groupMarkerStart2 = groupMarkerStartCopy2;
+  context.groupMarkerEnd2 = groupMarkerEndCopy2;
   return -1;
 };

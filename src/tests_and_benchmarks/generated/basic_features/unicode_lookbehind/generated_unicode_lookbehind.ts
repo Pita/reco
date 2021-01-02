@@ -17,29 +17,17 @@
 // }
 // or null in case there is no match
 
-type GroupMarkers = [];
-
-type TempGroupMarkers = [];
-
-type QuantifierCounters = [];
+interface Context {}
 
 export function generatedRegexMatcher(str: string) {
-  const groupMarkers: GroupMarkers = [];
-  const tempGroupStartMarkers: TempGroupMarkers = [];
-  const quantifierCounters: QuantifierCounters = [];
+  const context: Context = {};
 
   // minCharsLeft
   const min = 0;
   const max = str.length - 1;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0001(
-      i,
-      str,
-      groupMarkers,
-      tempGroupStartMarkers,
-      quantifierCounters
-    );
+    const posAfterMatch = fiber0001(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -51,26 +39,14 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0001 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * lookaround
    * /(?<!𝒴)x/u
    *  ^^^^^^^
    */
-  const lookaroundResult0 = fiber0002(
-    i,
-    str,
-    groupMarkers,
-    tempGroupStartMarkers,
-    quantifierCounters
-  );
+  const lookaroundResult0 = fiber0002(i, str, context);
   if (lookaroundResult0 !== -1) {
     return -1;
   }
@@ -94,13 +70,7 @@ const fiber0001 = (
   i += charCode1 >= 0x10000 ? 2 : 1;
   return i;
 };
-const fiber0002 = (
-  start: number,
-  str: string,
-  groupMarkers: GroupMarkers,
-  tempGroupStartMarkers: TempGroupMarkers,
-  quantifierCounters: QuantifierCounters
-): number => {
+const fiber0002 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSetBackward

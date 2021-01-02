@@ -72,8 +72,7 @@ export const handleBackReference = (
       type: 'groupBackReference',
       ast: backreference,
       data: {
-        startGroupMarkerIndex: (backReferenceRef - 1) * 2,
-        endGroupMarkerIndex: (backReferenceRef - 1) * 2 + 1,
+        groupIndex: backReferenceRef - 1,
       },
     },
     firstCharRange,

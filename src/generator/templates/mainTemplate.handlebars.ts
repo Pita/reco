@@ -18,40 +18,28 @@ export default `
 // }
 // or null in case there is no match
 
-type GroupMarkers = [
+interface Context {
   {{#each groups}}
-    number, number,
+    groupMarkerStart{{{@index}}}: number;
+    groupMarkerStartTemp{{{@index}}}: number;
+    groupMarkerEnd{{{@index}}}: number;
   {{/each}}
-];
-
-type TempGroupMarkers = [
-  {{#each groups}}
-    number, 
-  {{/each}}
-];
-
-type QuantifierCounters = [
   {{#times quantifierCountersLength}}
-    number, 
+    quantifierCounter{{{@this}}}: number;
   {{/times}}
-]
+}
 
 export function generatedRegexMatcher(str: string) {
-  const groupMarkers: GroupMarkers = [
+  const context: Context = {
     {{#each groups}}
-      -1, -1,
+      groupMarkerStart{{{@index}}}: -1,
+      groupMarkerStartTemp{{{@index}}}: -1,
+      groupMarkerEnd{{{@index}}}: -1,
     {{/each}}
-  ];
-  const tempGroupStartMarkers: TempGroupMarkers = [
-    {{#each groups}}
-      -1,
-    {{/each}}
-  ];
-  const quantifierCounters: QuantifierCounters = [
     {{#times quantifierCountersLength}}
-      -1, 
+      quantifierCounter{{{@this}}}: -1, 
     {{/times}}
-  ]
+  };
 
   {{#with matchPositioning}}
     {{#switchCase 'startAnchored'}}
@@ -77,15 +65,15 @@ export function generatedRegexMatcher(str: string) {
   {{/with}}
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = {{{mainHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+    const posAfterMatch = {{{mainHandler.functionName}}}(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
         matches: [
           str.substring(i, posAfterMatch),
           {{#each groups}}
-            groupMarkers[{{groupEndArrayIndex @this}}] !== -1
-              ? str.substring(groupMarkers[{{groupStartArrayIndex @this}}], groupMarkers[{{groupEndArrayIndex @this}}])
+            context.groupMarkerEnd{{{@index}}} !== -1
+              ? str.substring(context.groupMarkerStart{{{@index}}}, context.groupMarkerEnd{{{@index}}})
               : undefined,
           {{/each}}
         ]
@@ -100,9 +88,7 @@ export function generatedRegexMatcher(str: string) {
   const {{{functionName}}} = (
     start: number,
     str: string,
-    groupMarkers: GroupMarkers,
-    tempGroupStartMarkers: TempGroupMarkers,
-    quantifierCounters: QuantifierCounters,
+    context: Context
   ): number => {
     let i = start;
     {{#each atoms}}
@@ -167,17 +153,17 @@ export function generatedRegexMatcher(str: string) {
       {{/switchCase}}
       {{#switchCase 'disjunction'}}
         {{#each groupsToRestore}}
-          const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
-          const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+          const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+          const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
         {{/each}}
         {{#each alternatives}}            
-          const length{{{@index}}} = {{{functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+          const length{{{@index}}} = {{{functionName}}}(i, str, context);
           if (length{{{@index}}} !== -1) {
             return length{{{@index}}};
           }
           {{#each meta.groups}}
-            groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
-            groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+            context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+            context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
           {{/each}}
         {{/each}}
         return -1;
@@ -228,14 +214,14 @@ export function generatedRegexMatcher(str: string) {
         }
       {{/switchCase}}
       {{#switchCase 'groupStartMarker'}}
-        tempGroupStartMarkers[{{{groupReference.idx}}}] = i;
+        context.groupMarkerStartTemp{{{groupReference.idx}}} = i;
       {{/switchCase}}
       {{#switchCase 'groupEndMarker'}}
-        groupMarkers[{{groupStartArrayIndex groupReference}}] = tempGroupStartMarkers[{{{groupReference.idx}}}];
-        groupMarkers[{{groupEndArrayIndex groupReference}}] = i;
+        context.groupMarkerStart{{{groupReference.idx}}} = context.groupMarkerStartTemp{{{groupReference.idx}}};
+        context.groupMarkerEnd{{{groupReference.idx}}} = i;
       {{/switchCase}}
       {{#switchCase 'lookaround'}}
-        const lookaroundResult{{{@index}}} = {{{lookaroundFiber.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+        const lookaroundResult{{{@index}}} = {{{lookaroundFiber.functionName}}}(i, str, context);
         {{#if negate}}
           if (lookaroundResult{{{@index}}} !== -1) { 
         {{/if}}
@@ -250,7 +236,7 @@ export function generatedRegexMatcher(str: string) {
           let matches{{{@index}}} = 0;
         {{/if}}
         while(true) {
-          const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+          const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, context);
 
           if (wrappedResult === -1) {
             {{#if minCount}}
@@ -279,7 +265,7 @@ export function generatedRegexMatcher(str: string) {
         let matches{{{@index}}} = 0;
 
         while(true) {
-          const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+          const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, context);
 
           if (wrappedResult === -1) {
             {{#if minCount}}
@@ -312,7 +298,7 @@ export function generatedRegexMatcher(str: string) {
           {{#unless minCount}}
             while(matches{{{@index}}} >= 0) {
           {{/unless}}
-              const directFollowUpResult{{{@index}}} = {{{followUp.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+              const directFollowUpResult{{{@index}}} = {{{followUp.functionName}}}(i, str, context);
 
               if (directFollowUpResult{{{@index}}} !== -1) {
                 return directFollowUpResult{{{@index}}};
@@ -382,9 +368,8 @@ export function generatedRegexMatcher(str: string) {
         {{/if}}
       {{/switchCase}}
       {{#switchCase 'groupBackReference'}}
-      if ({{{endGroupMarkerIndex}}} < groupMarkers.length) {
-        let backReferenceI{{{index}}} = groupMarkers[{{{startGroupMarkerIndex}}}];
-        const backReferenceEnd{{{index}}} = groupMarkers[{{{endGroupMarkerIndex}}}];
+        let backReferenceI{{{index}}} = context.groupMarkerStart{{{groupIndex}}};
+        const backReferenceEnd{{{index}}} = context.groupMarkerEnd{{{groupIndex}}};
         while(backReferenceI{{{index}}} < backReferenceEnd{{{index}}}) {
           if (i >= str.length) {
             return -1;
@@ -400,16 +385,15 @@ export function generatedRegexMatcher(str: string) {
           backReferenceI{{{index}}}++;
           i++;
         }
-      }
       {{/switchCase}}
       {{#switchCase 'quantifierStarter'}}
         {{#if maxOrMinCount}}
-          let matchCountCopy{{{functionName}}} = quantifierCounters[{{{quantifierCounterIndex}}}];
-          quantifierCounters[{{{quantifierCounterIndex}}}] = -1;
+          let matchCountCopy{{{functionName}}} = context.quantifierCounter{{{quantifierCounterIndex}}};
+          context.quantifierCounter{{{quantifierCounterIndex}}} = -1;
         {{/if}}
-        const cursorAfterQuantifier = {{{functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+        const cursorAfterQuantifier = {{{functionName}}}(i, str, context);
         {{#if maxOrMinCount}}
-          quantifierCounters[{{{quantifierCounterIndex}}}] = matchCountCopy{{{functionName}}};
+          context.quantifierCounter{{{quantifierCounterIndex}}} = matchCountCopy{{{functionName}}};
         {{/if}}
 
         return cursorAfterQuantifier;
@@ -417,7 +401,7 @@ export function generatedRegexMatcher(str: string) {
     {{/each}}
     {{#unless lastAtomReturns}}
       {{#if followUp}}
-        return {{{followUp.functionName}}}(i, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+        return {{{followUp.functionName}}}(i, str, context);
       {{/if}}
       {{#unless followUp}}
         return i;
@@ -434,36 +418,32 @@ export function generatedRegexMatcher(str: string) {
   const {{{functionName}}} = (
     start: number,
     str: string,
-    groupMarkers: GroupMarkers,
-    tempGroupStartMarkers: TempGroupMarkers,
-    quantifierCounters: QuantifierCounters,
+    context: Context,
   ): number => {
     {{#unless followUp}}
       return start;
     {{/unless}}
     {{#if followUp}}
       {{#if maxOrMinCount}}
-        quantifierCounters[{{{quantifierCounterIndex}}}]++;
+        context.quantifierCounter{{{quantifierCounterIndex}}}++;
       {{/if}}
 
       {{#if minCount}}
-        if (quantifierCounters[{{{quantifierCounterIndex}}}] >= {{{minCount}}}) {
+        if (context.quantifierCounter{{{quantifierCounterIndex}}} >= {{{minCount}}}) {
       {{/if}}
         {{#each followUp.meta.groups}}
-          const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
-          const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+          const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+          const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
         {{/each}}
         const followUpResult = {{{followUp.functionName}}}(
           start, 
           str, 
-          groupMarkers, 
-          tempGroupStartMarkers,
-          quantifierCounters,
+          context,
         );
         if (followUpResult === -1) {
           {{#each followUp.meta.groups}}
-            groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
-            groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+            context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+            context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
           {{/each}}
         } else {
           return followUpResult;
@@ -474,27 +454,27 @@ export function generatedRegexMatcher(str: string) {
       {{/if}}
       
       {{#if maxCount}}
-        if (quantifierCounters[{{{quantifierCounterIndex}}}] < {{{maxCount}}}) {
+        if (context.quantifierCounter{{{quantifierCounterIndex}}} < {{{maxCount}}}) {
       {{/if}}
         {{#each wrappedHandler.meta.groups}}
-          const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
-          const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+          const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+          const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
         {{/each}}
-        const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+        const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, str, context);
         if (tryDeeperResult !== -1) {
           // we actually were able to go deeper, nice!
           return tryDeeperResult;
         }
         {{#each wrappedHandler.meta.groups}}
-          groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
-          groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+          context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+          context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
         {{/each}}
       {{#if maxCount}}
         }
       {{/if}}
 
       {{#if maxOrMinCount}}
-        quantifierCounters[{{{quantifierCounterIndex}}}]--;
+        context.quantifierCounter{{{quantifierCounterIndex}}}--;
       {{/if}}
       return -1;
     {{/if}}
@@ -509,23 +489,19 @@ export function generatedRegexMatcher(str: string) {
   const {{{functionName}}} = (
     start: number,
     str: string,
-    groupMarkers: GroupMarkers,
-    tempGroupStartMarkers: TempGroupMarkers,
-    quantifierCounters: QuantifierCounters,
+    context: Context,
   ): number => {
     {{#if maxOrMinCount}}
-      quantifierCounters[{{{quantifierCounterIndex}}}]++;
+      context.quantifierCounter{{{quantifierCounterIndex}}}++;
     {{/if}}
 
     {{#if maxCount}}
-      if (quantifierCounters[{{{quantifierCounterIndex}}}] === {{{maxCount}}}) {
+      if (context.quantifierCounter{{{quantifierCounterIndex}}} === {{{maxCount}}}) {
         {{#if followUp}}
           return {{{followUp.functionName}}}(
             start,
             str, 
-            groupMarkers, 
-            tempGroupStartMarkers,
-            quantifierCounters
+            context,
           );
         {{/if}}
         {{#unless followUp}}
@@ -535,10 +511,10 @@ export function generatedRegexMatcher(str: string) {
     {{/if}}
 
     {{#each wrappedHandler.meta.groups}}
-      const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
-      const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+      const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+      const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
     {{/each}}
-    const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, str, groupMarkers, tempGroupStartMarkers, quantifierCounters);
+    const tryDeeperResult = {{{wrappedHandler.functionName}}}(start, str, context);
     if (tryDeeperResult !== -1) {
       // we actually were able to go deeper, nice!
       return tryDeeperResult;
@@ -546,38 +522,36 @@ export function generatedRegexMatcher(str: string) {
 
     // recursion failed, reset groups
     {{#each wrappedHandler.meta.groups}}
-      groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
-      groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+      context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+      context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
     {{/each}}
 
     {{#if minCount}}
-      if (quantifierCounters[{{{quantifierCounterIndex}}}] < {{{minCount}}}) {
-        quantifierCounters[{{{quantifierCounterIndex}}}]--;
+      if (context.quantifierCounter{{{quantifierCounterIndex}}} < {{{minCount}}}) {
+        context.quantifierCounter{{{quantifierCounterIndex}}}--;
         return -1;
       }
     {{/if}}
 
     {{#if followUp}}
       {{#each followUp.meta.groups}}
-        const groupMarkerCopy{{{groupStartArrayIndex @this}}} = groupMarkers[{{groupStartArrayIndex @this}}];
-        const groupMarkerCopy{{{groupEndArrayIndex @this}}} = groupMarkers[{{groupEndArrayIndex @this}}];
+        const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+        const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
       {{/each}}
 
       const followUpResult = {{{followUp.functionName}}}(
         start,
         str, 
-        groupMarkers, 
-        tempGroupStartMarkers,
-        quantifierCounters,
+        context,
       );
 
       if (followUpResult === -1) {
         {{#each followUp.meta.groups}}
-          groupMarkers[{{groupStartArrayIndex @this}}] = groupMarkerCopy{{{groupStartArrayIndex @this}}};
-          groupMarkers[{{groupEndArrayIndex @this}}] = groupMarkerCopy{{{groupEndArrayIndex @this}}};
+          context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+          context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
         {{/each}}
         {{#if maxOrMinCount}}
-          quantifierCounters[{{{quantifierCounterIndex}}}]--;
+          context.quantifierCounter{{{quantifierCounterIndex}}}--;
         {{/if}}
       }
       return followUpResult;
