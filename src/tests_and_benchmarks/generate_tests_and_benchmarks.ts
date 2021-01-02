@@ -126,12 +126,6 @@ configFiles
         '/',
         '___',
       )} } from "./${testName}/${fileName}.benchmark";\n`;
-
-      fs.writeFileSync(
-        `${configFolder}/${configFile}`,
-        JSON.stringify({ ...config, mustPass: true }, null, 2),
-        'utf8',
-      );
     } else {
       console.error(`Skipped: ${configFile}`, error.toString(), error.stack);
       throw new Error(
