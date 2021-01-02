@@ -37,9 +37,9 @@ export function generatedRegexMatcher(str: string) {
   const tempGroupStartMarkers: TempGroupMarkers = [-1, -1, -1, -1];
   const quantifierCounters: QuantifierCounters = [];
 
-  // endAnchored
-  const min = Math.max(str.length - 10, 0);
-  const max = str.length - 4;
+  // startAnchored
+  const min = 0;
+  const max = 0;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0071(

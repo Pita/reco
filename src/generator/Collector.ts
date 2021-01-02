@@ -229,7 +229,9 @@ export class Collector {
       currentFiber.meta.firstCharRange = atomCharRange;
     }
 
-    currentFiber.meta.anchorsAtStartOfLine = def.type === 'startAnchor';
+    if (def.type !== 'disjunction') {
+      currentFiber.meta.anchorsAtStartOfLine = def.type === 'startAnchor';
+    }
     if (def.type === 'endAnchor') {
       currentFiber.meta.anchorsAtEndOfLine = true;
     }
