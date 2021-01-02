@@ -36,12 +36,12 @@ export function generatedRegexMatcher(str: string) {
     groupMarkerEnd1: -1,
   };
 
-  // minCharsLeft
+  // fullScan
   const min = 0;
-  const max = str.length - 1;
+  const max = str.length;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0004(i, str, context);
+    const posAfterMatch = fiber0003(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -126,9 +126,9 @@ const fiber0002 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return lazyQuantifier0003(i, str, context);
+  return i;
 };
-const fiber0004 = (start: number, str: string, context: Context): number => {
+const fiber0003 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * groupStartMarker
@@ -137,43 +137,21 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * quantifierStarter
+   * lazyQuantifier
    * /(.✱?)(a)/
    *   ^^^
    */
-  const cursorAfterQuantifier = lazyQuantifier0003(i, str, context);
+  while (true) {
+    const directFollowUpResult1 = fiber0001(i, str, context);
 
-  return cursorAfterQuantifier;
-};
+    if (directFollowUpResult1 !== -1) {
+      return directFollowUpResult1;
+    }
 
-/*
- * /(.✱?)(a)/
- *   ^^^
- */
-const lazyQuantifier0003 = (
-  start: number,
-  str: string,
-  context: Context
-): number => {
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const groupMarkerStartCopy1 = context.groupMarkerStart1;
-  const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-  const followUpResult = fiber0001(start, str, context);
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.groupMarkerStart1 = groupMarkerStartCopy1;
-    context.groupMarkerEnd1 = groupMarkerEndCopy1;
-  } else {
-    return followUpResult;
+    const wrappedResult = fiber0002(i, str, context);
+    if (wrappedResult === -1) {
+      return -1;
+    }
+    i = wrappedResult;
   }
-
-  const tryDeeperResult = fiber0002(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
-  }
-
-  return -1;
 };

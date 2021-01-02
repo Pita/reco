@@ -4,6 +4,7 @@ import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 import { CharRange } from '../CharRange';
+import { BacktrackingError } from '../BacktrackingException';
 
 export const handleDisjunction = (
   alternatives: AST.Alternative[],
@@ -20,6 +21,10 @@ export const handleDisjunction = (
       flags,
       literal,
     );
+  }
+
+  if (flags.INTERNAL_no_backtracking) {
+    throw new BacktrackingError();
   }
 
   const mappedAlternatives = alternatives.map((alternative) =>

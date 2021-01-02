@@ -1,5 +1,5 @@
 {
-  "regex": "/(aa){0,3}?b/",
+  "regex": "/(aa?){0,3}?b/",
   "testInputs": [
     "b",
     "ab",

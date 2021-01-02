@@ -261,6 +261,37 @@ export function generatedRegexMatcher(str: string) {
           }
         }
       {{/switchCase}}
+      {{#switchCase 'lazyQuantifier'}}
+        {{#if maxOrMinCount}}
+          let matches{{{@index}}} = 0;
+        {{/if}}
+        while(true) {
+          {{#if minCount}}
+            if (matches{{{@index}}} >= {{{minCount}}}) {
+          {{/if}}
+            const directFollowUpResult{{{@index}}} = {{{followUp.functionName}}}(i, str, context);
+            
+            if (directFollowUpResult{{{@index}}} !== -1 
+              {{#if maxCount}}
+                || (matches{{{@index}}} === {{{maxCount}}})
+              {{/if}}
+            ) {
+              return directFollowUpResult{{{@index}}};
+            } 
+          {{#if minCount}}
+            }
+          {{/if}}
+
+          const wrappedResult = {{{wrappedHandler.functionName}}}(i, str, context);
+          if (wrappedResult === -1) {
+            return -1;
+          }
+          i = wrappedResult;
+          {{#if maxOrMinCount}}
+            matches{{{@index}}}++;
+          {{/if}}
+        }
+      {{/switchCase}}
       {{#switchCase 'backtrackingFixedLengthQuantifier'}}
         let matches{{{@index}}} = 0;
 

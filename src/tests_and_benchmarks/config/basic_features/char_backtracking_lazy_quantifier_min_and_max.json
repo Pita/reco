@@ -1,14 +1,17 @@
 {
-  "regex": "/(aa?){3}?/",
+  "regex": "/(aa){3}?b/",
   "testInputs": [
-    "a",
-    "aa",
-    "aaa",
-    "aaaa",
-    "aaaaa",
-    "aaaaaa",
-    "aaaaaaa",
-    "aaaaaaaa"
+    "b",
+    "ab",
+    "aab",
+    "aaab",
+    "aaaab",
+    "aaaaab",
+    "aaaaaab",
+    "aaaaaaab",
+    "aaaaaaaab",
+    "aaaaaaaaab",
+    "aaaaaaaaaab"
   ],
   "mustPass": true
 }

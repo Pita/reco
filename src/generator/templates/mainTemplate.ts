@@ -155,6 +155,17 @@ export interface BacktrackingFixedLengthQuantifier extends BaseTemplateAtom {
   };
 }
 
+export interface LazyQuantifier extends BaseTemplateAtom {
+  type: 'lazyQuantifier';
+  data: {
+    maxOrMinCount?: boolean;
+    minCount?: number;
+    maxCount?: number;
+    wrappedHandler: FiberTemplateDefinition;
+    followUp: FollowUp;
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
@@ -170,10 +181,9 @@ export type TemplateAtom =
   | WordBoundaryTemplateAtom
   | GroupBackReferenceTemplateAtom
   | NonBacktrackingQuantifier
-  | BacktrackingFixedLengthQuantifier;
+  | BacktrackingFixedLengthQuantifier
+  | LazyQuantifier;
 
-// TODO: generate switch in template
-// TODO: add endAnchored
 export type MatchPositioning =
   | {
       type: 'startAnchored';

@@ -134,7 +134,7 @@ const checkIfQuantifierHasFixedLength = (
   }
 };
 
-const analyzeQuantifier = (
+const analyzeGreedyQuantifier = (
   quantifier: AST.Quantifier,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
@@ -189,6 +189,47 @@ const analyzeQuantifier = (
     followUpFirstChar,
     fixedLengthOptimizable,
     fixedLength,
+  };
+};
+
+const analyzeLazyQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+) => {
+  const firstCharOfQuantifierIsolated = deriveFirstCharOfQuantifierIsolated(
+    quantifier,
+    collector,
+    flags,
+    literal,
+  );
+  const followUpFirstChar = deriveFirstCharForQuantifierFollowUp(
+    quantifier,
+    currentFiber,
+    firstCharOfQuantifierIsolated,
+  );
+  const hasInternalBacktracking = checkIfQuantifierHasInternalBacktracking(
+    quantifier,
+    collector,
+    flags,
+    followUpFirstChar,
+    literal,
+  );
+  const firstCharAfterQuantifier = deriveFirstCharAfterQuantifier(
+    quantifier,
+    collector,
+    currentFiber,
+    flags,
+    followUpFirstChar,
+    literal,
+  );
+
+  return {
+    hasInternalBacktracking: hasInternalBacktracking,
+    followUpFirstChar,
+    firstCharAfterQuantifier,
   };
 };
 
@@ -356,42 +397,32 @@ const generateNonBacktrackingQuantifier = (
   );
 };
 
-export const handleQuantifier = (
+const generateGreedyQuantifier = (
   quantifier: AST.Quantifier,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
-): FiberTemplateDefinition => {
-  if (quantifier.min === quantifier.max && quantifier.max < 10) {
-    let currentAppendableFiber = currentFiber;
-    for (let i = 0; i < quantifier.max; i++) {
-      currentAppendableFiber = handleElement(
-        quantifier.element,
-        collector,
-        currentAppendableFiber,
-        flags,
-        literal,
-      );
-    }
-
-    return currentAppendableFiber;
-  }
-
+) => {
   const {
     firstCharAfterQuantifier,
     needsBacktracking,
     followUpFirstChar,
     fixedLengthOptimizable,
     fixedLength,
-  } = analyzeQuantifier(quantifier, collector, currentFiber, flags, literal);
+  } = analyzeGreedyQuantifier(
+    quantifier,
+    collector,
+    currentFiber,
+    flags,
+    literal,
+  );
 
   if (needsBacktracking) {
     if (flags.INTERNAL_no_backtracking) {
       throw new BacktrackingError();
     }
     if (fixedLengthOptimizable && fixedLength) {
-      // TODO: make it work for non greedy
       return generateBacktrackingFixedLengthQuantifier(
         quantifier,
         collector,
@@ -421,6 +452,112 @@ export const handleQuantifier = (
       flags,
       firstCharAfterQuantifier,
       followUpFirstChar,
+      literal,
+    );
+  }
+};
+
+const generateLazyQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+) => {
+  const {
+    hasInternalBacktracking,
+    followUpFirstChar,
+    firstCharAfterQuantifier,
+  } = analyzeLazyQuantifier(
+    quantifier,
+    collector,
+    currentFiber,
+    flags,
+    literal,
+  );
+
+  if (hasInternalBacktracking) {
+    return generateBacktrackingQuantifier(
+      quantifier,
+      collector,
+      currentFiber,
+      flags,
+      firstCharAfterQuantifier,
+      followUpFirstChar,
+      literal,
+    );
+  } else {
+    const wrappedHandler = handleElement(
+      quantifier.element,
+      collector,
+      collector.createFinalFiber(followUpFirstChar),
+      flags,
+      literal,
+    );
+
+    const countParams = generateCountParams(quantifier);
+    const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
+    const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
+
+    return collector.addAtom(
+      collector.createForkingFiber(
+        currentFiber,
+        currentFiber.meta.groups,
+        false,
+        currentFiber.meta.anchorsAtEndOfLine,
+      ),
+      {
+        type: 'lazyQuantifier',
+        data: {
+          ...countParams,
+          wrappedHandler,
+          followUp: currentFiber,
+        },
+        ast: quantifier,
+      },
+      firstCharAfterQuantifier,
+      minCharLength,
+      maxCharLength,
+    );
+  }
+};
+
+export const handleQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+): FiberTemplateDefinition => {
+  if (quantifier.min === quantifier.max && quantifier.max < 10) {
+    let currentAppendableFiber = currentFiber;
+    for (let i = 0; i < quantifier.max; i++) {
+      currentAppendableFiber = handleElement(
+        quantifier.element,
+        collector,
+        currentAppendableFiber,
+        flags,
+        literal,
+      );
+    }
+
+    return currentAppendableFiber;
+  }
+
+  if (quantifier.greedy) {
+    return generateGreedyQuantifier(
+      quantifier,
+      collector,
+      currentFiber,
+      flags,
+      literal,
+    );
+  } else {
+    return generateLazyQuantifier(
+      quantifier,
+      collector,
+      currentFiber,
+      flags,
       literal,
     );
   }
