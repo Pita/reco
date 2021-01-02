@@ -201,6 +201,11 @@ const generateBacktrackingQuantifier = (
   followUpFirstChar: CharRange,
   literal: AST.RegExpLiteral,
 ) => {
+  let willUnroll = false;
+  if (quantifier.min > 0 && quantifier.min < 10) {
+    willUnroll = true;
+  }
+
   const {
     quantifierFinalFiber,
     quantifierHandler,
@@ -212,7 +217,7 @@ const generateBacktrackingQuantifier = (
   );
 
   const countParams = generateCountParams(quantifier);
-  quantifierHandler.minCount = countParams.minCount;
+  quantifierHandler.minCount = willUnroll ? 0 : countParams.minCount;
   quantifierHandler.maxCount = countParams.maxCount;
   quantifierHandler.maxOrMinCount = countParams.maxOrMinCount;
 
@@ -238,13 +243,13 @@ const generateBacktrackingQuantifier = (
 
   const minCharLength =
     currentFiber.meta.minCharLength +
-    quantifier.min * wrappedHandler.meta.minCharLength;
+    (willUnroll ? 0 : quantifier.min * wrappedHandler.meta.minCharLength);
 
   const maxCharLength =
     currentFiber.meta.maxCharLength +
     quantifier.max * wrappedHandler.meta.maxCharLength;
 
-  return collector.addAtom(
+  const recursionQuantifier = collector.addAtom(
     collector.createForkingFiber(
       quantifierHandler,
       quantifierHandler.meta.groups,
@@ -263,6 +268,19 @@ const generateBacktrackingQuantifier = (
     firstCharAfterQuantifier,
     minCharLength,
     maxCharLength,
+  );
+
+  if (!willUnroll) {
+    return recursionQuantifier;
+  }
+
+  return unrollQuantifier(
+    quantifier,
+    collector,
+    recursionQuantifier,
+    flags,
+    literal,
+    quantifier.min,
   );
 };
 
@@ -356,6 +374,29 @@ const generateNonBacktrackingQuantifier = (
   );
 };
 
+const unrollQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+  count: number,
+) => {
+  let currentAppendableFiber = currentFiber;
+  // TODO: can be optimized with less code waste
+  for (let i = 0; i < count; i++) {
+    currentAppendableFiber = handleElement(
+      quantifier.element,
+      collector,
+      currentAppendableFiber,
+      flags,
+      literal,
+    );
+  }
+
+  return currentAppendableFiber;
+};
+
 export const handleQuantifier = (
   quantifier: AST.Quantifier,
   collector: Collector,
@@ -364,18 +405,14 @@ export const handleQuantifier = (
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   if (quantifier.min === quantifier.max && quantifier.max < 10) {
-    let currentAppendableFiber = currentFiber;
-    for (let i = 0; i < quantifier.max; i++) {
-      currentAppendableFiber = handleElement(
-        quantifier.element,
-        collector,
-        currentAppendableFiber,
-        flags,
-        literal,
-      );
-    }
-
-    return currentAppendableFiber;
+    return unrollQuantifier(
+      quantifier,
+      collector,
+      currentFiber,
+      flags,
+      literal,
+      quantifier.max,
+    );
   }
 
   const {
