@@ -19,7 +19,7 @@
     <script src="./benchmark_data.js"></script>
 
     <div>
-      <h2>Average Common Regex: <span id="average"></span></h2>
+      <h2>Average Common Regex: <span id="oldAverage"></span> → <span id="average"></span></h2>
     </div>
     <div class="char">
       <canvas id="chart" width="1200" height="1600"></canvas>
@@ -33,6 +33,7 @@
           parseFloat(data) + 1,
         ]),
       );
+
       var char = new Chart(ctx, {
         type: 'horizontalBar',
         data: {
@@ -40,7 +41,9 @@
           datasets: [
             {
               label: 'Old',
-              data: Object.values(oldBenchmarkData),
+              data: Object.keys(benchmarkData).map(key => {
+                return oldBenchmarkData[key] || 0
+              }),
               backgroundColor: 'grey',
             },
             {
@@ -75,17 +78,28 @@
         },
       });
 
-      let sum = 0;
-      let count = 0;
+      let sumNew = 0;
+      let countNew = 0;
       Object.entries(benchmarkData).forEach(([name, value]) => {
         if (!name.startsWith('common_regex')) {
           return;
         }
-        sum += parseFloat(value);
-        count++;
+        sumNew += parseFloat(value);
+        countNew++;
       });
 
-      document.getElementById('average').textContent = (sum / count).toFixed(2);
+      let sumOld = 0;
+      let countOld = 0;
+      Object.entries(oldBenchmarkData).forEach(([name, value]) => {
+        if (!name.startsWith('common_regex')) {
+          return;
+        }
+        sumOld += parseFloat(value);
+        countOld++;
+      });
+
+      document.getElementById('oldAverage').textContent = (sumOld / countOld).toFixed(2);
+      document.getElementById('average').textContent = (sumNew / countNew).toFixed(2);
     </script>
   </body>
 </html>
