@@ -1,6 +1,5 @@
 {
   "regex": "/\\W/",
-  "type": "groupMatch",
   "testInputs": [
     "\t",
     " ",

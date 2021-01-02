@@ -1,6 +1,5 @@
 {
   "regex": "/[^ab-c]/",
-  "type": "groupMatch",
   "testInputs": [
     "d",
     "a",

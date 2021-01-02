@@ -1,6 +1,5 @@
 {
   "regex": "/^[a-zA-Z0-9 ]*$/",
-  "type": "groupMatch",
   "testInputs": [
     "hello",
     "what",

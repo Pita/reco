@@ -1,6 +1,5 @@
 {
   "regex": "/(^deg|def)/",
-  "type": "groupMatch",
   "testInputs": [
     " def",
     "def",

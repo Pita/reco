@@ -1,6 +1,5 @@
 {
   "regex": "/(b.*?)(a)/",
-  "type": "groupMatch",
   "testInputs": [
     "b",
     "ba",

@@ -1,6 +1,5 @@
 {
   "regex": "/([a-z]+)([h-o])([d-z]*)([1-3])/",
-  "type": "groupMatch",
   "testInputs": [
     "aaaahzzzzz2",
     "aaacbajeeeez2",

@@ -1,6 +1,5 @@
 {
   "regex": "/x(?=y)/",
-  "type": "groupMatch",
   "testInputs": [
     "x",
     "sdfsdx",

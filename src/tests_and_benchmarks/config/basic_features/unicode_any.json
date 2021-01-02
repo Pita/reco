@@ -1,6 +1,5 @@
 {
   "regex": "/.a/u",
-  "type": "groupMatch",
   "testInputs": [
     "a",
     "ba",

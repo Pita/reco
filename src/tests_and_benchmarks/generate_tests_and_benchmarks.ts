@@ -38,10 +38,8 @@ configFiles
   })
   .forEach((configFile, configIndex) => {
     let config: {
-      type: string;
       testInputs: string[];
       regex: string;
-      mustPass?: boolean;
     };
     try {
       config = JSON.parse(
@@ -64,27 +62,6 @@ configFiles
     const nativeRegex: RegExp = eval(config.regex);
     if (nativeRegex.global) {
       throw new Error("Can't correctly test global regex yet");
-    }
-
-    if (config.type === 'textSearch') {
-      const newTestInputs = config.testInputs.map((testInput) => {
-        let start = 0;
-        const partlyMatches = [];
-        let result: RegExpExecArray | null;
-        while ((result = nativeRegex.exec(testInput.substr(start))) !== null) {
-          if (result === null) {
-            break;
-          }
-          const end = start + result.index + result[0].length;
-          partlyMatches.push(testInput.substring(start, end));
-          start = end + 1;
-        }
-
-        partlyMatches.push(testInput.substr(start));
-        return partlyMatches;
-      });
-
-      config.testInputs = _.flatten(newTestInputs);
     }
 
     const testInputs = config.testInputs.map((testInput) => {
@@ -157,19 +134,9 @@ configFiles
       );
     } else {
       console.error(`Skipped: ${configFile}`, error.toString(), error.stack);
-      if (config.mustPass) {
-        if (process.env.RESET) {
-          fs.writeFileSync(
-            `${configFolder}/${configFile}`,
-            JSON.stringify({ ...config, mustPass: false }, null, 2),
-            'utf8',
-          );
-        } else {
-          throw new Error(
-            `Previously passing test does not pass anymore: ${configFile}`,
-          );
-        }
-      }
+      throw new Error(
+        `Previously passing test does not pass anymore: ${configFile}`,
+      );
     }
   });
 

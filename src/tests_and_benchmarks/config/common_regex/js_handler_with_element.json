@@ -1,6 +1,5 @@
 {
   "regex": "/(?:<[^>]+\\s)(on\\S+)=[\"']?((?:.(?![\"']?\\s+(?:\\S+)=|[>\"']))+.)[\"']?/",
-  "type": "textSearch",
   "testInputs": [
     "<img src=\"foo.jpg\" onload=\"something\"",
     "",

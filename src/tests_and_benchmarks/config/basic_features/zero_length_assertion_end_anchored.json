@@ -1,6 +1,5 @@
 {
   "regex": "/$/",
-  "type": "groupMatch",
   "testInputs": [
     "foo",
     "34foo",

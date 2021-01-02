@@ -1,6 +1,5 @@
 {
   "regex": "/(a{3}?)(a)/",
-  "type": "groupMatch",
   "testInputs": [
     "a",
     "aa",

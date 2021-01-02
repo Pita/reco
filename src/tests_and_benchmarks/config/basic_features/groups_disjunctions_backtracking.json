@@ -1,6 +1,5 @@
 {
   "regex": "/([a-c]{2}|[d-f]{2})(a)/",
-  "type": "groupMatch",
   "testInputs": [
     "bba",
     "ffa",

@@ -1,6 +1,5 @@
 {
   "regex": "/^-?\\d*(\\.\\d+)?$/",
-  "type": "groupMatch",
   "testInputs": [
     "100",
     "10.2",

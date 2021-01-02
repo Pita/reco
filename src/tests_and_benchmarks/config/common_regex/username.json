@@ -1,6 +1,5 @@
 {
   "regex": "/^[a-z0-9_-]{3,16}$/",
-  "type": "groupMatch",
   "testInputs": [
     "hi",
     "hi!",

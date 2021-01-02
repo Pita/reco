@@ -1,6 +1,5 @@
 {
   "regex": "/a*B+c?/",
-  "type": "groupMatch",
   "testInputs": [
     "aaaaB",
     "B",

@@ -1,6 +1,5 @@
 {
   "regex": "/(ab)k(123)/",
-  "type": "groupMatch",
   "testInputs": [
     "abk123",
     "asdfasdf",

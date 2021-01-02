@@ -1,6 +1,5 @@
 {
   "regex": "/\\u{1f604}/u",
-  "type": "groupMatch",
   "testInputs": [
     "𝒳😄"
   ],

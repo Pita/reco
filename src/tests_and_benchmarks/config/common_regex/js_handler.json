@@ -1,6 +1,5 @@
 {
   "regex": "/\\bon\\w+=\\S+(?=.*>)/",
-  "type": "textSearch",
   "testInputs": [
     "<img src=\"foo.jpg\" onload=function_xyz",
     "/>\n<img onmessage=\"javascript:execute()\"",

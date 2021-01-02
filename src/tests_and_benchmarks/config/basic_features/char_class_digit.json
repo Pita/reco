@@ -1,6 +1,5 @@
 {
   "regex": "/\\d/",
-  "type": "groupMatch",
   "testInputs": [
     "0",
     "3",

@@ -1,6 +1,5 @@
 {
   "regex": "/(?<!𝒴)x/u",
-  "type": "groupMatch",
   "testInputs": [
     "xx",
     "xsdfsd",

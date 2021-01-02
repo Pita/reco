@@ -1,6 +1,5 @@
 {
   "regex": "/\\S/",
-  "type": "groupMatch",
   "testInputs": [
     "\t",
     " ",

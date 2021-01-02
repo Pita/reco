@@ -1,6 +1,5 @@
 {
   "regex": "/(?:a)(b)c/",
-  "type": "groupMatch",
   "testInputs": [
     "abc",
     "cabc",

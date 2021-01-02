@@ -1,6 +1,5 @@
 {
   "regex": "/\\Bfoo/",
-  "type": "groupMatch",
   "testInputs": [
     "foo",
     "34foo",

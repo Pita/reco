@@ -1,6 +1,5 @@
 {
   "regex": "/def/",
-  "type": "groupMatch",
   "testInputs": [
     "def",
     "wDef",

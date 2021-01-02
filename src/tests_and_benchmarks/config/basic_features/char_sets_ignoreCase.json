@@ -1,6 +1,5 @@
 {
   "regex": "/[a-z]/i",
-  "type": "groupMatch",
   "testInputs": [
     "hello",
     "HELLO",

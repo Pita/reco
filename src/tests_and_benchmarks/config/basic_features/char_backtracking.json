@@ -1,6 +1,5 @@
 {
   "regex": "/(a+)(a)(a*)(a)/",
-  "type": "groupMatch",
   "testInputs": [
     "aaaaaa",
     "aa",

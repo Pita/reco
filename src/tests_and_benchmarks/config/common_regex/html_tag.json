@@ -1,6 +1,5 @@
 {
   "regex": "/<\\/?[\\w\\s]*>|<.+[\\W]>/",
-  "type": "textSearch",
   "testInputs": [
     "<h2 class=\"offscreen\">",
     "",
