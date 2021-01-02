@@ -15,17 +15,31 @@ const template = `
         {{/each}}
       ];
       const suite = new Benchmark.Suite('{{{string testName}}}');
+      const nativeCheckSum = 0;
       suite.add('native', function () {
         testStrings.forEach(testStr => {
-          {{{testRegex}}}.exec(testStr);
+          const result = {{{testRegex}}}.exec(testStr);
+          if (result) {
+            for (let i = 0;i<result.length; i++) {
+              nativeCheckSum += result[i].length;
+            }
+          }
         });
       });
+      const generatedCheckSum = 0;
       suite.add('generated', function () {
         testStrings.forEach(testStr => {
-          generatedRegexMatcher(testStr);
+          const result = generatedRegexMatcher(testStr);
+          if (result) {
+            for (let i = 0;i<result.matches.length; i++) {
+              generatedCheckSum += result.matches[i].length;
+            }
+          }
         });
       });
       suite.on('complete', function () {
+        console.log('nativeCheckSum', nativeCheckSum);
+        console.log('generatedCheckSum', generatedCheckSum);
         resolve((this[1].stats.mean / this[0].stats.mean).toFixed(2));
       });
       suite.on('error', function (err: any) {
