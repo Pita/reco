@@ -36,9 +36,9 @@ export function generatedRegexMatcher(str: string) {
     groupMarkerEnd1: -1,
   };
 
-  // fullScan
+  // minCharsLeft
   const min = 0;
-  const max = str.length;
+  const max = str.length - 1;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0003(i, str, context);

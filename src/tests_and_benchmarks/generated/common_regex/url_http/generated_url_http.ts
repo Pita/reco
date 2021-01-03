@@ -40,7 +40,7 @@ export function generatedRegexMatcher(str: string) {
 
   // minCharsLeft
   const min = 0;
-  const max = str.length - 9;
+  const max = str.length - 12;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0009(i, str, context);

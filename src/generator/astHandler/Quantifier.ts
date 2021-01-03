@@ -326,8 +326,12 @@ const generateBacktrackingFixedLengthQuantifier = (
   );
 
   const countParams = generateCountParams(quantifier);
-  const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
-  const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
+  const minCharLength =
+    currentFiber.meta.minCharLength +
+    quantifier.min * wrappedHandler.meta.minCharLength;
+  const maxCharLength =
+    currentFiber.meta.maxCharLength +
+    quantifier.max * wrappedHandler.meta.maxCharLength;
 
   return collector.addAtom(
     collector.createForkingFiber(
@@ -496,8 +500,12 @@ const generateLazyQuantifier = (
     );
 
     const countParams = generateCountParams(quantifier);
-    const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
-    const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
+    const minCharLength =
+      currentFiber.meta.minCharLength +
+      quantifier.min * wrappedHandler.meta.minCharLength;
+    const maxCharLength =
+      currentFiber.meta.maxCharLength +
+      quantifier.max * wrappedHandler.meta.maxCharLength;
 
     return collector.addAtom(
       collector.createForkingFiber(

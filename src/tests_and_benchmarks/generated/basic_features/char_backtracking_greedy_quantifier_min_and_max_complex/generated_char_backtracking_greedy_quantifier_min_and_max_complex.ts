@@ -32,7 +32,7 @@ export function generatedRegexMatcher(str: string) {
 
   // minCharsLeft
   const min = 0;
-  const max = str.length - 1;
+  const max = str.length - 3;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0006(i, str, context);

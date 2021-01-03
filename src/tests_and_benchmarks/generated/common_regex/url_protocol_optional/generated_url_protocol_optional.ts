@@ -48,7 +48,7 @@ export function generatedRegexMatcher(str: string) {
 
   // minCharsLeft
   const min = 0;
-  const max = str.length - 2;
+  const max = str.length - 5;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0013(i, str, context);
