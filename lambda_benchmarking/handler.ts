@@ -11,17 +11,27 @@ export const benchmark: APIGatewayProxyHandler = async (event, _context) => {
     };
   }
 
-  const benchmarkResult = await benchmarks[benchmarkName]();
+  try {
+    const benchmarkResult = await benchmarks[benchmarkName]();
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        benchmarkResult,
-        benchmarkName,
-      },
-      null,
-      2,
-    ),
-  };
+    return {
+      statusCode: 200,
+      body: JSON.stringify(
+        {
+          benchmarkResult,
+          benchmarkName,
+        },
+        null,
+        2,
+      ),
+    };
+  } catch (e) {
+    console.log('ERROR', benchmarkName);
+    console.dir(e);
+
+    return {
+      statusCode: 500,
+      body: '',
+    };
+  }
 };

@@ -48,11 +48,16 @@ const copyNewToOldBenchmarkData = () => {
   const resultsUnsorted: { folder: string; result: number }[] = [];
   await Promise.all(
     folders.map(async (folder) => {
-      const response = await axios.get(endpoints.benchmark.GET, {
-        params: { name: folder.replace('/', '___') },
-      });
-      resultsUnsorted.push({ folder, result: response.data.benchmarkResult });
-      console.log(folder, response.data.benchmarkResult);
+      try {
+        const response = await axios.get(endpoints.benchmark.GET, {
+          params: { name: folder.replace('/', '___') },
+        });
+        resultsUnsorted.push({ folder, result: response.data.benchmarkResult });
+        console.log(folder, response.data.benchmarkResult);
+      } catch (e) {
+        console.error(folder, e.message);
+        resultsUnsorted.push({ folder, result: 0 });
+      }
     }),
   );
   const resultsSorted = _.sortBy(resultsUnsorted, 'folder');

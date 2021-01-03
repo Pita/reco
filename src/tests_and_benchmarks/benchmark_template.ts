@@ -15,24 +15,24 @@ const template = `
         {{/each}}
       ];
       const suite = new Benchmark.Suite('{{{string testName}}}');
-      const nativeCheckSum = 0;
+      let nativeCheckSum = 0;
       suite.add('native', function () {
         testStrings.forEach(testStr => {
           const result = {{{testRegex}}}.exec(testStr);
           if (result) {
             for (let i = 0;i<result.length; i++) {
-              nativeCheckSum += result[i].length;
+              nativeCheckSum += result[i] ? result[i].length : 0;
             }
           }
         });
       });
-      const generatedCheckSum = 0;
+      let generatedCheckSum = 0;
       suite.add('generated', function () {
         testStrings.forEach(testStr => {
           const result = generatedRegexMatcher(testStr);
           if (result) {
             for (let i = 0;i<result.matches.length; i++) {
-              generatedCheckSum += result.matches[i].length;
+              generatedCheckSum += result.matches[i] ? result.matches[i].length : 0;
             }
           }
         });
