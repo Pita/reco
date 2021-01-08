@@ -235,7 +235,10 @@ const greedyQuantifier0003 = (
   str: string,
   context: Context
 ): number => {
-  if (start > str.length - 4) {
+  if (start + 3 > str.length + 1 - 4) {
+    // if ((start + 3) > (str.length + 1 - 4)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 4));
+    // }
     return fiber0001(start, str, context);
   }
 

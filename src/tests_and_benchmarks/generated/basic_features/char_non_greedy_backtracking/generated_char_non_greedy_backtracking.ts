@@ -161,7 +161,10 @@ const fiber0003 = (start: number, str: string, context: Context): number => {
   while (true) {
     const directFollowUpResult2 = fiber0001(i, str, context);
 
-    if (directFollowUpResult2 !== -1 || i > str.length - 1) {
+    if (directFollowUpResult2 !== -1 || i + 1 > str.length - 1) {
+      // if ((i + 1) > (str.length - 1)) {
+      //   console.log('overstep lazyQuantifier', i, (str.length - 1));
+      // }
       return directFollowUpResult2;
     }
 

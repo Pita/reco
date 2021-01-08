@@ -148,7 +148,10 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches2++;
 
-      if (i > str.length - 0 || matches2 === 1) {
+      if (i + 1 > str.length - 0 || matches2 === 1) {
+        // if ((i + 1) > (str.length - 0)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 0));
+        // }
         break;
       }
     }
@@ -202,7 +205,11 @@ const lazyQuantifier0003 = (
     }
   }
 
-  if (start < str.length - 1) {
+  if (start + 1 <= str.length - 1) {
+    // if ((start + 1) < (str.length - 1)) {
+    //   console.log('overstep lazyQuantifierHandlers', start, (str.length - 1));
+    // }
+
     const groupMarkerStartCopy0 = context.groupMarkerStart0;
     const groupMarkerEndCopy0 = context.groupMarkerEnd0;
     const tryDeeperResult = fiber0005(start, str, context);

@@ -265,7 +265,10 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches1++;
 
-      if (i > str.length - 0 || matches1 === 6) {
+      if (i + 1 > str.length - 0 || matches1 === 6) {
+        // if ((i + 1) > (str.length - 0)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 0));
+        // }
         break;
       }
     }
@@ -359,7 +362,10 @@ const fiber0006 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 3 || matches0 === 256) {
+      if (i + 1 > str.length - 3 || matches0 === 256) {
+        // if ((i + 1) > (str.length - 3)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 3));
+        // }
         break;
       }
     }
@@ -682,7 +688,10 @@ const greedyQuantifier0008 = (
 ): number => {
   context.quantifierCounter0++;
 
-  if (start > str.length - 5 || context.quantifierCounter0 === 1) {
+  if (start + 4 > str.length + 1 - 5 || context.quantifierCounter0 === 1) {
+    // if ((start + 4) > (str.length + 1 - 5)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 5));
+    // }
     return fiber0006(start, str, context);
   }
 
@@ -721,7 +730,10 @@ const greedyQuantifier0011 = (
 ): number => {
   context.quantifierCounter1++;
 
-  if (start > str.length - 5 || context.quantifierCounter1 === 1) {
+  if (start + 7 > str.length + 1 - 5 || context.quantifierCounter1 === 1) {
+    // if ((start + 7) > (str.length + 1 - 5)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 5));
+    // }
     return fiber0009(start, str, context);
   }
 

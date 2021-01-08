@@ -275,7 +275,7 @@ export function generatedRegexMatcher(str: string) {
               {{#if maxCount}}
                 || (matches{{{@index}}} === {{{maxCount}}})
               {{/if}}
-              || i > (str.length - {{{followUp.meta.minCharLength}}})
+              || (i + {{{wrappedHandler.meta.minCharLength}}}) > (str.length - {{{followUp.meta.minCharLength}}})
             ) {
               return directFollowUpResult{{{@index}}};
             } 
@@ -311,7 +311,7 @@ export function generatedRegexMatcher(str: string) {
             i = wrappedResult;
             matches{{{@index}}}++;
 
-            if (i > (str.length - {{{followUp.meta.minCharLength}}})
+            if ((i + {{{wrappedHandler.meta.minCharLength}}}) > (str.length - {{{followUp.meta.minCharLength}}})
               {{#if maxCount}}
                 || matches{{{@index}}} === {{{maxCount}}}
               {{/if}}
@@ -487,7 +487,7 @@ export function generatedRegexMatcher(str: string) {
         }
       {{/if}}
       
-      if (start < (str.length - {{{followUp.meta.minCharLength}}})
+      if ((start + {{{wrappedHandler.meta.minCharLength}}}) <= (str.length - {{{followUp.meta.minCharLength}}})
         {{#if maxCount}}
            && context.quantifierCounter{{{quantifierCounterIndex}}} < {{{maxCount}}}
         {{/if}}
@@ -529,7 +529,7 @@ export function generatedRegexMatcher(str: string) {
       context.quantifierCounter{{{quantifierCounterIndex}}}++;
     {{/if}}
 
-    if (start > (str.length - {{{followUp.meta.minCharLength}}})
+    if ((start + {{{wrappedHandler.meta.minCharLength}}}) > (str.length + 1 - {{{followUp.meta.minCharLength}}})
       {{#if maxCount}}
         || context.quantifierCounter{{{quantifierCounterIndex}}} === {{{maxCount}}}
       {{/if}}

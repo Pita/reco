@@ -131,7 +131,10 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches2++;
 
-      if (i > str.length - 0 || matches2 === 1) {
+      if (i + 1 > str.length - 0 || matches2 === 1) {
+        // if ((i + 1) > (str.length - 0)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 0));
+        // }
         break;
       }
     }
@@ -177,7 +180,10 @@ const greedyQuantifier0003 = (
 ): number => {
   context.quantifierCounter0++;
 
-  if (start > str.length - 0) {
+  if (start + 1 > str.length + 1 - 0) {
+    // if ((start + 1) > (str.length + 1 - 0)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 0));
+    // }
     return fiber0001(start, str, context);
   }
 

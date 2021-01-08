@@ -287,7 +287,10 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches6++;
 
-      if (i > str.length - 3) {
+      if (i + 1 > str.length - 3) {
+        // if ((i + 1) > (str.length - 3)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 3));
+        // }
         break;
       }
     }

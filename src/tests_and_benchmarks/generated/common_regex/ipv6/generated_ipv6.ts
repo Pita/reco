@@ -3171,7 +3171,10 @@ const fiber0060 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -3493,7 +3496,10 @@ const fiber0071 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -3839,7 +3845,10 @@ const fiber0082 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -4181,7 +4190,10 @@ const fiber0093 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -4747,7 +4759,10 @@ const fiber0112 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -5069,7 +5084,10 @@ const fiber0123 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -5415,7 +5433,10 @@ const fiber0134 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -5757,7 +5778,10 @@ const fiber0145 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i > str.length - 1 || matches0 === 1) {
+      if (i + 1 > str.length - 1 || matches0 === 1) {
+        // if ((i + 1) > (str.length - 1)) {
+        //   console.log('overstep backtrackingFixedLengthQuantifier', i, (str.length - 1));
+        // }
         break;
       }
     }
@@ -6171,7 +6195,10 @@ const greedyQuantifier0056 = (
 ): number => {
   context.quantifierCounter0++;
 
-  if (start > str.length - 1 || context.quantifierCounter0 === 1) {
+  if (start + 1 > str.length + 1 - 1 || context.quantifierCounter0 === 1) {
+    // if ((start + 1) > (str.length + 1 - 1)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 1));
+    // }
     return fiber0054(start, str, context);
   }
 
@@ -6214,7 +6241,10 @@ const greedyQuantifier0067 = (
 ): number => {
   context.quantifierCounter1++;
 
-  if (start > str.length - 3 || context.quantifierCounter1 === 1) {
+  if (start + 1 > str.length + 1 - 3 || context.quantifierCounter1 === 1) {
+    // if ((start + 1) > (str.length + 1 - 3)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 3));
+    // }
     return fiber0065(start, str, context);
   }
 
@@ -6269,7 +6299,10 @@ const greedyQuantifier0078 = (
 ): number => {
   context.quantifierCounter1++;
 
-  if (start > str.length - 5 || context.quantifierCounter1 === 1) {
+  if (start + 1 > str.length + 1 - 5 || context.quantifierCounter1 === 1) {
+    // if ((start + 1) > (str.length + 1 - 5)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 5));
+    // }
     return fiber0076(start, str, context);
   }
 
@@ -6324,7 +6357,10 @@ const greedyQuantifier0089 = (
 ): number => {
   context.quantifierCounter1++;
 
-  if (start > str.length - 7 || context.quantifierCounter1 === 1) {
+  if (start + 1 > str.length + 1 - 7 || context.quantifierCounter1 === 1) {
+    // if ((start + 1) > (str.length + 1 - 7)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 7));
+    // }
     return fiber0087(start, str, context);
   }
 
@@ -6379,7 +6415,10 @@ const greedyQuantifier0098 = (
 ): number => {
   context.quantifierCounter2++;
 
-  if (start > str.length - 7 || context.quantifierCounter2 === 1) {
+  if (start + 5 > str.length + 1 - 7 || context.quantifierCounter2 === 1) {
+    // if ((start + 5) > (str.length + 1 - 7)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 7));
+    // }
     return fiber0096(start, str, context);
   }
 
@@ -6442,7 +6481,10 @@ const greedyQuantifier0100 = (
 ): number => {
   context.quantifierCounter3++;
 
-  if (start > str.length - 1 || context.quantifierCounter3 === 1) {
+  if (start + 2 > str.length + 1 - 1 || context.quantifierCounter3 === 1) {
+    // if ((start + 2) > (str.length + 1 - 1)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 1));
+    // }
     return fiber0097(start, str, context);
   }
 
@@ -6481,7 +6523,10 @@ const greedyQuantifier0108 = (
 ): number => {
   context.quantifierCounter4++;
 
-  if (start > str.length - 1 || context.quantifierCounter4 === 1) {
+  if (start + 1 > str.length + 1 - 1 || context.quantifierCounter4 === 1) {
+    // if ((start + 1) > (str.length + 1 - 1)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 1));
+    // }
     return fiber0106(start, str, context);
   }
 
@@ -6524,7 +6569,10 @@ const greedyQuantifier0119 = (
 ): number => {
   context.quantifierCounter5++;
 
-  if (start > str.length - 3 || context.quantifierCounter5 === 1) {
+  if (start + 1 > str.length + 1 - 3 || context.quantifierCounter5 === 1) {
+    // if ((start + 1) > (str.length + 1 - 3)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 3));
+    // }
     return fiber0117(start, str, context);
   }
 
@@ -6579,7 +6627,10 @@ const greedyQuantifier0130 = (
 ): number => {
   context.quantifierCounter5++;
 
-  if (start > str.length - 5 || context.quantifierCounter5 === 1) {
+  if (start + 1 > str.length + 1 - 5 || context.quantifierCounter5 === 1) {
+    // if ((start + 1) > (str.length + 1 - 5)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 5));
+    // }
     return fiber0128(start, str, context);
   }
 
@@ -6634,7 +6685,10 @@ const greedyQuantifier0141 = (
 ): number => {
   context.quantifierCounter5++;
 
-  if (start > str.length - 7 || context.quantifierCounter5 === 1) {
+  if (start + 1 > str.length + 1 - 7 || context.quantifierCounter5 === 1) {
+    // if ((start + 1) > (str.length + 1 - 7)) {
+    //   console.log('overstep greedyQuantifierHandlers', start, (str.length + 1- 7));
+    // }
     return fiber0139(start, str, context);
   }
 
