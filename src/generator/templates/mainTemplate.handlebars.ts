@@ -275,6 +275,7 @@ export function generatedRegexMatcher(str: string) {
               {{#if maxCount}}
                 || (matches{{{@index}}} === {{{maxCount}}})
               {{/if}}
+              || i >= (str.length - {{{followUp.meta.minCharLength}}})
             ) {
               return directFollowUpResult{{{@index}}};
             } 
@@ -310,11 +311,13 @@ export function generatedRegexMatcher(str: string) {
             i = wrappedResult;
             matches{{{@index}}}++;
 
-            {{#if maxCount}}
-              if (matches{{{@index}}} === {{{maxCount}}}) {
-                break;
-              }
-            {{/if}}
+            if (i >= (str.length - {{{followUp.meta.minCharLength}}})
+              {{#if maxCount}}
+                || matches{{{@index}}} === {{{maxCount}}}
+              {{/if}}
+            ) {
+              break;
+            }
           }
         }
 
@@ -484,9 +487,11 @@ export function generatedRegexMatcher(str: string) {
         }
       {{/if}}
       
-      {{#if maxCount}}
-        if (context.quantifierCounter{{{quantifierCounterIndex}}} < {{{maxCount}}}) {
-      {{/if}}
+      if (start < (str.length - {{{followUp.meta.minCharLength}}})
+        {{#if maxCount}}
+           && context.quantifierCounter{{{quantifierCounterIndex}}} < {{{maxCount}}}
+        {{/if}}
+      ) {
         {{#each wrappedHandler.meta.groups}}
           const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
           const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
@@ -500,9 +505,7 @@ export function generatedRegexMatcher(str: string) {
           context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
           context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
         {{/each}}
-      {{#if maxCount}}
-        }
-      {{/if}}
+      }
 
       {{#if maxOrMinCount}}
         context.quantifierCounter{{{quantifierCounterIndex}}}--;
@@ -526,8 +529,11 @@ export function generatedRegexMatcher(str: string) {
       context.quantifierCounter{{{quantifierCounterIndex}}}++;
     {{/if}}
 
-    {{#if maxCount}}
-      if (context.quantifierCounter{{{quantifierCounterIndex}}} === {{{maxCount}}}) {
+    if (start >= (str.length - {{{followUp.meta.minCharLength}}})
+      {{#if maxCount}}
+        || context.quantifierCounter{{{quantifierCounterIndex}}} === {{{maxCount}}}
+      {{/if}}
+    ) {
         {{#if followUp}}
           return {{{followUp.functionName}}}(
             start,
@@ -539,7 +545,6 @@ export function generatedRegexMatcher(str: string) {
           return start;
         {{/unless}}
       }
-    {{/if}}
 
     {{#each wrappedHandler.meta.groups}}
       const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};

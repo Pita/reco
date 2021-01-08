@@ -211,6 +211,10 @@ const fiber0007 = (start: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
       matches2++;
+
+      if (i >= str.length - 0) {
+        break;
+      }
     }
   }
 
@@ -381,6 +385,10 @@ const fiber0012 = (start: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
       matches1++;
+
+      if (i >= str.length - 0) {
+        break;
+      }
     }
   }
 
@@ -429,6 +437,10 @@ const greedyQuantifier0003 = (
   str: string,
   context: Context
 ): number => {
+  if (start >= str.length - 0) {
+    return fiber0001(start, str, context);
+  }
+
   const groupMarkerStartCopy0 = context.groupMarkerStart0;
   const groupMarkerEndCopy0 = context.groupMarkerEnd0;
   const tryDeeperResult = fiber0007(start, str, context);

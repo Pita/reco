@@ -221,7 +221,7 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches3++;
 
-      if (matches3 === 1) {
+      if (i >= str.length - 2 || matches3 === 1) {
         break;
       }
     }
@@ -303,7 +303,7 @@ const fiber0006 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches2++;
 
-      if (matches2 === 1) {
+      if (i >= str.length - 3 || matches2 === 1) {
         break;
       }
     }

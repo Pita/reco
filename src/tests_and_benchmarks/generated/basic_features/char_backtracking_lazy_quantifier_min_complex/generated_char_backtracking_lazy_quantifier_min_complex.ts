@@ -148,7 +148,7 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches2++;
 
-      if (matches2 === 1) {
+      if (i >= str.length - 0 || matches2 === 1) {
         break;
       }
     }
@@ -202,15 +202,17 @@ const lazyQuantifier0003 = (
     }
   }
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const tryDeeperResult = fiber0005(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
+  if (start < str.length - 1) {
+    const groupMarkerStartCopy0 = context.groupMarkerStart0;
+    const groupMarkerEndCopy0 = context.groupMarkerEnd0;
+    const tryDeeperResult = fiber0005(start, str, context);
+    if (tryDeeperResult !== -1) {
+      // we actually were able to go deeper, nice!
+      return tryDeeperResult;
+    }
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
   }
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
 
   context.quantifierCounter0--;
   return -1;

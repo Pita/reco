@@ -235,6 +235,10 @@ const greedyQuantifier0003 = (
   str: string,
   context: Context
 ): number => {
+  if (start >= str.length - 4) {
+    return fiber0001(start, str, context);
+  }
+
   const groupMarkerStartCopy0 = context.groupMarkerStart0;
   const groupMarkerEndCopy0 = context.groupMarkerEnd0;
   const tryDeeperResult = fiber0002(start, str, context);

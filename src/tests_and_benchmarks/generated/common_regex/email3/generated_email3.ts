@@ -1015,6 +1015,10 @@ const fiber0020 = (start: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
       matches2++;
+
+      if (i >= str.length - 6) {
+        break;
+      }
     }
   }
 
@@ -1112,6 +1116,10 @@ const greedyQuantifier0010 = (
   context: Context
 ): number => {
   context.quantifierCounter0++;
+
+  if (start >= str.length - 2) {
+    return fiber0007(start, str, context);
+  }
 
   const groupMarkerStartCopy7 = context.groupMarkerStart7;
   const groupMarkerEndCopy7 = context.groupMarkerEnd7;
