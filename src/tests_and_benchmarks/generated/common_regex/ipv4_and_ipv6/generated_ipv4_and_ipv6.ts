@@ -2815,7 +2815,7 @@ const fiber0034 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches2++;
 
-      if (i >= str.length - 0) {
+      if (i > str.length - 0) {
         break;
       }
     }
@@ -3965,7 +3965,7 @@ const fiber0057 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1 || matches0 === 1) {
+      if (i > str.length - 1 || matches0 === 1) {
         break;
       }
     }
@@ -4375,7 +4375,7 @@ const fiber0064 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 1) {
+      if (i > str.length - 3 || matches0 === 1) {
         break;
       }
     }
@@ -4785,7 +4785,7 @@ const fiber0071 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 5 || matches0 === 1) {
+      if (i > str.length - 5 || matches0 === 1) {
         break;
       }
     }
@@ -5188,7 +5188,7 @@ const fiber0078 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 7 || matches0 === 1) {
+      if (i > str.length - 7 || matches0 === 1) {
         break;
       }
     }
@@ -6379,7 +6379,7 @@ const fiber0098 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1 || matches0 === 1) {
+      if (i > str.length - 1 || matches0 === 1) {
         break;
       }
     }
@@ -6789,7 +6789,7 @@ const fiber0105 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 1) {
+      if (i > str.length - 3 || matches0 === 1) {
         break;
       }
     }
@@ -7199,7 +7199,7 @@ const fiber0112 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 5 || matches0 === 1) {
+      if (i > str.length - 5 || matches0 === 1) {
         break;
       }
     }
@@ -7602,7 +7602,7 @@ const fiber0119 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 7 || matches0 === 1) {
+      if (i > str.length - 7 || matches0 === 1) {
         break;
       }
     }
@@ -8736,7 +8736,7 @@ const fiber0138 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1 || matches0 === 1) {
+      if (i > str.length - 1 || matches0 === 1) {
         break;
       }
     }
@@ -9156,7 +9156,7 @@ const fiber0145 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 1) {
+      if (i > str.length - 3 || matches0 === 1) {
         break;
       }
     }
@@ -9576,7 +9576,7 @@ const fiber0152 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 5 || matches0 === 1) {
+      if (i > str.length - 5 || matches0 === 1) {
         break;
       }
     }
@@ -9989,7 +9989,7 @@ const fiber0159 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 7 || matches0 === 1) {
+      if (i > str.length - 7 || matches0 === 1) {
         break;
       }
     }
@@ -11165,7 +11165,7 @@ const fiber0181 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1 || matches0 === 1) {
+      if (i > str.length - 1 || matches0 === 1) {
         break;
       }
     }
@@ -11585,7 +11585,7 @@ const fiber0188 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 1) {
+      if (i > str.length - 3 || matches0 === 1) {
         break;
       }
     }
@@ -12005,7 +12005,7 @@ const fiber0195 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 5 || matches0 === 1) {
+      if (i > str.length - 5 || matches0 === 1) {
         break;
       }
     }
@@ -12418,7 +12418,7 @@ const fiber0202 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 7 || matches0 === 1) {
+      if (i > str.length - 7 || matches0 === 1) {
         break;
       }
     }
@@ -13509,7 +13509,7 @@ const fiber0223 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1 || matches0 === 1) {
+      if (i > str.length - 1 || matches0 === 1) {
         break;
       }
     }
@@ -13929,7 +13929,7 @@ const fiber0230 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 1) {
+      if (i > str.length - 3 || matches0 === 1) {
         break;
       }
     }
@@ -14349,7 +14349,7 @@ const fiber0237 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 5 || matches0 === 1) {
+      if (i > str.length - 5 || matches0 === 1) {
         break;
       }
     }
@@ -14762,7 +14762,7 @@ const fiber0244 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 7 || matches0 === 1) {
+      if (i > str.length - 7 || matches0 === 1) {
         break;
       }
     }
@@ -15768,7 +15768,7 @@ const fiber0264 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1 || matches0 === 1) {
+      if (i > str.length - 1 || matches0 === 1) {
         break;
       }
     }
@@ -16188,7 +16188,7 @@ const fiber0271 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 1) {
+      if (i > str.length - 3 || matches0 === 1) {
         break;
       }
     }
@@ -16608,7 +16608,7 @@ const fiber0278 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 5 || matches0 === 1) {
+      if (i > str.length - 5 || matches0 === 1) {
         break;
       }
     }
@@ -17021,7 +17021,7 @@ const fiber0285 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 7 || matches0 === 1) {
+      if (i > str.length - 7 || matches0 === 1) {
         break;
       }
     }
@@ -17942,7 +17942,7 @@ const fiber0304 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1 || matches0 === 1) {
+      if (i > str.length - 1 || matches0 === 1) {
         break;
       }
     }
@@ -18362,7 +18362,7 @@ const fiber0311 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 1) {
+      if (i > str.length - 3 || matches0 === 1) {
         break;
       }
     }
@@ -18782,7 +18782,7 @@ const fiber0318 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 5 || matches0 === 1) {
+      if (i > str.length - 5 || matches0 === 1) {
         break;
       }
     }
@@ -19195,7 +19195,7 @@ const fiber0325 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 7 || matches0 === 1) {
+      if (i > str.length - 7 || matches0 === 1) {
         break;
       }
     }
@@ -20443,7 +20443,7 @@ const greedyQuantifier0032 = (
 ): number => {
   context.quantifierCounter0++;
 
-  if (start >= str.length - 0 || context.quantifierCounter0 === 1) {
+  if (start > str.length - 0 || context.quantifierCounter0 === 1) {
     return fiber0029(start, str, context);
   }
 
@@ -20486,7 +20486,7 @@ const greedyQuantifier0162 = (
 ): number => {
   context.quantifierCounter1++;
 
-  if (start >= str.length - 8 || context.quantifierCounter1 === 1) {
+  if (start > str.length - 8 || context.quantifierCounter1 === 1) {
     return fiber0160(start, str, context);
   }
 
@@ -20565,7 +20565,7 @@ const greedyQuantifier0205 = (
 ): number => {
   context.quantifierCounter2++;
 
-  if (start >= str.length - 8 || context.quantifierCounter2 === 2) {
+  if (start > str.length - 8 || context.quantifierCounter2 === 2) {
     return fiber0203(start, str, context);
   }
 
@@ -20644,7 +20644,7 @@ const greedyQuantifier0247 = (
 ): number => {
   context.quantifierCounter3++;
 
-  if (start >= str.length - 8 || context.quantifierCounter3 === 3) {
+  if (start > str.length - 8 || context.quantifierCounter3 === 3) {
     return fiber0245(start, str, context);
   }
 
@@ -20723,7 +20723,7 @@ const greedyQuantifier0288 = (
 ): number => {
   context.quantifierCounter4++;
 
-  if (start >= str.length - 8 || context.quantifierCounter4 === 4) {
+  if (start > str.length - 8 || context.quantifierCounter4 === 4) {
     return fiber0286(start, str, context);
   }
 
@@ -20802,7 +20802,7 @@ const greedyQuantifier0328 = (
 ): number => {
   context.quantifierCounter5++;
 
-  if (start >= str.length - 8 || context.quantifierCounter5 === 5) {
+  if (start > str.length - 8 || context.quantifierCounter5 === 5) {
     return fiber0326(start, str, context);
   }
 

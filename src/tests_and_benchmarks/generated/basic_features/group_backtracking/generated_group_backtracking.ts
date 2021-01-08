@@ -235,7 +235,7 @@ const greedyQuantifier0003 = (
   str: string,
   context: Context
 ): number => {
-  if (start >= str.length - 4) {
+  if (start > str.length - 4) {
     return fiber0001(start, str, context);
   }
 

@@ -148,7 +148,7 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches2++;
 
-      if (i >= str.length - 0 || matches2 === 1) {
+      if (i > str.length - 0 || matches2 === 1) {
         break;
       }
     }

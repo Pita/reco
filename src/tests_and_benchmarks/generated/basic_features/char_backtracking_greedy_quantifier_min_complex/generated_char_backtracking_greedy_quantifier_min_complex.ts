@@ -131,7 +131,7 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches2++;
 
-      if (i >= str.length - 0 || matches2 === 1) {
+      if (i > str.length - 0 || matches2 === 1) {
         break;
       }
     }
@@ -177,7 +177,7 @@ const greedyQuantifier0003 = (
 ): number => {
   context.quantifierCounter0++;
 
-  if (start >= str.length - 0) {
+  if (start > str.length - 0) {
     return fiber0001(start, str, context);
   }
 

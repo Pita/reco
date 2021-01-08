@@ -357,7 +357,7 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 1) {
+      if (i > str.length - 1) {
         break;
       }
     }

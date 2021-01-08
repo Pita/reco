@@ -312,7 +312,7 @@ const fiber0009 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches3++;
 
-      if (i >= str.length - 1 || matches3 === 1) {
+      if (i > str.length - 1 || matches3 === 1) {
         break;
       }
     }
@@ -686,7 +686,7 @@ const fiber0018 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches1++;
 
-      if (i >= str.length - 0 || matches1 === 1) {
+      if (i > str.length - 0 || matches1 === 1) {
         break;
       }
     }
@@ -792,7 +792,7 @@ const fiber0021 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches1++;
 
-      if (i >= str.length - 0) {
+      if (i > str.length - 0) {
         break;
       }
     }
@@ -900,7 +900,7 @@ const fiber0027 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 0 || matches0 === 1) {
+      if (i > str.length - 0 || matches0 === 1) {
         break;
       }
     }
@@ -1093,7 +1093,7 @@ const fiber0034 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches1++;
 
-      if (i >= str.length - 0 || matches1 === 1) {
+      if (i > str.length - 0 || matches1 === 1) {
         break;
       }
     }
@@ -1314,7 +1314,7 @@ const greedyQuantifier0003 = (
 ): number => {
   context.quantifierCounter0++;
 
-  if (start >= str.length - 0 || context.quantifierCounter0 === 1) {
+  if (start > str.length - 0 || context.quantifierCounter0 === 1) {
     return fiber0001(start, str, context);
   }
 
@@ -1346,7 +1346,7 @@ const greedyQuantifier0016 = (
   str: string,
   context: Context
 ): number => {
-  if (start >= str.length - 0) {
+  if (start > str.length - 0) {
     return fiber0014(start, str, context);
   }
 
@@ -1384,7 +1384,7 @@ const greedyQuantifier0025 = (
 ): number => {
   context.quantifierCounter1++;
 
-  if (start >= str.length - 0 || context.quantifierCounter1 === 1) {
+  if (start > str.length - 0 || context.quantifierCounter1 === 1) {
     return fiber0023(start, str, context);
   }
 
@@ -1427,7 +1427,7 @@ const greedyQuantifier0029 = (
 ): number => {
   context.quantifierCounter2++;
 
-  if (start >= str.length - 0 || context.quantifierCounter2 === 1) {
+  if (start > str.length - 0 || context.quantifierCounter2 === 1) {
     return fiber0027(start, str, context);
   }
 

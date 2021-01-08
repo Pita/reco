@@ -258,7 +258,7 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches1++;
 
-      if (i >= str.length - 0 || matches1 === 6) {
+      if (i > str.length - 0 || matches1 === 6) {
         break;
       }
     }
@@ -352,7 +352,7 @@ const fiber0006 = (start: number, str: string, context: Context): number => {
       i = wrappedResult;
       matches0++;
 
-      if (i >= str.length - 3 || matches0 === 256) {
+      if (i > str.length - 3 || matches0 === 256) {
         break;
       }
     }
@@ -644,7 +644,7 @@ const greedyQuantifier0008 = (
 ): number => {
   context.quantifierCounter0++;
 
-  if (start >= str.length - 5 || context.quantifierCounter0 === 1) {
+  if (start > str.length - 5 || context.quantifierCounter0 === 1) {
     return fiber0006(start, str, context);
   }
 

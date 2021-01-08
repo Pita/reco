@@ -275,7 +275,7 @@ export function generatedRegexMatcher(str: string) {
               {{#if maxCount}}
                 || (matches{{{@index}}} === {{{maxCount}}})
               {{/if}}
-              || i >= (str.length - {{{followUp.meta.minCharLength}}})
+              || i > (str.length - {{{followUp.meta.minCharLength}}})
             ) {
               return directFollowUpResult{{{@index}}};
             } 
@@ -311,7 +311,7 @@ export function generatedRegexMatcher(str: string) {
             i = wrappedResult;
             matches{{{@index}}}++;
 
-            if (i >= (str.length - {{{followUp.meta.minCharLength}}})
+            if (i > (str.length - {{{followUp.meta.minCharLength}}})
               {{#if maxCount}}
                 || matches{{{@index}}} === {{{maxCount}}}
               {{/if}}
@@ -529,7 +529,7 @@ export function generatedRegexMatcher(str: string) {
       context.quantifierCounter{{{quantifierCounterIndex}}}++;
     {{/if}}
 
-    if (start >= (str.length - {{{followUp.meta.minCharLength}}})
+    if (start > (str.length - {{{followUp.meta.minCharLength}}})
       {{#if maxCount}}
         || context.quantifierCounter{{{quantifierCounterIndex}}} === {{{maxCount}}}
       {{/if}}
