@@ -2,6 +2,7 @@ import { AST } from 'regexpp';
 import { Flags } from 'regexpp/ast';
 import { CharRange } from '../generator/CharRange';
 import { handleSetOrCharacter } from './Character';
+import { handleDisjunction } from './Disjunction';
 
 export const handleElement = (
   element: AST.Element,
@@ -21,28 +22,21 @@ export const handleElement = (
         maxLength,
         path,
       );
-    // case 'Group':
-    //   return handleDisjunction(
-    //     element.alternatives,
-    //     collector,
-    //     currentFiber,
-    //     flags,
-    //     literal,
-    //   );
+    case 'Group':
+    case 'CapturingGroup':
+      return handleDisjunction(
+        element.alternatives,
+        flags,
+        currentLength,
+        maxLength,
+        path,
+      );
     default:
       throw new Error(`${element.type} not handled yet`);
     // case 'Quantifier':
     //   return handleQuantifier(element, collector, currentFiber, flags, literal);
     // case 'Assertion':
     //   return handleAssertion(element, collector, currentFiber, flags, literal);
-    // case 'CapturingGroup':
-    //   return handleCapturingGroup(
-    //     element,
-    //     collector,
-    //     currentFiber,
-    //     flags,
-    //     literal,
-    //   );
     // case 'Backreference':
     //   return handleBackReference(
     //     element,

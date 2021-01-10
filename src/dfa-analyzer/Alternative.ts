@@ -15,7 +15,7 @@ export const handleAlternative = (
     return [];
   }
 
-  const newPath = path.concat(alternative.elements.slice(1));
+  const newPath = alternative.elements.slice(1).concat(path);
   return handleElement(
     alternative.elements[0],
     flags,
