@@ -1,26 +1,26 @@
+import { max } from 'lodash';
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
-import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from 'regexpp/ast';
+import { CharRange } from '../generator/CharRange';
 import { handleElement } from './Element';
 
 export const handleAlternative = (
   alternative: AST.Alternative,
-  collector: Collector,
-  currentFiber: FiberTemplateDefinition,
   flags: Flags,
-  literal: AST.RegExpLiteral,
-): FiberTemplateDefinition => {
-  let lastFiber = currentFiber;
-  for (let i = alternative.elements.length - 1; i >= 0; i--) {
-    lastFiber = handleElement(
-      alternative.elements[i],
-      collector,
-      lastFiber,
-      flags,
-      literal,
-    );
+  currentLength: number,
+  maxLength: number,
+  path: AST.Element[],
+): CharRange[] => {
+  if (alternative.elements.length === 0) {
+    return [];
   }
 
-  return lastFiber;
+  const newPath = path.concat(alternative.elements.slice(1));
+  return handleElement(
+    alternative.elements[0],
+    flags,
+    currentLength,
+    maxLength,
+    newPath,
+  );
 };
