@@ -1,5 +1,19 @@
 import * as _ from 'lodash';
-import { normalizeUpperLowerCase } from '../normalize_upper_lower_case';
+
+const normalizeUpperLowerCase = (
+  char: number,
+  ignoreCase: boolean,
+): number[] => {
+  if (!ignoreCase) {
+    return [char];
+  }
+
+  const str = String.fromCharCode(char);
+  return _.uniq([
+    str.toLowerCase().charCodeAt(0),
+    str.toUpperCase().charCodeAt(0),
+  ]);
+};
 
 const toCharCode = (element: string | number) => {
   if (typeof element === 'number') {
