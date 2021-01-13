@@ -3,19 +3,15 @@ import { Flags } from 'regexpp/ast';
 import { astToCharRange } from '../generator/astToCharRange';
 import { CharRange } from '../generator/CharRange';
 import { handleElement } from './Element';
+import { DFAHandler } from './types';
 
-export const handleSetOrCharacter = (
-  element:
-    | AST.CharacterClass
-    | AST.AnyCharacterSet
-    | AST.EscapeCharacterSet
-    | AST.UnicodePropertyCharacterSet
-    | AST.Character,
-  flags: Flags,
-  currentLength: number,
-  maxLength: number,
-  path: AST.Element[],
-): CharRange[] => {
+export const handleSetOrCharacter: DFAHandler<
+  | AST.CharacterClass
+  | AST.AnyCharacterSet
+  | AST.EscapeCharacterSet
+  | AST.UnicodePropertyCharacterSet
+  | AST.Character
+> = (element, flags, currentLength, maxLength, path) => {
   const charRanges = [astToCharRange(element, flags)];
 
   const nextElement = path[0];

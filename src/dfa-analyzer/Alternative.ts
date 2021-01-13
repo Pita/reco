@@ -1,21 +1,19 @@
-import { max } from 'lodash';
 import { AST } from 'regexpp';
-import { Flags } from 'regexpp/ast';
-import { CharRange } from '../generator/CharRange';
 import { handleElement } from './Element';
+import { ASTPath, DFAHandler } from './types';
 
-export const handleAlternative = (
-  alternative: AST.Alternative,
-  flags: Flags,
-  currentLength: number,
-  maxLength: number,
-  path: AST.Element[],
-): CharRange[] => {
+export const handleAlternative: DFAHandler<AST.Alternative> = (
+  alternative,
+  flags,
+  currentLength,
+  maxLength,
+  path,
+) => {
   if (alternative.elements.length === 0) {
     return [];
   }
 
-  const newPath = alternative.elements.slice(1).concat(path);
+  const newPath: ASTPath = [...alternative.elements.slice(1), ...path];
   return handleElement(
     alternative.elements[0],
     flags,

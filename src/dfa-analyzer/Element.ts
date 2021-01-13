@@ -1,16 +1,16 @@
-import { AST } from 'regexpp';
-import { Flags } from 'regexpp/ast';
-import { CharRange } from '../generator/CharRange';
 import { handleSetOrCharacter } from './Character';
 import { handleDisjunction } from './Disjunction';
+import { handleOptionalASTElement } from './OptionalElement';
+import { handleQuantifier } from './Quantifier';
+import { AstElementOrQuantifierElement, DFAHandler } from './types';
 
-export const handleElement = (
-  element: AST.Element,
-  flags: Flags,
-  currentLength: number,
-  maxLength: number,
-  path: AST.Element[],
-): CharRange[] => {
+export const handleElement: DFAHandler<AstElementOrQuantifierElement> = (
+  element,
+  flags,
+  currentLength,
+  maxLength,
+  path,
+) => {
   switch (element.type) {
     case 'Character':
     case 'CharacterSet':
@@ -31,6 +31,16 @@ export const handleElement = (
         maxLength,
         path,
       );
+    case 'OptionalASTElement':
+      return handleOptionalASTElement(
+        element,
+        flags,
+        currentLength,
+        maxLength,
+        path,
+      );
+    case 'Quantifier':
+      return handleQuantifier(element, flags, currentLength, maxLength, path);
     default:
       throw new Error(`${element.type} not handled yet`);
     // case 'Quantifier':
