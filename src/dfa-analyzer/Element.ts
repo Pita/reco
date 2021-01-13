@@ -1,5 +1,6 @@
 import { handleSetOrCharacter } from './Character';
 import { handleDisjunction } from './Disjunction';
+import { handleInfiniteASTElement } from './InfiniteElement';
 import { handleOptionalASTElement } from './OptionalElement';
 import { handleQuantifier } from './Quantifier';
 import { AstElementOrQuantifierElement, DFAHandler } from './types';
@@ -33,6 +34,14 @@ export const handleElement: DFAHandler<AstElementOrQuantifierElement> = (
       );
     case 'OptionalASTElement':
       return handleOptionalASTElement(
+        element,
+        flags,
+        currentLength,
+        maxLength,
+        path,
+      );
+    case 'InfiniteASTElement':
+      return handleInfiniteASTElement(
         element,
         flags,
         currentLength,
