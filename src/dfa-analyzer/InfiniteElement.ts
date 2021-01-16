@@ -29,5 +29,6 @@ export const handleInfiniteASTElement: DFAHandler<InfiniteASTElement> = (
     [withoutQuantifier, withQuantifier],
     currentLength,
     maxLength,
+    'union',
   );
 };

@@ -29,5 +29,6 @@ export const handleOptionalASTElement: DFAHandler<OptionalASTElement> = (
     [withoutQuantifier, withQuantifier],
     currentLength,
     maxLength,
+    'union',
   );
 };

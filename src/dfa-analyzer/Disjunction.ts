@@ -24,5 +24,10 @@ export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
     handleAlternative(alternative, flags, currentLength, maxLength, path),
   );
 
-  return combineCharRanges(alternativesResolved, currentLength, maxLength);
+  return combineCharRanges(
+    alternativesResolved,
+    currentLength,
+    maxLength,
+    'union',
+  );
 };
