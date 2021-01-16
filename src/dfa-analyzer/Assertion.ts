@@ -3,6 +3,7 @@ import { DFAHandler } from './types';
 import { combineCharRanges } from './combineCharRanges';
 import { handleElement } from './Element';
 import { handleDisjunction } from './Disjunction';
+import { CharRange } from '../generator/CharRange';
 
 const handleLookahead: DFAHandler<AST.LookaheadAssertion> = (
   lookahead,
@@ -50,9 +51,17 @@ export const handleAssertion: DFAHandler<AST.Assertion> = (
   switch (assertion.kind) {
     case 'lookahead':
       return handleLookahead(assertion, flags, currentLength, maxLength, path);
-    // case 'word':
-    // case 'end':
-    // case 'start':
+    case 'end':
+    case 'start':
+    case 'word':
+      return handleElement(
+        path[0],
+        flags,
+        currentLength,
+        maxLength,
+        path.slice(1),
+      );
+
     // case 'lookbehind':
     default:
       throw new Error(`${assertion.kind} not supported yet`);

@@ -6,13 +6,13 @@ import { handleOptionalASTElement } from './OptionalElement';
 import { handleQuantifier } from './Quantifier';
 import { AstElementOrQuantifierElement, DFAHandler } from './types';
 
-export const handleElement: DFAHandler<AstElementOrQuantifierElement> = (
-  element,
-  flags,
-  currentLength,
-  maxLength,
-  path,
-) => {
+export const handleElement: DFAHandler<
+  AstElementOrQuantifierElement | undefined
+> = (element, flags, currentLength, maxLength, path) => {
+  if (element == null) {
+    return [];
+  }
+
   switch (element.type) {
     case 'Character':
     case 'CharacterSet':
