@@ -19,10 +19,15 @@ export type AstElementOrQuantifierElement =
 
 export type ASTPath = AstElementOrQuantifierElement[];
 
+export type CharRangesBeforeAndAfter = {
+  before: CharRange[];
+  after: CharRange[];
+};
+
 export type DFAHandler<T> = (
   element: T,
   flags: Flags,
   currentLength: number,
   maxLength: number,
   path: ASTPath,
-) => CharRange[];
+) => CharRangesBeforeAndAfter;

@@ -3,7 +3,7 @@ import { CharRange } from '../../generator/CharRange';
 import { RegExpParser } from 'regexpp';
 
 describe('handleAlternative', () => {
-  test('can handle a very simple regex', () => {
+  test('can handle a simple lookahead', () => {
     const expected = [
       CharRange.create(['a'], {
         negate: false,
@@ -13,17 +13,9 @@ describe('handleAlternative', () => {
         negate: false,
         ignoreCase: false,
       }),
-      CharRange.create(['c'], {
-        negate: false,
-        ignoreCase: false,
-      }),
-      CharRange.create(['_'], {
-        negate: false,
-        ignoreCase: false,
-      }),
     ].map((element) => element.toJSON());
 
-    const literal = new RegExpParser().parseLiteral('/abc\\b_/');
+    const literal = new RegExpParser().parseLiteral('/[^]{2}(?<=ab)/');
     const result = handleAlternative(
       literal.pattern.alternatives[0],
       literal.flags,

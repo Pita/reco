@@ -1,7 +1,6 @@
 import { AST } from 'regexpp';
-import { Flags } from 'regexpp/ast';
 import { astToCharRange } from '../generator/astToCharRange';
-import { CharRange } from '../generator/CharRange';
+import { combineCharRanges } from './combineCharRanges';
 import { handleElement } from './Element';
 import { DFAHandler } from './types';
 
@@ -14,17 +13,27 @@ export const handleSetOrCharacter: DFAHandler<
 > = (element, flags, currentLength, maxLength, path) => {
   const charRanges = [astToCharRange(element, flags)];
 
-  const nextElement = path[0];
-  const newCurrentLength = currentLength + charRanges.length;
-  let followUpCharRanges: CharRange[] = [];
-  if (nextElement != null && newCurrentLength < maxLength) {
-    followUpCharRanges = handleElement(
-      nextElement,
-      flags,
-      newCurrentLength,
+  const followUpCharRanges = handleElement(
+    path[0],
+    flags,
+    currentLength + charRanges.length,
+    maxLength,
+    path.slice(1),
+  );
+
+  const afterCharRanges = [
+    ...combineCharRanges(
+      [followUpCharRanges.before.slice(-1).reverse(), charRanges],
+      currentLength,
       maxLength,
-      path.slice(1),
-    );
-  }
-  return [...charRanges, ...followUpCharRanges];
+      'smallestInCommon',
+    ),
+    ...followUpCharRanges.after,
+  ];
+  const beforeCharRanges = followUpCharRanges.before.slice(0, -1);
+
+  return {
+    before: beforeCharRanges,
+    after: afterCharRanges,
+  };
 };

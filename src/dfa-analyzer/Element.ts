@@ -9,8 +9,8 @@ import { AstElementOrQuantifierElement, DFAHandler } from './types';
 export const handleElement: DFAHandler<
   AstElementOrQuantifierElement | undefined
 > = (element, flags, currentLength, maxLength, path) => {
-  if (element == null) {
-    return [];
+  if (element == null || currentLength >= maxLength) {
+    return { before: [], after: [] };
   }
 
   switch (element.type) {

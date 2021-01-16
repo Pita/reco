@@ -1,4 +1,5 @@
 import { CharRange } from '../generator/CharRange';
+import { CharRangesBeforeAndAfter } from './types';
 
 export const combineCharRanges = (
   charRangesArray: CharRange[][],
@@ -30,4 +31,36 @@ export const combineCharRanges = (
   }
 
   return newCharRange;
+};
+
+export const combineCharRangesBeforeAndAfter = (
+  charRangesBeforeAndAfterArray: CharRangesBeforeAndAfter[],
+  currentLength: number,
+  maxLength: number,
+): CharRangesBeforeAndAfter => {
+  const charRangesArrayBefore: CharRange[][] = [],
+    charRangesArrayAfter: CharRange[][] = [];
+
+  charRangesBeforeAndAfterArray.forEach((charRangesBeforeAndAfter) => {
+    charRangesArrayBefore.push(charRangesBeforeAndAfter.before);
+    charRangesArrayAfter.push(charRangesBeforeAndAfter.after);
+  });
+
+  const charRangesBefore = combineCharRanges(
+    charRangesArrayBefore,
+    currentLength,
+    maxLength,
+    'union',
+  );
+  const charRangesAfter = combineCharRanges(
+    charRangesArrayAfter,
+    currentLength,
+    maxLength,
+    'union',
+  );
+
+  return {
+    before: charRangesBefore,
+    after: charRangesAfter,
+  };
 };

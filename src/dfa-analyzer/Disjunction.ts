@@ -1,7 +1,10 @@
 import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
 import { DFAHandler } from './types';
-import { combineCharRanges } from './combineCharRanges';
+import {
+  combineCharRanges,
+  combineCharRangesBeforeAndAfter,
+} from './combineCharRanges';
 
 export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
   alternatives,
@@ -24,10 +27,9 @@ export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
     handleAlternative(alternative, flags, currentLength, maxLength, path),
   );
 
-  return combineCharRanges(
+  return combineCharRangesBeforeAndAfter(
     alternativesResolved,
     currentLength,
     maxLength,
-    'union',
   );
 };

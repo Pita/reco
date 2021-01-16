@@ -1,4 +1,7 @@
-import { combineCharRanges } from './combineCharRanges';
+import {
+  combineCharRanges,
+  combineCharRangesBeforeAndAfter,
+} from './combineCharRanges';
 import { handleElement } from './Element';
 import { DFAHandler, InfiniteASTElement, OptionalASTElement } from './types';
 
@@ -25,10 +28,9 @@ export const handleInfiniteASTElement: DFAHandler<InfiniteASTElement> = (
     [element, ...path],
   );
 
-  return combineCharRanges(
+  return combineCharRangesBeforeAndAfter(
     [withoutQuantifier, withQuantifier],
     currentLength,
     maxLength,
-    'union',
   );
 };

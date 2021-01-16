@@ -3,24 +3,35 @@ import { DFAHandler } from './types';
 import { combineCharRanges } from './combineCharRanges';
 import { handleElement } from './Element';
 import { handleDisjunction } from './Disjunction';
-import { CharRange } from '../generator/CharRange';
 
-const handleLookahead: DFAHandler<AST.LookaheadAssertion> = (
-  lookahead,
+const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
+  lookaround,
   flags,
   currentLength,
   maxLength,
   path,
 ) => {
-  let lookaheadCharRanges = handleDisjunction(
-    lookahead.alternatives,
+  let lookaroundCharRanges = handleDisjunction(
+    lookaround.alternatives,
     flags,
     currentLength,
     maxLength,
     [],
   );
-  if (lookahead.negate) {
-    lookaheadCharRanges = lookaheadCharRanges.map((charRange) =>
+  if (lookaround.kind === 'lookbehind') {
+    const after = lookaroundCharRanges.after;
+    const before = lookaroundCharRanges.before;
+
+    lookaroundCharRanges.before = after;
+    // TODO: this is only relevant if there is a lookahead encapsulation
+    // not sure if this is correct
+    lookaroundCharRanges.after = before;
+  }
+  if (lookaround.negate) {
+    lookaroundCharRanges.after = lookaroundCharRanges.after.map((charRange) =>
+      charRange.invert(),
+    );
+    lookaroundCharRanges.before = lookaroundCharRanges.before.map((charRange) =>
       charRange.invert(),
     );
   }
@@ -33,12 +44,23 @@ const handleLookahead: DFAHandler<AST.LookaheadAssertion> = (
     path.slice(1),
   );
 
-  return combineCharRanges(
-    [lookaheadCharRanges, followUp],
+  const afterCharRanges = combineCharRanges(
+    [lookaroundCharRanges.after, followUp.after],
     currentLength,
     maxLength,
     'smallestInCommon',
   );
+  const beforeCharRanges = combineCharRanges(
+    [lookaroundCharRanges.before, followUp.before],
+    currentLength,
+    maxLength,
+    'smallestInCommon',
+  );
+
+  return {
+    before: beforeCharRanges,
+    after: afterCharRanges,
+  };
 };
 
 export const handleAssertion: DFAHandler<AST.Assertion> = (
@@ -49,8 +71,6 @@ export const handleAssertion: DFAHandler<AST.Assertion> = (
   path,
 ) => {
   switch (assertion.kind) {
-    case 'lookahead':
-      return handleLookahead(assertion, flags, currentLength, maxLength, path);
     case 'end':
     case 'start':
     case 'word':
@@ -61,9 +81,8 @@ export const handleAssertion: DFAHandler<AST.Assertion> = (
         maxLength,
         path.slice(1),
       );
-
-    // case 'lookbehind':
-    default:
-      throw new Error(`${assertion.kind} not supported yet`);
+    case 'lookahead':
+    case 'lookbehind':
+      return handleLookaround(assertion, flags, currentLength, maxLength, path);
   }
 };
