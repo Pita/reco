@@ -10,11 +10,12 @@ export const handleSetOrCharacter: DFAHandler<
   | AST.EscapeCharacterSet
   | AST.UnicodePropertyCharacterSet
   | AST.Character
-> = (element, flags, currentLength, maxLength, path) => {
+> = (element, literal, flags, currentLength, maxLength, path) => {
   const charRanges = [astToCharRange(element, flags)];
 
   const followUpCharRanges = handleElement(
     path[0],
+    literal,
     flags,
     currentLength + charRanges.length,
     maxLength,

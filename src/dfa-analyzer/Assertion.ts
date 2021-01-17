@@ -6,6 +6,7 @@ import { handleDisjunction } from './Disjunction';
 
 const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
   lookaround,
+  literal,
   flags,
   currentLength,
   maxLength,
@@ -13,6 +14,7 @@ const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
 ) => {
   let lookaroundCharRanges = handleDisjunction(
     lookaround.alternatives,
+    literal,
     flags,
     currentLength,
     maxLength,
@@ -38,6 +40,7 @@ const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
 
   const followUp = handleElement(
     path[0],
+    literal,
     flags,
     currentLength,
     maxLength,
@@ -65,6 +68,7 @@ const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
 
 export const handleAssertion: DFAHandler<AST.Assertion> = (
   assertion,
+  literal,
   flags,
   currentLength,
   maxLength,
@@ -76,6 +80,7 @@ export const handleAssertion: DFAHandler<AST.Assertion> = (
     case 'word':
       return handleElement(
         path[0],
+        literal,
         flags,
         currentLength,
         maxLength,
@@ -83,6 +88,13 @@ export const handleAssertion: DFAHandler<AST.Assertion> = (
       );
     case 'lookahead':
     case 'lookbehind':
-      return handleLookaround(assertion, flags, currentLength, maxLength, path);
+      return handleLookaround(
+        assertion,
+        literal,
+        flags,
+        currentLength,
+        maxLength,
+        path,
+      );
   }
 };

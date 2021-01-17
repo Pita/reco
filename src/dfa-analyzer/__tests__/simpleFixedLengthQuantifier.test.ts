@@ -34,6 +34,7 @@ describe('handleAlternative', () => {
     const literal = new RegExpParser().parseLiteral('/a(bc){1,2}d/');
     const result = handleAlternative(
       literal.pattern.alternatives[0],
+      literal,
       literal.flags,
       0,
       10,

@@ -7,6 +7,7 @@ import { DFAHandler, InfiniteASTElement, OptionalASTElement } from './types';
 
 export const handleInfiniteASTElement: DFAHandler<InfiniteASTElement> = (
   element,
+  literal,
   flags,
   currentLength,
   maxLength,
@@ -14,6 +15,7 @@ export const handleInfiniteASTElement: DFAHandler<InfiniteASTElement> = (
 ) => {
   const withoutQuantifier = handleElement(
     path[0],
+    literal,
     flags,
     currentLength,
     maxLength,
@@ -22,6 +24,7 @@ export const handleInfiniteASTElement: DFAHandler<InfiniteASTElement> = (
 
   const withQuantifier = handleElement(
     element.element,
+    literal,
     flags,
     currentLength,
     maxLength,

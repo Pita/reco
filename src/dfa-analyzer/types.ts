@@ -26,6 +26,7 @@ export type CharRangesBeforeAndAfter = {
 
 export type DFAHandler<T> = (
   element: T,
+  literal: AST.RegExpLiteral,
   flags: Flags,
   currentLength: number,
   maxLength: number,

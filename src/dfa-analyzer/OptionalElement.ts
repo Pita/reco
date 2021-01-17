@@ -7,6 +7,7 @@ import { DFAHandler, OptionalASTElement } from './types';
 
 export const handleOptionalASTElement: DFAHandler<OptionalASTElement> = (
   element,
+  literal,
   flags,
   currentLength,
   maxLength,
@@ -14,6 +15,7 @@ export const handleOptionalASTElement: DFAHandler<OptionalASTElement> = (
 ) => {
   const withoutQuantifier = handleElement(
     path[0],
+    literal,
     flags,
     currentLength,
     maxLength,
@@ -22,6 +24,7 @@ export const handleOptionalASTElement: DFAHandler<OptionalASTElement> = (
 
   const withQuantifier = handleElement(
     element.element,
+    literal,
     flags,
     currentLength,
     maxLength,

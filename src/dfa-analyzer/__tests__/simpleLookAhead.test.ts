@@ -18,6 +18,7 @@ describe('handleAlternative', () => {
     const literal = new RegExpParser().parseLiteral('/(?=ab)[^]{2}/');
     const result = handleAlternative(
       literal.pattern.alternatives[0],
+      literal,
       literal.flags,
       0,
       10,

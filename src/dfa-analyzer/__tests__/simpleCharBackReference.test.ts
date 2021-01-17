@@ -5,21 +5,21 @@ import { RegExpParser } from 'regexpp';
 describe('handleAlternative', () => {
   test('can handle a very simple regex', () => {
     const expected = [
-      CharRange.create(['a'], {
+      CharRange.create(['a', 'b'], {
         negate: false,
         ignoreCase: false,
       }),
-      CharRange.create(['b'], {
+      CharRange.create(['-'], {
         negate: false,
         ignoreCase: false,
       }),
-      CharRange.create(['c'], {
+      CharRange.create(['a', 'b'], {
         negate: false,
         ignoreCase: false,
       }),
     ].map((element) => element.toJSON());
 
-    const literal = new RegExpParser().parseLiteral('/^abc/m');
+    const literal = new RegExpParser().parseLiteral('/(a|b)-\\1/');
     const result = handleAlternative(
       literal.pattern.alternatives[0],
       literal,

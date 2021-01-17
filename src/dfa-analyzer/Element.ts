@@ -1,4 +1,5 @@
 import { handleAssertion } from './Assertion';
+import { handleBackReference } from './BackReference';
 import { handleSetOrCharacter } from './Character';
 import { handleDisjunction } from './Disjunction';
 import { handleInfiniteASTElement } from './InfiniteElement';
@@ -8,7 +9,7 @@ import { AstElementOrQuantifierElement, DFAHandler } from './types';
 
 export const handleElement: DFAHandler<
   AstElementOrQuantifierElement | undefined
-> = (element, flags, currentLength, maxLength, path) => {
+> = (element, literal, flags, currentLength, maxLength, path) => {
   if (element == null || currentLength >= maxLength) {
     return { before: [], after: [] };
   }
@@ -19,6 +20,7 @@ export const handleElement: DFAHandler<
     case 'CharacterClass':
       return handleSetOrCharacter(
         element,
+        literal,
         flags,
         currentLength,
         maxLength,
@@ -28,6 +30,7 @@ export const handleElement: DFAHandler<
     case 'CapturingGroup':
       return handleDisjunction(
         element.alternatives,
+        literal,
         flags,
         currentLength,
         maxLength,
@@ -36,6 +39,7 @@ export const handleElement: DFAHandler<
     case 'OptionalASTElement':
       return handleOptionalASTElement(
         element,
+        literal,
         flags,
         currentLength,
         maxLength,
@@ -44,26 +48,38 @@ export const handleElement: DFAHandler<
     case 'InfiniteASTElement':
       return handleInfiniteASTElement(
         element,
+        literal,
         flags,
         currentLength,
         maxLength,
         path,
       );
     case 'Quantifier':
-      return handleQuantifier(element, flags, currentLength, maxLength, path);
+      return handleQuantifier(
+        element,
+        literal,
+        flags,
+        currentLength,
+        maxLength,
+        path,
+      );
     case 'Assertion':
-      return handleAssertion(element, flags, currentLength, maxLength, path);
-    default:
-      throw new Error(`${element.type} not handled yet`);
-    // case 'Assertion':
-    //   return handleAssertion(element, collector, currentFiber, flags, literal);
-    // case 'Backreference':
-    //   return handleBackReference(
-    //     element,
-    //     collector,
-    //     currentFiber,
-    //     flags,
-    //     literal,
-    //   );
+      return handleAssertion(
+        element,
+        literal,
+        flags,
+        currentLength,
+        maxLength,
+        path,
+      );
+    case 'Backreference':
+      return handleBackReference(
+        element,
+        literal,
+        flags,
+        currentLength,
+        maxLength,
+        path,
+      );
   }
 };

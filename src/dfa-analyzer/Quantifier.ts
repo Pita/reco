@@ -4,6 +4,7 @@ import { DFAHandler } from './types';
 
 export const handleQuantifier: DFAHandler<AST.Quantifier> = (
   quantifier,
+  literal,
   flags,
   currentLength,
   maxLength,
@@ -31,6 +32,7 @@ export const handleQuantifier: DFAHandler<AST.Quantifier> = (
 
   return handleElement(
     newPath[0],
+    literal,
     flags,
     currentLength,
     maxLength,

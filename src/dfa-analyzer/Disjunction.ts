@@ -8,6 +8,7 @@ import {
 
 export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
   alternatives,
+  literal,
   flags,
   currentLength,
   maxLength,
@@ -16,6 +17,7 @@ export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
   if (alternatives.length === 1) {
     return handleAlternative(
       alternatives[0],
+      literal,
       flags,
       currentLength,
       maxLength,
@@ -24,7 +26,14 @@ export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
   }
 
   const alternativesResolved = alternatives.map((alternative) =>
-    handleAlternative(alternative, flags, currentLength, maxLength, path),
+    handleAlternative(
+      alternative,
+      literal,
+      flags,
+      currentLength,
+      maxLength,
+      path,
+    ),
   );
 
   return combineCharRangesBeforeAndAfter(

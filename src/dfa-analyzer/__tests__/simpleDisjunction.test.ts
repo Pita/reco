@@ -26,6 +26,7 @@ describe('handleAlternative', () => {
     const literal = new RegExpParser().parseLiteral('/a(b|cd)e/');
     const result = handleAlternative(
       literal.pattern.alternatives[0],
+      literal,
       literal.flags,
       0,
       10,

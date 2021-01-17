@@ -4,6 +4,7 @@ import { ASTPath, DFAHandler } from './types';
 
 export const handleAlternative: DFAHandler<AST.Alternative> = (
   alternative,
+  literal,
   flags,
   currentLength,
   maxLength,
@@ -16,6 +17,7 @@ export const handleAlternative: DFAHandler<AST.Alternative> = (
   const newPath: ASTPath = [...alternative.elements.slice(1), ...path];
   return handleElement(
     alternative.elements[0],
+    literal,
     flags,
     currentLength,
     maxLength,

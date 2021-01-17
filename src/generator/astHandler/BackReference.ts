@@ -1,24 +1,8 @@
-import { AST, visitRegExpAST } from 'regexpp';
+import { AST } from 'regexpp';
 import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from 'regexpp/ast';
-import { CharRange } from '../CharRange';
 import { handleCapturingGroup } from './CapturingGroup';
-
-const findReferencedGroupAST = (
-  groupIndex: number,
-  literal: AST.RegExpLiteral,
-) => {
-  let groups: AST.CapturingGroup[] = [];
-  visitRegExpAST(literal, {
-    onCapturingGroupEnter: (group) => {
-      groups.push(group);
-    },
-  });
-
-  groups = groups.sort((a, b) => a.start - b.start);
-  return groups[groupIndex - 1];
-};
 
 const analyzeReferencedGroupAST = (
   collector: Collector,
@@ -53,14 +37,13 @@ export const handleBackReference = (
     throw new Error('No supported for named backreferences yet');
   }
 
-  const capturingGroup = findReferencedGroupAST(backReferenceRef, literal);
   const {
     firstCharRange,
     minCharLength,
     maxCharLength,
   } = analyzeReferencedGroupAST(
     collector,
-    capturingGroup,
+    backreference.resolved,
     currentFiber,
     flags,
     literal,
