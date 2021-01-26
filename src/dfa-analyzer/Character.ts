@@ -10,23 +10,32 @@ export const handleSetOrCharacter: DFAHandler<
   | AST.EscapeCharacterSet
   | AST.UnicodePropertyCharacterSet
   | AST.Character
-> = (element, literal, flags, currentLength, maxLength, path) => {
-  const charRanges = [astToCharRange(element, flags)];
+> = (element, options) => {
+  if (options.currentLength >= options.maxLength) {
+    return { before: [], after: [] };
+  }
 
-  const followUpCharRanges = handleElement(
-    path[0],
-    literal,
-    flags,
-    currentLength + charRanges.length,
-    maxLength,
-    path.slice(1),
-  );
+  const charRangesFromCache = options.cache.astToCharRange.get(element);
+  let charRanges;
+  if (charRangesFromCache) {
+    charRanges = [charRangesFromCache];
+  } else {
+    const resolvedCharRanges = astToCharRange(element, options.literal.flags);
+    charRanges = [resolvedCharRanges];
+    options.cache.astToCharRange.set(element, resolvedCharRanges);
+  }
+
+  const followUpCharRanges = handleElement(options.path[0], {
+    ...options,
+    currentLength: options.currentLength + 1,
+    path: options.path.slice(1),
+  });
 
   const afterCharRanges = [
     ...combineCharRanges(
       [followUpCharRanges.before.slice(-1).reverse(), charRanges],
-      currentLength,
-      maxLength,
+      options.currentLength,
+      options.maxLength,
       'smallestInCommon',
     ),
     ...followUpCharRanges.after,

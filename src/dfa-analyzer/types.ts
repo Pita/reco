@@ -24,11 +24,17 @@ export type CharRangesBeforeAndAfter = {
   after: CharRange[];
 };
 
+export interface DFACache {
+  astToCharRange: Map<AST.Element, CharRange>;
+}
+
 export type DFAHandler<T> = (
   element: T,
-  literal: AST.RegExpLiteral,
-  flags: Flags,
-  currentLength: number,
-  maxLength: number,
-  path: ASTPath,
+  options: {
+    cache: DFACache;
+    literal: AST.RegExpLiteral;
+    currentLength: number;
+    maxLength: number;
+    path: ASTPath;
+  },
 ) => CharRangesBeforeAndAfter;

@@ -4,17 +4,9 @@ import { DFAHandler } from './types';
 
 export const handleQuantifier: DFAHandler<AST.Quantifier> = (
   quantifier,
-  literal,
-  flags,
-  currentLength,
-  maxLength,
-  path,
+  options,
 ) => {
-  const newPath = [...path];
-
-  for (let i = 0; i < quantifier.min; i++) {
-    newPath.unshift(quantifier.element);
-  }
+  const newPath = [...options.path];
 
   if (quantifier.max === Infinity) {
     newPath.unshift({
@@ -30,12 +22,12 @@ export const handleQuantifier: DFAHandler<AST.Quantifier> = (
     }
   }
 
-  return handleElement(
-    newPath[0],
-    literal,
-    flags,
-    currentLength,
-    maxLength,
-    newPath.slice(1),
-  );
+  for (let i = 0; i < quantifier.min; i++) {
+    newPath.unshift(quantifier.element);
+  }
+
+  return handleElement(newPath[0], {
+    ...options,
+    path: newPath.slice(1),
+  });
 };

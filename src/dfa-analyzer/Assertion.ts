@@ -6,20 +6,12 @@ import { handleDisjunction } from './Disjunction';
 
 const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
   lookaround,
-  literal,
-  flags,
-  currentLength,
-  maxLength,
-  path,
+  options,
 ) => {
-  let lookaroundCharRanges = handleDisjunction(
-    lookaround.alternatives,
-    literal,
-    flags,
-    currentLength,
-    maxLength,
-    [],
-  );
+  let lookaroundCharRanges = handleDisjunction(lookaround.alternatives, {
+    ...options,
+    path: [],
+  });
   if (lookaround.kind === 'lookbehind') {
     const after = lookaroundCharRanges.after;
     const before = lookaroundCharRanges.before;
@@ -38,25 +30,21 @@ const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
     );
   }
 
-  const followUp = handleElement(
-    path[0],
-    literal,
-    flags,
-    currentLength,
-    maxLength,
-    path.slice(1),
-  );
+  const followUp = handleElement(options.path[0], {
+    ...options,
+    path: options.path.slice(1),
+  });
 
   const afterCharRanges = combineCharRanges(
     [lookaroundCharRanges.after, followUp.after],
-    currentLength,
-    maxLength,
+    options.currentLength,
+    options.maxLength,
     'smallestInCommon',
   );
   const beforeCharRanges = combineCharRanges(
     [lookaroundCharRanges.before, followUp.before],
-    currentLength,
-    maxLength,
+    options.currentLength,
+    options.maxLength,
     'smallestInCommon',
   );
 
@@ -68,33 +56,18 @@ const handleLookaround: DFAHandler<AST.LookaroundAssertion> = (
 
 export const handleAssertion: DFAHandler<AST.Assertion> = (
   assertion,
-  literal,
-  flags,
-  currentLength,
-  maxLength,
-  path,
+  options,
 ) => {
   switch (assertion.kind) {
     case 'end':
     case 'start':
     case 'word':
-      return handleElement(
-        path[0],
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path.slice(1),
-      );
+      return handleElement(options.path[0], {
+        ...options,
+        path: options.path.slice(1),
+      });
     case 'lookahead':
     case 'lookbehind':
-      return handleLookaround(
-        assertion,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleLookaround(assertion, options);
   }
 };

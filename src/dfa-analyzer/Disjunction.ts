@@ -1,44 +1,23 @@
 import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
 import { DFAHandler } from './types';
-import {
-  combineCharRanges,
-  combineCharRangesBeforeAndAfter,
-} from './combineCharRanges';
+import { combineCharRangesBeforeAndAfter } from './combineCharRanges';
 
 export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
   alternatives,
-  literal,
-  flags,
-  currentLength,
-  maxLength,
-  path,
+  options,
 ) => {
   if (alternatives.length === 1) {
-    return handleAlternative(
-      alternatives[0],
-      literal,
-      flags,
-      currentLength,
-      maxLength,
-      path,
-    );
+    return handleAlternative(alternatives[0], options);
   }
 
   const alternativesResolved = alternatives.map((alternative) =>
-    handleAlternative(
-      alternative,
-      literal,
-      flags,
-      currentLength,
-      maxLength,
-      path,
-    ),
+    handleAlternative(alternative, options),
   );
 
   return combineCharRangesBeforeAndAfter(
     alternativesResolved,
-    currentLength,
-    maxLength,
+    options.currentLength,
+    options.maxLength,
   );
 };

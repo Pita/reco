@@ -25,12 +25,58 @@ const toCharCode = (element: string | number) => {
   return element.charCodeAt(0);
 };
 
+class NumericSet extends Set<number> {
+  difference(other: NumericSet) {
+    const difference = new NumericSet();
+
+    this.forEach((char) => {
+      if (!other.has(char)) {
+        difference.add(char);
+      }
+    });
+
+    return difference;
+  }
+
+  union(other: NumericSet) {
+    const union = new NumericSet();
+
+    this.forEach((char) => {
+      union.add(char);
+    });
+
+    other.forEach((char) => {
+      union.add(char);
+    });
+
+    return union;
+  }
+
+  intersection(other: NumericSet) {
+    const intersection = new NumericSet();
+
+    this.forEach((char) => {
+      if (other.has(char)) {
+        intersection.add(char);
+      }
+    });
+
+    return intersection;
+  }
+
+  toArray() {
+    const array: number[] = [];
+    this.forEach((char) => array.push(char));
+    return _.sortBy(array);
+  }
+}
+
 export class CharRange {
-  private chars: number[];
+  private chars: NumericSet;
   private negate: boolean;
 
-  constructor(options: { chars: number[]; negate: boolean }) {
-    this.chars = _.sortedUniq(_.sortBy(options.chars));
+  constructor(options: { chars: number[] | NumericSet; negate: boolean }) {
+    this.chars = new NumericSet(options.chars);
     this.negate = options.negate;
   }
 
@@ -97,41 +143,41 @@ export class CharRange {
     }
 
     if (this.negate) {
-      const onlyInOther = _.difference(other.chars, this.chars);
-      return onlyInOther.length !== 0;
+      const onlyInOther = other.chars.difference(this.chars);
+      return onlyInOther.size !== 0;
     }
     if (other.negate) {
-      const onlyInThis = _.difference(this.chars, other.chars);
-      return onlyInThis.length !== 0;
+      const onlyInThis = this.chars.difference(other.chars);
+      return onlyInThis.size !== 0;
     }
 
-    const inCommon = _.intersection(this.chars, other.chars);
-    return inCommon.length > 0;
+    const inCommon = this.chars.intersection(other.chars);
+    return inCommon.size > 0;
   }
 
   smallestInCommon(other: CharRange): CharRange {
     if (this.negate && other.negate) {
       return new CharRange({
         negate: true,
-        chars: _.union(this.chars, other.chars),
+        chars: this.chars.union(other.chars),
       });
     }
     if (this.negate) {
       return new CharRange({
         negate: false,
-        chars: _.difference(other.chars, this.chars),
+        chars: other.chars.difference(this.chars),
       });
     }
     if (other.negate) {
       return new CharRange({
         negate: false,
-        chars: _.difference(this.chars, other.chars),
+        chars: this.chars.difference(other.chars),
       });
     }
 
     return new CharRange({
       negate: false,
-      chars: _.intersection(this.chars, other.chars),
+      chars: this.chars.intersection(other.chars),
     });
   }
 
@@ -139,32 +185,32 @@ export class CharRange {
     if (this.negate && other.negate) {
       return new CharRange({
         negate: true,
-        chars: _.intersection(this.chars, other.chars),
+        chars: this.chars.intersection(other.chars),
       });
     }
     if (this.negate) {
       return new CharRange({
         negate: true,
-        chars: _.difference(this.chars, other.chars),
+        chars: this.chars.difference(other.chars),
       });
     }
     if (other.negate) {
       return new CharRange({
         negate: true,
-        chars: _.difference(other.chars, this.chars),
+        chars: other.chars.difference(this.chars),
       });
     }
 
     return new CharRange({
       negate: false,
-      chars: _.union(this.chars, other.chars),
+      chars: this.chars.union(other.chars),
     });
   }
 
   toJSON() {
     return {
       negate: this.negate,
-      chars: this.chars.slice(),
+      chars: this.chars.toArray(),
     };
   }
 }

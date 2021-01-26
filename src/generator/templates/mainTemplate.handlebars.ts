@@ -429,6 +429,26 @@ export function generatedRegexMatcher(str: string) {
 
         return cursorAfterQuantifier;
       {{/switchCase}}
+      {{#switchCase 'nonBacktrackingDisjunction'}}
+        nonBacktrackingDisjunction{{{@index}}}: {
+          {{#each groupsToRestore}}
+            const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+            const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
+          {{/each}}
+          {{#each alternatives}}                    
+            const length{{{@index}}} = {{{functionName}}}(i, str, context);
+            if (length{{{@index}}} !== -1) {
+              i = length{{{@index}}};
+              break nonBacktrackingDisjunction{{{@../index}}};
+            }
+            {{#each meta.groups}}
+              context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+              context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
+            {{/each}}
+          {{/each}}
+          return -1;
+        }
+      {{/switchCase}}
     {{/each}}
     {{#unless lastAtomReturns}}
       {{#if followUp}}

@@ -1,7 +1,7 @@
 import { AST } from 'regexpp';
 import { Collector } from '../Collector';
+import { Flags } from '../generator';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { Flags } from 'regexpp/ast';
 import { handleElement } from './Element';
 
 export const handleAlternative = (

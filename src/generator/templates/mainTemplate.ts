@@ -166,6 +166,15 @@ export interface LazyQuantifier extends BaseTemplateAtom {
   };
 }
 
+export interface NonBacktrackingDisjunctionTemplateAtom
+  extends BaseTemplateAtom {
+  type: 'nonBacktrackingDisjunction';
+  data: {
+    groupsToRestore: GroupReference[];
+    alternatives: FiberTemplateDefinition[];
+  };
+}
+
 export type TemplateAtom =
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
@@ -182,7 +191,8 @@ export type TemplateAtom =
   | GroupBackReferenceTemplateAtom
   | NonBacktrackingQuantifier
   | BacktrackingFixedLengthQuantifier
-  | LazyQuantifier;
+  | LazyQuantifier
+  | NonBacktrackingDisjunctionTemplateAtom;
 
 export type MatchPositioning =
   | {

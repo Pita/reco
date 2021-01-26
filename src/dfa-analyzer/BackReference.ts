@@ -4,18 +4,7 @@ import { DFAHandler } from './types';
 
 export const handleBackReference: DFAHandler<AST.Backreference> = (
   backreference,
-  literal,
-  flags,
-  currentLength,
-  maxLength,
-  path,
+  options,
 ) => {
-  return handleElement(
-    backreference.resolved,
-    literal,
-    flags,
-    currentLength,
-    maxLength,
-    path,
-  );
+  return handleElement(backreference.resolved, options);
 };

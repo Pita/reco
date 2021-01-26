@@ -9,8 +9,8 @@ import { AstElementOrQuantifierElement, DFAHandler } from './types';
 
 export const handleElement: DFAHandler<
   AstElementOrQuantifierElement | undefined
-> = (element, literal, flags, currentLength, maxLength, path) => {
-  if (element == null || currentLength >= maxLength) {
+> = (element, options) => {
+  if (element == null) {
     return { before: [], after: [] };
   }
 
@@ -18,68 +18,19 @@ export const handleElement: DFAHandler<
     case 'Character':
     case 'CharacterSet':
     case 'CharacterClass':
-      return handleSetOrCharacter(
-        element,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleSetOrCharacter(element, options);
     case 'Group':
     case 'CapturingGroup':
-      return handleDisjunction(
-        element.alternatives,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleDisjunction(element.alternatives, options);
     case 'OptionalASTElement':
-      return handleOptionalASTElement(
-        element,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleOptionalASTElement(element, options);
     case 'InfiniteASTElement':
-      return handleInfiniteASTElement(
-        element,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleInfiniteASTElement(element, options);
     case 'Quantifier':
-      return handleQuantifier(
-        element,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleQuantifier(element, options);
     case 'Assertion':
-      return handleAssertion(
-        element,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleAssertion(element, options);
     case 'Backreference':
-      return handleBackReference(
-        element,
-        literal,
-        flags,
-        currentLength,
-        maxLength,
-        path,
-      );
+      return handleBackReference(element, options);
   }
 };
