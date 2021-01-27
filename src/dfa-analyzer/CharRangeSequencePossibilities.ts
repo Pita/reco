@@ -31,4 +31,13 @@ export class CharRangeSequencePossibilities {
   size() {
     return this.possibilities.length;
   }
+
+  maxLengthOfPossibilities() {
+    let maxLength = 0;
+    this.possibilities.forEach((charRange) => {
+      maxLength = Math.max(maxLength, charRange.length());
+    });
+
+    return maxLength;
+  }
 }

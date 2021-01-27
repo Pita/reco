@@ -28,6 +28,10 @@ export class CharRangeSequence {
 
     return this.charRanges.length > other.charRanges.length;
   }
+
+  length() {
+    return this.charRanges.length;
+  }
 }
 
 export class OverlyComplexBranchingError extends Error {

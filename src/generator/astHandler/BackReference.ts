@@ -15,7 +15,7 @@ const analyzeReferencedGroupAST = (
   const groupFiber = handleCapturingGroup(
     capturingGroup,
     fakeCollector,
-    fakeCollector.createFinalFiber(),
+    fakeCollector.createFinalFiber(currentFiber.meta.path),
     flags,
     literal,
   );
@@ -56,5 +56,6 @@ export const handleBackReference = (
     },
     minCharLength,
     maxCharLength,
+    backreference.resolved,
   );
 };

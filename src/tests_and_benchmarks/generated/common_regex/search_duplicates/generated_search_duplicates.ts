@@ -21,7 +21,6 @@ interface Context {
   groupMarkerStart0: number;
   groupMarkerStartTemp0: number;
   groupMarkerEnd0: number;
-  quantifierCounter0: number;
 }
 
 export function generatedRegexMatcher(str: string) {
@@ -29,7 +28,6 @@ export function generatedRegexMatcher(str: string) {
     groupMarkerStart0: -1,
     groupMarkerStartTemp0: -1,
     groupMarkerEnd0: -1,
-    quantifierCounter0: -1,
   };
 
   // minCharsLeft
@@ -37,7 +35,7 @@ export function generatedRegexMatcher(str: string) {
   const max = str.length - 1;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0008(i, str, context);
+    const posAfterMatch = fiber0001(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -56,49 +54,123 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
+   * groupStartMarker
+   * /(\b\w+\b)(?=.✱\b\1\b)/
+   *  ^^^^^^^^^
+   */
+  context.groupMarkerStartTemp0 = i;
+  /*
+   * wordBoundary
+   * /(\b\w+\b)(?=....
+   *   ^^
+   */
+  if (i !== 0 && i !== str.length) {
+    // TODO: find way to generate these trees
+    const charCodeBefore1 = str.charCodeAt(i - 1);
+    let isBeforeWord1 = false;
+    if (charCodeBefore1 <= 90) {
+      if (charCodeBefore1 <= 57) {
+        isBeforeWord1 = charCodeBefore1 >= 48;
+      } else {
+        isBeforeWord1 = charCodeBefore1 >= 65;
+      }
+    } else {
+      if (charCodeBefore1 === 95) {
+        isBeforeWord1 = true;
+      } else {
+        if (charCodeBefore1 <= 122) {
+          isBeforeWord1 = charCodeBefore1 >= 97;
+        }
+      }
+    }
+
+    const charCodeAfter1 = str.charCodeAt(i);
+    let isAfterWord1 = false;
+    if (charCodeAfter1 <= 90) {
+      if (charCodeAfter1 <= 57) {
+        isAfterWord1 = charCodeAfter1 >= 48;
+      } else {
+        isAfterWord1 = charCodeAfter1 >= 65;
+      }
+    } else {
+      if (charCodeAfter1 === 95) {
+        isAfterWord1 = true;
+      } else {
+        if (charCodeAfter1 <= 122) {
+          isAfterWord1 = charCodeAfter1 >= 97;
+        }
+      }
+    }
+
+    if (isBeforeWord1 === isAfterWord1) {
+      return -1;
+    }
+  }
+  /*
+   * nonBacktrackingQuantifier
+   * /(\b\w+\b)(?=.✱\b...
+   *     ^^^
+   */
+  let matches2 = 0;
+  while (true) {
+    const wrappedResult = fiber0005(i, str, context);
+
+    if (wrappedResult === -1) {
+      if (matches2 < 1) {
+        return -1;
+      }
+
+      break;
+    } else {
+      i = wrappedResult;
+
+      matches2++;
+    }
+  }
+  /*
    * wordBoundary
    * /(\b\w+\b)(?=.✱\b\1...
    *        ^^
    */
   if (i !== 0 && i !== str.length) {
     // TODO: find way to generate these trees
-    const charCodeBefore0 = str.charCodeAt(i - 1);
-    let isBeforeWord0 = false;
-    if (charCodeBefore0 <= 90) {
-      if (charCodeBefore0 <= 57) {
-        isBeforeWord0 = charCodeBefore0 >= 48;
+    const charCodeBefore3 = str.charCodeAt(i - 1);
+    let isBeforeWord3 = false;
+    if (charCodeBefore3 <= 90) {
+      if (charCodeBefore3 <= 57) {
+        isBeforeWord3 = charCodeBefore3 >= 48;
       } else {
-        isBeforeWord0 = charCodeBefore0 >= 65;
+        isBeforeWord3 = charCodeBefore3 >= 65;
       }
     } else {
-      if (charCodeBefore0 === 95) {
-        isBeforeWord0 = true;
+      if (charCodeBefore3 === 95) {
+        isBeforeWord3 = true;
       } else {
-        if (charCodeBefore0 <= 122) {
-          isBeforeWord0 = charCodeBefore0 >= 97;
+        if (charCodeBefore3 <= 122) {
+          isBeforeWord3 = charCodeBefore3 >= 97;
         }
       }
     }
 
-    const charCodeAfter0 = str.charCodeAt(i);
-    let isAfterWord0 = false;
-    if (charCodeAfter0 <= 90) {
-      if (charCodeAfter0 <= 57) {
-        isAfterWord0 = charCodeAfter0 >= 48;
+    const charCodeAfter3 = str.charCodeAt(i);
+    let isAfterWord3 = false;
+    if (charCodeAfter3 <= 90) {
+      if (charCodeAfter3 <= 57) {
+        isAfterWord3 = charCodeAfter3 >= 48;
       } else {
-        isAfterWord0 = charCodeAfter0 >= 65;
+        isAfterWord3 = charCodeAfter3 >= 65;
       }
     } else {
-      if (charCodeAfter0 === 95) {
-        isAfterWord0 = true;
+      if (charCodeAfter3 === 95) {
+        isAfterWord3 = true;
       } else {
-        if (charCodeAfter0 <= 122) {
-          isAfterWord0 = charCodeAfter0 >= 97;
+        if (charCodeAfter3 <= 122) {
+          isAfterWord3 = charCodeAfter3 >= 97;
         }
       }
     }
 
-    if (isBeforeWord0 === isAfterWord0) {
+    if (isBeforeWord3 === isAfterWord3) {
       return -1;
     }
   }
@@ -114,8 +186,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    * /(\b\w+\b)(?=.✱\b\1\b)/
    *           ^^^^^^^^^^^^
    */
-  const lookaroundResult2 = fiber0005(i, str, context);
-  if (lookaroundResult2 === -1) {
+  const lookaroundResult5 = fiber0004(i, str, context);
+  if (lookaroundResult5 === -1) {
     return -1;
   }
   return i;
@@ -262,19 +334,42 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return greedyQuantifier0004(i, str, context);
+  return i;
 };
-const fiber0005 = (i: number, str: string, context: Context): number => {
+const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
-   * quantifierStarter
+   * backtrackingFixedLengthQuantifier
    * /(\b\w+\b)(?=.✱\b\1\b)/
    *              ^^
    */
-  const cursorAfterQuantifier = greedyQuantifier0004(i, str, context);
+  let matches0 = 0;
 
-  return cursorAfterQuantifier;
+  while (true) {
+    const wrappedResult = fiber0003(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+      matches0++;
+    }
+  }
+
+  // needs followUp & forkingFiber
+  while (matches0 >= 0) {
+    const directFollowUpResult0 = fiber0002(i, str, context);
+
+    if (directFollowUpResult0 !== -1) {
+      return directFollowUpResult0;
+    }
+
+    matches0--;
+    i -= 1;
+  }
+
+  return -1;
 };
-const fiber0006 = (i: number, str: string, context: Context): number => {
+const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /(\b\w+\b)(?=.✱\...
@@ -305,131 +400,5 @@ const fiber0006 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return greedyQuantifier0007(i, str, context);
-};
-const fiber0008 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * /(\b\w+\b)(?=.✱\b\1\b)/
-   *  ^^^^^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
-   * wordBoundary
-   * /(\b\w+\b)(?=....
-   *   ^^
-   */
-  if (i !== 0 && i !== str.length) {
-    // TODO: find way to generate these trees
-    const charCodeBefore1 = str.charCodeAt(i - 1);
-    let isBeforeWord1 = false;
-    if (charCodeBefore1 <= 90) {
-      if (charCodeBefore1 <= 57) {
-        isBeforeWord1 = charCodeBefore1 >= 48;
-      } else {
-        isBeforeWord1 = charCodeBefore1 >= 65;
-      }
-    } else {
-      if (charCodeBefore1 === 95) {
-        isBeforeWord1 = true;
-      } else {
-        if (charCodeBefore1 <= 122) {
-          isBeforeWord1 = charCodeBefore1 >= 97;
-        }
-      }
-    }
-
-    const charCodeAfter1 = str.charCodeAt(i);
-    let isAfterWord1 = false;
-    if (charCodeAfter1 <= 90) {
-      if (charCodeAfter1 <= 57) {
-        isAfterWord1 = charCodeAfter1 >= 48;
-      } else {
-        isAfterWord1 = charCodeAfter1 >= 65;
-      }
-    } else {
-      if (charCodeAfter1 === 95) {
-        isAfterWord1 = true;
-      } else {
-        if (charCodeAfter1 <= 122) {
-          isAfterWord1 = charCodeAfter1 >= 97;
-        }
-      }
-    }
-
-    if (isBeforeWord1 === isAfterWord1) {
-      return -1;
-    }
-  }
-  /*
-   * quantifierStarter
-   * /(\b\w+\b)(?=.✱\b...
-   *     ^^^
-   */
-  let matchCountCopygreedyQuantifier0007 = context.quantifierCounter0;
-  context.quantifierCounter0 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0007(i, str, context);
-  context.quantifierCounter0 = matchCountCopygreedyQuantifier0007;
-
-  return cursorAfterQuantifier;
-};
-
-/*
- * /(\b\w+\b)(?=.✱\b\1\b)/
- *              ^^
- */
-const greedyQuantifier0004 = (
-  start: number,
-  str: string,
-  context: Context
-): number => {
-  const tryDeeperResult = fiber0003(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
-  }
-
-  // recursion failed, reset groups
-
-  const followUpResult = fiber0002(start, str, context);
-
-  if (followUpResult === -1) {
-  }
-  return followUpResult;
-};
-/*
- * /(\b\w+\b)(?=.✱\b...
- *     ^^^
- */
-const greedyQuantifier0007 = (
-  start: number,
-  str: string,
-  context: Context
-): number => {
-  context.quantifierCounter0++;
-
-  const tryDeeperResult = fiber0006(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
-  }
-
-  // recursion failed, reset groups
-
-  if (context.quantifierCounter0 < 1) {
-    context.quantifierCounter0--;
-    return -1;
-  }
-
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-
-  const followUpResult = fiber0001(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.quantifierCounter0--;
-  }
-  return followUpResult;
+  return i;
 };

@@ -1,6 +1,6 @@
 import { CharRange } from '../../generator/CharRange';
 import { RegExpParser } from 'regexpp';
-import { dfaAnalyzeAlternative } from '../dfaAnalyze';
+import { dfaAnalyzeElement } from '../dfaAnalyze';
 import { CharRangeSequence } from '../CharRangeSequence';
 
 describe('handleAlternative', () => {
@@ -41,8 +41,8 @@ describe('handleAlternative', () => {
     ].map((element) => element.toJSON());
 
     const literal = new RegExpParser().parseLiteral('/a(b|cd)e/');
-    const result = dfaAnalyzeAlternative(
-      literal.pattern.alternatives[0],
+    const result = dfaAnalyzeElement(
+      [literal.pattern.alternatives[0]],
       literal,
       10,
     );

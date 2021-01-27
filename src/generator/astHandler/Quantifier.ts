@@ -4,20 +4,22 @@ import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleElement } from './Element';
 import { BacktrackingError } from '../BacktrackingException';
-import { CharRange } from '../CharRange';
+import { ASTPath } from '../../dfa-analyzer/types';
+import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
 
 const checkIfQuantifierHasInternalBacktracking = (
   quantifier: AST.Quantifier,
   collector: Collector,
   flags: Flags,
   literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
 ) => {
   try {
     const fakeCollector = collector.fakeCollector();
     handleElement(
       quantifier.element,
       fakeCollector,
-      fakeCollector.createFinalFiber(),
+      fakeCollector.createFinalFiber(pathForHandler),
       {
         ...flags,
         INTERNAL_no_backtracking: true,
@@ -35,38 +37,84 @@ const checkIfQuantifierHasInternalBacktracking = (
   return false;
 };
 
-// const checkIfQuantifierHasFixedLength = (
-//   quantifier: AST.Quantifier,
-//   collector: Collector,
-//   flags: Flags,
-//   literal: AST.RegExpLiteral,
-// ) => {
-//   const fakeCollector = collector.fakeCollector();
-//   const quantifierFiber = handleElement(
-//     quantifier.element,
-//     fakeCollector,
-//     fakeCollector.createFinalFiber(),
-//     flags,
-//     literal,
-//   );
+const createPathForQuantifierHandler = (
+  quantifier: AST.Quantifier,
+  currentFiber: FiberTemplateDefinition,
+) => {
+  const decrementedQuantifier = {
+    ...quantifier,
+    min: Math.max(quantifier.min - 1, 0),
+    max: quantifier.max - 1,
+  };
 
-//   const { minCharLength, maxCharLength } = quantifierFiber.meta;
+  return [decrementedQuantifier, ...currentFiber.meta.path];
+};
 
-//   if (
-//     minCharLength === maxCharLength &&
-//     quantifierFiber.meta.groups.length === 0 &&
-//     quantifier.greedy
-//   ) {
-//     return {
-//       fixedLengthOptimizable: true,
-//       fixedLength: minCharLength,
-//     };
-//   } else {
-//     return {
-//       fixedLengthOptimizable: false,
-//     };
-//   }
-// };
+const checkIfQuantifierHasFixedLength = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
+) => {
+  const fakeCollector = collector.fakeCollector();
+  const quantifierFiber = handleElement(
+    quantifier.element,
+    fakeCollector,
+    fakeCollector.createFinalFiber(pathForHandler),
+    flags,
+    literal,
+  );
+
+  const { minCharLength, maxCharLength } = quantifierFiber.meta;
+
+  if (
+    minCharLength === maxCharLength &&
+    quantifierFiber.meta.groups.length === 0 &&
+    quantifier.greedy
+  ) {
+    return {
+      fixedLengthOptimizable: true,
+      fixedLength: minCharLength,
+    };
+  } else {
+    return {
+      fixedLengthOptimizable: false,
+    };
+  }
+};
+
+const checkIfQuantifierHasExternalBacktracking = (
+  quantifier: AST.Quantifier,
+  currentFiber: FiberTemplateDefinition,
+  literal: AST.RegExpLiteral,
+) => {
+  let handlerPossibilities = dfaAnalyzeElement(
+    [quantifier.element],
+    literal,
+    Infinity,
+  );
+
+  if (handlerPossibilities === null) {
+    handlerPossibilities = dfaAnalyzeElement([quantifier.element], literal, 3);
+  }
+
+  if (handlerPossibilities === null) {
+    return true;
+  }
+
+  const followupPossibilties = dfaAnalyzeElement(
+    currentFiber.meta.path,
+    literal,
+    handlerPossibilities.maxLengthOfPossibilities(),
+  );
+
+  if (followupPossibilties === null) {
+    return true;
+  }
+
+  return !handlerPossibilities.isExclusive(followupPossibilties);
+};
 
 const analyzeGreedyQuantifier = (
   quantifier: AST.Quantifier,
@@ -74,20 +122,53 @@ const analyzeGreedyQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
-) => {};
-
-const analyzeLazyQuantifier = (
-  quantifier: AST.Quantifier,
-  collector: Collector,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
 ) => {
   const hasInternalBacktracking = checkIfQuantifierHasInternalBacktracking(
     quantifier,
     collector,
     flags,
     literal,
+    pathForHandler,
+  );
+
+  const hasExternalBackTracking = checkIfQuantifierHasExternalBacktracking(
+    quantifier,
+    currentFiber,
+    literal,
+  );
+
+  const {
+    fixedLengthOptimizable,
+    fixedLength,
+  } = checkIfQuantifierHasFixedLength(
+    quantifier,
+    collector,
+    flags,
+    literal,
+    pathForHandler,
+  );
+
+  return {
+    needsBacktracking: hasInternalBacktracking || hasExternalBackTracking,
+    fixedLengthOptimizable,
+    fixedLength,
+  };
+};
+
+const analyzeLazyQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
+) => {
+  const hasInternalBacktracking = checkIfQuantifierHasInternalBacktracking(
+    quantifier,
+    collector,
+    flags,
+    literal,
+    pathForHandler,
   );
 
   return {
@@ -101,6 +182,7 @@ const generateBacktrackingQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
 ) => {
   const {
     quantifierFinalFiber,
@@ -109,6 +191,7 @@ const generateBacktrackingQuantifier = (
     currentFiber,
     quantifier.greedy ? 'greedy' : 'lazy',
     quantifier,
+    pathForHandler,
   );
 
   const countParams = generateCountParams(quantifier);
@@ -162,54 +245,57 @@ const generateBacktrackingQuantifier = (
     },
     minCharLength,
     maxCharLength,
+    quantifier,
   );
 };
 
-// const generateBacktrackingFixedLengthQuantifier = (
-//   quantifier: AST.Quantifier,
-//   collector: Collector,
-//   currentFiber: FiberTemplateDefinition,
-//   flags: Flags,
-//   fixedLength: number,
-//   literal: AST.RegExpLiteral,
-// ) => {
-//   const wrappedHandler = handleElement(
-//     quantifier.element,
-//     collector,
-//     collector.createFinalFiber(),
-//     flags,
-//     literal,
-//   );
+const generateBacktrackingFixedLengthQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  fixedLength: number,
+  literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
+) => {
+  const wrappedHandler = handleElement(
+    quantifier.element,
+    collector,
+    collector.createFinalFiber(pathForHandler),
+    flags,
+    literal,
+  );
 
-//   const countParams = generateCountParams(quantifier);
-//   const minCharLength =
-//     currentFiber.meta.minCharLength +
-//     quantifier.min * wrappedHandler.meta.minCharLength;
-//   const maxCharLength =
-//     currentFiber.meta.maxCharLength +
-//     quantifier.max * wrappedHandler.meta.maxCharLength;
+  const countParams = generateCountParams(quantifier);
+  const minCharLength =
+    currentFiber.meta.minCharLength +
+    quantifier.min * wrappedHandler.meta.minCharLength;
+  const maxCharLength =
+    currentFiber.meta.maxCharLength +
+    quantifier.max * wrappedHandler.meta.maxCharLength;
 
-//   return collector.addAtom(
-//     collector.createForkingFiber(
-//       currentFiber,
-//       currentFiber.meta.groups,
-//       false,
-//       currentFiber.meta.anchorsAtEndOfLine,
-//     ),
-//     {
-//       type: 'backtrackingFixedLengthQuantifier',
-//       data: {
-//         ...countParams,
-//         fixedLength,
-//         wrappedHandler,
-//         followUp: currentFiber,
-//       },
-//       ast: quantifier,
-//     },
-//     minCharLength,
-//     maxCharLength,
-//   );
-// };
+  return collector.addAtom(
+    collector.createForkingFiber(
+      currentFiber,
+      currentFiber.meta.groups,
+      false,
+      currentFiber.meta.anchorsAtEndOfLine,
+    ),
+    {
+      type: 'backtrackingFixedLengthQuantifier',
+      data: {
+        ...countParams,
+        fixedLength,
+        wrappedHandler,
+        followUp: currentFiber,
+      },
+      ast: quantifier,
+    },
+    minCharLength,
+    maxCharLength,
+    quantifier,
+  );
+};
 
 const generateCountParams = (quantifier: AST.Quantifier) => {
   const minCount = quantifier.min === 0 ? undefined : quantifier.min;
@@ -219,41 +305,41 @@ const generateCountParams = (quantifier: AST.Quantifier) => {
   return { minCount, maxCount, maxOrMinCount };
 };
 
-// const generateNonBacktrackingQuantifier = (
-//   quantifier: AST.Quantifier,
-//   collector: Collector,
-//   currentFiber: FiberTemplateDefinition,
-//   flags: Flags,
-//   firstCharAfterQuantifier: CharRange,
-//   followUpFirstChar: CharRange,
-//   literal: AST.RegExpLiteral,
-// ) => {
-//   const wrappedHandler = handleElement(
-//     quantifier.element,
-//     collector,
-//     collector.createFinalFiber(),
-//     flags,
-//     literal,
-//   );
+const generateNonBacktrackingQuantifier = (
+  quantifier: AST.Quantifier,
+  collector: Collector,
+  currentFiber: FiberTemplateDefinition,
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
+) => {
+  const wrappedHandler = handleElement(
+    quantifier.element,
+    collector,
+    collector.createFinalFiber(pathForHandler),
+    flags,
+    literal,
+  );
 
-//   const countParams = generateCountParams(quantifier);
-//   const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
-//   const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
+  const countParams = generateCountParams(quantifier);
+  const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
+  const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
 
-//   return collector.addAtom(
-//     currentFiber,
-//     {
-//       type: 'nonBacktrackingQuantifier',
-//       data: {
-//         ...countParams,
-//         wrappedHandler,
-//       },
-//       ast: quantifier,
-//     },
-//     minCharLength,
-//     maxCharLength,
-//   );
-// };
+  return collector.addAtom(
+    currentFiber,
+    {
+      type: 'nonBacktrackingQuantifier',
+      data: {
+        ...countParams,
+        wrappedHandler,
+      },
+      ast: quantifier,
+    },
+    minCharLength,
+    maxCharLength,
+    quantifier,
+  );
+};
 
 const generateGreedyQuantifier = (
   quantifier: AST.Quantifier,
@@ -261,56 +347,55 @@ const generateGreedyQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
 ) => {
-  // const {
-  //   firstCharAfterQuantifier,
-  //   needsBacktracking,
-  //   followUpFirstChar,
-  //   fixedLengthOptimizable,
-  //   fixedLength,
-  // } = analyzeGreedyQuantifier(
-  //   quantifier,
-  //   collector,
-  //   currentFiber,
-  //   flags,
-  //   literal,
-  // );
-
-  // if (needsBacktracking) {
-  //   if (flags.INTERNAL_no_backtracking) {
-  //     throw new BacktrackingError();
-  //   }
-  //   if (fixedLengthOptimizable && fixedLength) {
-  //     return generateBacktrackingFixedLengthQuantifier(
-  //       quantifier,
-  //       collector,
-  //       currentFiber,
-  //       flags,
-  //       firstCharAfterQuantifier,
-  //       followUpFirstChar,
-  //       fixedLength,
-  //       literal,
-  //     );
-  //   } else {
-  return generateBacktrackingQuantifier(
+  const {
+    needsBacktracking,
+    fixedLengthOptimizable,
+    fixedLength,
+  } = analyzeGreedyQuantifier(
     quantifier,
     collector,
     currentFiber,
     flags,
     literal,
+    pathForHandler,
   );
-  // }
-  // } else {
-  //   return generateNonBacktrackingQuantifier(
-  //     quantifier,
-  //     collector,
-  //     currentFiber,
-  //     flags,
-  //     firstCharAfterQuantifier,
-  //     followUpFirstChar,
-  //     literal,
-  //   );
-  // }
+
+  if (needsBacktracking) {
+    if (flags.INTERNAL_no_backtracking) {
+      throw new BacktrackingError();
+    }
+    if (fixedLengthOptimizable && fixedLength) {
+      return generateBacktrackingFixedLengthQuantifier(
+        quantifier,
+        collector,
+        currentFiber,
+        flags,
+        fixedLength,
+        literal,
+        pathForHandler,
+      );
+    } else {
+      return generateBacktrackingQuantifier(
+        quantifier,
+        collector,
+        currentFiber,
+        flags,
+        literal,
+        pathForHandler,
+      );
+    }
+  } else {
+    return generateNonBacktrackingQuantifier(
+      quantifier,
+      collector,
+      currentFiber,
+      flags,
+      literal,
+      pathForHandler,
+    );
+  }
 };
 
 const generateLazyQuantifier = (
@@ -319,60 +404,63 @@ const generateLazyQuantifier = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
+  pathForHandler: ASTPath,
 ) => {
-  // const { hasInternalBacktracking } = analyzeLazyQuantifier(
-  //   quantifier,
-  //   collector,
-  //   currentFiber,
-  //   flags,
-  //   literal,
-  // );
-
-  // if (hasInternalBacktracking) {
-  return generateBacktrackingQuantifier(
+  const { hasInternalBacktracking } = analyzeLazyQuantifier(
     quantifier,
     collector,
-    currentFiber,
     flags,
     literal,
+    pathForHandler,
   );
-  // } else {
-  //   const wrappedHandler = handleElement(
-  //     quantifier.element,
-  //     collector,
-  //     collector.createFinalFiber(),
-  //     flags,
-  //     literal,
-  //   );
 
-  //   const countParams = generateCountParams(quantifier);
-  //   const minCharLength =
-  //     currentFiber.meta.minCharLength +
-  //     quantifier.min * wrappedHandler.meta.minCharLength;
-  //   const maxCharLength =
-  //     currentFiber.meta.maxCharLength +
-  //     quantifier.max * wrappedHandler.meta.maxCharLength;
+  if (hasInternalBacktracking) {
+    return generateBacktrackingQuantifier(
+      quantifier,
+      collector,
+      currentFiber,
+      flags,
+      literal,
+      pathForHandler,
+    );
+  } else {
+    const wrappedHandler = handleElement(
+      quantifier.element,
+      collector,
+      collector.createFinalFiber(pathForHandler),
+      flags,
+      literal,
+    );
 
-  //   return collector.addAtom(
-  //     collector.createForkingFiber(
-  //       currentFiber,
-  //       currentFiber.meta.groups,
-  //       false,
-  //       currentFiber.meta.anchorsAtEndOfLine,
-  //     ),
-  //     {
-  //       type: 'lazyQuantifier',
-  //       data: {
-  //         ...countParams,
-  //         wrappedHandler,
-  //         followUp: currentFiber,
-  //       },
-  //       ast: quantifier,
-  //     },
-  //     minCharLength,
-  //     maxCharLength,
-  //   );
-  // }
+    const countParams = generateCountParams(quantifier);
+    const minCharLength =
+      currentFiber.meta.minCharLength +
+      quantifier.min * wrappedHandler.meta.minCharLength;
+    const maxCharLength =
+      currentFiber.meta.maxCharLength +
+      quantifier.max * wrappedHandler.meta.maxCharLength;
+
+    return collector.addAtom(
+      collector.createForkingFiber(
+        currentFiber,
+        currentFiber.meta.groups,
+        false,
+        currentFiber.meta.anchorsAtEndOfLine,
+      ),
+      {
+        type: 'lazyQuantifier',
+        data: {
+          ...countParams,
+          wrappedHandler,
+          followUp: currentFiber,
+        },
+        ast: quantifier,
+      },
+      minCharLength,
+      maxCharLength,
+      quantifier,
+    );
+  }
 };
 
 export const handleQuantifier = (
@@ -397,6 +485,11 @@ export const handleQuantifier = (
     return currentAppendableFiber;
   }
 
+  const pathForHandler = createPathForQuantifierHandler(
+    quantifier,
+    currentFiber,
+  );
+
   if (quantifier.greedy) {
     return generateGreedyQuantifier(
       quantifier,
@@ -404,6 +497,7 @@ export const handleQuantifier = (
       currentFiber,
       flags,
       literal,
+      pathForHandler,
     );
   } else {
     return generateLazyQuantifier(
@@ -412,6 +506,7 @@ export const handleQuantifier = (
       currentFiber,
       flags,
       literal,
+      pathForHandler,
     );
   }
 };

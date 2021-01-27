@@ -10,6 +10,7 @@ import {
 import * as _ from 'lodash';
 import { CharRange } from './CharRange';
 import { Quantifier } from 'regexpp/ast';
+import { AstElementOrQuantifierElement, ASTPath } from '../dfa-analyzer/types';
 
 type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
   ast: AST.Node;
@@ -94,6 +95,7 @@ export class Collector {
         maxCharLength: fiber.meta.maxCharLength,
         anchorsAtStartOfLine: false,
         anchorsAtEndOfLine: fiber.meta.anchorsAtEndOfLine,
+        path: fiber.meta.path,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -101,7 +103,7 @@ export class Collector {
   }
 
   // used by lookaround & non backtracking quantifier
-  createFinalFiber() {
+  createFinalFiber(path: ASTPath) {
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
@@ -113,6 +115,7 @@ export class Collector {
         maxCharLength: 0,
         anchorsAtStartOfLine: false,
         anchorsAtEndOfLine: false,
+        path,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -137,6 +140,7 @@ export class Collector {
         maxCharLength: 0,
         anchorsAtStartOfLine,
         anchorsAtEndOfLine,
+        path: followUpFiber.meta.path,
       },
     };
     this.fiberHandlers.push(newFiber);
@@ -147,6 +151,7 @@ export class Collector {
     followUp: FiberTemplateDefinition,
     type: 'greedy' | 'lazy',
     ast: AST.Quantifier,
+    pathForHandler: ASTPath,
   ) {
     const quantifierFinalFiber: FiberTemplateDefinition = {
       followUp: null,
@@ -159,6 +164,7 @@ export class Collector {
         maxCharLength: 0,
         anchorsAtStartOfLine: false,
         anchorsAtEndOfLine: false,
+        path: pathForHandler,
       },
     };
 
@@ -173,6 +179,7 @@ export class Collector {
         groups: [],
         minCharLength: 0,
         maxCharLength: 0,
+        path: followUp.meta.path,
       },
       ...this.formatAstLocation(ast),
     };
@@ -205,6 +212,7 @@ export class Collector {
     def: AtomDefinition,
     minLength: number,
     maxLength: number,
+    newPathElement: AstElementOrQuantifierElement | 'noAstElement',
   ) {
     // TODO: type this correctly
     const newAtom: any = {
@@ -223,6 +231,9 @@ export class Collector {
     }
     if (def.type === 'endAnchor') {
       currentFiber.meta.anchorsAtEndOfLine = true;
+    }
+    if (newPathElement !== 'noAstElement') {
+      currentFiber.meta.path = [newPathElement, ...currentFiber.meta.path];
     }
 
     return currentFiber;

@@ -22,6 +22,7 @@ export const handleAssertion = (
         },
         0,
         0,
+        assertion,
       );
     case 'end':
       return collector.addAtom(
@@ -33,6 +34,7 @@ export const handleAssertion = (
         },
         0,
         0,
+        assertion,
       );
     case 'lookahead':
     case 'lookbehind':
@@ -55,6 +57,7 @@ export const handleAssertion = (
         },
         0,
         0,
+        assertion,
       );
       break;
   }

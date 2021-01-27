@@ -30,6 +30,7 @@ export const handleCapturingGroup = (
     },
     0,
     0,
+    'noAstElement',
   );
 
   const disjunction = handleDisjunction(
@@ -51,6 +52,7 @@ export const handleCapturingGroup = (
     },
     0,
     0,
+    'noAstElement',
   );
 
   return groupStartMarker;

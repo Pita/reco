@@ -14,7 +14,7 @@ export type InfiniteASTElement = {
 };
 
 export type AstElementOrQuantifierElement =
-  | AST.Element
+  | AST.Node
   | MaxCountASTElement
   | InfiniteASTElement;
 

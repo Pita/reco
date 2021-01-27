@@ -24,7 +24,6 @@ interface Context {
   groupMarkerStart1: number;
   groupMarkerStartTemp1: number;
   groupMarkerEnd1: number;
-  quantifierCounter0: number;
 }
 
 export function generatedRegexMatcher(str: string) {
@@ -35,7 +34,6 @@ export function generatedRegexMatcher(str: string) {
     groupMarkerStart1: -1,
     groupMarkerStartTemp1: -1,
     groupMarkerEnd1: -1,
-    quantifierCounter0: -1,
   };
 
   // minCharsLeft
@@ -43,7 +41,7 @@ export function generatedRegexMatcher(str: string) {
   const max = str.length - 6;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0004(i, str, context);
+    const posAfterMatch = fiber0001(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -64,76 +62,6 @@ export function generatedRegexMatcher(str: string) {
 }
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * /([a-y]){2}k(123)+/
-   *             ^^^^^
-   */
-  context.groupMarkerStartTemp1 = i;
-  /*
-   * charOrSet
-   * /([a-y]){2}k(123)+/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
-
-  result1 = charCode1 === 49;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...-y]){2}k(123)+/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2 = false;
-
-  result2 = charCode2 === 50;
-
-  if (!result2) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...y]){2}k(123)+/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode3 = str.charCodeAt(i);
-  let result3 = false;
-
-  result3 = charCode3 === 51;
-
-  if (!result3) {
-    return -1;
-  }
-  i++;
-  /*
-   * groupEndMarker
-   * /([a-y]){2}k(123)+/
-   *             ^^^^^
-   */
-  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
-  context.groupMarkerEnd1 = i;
-  return greedyQuantifier0003(i, str, context);
-};
-const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /([a-y]){2}k(123)+/
@@ -214,50 +142,92 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   }
   i++;
   /*
-   * quantifierStarter
+   * nonBacktrackingQuantifier
    * /([a-y]){2}k(123)+/
    *             ^^^^^^
    */
-  let matchCountCopygreedyQuantifier0003 = context.quantifierCounter0;
-  context.quantifierCounter0 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0003(i, str, context);
-  context.quantifierCounter0 = matchCountCopygreedyQuantifier0003;
+  let matches7 = 0;
+  while (true) {
+    const wrappedResult = fiber0002(i, str, context);
 
-  return cursorAfterQuantifier;
-};
+    if (wrappedResult === -1) {
+      if (matches7 < 1) {
+        return -1;
+      }
 
-/*
- * /([a-y]){2}k(123)+/
- *             ^^^^^^
- */
-const greedyQuantifier0003 = (
-  start: number,
-  str: string,
-  context: Context
-): number => {
-  context.quantifierCounter0++;
+      break;
+    } else {
+      i = wrappedResult;
 
-  const groupMarkerStartCopy1 = context.groupMarkerStart1;
-  const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-  const tryDeeperResult = fiber0002(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
+      matches7++;
+    }
   }
-
-  // recursion failed, reset groups
-  context.groupMarkerStart1 = groupMarkerStartCopy1;
-  context.groupMarkerEnd1 = groupMarkerEndCopy1;
-
-  if (context.quantifierCounter0 < 1) {
-    context.quantifierCounter0--;
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupStartMarker
+   * /([a-y]){2}k(123)+/
+   *             ^^^^^
+   */
+  context.groupMarkerStartTemp1 = i;
+  /*
+   * charOrSet
+   * /([a-y]){2}k(123)+/
+   *              ^
+   */
+  if (i >= str.length) {
     return -1;
   }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
 
-  const followUpResult = fiber0001(start, str, context);
+  result1 = charCode1 === 49;
 
-  if (followUpResult === -1) {
-    context.quantifierCounter0--;
+  if (!result1) {
+    return -1;
   }
-  return followUpResult;
+  i++;
+  /*
+   * charOrSet
+   * ...-y]){2}k(123)+/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode2 = str.charCodeAt(i);
+  let result2 = false;
+
+  result2 = charCode2 === 50;
+
+  if (!result2) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ...y]){2}k(123)+/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode3 = str.charCodeAt(i);
+  let result3 = false;
+
+  result3 = charCode3 === 51;
+
+  if (!result3) {
+    return -1;
+  }
+  i++;
+  /*
+   * groupEndMarker
+   * /([a-y]){2}k(123)+/
+   *             ^^^^^
+   */
+  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
+  context.groupMarkerEnd1 = i;
+  return i;
 };

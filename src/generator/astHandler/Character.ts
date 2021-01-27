@@ -33,6 +33,7 @@ export const handleSetOrCharacter = (
       },
       1,
       flags.unicode ? 2 : 1,
+      element,
     );
   } else {
     return collector.addAtom(
@@ -48,6 +49,7 @@ export const handleSetOrCharacter = (
       },
       1,
       flags.unicode ? 2 : 1,
+      element,
     );
   }
 };

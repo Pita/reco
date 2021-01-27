@@ -1,7 +1,8 @@
 import templateFile from './mainTemplate.handlebars';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
-import { CharRange } from '../CharRange';
+import { ASTPath } from '../../dfa-analyzer/types';
+
 export interface GroupReference {
   idx: number;
 }
@@ -15,6 +16,7 @@ export interface FunctionDefinition {
     maxCharLength: number;
     anchorsAtStartOfLine: boolean;
     anchorsAtEndOfLine: boolean;
+    path: ASTPath;
   };
 }
 

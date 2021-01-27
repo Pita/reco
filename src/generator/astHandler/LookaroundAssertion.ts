@@ -19,7 +19,7 @@ export const handleLookaroundAssertion = (
   const lookaroundFiber = handleDisjunction(
     lookaroundAssertion.alternatives,
     collector,
-    collector.createFinalFiber(),
+    collector.createFinalFiber([]),
     newFlags,
     literal,
   );
@@ -36,5 +36,6 @@ export const handleLookaroundAssertion = (
     },
     0,
     0,
+    lookaroundAssertion,
   );
 };

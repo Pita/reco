@@ -21,7 +21,6 @@ interface Context {
   groupMarkerStart0: number;
   groupMarkerStartTemp0: number;
   groupMarkerEnd0: number;
-  quantifierCounter0: number;
 }
 
 export function generatedRegexMatcher(str: string) {
@@ -29,7 +28,6 @@ export function generatedRegexMatcher(str: string) {
     groupMarkerStart0: -1,
     groupMarkerStartTemp0: -1,
     groupMarkerEnd0: -1,
-    quantifierCounter0: -1,
   };
 
   // minCharsLeft
@@ -37,7 +35,7 @@ export function generatedRegexMatcher(str: string) {
   const max = str.length - 1;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0004(i, str, context);
+    const posAfterMatch = fiber0003(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -122,51 +120,27 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
-  return lazyQuantifier0003(i, str, context);
+  return i;
 };
-const fiber0004 = (i: number, str: string, context: Context): number => {
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
-   * quantifierStarter
+   * lazyQuantifier
    * /(aa){0,3}?b/
    *  ^^^^^^^^^^
    */
-  let matchCountCopylazyQuantifier0003 = context.quantifierCounter0;
-  context.quantifierCounter0 = -1;
-  const cursorAfterQuantifier = lazyQuantifier0003(i, str, context);
-  context.quantifierCounter0 = matchCountCopylazyQuantifier0003;
+  let matches0 = 0;
+  while (true) {
+    const directFollowUpResult0 = fiber0001(i, str, context);
 
-  return cursorAfterQuantifier;
-};
-
-/*
- * /(aa){0,3}?b/
- *  ^^^^^^^^^^
- */
-const lazyQuantifier0003 = (
-  start: number,
-  str: string,
-  context: Context
-): number => {
-  context.quantifierCounter0++;
-
-  const followUpResult = fiber0001(start, str, context);
-  if (followUpResult === -1) {
-  } else {
-    return followUpResult;
-  }
-
-  if (context.quantifierCounter0 < 3) {
-    const groupMarkerStartCopy0 = context.groupMarkerStart0;
-    const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-    const tryDeeperResult = fiber0002(start, str, context);
-    if (tryDeeperResult !== -1) {
-      // we actually were able to go deeper, nice!
-      return tryDeeperResult;
+    if (directFollowUpResult0 !== -1 || matches0 === 3) {
+      return directFollowUpResult0;
     }
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-  }
 
-  context.quantifierCounter0--;
-  return -1;
+    const wrappedResult = fiber0002(i, str, context);
+    if (wrappedResult === -1) {
+      return -1;
+    }
+    i = wrappedResult;
+    matches0++;
+  }
 };

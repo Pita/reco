@@ -4,7 +4,7 @@ import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 import { BacktrackingError } from '../BacktrackingException';
-import { dfaAnalyzeAlternative } from '../../dfa-analyzer/dfaAnalyze';
+import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
 import { CharRangeSequencePossibilities } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 
 const handleBacktrackingDisjunction = (
@@ -54,6 +54,7 @@ const handleBacktrackingDisjunction = (
     },
     minLength,
     maxLength,
+    alternatives[0].parent,
   );
 };
 
@@ -70,7 +71,7 @@ const checkIfAlternativesHaveInternalBacktracking = (
       handleAlternative(
         alternative,
         fakeCollector,
-        fakeCollector.createFinalFiber(),
+        fakeCollector.createFinalFiber(currentFiber.meta.path),
         {
           ...flags,
           INTERNAL_no_backtracking: true,
@@ -100,6 +101,11 @@ const isANonBacktrackingDisjunction = (
     return true;
   }
 
+  // impossible to backtrack if there is nothing coming afterwards
+  if (currentFiber.meta.path.length === 0) {
+    return true;
+  }
+
   if (
     checkIfAlternativesHaveInternalBacktracking(
       alternatives,
@@ -116,7 +122,7 @@ const isANonBacktrackingDisjunction = (
     const mappedDFAs: CharRangeSequencePossibilities[] = [];
     let complexity = 1;
     for (let i = 0; i < alternatives.length; i++) {
-      const possibilities = dfaAnalyzeAlternative(alternatives[i], literal, 20);
+      const possibilities = dfaAnalyzeElement([alternatives[i]], literal, 20);
 
       if (possibilities === null) {
         return false;
@@ -160,7 +166,7 @@ const handleNonBacktrackingDisjunction = (
     handleAlternative(
       alternative,
       collector,
-      collector.createFinalFiber(),
+      collector.createFinalFiber(currentFiber.meta.path),
       flags,
       literal,
     ),
@@ -196,6 +202,7 @@ const handleNonBacktrackingDisjunction = (
     },
     minLength,
     maxLength,
+    alternatives[0].parent,
   );
 };
 

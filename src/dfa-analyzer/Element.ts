@@ -32,5 +32,11 @@ export const handleElement: DFAHandler<
       return handleQuantifier(element, options);
     case 'Backreference':
       return handleBackReference(element, options);
+    case 'Pattern':
+      return handleDisjunction(element.alternatives, options);
+    case 'Alternative':
+      return handleDisjunction([element], options);
+    default:
+      throw new Error(`Can't handle ${element.type}`);
   }
 };

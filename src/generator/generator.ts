@@ -51,7 +51,7 @@ const genTemplateValuesPrivate = (regexStr: string, version: string) => {
   const mainHandler = handleDisjunction(
     literal.pattern.alternatives,
     collector,
-    collector.createFinalFiber(),
+    collector.createFinalFiber([]),
     literal.flags,
     literal,
   );

@@ -1,11 +1,11 @@
 import { RegExpParser } from 'regexpp';
-import { dfaAnalyzeAlternative } from '../dfaAnalyze';
+import { dfaAnalyzeElement } from '../dfaAnalyze';
 
 describe('overlyComplexBranchingError', () => {
   test('gets thrown when branching is too hard', () => {
     const literal = new RegExpParser().parseLiteral('/a*(b|c|d|e)/');
-    const result = dfaAnalyzeAlternative(
-      literal.pattern.alternatives[0],
+    const result = dfaAnalyzeElement(
+      [literal.pattern.alternatives[0]],
       literal,
       100,
     );
