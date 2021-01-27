@@ -1,5 +1,5 @@
 import { handleAssertion } from './Assertion';
-// import { handleBackReference } from './BackReference';
+import { handleBackReference } from './BackReference';
 import { handleSetOrCharacter } from './Character';
 import { handleDisjunction } from './Disjunction';
 import { handleInfiniteASTElement } from './InfiniteElement';
@@ -30,10 +30,7 @@ export const handleElement: DFAHandler<
       return handleInfiniteASTElement(element, options);
     case 'Quantifier':
       return handleQuantifier(element, options);
-    default:
-      throw new Error(`${element.type} not handled yet`);
-
-    // case 'Backreference':
-    //   return handleBackReference(element, options);
+    case 'Backreference':
+      return handleBackReference(element, options);
   }
 };

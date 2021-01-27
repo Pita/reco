@@ -73,9 +73,6 @@ describe('handleAlternative', () => {
       return element.toJSON();
     });
 
-    console.log('length', resultSerialized.length);
-    console.log(JSON.stringify(resultSerialized, null, 2));
-
     expect(resultSerialized).toEqual(expected);
   });
 });
