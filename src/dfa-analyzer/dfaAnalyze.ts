@@ -4,6 +4,7 @@ import {
   CharRangeSequence,
   OverlyComplexBranchingError,
 } from './CharRangeSequence';
+import { CharRangeSequencePossibilities } from './CharRangeSequencePossibilities';
 import { DFACache } from './types';
 
 export const dfaAnalyzeAlternative = (
@@ -16,7 +17,7 @@ export const dfaAnalyzeAlternative = (
   };
 
   try {
-    return handleAlternative(element, {
+    const possibilities = handleAlternative(element, {
       cache,
       literal,
       currentLength: 0,
@@ -24,6 +25,7 @@ export const dfaAnalyzeAlternative = (
       path: [],
       currentSequences: [new CharRangeSequence()],
     });
+    return new CharRangeSequencePossibilities(possibilities);
   } catch (e) {
     if (e instanceof OverlyComplexBranchingError) {
       return null;

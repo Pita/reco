@@ -6,6 +6,8 @@ import { handleAlternative } from './Alternative';
 import { CharRange } from '../CharRange';
 import { BacktrackingError } from '../BacktrackingException';
 import { dfaAnalyzeAlternative } from '../../dfa-analyzer/dfaAnalyze';
+import { CharRangeSequence } from '../../dfa-analyzer/CharRangeSequence';
+import { CharRangeSequencePossibilities } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 
 const handleBacktrackingDisjunction = (
   alternatives: AST.Alternative[],
@@ -102,30 +104,6 @@ const isANonBacktrackingDisjunction = (
   flags: Flags,
   literal: AST.RegExpLiteral,
 ) => {
-  // const skipNumbers = [
-  //   170,
-  //   10,
-  //   38,
-  //   19,
-  //   86,
-  //   115,
-  //   77,
-  //   254,
-  //   235,
-  //   291,
-  //   203,
-  //   212,
-  //   447,
-  //   /*new*/
-  //   // 351,
-  //   // 374,
-  //   // 363,
-  //   // 374,
-  // ];
-  // if (skipNumbers.includes(alternatives[0].parent.start)) {
-  //   return false;
-  // }
-
   if (alternatives[0].parent.type === 'Pattern') {
     return true;
   }
@@ -142,25 +120,30 @@ const isANonBacktrackingDisjunction = (
     return false;
   }
 
-  const mappedDFAs = alternatives.map((alternative) => {
-    return dfaAnalyzeAlternative(alternative, literal, 20);
-  });
-
   let completlyExclusive = (() => {
+    const mappedDFAs: CharRangeSequencePossibilities[] = [];
+    let complexity = 1;
+    for (let i = 0; i < alternatives.length; i++) {
+      const possibilities = dfaAnalyzeAlternative(alternatives[i], literal, 20);
+
+      if (possibilities === null) {
+        return false;
+      }
+      mappedDFAs.push(possibilities);
+
+      complexity *= possibilities.size();
+      if (complexity > 1000) {
+        return false;
+      }
+    }
+
     for (let i = 0; i < mappedDFAs.length - 1; i++) {
       const a = mappedDFAs[i];
 
       for (let j = i + 1; j < mappedDFAs.length; j++) {
         const b = mappedDFAs[j];
 
-        const isExclusive = a.after.some((charRangeA, k) => {
-          const charRangeB = b.after[k];
-          if (!charRangeB) {
-            return true;
-          }
-
-          return !charRangeA.hasOverlap(charRangeB);
-        });
+        const isExclusive = a.isExclusive(b);
 
         if (!isExclusive) {
           return false;
@@ -256,11 +239,6 @@ export const handleDisjunction = (
       literal,
     )
   ) {
-    console.log(
-      'non backtracking',
-      alternatives[0].parent.start,
-      alternatives[0].parent.raw,
-    );
     return handleNonBacktrackingDisjunction(
       alternatives,
       collector,
@@ -272,8 +250,6 @@ export const handleDisjunction = (
     if (flags.INTERNAL_no_backtracking) {
       throw new BacktrackingError();
     }
-
-    console.log('backtracking', alternatives[0].parent.raw);
 
     return handleBacktrackingDisjunction(
       alternatives,

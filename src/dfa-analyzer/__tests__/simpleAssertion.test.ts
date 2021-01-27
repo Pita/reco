@@ -28,9 +28,7 @@ describe('handleAlternative', () => {
       literal,
       10,
     );
-    const resultSerialized = result!.map((element) => {
-      return element.toJSON();
-    });
+    const resultSerialized = result!.toJSON();
 
     expect(resultSerialized).toEqual(expected);
   });

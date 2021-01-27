@@ -49,8 +49,8 @@ export function generatedRegexMatcher(str: string) {
   };
 
   // endAnchored
-  const min = 0;
-  const max = 0;
+  const min = Math.max(str.length - 11, 0);
+  const max = str.length - 6;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0001(i, str, context);
@@ -95,7 +95,7 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
     const groupMarkerEndCopy2 = context.groupMarkerEnd2;
     const groupMarkerStartCopy3 = context.groupMarkerStart3;
     const groupMarkerEndCopy3 = context.groupMarkerEnd3;
-    const length0 = fiber0044(i, str, context);
+    const length0 = fiber0045(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
@@ -104,14 +104,14 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
     context.groupMarkerEnd0 = groupMarkerEndCopy0;
     context.groupMarkerStart1 = groupMarkerStartCopy1;
     context.groupMarkerEnd1 = groupMarkerEndCopy1;
-    const length1 = fiber0058(i, str, context);
+    const length1 = fiber0059(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
     context.groupMarkerStart2 = groupMarkerStartCopy2;
     context.groupMarkerEnd2 = groupMarkerEndCopy2;
-    const length2 = fiber0096(i, str, context);
+    const length2 = fiber0098(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction0;
@@ -312,99 +312,6 @@ const fiber0006 = (start: number, str: string, context: Context): number => {
 const fiber0007 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
-   * charOrSet
-   * /^(?:(?:31(\/|-|\.)...
-   *         ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 51;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * /^(?:(?:31(\/|-|\.)(...
-   *          ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1 = false;
-
-  result1 = charCode1 === 49;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  /*
-   * groupStartMarker
-   * /^(?:(?:31(\/|-|\.)(?:0?[1357...
-   *           ^^^^^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
-   * nonBacktrackingDisjunction
-   * /^(?:(?:31(\/|-|\.)(?:0?[1357...
-   *           ^^^^^^^^^
-   */
-  nonBacktrackingDisjunction3: {
-    const length0 = fiber0019(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction3;
-    }
-    const length1 = fiber0020(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction3;
-    }
-    const length2 = fiber0021(i, str, context);
-    if (length2 !== -1) {
-      i = length2;
-      break nonBacktrackingDisjunction3;
-    }
-    return -1;
-  }
-  /*
-   * groupEndMarker
-   * /^(?:(?:31(\/|-|\.)(?:0?[1357...
-   *           ^^^^^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  /*
-   * nonBacktrackingDisjunction
-   * ...1(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:...
-   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   */
-  nonBacktrackingDisjunction5: {
-    const length0 = fiber0008(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction5;
-    }
-    const length1 = fiber0010(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction5;
-    }
-    const length2 = fiber0011(i, str, context);
-    if (length2 !== -1) {
-      i = length2;
-      break nonBacktrackingDisjunction5;
-    }
-    return -1;
-  }
-  /*
    * groupBackReference
    * ...Oct|Dec)))\1|(?:(?:29|...
    *              ^^
@@ -477,7 +384,7 @@ const fiber0008 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return i;
+  return fiber0007(i, str, context);
 };
 const fiber0009 = (start: number, str: string, context: Context): number => {
   let i = start;
@@ -536,7 +443,7 @@ const fiber0010 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return i;
+  return fiber0007(i, str, context);
 };
 const fiber0011 = (start: number, str: string, context: Context): number => {
   let i = start;
@@ -583,7 +490,7 @@ const fiber0011 = (start: number, str: string, context: Context): number => {
     }
     return -1;
   }
-  return i;
+  return fiber0007(i, str, context);
 };
 const fiber0012 = (start: number, str: string, context: Context): number => {
   let i = start;
@@ -974,6 +881,97 @@ const fiber0019 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
+   * /^(?:(?:31(\/|-|\.)...
+   *         ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  result0 = charCode0 === 51;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * /^(?:(?:31(\/|-|\.)(...
+   *          ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  result1 = charCode1 === 49;
+
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * groupStartMarker
+   * /^(?:(?:31(\/|-|\.)(?:0?[1357...
+   *           ^^^^^^^^^
+   */
+  context.groupMarkerStartTemp0 = i;
+  /*
+   * nonBacktrackingDisjunction
+   * /^(?:(?:31(\/|-|\.)(?:0?[1357...
+   *           ^^^^^^^^^
+   */
+  nonBacktrackingDisjunction3: {
+    const length0 = fiber0020(i, str, context);
+    if (length0 !== -1) {
+      i = length0;
+      break nonBacktrackingDisjunction3;
+    }
+    const length1 = fiber0021(i, str, context);
+    if (length1 !== -1) {
+      i = length1;
+      break nonBacktrackingDisjunction3;
+    }
+    const length2 = fiber0022(i, str, context);
+    if (length2 !== -1) {
+      i = length2;
+      break nonBacktrackingDisjunction3;
+    }
+    return -1;
+  }
+  /*
+   * groupEndMarker
+   * /^(?:(?:31(\/|-|\.)(?:0?[1357...
+   *           ^^^^^^^^^
+   */
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
+  /*
+   * disjunction
+   * ...1(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:...
+   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   */
+  const length0 = fiber0008(i, str, context);
+  if (length0 !== -1) {
+    return length0;
+  }
+  const length1 = fiber0010(i, str, context);
+  if (length1 !== -1) {
+    return length1;
+  }
+  const length2 = fiber0011(i, str, context);
+  if (length2 !== -1) {
+    return length2;
+  }
+  return -1;
+};
+const fiber0020 = (start: number, str: string, context: Context): number => {
+  let i = start;
+  /*
+   * charOrSet
    * /^(?:(?:31(\/|-|\.)(?:0...
    *            ^^
    */
@@ -991,7 +989,7 @@ const fiber0019 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0020 = (start: number, str: string, context: Context): number => {
+const fiber0021 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1012,7 +1010,7 @@ const fiber0020 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0021 = (start: number, str: string, context: Context): number => {
+const fiber0022 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1033,7 +1031,7 @@ const fiber0021 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0022 = (start: number, str: string, context: Context): number => {
+const fiber0023 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * groupBackReference
@@ -1059,7 +1057,7 @@ const fiber0022 = (start: number, str: string, context: Context): number => {
   }
   return fiber0006(i, str, context);
 };
-const fiber0023 = (start: number, str: string, context: Context): number => {
+const fiber0024 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingQuantifier
@@ -1068,7 +1066,7 @@ const fiber0023 = (start: number, str: string, context: Context): number => {
    */
   let matches0 = 0;
   while (true) {
-    const wrappedResult = fiber0024(i, str, context);
+    const wrappedResult = fiber0025(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -1104,9 +1102,9 @@ const fiber0023 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return fiber0022(i, str, context);
+  return fiber0023(i, str, context);
 };
-const fiber0024 = (start: number, str: string, context: Context): number => {
+const fiber0025 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1127,7 +1125,7 @@ const fiber0024 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0025 = (start: number, str: string, context: Context): number => {
+const fiber0026 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1164,9 +1162,9 @@ const fiber0025 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return fiber0022(i, str, context);
+  return fiber0023(i, str, context);
 };
-const fiber0026 = (start: number, str: string, context: Context): number => {
+const fiber0027 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -1174,66 +1172,66 @@ const fiber0026 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0027(i, str, context);
+    const length0 = fiber0028(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0028(i, str, context);
+    const length1 = fiber0029(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
-    const length2 = fiber0029(i, str, context);
+    const length2 = fiber0030(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction0;
     }
-    const length3 = fiber0030(i, str, context);
+    const length3 = fiber0031(i, str, context);
     if (length3 !== -1) {
       i = length3;
       break nonBacktrackingDisjunction0;
     }
-    const length4 = fiber0031(i, str, context);
+    const length4 = fiber0032(i, str, context);
     if (length4 !== -1) {
       i = length4;
       break nonBacktrackingDisjunction0;
     }
-    const length5 = fiber0032(i, str, context);
+    const length5 = fiber0033(i, str, context);
     if (length5 !== -1) {
       i = length5;
       break nonBacktrackingDisjunction0;
     }
-    const length6 = fiber0033(i, str, context);
+    const length6 = fiber0034(i, str, context);
     if (length6 !== -1) {
       i = length6;
       break nonBacktrackingDisjunction0;
     }
-    const length7 = fiber0034(i, str, context);
+    const length7 = fiber0035(i, str, context);
     if (length7 !== -1) {
       i = length7;
       break nonBacktrackingDisjunction0;
     }
-    const length8 = fiber0035(i, str, context);
+    const length8 = fiber0036(i, str, context);
     if (length8 !== -1) {
       i = length8;
       break nonBacktrackingDisjunction0;
     }
-    const length9 = fiber0036(i, str, context);
+    const length9 = fiber0037(i, str, context);
     if (length9 !== -1) {
       i = length9;
       break nonBacktrackingDisjunction0;
     }
-    const length10 = fiber0037(i, str, context);
+    const length10 = fiber0038(i, str, context);
     if (length10 !== -1) {
       i = length10;
       break nonBacktrackingDisjunction0;
     }
     return -1;
   }
-  return fiber0022(i, str, context);
+  return fiber0023(i, str, context);
 };
-const fiber0027 = (start: number, str: string, context: Context): number => {
+const fiber0028 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1288,7 +1286,7 @@ const fiber0027 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0028 = (start: number, str: string, context: Context): number => {
+const fiber0029 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1343,7 +1341,7 @@ const fiber0028 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0029 = (start: number, str: string, context: Context): number => {
+const fiber0030 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1398,7 +1396,7 @@ const fiber0029 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0030 = (start: number, str: string, context: Context): number => {
+const fiber0031 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1453,7 +1451,7 @@ const fiber0030 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0031 = (start: number, str: string, context: Context): number => {
+const fiber0032 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1508,7 +1506,7 @@ const fiber0031 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0032 = (start: number, str: string, context: Context): number => {
+const fiber0033 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1563,7 +1561,7 @@ const fiber0032 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0033 = (start: number, str: string, context: Context): number => {
+const fiber0034 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1618,7 +1616,7 @@ const fiber0033 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0034 = (start: number, str: string, context: Context): number => {
+const fiber0035 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1673,7 +1671,7 @@ const fiber0034 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0035 = (start: number, str: string, context: Context): number => {
+const fiber0036 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1728,7 +1726,7 @@ const fiber0035 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0036 = (start: number, str: string, context: Context): number => {
+const fiber0037 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1783,7 +1781,7 @@ const fiber0036 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0037 = (start: number, str: string, context: Context): number => {
+const fiber0038 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1838,7 +1836,7 @@ const fiber0037 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0038 = (start: number, str: string, context: Context): number => {
+const fiber0039 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -1846,12 +1844,12 @@ const fiber0038 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0042(i, str, context);
+    const length0 = fiber0043(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0043(i, str, context);
+    const length1 = fiber0044(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
@@ -1870,17 +1868,17 @@ const fiber0038 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^
    */
   nonBacktrackingDisjunction2: {
-    const length0 = fiber0039(i, str, context);
+    const length0 = fiber0040(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction2;
     }
-    const length1 = fiber0040(i, str, context);
+    const length1 = fiber0041(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction2;
     }
-    const length2 = fiber0041(i, str, context);
+    const length2 = fiber0042(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction2;
@@ -1899,21 +1897,21 @@ const fiber0038 = (start: number, str: string, context: Context): number => {
    * ...)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\2))(?:(?:...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const length0 = fiber0023(i, str, context);
+  const length0 = fiber0024(i, str, context);
   if (length0 !== -1) {
     return length0;
   }
-  const length1 = fiber0025(i, str, context);
+  const length1 = fiber0026(i, str, context);
   if (length1 !== -1) {
     return length1;
   }
-  const length2 = fiber0026(i, str, context);
+  const length2 = fiber0027(i, str, context);
   if (length2 !== -1) {
     return length2;
   }
   return -1;
 };
-const fiber0039 = (start: number, str: string, context: Context): number => {
+const fiber0040 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1934,7 +1932,7 @@ const fiber0039 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0040 = (start: number, str: string, context: Context): number => {
+const fiber0041 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1955,7 +1953,7 @@ const fiber0040 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0041 = (start: number, str: string, context: Context): number => {
+const fiber0042 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -1976,7 +1974,7 @@ const fiber0041 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0042 = (start: number, str: string, context: Context): number => {
+const fiber0043 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2014,7 +2012,7 @@ const fiber0042 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0043 = (start: number, str: string, context: Context): number => {
+const fiber0044 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2052,7 +2050,7 @@ const fiber0043 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0044 = (start: number, str: string, context: Context): number => {
+const fiber0045 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * startAnchor
@@ -2071,13 +2069,13 @@ const fiber0044 = (start: number, str: string, context: Context): number => {
   const groupMarkerEndCopy0 = context.groupMarkerEnd0;
   const groupMarkerStartCopy1 = context.groupMarkerStart1;
   const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-  const length0 = fiber0007(i, str, context);
+  const length0 = fiber0019(i, str, context);
   if (length0 !== -1) {
     return length0;
   }
   context.groupMarkerStart0 = groupMarkerStartCopy0;
   context.groupMarkerEnd0 = groupMarkerEndCopy0;
-  const length1 = fiber0038(i, str, context);
+  const length1 = fiber0039(i, str, context);
   if (length1 !== -1) {
     return length1;
   }
@@ -2085,7 +2083,7 @@ const fiber0044 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd1 = groupMarkerEndCopy1;
   return -1;
 };
-const fiber0045 = (start: number, str: string, context: Context): number => {
+const fiber0046 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * endAnchor
@@ -2097,7 +2095,7 @@ const fiber0045 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0046 = (start: number, str: string, context: Context): number => {
+const fiber0047 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -2105,26 +2103,26 @@ const fiber0046 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0047(i, str, context);
+    const length0 = fiber0048(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0048(i, str, context);
+    const length1 = fiber0049(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
-    const length2 = fiber0049(i, str, context);
+    const length2 = fiber0050(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction0;
     }
     return -1;
   }
-  return fiber0045(i, str, context);
+  return fiber0046(i, str, context);
 };
-const fiber0047 = (start: number, str: string, context: Context): number => {
+const fiber0048 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2162,7 +2160,7 @@ const fiber0047 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0048 = (start: number, str: string, context: Context): number => {
+const fiber0049 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2206,7 +2204,7 @@ const fiber0048 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0049 = (start: number, str: string, context: Context): number => {
+const fiber0050 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2251,7 +2249,7 @@ const fiber0049 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0050 = (start: number, str: string, context: Context): number => {
+const fiber0051 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -2259,12 +2257,12 @@ const fiber0050 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0051(i, str, context);
+    const length0 = fiber0052(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0052(i, str, context);
+    const length1 = fiber0053(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
@@ -2273,7 +2271,7 @@ const fiber0050 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0051 = (start: number, str: string, context: Context): number => {
+const fiber0052 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2312,7 +2310,7 @@ const fiber0051 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0052 = (start: number, str: string, context: Context): number => {
+const fiber0053 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2352,7 +2350,7 @@ const fiber0052 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0053 = (start: number, str: string, context: Context): number => {
+const fiber0054 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * backtrackingFixedLengthQuantifier
@@ -2362,7 +2360,7 @@ const fiber0053 = (start: number, str: string, context: Context): number => {
   let matches0 = 0;
 
   while (true) {
-    const wrappedResult = fiber0050(i, str, context);
+    const wrappedResult = fiber0051(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -2378,7 +2376,7 @@ const fiber0053 = (start: number, str: string, context: Context): number => {
 
   // needs followUp & forkingFiber
   while (matches0 >= 0) {
-    const directFollowUpResult0 = fiber0046(i, str, context);
+    const directFollowUpResult0 = fiber0047(i, str, context);
 
     if (directFollowUpResult0 !== -1) {
       return directFollowUpResult0;
@@ -2390,7 +2388,7 @@ const fiber0053 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0054 = (start: number, str: string, context: Context): number => {
+const fiber0055 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -2398,17 +2396,17 @@ const fiber0054 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0055(i, str, context);
+    const length0 = fiber0056(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0056(i, str, context);
+    const length1 = fiber0057(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
-    const length2 = fiber0057(i, str, context);
+    const length2 = fiber0058(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction0;
@@ -2449,9 +2447,9 @@ const fiber0054 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return fiber0045(i, str, context);
+  return fiber0046(i, str, context);
 };
-const fiber0055 = (start: number, str: string, context: Context): number => {
+const fiber0056 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2489,7 +2487,7 @@ const fiber0055 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0056 = (start: number, str: string, context: Context): number => {
+const fiber0057 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2533,7 +2531,7 @@ const fiber0056 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0057 = (start: number, str: string, context: Context): number => {
+const fiber0058 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2574,7 +2572,7 @@ const fiber0057 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0058 = (start: number, str: string, context: Context): number => {
+const fiber0059 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * startAnchor
@@ -2630,17 +2628,17 @@ const fiber0058 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^
    */
   nonBacktrackingDisjunction4: {
-    const length0 = fiber0062(i, str, context);
+    const length0 = fiber0063(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction4;
     }
-    const length1 = fiber0063(i, str, context);
+    const length1 = fiber0064(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction4;
     }
-    const length2 = fiber0064(i, str, context);
+    const length2 = fiber0065(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction4;
@@ -2660,12 +2658,12 @@ const fiber0058 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction6: {
-    const length0 = fiber0059(i, str, context);
+    const length0 = fiber0060(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction6;
     }
-    const length1 = fiber0061(i, str, context);
+    const length1 = fiber0062(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction6;
@@ -2699,17 +2697,17 @@ const fiber0058 = (start: number, str: string, context: Context): number => {
    * ...Feb))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const length0 = fiber0053(i, str, context);
+  const length0 = fiber0054(i, str, context);
   if (length0 !== -1) {
     return length0;
   }
-  const length1 = fiber0054(i, str, context);
+  const length1 = fiber0055(i, str, context);
   if (length1 !== -1) {
     return length1;
   }
   return -1;
 };
-const fiber0059 = (start: number, str: string, context: Context): number => {
+const fiber0060 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingQuantifier
@@ -2718,7 +2716,7 @@ const fiber0059 = (start: number, str: string, context: Context): number => {
    */
   let matches0 = 0;
   while (true) {
-    const wrappedResult = fiber0060(i, str, context);
+    const wrappedResult = fiber0061(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -2751,7 +2749,7 @@ const fiber0059 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0060 = (start: number, str: string, context: Context): number => {
+const fiber0061 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2772,7 +2770,7 @@ const fiber0060 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0061 = (start: number, str: string, context: Context): number => {
+const fiber0062 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2827,7 +2825,7 @@ const fiber0061 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0062 = (start: number, str: string, context: Context): number => {
+const fiber0063 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2848,7 +2846,7 @@ const fiber0062 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0063 = (start: number, str: string, context: Context): number => {
+const fiber0064 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2869,7 +2867,7 @@ const fiber0063 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0064 = (start: number, str: string, context: Context): number => {
+const fiber0065 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2890,7 +2888,7 @@ const fiber0064 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0065 = (start: number, str: string, context: Context): number => {
+const fiber0066 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2938,7 +2936,7 @@ const fiber0065 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0066 = (start: number, str: string, context: Context): number => {
+const fiber0067 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -2946,12 +2944,12 @@ const fiber0066 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0067(i, str, context);
+    const length0 = fiber0068(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0068(i, str, context);
+    const length1 = fiber0069(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
@@ -2960,7 +2958,7 @@ const fiber0066 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0067 = (start: number, str: string, context: Context): number => {
+const fiber0068 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -2999,7 +2997,7 @@ const fiber0067 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0068 = (start: number, str: string, context: Context): number => {
+const fiber0069 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3039,62 +3037,8 @@ const fiber0068 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0069 = (start: number, str: string, context: Context): number => {
+const fiber0070 = (start: number, str: string, context: Context): number => {
   let i = start;
-  /*
-   * groupStartMarker
-   * ...\d|2[0-8])(\/|-|\.)(?:(?:0?[1...
-   *              ^^^^^^^^^
-   */
-  context.groupMarkerStartTemp3 = i;
-  /*
-   * nonBacktrackingDisjunction
-   * ...\d|2[0-8])(\/|-|\.)(?:(?:0?[1...
-   *              ^^^^^^^^^
-   */
-  nonBacktrackingDisjunction1: {
-    const length0 = fiber0089(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction1;
-    }
-    const length1 = fiber0090(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction1;
-    }
-    const length2 = fiber0091(i, str, context);
-    if (length2 !== -1) {
-      i = length2;
-      break nonBacktrackingDisjunction1;
-    }
-    return -1;
-  }
-  /*
-   * groupEndMarker
-   * ...\d|2[0-8])(\/|-|\.)(?:(?:0?[1...
-   *              ^^^^^^^^^
-   */
-  context.groupMarkerStart3 = context.groupMarkerStartTemp3;
-  context.groupMarkerEnd3 = i;
-  /*
-   * nonBacktrackingDisjunction
-   * ...)(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[...
-   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   */
-  nonBacktrackingDisjunction3: {
-    const length0 = fiber0070(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction3;
-    }
-    const length1 = fiber0083(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction3;
-    }
-    return -1;
-  }
   /*
    * groupBackReference
    * ...Nov|Dec)))\4(?:(?:1[6-...
@@ -3122,38 +3066,38 @@ const fiber0069 = (start: number, str: string, context: Context): number => {
    * ...ec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
    *              ^^^^^^^^^^^^^^^^^^^
    */
-  let matches5 = 0;
+  let matches1 = 0;
 
   while (true) {
-    const wrappedResult = fiber0066(i, str, context);
+    const wrappedResult = fiber0067(i, str, context);
 
     if (wrappedResult === -1) {
       break;
     } else {
       i = wrappedResult;
-      matches5++;
+      matches1++;
 
-      if (matches5 === 1) {
+      if (matches1 === 1) {
         break;
       }
     }
   }
 
   // needs followUp & forkingFiber
-  while (matches5 >= 0) {
-    const directFollowUpResult5 = fiber0065(i, str, context);
+  while (matches1 >= 0) {
+    const directFollowUpResult1 = fiber0066(i, str, context);
 
-    if (directFollowUpResult5 !== -1) {
-      return directFollowUpResult5;
+    if (directFollowUpResult1 !== -1) {
+      return directFollowUpResult1;
     }
 
-    matches5--;
+    matches1--;
     i -= 2;
   }
 
   return -1;
 };
-const fiber0070 = (start: number, str: string, context: Context): number => {
+const fiber0071 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -3161,21 +3105,21 @@ const fiber0070 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0071(i, str, context);
+    const length0 = fiber0072(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0073(i, str, context);
+    const length1 = fiber0074(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
     return -1;
   }
-  return i;
+  return fiber0070(i, str, context);
 };
-const fiber0071 = (start: number, str: string, context: Context): number => {
+const fiber0072 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingQuantifier
@@ -3184,7 +3128,7 @@ const fiber0071 = (start: number, str: string, context: Context): number => {
    */
   let matches0 = 0;
   while (true) {
-    const wrappedResult = fiber0072(i, str, context);
+    const wrappedResult = fiber0073(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -3218,7 +3162,7 @@ const fiber0071 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0072 = (start: number, str: string, context: Context): number => {
+const fiber0073 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3239,7 +3183,7 @@ const fiber0072 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0073 = (start: number, str: string, context: Context): number => {
+const fiber0074 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -3247,47 +3191,47 @@ const fiber0073 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0074(i, str, context);
+    const length0 = fiber0075(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0075(i, str, context);
+    const length1 = fiber0076(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
-    const length2 = fiber0076(i, str, context);
+    const length2 = fiber0077(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction0;
     }
-    const length3 = fiber0077(i, str, context);
+    const length3 = fiber0078(i, str, context);
     if (length3 !== -1) {
       i = length3;
       break nonBacktrackingDisjunction0;
     }
-    const length4 = fiber0078(i, str, context);
+    const length4 = fiber0079(i, str, context);
     if (length4 !== -1) {
       i = length4;
       break nonBacktrackingDisjunction0;
     }
-    const length5 = fiber0079(i, str, context);
+    const length5 = fiber0080(i, str, context);
     if (length5 !== -1) {
       i = length5;
       break nonBacktrackingDisjunction0;
     }
-    const length6 = fiber0080(i, str, context);
+    const length6 = fiber0081(i, str, context);
     if (length6 !== -1) {
       i = length6;
       break nonBacktrackingDisjunction0;
     }
-    const length7 = fiber0081(i, str, context);
+    const length7 = fiber0082(i, str, context);
     if (length7 !== -1) {
       i = length7;
       break nonBacktrackingDisjunction0;
     }
-    const length8 = fiber0082(i, str, context);
+    const length8 = fiber0083(i, str, context);
     if (length8 !== -1) {
       i = length8;
       break nonBacktrackingDisjunction0;
@@ -3296,7 +3240,7 @@ const fiber0073 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0074 = (start: number, str: string, context: Context): number => {
+const fiber0075 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3351,7 +3295,7 @@ const fiber0074 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0075 = (start: number, str: string, context: Context): number => {
+const fiber0076 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3406,7 +3350,7 @@ const fiber0075 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0076 = (start: number, str: string, context: Context): number => {
+const fiber0077 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3461,7 +3405,7 @@ const fiber0076 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0077 = (start: number, str: string, context: Context): number => {
+const fiber0078 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3516,7 +3460,7 @@ const fiber0077 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0078 = (start: number, str: string, context: Context): number => {
+const fiber0079 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3571,7 +3515,7 @@ const fiber0078 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0079 = (start: number, str: string, context: Context): number => {
+const fiber0080 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3626,7 +3570,7 @@ const fiber0079 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0080 = (start: number, str: string, context: Context): number => {
+const fiber0081 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3681,7 +3625,7 @@ const fiber0080 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0081 = (start: number, str: string, context: Context): number => {
+const fiber0082 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3736,7 +3680,7 @@ const fiber0081 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0082 = (start: number, str: string, context: Context): number => {
+const fiber0083 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3791,7 +3735,7 @@ const fiber0082 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0083 = (start: number, str: string, context: Context): number => {
+const fiber0084 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -3799,21 +3743,21 @@ const fiber0083 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0084(i, str, context);
+    const length0 = fiber0085(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0085(i, str, context);
+    const length1 = fiber0086(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
     return -1;
   }
-  return i;
+  return fiber0070(i, str, context);
 };
-const fiber0084 = (start: number, str: string, context: Context): number => {
+const fiber0085 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3852,7 +3796,7 @@ const fiber0084 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0085 = (start: number, str: string, context: Context): number => {
+const fiber0086 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingDisjunction
@@ -3860,17 +3804,17 @@ const fiber0085 = (start: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0086(i, str, context);
+    const length0 = fiber0087(i, str, context);
     if (length0 !== -1) {
       i = length0;
       break nonBacktrackingDisjunction0;
     }
-    const length1 = fiber0087(i, str, context);
+    const length1 = fiber0088(i, str, context);
     if (length1 !== -1) {
       i = length1;
       break nonBacktrackingDisjunction0;
     }
-    const length2 = fiber0088(i, str, context);
+    const length2 = fiber0089(i, str, context);
     if (length2 !== -1) {
       i = length2;
       break nonBacktrackingDisjunction0;
@@ -3879,7 +3823,7 @@ const fiber0085 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0086 = (start: number, str: string, context: Context): number => {
+const fiber0087 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3934,7 +3878,7 @@ const fiber0086 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0087 = (start: number, str: string, context: Context): number => {
+const fiber0088 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -3989,7 +3933,7 @@ const fiber0087 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0088 = (start: number, str: string, context: Context): number => {
+const fiber0089 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -4044,7 +3988,60 @@ const fiber0088 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0089 = (start: number, str: string, context: Context): number => {
+const fiber0090 = (start: number, str: string, context: Context): number => {
+  let i = start;
+  /*
+   * groupStartMarker
+   * ...\d|2[0-8])(\/|-|\.)(?:(?:0?[1...
+   *              ^^^^^^^^^
+   */
+  context.groupMarkerStartTemp3 = i;
+  /*
+   * nonBacktrackingDisjunction
+   * ...\d|2[0-8])(\/|-|\.)(?:(?:0?[1...
+   *              ^^^^^^^^^
+   */
+  nonBacktrackingDisjunction1: {
+    const length0 = fiber0091(i, str, context);
+    if (length0 !== -1) {
+      i = length0;
+      break nonBacktrackingDisjunction1;
+    }
+    const length1 = fiber0092(i, str, context);
+    if (length1 !== -1) {
+      i = length1;
+      break nonBacktrackingDisjunction1;
+    }
+    const length2 = fiber0093(i, str, context);
+    if (length2 !== -1) {
+      i = length2;
+      break nonBacktrackingDisjunction1;
+    }
+    return -1;
+  }
+  /*
+   * groupEndMarker
+   * ...\d|2[0-8])(\/|-|\.)(?:(?:0?[1...
+   *              ^^^^^^^^^
+   */
+  context.groupMarkerStart3 = context.groupMarkerStartTemp3;
+  context.groupMarkerEnd3 = i;
+  /*
+   * disjunction
+   * ...)(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[...
+   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   */
+  const length0 = fiber0071(i, str, context);
+  if (length0 !== -1) {
+    return length0;
+  }
+  const length1 = fiber0084(i, str, context);
+  if (length1 !== -1) {
+    return length1;
+  }
+  return -1;
+};
+const fiber0091 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -4065,7 +4062,7 @@ const fiber0089 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0090 = (start: number, str: string, context: Context): number => {
+const fiber0092 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -4086,7 +4083,7 @@ const fiber0090 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0091 = (start: number, str: string, context: Context): number => {
+const fiber0093 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -4107,7 +4104,7 @@ const fiber0091 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0092 = (start: number, str: string, context: Context): number => {
+const fiber0094 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * nonBacktrackingQuantifier
@@ -4116,7 +4113,7 @@ const fiber0092 = (start: number, str: string, context: Context): number => {
    */
   let matches0 = 0;
   while (true) {
-    const wrappedResult = fiber0093(i, str, context);
+    const wrappedResult = fiber0095(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -4148,9 +4145,9 @@ const fiber0092 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return fiber0069(i, str, context);
+  return fiber0090(i, str, context);
 };
-const fiber0093 = (start: number, str: string, context: Context): number => {
+const fiber0095 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -4171,7 +4168,7 @@ const fiber0093 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0094 = (start: number, str: string, context: Context): number => {
+const fiber0096 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -4208,9 +4205,9 @@ const fiber0094 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return fiber0069(i, str, context);
+  return fiber0090(i, str, context);
 };
-const fiber0095 = (start: number, str: string, context: Context): number => {
+const fiber0097 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * charOrSet
@@ -4247,9 +4244,9 @@ const fiber0095 = (start: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return fiber0069(i, str, context);
+  return fiber0090(i, str, context);
 };
-const fiber0096 = (start: number, str: string, context: Context): number => {
+const fiber0098 = (start: number, str: string, context: Context): number => {
   let i = start;
   /*
    * startAnchor
@@ -4266,19 +4263,19 @@ const fiber0096 = (start: number, str: string, context: Context): number => {
    */
   const groupMarkerStartCopy3 = context.groupMarkerStart3;
   const groupMarkerEndCopy3 = context.groupMarkerEnd3;
-  const length0 = fiber0092(i, str, context);
+  const length0 = fiber0094(i, str, context);
   if (length0 !== -1) {
     return length0;
   }
   context.groupMarkerStart3 = groupMarkerStartCopy3;
   context.groupMarkerEnd3 = groupMarkerEndCopy3;
-  const length1 = fiber0094(i, str, context);
+  const length1 = fiber0096(i, str, context);
   if (length1 !== -1) {
     return length1;
   }
   context.groupMarkerStart3 = groupMarkerStartCopy3;
   context.groupMarkerEnd3 = groupMarkerEndCopy3;
-  const length2 = fiber0095(i, str, context);
+  const length2 = fiber0097(i, str, context);
   if (length2 !== -1) {
     return length2;
   }

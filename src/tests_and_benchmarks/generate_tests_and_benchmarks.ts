@@ -53,7 +53,6 @@ configFiles
 
     let unformattedCode, templateValues, error;
     try {
-      console.log(configFile);
       templateValues = genDevTemplateValues(config.regex);
       unformattedCode = template(templateValues);
     } catch (e) {
