@@ -1,4 +1,3 @@
-import { handleAlternative } from '../Alternative';
 import { CharRange } from '../../generator/CharRange';
 import { RegExpParser } from 'regexpp';
 import { dfaAnalyzeAlternative } from '../dfaAnalyze';
