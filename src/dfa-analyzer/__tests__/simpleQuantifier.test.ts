@@ -69,7 +69,7 @@ describe('handleAlternative', () => {
       literal,
       10,
     );
-    const resultSerialized = result.map((element) => {
+    const resultSerialized = result!.map((element) => {
       return element.toJSON();
     });
 

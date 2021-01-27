@@ -1,7 +1,6 @@
 import { handleElement } from './Element';
 import { DFAHandler, MaxCountASTElement } from './types';
-import * as _ from 'lodash';
-import { CharRangeSequence } from './CharRangeSequence';
+import { CharRangeSequence, flattenSequences } from './CharRangeSequence';
 
 export const handleMaxCountASTElement: DFAHandler<MaxCountASTElement> = (
   element,
@@ -27,5 +26,5 @@ export const handleMaxCountASTElement: DFAHandler<MaxCountASTElement> = (
     });
   }
 
-  return _.flatten([withoutQuantifier, withQuantifier]);
+  return flattenSequences([withoutQuantifier, withQuantifier]);
 };

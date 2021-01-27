@@ -1,6 +1,9 @@
 import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
-import { CharRangeSequence } from './CharRangeSequence';
+import {
+  CharRangeSequence,
+  OverlyComplexBranchingError,
+} from './CharRangeSequence';
 import { DFACache } from './types';
 
 export const dfaAnalyzeAlternative = (
@@ -12,12 +15,20 @@ export const dfaAnalyzeAlternative = (
     astToCharRange: new Map(),
   };
 
-  return handleAlternative(element, {
-    cache,
-    literal,
-    currentLength: 0,
-    maxLength,
-    path: [],
-    currentSequences: [new CharRangeSequence()],
-  });
+  try {
+    return handleAlternative(element, {
+      cache,
+      literal,
+      currentLength: 0,
+      maxLength,
+      path: [],
+      currentSequences: [new CharRangeSequence()],
+    });
+  } catch (e) {
+    if (e instanceof OverlyComplexBranchingError) {
+      return null;
+    }
+
+    throw e;
+  }
 };

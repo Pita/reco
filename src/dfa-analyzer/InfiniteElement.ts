@@ -1,6 +1,6 @@
 import { handleElement } from './Element';
 import { DFAHandler, InfiniteASTElement } from './types';
-import * as _ from 'lodash';
+import { flattenSequences } from './CharRangeSequence';
 
 export const handleInfiniteASTElement: DFAHandler<InfiniteASTElement> = (
   element,
@@ -16,5 +16,5 @@ export const handleInfiniteASTElement: DFAHandler<InfiniteASTElement> = (
     path: [element, ...options.path],
   });
 
-  return _.flatten([withQuantifier, withoutQuantifier]);
+  return flattenSequences([withoutQuantifier, withQuantifier]);
 };

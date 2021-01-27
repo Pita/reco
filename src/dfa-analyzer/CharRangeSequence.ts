@@ -1,4 +1,5 @@
 import { CharRange } from '../generator/CharRange';
+import flatten from 'lodash/flatten';
 
 export class CharRangeSequence {
   private charRanges: CharRange[];
@@ -14,8 +15,17 @@ export class CharRangeSequence {
   toJSON() {
     return this.charRanges.map((charRange) => charRange.toJSON());
   }
+}
 
-  // concat(seq: CharRangeSequence) {
-  //   return new CharRangeSequence([...this.charRanges, ...seq.charRanges]);
-  // }
+export class OverlyComplexBranchingError extends Error {
+  type = 'OverlyComplexBranchingError';
+}
+
+export function flattenSequences(seqs: CharRangeSequence[][]) {
+  const flattend = flatten(seqs);
+  if (flattend.length > 100) {
+    throw new OverlyComplexBranchingError();
+  }
+
+  return flattend;
 }
