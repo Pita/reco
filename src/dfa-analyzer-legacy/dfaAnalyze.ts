@@ -1,6 +1,5 @@
 import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
-import { CharRangeSequence } from './CharRangeSequence';
 import { DFACache } from './types';
 
 export const dfaAnalyzeAlternative = (
@@ -18,6 +17,5 @@ export const dfaAnalyzeAlternative = (
     currentLength: 0,
     maxLength,
     path: [],
-    currentSequences: [new CharRangeSequence()],
   });
 };

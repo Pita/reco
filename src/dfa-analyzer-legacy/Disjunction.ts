@@ -1,7 +1,7 @@
 import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
 import { DFAHandler } from './types';
-import * as _ from 'lodash';
+import { combineCharRangesBeforeAndAfter } from './combineCharRanges';
 
 export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
   alternatives,
@@ -11,7 +11,13 @@ export const handleDisjunction: DFAHandler<AST.Alternative[]> = (
     return handleAlternative(alternatives[0], options);
   }
 
-  return _.flatten(
-    alternatives.map((alternative) => handleAlternative(alternative, options)),
+  const alternativesResolved = alternatives.map((alternative) =>
+    handleAlternative(alternative, options),
+  );
+
+  return combineCharRangesBeforeAndAfter(
+    alternativesResolved,
+    options.currentLength,
+    options.maxLength,
   );
 };

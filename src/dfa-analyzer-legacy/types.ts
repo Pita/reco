@@ -1,6 +1,6 @@
 import { AST } from 'regexpp';
+import { Flags } from 'regexpp/ast';
 import { CharRange } from '../generator/CharRange';
-import { CharRangeSequence } from './CharRangeSequence';
 
 export type OptionalASTElement = {
   type: 'OptionalASTElement';
@@ -18,6 +18,12 @@ export type AstElementOrQuantifierElement =
   | InfiniteASTElement;
 
 export type ASTPath = AstElementOrQuantifierElement[];
+
+export type CharRangesBeforeAndAfter = {
+  before: CharRange[];
+  after: CharRange[];
+};
+
 export interface DFACache {
   astToCharRange: Map<AST.Element, CharRange>;
 }
@@ -30,6 +36,5 @@ export type DFAHandler<T> = (
     currentLength: number;
     maxLength: number;
     path: ASTPath;
-    currentSequences: CharRangeSequence[];
   },
-) => CharRangeSequence[];
+) => CharRangesBeforeAndAfter;

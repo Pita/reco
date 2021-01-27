@@ -7,7 +7,7 @@ export const handleAlternative: DFAHandler<AST.Alternative> = (
   options,
 ) => {
   if (alternative.elements.length === 0) {
-    return options.currentSequences;
+    return { before: [], after: [] };
   }
 
   const newPath: ASTPath = [...alternative.elements.slice(1), ...options.path];
