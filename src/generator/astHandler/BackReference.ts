@@ -15,14 +15,14 @@ const analyzeReferencedGroupAST = (
   const groupFiber = handleCapturingGroup(
     capturingGroup,
     fakeCollector,
-    fakeCollector.createFinalFiber(currentFiber.meta.firstCharRange),
+    fakeCollector.createFinalFiber(),
     flags,
     literal,
   );
 
-  const { firstCharRange, minCharLength, maxCharLength } = groupFiber.meta;
+  const { minCharLength, maxCharLength } = groupFiber.meta;
 
-  return { firstCharRange, minCharLength, maxCharLength };
+  return { minCharLength, maxCharLength };
 };
 
 export const handleBackReference = (
@@ -37,11 +37,7 @@ export const handleBackReference = (
     throw new Error('No supported for named backreferences yet');
   }
 
-  const {
-    firstCharRange,
-    minCharLength,
-    maxCharLength,
-  } = analyzeReferencedGroupAST(
+  const { minCharLength, maxCharLength } = analyzeReferencedGroupAST(
     collector,
     backreference.resolved,
     currentFiber,
@@ -58,7 +54,6 @@ export const handleBackReference = (
         groupIndex: backReferenceRef - 1,
       },
     },
-    firstCharRange,
     minCharLength,
     maxCharLength,
   );

@@ -31,7 +31,6 @@ export const handleSetOrCharacter = (
         },
         ast: element,
       },
-      newCharRange,
       1,
       flags.unicode ? 2 : 1,
     );
@@ -47,7 +46,6 @@ export const handleSetOrCharacter = (
         },
         ast: element,
       },
-      newCharRange,
       1,
       flags.unicode ? 2 : 1,
     );

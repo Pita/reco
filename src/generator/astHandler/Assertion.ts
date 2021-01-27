@@ -20,7 +20,6 @@ export const handleAssertion = (
           ast: assertion,
           data: {},
         },
-        'noCharRange',
         0,
         0,
       );
@@ -32,7 +31,6 @@ export const handleAssertion = (
           ast: assertion,
           data: {},
         },
-        'noCharRange',
         0,
         0,
       );
@@ -55,7 +53,6 @@ export const handleAssertion = (
             negate: assertion.negate,
           },
         },
-        'noCharRange',
         0,
         0,
       );

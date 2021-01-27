@@ -90,7 +90,6 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups,
-        firstCharRange: fiber.meta.firstCharRange,
         minCharLength: fiber.meta.minCharLength,
         maxCharLength: fiber.meta.maxCharLength,
         anchorsAtStartOfLine: false,
@@ -102,7 +101,7 @@ export class Collector {
   }
 
   // used by lookaround & non backtracking quantifier
-  createFinalFiber(firstCharRange: CharRange) {
+  createFinalFiber() {
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
@@ -110,7 +109,6 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups: [],
-        firstCharRange,
         minCharLength: 0,
         maxCharLength: 0,
         anchorsAtStartOfLine: false,
@@ -135,7 +133,6 @@ export class Collector {
       lastAtomReturns: true,
       meta: {
         groups: groups.slice(),
-        firstCharRange: followUpFiber.meta.firstCharRange,
         minCharLength: 0,
         maxCharLength: 0,
         anchorsAtStartOfLine,
@@ -150,7 +147,6 @@ export class Collector {
     followUp: FiberTemplateDefinition,
     type: 'greedy' | 'lazy',
     ast: AST.Quantifier,
-    followUpFirstChar: CharRange,
   ) {
     const quantifierFinalFiber: FiberTemplateDefinition = {
       followUp: null,
@@ -159,7 +155,6 @@ export class Collector {
       lastAtomReturns: false,
       meta: {
         groups: [],
-        firstCharRange: followUpFirstChar,
         minCharLength: 0,
         maxCharLength: 0,
         anchorsAtStartOfLine: false,
@@ -176,7 +171,6 @@ export class Collector {
       wrappedHandler: quantifierFinalFiber,
       meta: {
         groups: [],
-        firstCharRange: CharRange.createEmptyRange(),
         minCharLength: 0,
         maxCharLength: 0,
       },
@@ -209,7 +203,6 @@ export class Collector {
   addAtom(
     currentFiber: FiberTemplateDefinition,
     def: AtomDefinition,
-    atomCharRange: CharRange | 'noCharRange',
     minLength: number,
     maxLength: number,
   ) {
@@ -224,9 +217,6 @@ export class Collector {
     currentFiber.meta.maxCharLength += maxLength;
 
     currentFiber.atoms.unshift(newAtom);
-    if (atomCharRange !== 'noCharRange') {
-      currentFiber.meta.firstCharRange = atomCharRange;
-    }
 
     if (def.type !== 'disjunction') {
       currentFiber.meta.anchorsAtStartOfLine = def.type === 'startAnchor';

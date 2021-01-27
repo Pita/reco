@@ -17,17 +17,23 @@
 // }
 // or null in case there is no match
 
-interface Context {}
+interface Context {
+  quantifierCounter0: number;
+  quantifierCounter1: number;
+}
 
 export function generatedRegexMatcher(str: string) {
-  const context: Context = {};
+  const context: Context = {
+    quantifierCounter0: -1,
+    quantifierCounter1: -1,
+  };
 
   // minCharsLeft
   const min = 0;
   const max = str.length - 5;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0001(i, str, context);
+    const posAfterMatch = fiber0011(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -40,6 +46,187 @@ export function generatedRegexMatcher(str: string) {
 }
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * lookaround
+   * /\bon\w+=\S+(?=.✱>)/
+   *             ^^^^^^^
+   */
+  const lookaroundResult0 = fiber0005(i, str, context);
+  if (lookaroundResult0 === -1) {
+    return -1;
+  }
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * ...+=\S+(?=.✱>)/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  result0 = charCode0 === 62;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * ...\w+=\S+(?=.✱>)/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  if (charCode0 <= 13) {
+    result0 = charCode0 === 10 || charCode0 === 13;
+  } else {
+    if (charCode0 <= 8233) {
+      result0 = charCode0 >= 8232;
+    }
+  }
+  if (result0) {
+    return -1;
+  }
+  i++;
+  return greedyQuantifier0004(i, str, context);
+};
+const fiber0005 = (i: number, str: string, context: Context): number => {
+  /*
+   * quantifierStarter
+   * ...\w+=\S+(?=.✱>)/
+   *              ^^
+   */
+  const cursorAfterQuantifier = greedyQuantifier0004(i, str, context);
+
+  return cursorAfterQuantifier;
+};
+const fiber0006 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /\bon\w+=\S+(?=.✱>)/
+   *          ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  if (charCode0 <= 8202) {
+    if (charCode0 <= 160) {
+      if (charCode0 <= 32) {
+        if (charCode0 <= 13) {
+          result0 = charCode0 >= 9;
+        } else {
+          result0 = charCode0 === 32;
+        }
+      } else {
+        result0 = charCode0 === 160;
+      }
+    } else {
+      if (charCode0 === 5760) {
+        result0 = true;
+      } else {
+        result0 = charCode0 >= 8192;
+      }
+    }
+  } else {
+    if (charCode0 <= 8287) {
+      if (charCode0 <= 8239) {
+        if (charCode0 <= 8233) {
+          result0 = charCode0 >= 8232;
+        } else {
+          result0 = charCode0 === 8239;
+        }
+      } else {
+        result0 = charCode0 === 8287;
+      }
+    } else {
+      result0 = charCode0 === 12288 || charCode0 === 65279;
+    }
+  }
+  if (result0) {
+    return -1;
+  }
+  i++;
+  return greedyQuantifier0007(i, str, context);
+};
+const fiber0008 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /\bon\w+=\S+(?=.✱>)/
+   *         ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  result0 = charCode0 === 61;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  /*
+   * quantifierStarter
+   * /\bon\w+=\S+(?=.✱>)/
+   *          ^^^
+   */
+  let matchCountCopygreedyQuantifier0007 = context.quantifierCounter0;
+  context.quantifierCounter0 = -1;
+  const cursorAfterQuantifier = greedyQuantifier0007(i, str, context);
+  context.quantifierCounter0 = matchCountCopygreedyQuantifier0007;
+
+  return cursorAfterQuantifier;
+};
+const fiber0009 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /\bon\w+=\S+(?=.✱>)/
+   *      ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  if (charCode0 <= 90) {
+    if (charCode0 <= 57) {
+      result0 = charCode0 >= 48;
+    } else {
+      result0 = charCode0 >= 65;
+    }
+  } else {
+    if (charCode0 === 95) {
+      result0 = true;
+    } else {
+      if (charCode0 <= 122) {
+        result0 = charCode0 >= 97;
+      }
+    }
+  }
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return greedyQuantifier0010(i, str, context);
+};
+const fiber0011 = (i: number, str: string, context: Context): number => {
   /*
    * wordBoundary
    * /\bon\w+=\S+(...
@@ -122,234 +309,100 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   i++;
   /*
-   * nonBacktrackingQuantifier
+   * quantifierStarter
    * /\bon\w+=\S+(?=.✱>)/
    *      ^^^
    */
-  let matches3 = 0;
-  while (true) {
-    const wrappedResult = fiber0006(i, str, context);
+  let matchCountCopygreedyQuantifier0010 = context.quantifierCounter1;
+  context.quantifierCounter1 = -1;
+  const cursorAfterQuantifier = greedyQuantifier0010(i, str, context);
+  context.quantifierCounter1 = matchCountCopygreedyQuantifier0010;
 
-    if (wrappedResult === -1) {
-      if (matches3 < 1) {
-        return -1;
-      }
-
-      break;
-    } else {
-      i = wrappedResult;
-
-      matches3++;
-    }
-  }
-  /*
-   * charOrSet
-   * /\bon\w+=\S+(?=.✱>)/
-   *         ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode4 = str.charCodeAt(i);
-  let result4 = false;
-
-  result4 = charCode4 === 61;
-
-  if (!result4) {
-    return -1;
-  }
-  i++;
-  /*
-   * nonBacktrackingQuantifier
-   * /\bon\w+=\S+(?=.✱>)/
-   *          ^^^
-   */
-  let matches5 = 0;
-  while (true) {
-    const wrappedResult = fiber0005(i, str, context);
-
-    if (wrappedResult === -1) {
-      if (matches5 < 1) {
-        return -1;
-      }
-
-      break;
-    } else {
-      i = wrappedResult;
-
-      matches5++;
-    }
-  }
-  /*
-   * lookaround
-   * /\bon\w+=\S+(?=.✱>)/
-   *             ^^^^^^^
-   */
-  const lookaroundResult6 = fiber0004(i, str, context);
-  if (lookaroundResult6 === -1) {
-    return -1;
-  }
-  return i;
+  return cursorAfterQuantifier;
 };
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * ...+=\S+(?=.✱>)/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
 
-  result0 = charCode0 === 62;
-
-  if (!result0) {
-    return -1;
+/*
+ * ...\w+=\S+(?=.✱>)/
+ *              ^^
+ */
+const greedyQuantifier0004 = (
+  start: number,
+  str: string,
+  context: Context
+): number => {
+  const tryDeeperResult = fiber0003(start, str, context);
+  if (tryDeeperResult !== -1) {
+    // we actually were able to go deeper, nice!
+    return tryDeeperResult;
   }
-  i++;
-  return i;
+
+  // recursion failed, reset groups
+
+  const followUpResult = fiber0002(start, str, context);
+
+  if (followUpResult === -1) {
+  }
+  return followUpResult;
 };
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * ...\w+=\S+(?=.✱>)/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
+/*
+ * /\bon\w+=\S+(?=.✱>)/
+ *          ^^^
+ */
+const greedyQuantifier0007 = (
+  start: number,
+  str: string,
+  context: Context
+): number => {
+  context.quantifierCounter0++;
 
-  if (charCode0 <= 13) {
-    result0 = charCode0 === 10 || charCode0 === 13;
-  } else {
-    if (charCode0 <= 8233) {
-      result0 = charCode0 >= 8232;
-    }
+  const tryDeeperResult = fiber0006(start, str, context);
+  if (tryDeeperResult !== -1) {
+    // we actually were able to go deeper, nice!
+    return tryDeeperResult;
   }
-  if (result0) {
+
+  // recursion failed, reset groups
+
+  if (context.quantifierCounter0 < 1) {
+    context.quantifierCounter0--;
     return -1;
   }
-  i++;
-  return i;
+
+  const followUpResult = fiber0001(start, str, context);
+
+  if (followUpResult === -1) {
+    context.quantifierCounter0--;
+  }
+  return followUpResult;
 };
-const fiber0004 = (i: number, str: string, context: Context): number => {
-  /*
-   * backtrackingFixedLengthQuantifier
-   * ...\w+=\S+(?=.✱>)/
-   *              ^^
-   */
-  let matches0 = 0;
+/*
+ * /\bon\w+=\S+(?=.✱>)/
+ *      ^^^
+ */
+const greedyQuantifier0010 = (
+  start: number,
+  str: string,
+  context: Context
+): number => {
+  context.quantifierCounter1++;
 
-  while (true) {
-    const wrappedResult = fiber0003(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-      matches0++;
-    }
+  const tryDeeperResult = fiber0009(start, str, context);
+  if (tryDeeperResult !== -1) {
+    // we actually were able to go deeper, nice!
+    return tryDeeperResult;
   }
 
-  // needs followUp & forkingFiber
-  while (matches0 >= 0) {
-    const directFollowUpResult0 = fiber0002(i, str, context);
+  // recursion failed, reset groups
 
-    if (directFollowUpResult0 !== -1) {
-      return directFollowUpResult0;
-    }
-
-    matches0--;
-    i -= 1;
-  }
-
-  return -1;
-};
-const fiber0005 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /\bon\w+=\S+(?=.✱>)/
-   *          ^^
-   */
-  if (i >= str.length) {
+  if (context.quantifierCounter1 < 1) {
+    context.quantifierCounter1--;
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
 
-  if (charCode0 <= 8202) {
-    if (charCode0 <= 160) {
-      if (charCode0 <= 32) {
-        if (charCode0 <= 13) {
-          result0 = charCode0 >= 9;
-        } else {
-          result0 = charCode0 === 32;
-        }
-      } else {
-        result0 = charCode0 === 160;
-      }
-    } else {
-      if (charCode0 === 5760) {
-        result0 = true;
-      } else {
-        result0 = charCode0 >= 8192;
-      }
-    }
-  } else {
-    if (charCode0 <= 8287) {
-      if (charCode0 <= 8239) {
-        if (charCode0 <= 8233) {
-          result0 = charCode0 >= 8232;
-        } else {
-          result0 = charCode0 === 8239;
-        }
-      } else {
-        result0 = charCode0 === 8287;
-      }
-    } else {
-      result0 = charCode0 === 12288 || charCode0 === 65279;
-    }
-  }
-  if (result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0006 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /\bon\w+=\S+(?=.✱>)/
-   *      ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
+  const followUpResult = fiber0008(start, str, context);
 
-  if (charCode0 <= 90) {
-    if (charCode0 <= 57) {
-      result0 = charCode0 >= 48;
-    } else {
-      result0 = charCode0 >= 65;
-    }
-  } else {
-    if (charCode0 === 95) {
-      result0 = true;
-    } else {
-      if (charCode0 <= 122) {
-        result0 = charCode0 >= 97;
-      }
-    }
+  if (followUpResult === -1) {
+    context.quantifierCounter1--;
   }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
+  return followUpResult;
 };

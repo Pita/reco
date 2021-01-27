@@ -29,6 +29,9 @@ interface Context {
   groupMarkerEnd2: number;
   quantifierCounter0: number;
   quantifierCounter1: number;
+  quantifierCounter2: number;
+  quantifierCounter3: number;
+  quantifierCounter4: number;
 }
 
 export function generatedRegexMatcher(str: string) {
@@ -44,6 +47,9 @@ export function generatedRegexMatcher(str: string) {
     groupMarkerEnd2: -1,
     quantifierCounter0: -1,
     quantifierCounter1: -1,
+    quantifierCounter2: -1,
+    quantifierCounter3: -1,
+    quantifierCounter4: -1,
   };
 
   // minCharsLeft
@@ -51,7 +57,7 @@ export function generatedRegexMatcher(str: string) {
   const max = str.length - 5;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0013(i, str, context);
+    const posAfterMatch = fiber0019(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -75,73 +81,6 @@ export function generatedRegexMatcher(str: string) {
 }
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
-  /*
-   * wordBoundary
-   * ...[a-z]{2,6}\b([-a-zA-Z0...
-   *              ^^
-   */
-  if (i !== 0 && i !== str.length) {
-    // TODO: find way to generate these trees
-    const charCodeBefore0 = str.charCodeAt(i - 1);
-    let isBeforeWord0 = false;
-    if (charCodeBefore0 <= 90) {
-      if (charCodeBefore0 <= 57) {
-        isBeforeWord0 = charCodeBefore0 >= 48;
-      } else {
-        isBeforeWord0 = charCodeBefore0 >= 65;
-      }
-    } else {
-      if (charCodeBefore0 === 95) {
-        isBeforeWord0 = true;
-      } else {
-        if (charCodeBefore0 <= 122) {
-          isBeforeWord0 = charCodeBefore0 >= 97;
-        }
-      }
-    }
-
-    const charCodeAfter0 = str.charCodeAt(i);
-    let isAfterWord0 = false;
-    if (charCodeAfter0 <= 90) {
-      if (charCodeAfter0 <= 57) {
-        isAfterWord0 = charCodeAfter0 >= 48;
-      } else {
-        isAfterWord0 = charCodeAfter0 >= 65;
-      }
-    } else {
-      if (charCodeAfter0 === 95) {
-        isAfterWord0 = true;
-      } else {
-        if (charCodeAfter0 <= 122) {
-          isAfterWord0 = charCodeAfter0 >= 97;
-        }
-      }
-    }
-
-    if (isBeforeWord0 === isAfterWord0) {
-      return -1;
-    }
-  }
-  /*
-   * groupStartMarker
-   * ...-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]✱)/
-   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   */
-  context.groupMarkerStartTemp2 = i;
-  /*
-   * nonBacktrackingQuantifier
-   * ...z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]✱)/
-   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   */
-  while (true) {
-    const wrappedResult = fiber0002(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-    }
-  }
   /*
    * groupEndMarker
    * ...-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]✱)/
@@ -200,9 +139,72 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return i;
+  return greedyQuantifier0003(i, str, context);
 };
-const fiber0003 = (i: number, str: string, context: Context): number => {
+const fiber0004 = (i: number, str: string, context: Context): number => {
+  /*
+   * wordBoundary
+   * ...[a-z]{2,6}\b([-a-zA-Z0...
+   *              ^^
+   */
+  if (i !== 0 && i !== str.length) {
+    // TODO: find way to generate these trees
+    const charCodeBefore0 = str.charCodeAt(i - 1);
+    let isBeforeWord0 = false;
+    if (charCodeBefore0 <= 90) {
+      if (charCodeBefore0 <= 57) {
+        isBeforeWord0 = charCodeBefore0 >= 48;
+      } else {
+        isBeforeWord0 = charCodeBefore0 >= 65;
+      }
+    } else {
+      if (charCodeBefore0 === 95) {
+        isBeforeWord0 = true;
+      } else {
+        if (charCodeBefore0 <= 122) {
+          isBeforeWord0 = charCodeBefore0 >= 97;
+        }
+      }
+    }
+
+    const charCodeAfter0 = str.charCodeAt(i);
+    let isAfterWord0 = false;
+    if (charCodeAfter0 <= 90) {
+      if (charCodeAfter0 <= 57) {
+        isAfterWord0 = charCodeAfter0 >= 48;
+      } else {
+        isAfterWord0 = charCodeAfter0 >= 65;
+      }
+    } else {
+      if (charCodeAfter0 === 95) {
+        isAfterWord0 = true;
+      } else {
+        if (charCodeAfter0 <= 122) {
+          isAfterWord0 = charCodeAfter0 >= 97;
+        }
+      }
+    }
+
+    if (isBeforeWord0 === isAfterWord0) {
+      return -1;
+    }
+  }
+  /*
+   * groupStartMarker
+   * ...-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]✱)/
+   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   */
+  context.groupMarkerStartTemp2 = i;
+  /*
+   * quantifierStarter
+   * ...z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]✱)/
+   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   */
+  const cursorAfterQuantifier = greedyQuantifier0003(i, str, context);
+
+  return cursorAfterQuantifier;
+};
+const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]{2,256}\.[a-z]{2,6}\b([-...
@@ -221,9 +223,9 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return i;
+  return greedyQuantifier0006(i, str, context);
 };
-const fiber0004 = (i: number, str: string, context: Context): number => {
+const fiber0007 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...#=]{2,256}\.[a-z]{2,6}...
@@ -242,46 +244,18 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   }
   i++;
   /*
-   * backtrackingFixedLengthQuantifier
+   * quantifierStarter
    * ...]{2,256}\.[a-z]{2,6}\b([-a-zA-...
    *              ^^^^^^^^^^
    */
-  let matches1 = 0;
+  let matchCountCopygreedyQuantifier0006 = context.quantifierCounter0;
+  context.quantifierCounter0 = -1;
+  const cursorAfterQuantifier = greedyQuantifier0006(i, str, context);
+  context.quantifierCounter0 = matchCountCopygreedyQuantifier0006;
 
-  while (true) {
-    const wrappedResult = fiber0003(i, str, context);
-
-    if (wrappedResult === -1) {
-      if (matches1 < 2) {
-        return -1;
-      }
-
-      break;
-    } else {
-      i = wrappedResult;
-      matches1++;
-
-      if (matches1 === 6) {
-        break;
-      }
-    }
-  }
-
-  // needs followUp & forkingFiber
-  while (matches1 >= 2) {
-    const directFollowUpResult1 = fiber0001(i, str, context);
-
-    if (directFollowUpResult1 !== -1) {
-      return directFollowUpResult1;
-    }
-
-    matches1--;
-    i -= 1;
-  }
-
-  return -1;
+  return cursorAfterQuantifier;
 };
-const fiber0005 = (i: number, str: string, context: Context): number => {
+const fiber0008 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[...
@@ -330,50 +304,22 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
-  return i;
+  return greedyQuantifier0009(i, str, context);
 };
-const fiber0006 = (i: number, str: string, context: Context): number => {
+const fiber0010 = (i: number, str: string, context: Context): number => {
   /*
-   * backtrackingFixedLengthQuantifier
+   * quantifierStarter
    * ...)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  let matches0 = 0;
+  let matchCountCopygreedyQuantifier0009 = context.quantifierCounter1;
+  context.quantifierCounter1 = -1;
+  const cursorAfterQuantifier = greedyQuantifier0009(i, str, context);
+  context.quantifierCounter1 = matchCountCopygreedyQuantifier0009;
 
-  while (true) {
-    const wrappedResult = fiber0005(i, str, context);
-
-    if (wrappedResult === -1) {
-      if (matches0 < 2) {
-        return -1;
-      }
-
-      break;
-    } else {
-      i = wrappedResult;
-      matches0++;
-
-      if (matches0 === 256) {
-        break;
-      }
-    }
-  }
-
-  // needs followUp & forkingFiber
-  while (matches0 >= 2) {
-    const directFollowUpResult0 = fiber0004(i, str, context);
-
-    if (directFollowUpResult0 !== -1) {
-      return directFollowUpResult0;
-    }
-
-    matches0--;
-    i -= 1;
-  }
-
-  return -1;
+  return cursorAfterQuantifier;
 };
-const fiber0007 = (i: number, str: string, context: Context): number => {
+const fiber0011 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...ps?:\/\/)?(www\.)?[-a-zA-Z0...
@@ -455,22 +401,103 @@ const fiber0007 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;
-  return greedyQuantifier0008(i, str, context);
+  return greedyQuantifier0012(i, str, context);
 };
-const fiber0009 = (i: number, str: string, context: Context): number => {
+const fiber0013 = (i: number, str: string, context: Context): number => {
   /*
    * quantifierStarter
    * ...ps?:\/\/)?(www\.)?[-a-zA-Z0-...
    *              ^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0008 = context.quantifierCounter0;
-  context.quantifierCounter0 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0008(i, str, context);
-  context.quantifierCounter0 = matchCountCopygreedyQuantifier0008;
+  let matchCountCopygreedyQuantifier0012 = context.quantifierCounter2;
+  context.quantifierCounter2 = -1;
+  const cursorAfterQuantifier = greedyQuantifier0012(i, str, context);
+  context.quantifierCounter2 = matchCountCopygreedyQuantifier0012;
 
   return cursorAfterQuantifier;
 };
-const fiber0010 = (i: number, str: string, context: Context): number => {
+const fiber0014 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /(https?:\/\/)?(www...
+   *         ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  result0 = charCode0 === 58;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * /(https?:\/\/)?(www\....
+   *          ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  result1 = charCode1 === 47;
+
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * /(https?:\/\/)?(www\.)?...
+   *            ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode2 = str.charCodeAt(i);
+  let result2 = false;
+
+  result2 = charCode2 === 47;
+
+  if (!result2) {
+    return -1;
+  }
+  i++;
+  /*
+   * groupEndMarker
+   * /(https?:\/\/)?(www\.)?[...
+   *  ^^^^^^^^^^^^^
+   */
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
+  return greedyQuantifier0015(i, str, context);
+};
+const fiber0016 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /(https?:\/\/)?(w...
+   *       ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  result0 = charCode0 === 115;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return greedyQuantifier0017(i, str, context);
+};
+const fiber0018 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(https?:\/\/)?(www\.)?[...
@@ -546,138 +573,157 @@ const fiber0010 = (i: number, str: string, context: Context): number => {
   }
   i++;
   /*
-   * nonBacktrackingQuantifier
+   * quantifierStarter
    * /(https?:\/\/)?(ww...
    *       ^^
    */
-  let matches5 = 0;
-  while (true) {
-    const wrappedResult = fiber0012(i, str, context);
+  let matchCountCopygreedyQuantifier0017 = context.quantifierCounter4;
+  context.quantifierCounter4 = -1;
+  const cursorAfterQuantifier = greedyQuantifier0017(i, str, context);
+  context.quantifierCounter4 = matchCountCopygreedyQuantifier0017;
 
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-
-      matches5++;
-
-      if (matches5 === 1) {
-        break;
-      }
-    }
-  }
-  /*
-   * charOrSet
-   * /(https?:\/\/)?(www...
-   *         ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode6 = str.charCodeAt(i);
-  let result6 = false;
-
-  result6 = charCode6 === 58;
-
-  if (!result6) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * /(https?:\/\/)?(www\....
-   *          ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode7 = str.charCodeAt(i);
-  let result7 = false;
-
-  result7 = charCode7 === 47;
-
-  if (!result7) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * /(https?:\/\/)?(www\.)?...
-   *            ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode8 = str.charCodeAt(i);
-  let result8 = false;
-
-  result8 = charCode8 === 47;
-
-  if (!result8) {
-    return -1;
-  }
-  i++;
-  /*
-   * groupEndMarker
-   * /(https?:\/\/)?(www\.)?[...
-   *  ^^^^^^^^^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  return greedyQuantifier0011(i, str, context);
+  return cursorAfterQuantifier;
 };
-const fiber0012 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /(https?:\/\/)?(w...
-   *       ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 115;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0013 = (i: number, str: string, context: Context): number => {
+const fiber0019 = (i: number, str: string, context: Context): number => {
   /*
    * quantifierStarter
    * /(https?:\/\/)?(www\.)?[-...
    *  ^^^^^^^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0011 = context.quantifierCounter1;
-  context.quantifierCounter1 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0011(i, str, context);
-  context.quantifierCounter1 = matchCountCopygreedyQuantifier0011;
+  let matchCountCopygreedyQuantifier0015 = context.quantifierCounter3;
+  context.quantifierCounter3 = -1;
+  const cursorAfterQuantifier = greedyQuantifier0015(i, str, context);
+  context.quantifierCounter3 = matchCountCopygreedyQuantifier0015;
 
   return cursorAfterQuantifier;
 };
 
 /*
- * ...ps?:\/\/)?(www\.)?[-a-zA-Z0-...
- *              ^^^^^^^^
+ * ...z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]✱)/
+ *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
  */
-const greedyQuantifier0008 = (
+const greedyQuantifier0003 = (
+  start: number,
+  str: string,
+  context: Context
+): number => {
+  const tryDeeperResult = fiber0002(start, str, context);
+  if (tryDeeperResult !== -1) {
+    // we actually were able to go deeper, nice!
+    return tryDeeperResult;
+  }
+
+  // recursion failed, reset groups
+
+  const groupMarkerStartCopy2 = context.groupMarkerStart2;
+  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
+
+  const followUpResult = fiber0001(start, str, context);
+
+  if (followUpResult === -1) {
+    context.groupMarkerStart2 = groupMarkerStartCopy2;
+    context.groupMarkerEnd2 = groupMarkerEndCopy2;
+  }
+  return followUpResult;
+};
+/*
+ * ...]{2,256}\.[a-z]{2,6}\b([-a-zA-...
+ *              ^^^^^^^^^^
+ */
+const greedyQuantifier0006 = (
   start: number,
   str: string,
   context: Context
 ): number => {
   context.quantifierCounter0++;
 
-  if (context.quantifierCounter0 === 1) {
-    return fiber0006(start, str, context);
+  if (context.quantifierCounter0 === 6) {
+    return fiber0004(start, str, context);
+  }
+
+  const tryDeeperResult = fiber0005(start, str, context);
+  if (tryDeeperResult !== -1) {
+    // we actually were able to go deeper, nice!
+    return tryDeeperResult;
+  }
+
+  // recursion failed, reset groups
+
+  if (context.quantifierCounter0 < 2) {
+    context.quantifierCounter0--;
+    return -1;
+  }
+
+  const groupMarkerStartCopy2 = context.groupMarkerStart2;
+  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
+
+  const followUpResult = fiber0004(start, str, context);
+
+  if (followUpResult === -1) {
+    context.groupMarkerStart2 = groupMarkerStartCopy2;
+    context.groupMarkerEnd2 = groupMarkerEndCopy2;
+    context.quantifierCounter0--;
+  }
+  return followUpResult;
+};
+/*
+ * ...)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,...
+ *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ */
+const greedyQuantifier0009 = (
+  start: number,
+  str: string,
+  context: Context
+): number => {
+  context.quantifierCounter1++;
+
+  if (context.quantifierCounter1 === 256) {
+    return fiber0007(start, str, context);
+  }
+
+  const tryDeeperResult = fiber0008(start, str, context);
+  if (tryDeeperResult !== -1) {
+    // we actually were able to go deeper, nice!
+    return tryDeeperResult;
+  }
+
+  // recursion failed, reset groups
+
+  if (context.quantifierCounter1 < 2) {
+    context.quantifierCounter1--;
+    return -1;
+  }
+
+  const groupMarkerStartCopy2 = context.groupMarkerStart2;
+  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
+
+  const followUpResult = fiber0007(start, str, context);
+
+  if (followUpResult === -1) {
+    context.groupMarkerStart2 = groupMarkerStartCopy2;
+    context.groupMarkerEnd2 = groupMarkerEndCopy2;
+    context.quantifierCounter1--;
+  }
+  return followUpResult;
+};
+/*
+ * ...ps?:\/\/)?(www\.)?[-a-zA-Z0-...
+ *              ^^^^^^^^
+ */
+const greedyQuantifier0012 = (
+  start: number,
+  str: string,
+  context: Context
+): number => {
+  context.quantifierCounter2++;
+
+  if (context.quantifierCounter2 === 1) {
+    return fiber0010(start, str, context);
   }
 
   const groupMarkerStartCopy1 = context.groupMarkerStart1;
   const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-  const tryDeeperResult = fiber0007(start, str, context);
+  const tryDeeperResult = fiber0011(start, str, context);
   if (tryDeeperResult !== -1) {
     // we actually were able to go deeper, nice!
     return tryDeeperResult;
@@ -690,12 +736,12 @@ const greedyQuantifier0008 = (
   const groupMarkerStartCopy2 = context.groupMarkerStart2;
   const groupMarkerEndCopy2 = context.groupMarkerEnd2;
 
-  const followUpResult = fiber0006(start, str, context);
+  const followUpResult = fiber0010(start, str, context);
 
   if (followUpResult === -1) {
     context.groupMarkerStart2 = groupMarkerStartCopy2;
     context.groupMarkerEnd2 = groupMarkerEndCopy2;
-    context.quantifierCounter0--;
+    context.quantifierCounter2--;
   }
   return followUpResult;
 };
@@ -703,20 +749,20 @@ const greedyQuantifier0008 = (
  * /(https?:\/\/)?(www\.)?[-...
  *  ^^^^^^^^^^^^^^
  */
-const greedyQuantifier0011 = (
+const greedyQuantifier0015 = (
   start: number,
   str: string,
   context: Context
 ): number => {
-  context.quantifierCounter1++;
+  context.quantifierCounter3++;
 
-  if (context.quantifierCounter1 === 1) {
-    return fiber0009(start, str, context);
+  if (context.quantifierCounter3 === 1) {
+    return fiber0013(start, str, context);
   }
 
   const groupMarkerStartCopy0 = context.groupMarkerStart0;
   const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const tryDeeperResult = fiber0010(start, str, context);
+  const tryDeeperResult = fiber0018(start, str, context);
   if (tryDeeperResult !== -1) {
     // we actually were able to go deeper, nice!
     return tryDeeperResult;
@@ -731,14 +777,49 @@ const greedyQuantifier0011 = (
   const groupMarkerStartCopy2 = context.groupMarkerStart2;
   const groupMarkerEndCopy2 = context.groupMarkerEnd2;
 
-  const followUpResult = fiber0009(start, str, context);
+  const followUpResult = fiber0013(start, str, context);
 
   if (followUpResult === -1) {
     context.groupMarkerStart1 = groupMarkerStartCopy1;
     context.groupMarkerEnd1 = groupMarkerEndCopy1;
     context.groupMarkerStart2 = groupMarkerStartCopy2;
     context.groupMarkerEnd2 = groupMarkerEndCopy2;
-    context.quantifierCounter1--;
+    context.quantifierCounter3--;
+  }
+  return followUpResult;
+};
+/*
+ * /(https?:\/\/)?(ww...
+ *       ^^
+ */
+const greedyQuantifier0017 = (
+  start: number,
+  str: string,
+  context: Context
+): number => {
+  context.quantifierCounter4++;
+
+  if (context.quantifierCounter4 === 1) {
+    return fiber0014(start, str, context);
+  }
+
+  const tryDeeperResult = fiber0016(start, str, context);
+  if (tryDeeperResult !== -1) {
+    // we actually were able to go deeper, nice!
+    return tryDeeperResult;
+  }
+
+  // recursion failed, reset groups
+
+  const groupMarkerStartCopy0 = context.groupMarkerStart0;
+  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
+
+  const followUpResult = fiber0014(start, str, context);
+
+  if (followUpResult === -1) {
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
+    context.quantifierCounter4--;
   }
   return followUpResult;
 };

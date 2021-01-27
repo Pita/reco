@@ -11,7 +11,6 @@ export interface FunctionDefinition {
   followUp: FollowUp;
   meta: {
     groups: GroupReference[];
-    firstCharRange: CharRange;
     minCharLength: number;
     maxCharLength: number;
     anchorsAtStartOfLine: boolean;

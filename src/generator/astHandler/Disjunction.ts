@@ -3,10 +3,8 @@ import { Collector, mergeGroupsOfFibers } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
-import { CharRange } from '../CharRange';
 import { BacktrackingError } from '../BacktrackingException';
 import { dfaAnalyzeAlternative } from '../../dfa-analyzer/dfaAnalyze';
-import { CharRangeSequence } from '../../dfa-analyzer/CharRangeSequence';
 import { CharRangeSequencePossibilities } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 
 const handleBacktrackingDisjunction = (
@@ -27,11 +25,6 @@ const handleBacktrackingDisjunction = (
   );
 
   const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
-  const combinedCharRange = mappedAlternatives.reduce(
-    (charRange, alternative) =>
-      charRange.union(alternative.meta.firstCharRange),
-    CharRange.createEmptyRange(),
-  );
   let minLength = Infinity;
   let maxLength = -Infinity;
   mappedAlternatives.forEach((alternative) => {
@@ -59,7 +52,6 @@ const handleBacktrackingDisjunction = (
       data: { alternatives: mappedAlternatives, groupsToRestore },
       ast: alternatives[0].parent,
     },
-    combinedCharRange,
     minLength,
     maxLength,
   );
@@ -78,7 +70,7 @@ const checkIfAlternativesHaveInternalBacktracking = (
       handleAlternative(
         alternative,
         fakeCollector,
-        fakeCollector.createFinalFiber(currentFiber.meta.firstCharRange),
+        fakeCollector.createFinalFiber(),
         {
           ...flags,
           INTERNAL_no_backtracking: true,
@@ -168,18 +160,13 @@ const handleNonBacktrackingDisjunction = (
     handleAlternative(
       alternative,
       collector,
-      collector.createFinalFiber(currentFiber.meta.firstCharRange),
+      collector.createFinalFiber(),
       flags,
       literal,
     ),
   );
 
   const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
-  const combinedCharRange = mappedAlternatives.reduce(
-    (charRange, alternative) =>
-      charRange.union(alternative.meta.firstCharRange),
-    CharRange.createEmptyRange(),
-  );
   let minLength = Infinity;
   let maxLength = -Infinity;
   mappedAlternatives.forEach((alternative) => {
@@ -207,7 +194,6 @@ const handleNonBacktrackingDisjunction = (
       data: { alternatives: mappedAlternatives, groupsToRestore },
       ast: alternatives[0].parent,
     },
-    combinedCharRange,
     minLength,
     maxLength,
   );
