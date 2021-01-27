@@ -1,4 +1,4 @@
-// import { handleAssertion } from './Assertion';
+import { handleAssertion } from './Assertion';
 // import { handleBackReference } from './BackReference';
 import { handleSetOrCharacter } from './Character';
 import { handleDisjunction } from './Disjunction';
@@ -22,6 +22,8 @@ export const handleElement: DFAHandler<
     case 'Group':
     case 'CapturingGroup':
       return handleDisjunction(element.alternatives, options);
+    case 'Assertion':
+      return handleAssertion(element, options);
     default:
       throw new Error(`${element.type} not handled yet`);
     // case 'OptionalASTElement':
@@ -30,8 +32,7 @@ export const handleElement: DFAHandler<
     //   return handleInfiniteASTElement(element, options);
     // case 'Quantifier':
     //   return handleQuantifier(element, options);
-    // case 'Assertion':
-    //   return handleAssertion(element, options);
+
     // case 'Backreference':
     //   return handleBackReference(element, options);
   }
