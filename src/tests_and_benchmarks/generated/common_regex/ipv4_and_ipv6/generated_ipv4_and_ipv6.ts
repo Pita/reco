@@ -1009,8 +1009,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /((^\s✱((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s✱$)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s✱$))/
@@ -1020,8 +1019,7 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd0 = i;
   return i;
 };
-const fiber0002 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s✱$)|(^\...
@@ -1067,8 +1065,7 @@ const fiber0002 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd1 = i;
   return fiber0001(i, str, context);
 };
-const fiber0003 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|25[0-5]))\s✱$)|(^\s✱(...
@@ -1119,8 +1116,7 @@ const fiber0003 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0004 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...5])\.){3}([0-9]|[1-9][0-9...
@@ -1141,8 +1137,7 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0002(i, str, context);
 };
-const fiber0005 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{3}([0-9]|[1-9][0-9]|1[0-...
@@ -1181,8 +1176,7 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0002(i, str, context);
 };
-const fiber0006 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0006 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1-9][0-9]|1[0-9]{2}|2...
@@ -1238,8 +1232,7 @@ const fiber0006 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0002(i, str, context);
 };
-const fiber0007 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0007 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1[0-9]{2}|2[0-4][0-9]...
@@ -1295,8 +1288,7 @@ const fiber0007 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0002(i, str, context);
 };
-const fiber0008 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0008 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-4][0-9]|25[0-5]))\s...
@@ -1351,8 +1343,7 @@ const fiber0008 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0002(i, str, context);
 };
-const fiber0009 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0009 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /((^\s✱((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-...
@@ -1465,8 +1456,7 @@ const fiber0009 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd5 = groupMarkerEndCopy5;
   return -1;
 };
-const fiber0010 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0010 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /((^\s✱((([0-9]|[1-9][0-9...
@@ -1487,8 +1477,7 @@ const fiber0010 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0009(i, str, context);
 };
-const fiber0011 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0011 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...✱((([0-9]|[1-9][0-9]|1[0-...
@@ -1527,8 +1516,7 @@ const fiber0011 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0009(i, str, context);
 };
-const fiber0012 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0012 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1-9][0-9]|1[0-9]{2}|2...
@@ -1584,8 +1572,7 @@ const fiber0012 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0009(i, str, context);
 };
-const fiber0013 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0013 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1[0-9]{2}|2[0-4][0-9]...
@@ -1641,8 +1628,7 @@ const fiber0013 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0009(i, str, context);
 };
-const fiber0014 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0014 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-4][0-9]|25[0-5])\.)...
@@ -1697,8 +1683,7 @@ const fiber0014 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0009(i, str, context);
 };
-const fiber0015 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0015 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /((^\s✱((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-...
@@ -1841,8 +1826,7 @@ const fiber0015 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd5 = groupMarkerEndCopy5;
   return -1;
 };
-const fiber0016 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0016 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /((^\s✱((([0-9]|[1-9][0-9...
@@ -1863,8 +1847,7 @@ const fiber0016 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0015(i, str, context);
 };
-const fiber0017 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0017 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...✱((([0-9]|[1-9][0-9]|1[0-...
@@ -1903,8 +1886,7 @@ const fiber0017 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0015(i, str, context);
 };
-const fiber0018 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0018 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1-9][0-9]|1[0-9]{2}|2...
@@ -1960,8 +1942,7 @@ const fiber0018 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0015(i, str, context);
 };
-const fiber0019 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0019 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1[0-9]{2}|2[0-4][0-9]...
@@ -2017,8 +1998,7 @@ const fiber0019 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0015(i, str, context);
 };
-const fiber0020 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0020 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-4][0-9]|25[0-5])\.)...
@@ -2073,8 +2053,7 @@ const fiber0020 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0015(i, str, context);
 };
-const fiber0021 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0021 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /((^\s✱((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-...
@@ -2217,8 +2196,7 @@ const fiber0021 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd5 = groupMarkerEndCopy5;
   return -1;
 };
-const fiber0022 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0022 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /((^\s✱((([0-9]|[1-9][0-9...
@@ -2239,8 +2217,7 @@ const fiber0022 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0021(i, str, context);
 };
-const fiber0023 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0023 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...✱((([0-9]|[1-9][0-9]|1[0-...
@@ -2279,8 +2256,7 @@ const fiber0023 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0021(i, str, context);
 };
-const fiber0024 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0024 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1-9][0-9]|1[0-9]{2}|2...
@@ -2336,8 +2312,7 @@ const fiber0024 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0021(i, str, context);
 };
-const fiber0025 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0025 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1[0-9]{2}|2[0-4][0-9]...
@@ -2393,8 +2368,7 @@ const fiber0025 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0021(i, str, context);
 };
-const fiber0026 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0026 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-4][0-9]|25[0-5])\.)...
@@ -2449,8 +2423,7 @@ const fiber0026 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0021(i, str, context);
 };
-const fiber0027 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0027 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /((^\s✱((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s✱$)|(^\s✱((([...
@@ -2596,8 +2569,7 @@ const fiber0027 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd5 = groupMarkerEndCopy5;
   return -1;
 };
-const fiber0028 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0028 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /((^\s✱((([0-9]|...
@@ -2648,8 +2620,7 @@ const fiber0028 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0029 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0029 = (i: number, str: string, context: Context): number => {
   /*
    * nonBacktrackingQuantifier
    * ...:)))(%.+)?\s✱$))/
@@ -2681,8 +2652,7 @@ const fiber0029 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd6 = i;
   return fiber0001(i, str, context);
 };
-const fiber0030 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0030 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...:)))(%.+)?\s✱$))/
@@ -2733,8 +2703,7 @@ const fiber0030 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0031 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0031 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...{3}))|:)))(%.+)?\s✱$))/
@@ -2744,8 +2713,7 @@ const fiber0031 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = i;
   return greedyQuantifier0032(i, str, context);
 };
-const fiber0033 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0033 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}))|:)))(%.+)?\s✱$))/
@@ -2770,8 +2738,7 @@ const fiber0033 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0034 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0034 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...{3}))|:)))(%.+)?\s✱$))/
@@ -2831,8 +2798,7 @@ const fiber0034 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0035 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0035 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...s✱$)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s✱$))/
@@ -2852,8 +2818,7 @@ const fiber0035 = (start: number, str: string, context: Context): number => {
 
   return cursorAfterQuantifier;
 };
-const fiber0036 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0036 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...✱$)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-F...
@@ -3285,8 +3250,7 @@ const fiber0036 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd8 = i;
   return fiber0035(i, str, context);
 };
-const fiber0037 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0037 = (i: number, str: string, context: Context): number => {
   /*
    * nonBacktrackingQuantifier
    * ...1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-...
@@ -3314,8 +3278,7 @@ const fiber0037 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0038 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0038 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1,4}:){7}([0-9A-Fa-f]{1,4}|:))|...
@@ -3344,8 +3307,7 @@ const fiber0038 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0039 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0039 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...a-f]{1,4}|:))|(([0-9A...
@@ -3365,8 +3327,7 @@ const fiber0039 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0040 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0040 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}...
@@ -3395,8 +3356,7 @@ const fiber0040 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0041 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0041 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}...
@@ -3425,8 +3385,7 @@ const fiber0041 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0042 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0042 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}...
@@ -3455,8 +3414,7 @@ const fiber0042 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0043 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0043 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}...
@@ -3485,8 +3443,7 @@ const fiber0043 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0044 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0044 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}...
@@ -3515,8 +3472,7 @@ const fiber0044 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0045 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0045 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}...
@@ -3545,8 +3501,7 @@ const fiber0045 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0046 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0046 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}...
@@ -3575,8 +3530,7 @@ const fiber0046 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0047 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0047 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-...
@@ -3593,8 +3547,7 @@ const fiber0047 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd11 = i;
   return fiber0035(i, str, context);
 };
-const fiber0048 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0048 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1,4}:){6}(:[0-9A-Fa-f...
@@ -3639,8 +3592,7 @@ const fiber0048 = (start: number, str: string, context: Context): number => {
   }
   return fiber0047(i, str, context);
 };
-const fiber0049 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0049 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...,4}:){6}(:[0-9A-Fa-f]{1,4}|((25...
@@ -3669,8 +3621,7 @@ const fiber0049 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0050 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0050 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|...
@@ -3694,8 +3645,7 @@ const fiber0050 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd14 = i;
   return fiber0047(i, str, context);
 };
-const fiber0051 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0051 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -3750,8 +3700,7 @@ const fiber0051 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0050(i, str, context);
 };
-const fiber0052 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0052 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -3807,8 +3756,7 @@ const fiber0052 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0050(i, str, context);
 };
-const fiber0053 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0053 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -3864,8 +3812,7 @@ const fiber0053 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0050(i, str, context);
 };
-const fiber0054 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0054 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3})|:))...
@@ -3886,8 +3833,7 @@ const fiber0054 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0050(i, str, context);
 };
-const fiber0055 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0055 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3})|...
@@ -3908,8 +3854,7 @@ const fiber0055 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0056 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0056 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3})|:...
@@ -3946,8 +3891,7 @@ const fiber0056 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0057 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0057 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|...
@@ -4104,8 +4048,7 @@ const fiber0057 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0058 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0058 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -4160,8 +4103,7 @@ const fiber0058 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0057(i, str, context);
 };
-const fiber0059 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0059 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -4217,8 +4159,7 @@ const fiber0059 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0057(i, str, context);
 };
-const fiber0060 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0060 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -4274,8 +4215,7 @@ const fiber0060 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0057(i, str, context);
 };
-const fiber0061 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0061 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3})|:))...
@@ -4296,8 +4236,7 @@ const fiber0061 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0057(i, str, context);
 };
-const fiber0062 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0062 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3})|...
@@ -4318,8 +4257,7 @@ const fiber0062 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0063 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0063 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3})|:...
@@ -4356,8 +4294,7 @@ const fiber0063 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0064 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0064 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|...
@@ -4514,8 +4451,7 @@ const fiber0064 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0065 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0065 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -4570,8 +4506,7 @@ const fiber0065 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0064(i, str, context);
 };
-const fiber0066 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0066 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -4627,8 +4562,7 @@ const fiber0066 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0064(i, str, context);
 };
-const fiber0067 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0067 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -4684,8 +4618,7 @@ const fiber0067 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0064(i, str, context);
 };
-const fiber0068 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0068 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3})|:))...
@@ -4706,8 +4639,7 @@ const fiber0068 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0064(i, str, context);
 };
-const fiber0069 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0069 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3})|...
@@ -4728,8 +4660,7 @@ const fiber0069 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0070 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0070 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3})|:...
@@ -4766,8 +4697,7 @@ const fiber0070 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0071 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0071 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5...
@@ -4917,8 +4847,7 @@ const fiber0071 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0072 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0072 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...f]{1,4}|((25[0-5]|2[0...
@@ -4973,8 +4902,7 @@ const fiber0072 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0071(i, str, context);
 };
-const fiber0073 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0073 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...((25[0-5]|2[0-4]\d|1\...
@@ -5030,8 +4958,7 @@ const fiber0073 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0071(i, str, context);
 };
-const fiber0074 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0074 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -5087,8 +5014,7 @@ const fiber0074 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0071(i, str, context);
 };
-const fiber0075 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0075 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)(\.(25[0-...
@@ -5109,8 +5035,7 @@ const fiber0075 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0071(i, str, context);
 };
-const fiber0076 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0076 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)(\.(25...
@@ -5131,8 +5056,7 @@ const fiber0076 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0077 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0077 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)(\.(25[...
@@ -5169,8 +5093,7 @@ const fiber0077 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0078 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0078 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...a-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-...
@@ -5306,8 +5229,7 @@ const fiber0078 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0079 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0079 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...?\d)){3})|:))|(([0-9A...
@@ -5327,8 +5249,7 @@ const fiber0079 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0047(i, str, context);
 };
-const fiber0080 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0080 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-F...
@@ -5754,8 +5675,7 @@ const fiber0080 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0081 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0081 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...,4}|:))|(([0-9A-Fa-f]{1,4}:){6}...
@@ -5784,8 +5704,7 @@ const fiber0081 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0082 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0082 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...,4}|:))|(([0-9A-Fa-f]{1,4}:){6}...
@@ -5814,8 +5733,7 @@ const fiber0082 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0083 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0083 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...,4}|:))|(([0-9A-Fa-f]{1,4}:){6}...
@@ -5844,8 +5762,7 @@ const fiber0083 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0084 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0084 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...,4}|:))|(([0-9A-Fa-f]{1,4}:){6}...
@@ -5874,8 +5791,7 @@ const fiber0084 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0085 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0085 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...,4}|:))|(([0-9A-Fa-f]{1,4}:){6}...
@@ -5904,8 +5820,7 @@ const fiber0085 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0086 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0086 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...,4}|:))|(([0-9A-Fa-f]{1,4}:){6}...
@@ -5934,8 +5849,7 @@ const fiber0086 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0087 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0087 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-...
@@ -5952,8 +5866,7 @@ const fiber0087 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd18 = i;
   return fiber0035(i, str, context);
 };
-const fiber0088 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0088 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5...
@@ -5994,8 +5907,7 @@ const fiber0088 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd21 = i;
   return fiber0087(i, str, context);
 };
-const fiber0089 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0089 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((...
@@ -6053,8 +5965,7 @@ const fiber0089 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd22 = i;
   return i;
 };
-const fiber0090 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0090 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}:){5}(((:[0-9A-Fa-f]{1,4}){1,2...
@@ -6083,8 +5994,7 @@ const fiber0090 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0091 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0091 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|...
@@ -6108,8 +6018,7 @@ const fiber0091 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd23 = i;
   return fiber0087(i, str, context);
 };
-const fiber0092 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0092 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -6164,8 +6073,7 @@ const fiber0092 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0091(i, str, context);
 };
-const fiber0093 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0093 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -6221,8 +6129,7 @@ const fiber0093 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0091(i, str, context);
 };
-const fiber0094 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0094 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -6278,8 +6185,7 @@ const fiber0094 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0091(i, str, context);
 };
-const fiber0095 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0095 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3})|:))...
@@ -6300,8 +6206,7 @@ const fiber0095 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0091(i, str, context);
 };
-const fiber0096 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0096 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3})|...
@@ -6322,8 +6227,7 @@ const fiber0096 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0097 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0097 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3})|:...
@@ -6360,8 +6264,7 @@ const fiber0097 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0098 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0098 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|...
@@ -6518,8 +6421,7 @@ const fiber0098 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0099 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0099 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -6574,8 +6476,7 @@ const fiber0099 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0098(i, str, context);
 };
-const fiber0100 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0100 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -6631,8 +6532,7 @@ const fiber0100 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0098(i, str, context);
 };
-const fiber0101 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0101 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -6688,8 +6588,7 @@ const fiber0101 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0098(i, str, context);
 };
-const fiber0102 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0102 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3})|:))...
@@ -6710,8 +6609,7 @@ const fiber0102 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0098(i, str, context);
 };
-const fiber0103 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0103 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3})|...
@@ -6732,8 +6630,7 @@ const fiber0103 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0104 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0104 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3})|:...
@@ -6770,8 +6667,7 @@ const fiber0104 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0105 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0105 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|...
@@ -6928,8 +6824,7 @@ const fiber0105 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0106 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0106 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -6984,8 +6879,7 @@ const fiber0106 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0105(i, str, context);
 };
-const fiber0107 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0107 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -7041,8 +6935,7 @@ const fiber0107 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0105(i, str, context);
 };
-const fiber0108 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0108 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -7098,8 +6991,7 @@ const fiber0108 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0105(i, str, context);
 };
-const fiber0109 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0109 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3})|:))...
@@ -7120,8 +7012,7 @@ const fiber0109 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0105(i, str, context);
 };
-const fiber0110 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0110 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3})|...
@@ -7142,8 +7033,7 @@ const fiber0110 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0111 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0111 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3})|:...
@@ -7180,8 +7070,7 @@ const fiber0111 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0112 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0112 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5...
@@ -7331,8 +7220,7 @@ const fiber0112 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0113 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0113 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{1,2})|:((25[0-5]|2[0...
@@ -7387,8 +7275,7 @@ const fiber0113 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0112(i, str, context);
 };
-const fiber0114 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0114 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...((25[0-5]|2[0-4]\d|1\...
@@ -7444,8 +7331,7 @@ const fiber0114 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0112(i, str, context);
 };
-const fiber0115 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0115 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -7501,8 +7387,7 @@ const fiber0115 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0112(i, str, context);
 };
-const fiber0116 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0116 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)(\.(25[0-...
@@ -7523,8 +7408,7 @@ const fiber0116 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0112(i, str, context);
 };
-const fiber0117 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0117 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)(\.(25...
@@ -7545,8 +7429,7 @@ const fiber0117 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0118 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0118 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)(\.(25[...
@@ -7583,8 +7466,7 @@ const fiber0118 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0119 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0119 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...4}){1,2})|:((25[0-5]|...
@@ -7737,8 +7619,7 @@ const fiber0119 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0120 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0120 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...?\d)){3})|:))|(([0-9A...
@@ -7758,8 +7639,7 @@ const fiber0120 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0087(i, str, context);
 };
-const fiber0121 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0121 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-F...
@@ -8134,8 +8014,7 @@ const fiber0121 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0122 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0122 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){5}...
@@ -8164,8 +8043,7 @@ const fiber0122 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0123 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0123 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){5}...
@@ -8194,8 +8072,7 @@ const fiber0123 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0124 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0124 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){5}...
@@ -8224,8 +8101,7 @@ const fiber0124 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0125 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0125 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){5}...
@@ -8254,8 +8130,7 @@ const fiber0125 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0126 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0126 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){5}...
@@ -8284,8 +8159,7 @@ const fiber0126 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0127 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0127 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-...
@@ -8302,8 +8176,7 @@ const fiber0127 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd27 = i;
   return fiber0035(i, str, context);
 };
-const fiber0128 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0128 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-...
@@ -8344,8 +8217,7 @@ const fiber0128 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd30 = i;
   return fiber0127(i, str, context);
 };
-const fiber0129 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0129 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:...
@@ -8403,8 +8275,7 @@ const fiber0129 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd31 = i;
   return i;
 };
-const fiber0130 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0130 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}:){4}(((:[0-9A-Fa-f]{1,4}){1,3...
@@ -8433,8 +8304,7 @@ const fiber0130 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0131 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0131 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -8465,8 +8335,7 @@ const fiber0131 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd32 = i;
   return fiber0127(i, str, context);
 };
-const fiber0132 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0132 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -8521,8 +8390,7 @@ const fiber0132 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0131(i, str, context);
 };
-const fiber0133 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0133 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -8578,8 +8446,7 @@ const fiber0133 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0131(i, str, context);
 };
-const fiber0134 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0134 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -8635,8 +8502,7 @@ const fiber0134 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0131(i, str, context);
 };
-const fiber0135 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0135 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -8657,8 +8523,7 @@ const fiber0135 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0131(i, str, context);
 };
-const fiber0136 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0136 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -8679,8 +8544,7 @@ const fiber0136 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0137 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0137 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -8717,8 +8581,7 @@ const fiber0137 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0138 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0138 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -8885,8 +8748,7 @@ const fiber0138 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0139 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0139 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -8941,8 +8803,7 @@ const fiber0139 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0138(i, str, context);
 };
-const fiber0140 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0140 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -8998,8 +8859,7 @@ const fiber0140 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0138(i, str, context);
 };
-const fiber0141 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0141 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -9055,8 +8915,7 @@ const fiber0141 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0138(i, str, context);
 };
-const fiber0142 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0142 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -9077,8 +8936,7 @@ const fiber0142 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0138(i, str, context);
 };
-const fiber0143 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0143 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -9099,8 +8957,7 @@ const fiber0143 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0144 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0144 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -9137,8 +8994,7 @@ const fiber0144 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0145 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0145 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -9305,8 +9161,7 @@ const fiber0145 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0146 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0146 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -9361,8 +9216,7 @@ const fiber0146 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0145(i, str, context);
 };
-const fiber0147 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0147 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -9418,8 +9272,7 @@ const fiber0147 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0145(i, str, context);
 };
-const fiber0148 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0148 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -9475,8 +9328,7 @@ const fiber0148 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0145(i, str, context);
 };
-const fiber0149 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0149 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -9497,8 +9349,7 @@ const fiber0149 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0145(i, str, context);
 };
-const fiber0150 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0150 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -9519,8 +9370,7 @@ const fiber0150 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0151 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0151 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -9557,8 +9407,7 @@ const fiber0151 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0152 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0152 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5...
@@ -9718,8 +9567,7 @@ const fiber0152 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0153 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0153 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{1,4})?:((25[0-5]|2[0...
@@ -9774,8 +9622,7 @@ const fiber0153 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0152(i, str, context);
 };
-const fiber0154 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0154 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...((25[0-5]|2[0-4]\d|1\...
@@ -9831,8 +9678,7 @@ const fiber0154 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0152(i, str, context);
 };
-const fiber0155 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0155 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -9888,8 +9734,7 @@ const fiber0155 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0152(i, str, context);
 };
-const fiber0156 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0156 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)(\.(25[0-...
@@ -9910,8 +9755,7 @@ const fiber0156 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0152(i, str, context);
 };
-const fiber0157 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0157 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)(\.(25...
@@ -9932,8 +9776,7 @@ const fiber0157 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0158 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0158 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)(\.(25[...
@@ -9970,8 +9813,7 @@ const fiber0158 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0159 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0159 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...-f]{1,4})?:((25[0-5]|...
@@ -10134,8 +9976,7 @@ const fiber0159 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0160 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0160 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5...
@@ -10193,8 +10034,7 @@ const fiber0160 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd33 = i;
   return greedyQuantifier0161(i, str, context);
 };
-const fiber0162 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0162 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{1,3})|((:[0-9A-Fa-f]{1,4})?:((...
@@ -10223,8 +10063,7 @@ const fiber0162 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0163 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0163 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-...
@@ -10243,8 +10082,7 @@ const fiber0163 = (start: number, str: string, context: Context): number => {
 
   return cursorAfterQuantifier;
 };
-const fiber0164 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0164 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...\d)){3}))|:))|(([0-9A...
@@ -10264,8 +10102,7 @@ const fiber0164 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0127(i, str, context);
 };
-const fiber0165 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0165 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F...
@@ -10593,8 +10430,7 @@ const fiber0165 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0166 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0166 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){4}...
@@ -10623,8 +10459,7 @@ const fiber0166 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0167 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0167 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){4}...
@@ -10653,8 +10488,7 @@ const fiber0167 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0168 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0168 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){4}...
@@ -10683,8 +10517,7 @@ const fiber0168 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0169 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0169 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...3})|:))|(([0-9A-Fa-f]{1,4}:){4}...
@@ -10713,8 +10546,7 @@ const fiber0169 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0170 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0170 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-...
@@ -10731,8 +10563,7 @@ const fiber0170 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd38 = i;
   return fiber0035(i, str, context);
 };
-const fiber0171 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0171 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-...
@@ -10773,8 +10604,7 @@ const fiber0171 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd41 = i;
   return fiber0170(i, str, context);
 };
-const fiber0172 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0172 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:...
@@ -10832,8 +10662,7 @@ const fiber0172 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd42 = i;
   return i;
 };
-const fiber0173 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0173 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}:){3}(((:[0-9A-Fa-f]{1,4}){1,4...
@@ -10862,8 +10691,7 @@ const fiber0173 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0174 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0174 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -10894,8 +10722,7 @@ const fiber0174 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd43 = i;
   return fiber0170(i, str, context);
 };
-const fiber0175 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0175 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -10950,8 +10777,7 @@ const fiber0175 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0174(i, str, context);
 };
-const fiber0176 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0176 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -11007,8 +10833,7 @@ const fiber0176 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0174(i, str, context);
 };
-const fiber0177 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0177 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -11064,8 +10889,7 @@ const fiber0177 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0174(i, str, context);
 };
-const fiber0178 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0178 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -11086,8 +10910,7 @@ const fiber0178 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0174(i, str, context);
 };
-const fiber0179 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0179 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -11108,8 +10931,7 @@ const fiber0179 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0180 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0180 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -11146,8 +10968,7 @@ const fiber0180 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0181 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0181 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -11314,8 +11135,7 @@ const fiber0181 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0182 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0182 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -11370,8 +11190,7 @@ const fiber0182 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0181(i, str, context);
 };
-const fiber0183 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0183 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -11427,8 +11246,7 @@ const fiber0183 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0181(i, str, context);
 };
-const fiber0184 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0184 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -11484,8 +11302,7 @@ const fiber0184 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0181(i, str, context);
 };
-const fiber0185 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0185 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -11506,8 +11323,7 @@ const fiber0185 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0181(i, str, context);
 };
-const fiber0186 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0186 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -11528,8 +11344,7 @@ const fiber0186 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0187 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0187 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -11566,8 +11381,7 @@ const fiber0187 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0188 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0188 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -11734,8 +11548,7 @@ const fiber0188 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0189 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0189 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -11790,8 +11603,7 @@ const fiber0189 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0188(i, str, context);
 };
-const fiber0190 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0190 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -11847,8 +11659,7 @@ const fiber0190 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0188(i, str, context);
 };
-const fiber0191 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0191 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -11904,8 +11715,7 @@ const fiber0191 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0188(i, str, context);
 };
-const fiber0192 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0192 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -11926,8 +11736,7 @@ const fiber0192 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0188(i, str, context);
 };
-const fiber0193 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0193 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -11948,8 +11757,7 @@ const fiber0193 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0194 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0194 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -11986,8 +11794,7 @@ const fiber0194 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0195 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0195 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5...
@@ -12147,8 +11954,7 @@ const fiber0195 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0196 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0196 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}){0,2}:((25[0-5]|2[0...
@@ -12203,8 +12009,7 @@ const fiber0196 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0195(i, str, context);
 };
-const fiber0197 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0197 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...((25[0-5]|2[0-4]\d|1\...
@@ -12260,8 +12065,7 @@ const fiber0197 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0195(i, str, context);
 };
-const fiber0198 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0198 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -12317,8 +12121,7 @@ const fiber0198 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0195(i, str, context);
 };
-const fiber0199 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0199 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)(\.(25[0-...
@@ -12339,8 +12142,7 @@ const fiber0199 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0195(i, str, context);
 };
-const fiber0200 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0200 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)(\.(25...
@@ -12361,8 +12163,7 @@ const fiber0200 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0201 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0201 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)(\.(25[...
@@ -12399,8 +12200,7 @@ const fiber0201 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0202 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0202 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1,4}){0,2}:((25[0-5]|...
@@ -12563,8 +12363,7 @@ const fiber0202 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0203 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0203 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25...
@@ -12622,8 +12421,7 @@ const fiber0203 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd44 = i;
   return greedyQuantifier0204(i, str, context);
 };
-const fiber0205 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0205 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{1,4})|((:[0-9A-Fa-f]{1,4}){0,2...
@@ -12652,8 +12450,7 @@ const fiber0205 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0206 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0206 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-...
@@ -12672,8 +12469,7 @@ const fiber0206 = (start: number, str: string, context: Context): number => {
 
   return cursorAfterQuantifier;
 };
-const fiber0207 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0207 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...\d)){3}))|:))|(([0-9A...
@@ -12693,8 +12489,7 @@ const fiber0207 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0170(i, str, context);
 };
-const fiber0208 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0208 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...{3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F...
@@ -12967,8 +12762,7 @@ const fiber0208 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0209 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0209 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}))|:))|(([0-9A-Fa-f]{1,4}:){3}...
@@ -12997,8 +12791,7 @@ const fiber0209 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0210 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0210 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}))|:))|(([0-9A-Fa-f]{1,4}:){3}...
@@ -13027,8 +12820,7 @@ const fiber0210 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0211 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0211 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}))|:))|(([0-9A-Fa-f]{1,4}:){3}...
@@ -13057,8 +12849,7 @@ const fiber0211 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0212 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0212 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-...
@@ -13075,8 +12866,7 @@ const fiber0212 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd49 = i;
   return fiber0035(i, str, context);
 };
-const fiber0213 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0213 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-...
@@ -13117,8 +12907,7 @@ const fiber0213 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd52 = i;
   return fiber0212(i, str, context);
 };
-const fiber0214 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0214 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:...
@@ -13176,8 +12965,7 @@ const fiber0214 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd53 = i;
   return i;
 };
-const fiber0215 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0215 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}:){2}(((:[0-9A-Fa-f]{1,4}){1,5...
@@ -13206,8 +12994,7 @@ const fiber0215 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0216 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0216 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -13238,8 +13025,7 @@ const fiber0216 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd54 = i;
   return fiber0212(i, str, context);
 };
-const fiber0217 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0217 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -13294,8 +13080,7 @@ const fiber0217 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0216(i, str, context);
 };
-const fiber0218 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0218 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -13351,8 +13136,7 @@ const fiber0218 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0216(i, str, context);
 };
-const fiber0219 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0219 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -13408,8 +13192,7 @@ const fiber0219 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0216(i, str, context);
 };
-const fiber0220 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0220 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -13430,8 +13213,7 @@ const fiber0220 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0216(i, str, context);
 };
-const fiber0221 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0221 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -13452,8 +13234,7 @@ const fiber0221 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0222 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0222 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -13490,8 +13271,7 @@ const fiber0222 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0223 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0223 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -13658,8 +13438,7 @@ const fiber0223 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0224 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0224 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -13714,8 +13493,7 @@ const fiber0224 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0223(i, str, context);
 };
-const fiber0225 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0225 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -13771,8 +13549,7 @@ const fiber0225 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0223(i, str, context);
 };
-const fiber0226 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0226 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -13828,8 +13605,7 @@ const fiber0226 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0223(i, str, context);
 };
-const fiber0227 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0227 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -13850,8 +13626,7 @@ const fiber0227 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0223(i, str, context);
 };
-const fiber0228 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0228 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -13872,8 +13647,7 @@ const fiber0228 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0229 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0229 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -13910,8 +13684,7 @@ const fiber0229 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0230 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0230 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -14078,8 +13851,7 @@ const fiber0230 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0231 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0231 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -14134,8 +13906,7 @@ const fiber0231 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0230(i, str, context);
 };
-const fiber0232 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0232 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -14191,8 +13962,7 @@ const fiber0232 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0230(i, str, context);
 };
-const fiber0233 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0233 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -14248,8 +14018,7 @@ const fiber0233 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0230(i, str, context);
 };
-const fiber0234 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0234 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -14270,8 +14039,7 @@ const fiber0234 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0230(i, str, context);
 };
-const fiber0235 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0235 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -14292,8 +14060,7 @@ const fiber0235 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0236 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0236 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -14330,8 +14097,7 @@ const fiber0236 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0237 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0237 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5...
@@ -14491,8 +14257,7 @@ const fiber0237 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0238 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0238 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}){0,3}:((25[0-5]|2[0...
@@ -14547,8 +14312,7 @@ const fiber0238 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0237(i, str, context);
 };
-const fiber0239 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0239 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...((25[0-5]|2[0-4]\d|1\...
@@ -14604,8 +14368,7 @@ const fiber0239 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0237(i, str, context);
 };
-const fiber0240 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0240 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -14661,8 +14424,7 @@ const fiber0240 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0237(i, str, context);
 };
-const fiber0241 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0241 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)(\.(25[0-...
@@ -14683,8 +14445,7 @@ const fiber0241 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0237(i, str, context);
 };
-const fiber0242 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0242 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)(\.(25...
@@ -14705,8 +14466,7 @@ const fiber0242 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0243 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0243 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)(\.(25[...
@@ -14743,8 +14503,7 @@ const fiber0243 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0244 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0244 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1,4}){0,3}:((25[0-5]|...
@@ -14907,8 +14666,7 @@ const fiber0244 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0245 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0245 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25...
@@ -14966,8 +14724,7 @@ const fiber0245 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd55 = i;
   return greedyQuantifier0246(i, str, context);
 };
-const fiber0247 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0247 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{1,5})|((:[0-9A-Fa-f]{1,4}){0,3...
@@ -14996,8 +14753,7 @@ const fiber0247 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0248 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0248 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-...
@@ -15016,8 +14772,7 @@ const fiber0248 = (start: number, str: string, context: Context): number => {
 
   return cursorAfterQuantifier;
 };
-const fiber0249 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0249 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...\d)){3}))|:))|(([0-9A...
@@ -15037,8 +14792,7 @@ const fiber0249 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0212(i, str, context);
 };
-const fiber0250 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0250 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...{3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-F...
@@ -15256,8 +15010,7 @@ const fiber0250 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0251 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0251 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}))|:))|(([0-9A-Fa-f]{1,4}:){2}...
@@ -15286,8 +15039,7 @@ const fiber0251 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0252 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0252 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}))|:))|(([0-9A-Fa-f]{1,4}:){2}...
@@ -15316,8 +15068,7 @@ const fiber0252 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0253 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0253 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0...
@@ -15334,8 +15085,7 @@ const fiber0253 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd60 = i;
   return fiber0035(i, str, context);
 };
-const fiber0254 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0254 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-...
@@ -15376,8 +15126,7 @@ const fiber0254 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd63 = i;
   return fiber0253(i, str, context);
 };
-const fiber0255 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0255 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:...
@@ -15435,8 +15184,7 @@ const fiber0255 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd64 = i;
   return i;
 };
-const fiber0256 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0256 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}:){1}(((:[0-9A-Fa-f]{1,4}){1,6...
@@ -15465,8 +15213,7 @@ const fiber0256 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0257 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0257 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -15497,8 +15244,7 @@ const fiber0257 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd65 = i;
   return fiber0253(i, str, context);
 };
-const fiber0258 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0258 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -15553,8 +15299,7 @@ const fiber0258 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0257(i, str, context);
 };
-const fiber0259 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0259 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -15610,8 +15355,7 @@ const fiber0259 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0257(i, str, context);
 };
-const fiber0260 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0260 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -15667,8 +15411,7 @@ const fiber0260 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0257(i, str, context);
 };
-const fiber0261 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0261 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -15689,8 +15432,7 @@ const fiber0261 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0257(i, str, context);
 };
-const fiber0262 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0262 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -15711,8 +15453,7 @@ const fiber0262 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0263 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0263 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -15749,8 +15490,7 @@ const fiber0263 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0264 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0264 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -15917,8 +15657,7 @@ const fiber0264 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0265 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0265 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -15973,8 +15712,7 @@ const fiber0265 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0264(i, str, context);
 };
-const fiber0266 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0266 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -16030,8 +15768,7 @@ const fiber0266 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0264(i, str, context);
 };
-const fiber0267 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0267 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -16087,8 +15824,7 @@ const fiber0267 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0264(i, str, context);
 };
-const fiber0268 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0268 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -16109,8 +15845,7 @@ const fiber0268 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0264(i, str, context);
 };
-const fiber0269 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0269 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -16131,8 +15866,7 @@ const fiber0269 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0270 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0270 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -16169,8 +15903,7 @@ const fiber0270 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0271 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0271 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -16337,8 +16070,7 @@ const fiber0271 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0272 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0272 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -16393,8 +16125,7 @@ const fiber0272 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0271(i, str, context);
 };
-const fiber0273 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0273 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -16450,8 +16181,7 @@ const fiber0273 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0271(i, str, context);
 };
-const fiber0274 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0274 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -16507,8 +16237,7 @@ const fiber0274 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0271(i, str, context);
 };
-const fiber0275 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0275 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -16529,8 +16258,7 @@ const fiber0275 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0271(i, str, context);
 };
-const fiber0276 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0276 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -16551,8 +16279,7 @@ const fiber0276 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0277 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0277 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -16589,8 +16316,7 @@ const fiber0277 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0278 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0278 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5...
@@ -16750,8 +16476,7 @@ const fiber0278 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0279 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0279 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}){0,4}:((25[0-5]|2[0...
@@ -16806,8 +16531,7 @@ const fiber0279 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0278(i, str, context);
 };
-const fiber0280 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0280 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...((25[0-5]|2[0-4]\d|1\...
@@ -16863,8 +16587,7 @@ const fiber0280 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0278(i, str, context);
 };
-const fiber0281 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0281 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -16920,8 +16643,7 @@ const fiber0281 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0278(i, str, context);
 };
-const fiber0282 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0282 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)(\.(25[0-...
@@ -16942,8 +16664,7 @@ const fiber0282 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0278(i, str, context);
 };
-const fiber0283 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0283 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)(\.(25...
@@ -16964,8 +16685,7 @@ const fiber0283 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0284 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0284 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)(\.(25[...
@@ -17002,8 +16722,7 @@ const fiber0284 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0285 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0285 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1,4}){0,4}:((25[0-5]|...
@@ -17166,8 +16885,7 @@ const fiber0285 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0286 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0286 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25...
@@ -17225,8 +16943,7 @@ const fiber0286 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd66 = i;
   return greedyQuantifier0287(i, str, context);
 };
-const fiber0288 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0288 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{1,6})|((:[0-9A-Fa-f]{1,4}){0,4...
@@ -17255,8 +16972,7 @@ const fiber0288 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0289 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0289 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((...
@@ -17275,8 +16991,7 @@ const fiber0289 = (start: number, str: string, context: Context): number => {
 
   return cursorAfterQuantifier;
 };
-const fiber0290 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0290 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...\d)){3}))|:))|(:(((:[...
@@ -17296,8 +17011,7 @@ const fiber0290 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0253(i, str, context);
 };
-const fiber0291 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0291 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...{3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-...
@@ -17460,8 +17174,7 @@ const fiber0291 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0292 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0292 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}))|:))|(([0-9A-Fa-f]{1,4}:){1}...
@@ -17490,8 +17203,7 @@ const fiber0292 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0293 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0293 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s...
@@ -17508,8 +17220,7 @@ const fiber0293 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd71 = i;
   return fiber0035(i, str, context);
 };
-const fiber0294 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0294 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-...
@@ -17550,8 +17261,7 @@ const fiber0294 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd73 = i;
   return fiber0293(i, str, context);
 };
-const fiber0295 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0295 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...)|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:...
@@ -17609,8 +17319,7 @@ const fiber0295 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd74 = i;
   return i;
 };
-const fiber0296 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0296 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...:))|(:(((:[0-9A-Fa-f]{1,4}){1,7...
@@ -17639,8 +17348,7 @@ const fiber0296 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0297 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0297 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -17671,8 +17379,7 @@ const fiber0297 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd75 = i;
   return fiber0293(i, str, context);
 };
-const fiber0298 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0298 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -17727,8 +17434,7 @@ const fiber0298 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0297(i, str, context);
 };
-const fiber0299 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0299 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -17784,8 +17490,7 @@ const fiber0299 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0297(i, str, context);
 };
-const fiber0300 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0300 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -17841,8 +17546,7 @@ const fiber0300 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0297(i, str, context);
 };
-const fiber0301 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0301 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -17863,8 +17567,7 @@ const fiber0301 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0297(i, str, context);
 };
-const fiber0302 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0302 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -17885,8 +17588,7 @@ const fiber0302 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0303 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0303 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -17923,8 +17625,7 @@ const fiber0303 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0304 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0304 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -18091,8 +17792,7 @@ const fiber0304 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0305 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0305 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -18147,8 +17847,7 @@ const fiber0305 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0304(i, str, context);
 };
-const fiber0306 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0306 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -18204,8 +17903,7 @@ const fiber0306 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0304(i, str, context);
 };
-const fiber0307 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0307 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -18261,8 +17959,7 @@ const fiber0307 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0304(i, str, context);
 };
-const fiber0308 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0308 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -18283,8 +17980,7 @@ const fiber0308 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0304(i, str, context);
 };
-const fiber0309 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0309 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -18305,8 +18001,7 @@ const fiber0309 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0310 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0310 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -18343,8 +18038,7 @@ const fiber0310 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0311 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0311 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))...
@@ -18511,8 +18205,7 @@ const fiber0311 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0312 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0312 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]?\d)(\.(25[0-5]|2[0...
@@ -18567,8 +18260,7 @@ const fiber0312 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0311(i, str, context);
 };
-const fiber0313 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0313 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ....(25[0-5]|2[0-4]\d|1\...
@@ -18624,8 +18316,7 @@ const fiber0313 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0311(i, str, context);
 };
-const fiber0314 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0314 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -18681,8 +18372,7 @@ const fiber0314 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0311(i, str, context);
 };
-const fiber0315 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0315 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)){3}))|:)...
@@ -18703,8 +18393,7 @@ const fiber0315 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0311(i, str, context);
 };
-const fiber0316 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0316 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)){3}))...
@@ -18725,8 +18414,7 @@ const fiber0316 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0317 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0317 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)){3}))|...
@@ -18763,8 +18451,7 @@ const fiber0317 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0318 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0318 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ...4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5...
@@ -18924,8 +18611,7 @@ const fiber0318 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0319 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0319 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}){0,5}:((25[0-5]|2[0...
@@ -18980,8 +18666,7 @@ const fiber0319 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0318(i, str, context);
 };
-const fiber0320 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0320 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...((25[0-5]|2[0-4]\d|1\...
@@ -19037,8 +18722,7 @@ const fiber0320 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0318(i, str, context);
 };
-const fiber0321 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0321 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|2[0-4]\d|1\d\d|[1-9]...
@@ -19094,8 +18778,7 @@ const fiber0321 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0318(i, str, context);
 };
-const fiber0322 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0322 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...d\d|[1-9]?\d)(\.(25[0-...
@@ -19116,8 +18799,7 @@ const fiber0322 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0318(i, str, context);
 };
-const fiber0323 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0323 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]\d|1\d\d|[1-9]?\d)(\.(25...
@@ -19138,8 +18820,7 @@ const fiber0323 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0324 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0324 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
    * ...]\d|1\d\d|[1-9]?\d)(\.(25[...
@@ -19176,8 +18857,7 @@ const fiber0324 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0325 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0325 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...1,4}){0,5}:((25[0-5]|...
@@ -19340,8 +19020,7 @@ const fiber0325 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0326 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0326 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25...
@@ -19399,8 +19078,7 @@ const fiber0326 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd76 = i;
   return greedyQuantifier0327(i, str, context);
 };
-const fiber0328 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0328 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...{1,7})|((:[0-9A-Fa-f]{1,4}){0,5...
@@ -19429,8 +19107,7 @@ const fiber0328 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0329 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0329 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)...
@@ -19449,8 +19126,7 @@ const fiber0329 = (start: number, str: string, context: Context): number => {
 
   return cursorAfterQuantifier;
 };
-const fiber0330 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0330 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...\d)){3}))|:)))(%.+)?\...
@@ -19470,8 +19146,7 @@ const fiber0330 = (start: number, str: string, context: Context): number => {
   i++;
   return fiber0293(i, str, context);
 };
-const fiber0331 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0331 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...{3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s✱...
@@ -19596,8 +19271,7 @@ const fiber0331 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0332 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0332 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...5]))\s✱$)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s✱$))/
@@ -20011,8 +19685,7 @@ const fiber0332 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
   return -1;
 };
-const fiber0333 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0333 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...))\s✱$)|(^\s✱((([0-9A-...
@@ -20063,8 +19736,7 @@ const fiber0333 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0334 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0334 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /((^\s✱((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s✱$)|(^\s✱((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s✱$))/

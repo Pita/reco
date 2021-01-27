@@ -70,8 +70,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
@@ -260,8 +259,7 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd0 = i;
   return i;
 };
-const fiber0002 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...|1[0-2])-(0[1-9]|[12]...
@@ -299,8 +297,7 @@ const fiber0002 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0003 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...)-(0[1-9]|[12]\d|3[01]))/
@@ -339,8 +336,7 @@ const fiber0003 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0004 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...9]|[12]\d|3[01]))/
@@ -378,8 +374,7 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0005 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /([12]\d{3}-(0[1-9]|1[0-...
@@ -417,8 +412,7 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0006 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0006 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...}-(0[1-9]|1[0-2])-(0[...

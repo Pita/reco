@@ -52,8 +52,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /(?:a)(b)c/

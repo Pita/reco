@@ -70,8 +70,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * ..._\.\+-]+)@([\da-z\.-]+)\.([a-z\.]...
@@ -144,8 +143,7 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0002 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...z\.-]+)\.([a-z\.]{2,6})$/
@@ -170,8 +168,7 @@ const fiber0002 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0003 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...\.\+-]+)@([\da-z\.-]+)\.([a-z\...
@@ -200,8 +197,7 @@ const fiber0003 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0004 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
    * /^([a-z0-9_\...
@@ -303,8 +299,7 @@ const fiber0004 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0005 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /^([a-z0-9_\.\+-]+)@([\da-z...

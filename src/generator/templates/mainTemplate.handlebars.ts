@@ -86,11 +86,10 @@ export function generatedRegexMatcher(str: string) {
 
 {{#each fiberHandlers}}
   const {{{functionName}}} = (
-    start: number,
+    i: number,
     str: string,
     context: Context
   ): number => {
-    let i = start;
     {{#each atoms}}
       /*
         * {{{type}}}

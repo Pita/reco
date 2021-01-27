@@ -61,8 +61,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...=|[>"']))+.)["']?/
@@ -115,8 +114,7 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0002 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...[>"']))+.)["']?/
@@ -136,8 +134,7 @@ const fiber0002 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0003 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...=["']?((?:.(?!["']?\s...
@@ -171,8 +168,7 @@ const fiber0003 = (start: number, str: string, context: Context): number => {
   }
   return i;
 };
-const fiber0005 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...\s+(?:\S+)=|[>"']))+....
@@ -192,8 +188,7 @@ const fiber0005 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0006 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0006 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ..."']?\s+(?:\S+)=|[>"'])...
@@ -244,8 +239,7 @@ const fiber0006 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0007 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0007 = (i: number, str: string, context: Context): number => {
   /*
    * nonBacktrackingQuantifier
    * ...]?((?:.(?!["']?\s+(?:\S+)...
@@ -324,8 +318,7 @@ const fiber0007 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0008 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0008 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...:.(?!["']?\s+(?:\S+)=|...
@@ -376,8 +369,7 @@ const fiber0008 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0009 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0009 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...]?((?:.(?!["']?\s+(?:\S+...
@@ -397,8 +389,7 @@ const fiber0009 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0010 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0010 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...+(?:\S+)=|[>"']))+.)["']?/
@@ -421,8 +412,7 @@ const fiber0010 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0011 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0011 = (i: number, str: string, context: Context): number => {
   /*
    * disjunction
    * ...["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/
@@ -438,8 +428,7 @@ const fiber0011 = (start: number, str: string, context: Context): number => {
   }
   return -1;
 };
-const fiber0012 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0012 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/
@@ -482,8 +471,7 @@ const fiber0012 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0013 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0013 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...s)(on\S+)=["']?((?:.(?![...
@@ -503,8 +491,7 @@ const fiber0013 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0014 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0014 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(?:<[^>]+\s)(on\S+)=["']?((?:...
@@ -565,8 +552,7 @@ const fiber0014 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0015 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0015 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...^>]+\s)(on\S+)=["']?((...
@@ -617,8 +603,7 @@ const fiber0015 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0016 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0016 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /(?:<[^>]+\s)(on\S+)=[...
@@ -743,8 +728,7 @@ const fiber0016 = (start: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0017 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0017 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /(?:<[^>]+\s)(on\S+...
@@ -764,8 +748,7 @@ const fiber0017 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0018 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0018 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /(?:<[^>]+\s)(o...

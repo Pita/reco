@@ -61,8 +61,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(b.✱?)(a)/
@@ -102,8 +101,7 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
   context.groupMarkerEnd1 = i;
   return i;
 };
-const fiber0002 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /(b.✱?)(a)/
@@ -128,8 +126,7 @@ const fiber0002 = (start: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0003 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(b.✱?)(a)/

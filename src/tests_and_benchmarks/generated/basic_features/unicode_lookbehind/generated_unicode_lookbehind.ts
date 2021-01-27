@@ -39,8 +39,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * lookaround
    * /(?<!𝒴)x/u
@@ -70,8 +69,7 @@ const fiber0001 = (start: number, str: string, context: Context): number => {
   i += charCode1 >= 0x10000 ? 2 : 1;
   return i;
 };
-const fiber0002 = (start: number, str: string, context: Context): number => {
-  let i = start;
+const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSetBackward
    * /(?<!𝒴)x/u
