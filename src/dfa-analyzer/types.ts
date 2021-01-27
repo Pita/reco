@@ -2,9 +2,10 @@ import { AST } from 'regexpp';
 import { CharRange } from '../generator/CharRange';
 import { CharRangeSequence } from './CharRangeSequence';
 
-export type OptionalASTElement = {
-  type: 'OptionalASTElement';
+export type MaxCountASTElement = {
+  type: 'MaxCountASTElement';
   element: AST.QuantifiableElement;
+  count: number;
 };
 
 export type InfiniteASTElement = {
@@ -14,7 +15,7 @@ export type InfiniteASTElement = {
 
 export type AstElementOrQuantifierElement =
   | AST.Element
-  | OptionalASTElement
+  | MaxCountASTElement
   | InfiniteASTElement;
 
 export type ASTPath = AstElementOrQuantifierElement[];

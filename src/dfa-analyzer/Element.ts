@@ -2,9 +2,9 @@ import { handleAssertion } from './Assertion';
 // import { handleBackReference } from './BackReference';
 import { handleSetOrCharacter } from './Character';
 import { handleDisjunction } from './Disjunction';
-// import { handleInfiniteASTElement } from './InfiniteElement';
-// import { handleOptionalASTElement } from './OptionalElement';
-// import { handleQuantifier } from './Quantifier';
+import { handleInfiniteASTElement } from './InfiniteElement';
+import { handleMaxCountASTElement } from './MaxCountElement';
+import { handleQuantifier } from './Quantifier';
 import { AstElementOrQuantifierElement, DFAHandler } from './types';
 
 export const handleElement: DFAHandler<
@@ -24,14 +24,14 @@ export const handleElement: DFAHandler<
       return handleDisjunction(element.alternatives, options);
     case 'Assertion':
       return handleAssertion(element, options);
+    case 'MaxCountASTElement':
+      return handleMaxCountASTElement(element, options);
+    case 'InfiniteASTElement':
+      return handleInfiniteASTElement(element, options);
+    case 'Quantifier':
+      return handleQuantifier(element, options);
     default:
       throw new Error(`${element.type} not handled yet`);
-    // case 'OptionalASTElement':
-    //   return handleOptionalASTElement(element, options);
-    // case 'InfiniteASTElement':
-    //   return handleInfiniteASTElement(element, options);
-    // case 'Quantifier':
-    //   return handleQuantifier(element, options);
 
     // case 'Backreference':
     //   return handleBackReference(element, options);

@@ -5,7 +5,7 @@ import { dfaAnalyzeAlternative } from '../dfaAnalyze';
 import { CharRangeSequence } from '../CharRangeSequence';
 
 describe('handleAlternative', () => {
-  test('can handle a very simple regex', () => {
+  test('can handle a simle assertion', () => {
     const expected = [
       new CharRangeSequence([
         CharRange.create(['a'], {
