@@ -50,27 +50,28 @@ const attemptSimplifyOneCharDisjunctions = (
   return `[${charsJoined}]`;
 };
 
-const attemptSimplifyNestedDisjunctions = (
+const attemptInlineNestedDisjunctions = (
   alternatives: AST.Alternative[],
   options: SimplifierHandlerOptions,
 ) => {
-  const nestedAlternatives: AST.Alternative[] = [];
-  let isNested = true;
+  const inlinedAlternatives: AST.Alternative[] = [];
+  let couldInline = false;
 
   alternatives.forEach((alternative) => {
-    alternative.elements.forEach((alternativeElement) => {
-      if (alternativeElement.type !== 'Group') {
-        isNested = false;
-        return;
-      }
-
-      alternativeElement.alternatives.forEach((subAlternative) =>
-        nestedAlternatives.push(subAlternative),
+    if (
+      alternative.elements.length === 1 &&
+      alternative.elements[0].type === 'Group'
+    ) {
+      couldInline = true;
+      alternative.elements[0].alternatives.forEach((subAlternative) =>
+        inlinedAlternatives.push(subAlternative),
       );
-    });
+    } else {
+      inlinedAlternatives.push(alternative);
+    }
   });
 
-  return isNested ? handleDirectly(nestedAlternatives, options) : null;
+  return couldInline ? handleDirectly(inlinedAlternatives, options) : null;
 };
 
 const attemptRemoveDuplicates = (
@@ -88,6 +89,7 @@ const attemptRemoveDuplicates = (
     }
 
     deduplicatedAlternatives.push(alternative);
+    keysSeen.add(alternative.raw);
   });
 
   if (!deduplicated) {
@@ -189,6 +191,14 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
     return handleAlternative(alternatives[0], options);
   }
 
+  const attemptedRemoveDuplicates = attemptRemoveDuplicates(
+    alternatives,
+    options,
+  );
+  if (attemptedRemoveDuplicates !== null) {
+    return attemptedRemoveDuplicates;
+  }
+
   const attemptedSideRemoval = attemptSideRemoval(alternatives, options);
   if (attemptedSideRemoval !== null) {
     return attemptedSideRemoval;
@@ -201,20 +211,12 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
     return attemptedOneCharSimplification;
   }
 
-  const attemptedSimplifyNestedDisjunctions = attemptSimplifyNestedDisjunctions(
+  const attemptedInlineNestedDisjunctions = attemptInlineNestedDisjunctions(
     alternatives,
     options,
   );
-  if (attemptedSimplifyNestedDisjunctions !== null) {
-    return attemptedSimplifyNestedDisjunctions;
-  }
-
-  const attemptedRemoveDuplicates = attemptRemoveDuplicates(
-    alternatives,
-    options,
-  );
-  if (attemptedRemoveDuplicates !== null) {
-    return attemptedRemoveDuplicates;
+  if (attemptedInlineNestedDisjunctions !== null) {
+    return attemptedInlineNestedDisjunctions;
   }
 
   const attemptedGrouping = attemptGrouping(alternatives, options);
