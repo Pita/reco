@@ -10,3 +10,4 @@ test_cli_generated_code.js
 tsconfig.json
 babel.config.js
 *.test.js
+__tests__
