@@ -1,5 +1,7 @@
 import { AST } from 'regexpp';
+import { handleCapturingGroup } from './CapturingGroup';
 import { handleSetOrCharacter } from './Character';
+import { handleGroup } from './Group';
 import { SimplifierHandler } from './types';
 
 export const handleElement: SimplifierHandler<AST.Element> = (
@@ -11,9 +13,10 @@ export const handleElement: SimplifierHandler<AST.Element> = (
     case 'CharacterSet':
     case 'CharacterClass':
       return handleSetOrCharacter(element, options);
-    // case 'Group':
-    // case 'CapturingGroup':
-    //   return handleDisjunction(element.alternatives, options);
+    case 'Group':
+      return handleGroup(element, options);
+    case 'CapturingGroup':
+      return handleCapturingGroup(element, options);
     // case 'Assertion':
     //   return handleAssertion(element, options);
     // case 'MaxCountASTElement':
