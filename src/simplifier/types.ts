@@ -1,6 +1,8 @@
+export type SimplifierHandlerOptions = {
+  firstPass: boolean;
+};
+
 export type SimplifierHandler<T> = (
   element: T,
-  options: {
-    firstPass: boolean;
-  },
+  options: SimplifierHandlerOptions,
 ) => string;

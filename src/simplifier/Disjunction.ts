@@ -1,11 +1,31 @@
 import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
 import { removeFromSide } from './removeFromSide';
-import { SimplifierHandler } from './types';
+import { SimplifierHandler, SimplifierHandlerOptions } from './types';
 
 const CHAR_TYPES = ['Character', 'CharacterSet', 'CharacterClass'];
+const ELEMENTS_TO_BE_REMOVED = [
+  'Character',
+  'CharacterSet',
+  'CharacterClass',
+  'Group',
+  'Assertion',
+  'Quantifier',
+  'Backreference',
+];
 
-const tryToSimplifyOneCharDisjunctions = (alternatives: AST.Alternative[]) => {
+const handleDirectly: SimplifierHandler<AST.Alternative[]> = (
+  alternatives: AST.Alternative[],
+  options,
+) => {
+  return alternatives
+    .map((alternative) => handleAlternative(alternative, options))
+    .join('|');
+};
+
+const attemptSimplifyOneCharDisjunctions = (
+  alternatives: AST.Alternative[],
+) => {
   const canBeTransformed = alternatives.every((alternative) => {
     if (alternative.elements.length !== 1) {
       return false;
@@ -24,7 +44,10 @@ const tryToSimplifyOneCharDisjunctions = (alternatives: AST.Alternative[]) => {
   return `[${charsJoined}]`;
 };
 
-const tryToSimplifyNestedDisjunctions = (alternatives: AST.Alternative[]) => {
+const attemptSimplifyNestedDisjunctions = (
+  alternatives: AST.Alternative[],
+  options: SimplifierHandlerOptions,
+) => {
   const nestedAlternatives: AST.Alternative[] = [];
   let isNested = true;
 
@@ -41,27 +64,13 @@ const tryToSimplifyNestedDisjunctions = (alternatives: AST.Alternative[]) => {
     });
   });
 
-  return isNested ? nestedAlternatives : alternatives;
+  return isNested ? handleDirectly(nestedAlternatives, options) : null;
 };
 
-const ELEMENTS_TO_BE_REMOVED = [
-  'Character',
-  'CharacterSet',
-  'CharacterClass',
-  'Group',
-  'Assertion',
-  'Quantifier',
-  'Backreference',
-];
-
-export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
-  alternatives,
-  options,
+const attemptSideRemoval = (
+  alternatives: AST.Alternative[],
+  options: SimplifierHandlerOptions,
 ) => {
-  if (alternatives.length === 1) {
-    return handleAlternative(alternatives[0], options);
-  }
-
   const removedFromStart = removeFromSide(
     alternatives,
     'start',
@@ -73,19 +82,43 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
     ELEMENTS_TO_BE_REMOVED,
   );
 
-  const attemptedOneCharSimplification = tryToSimplifyOneCharDisjunctions(
+  if (removedFromStart !== '' || removedFromEnd !== '') {
+    return `${removedFromStart}(?:${handleDirectly(
+      alternatives,
+      options,
+    )})${removedFromEnd}`;
+  }
+
+  return null;
+};
+
+export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
+  alternatives,
+  options,
+) => {
+  if (alternatives.length === 1) {
+    return handleAlternative(alternatives[0], options);
+  }
+
+  const attemptedSideRemoval = attemptSideRemoval(alternatives, options);
+  if (attemptedSideRemoval) {
+    return attemptedSideRemoval;
+  }
+
+  const attemptedOneCharSimplification = attemptSimplifyOneCharDisjunctions(
     alternatives,
   );
-
-  const alternativesString =
-    attemptedOneCharSimplification ??
-    tryToSimplifyNestedDisjunctions(alternatives)
-      .map((alternative) => handleAlternative(alternative, options))
-      .join('|');
-
-  if (removedFromStart !== '' || removedFromEnd !== '') {
-    return `${removedFromStart}(?:${alternativesString})${removedFromEnd}`;
-  } else {
-    return alternativesString;
+  if (attemptedOneCharSimplification) {
+    return attemptedOneCharSimplification;
   }
+
+  const attemptedSimplifyNestedDisjunctions = attemptSimplifyNestedDisjunctions(
+    alternatives,
+    options,
+  );
+  if (attemptedSimplifyNestedDisjunctions) {
+    return attemptedSimplifyNestedDisjunctions;
+  }
+
+  return handleDirectly(alternatives, options);
 };

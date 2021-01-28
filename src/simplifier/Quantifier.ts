@@ -22,6 +22,7 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
       },
     });
 
+    // TODO: only quantifable element group should be ok
     if (!containsGroups) {
       for (let i = 0; i < Math.min(quantifier.min, UNROLL_MIN); i++) {
         unrolledQuantifiers += quantifier.element.raw;
