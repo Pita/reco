@@ -6,13 +6,13 @@ export const simplifyRegex = (originalRegex: string) => {
   let currentRegex = originalRegex;
   let firstPass = true;
   do {
-    const previousRegexParsed = new RegExpParser().parseLiteral(currentRegex);
-    const disjunction = handleDisjunction(
-      previousRegexParsed.pattern.alternatives,
-      { firstPass },
-    );
+    const literal = new RegExpParser().parseLiteral(currentRegex);
+    const disjunction = handleDisjunction(literal.pattern.alternatives, {
+      firstPass,
+      literal,
+    });
     previousRegex = currentRegex;
-    currentRegex = `/${disjunction}/${previousRegexParsed.flags.raw}`;
+    currentRegex = `/${disjunction}/${literal.flags.raw}`;
     firstPass = false;
   } while (previousRegex !== currentRegex);
 

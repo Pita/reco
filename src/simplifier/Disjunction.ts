@@ -2,6 +2,8 @@ import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
 import { removeFromSide } from './removeFromSide';
 import { SimplifierHandler, SimplifierHandlerOptions } from './types';
+import sortBy from 'lodash/sortBy';
+import { computeExclusivityOfAlternatives } from '../dfa-analyzer/CharRangeSequencePossibilities';
 
 const CHAR_TYPES = ['Character', 'CharacterSet', 'CharacterClass'];
 const ELEMENTS_TO_BE_REMOVED = [
@@ -92,6 +94,54 @@ const attemptSideRemoval = (
   return null;
 };
 
+const attemptGrouping = (
+  alternatives: AST.Alternative[],
+  options: SimplifierHandlerOptions,
+) => {
+  const canBeResorted =
+    computeExclusivityOfAlternatives(alternatives, options.literal) ===
+    'Exlusive';
+
+  let proccessedAlternatives = alternatives;
+  if (canBeResorted) {
+    proccessedAlternatives = sortBy(
+      alternatives,
+      (alternative) => alternative.elements[0]?.raw || '',
+    );
+  }
+
+  const groups: AST.Alternative[][] = [];
+  let previousRaw: string | null = null;
+  let couldGroup = false;
+  for (let i = 0; i < proccessedAlternatives.length; i++) {
+    const currentAlternative = proccessedAlternatives[i];
+    const currentRaw = currentAlternative.elements[0]?.raw || '';
+
+    if (previousRaw === currentRaw) {
+      groups[groups.length - 1].push(currentAlternative);
+      couldGroup = true;
+    } else {
+      groups.push([currentAlternative]);
+    }
+
+    previousRaw = currentRaw;
+  }
+
+  if (!couldGroup) {
+    return null;
+  }
+
+  return groups
+    .map((group) => {
+      if (group.length === 1) {
+        return handleAlternative(group[0], options);
+      }
+
+      return `(?:${handleDisjunction(group, options)})`;
+    })
+    .join('|');
+};
+
 export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   alternatives,
   options,
@@ -118,6 +168,11 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   );
   if (attemptedSimplifyNestedDisjunctions) {
     return attemptedSimplifyNestedDisjunctions;
+  }
+
+  const attemptedGrouping = attemptGrouping(alternatives, options);
+  if (attemptedGrouping) {
+    return attemptedGrouping;
   }
 
   return handleDirectly(alternatives, options);

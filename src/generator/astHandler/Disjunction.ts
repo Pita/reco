@@ -5,7 +5,10 @@ import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 import { BacktrackingError } from '../BacktrackingException';
 import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
-import { CharRangeSequencePossibilities } from '../../dfa-analyzer/CharRangeSequencePossibilities';
+import {
+  CharRangeSequencePossibilities,
+  computeExclusivityOfAlternatives,
+} from '../../dfa-analyzer/CharRangeSequencePossibilities';
 
 const handleBacktrackingDisjunction = (
   alternatives: AST.Alternative[],
@@ -118,41 +121,9 @@ const isANonBacktrackingDisjunction = (
     return false;
   }
 
-  let completlyExclusive = (() => {
-    const mappedDFAs: CharRangeSequencePossibilities[] = [];
-    let complexity = 1;
-    for (let i = 0; i < alternatives.length; i++) {
-      const possibilities = dfaAnalyzeElement([alternatives[i]], literal, 20);
-
-      if (possibilities === null) {
-        return false;
-      }
-      mappedDFAs.push(possibilities);
-
-      complexity *= possibilities.size();
-      if (complexity > 1000) {
-        return false;
-      }
-    }
-
-    for (let i = 0; i < mappedDFAs.length - 1; i++) {
-      const a = mappedDFAs[i];
-
-      for (let j = i + 1; j < mappedDFAs.length; j++) {
-        const b = mappedDFAs[j];
-
-        const exclusiveState = a.isExclusive(b);
-
-        if (exclusiveState === 'NotExclusive') {
-          return false;
-        }
-      }
-    }
-
-    return true;
-  })();
-
-  return completlyExclusive;
+  return (
+    computeExclusivityOfAlternatives(alternatives, literal) !== 'NotExclusive'
+  );
 };
 
 const handleNonBacktrackingDisjunction = (
