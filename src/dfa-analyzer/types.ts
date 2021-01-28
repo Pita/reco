@@ -23,6 +23,8 @@ export interface DFACache {
   astToCharRange: Map<AST.Element, CharRange>;
 }
 
+export type ExlusiveState = 'Exlusive' | 'NotExclusive' | 'OrderExclusive';
+
 export type DFAHandler<T> = (
   element: T,
   options: {

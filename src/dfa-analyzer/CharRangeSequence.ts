@@ -1,5 +1,6 @@
 import { CharRange } from '../generator/CharRange';
 import flatten from 'lodash/flatten';
+import { ExlusiveState } from './types';
 
 export class CharRangeSequence {
   private charRanges: CharRange[];
@@ -16,17 +17,19 @@ export class CharRangeSequence {
     return this.charRanges.map((charRange) => charRange.toJSON());
   }
 
-  isExclusive(other: CharRangeSequence) {
+  isExclusive(other: CharRangeSequence): ExlusiveState {
     const length = Math.min(this.charRanges.length, other.charRanges.length);
 
     for (let i = 0; i < length; i++) {
       const hasOverlap = this.charRanges[i].hasOverlap(other.charRanges[i]);
       if (!hasOverlap) {
-        return true;
+        return 'Exlusive';
       }
     }
 
-    return this.charRanges.length > other.charRanges.length;
+    return this.charRanges.length > other.charRanges.length
+      ? 'OrderExclusive'
+      : 'NotExclusive';
   }
 
   length() {

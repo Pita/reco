@@ -141,9 +141,9 @@ const isANonBacktrackingDisjunction = (
       for (let j = i + 1; j < mappedDFAs.length; j++) {
         const b = mappedDFAs[j];
 
-        const isExclusive = a.isExclusive(b);
+        const exclusiveState = a.isExclusive(b);
 
-        if (!isExclusive) {
+        if (exclusiveState === 'NotExclusive') {
           return false;
         }
       }

@@ -1,4 +1,5 @@
 import { CharRangeSequence } from './CharRangeSequence';
+import { ExlusiveState } from './types';
 
 export class CharRangeSequencePossibilities {
   possibilities: CharRangeSequence[];
@@ -7,21 +8,24 @@ export class CharRangeSequencePossibilities {
     this.possibilities = possibilities;
   }
 
-  isExclusive(other: CharRangeSequencePossibilities) {
+  isExclusive(other: CharRangeSequencePossibilities): ExlusiveState {
+    let isOrderExclusive = false;
     for (let i = 0; i < this.possibilities.length; i++) {
       const a = this.possibilities[i];
 
       for (let j = 0; j < other.possibilities.length; j++) {
         const b = other.possibilities[j];
 
-        const isExclusive = a.isExclusive(b);
-        if (!isExclusive) {
-          return false;
+        const exclusiveState = a.isExclusive(b);
+        if (exclusiveState === 'NotExclusive') {
+          return 'NotExclusive';
+        } else if (exclusiveState === 'OrderExclusive') {
+          isOrderExclusive = true;
         }
       }
     }
 
-    return true;
+    return isOrderExclusive ? 'OrderExclusive' : 'Exlusive';
   }
 
   toJSON() {

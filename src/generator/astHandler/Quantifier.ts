@@ -113,7 +113,9 @@ const checkIfQuantifierHasExternalBacktracking = (
     return true;
   }
 
-  return !handlerPossibilities.isExclusive(followupPossibilties);
+  return (
+    handlerPossibilities.isExclusive(followupPossibilties) === 'NotExclusive'
+  );
 };
 
 const analyzeGreedyQuantifier = (
