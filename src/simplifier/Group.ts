@@ -4,7 +4,8 @@ import { SimplifierHandler } from './types';
 
 export const handleGroup: SimplifierHandler<AST.Group> = (group, options) => {
   const disjunction = handleDisjunction(group.alternatives, options);
-  return group.parent.type === 'Alternative'
-    ? disjunction
-    : `(?:${disjunction})`;
+
+  const canBeResolved =
+    group.parent.type === 'Alternative' && group.alternatives.length === 1;
+  return canBeResolved ? disjunction : `(?:${disjunction})`;
 };

@@ -22,4 +22,11 @@ describe('simplifyRegex', () => {
 
     expect(simplified).toEqual('/(^(?:abc|def)$)/i');
   });
+
+  test('remove unnecassary non capturing groups', () => {
+    const regex = new RegExpParser().parseLiteral('/ab(?:cd)e/i');
+    const simplified = simplifyRegex(regex);
+
+    expect(simplified).toEqual('/abcde/i');
+  });
 });
