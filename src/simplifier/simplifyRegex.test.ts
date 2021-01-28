@@ -55,10 +55,16 @@ describe('simplifyRegex', () => {
     expect(simplified).toEqual('/a/i');
   });
 
-  test.skip('resolves min quantifiers', () => {
+  test('resolves min quantifiers', () => {
     const simplified = simplifyRegex('/a+/i');
 
     expect(simplified).toEqual('/aa*/i');
+  });
+
+  test('does not resolve min quantifiers if they contain groups', () => {
+    const simplified = simplifyRegex('/(a)+/i');
+
+    expect(simplified).toEqual('/(a)+/i');
   });
 
   test.skip('reorder alternatives', () => {
