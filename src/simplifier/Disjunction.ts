@@ -63,7 +63,7 @@ const tryToSimplifyOneCharDisjunctions = (alternatives: AST.Alternative[]) => {
   }
 
   const charsJoined = alternatives
-    .map((alternative) => alternative.raw)
+    .map((alternative) => alternative.elements[0].raw)
     .join('');
   return `[${charsJoined}]`;
 };
