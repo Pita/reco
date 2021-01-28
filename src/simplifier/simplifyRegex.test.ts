@@ -16,7 +16,13 @@ describe('simplifyRegex', () => {
   test('removes end & start assertions of the ends of alternatives', () => {
     const simplified = simplifyRegex('/(^abc$|^def$)/i');
 
-    expect(simplified).toEqual('/(^(?:abc|def)$)/i');
+    expect(simplified).toEqual('/^(abc|def)$/i');
+  });
+
+  test('removes common assertions from groups', () => {
+    const simplified = simplifyRegex('/(^abc$)|(^def$)/i');
+
+    expect(simplified).toEqual('/^(?:(abc)|(def))$/i');
   });
 
   test('remove unnecassary non capturing groups', () => {

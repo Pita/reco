@@ -1,51 +1,7 @@
 import { AST } from 'regexpp';
 import { handleAlternative } from './Alternative';
+import { removeFromSide } from './removeFromSide';
 import { SimplifierHandler } from './types';
-
-const removeFromSide = (
-  alternatives: AST.Alternative[],
-  side: 'start' | 'end',
-) => {
-  let removed = '';
-
-  while (true) {
-    const needleIndex =
-      side === 'start' ? 0 : alternatives[0].elements.length - 1;
-    const needle = alternatives[0].elements[needleIndex];
-
-    if (!needle || needle.type === 'CapturingGroup') {
-      break;
-    }
-
-    const allAlternativesHaveNeedle = alternatives.every((alternative) => {
-      const elementIndex =
-        side === 'start' ? 0 : alternative.elements.length - 1;
-      const element = alternative.elements[elementIndex];
-      if (!element) {
-        return false;
-      }
-
-      return element.raw === needle.raw && element.type === needle.type;
-    });
-
-    if (allAlternativesHaveNeedle) {
-      alternatives.forEach((alternative) =>
-        side === 'start'
-          ? alternative.elements.shift()
-          : alternative.elements.pop(),
-      );
-
-      removed =
-        side === 'start'
-          ? `${removed}${needle.raw}`
-          : `${needle.raw}${removed}`;
-    } else {
-      break;
-    }
-  }
-
-  return removed;
-};
 
 const CHAR_TYPES = ['Character', 'CharacterSet', 'CharacterClass'];
 
@@ -88,6 +44,16 @@ const tryToSimplifyNestedDisjunctions = (alternatives: AST.Alternative[]) => {
   return isNested ? nestedAlternatives : alternatives;
 };
 
+const ELEMENTS_TO_BE_REMOVED = [
+  'Character',
+  'CharacterSet',
+  'CharacterClass',
+  'Group',
+  'Assertion',
+  'Quantifier',
+  'Backreference',
+];
+
 export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   alternatives,
   options,
@@ -96,8 +62,16 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
     return handleAlternative(alternatives[0], options);
   }
 
-  const removedFromStart = removeFromSide(alternatives, 'start');
-  const removedFromEnd = removeFromSide(alternatives, 'end');
+  const removedFromStart = removeFromSide(
+    alternatives,
+    'start',
+    ELEMENTS_TO_BE_REMOVED,
+  );
+  const removedFromEnd = removeFromSide(
+    alternatives,
+    'end',
+    ELEMENTS_TO_BE_REMOVED,
+  );
 
   const attemptedOneCharSimplification = tryToSimplifyOneCharDisjunctions(
     alternatives,
