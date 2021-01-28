@@ -49,6 +49,12 @@ describe('simplifyRegex', () => {
     expect(simplified).toEqual('/(ab|cd|ef|gh)/i');
   });
 
+  test('removes zero max quantifiers', () => {
+    const simplified = simplifyRegex('/ab{0}/i');
+
+    expect(simplified).toEqual('/a/i');
+  });
+
   test.skip('resolves min quantifiers', () => {
     const simplified = simplifyRegex('/a+/i');
 
