@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/\bon\w\w*=\S\S*(?=.*>)/'
+// Generated from: '/\bon\w+=\S+(?=.*>)/'
 //
 // Use like this:
 //
@@ -18,6 +18,8 @@
 // or null in case there is no match
 
 interface Context {}
+
+// Regex optimized to: /\bon\w\w*=\S\S*(?=.*>)/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};

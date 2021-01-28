@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/\b(\w\w*)\b(?=.*\b\1\b)/'
+// Generated from: '/(\b\w+\b)(?=.*\b\1\b)/'
 //
 // Use like this:
 //
@@ -22,6 +22,8 @@ interface Context {
   groupMarkerStartTemp0: number;
   groupMarkerEnd0: number;
 }
+
+// Regex optimized to: /\b(\w\w*)\b(?=.*\b\1\b)/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

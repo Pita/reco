@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(aaa)(a)/'
+// Generated from: '/(a{3}?)(a)/'
 //
 // Use like this:
 //
@@ -25,6 +25,8 @@ interface Context {
   groupMarkerStartTemp1: number;
   groupMarkerEnd1: number;
 }
+
+// Regex optimized to: /(aaa)(a)/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

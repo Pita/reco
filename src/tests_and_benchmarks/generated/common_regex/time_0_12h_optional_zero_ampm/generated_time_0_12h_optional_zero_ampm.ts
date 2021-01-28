@@ -23,6 +23,8 @@ interface Context {
   groupMarkerEnd0: number;
 }
 
+// Regex optimized to: /^(0?[1-9]|1[0-2]):[0-5][0-9]$/
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
     groupMarkerStart0: -1,

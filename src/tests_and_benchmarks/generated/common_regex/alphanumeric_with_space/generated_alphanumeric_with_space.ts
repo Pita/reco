@@ -19,6 +19,8 @@
 
 interface Context {}
 
+// Regex optimized to: /^[a-zA-Z0-9 ]*$/
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};
 

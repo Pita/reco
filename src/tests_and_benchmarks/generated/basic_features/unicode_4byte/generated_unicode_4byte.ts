@@ -19,6 +19,8 @@
 
 interface Context {}
 
+// Regex optimized to: /\u{1f604}/u
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};
 

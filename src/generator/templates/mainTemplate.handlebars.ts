@@ -3,7 +3,7 @@ export default `
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 // 
-// Generated from: '{{{regexStr}}}'
+// Generated from: '{{{originalRegexStr}}}'
 // 
 // Use like this:
 // 
@@ -28,6 +28,9 @@ interface Context {
     quantifierCounter{{{@this}}}: number;
   {{/times}}
 }
+
+
+// Regex optimized to: {{{optimizedRegexStr}}}
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

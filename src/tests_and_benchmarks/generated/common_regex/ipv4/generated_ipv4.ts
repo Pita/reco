@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2(?:[0-4][0-9]|5[0-5]))\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2(?:[0-4][0-9]|5[0-5]))$/'
+// Generated from: '/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/'
 //
 // Use like this:
 //
@@ -28,6 +28,8 @@ interface Context {
   groupMarkerStartTemp2: number;
   groupMarkerEnd2: number;
 }
+
+// Regex optimized to: /^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2(?:[0-4][0-9]|5[0-5]))\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2(?:[0-4][0-9]|5[0-5]))$/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/([a-c][a-c]|[d-f][d-f])(a)/'
+// Generated from: '/([a-c]{2}|[d-f]{2})(a)/'
 //
 // Use like this:
 //
@@ -25,6 +25,8 @@ interface Context {
   groupMarkerStartTemp1: number;
   groupMarkerEnd1: number;
 }
+
+// Regex optimized to: /([a-c][a-c]|[d-f][d-f])(a)/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

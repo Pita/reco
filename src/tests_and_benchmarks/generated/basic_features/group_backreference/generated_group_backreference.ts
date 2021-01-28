@@ -26,6 +26,8 @@ interface Context {
   groupMarkerEnd1: number;
 }
 
+// Regex optimized to: /(['"])(.*?)\1/
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
     groupMarkerStart0: -1,

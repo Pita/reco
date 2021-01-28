@@ -45,11 +45,14 @@ const deriveMatchPositioning = (
   };
 };
 
-const genTemplateValuesPrivate = (regexStr: string, version: string) => {
-  const simplifiedRegexStr = simplifyRegex(regexStr);
-  const literal = new RegExpParser().parseLiteral(simplifiedRegexStr);
+const genTemplateValuesPrivate = (
+  originalRegexStr: string,
+  version: string,
+) => {
+  const optimizedRegexStr = simplifyRegex(originalRegexStr);
+  const literal = new RegExpParser().parseLiteral(optimizedRegexStr);
 
-  const collector = new Collector(simplifiedRegexStr);
+  const collector = new Collector(originalRegexStr, optimizedRegexStr);
   const mainHandler = handleDisjunction(
     literal.pattern.alternatives,
     collector,

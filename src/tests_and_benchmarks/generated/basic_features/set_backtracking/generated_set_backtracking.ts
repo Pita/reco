@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/([a-z][a-z]*)([h-o])([d-z]*)([1-3])/'
+// Generated from: '/([a-z]+)([h-o])([d-z]*)([1-3])/'
 //
 // Use like this:
 //
@@ -31,6 +31,8 @@ interface Context {
   groupMarkerStartTemp3: number;
   groupMarkerEnd3: number;
 }
+
+// Regex optimized to: /([a-z][a-z]*)([h-o])([d-z]*)([1-3])/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

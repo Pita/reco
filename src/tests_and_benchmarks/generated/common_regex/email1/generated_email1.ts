@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^([a-zA-Z0-9._%-][a-zA-Z0-9._%-]*@[a-zA-Z0-9.-][a-zA-Z0-9.-]*\.[a-zA-Z][a-zA-Z][a-zA-Z]{0,4})*$/'
+// Generated from: '/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/'
 //
 // Use like this:
 //
@@ -22,6 +22,8 @@ interface Context {
   groupMarkerStartTemp0: number;
   groupMarkerEnd0: number;
 }
+
+// Regex optimized to: /^([a-zA-Z0-9._%-][a-zA-Z0-9._%-]*@[a-zA-Z0-9.-][a-zA-Z0-9.-]*\.[a-zA-Z][a-zA-Z][a-zA-Z]{0,4})*$/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

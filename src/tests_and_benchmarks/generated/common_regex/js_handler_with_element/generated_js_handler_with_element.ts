@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/<[^>][^>]*\s(on\S\S*)=["']?(.(?!["']?\s+(?:\S+)=|[>"'])(?:.(?!["']?\s+(?:\S+)=|[>"']))*.)["']?/'
+// Generated from: '/(?:<[^>]+\s)(on\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/'
 //
 // Use like this:
 //
@@ -25,6 +25,8 @@ interface Context {
   groupMarkerStartTemp1: number;
   groupMarkerEnd1: number;
 }
+
+// Regex optimized to: /<[^>][^>]*\s(on\S\S*)=["']?(.(?!["']?\s+(?:\S+)=|[>"'])(?:.(?!["']?\s+(?:\S+)=|[>"']))*.)["']?/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

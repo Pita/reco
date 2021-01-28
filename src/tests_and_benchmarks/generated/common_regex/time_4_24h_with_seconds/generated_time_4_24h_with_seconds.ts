@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(?:[01]\d|2[0123]):[012345]\d:[012345]\d/'
+// Generated from: '/(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)/'
 //
 // Use like this:
 //
@@ -18,6 +18,8 @@
 // or null in case there is no match
 
 interface Context {}
+
+// Regex optimized to: /(?:[01]\d|2[0123]):[012345]\d:[012345]\d/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};

@@ -32,6 +32,8 @@ interface Context {
   groupMarkerEnd3: number;
 }
 
+// Regex optimized to: /(([a-c])|([d-f]))(a)/
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
     groupMarkerStart0: -1,

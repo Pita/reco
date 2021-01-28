@@ -34,7 +34,8 @@ interface QuantifierCounter {
 }
 
 export class Collector {
-  private regexStr: string;
+  private optimizedRegexStr: string;
+  private originalRegexStr: string;
   private counter = 0;
   private groups: Array<GroupReference & { astStart: number }> = [];
   private fiberHandlers: FiberTemplateDefinition[] = [];
@@ -42,8 +43,9 @@ export class Collector {
   private lazyQuantifierHandlers: QuantifierTemplateDefinition[] = [];
   private quantifierCounters: QuantifierCounter[] = [];
 
-  constructor(regexStr: string) {
-    this.regexStr = regexStr;
+  constructor(originalRegexStr: string, regexStr: string) {
+    this.originalRegexStr = originalRegexStr;
+    this.optimizedRegexStr = regexStr;
   }
 
   private getNewCount() {
@@ -54,15 +56,15 @@ export class Collector {
   private formatAstLocation(ast: AST.Node) {
     const startNeedsTruncation = ast.start > 13;
     const regexStrStart = startNeedsTruncation ? ast.start - 10 : 0;
-    const endNeedsTruncation = this.regexStr.length > ast.end + 13;
+    const endNeedsTruncation = this.optimizedRegexStr.length > ast.end + 13;
     const regexStrEnd = endNeedsTruncation
       ? ast.end + 10
-      : this.regexStr.length;
+      : this.optimizedRegexStr.length;
 
     return {
       posLine1:
         (startNeedsTruncation ? '...' : '') +
-        this.regexStr.substring(regexStrStart, regexStrEnd) +
+        this.optimizedRegexStr.substring(regexStrStart, regexStrEnd) +
         (endNeedsTruncation ? '...' : ''),
       posLine2:
         ' '.repeat(ast.start - regexStrStart + (startNeedsTruncation ? 3 : 0)) +
@@ -267,7 +269,7 @@ export class Collector {
   }
 
   fakeCollector() {
-    return new Collector(this.regexStr);
+    return new Collector(this.originalRegexStr, this.optimizedRegexStr);
   }
 
   getTemplateValues(): Omit<
@@ -275,7 +277,8 @@ export class Collector {
     'mainHandler' | 'matchPositioning' | 'version'
   > {
     return {
-      regexStr: this.regexStr,
+      optimizedRegexStr: this.optimizedRegexStr,
+      originalRegexStr: this.originalRegexStr,
       fiberHandlers: this.fiberHandlers,
       greedyQuantifierHandlers: this.greedyQuantifierHandlers,
       lazyQuantifierHandlers: this.lazyQuantifierHandlers,

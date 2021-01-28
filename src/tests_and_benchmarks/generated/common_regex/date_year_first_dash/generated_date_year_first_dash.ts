@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/([12]\d\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'
+// Generated from: '/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'
 //
 // Use like this:
 //
@@ -28,6 +28,8 @@ interface Context {
   groupMarkerStartTemp2: number;
   groupMarkerEnd2: number;
 }
+
+// Regex optimized to: /([12]\d\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

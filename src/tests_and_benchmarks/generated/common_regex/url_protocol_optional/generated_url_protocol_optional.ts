@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=][-a-zA-Z0-9@:%._\+~#=][-a-zA-Z0-9@:%._\+~#=]{0,254}\.[a-z][a-z][a-z]{0,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/'
+// Generated from: '/(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/'
 //
 // Use like this:
 //
@@ -29,6 +29,8 @@ interface Context {
   groupMarkerEnd2: number;
   quantifierCounter0: number;
 }
+
+// Regex optimized to: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=][-a-zA-Z0-9@:%._\+~#=][-a-zA-Z0-9@:%._\+~#=]{0,254}\.[a-z][a-z][a-z]{0,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

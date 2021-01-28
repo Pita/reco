@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^\d\d*$/'
+// Generated from: '/^\d+$/'
 //
 // Use like this:
 //
@@ -18,6 +18,8 @@
 // or null in case there is no match
 
 interface Context {}
+
+// Regex optimized to: /^\d\d*$/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};

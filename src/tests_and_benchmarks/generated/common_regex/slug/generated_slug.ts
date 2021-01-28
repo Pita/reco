@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^[a-z0-9][a-z0-9]*(?:-[a-z0-9][a-z0-9]*)*$/'
+// Generated from: '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'
 //
 // Use like this:
 //
@@ -18,6 +18,8 @@
 // or null in case there is no match
 
 interface Context {}
+
+// Regex optimized to: /^[a-z0-9][a-z0-9]*(?:-[a-z0-9][a-z0-9]*)*$/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};

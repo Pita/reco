@@ -23,6 +23,8 @@ interface Context {
   groupMarkerEnd0: number;
 }
 
+// Regex optimized to: /(aa){3}/
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
     groupMarkerStart0: -1,

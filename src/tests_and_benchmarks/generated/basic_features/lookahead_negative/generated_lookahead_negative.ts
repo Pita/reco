@@ -19,6 +19,8 @@
 
 interface Context {}
 
+// Regex optimized to: /x(?!y)/
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};
 

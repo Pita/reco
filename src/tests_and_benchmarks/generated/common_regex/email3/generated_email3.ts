@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^(([^<>()\[\]\\.,;:\s@"][^<>()\[\]\\.,;:\s@"]*(\.[^<>()\[\]\\.,;:\s@"][^<>()\[\]\\.,;:\s@"]*)*)|("..*"))@((\[[0-9][0-9]{0,2}\.[0-9][0-9]{0,2}\.[0-9][0-9]{0,2}\.[0-9][0-9]{0,2}])|(([a-zA-Z\-0-9][a-zA-Z\-0-9]*\.)+[a-zA-Z][a-zA-Z][a-zA-Z]*))$/'
+// Generated from: '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
 //
 // Use like this:
 //
@@ -44,6 +44,8 @@ interface Context {
   groupMarkerEnd7: number;
   quantifierCounter0: number;
 }
+
+// Regex optimized to: /^(([^<>()\[\]\\.,;:\s@"][^<>()\[\]\\.,;:\s@"]*(\.[^<>()\[\]\\.,;:\s@"][^<>()\[\]\\.,;:\s@"]*)*)|("..*"))@((\[[0-9][0-9]{0,2}\.[0-9][0-9]{0,2}\.[0-9][0-9]{0,2}\.[0-9][0-9]{0,2}])|(([a-zA-Z\-0-9][a-zA-Z\-0-9]*\.)+[a-zA-Z][a-zA-Z][a-zA-Z]*))$/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

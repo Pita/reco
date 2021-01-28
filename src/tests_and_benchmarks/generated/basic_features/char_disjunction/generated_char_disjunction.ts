@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/[abf]/'
+// Generated from: '/a|b|f/'
 //
 // Use like this:
 //
@@ -18,6 +18,8 @@
 // or null in case there is no match
 
 interface Context {}
+
+// Regex optimized to: /[abf]/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};

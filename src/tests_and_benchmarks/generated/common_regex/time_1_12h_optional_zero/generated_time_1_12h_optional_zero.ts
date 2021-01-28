@@ -32,6 +32,8 @@ interface Context {
   groupMarkerEnd3: number;
 }
 
+// Regex optimized to: /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/
+
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
     groupMarkerStart0: -1,

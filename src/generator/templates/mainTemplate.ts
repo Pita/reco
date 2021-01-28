@@ -203,11 +203,12 @@ export type MatchPositioning =
   | { type: 'minCharsLeft'; minCharsLeft: number }
   | { type: 'fullScan' };
 export interface TemplateValues {
+  optimizedRegexStr: string;
+  originalRegexStr: string;
   fiberHandlers: FiberTemplateDefinition[];
   greedyQuantifierHandlers: QuantifierTemplateDefinition[];
   lazyQuantifierHandlers: QuantifierTemplateDefinition[];
   mainHandler: FiberTemplateDefinition;
-  regexStr: string;
   groups: GroupReference[];
   quantifierCountersLength: number;
   version: string;

@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/a(b)c/'
+// Generated from: '/(?:a)(b)c/'
 //
 // Use like this:
 //
@@ -22,6 +22,8 @@ interface Context {
   groupMarkerStartTemp0: number;
   groupMarkerEnd0: number;
 }
+
+// Regex optimized to: /a(b)c/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {

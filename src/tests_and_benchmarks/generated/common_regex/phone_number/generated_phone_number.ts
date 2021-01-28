@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d\d*\)?[\-\.\ \\\/]?)*)(?:[\-\.\ \\\/]?(?:#|ext(?:\.?|ension)|x)[\-\.\ \\\/]?(\d\d*))?$/'
+// Generated from: '/^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/'
 //
 // Use like this:
 //
@@ -31,6 +31,8 @@ interface Context {
   quantifierCounter1: number;
   quantifierCounter2: number;
 }
+
+// Regex optimized to: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d\d*\)?[\-\.\ \\\/]?)*)(?:[\-\.\ \\\/]?(?:#|ext(?:\.?|ension)|x)[\-\.\ \\\/]?(\d\d*))?$/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
