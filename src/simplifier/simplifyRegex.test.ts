@@ -29,4 +29,32 @@ describe('simplifyRegex', () => {
 
     expect(simplified).toEqual('/abcde/i');
   });
+
+  test('resolve simple char disjunction to set', () => {
+    const regex = new RegExpParser().parseLiteral('/a|b|c/i');
+    const simplified = simplifyRegex(regex);
+
+    expect(simplified).toEqual('/[abc]/i');
+  });
+
+  test.skip('resolve nested disjunctions', () => {
+    const regex = new RegExpParser().parseLiteral('/((?:ab|cd)|(?:ef|gh))/i');
+    const simplified = simplifyRegex(regex);
+
+    expect(simplified).toEqual('/(ab|cd|ef|gh)/i');
+  });
+
+  test.skip('resolves min quantifiers', () => {
+    const regex = new RegExpParser().parseLiteral('/a+/i');
+    const simplified = simplifyRegex(regex);
+
+    expect(simplified).toEqual('/aa*/i');
+  });
+
+  test.skip('reorder alternatives', () => {
+    const regex = new RegExpParser().parseLiteral('/(ab|ac|ba|ad|bb)/i');
+    const simplified = simplifyRegex(regex);
+
+    expect(simplified).toEqual('/((a[bcd]|b[ab]))/i');
+  });
 });

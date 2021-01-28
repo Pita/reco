@@ -47,6 +47,27 @@ const removeFromSide = (
   return removed;
 };
 
+const CHAR_TYPES = ['Character', 'CharacterSet', 'CharacterClass'];
+
+const tryToSimplifyOneCharDisjunctions = (alternatives: AST.Alternative[]) => {
+  const canBeTransformed = alternatives.every((alternative) => {
+    if (alternative.elements.length !== 1) {
+      return false;
+    }
+
+    return CHAR_TYPES.includes(alternative.elements[0].type);
+  });
+
+  if (!canBeTransformed) {
+    return null;
+  }
+
+  const charsJoined = alternatives
+    .map((alternative) => alternative.raw)
+    .join('');
+  return `[${charsJoined}]`;
+};
+
 export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   alternatives,
   options,
@@ -58,9 +79,15 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   const removedFromStart = removeFromSide(alternatives, 'start');
   const removedFromEnd = removeFromSide(alternatives, 'end');
 
-  const alternativesString = alternatives
-    .map((alternative) => handleAlternative(alternative, options))
-    .join('|');
+  const attemptedOneCharSimplification = tryToSimplifyOneCharDisjunctions(
+    alternatives,
+  );
+
+  const alternativesString =
+    attemptedOneCharSimplification ??
+    alternatives
+      .map((alternative) => handleAlternative(alternative, options))
+      .join('|');
 
   if (removedFromStart !== '' || removedFromEnd !== '') {
     return `${removedFromStart}(?:${alternativesString})${removedFromEnd}`;
