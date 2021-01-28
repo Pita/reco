@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(?:a)(b)c/'
+// Generated from: '/a(b)c/'
 //
 // Use like this:
 //
@@ -55,8 +55,8 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(?:a)(b)c/
-   *     ^
+   * /a(b)c/
+   *  ^
    */
   if (i >= str.length) {
     return -1;
@@ -72,14 +72,14 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupStartMarker
-   * /(?:a)(b)c/
-   *       ^^^
+   * /a(b)c/
+   *   ^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charOrSet
-   * /(?:a)(b)c/
-   *        ^
+   * /a(b)c/
+   *    ^
    */
   if (i >= str.length) {
     return -1;
@@ -95,15 +95,15 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupEndMarker
-   * /(?:a)(b)c/
-   *       ^^^
+   * /a(b)c/
+   *   ^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * charOrSet
-   * /(?:a)(b)c/
-   *          ^
+   * /a(b)c/
+   *      ^
    */
   if (i >= str.length) {
     return -1;

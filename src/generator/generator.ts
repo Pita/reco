@@ -6,6 +6,7 @@ import {
   FiberTemplateDefinition,
   MatchPositioning,
 } from './templates/mainTemplate';
+import { simplifyRegex } from '../simplifier/simplifyRegex';
 const { version } = require('../../package.json');
 export interface Flags extends AST.Flags {
   INTERNAL_backwards?: boolean;
@@ -45,9 +46,10 @@ const deriveMatchPositioning = (
 };
 
 const genTemplateValuesPrivate = (regexStr: string, version: string) => {
-  const literal = new RegExpParser().parseLiteral(regexStr);
+  const simplifiedRegexStr = simplifyRegex(regexStr);
+  const literal = new RegExpParser().parseLiteral(simplifiedRegexStr);
 
-  const collector = new Collector(regexStr);
+  const collector = new Collector(simplifiedRegexStr);
   const mainHandler = handleDisjunction(
     literal.pattern.alternatives,
     collector,

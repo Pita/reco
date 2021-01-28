@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(a+)(a)(a*)(a)/'
+// Generated from: '/(aa*)(a)(a*)(a)/'
 //
 // Use like this:
 //
@@ -82,20 +82,20 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
-   * /(a+)(a)(a✱)(a)/
-   *         ^^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *          ^^^^
    */
   context.groupMarkerStart2 = context.groupMarkerStartTemp2;
   context.groupMarkerEnd2 = i;
   /*
    * groupStartMarker
-   * /(a+)(a)(a✱)(a)/
-   *             ^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *              ^^^
    */
   context.groupMarkerStartTemp3 = i;
   /*
    * charOrSet
-   * /(a+)(a)(a✱)(a)/
+   * ...✱)(a)(a✱)(a)/
    *              ^
    */
   if (i >= str.length) {
@@ -112,8 +112,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupEndMarker
-   * /(a+)(a)(a✱)(a)/
-   *             ^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *              ^^^
    */
   context.groupMarkerStart3 = context.groupMarkerStartTemp3;
   context.groupMarkerEnd3 = i;
@@ -122,8 +122,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(a+)(a)(a✱)(a)/
-   *          ^
+   * /(aa✱)(a)(a✱)(a)/
+   *           ^
    */
   if (i >= str.length) {
     return -1;
@@ -142,21 +142,21 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
-   * /(a+)(a)(a✱)(a)/
-   *  ^^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *  ^^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
-   * /(a+)(a)(a✱)(a)/
-   *      ^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *       ^^^
    */
   context.groupMarkerStartTemp1 = i;
   /*
    * charOrSet
-   * /(a+)(a)(a✱)(a)/
-   *       ^
+   * /(aa✱)(a)(a✱)(a)/
+   *        ^
    */
   if (i >= str.length) {
     return -1;
@@ -172,21 +172,21 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupEndMarker
-   * /(a+)(a)(a✱)(a)/
-   *      ^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *       ^^^
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;
   /*
    * groupStartMarker
-   * /(a+)(a)(a✱)(a)/
-   *         ^^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *          ^^^^
    */
   context.groupMarkerStartTemp2 = i;
   /*
    * backtrackingFixedLengthQuantifier
-   * /(a+)(a)(a✱)(a)/
-   *          ^^
+   * /(aa✱)(a)(a✱)(a)/
+   *           ^^
    */
   let matches5 = 0;
 
@@ -218,8 +218,8 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(a+)(a)(a✱)(a)/
-   *   ^
+   * /(aa✱)(a)(a✱)(a)/
+   *    ^
    */
   if (i >= str.length) {
     return -1;
@@ -238,41 +238,54 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
 const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * /(a+)(a)(a✱)(a)/
-   *  ^^^^
+   * /(aa✱)(a)(a✱)(a)/
+   *  ^^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * backtrackingFixedLengthQuantifier
-   * /(a+)(a)(a✱)(a)/
-   *   ^^
+   * charOrSet
+   * /(aa✱)(a)(a✱)...
+   *   ^
    */
-  let matches1 = 0;
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  result1 = charCode1 === 97;
+
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * backtrackingFixedLengthQuantifier
+   * /(aa✱)(a)(a✱)(a)/
+   *    ^^
+   */
+  let matches2 = 0;
 
   while (true) {
     const wrappedResult = fiber0004(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches1 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-      matches1++;
+      matches2++;
     }
   }
 
   // needs followUp & forkingFiber
-  while (matches1 >= 1) {
-    const directFollowUpResult1 = fiber0003(i, str, context);
+  while (matches2 >= 0) {
+    const directFollowUpResult2 = fiber0003(i, str, context);
 
-    if (directFollowUpResult1 !== -1) {
-      return directFollowUpResult1;
+    if (directFollowUpResult2 !== -1) {
+      return directFollowUpResult2;
     }
 
-    matches1--;
+    matches2--;
     i -= 1;
   }
 

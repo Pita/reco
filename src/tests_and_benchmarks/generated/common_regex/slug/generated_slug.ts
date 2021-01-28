@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'
+// Generated from: '/^[a-z0-9][a-z0-9]*(?:-[a-z0-9][a-z0-9]*)*$/'
 //
 // Use like this:
 //
@@ -42,37 +42,52 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
-   * /^[a-z0-9]+(...
+   * /^[a-z0-9][a...
    *  ^
    */
   if (i !== 0) {
     return -1;
   }
   /*
-   * nonBacktrackingQuantifier
-   * /^[a-z0-9]+(?:-[a-z0-...
-   *   ^^^^^^^^^
+   * charOrSet
+   * /^[a-z0-9][a-z0-9]✱(...
+   *   ^^^^^^^^
    */
-  let matches1 = 0;
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  if (charCode1 <= 57) {
+    result1 = charCode1 >= 48;
+  } else {
+    if (charCode1 <= 122) {
+      result1 = charCode1 >= 97;
+    }
+  }
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * nonBacktrackingQuantifier
+   * /^[a-z0-9][a-z0-9]✱(?:-[a-z0-...
+   *           ^^^^^^^^^
+   */
   while (true) {
     const wrappedResult = fiber0004(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches1 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-
-      matches1++;
     }
   }
   /*
    * nonBacktrackingQuantifier
-   * /^[a-z0-9]+(?:-[a-z0-9]+)✱$/
-   *            ^^^^^^^^^^^^^^^
+   * ...][a-z0-9]✱(?:-[a-z0-9][a-z0-9]✱)✱$/
+   *              ^^^^^^^^^^^^^^^^^^^^^^^
    */
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
@@ -85,7 +100,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * endAnchor
-   * ...a-z0-9]+)✱$/
+   * ...a-z0-9]✱)✱$/
    *              ^
    */
   if (i !== str.length) {
@@ -96,7 +111,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * ...-z0-9]+(?:-[a-z0-9]+)✱$/
+   * ...-z0-9]✱(?:-[a-z0-9][a...
    *              ^
    */
   if (i >= str.length) {
@@ -112,24 +127,39 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   }
   i++;
   /*
+   * charOrSet
+   * ...z0-9]✱(?:-[a-z0-9][a-z0-9]✱)✱$/
+   *              ^^^^^^^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  if (charCode1 <= 57) {
+    result1 = charCode1 >= 48;
+  } else {
+    if (charCode1 <= 122) {
+      result1 = charCode1 >= 97;
+    }
+  }
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
    * nonBacktrackingQuantifier
-   * ...z0-9]+(?:-[a-z0-9]+)✱$/
+   * ...:-[a-z0-9][a-z0-9]✱)✱$/
    *              ^^^^^^^^^
    */
-  let matches1 = 0;
   while (true) {
     const wrappedResult = fiber0003(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches1 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-
-      matches1++;
     }
   }
   return i;
@@ -137,7 +167,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * ...z0-9]+(?:-[a-z0-9]+)✱$/
+   * ...:-[a-z0-9][a-z0-9]✱)✱$/
    *              ^^^^^^^^
    */
   if (i >= str.length) {
@@ -162,8 +192,8 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /^[a-z0-9]+(?:-[a-z0...
-   *   ^^^^^^^^
+   * /^[a-z0-9][a-z0-9]✱(?:-[a-z0...
+   *           ^^^^^^^^
    */
   if (i >= str.length) {
     return -1;

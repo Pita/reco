@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(?=(.*[0-9]))(?=.*[\!@#$%^&*()\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/'
+// Generated from: '/(?=(.*[0-9]))(?=.*[\!@#$%^&*()\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).........*/'
 //
 // Use like this:
 //
@@ -100,7 +100,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * lookaround
-   * ...?=.✱[a-z])(?=(.✱[A-Z]))(?=(.✱)).{...
+   * ...?=.✱[a-z])(?=(.✱[A-Z]))(?=(.✱)).....
    *              ^^^^^^^^^^^^^
    */
   const lookaroundResult3 = fiber0007(i, str, context);
@@ -109,7 +109,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * lookaround
-   * ...(.✱[A-Z]))(?=(.✱)).{8,}/
+   * ...(.✱[A-Z]))(?=(.✱)).........✱/
    *              ^^^^^^^^
    */
   const lookaroundResult4 = fiber0003(i, str, context);
@@ -117,24 +117,193 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   /*
-   * nonBacktrackingQuantifier
-   * ...))(?=(.✱)).{8,}/
-   *              ^^^^^
+   * charOrSet
+   * ...))(?=(.✱)).........✱/
+   *              ^
    */
-  let matches5 = 0;
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode5 = str.charCodeAt(i);
+  let result5 = false;
+
+  if (charCode5 <= 13) {
+    result5 = charCode5 === 10 || charCode5 === 13;
+  } else {
+    if (charCode5 <= 8233) {
+      result5 = charCode5 >= 8232;
+    }
+  }
+  if (result5) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ...)(?=(.✱)).........✱/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode6 = str.charCodeAt(i);
+  let result6 = false;
+
+  if (charCode6 <= 13) {
+    result6 = charCode6 === 10 || charCode6 === 13;
+  } else {
+    if (charCode6 <= 8233) {
+      result6 = charCode6 >= 8232;
+    }
+  }
+  if (result6) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ...(?=(.✱)).........✱/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode7 = str.charCodeAt(i);
+  let result7 = false;
+
+  if (charCode7 <= 13) {
+    result7 = charCode7 === 10 || charCode7 === 13;
+  } else {
+    if (charCode7 <= 8233) {
+      result7 = charCode7 >= 8232;
+    }
+  }
+  if (result7) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ...?=(.✱)).........✱/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode8 = str.charCodeAt(i);
+  let result8 = false;
+
+  if (charCode8 <= 13) {
+    result8 = charCode8 === 10 || charCode8 === 13;
+  } else {
+    if (charCode8 <= 8233) {
+      result8 = charCode8 >= 8232;
+    }
+  }
+  if (result8) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ...=(.✱)).........✱/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode9 = str.charCodeAt(i);
+  let result9 = false;
+
+  if (charCode9 <= 13) {
+    result9 = charCode9 === 10 || charCode9 === 13;
+  } else {
+    if (charCode9 <= 8233) {
+      result9 = charCode9 >= 8232;
+    }
+  }
+  if (result9) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ...(.✱)).........✱/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode10 = str.charCodeAt(i);
+  let result10 = false;
+
+  if (charCode10 <= 13) {
+    result10 = charCode10 === 10 || charCode10 === 13;
+  } else {
+    if (charCode10 <= 8233) {
+      result10 = charCode10 >= 8232;
+    }
+  }
+  if (result10) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ....✱)).........✱/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode11 = str.charCodeAt(i);
+  let result11 = false;
+
+  if (charCode11 <= 13) {
+    result11 = charCode11 === 10 || charCode11 === 13;
+  } else {
+    if (charCode11 <= 8233) {
+      result11 = charCode11 >= 8232;
+    }
+  }
+  if (result11) {
+    return -1;
+  }
+  i++;
+  /*
+   * charOrSet
+   * ...✱)).........✱/
+   *              ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode12 = str.charCodeAt(i);
+  let result12 = false;
+
+  if (charCode12 <= 13) {
+    result12 = charCode12 === 10 || charCode12 === 13;
+  } else {
+    if (charCode12 <= 8233) {
+      result12 = charCode12 >= 8232;
+    }
+  }
+  if (result12) {
+    return -1;
+  }
+  i++;
+  /*
+   * nonBacktrackingQuantifier
+   * ...)).........✱/
+   *              ^^
+   */
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches5 < 8) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-
-      matches5++;
     }
   }
   return i;
@@ -142,7 +311,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * ...))(?=(.✱)).{8,}/
+   * ...)).........✱/
    *              ^
    */
   if (i >= str.length) {
@@ -167,13 +336,13 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * ...[A-Z]))(?=(.✱)).{8,}/
+   * ...[A-Z]))(?=(.✱)).........✱/
    *              ^^^^
    */
   context.groupMarkerStartTemp2 = i;
   /*
    * nonBacktrackingQuantifier
-   * ...A-Z]))(?=(.✱)).{8,}/
+   * ...A-Z]))(?=(.✱)).........✱/
    *              ^^
    */
   while (true) {
@@ -187,7 +356,7 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * ...[A-Z]))(?=(.✱)).{8,}/
+   * ...[A-Z]))(?=(.✱)).........✱/
    *              ^^^^
    */
   context.groupMarkerStart2 = context.groupMarkerStartTemp2;
@@ -197,7 +366,7 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * ...A-Z]))(?=(.✱)).{8,}/
+   * ...A-Z]))(?=(.✱))..........
    *              ^
    */
   if (i >= str.length) {

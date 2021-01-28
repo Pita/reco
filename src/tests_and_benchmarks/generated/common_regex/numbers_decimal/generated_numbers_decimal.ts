@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^\d*\.\d+$/'
+// Generated from: '/^\d*\.\d\d*$/'
 //
 // Use like this:
 //
@@ -42,7 +42,7 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
-   * /^\d✱\.\d+$/
+   * /^\d✱\.\d\d✱$/
    *  ^
    */
   if (i !== 0) {
@@ -50,7 +50,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * nonBacktrackingQuantifier
-   * /^\d✱\.\d+$/
+   * /^\d✱\.\d\d✱$/
    *   ^^^
    */
   while (true) {
@@ -64,7 +64,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * charOrSet
-   * /^\d✱\.\d+$/
+   * /^\d✱\.\d\d✱$/
    *      ^^
    */
   if (i >= str.length) {
@@ -80,30 +80,41 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   i++;
   /*
-   * nonBacktrackingQuantifier
-   * /^\d✱\.\d+$/
-   *        ^^^
+   * charOrSet
+   * /^\d✱\.\d\d✱$/
+   *        ^^
    */
-  let matches3 = 0;
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode3 = str.charCodeAt(i);
+  let result3 = false;
+
+  if (charCode3 <= 57) {
+    result3 = charCode3 >= 48;
+  }
+  if (!result3) {
+    return -1;
+  }
+  i++;
+  /*
+   * nonBacktrackingQuantifier
+   * /^\d✱\.\d\d✱$/
+   *          ^^^
+   */
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches3 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-
-      matches3++;
     }
   }
   /*
    * endAnchor
-   * /^\d✱\.\d+$/
-   *           ^
+   * /^\d✱\.\d\d✱$/
+   *             ^
    */
   if (i !== str.length) {
     return -1;
@@ -113,8 +124,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /^\d✱\.\d+$/
-   *        ^^
+   * /^\d✱\.\d\d✱$/
+   *          ^^
    */
   if (i >= str.length) {
     return -1;
@@ -134,7 +145,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /^\d✱\.\d+$/
+   * /^\d✱\.\d\d✱$/
    *   ^^
    */
   if (i >= str.length) {

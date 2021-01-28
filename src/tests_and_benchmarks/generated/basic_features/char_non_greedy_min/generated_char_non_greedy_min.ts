@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(a{3}?)(a)/'
+// Generated from: '/(aaa)(a)/'
 //
 // Use like this:
 //
@@ -64,13 +64,13 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * /(a{3}?)(a)/
-   *  ^^^^^^^
+   * /(aaa)(a)/
+   *  ^^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charOrSet
-   * /(a{3}?)(a)/
+   * /(aaa)(a)/
    *   ^
    */
   if (i >= str.length) {
@@ -87,8 +87,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * /(a{3}?)(a)/
-   *   ^
+   * /(aaa)(a)/
+   *    ^
    */
   if (i >= str.length) {
     return -1;
@@ -104,8 +104,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * /(a{3}?)(a)/
-   *   ^
+   * /(aaa)(a)/
+   *     ^
    */
   if (i >= str.length) {
     return -1;
@@ -121,21 +121,21 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupEndMarker
-   * /(a{3}?)(a)/
-   *  ^^^^^^^
+   * /(aaa)(a)/
+   *  ^^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
-   * /(a{3}?)(a)/
-   *         ^^^
+   * /(aaa)(a)/
+   *       ^^^
    */
   context.groupMarkerStartTemp1 = i;
   /*
    * charOrSet
-   * /(a{3}?)(a)/
-   *          ^
+   * /(aaa)(a)/
+   *        ^
    */
   if (i >= str.length) {
     return -1;
@@ -151,8 +151,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupEndMarker
-   * /(a{3}?)(a)/
-   *         ^^^
+   * /(aaa)(a)/
+   *       ^^^
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;

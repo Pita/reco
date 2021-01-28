@@ -42,7 +42,10 @@ const attemptSimplifyOneCharDisjunctions = (
   }
 
   const charsJoined = alternatives
-    .map((alternative) => alternative.elements[0].raw)
+    .map((alternative) => {
+      const raw = alternative.elements[0].raw;
+      return raw === '-' ? '\\-' : raw;
+    })
     .join('');
   return `[${charsJoined}]`;
 };
@@ -147,9 +150,13 @@ const attemptGrouping = (
   let couldGroup = false;
   for (let i = 0; i < proccessedAlternatives.length; i++) {
     const currentAlternative = proccessedAlternatives[i];
-    const currentRaw = currentAlternative.elements[0]?.raw || '';
+    const currentFirstElement = currentAlternative.elements[0];
+    const currentRaw = currentFirstElement?.raw || '';
 
-    if (previousRaw === currentRaw) {
+    if (
+      previousRaw === currentRaw &&
+      currentFirstElement.type !== 'CapturingGroup'
+    ) {
       groups[groups.length - 1].push(currentAlternative);
       couldGroup = true;
     } else {

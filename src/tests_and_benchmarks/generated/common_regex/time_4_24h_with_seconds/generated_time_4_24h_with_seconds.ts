@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)/'
+// Generated from: '/(?:[01]\d|2[0123]):[012345]\d:[012345]\d/'
 //
 // Use like this:
 //
@@ -42,7 +42,7 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * nonBacktrackingDisjunction
-   * /(?:[01]\d|2[0123]):(?:[01234...
+   * /(?:[01]\d|2[0123]):[012345]\...
    *  ^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction0: {
@@ -60,7 +60,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * charOrSet
-   * ...d|2[0123]):(?:[012345...
+   * ...d|2[0123]):[012345]\d...
    *              ^
    */
   if (i >= str.length) {
@@ -77,7 +77,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * ...0123]):(?:[012345]\d):(?:[01...
+   * ...|2[0123]):[012345]\d:[012345...
    *              ^^^^^^^^
    */
   if (i >= str.length) {
@@ -95,7 +95,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * ...?:[012345]\d):(?:[0123...
+   * ...):[012345]\d:[012345]\d/
    *              ^^
    */
   if (i >= str.length) {
@@ -113,7 +113,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * ...012345]\d):(?:[012345...
+   * ...[012345]\d:[012345]\d/
    *              ^
    */
   if (i >= str.length) {
@@ -130,7 +130,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * ...45]\d):(?:[012345]\d)/
+   * ...012345]\d:[012345]\d/
    *              ^^^^^^^^
    */
   if (i >= str.length) {
@@ -148,7 +148,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * ...?:[012345]\d)/
+   * ...d:[012345]\d/
    *              ^^
    */
   if (i >= str.length) {
@@ -208,7 +208,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(?:[01]\d|2[0123]):(?...
+   * /(?:[01]\d|2[0123]):[0...
    *            ^
    */
   if (i >= str.length) {
@@ -225,7 +225,7 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * /(?:[01]\d|2[0123]):(?:[0123...
+   * /(?:[01]\d|2[0123]):[012345]...
    *             ^^^^^^
    */
   if (i >= str.length) {

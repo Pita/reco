@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/([a-z]+)([h-o])([d-z]*)([1-3])/'
+// Generated from: '/([a-z][a-z]*)([h-o])([d-z]*)([1-3])/'
 //
 // Use like this:
 //
@@ -82,21 +82,21 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
-   * /([a-z]+)([h-o])([d...
-   *  ^^^^^^^^
+   * /([a-z][a-z]✱)([h-o])([d...
+   *  ^^^^^^^^^^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
-   * /([a-z]+)([h-o])([d-z]✱)([...
-   *          ^^^^^^^
+   * ...-z][a-z]✱)([h-o])([d-z]✱)([...
+   *              ^^^^^^^
    */
   context.groupMarkerStartTemp1 = i;
   /*
    * charOrSet
-   * /([a-z]+)([h-o])([d-z]✱)(...
-   *           ^^^^^
+   * ...z][a-z]✱)([h-o])([d-z]✱)(...
+   *              ^^^^^
    */
   if (i >= str.length) {
     return -1;
@@ -113,20 +113,20 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupEndMarker
-   * /([a-z]+)([h-o])([d-z]✱)([...
-   *          ^^^^^^^
+   * ...-z][a-z]✱)([h-o])([d-z]✱)([...
+   *              ^^^^^^^
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;
   /*
    * groupStartMarker
-   * ...]+)([h-o])([d-z]✱)([1-3])/
+   * ...]✱)([h-o])([d-z]✱)([1-3])/
    *              ^^^^^^^^
    */
   context.groupMarkerStartTemp2 = i;
   /*
    * nonBacktrackingQuantifier
-   * ...+)([h-o])([d-z]✱)([1-3])/
+   * ...✱)([h-o])([d-z]✱)([1-3])/
    *              ^^^^^^
    */
   while (true) {
@@ -140,7 +140,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * ...]+)([h-o])([d-z]✱)([1-3])/
+   * ...]✱)([h-o])([d-z]✱)([1-3])/
    *              ^^^^^^^^
    */
   context.groupMarkerStart2 = context.groupMarkerStartTemp2;
@@ -181,7 +181,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * ...+)([h-o])([d-z]✱)([1-3])/
+   * ...✱)([h-o])([d-z]✱)([1-3])/
    *              ^^^^^
    */
   if (i >= str.length) {
@@ -202,8 +202,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /([a-z]+)([h-o])(...
-   *   ^^^^^
+   * /([a-z][a-z]✱)([h-o])(...
+   *        ^^^^^
    */
   if (i >= str.length) {
     return -1;
@@ -223,41 +223,55 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * /([a-z]+)([h-o])([d...
-   *  ^^^^^^^^
+   * /([a-z][a-z]✱)([h-o])([d...
+   *  ^^^^^^^^^^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * backtrackingFixedLengthQuantifier
-   * /([a-z]+)([h-o])([...
-   *   ^^^^^^
+   * charOrSet
+   * /([a-z][a-z]✱)([h...
+   *   ^^^^^
    */
-  let matches1 = 0;
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  if (charCode1 <= 122) {
+    result1 = charCode1 >= 97;
+  }
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * backtrackingFixedLengthQuantifier
+   * /([a-z][a-z]✱)([h-o])([...
+   *        ^^^^^^
+   */
+  let matches2 = 0;
 
   while (true) {
     const wrappedResult = fiber0003(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches1 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-      matches1++;
+      matches2++;
     }
   }
 
   // needs followUp & forkingFiber
-  while (matches1 >= 1) {
-    const directFollowUpResult1 = fiber0001(i, str, context);
+  while (matches2 >= 0) {
+    const directFollowUpResult2 = fiber0001(i, str, context);
 
-    if (directFollowUpResult1 !== -1) {
-      return directFollowUpResult1;
+    if (directFollowUpResult2 !== -1) {
+      return directFollowUpResult2;
     }
 
-    matches1--;
+    matches2--;
     i -= 1;
   }
 

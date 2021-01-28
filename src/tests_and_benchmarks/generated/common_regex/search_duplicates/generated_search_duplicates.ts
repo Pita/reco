@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/(\b\w+\b)(?=.*\b\1\b)/'
+// Generated from: '/\b(\w\w*)\b(?=.*\b\1\b)/'
 //
 // Use like this:
 //
@@ -54,140 +54,163 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * groupStartMarker
-   * /(\b\w+\b)(?=.✱\b\1\b)/
-   *  ^^^^^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
    * wordBoundary
-   * /(\b\w+\b)(?=....
-   *   ^^
+   * /\b(\w\w✱)\b(...
+   *  ^^
    */
   if (i !== 0 && i !== str.length) {
     // TODO: find way to generate these trees
-    const charCodeBefore1 = str.charCodeAt(i - 1);
-    let isBeforeWord1 = false;
-    if (charCodeBefore1 <= 90) {
-      if (charCodeBefore1 <= 57) {
-        isBeforeWord1 = charCodeBefore1 >= 48;
+    const charCodeBefore0 = str.charCodeAt(i - 1);
+    let isBeforeWord0 = false;
+    if (charCodeBefore0 <= 90) {
+      if (charCodeBefore0 <= 57) {
+        isBeforeWord0 = charCodeBefore0 >= 48;
       } else {
-        isBeforeWord1 = charCodeBefore1 >= 65;
+        isBeforeWord0 = charCodeBefore0 >= 65;
       }
     } else {
-      if (charCodeBefore1 === 95) {
-        isBeforeWord1 = true;
+      if (charCodeBefore0 === 95) {
+        isBeforeWord0 = true;
       } else {
-        if (charCodeBefore1 <= 122) {
-          isBeforeWord1 = charCodeBefore1 >= 97;
+        if (charCodeBefore0 <= 122) {
+          isBeforeWord0 = charCodeBefore0 >= 97;
         }
       }
     }
 
-    const charCodeAfter1 = str.charCodeAt(i);
-    let isAfterWord1 = false;
-    if (charCodeAfter1 <= 90) {
-      if (charCodeAfter1 <= 57) {
-        isAfterWord1 = charCodeAfter1 >= 48;
+    const charCodeAfter0 = str.charCodeAt(i);
+    let isAfterWord0 = false;
+    if (charCodeAfter0 <= 90) {
+      if (charCodeAfter0 <= 57) {
+        isAfterWord0 = charCodeAfter0 >= 48;
       } else {
-        isAfterWord1 = charCodeAfter1 >= 65;
+        isAfterWord0 = charCodeAfter0 >= 65;
       }
     } else {
-      if (charCodeAfter1 === 95) {
-        isAfterWord1 = true;
+      if (charCodeAfter0 === 95) {
+        isAfterWord0 = true;
       } else {
-        if (charCodeAfter1 <= 122) {
-          isAfterWord1 = charCodeAfter1 >= 97;
+        if (charCodeAfter0 <= 122) {
+          isAfterWord0 = charCodeAfter0 >= 97;
         }
       }
     }
 
-    if (isBeforeWord1 === isAfterWord1) {
+    if (isBeforeWord0 === isAfterWord0) {
       return -1;
     }
   }
   /*
-   * nonBacktrackingQuantifier
-   * /(\b\w+\b)(?=.✱\b...
-   *     ^^^
+   * groupStartMarker
+   * /\b(\w\w✱)\b(?=.✱\b\...
+   *    ^^^^^^^
    */
-  let matches2 = 0;
+  context.groupMarkerStartTemp0 = i;
+  /*
+   * charOrSet
+   * /\b(\w\w✱)\b(?=....
+   *     ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode2 = str.charCodeAt(i);
+  let result2 = false;
+
+  if (charCode2 <= 90) {
+    if (charCode2 <= 57) {
+      result2 = charCode2 >= 48;
+    } else {
+      result2 = charCode2 >= 65;
+    }
+  } else {
+    if (charCode2 === 95) {
+      result2 = true;
+    } else {
+      if (charCode2 <= 122) {
+        result2 = charCode2 >= 97;
+      }
+    }
+  }
+  if (!result2) {
+    return -1;
+  }
+  i++;
+  /*
+   * nonBacktrackingQuantifier
+   * /\b(\w\w✱)\b(?=.✱\b...
+   *       ^^^
+   */
   while (true) {
     const wrappedResult = fiber0005(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches2 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-
-      matches2++;
-    }
-  }
-  /*
-   * wordBoundary
-   * /(\b\w+\b)(?=.✱\b\1...
-   *        ^^
-   */
-  if (i !== 0 && i !== str.length) {
-    // TODO: find way to generate these trees
-    const charCodeBefore3 = str.charCodeAt(i - 1);
-    let isBeforeWord3 = false;
-    if (charCodeBefore3 <= 90) {
-      if (charCodeBefore3 <= 57) {
-        isBeforeWord3 = charCodeBefore3 >= 48;
-      } else {
-        isBeforeWord3 = charCodeBefore3 >= 65;
-      }
-    } else {
-      if (charCodeBefore3 === 95) {
-        isBeforeWord3 = true;
-      } else {
-        if (charCodeBefore3 <= 122) {
-          isBeforeWord3 = charCodeBefore3 >= 97;
-        }
-      }
-    }
-
-    const charCodeAfter3 = str.charCodeAt(i);
-    let isAfterWord3 = false;
-    if (charCodeAfter3 <= 90) {
-      if (charCodeAfter3 <= 57) {
-        isAfterWord3 = charCodeAfter3 >= 48;
-      } else {
-        isAfterWord3 = charCodeAfter3 >= 65;
-      }
-    } else {
-      if (charCodeAfter3 === 95) {
-        isAfterWord3 = true;
-      } else {
-        if (charCodeAfter3 <= 122) {
-          isAfterWord3 = charCodeAfter3 >= 97;
-        }
-      }
-    }
-
-    if (isBeforeWord3 === isAfterWord3) {
-      return -1;
     }
   }
   /*
    * groupEndMarker
-   * /(\b\w+\b)(?=.✱\b\1\b)/
-   *  ^^^^^^^^^
+   * /\b(\w\w✱)\b(?=.✱\b\...
+   *    ^^^^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
-   * lookaround
-   * /(\b\w+\b)(?=.✱\b\1\b)/
-   *           ^^^^^^^^^^^^
+   * wordBoundary
+   * /\b(\w\w✱)\b(?=.✱\b\1\b)/
+   *           ^^
    */
-  const lookaroundResult5 = fiber0004(i, str, context);
-  if (lookaroundResult5 === -1) {
+  if (i !== 0 && i !== str.length) {
+    // TODO: find way to generate these trees
+    const charCodeBefore5 = str.charCodeAt(i - 1);
+    let isBeforeWord5 = false;
+    if (charCodeBefore5 <= 90) {
+      if (charCodeBefore5 <= 57) {
+        isBeforeWord5 = charCodeBefore5 >= 48;
+      } else {
+        isBeforeWord5 = charCodeBefore5 >= 65;
+      }
+    } else {
+      if (charCodeBefore5 === 95) {
+        isBeforeWord5 = true;
+      } else {
+        if (charCodeBefore5 <= 122) {
+          isBeforeWord5 = charCodeBefore5 >= 97;
+        }
+      }
+    }
+
+    const charCodeAfter5 = str.charCodeAt(i);
+    let isAfterWord5 = false;
+    if (charCodeAfter5 <= 90) {
+      if (charCodeAfter5 <= 57) {
+        isAfterWord5 = charCodeAfter5 >= 48;
+      } else {
+        isAfterWord5 = charCodeAfter5 >= 65;
+      }
+    } else {
+      if (charCodeAfter5 === 95) {
+        isAfterWord5 = true;
+      } else {
+        if (charCodeAfter5 <= 122) {
+          isAfterWord5 = charCodeAfter5 >= 97;
+        }
+      }
+    }
+
+    if (isBeforeWord5 === isAfterWord5) {
+      return -1;
+    }
+  }
+  /*
+   * lookaround
+   * /\b(\w\w✱)\b(?=.✱\b\1\b)/
+   *             ^^^^^^^^^^^^
+   */
+  const lookaroundResult6 = fiber0004(i, str, context);
+  if (lookaroundResult6 === -1) {
     return -1;
   }
   return i;
@@ -195,7 +218,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * wordBoundary
-   * ...w+\b)(?=.✱\b\1\b)/
+   * ...w✱)\b(?=.✱\b\1\b)/
    *              ^^
    */
   if (i !== 0 && i !== str.length) {
@@ -242,7 +265,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupBackReference
-   * ...\b)(?=.✱\b\1\b)/
+   * ...)\b(?=.✱\b\1\b)/
    *              ^^
    */
   let backReferenceI = context.groupMarkerStart0;
@@ -264,7 +287,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   }
   /*
    * wordBoundary
-   * ...)(?=.✱\b\1\b)/
+   * ...b(?=.✱\b\1\b)/
    *              ^^
    */
   if (i !== 0 && i !== str.length) {
@@ -314,7 +337,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(\b\w+\b)(?=.✱\b\1\b)/
+   * ...w\w✱)\b(?=.✱\b\1\b)/
    *              ^
    */
   if (i >= str.length) {
@@ -339,7 +362,7 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * backtrackingFixedLengthQuantifier
-   * /(\b\w+\b)(?=.✱\b\1\b)/
+   * ...w\w✱)\b(?=.✱\b\1\b)/
    *              ^^
    */
   let matches0 = 0;
@@ -372,8 +395,8 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
 const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(\b\w+\b)(?=.✱\...
-   *     ^^
+   * /\b(\w\w✱)\b(?=.✱\...
+   *       ^^
    */
   if (i >= str.length) {
     return -1;

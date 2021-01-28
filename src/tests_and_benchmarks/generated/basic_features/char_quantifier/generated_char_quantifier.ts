@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/a*B+c?/'
+// Generated from: '/a*BB*c?/'
 //
 // Use like this:
 //
@@ -42,7 +42,7 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * nonBacktrackingQuantifier
-   * /a✱B+c?/
+   * /a✱BB✱c?/
    *  ^^
    */
   while (true) {
@@ -55,32 +55,42 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     }
   }
   /*
-   * nonBacktrackingQuantifier
-   * /a✱B+c?/
-   *    ^^
+   * charOrSet
+   * /a✱BB✱c?/
+   *    ^
    */
-  let matches1 = 0;
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  result1 = charCode1 === 66;
+
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * nonBacktrackingQuantifier
+   * /a✱BB✱c?/
+   *     ^^
+   */
   while (true) {
     const wrappedResult = fiber0003(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches1 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-
-      matches1++;
     }
   }
   /*
    * nonBacktrackingQuantifier
-   * /a✱B+c?/
-   *      ^^
+   * /a✱BB✱c?/
+   *       ^^
    */
-  let matches2 = 0;
+  let matches3 = 0;
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
@@ -89,9 +99,9 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
 
-      matches2++;
+      matches3++;
 
-      if (matches2 === 1) {
+      if (matches3 === 1) {
         break;
       }
     }
@@ -101,8 +111,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /a✱B+c?/
-   *      ^
+   * /a✱BB✱c?/
+   *       ^
    */
   if (i >= str.length) {
     return -1;
@@ -121,8 +131,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /a✱B+c?/
-   *    ^
+   * /a✱BB✱c?/
+   *     ^
    */
   if (i >= str.length) {
     return -1;
@@ -141,7 +151,7 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /a✱B+c?/
+   * /a✱BB✱c?/
    *  ^
    */
   if (i >= str.length) {

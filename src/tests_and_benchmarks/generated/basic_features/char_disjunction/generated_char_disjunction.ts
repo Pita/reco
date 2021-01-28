@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/a|b|f/'
+// Generated from: '/[abf]/'
 //
 // Use like this:
 //
@@ -41,84 +41,21 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * nonBacktrackingDisjunction
-   * /a|b|f/
+   * charOrSet
+   * /[abf]/
    *  ^^^^^
    */
-  nonBacktrackingDisjunction0: {
-    const length0 = fiber0002(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
-    }
-    const length1 = fiber0003(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction0;
-    }
-    const length2 = fiber0004(i, str, context);
-    if (length2 !== -1) {
-      i = length2;
-      break nonBacktrackingDisjunction0;
-    }
-    return -1;
-  }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /a|b|f/
-   *  ^
-   */
   if (i >= str.length) {
     return -1;
   }
   const charCode0 = str.charCodeAt(i);
   let result0 = false;
 
-  result0 = charCode0 === 97;
-
-  if (!result0) {
-    return -1;
+  if (charCode0 <= 98) {
+    result0 = charCode0 >= 97;
+  } else {
+    result0 = charCode0 === 102;
   }
-  i++;
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /a|b|f/
-   *    ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 98;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0004 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /a|b|f/
-   *      ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 102;
-
   if (!result0) {
     return -1;
   }

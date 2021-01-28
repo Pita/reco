@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/([a-c]{2}|[d-f]{2})(a)/'
+// Generated from: '/([a-c][a-c]|[d-f][d-f])(a)/'
 //
 // Use like this:
 //
@@ -64,14 +64,14 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * /([a-c]{2}|[d-f]{2})(a)/
-   *  ^^^^^^^^^^^^^^^^^^^
+   * /([a-c][a-c]|[d-f][d-f])(a)/
+   *  ^^^^^^^^^^^^^^^^^^^^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * nonBacktrackingDisjunction
-   * /([a-c]{2}|[d-f]{2})(a)/
-   *  ^^^^^^^^^^^^^^^^^^^
+   * /([a-c][a-c]|[d-f][d-f])(a)/
+   *  ^^^^^^^^^^^^^^^^^^^^^^^
    */
   nonBacktrackingDisjunction1: {
     const length0 = fiber0002(i, str, context);
@@ -88,20 +88,20 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * /([a-c]{2}|[d-f]{2})(a)/
-   *  ^^^^^^^^^^^^^^^^^^^
+   * /([a-c][a-c]|[d-f][d-f])(a)/
+   *  ^^^^^^^^^^^^^^^^^^^^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
-   * ...|[d-f]{2})(a)/
+   * ...d-f][d-f])(a)/
    *              ^^^
    */
   context.groupMarkerStartTemp1 = i;
   /*
    * charOrSet
-   * ...[d-f]{2})(a)/
+   * ...-f][d-f])(a)/
    *              ^
    */
   if (i >= str.length) {
@@ -118,7 +118,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * groupEndMarker
-   * ...|[d-f]{2})(a)/
+   * ...d-f][d-f])(a)/
    *              ^^^
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
@@ -128,7 +128,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /([a-c]{2}|[d-f]{...
+   * /([a-c][a-c]|[d-f...
    *   ^^^^^
    */
   if (i >= str.length) {
@@ -146,8 +146,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * /([a-c]{2}|[d-f]{...
-   *   ^^^^^
+   * /([a-c][a-c]|[d-f][d-f...
+   *        ^^^^^
    */
   if (i >= str.length) {
     return -1;
@@ -167,8 +167,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /([a-c]{2}|[d-f]{2})(a)/
-   *            ^^^^^
+   * /([a-c][a-c]|[d-f][d-f])(a)/
+   *              ^^^^^
    */
   if (i >= str.length) {
     return -1;
@@ -185,8 +185,8 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
   i++;
   /*
    * charOrSet
-   * /([a-c]{2}|[d-f]{2})(a)/
-   *            ^^^^^
+   * ...a-c]|[d-f][d-f])(a)/
+   *              ^^^^^
    */
   if (i >= str.length) {
     return -1;

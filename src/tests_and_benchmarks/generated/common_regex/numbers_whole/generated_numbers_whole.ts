@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/^\d+$/'
+// Generated from: '/^\d\d*$/'
 //
 // Use like this:
 //
@@ -42,37 +42,48 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
-   * /^\d+$/
+   * /^\d\d✱$/
    *  ^
    */
   if (i !== 0) {
     return -1;
   }
   /*
-   * nonBacktrackingQuantifier
-   * /^\d+$/
-   *   ^^^
+   * charOrSet
+   * /^\d\d✱$/
+   *   ^^
    */
-  let matches1 = 0;
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode1 = str.charCodeAt(i);
+  let result1 = false;
+
+  if (charCode1 <= 57) {
+    result1 = charCode1 >= 48;
+  }
+  if (!result1) {
+    return -1;
+  }
+  i++;
+  /*
+   * nonBacktrackingQuantifier
+   * /^\d\d✱$/
+   *     ^^^
+   */
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches1 < 1) {
-        return -1;
-      }
-
       break;
     } else {
       i = wrappedResult;
-
-      matches1++;
     }
   }
   /*
    * endAnchor
-   * /^\d+$/
-   *      ^
+   * /^\d\d✱$/
+   *        ^
    */
   if (i !== str.length) {
     return -1;
@@ -82,8 +93,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /^\d+$/
-   *   ^^
+   * /^\d\d✱$/
+   *     ^^
    */
   if (i >= str.length) {
     return -1;
