@@ -73,7 +73,7 @@ describe('simplifyRegex', () => {
     expect(simplified).toEqual('/(a[bcd]|b[ab])/i');
   });
 
-  test.skip('erase duplicate disjunction entries', () => {
+  test('erase duplicate disjunction entries', () => {
     const simplified = simplifyRegex('/(a|a)/i');
 
     expect(simplified).toEqual('/(a)/i');

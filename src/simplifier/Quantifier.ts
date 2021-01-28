@@ -1,4 +1,5 @@
-import { AST, visitRegExpAST } from 'regexpp';
+import { AST } from 'regexpp';
+import { countGroups } from './countGroups';
 import { handleElement } from './Element';
 import { SimplifierHandler } from './types';
 
@@ -15,15 +16,8 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
   let unrolledQuantifiers = '';
 
   if (quantifier.min > 0 && options.firstPass) {
-    let containsGroups = false;
-    visitRegExpAST(quantifier, {
-      onCapturingGroupEnter: () => {
-        containsGroups = true;
-      },
-    });
-
     // TODO: only quantifable element group should be ok
-    if (!containsGroups) {
+    if (countGroups(quantifier) === 0) {
       for (let i = 0; i < Math.min(quantifier.min, UNROLL_MIN); i++) {
         unrolledQuantifiers += quantifier.element.raw;
       }

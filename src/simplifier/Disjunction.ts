@@ -4,6 +4,7 @@ import { removeFromSide } from './removeFromSide';
 import { SimplifierHandler, SimplifierHandlerOptions } from './types';
 import sortBy from 'lodash/sortBy';
 import { computeExclusivityOfAlternatives } from '../dfa-analyzer/CharRangeSequencePossibilities';
+import { countGroups } from './countGroups';
 
 const CHAR_TYPES = ['Character', 'CharacterSet', 'CharacterClass'];
 const ELEMENTS_TO_BE_REMOVED = [
@@ -69,6 +70,30 @@ const attemptSimplifyNestedDisjunctions = (
   return isNested ? handleDirectly(nestedAlternatives, options) : null;
 };
 
+const attemptRemoveDuplicates = (
+  alternatives: AST.Alternative[],
+  options: SimplifierHandlerOptions,
+) => {
+  const keysSeen = new Set<string>();
+  const deduplicatedAlternatives: AST.Alternative[] = [];
+  let deduplicated = false;
+
+  alternatives.forEach((alternative) => {
+    if (keysSeen.has(alternative.raw) && countGroups(alternative) === 0) {
+      deduplicated = true;
+      return;
+    }
+
+    deduplicatedAlternatives.push(alternative);
+  });
+
+  if (!deduplicated) {
+    return null;
+  }
+
+  return handleDirectly(deduplicatedAlternatives, options);
+};
+
 const attemptSideRemoval = (
   alternatives: AST.Alternative[],
   options: SimplifierHandlerOptions,
@@ -98,16 +123,23 @@ const attemptGrouping = (
   alternatives: AST.Alternative[],
   options: SimplifierHandlerOptions,
 ) => {
-  const canBeResorted =
-    computeExclusivityOfAlternatives(alternatives, options.literal) ===
-    'Exlusive';
+  let groupCount = 0;
+  alternatives.forEach((alternative) => {
+    groupCount += countGroups(alternative);
+  });
 
   let proccessedAlternatives = alternatives;
-  if (canBeResorted) {
-    proccessedAlternatives = sortBy(
-      alternatives,
-      (alternative) => alternative.elements[0]?.raw || '',
-    );
+  if (groupCount <= 1) {
+    const isExclusive =
+      computeExclusivityOfAlternatives(alternatives, options.literal) ===
+      'Exlusive';
+
+    if (isExclusive) {
+      proccessedAlternatives = sortBy(
+        alternatives,
+        (alternative) => alternative.elements[0]?.raw || '',
+      );
+    }
   }
 
   const groups: AST.Alternative[][] = [];
@@ -151,14 +183,14 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   }
 
   const attemptedSideRemoval = attemptSideRemoval(alternatives, options);
-  if (attemptedSideRemoval) {
+  if (attemptedSideRemoval !== null) {
     return attemptedSideRemoval;
   }
 
   const attemptedOneCharSimplification = attemptSimplifyOneCharDisjunctions(
     alternatives,
   );
-  if (attemptedOneCharSimplification) {
+  if (attemptedOneCharSimplification !== null) {
     return attemptedOneCharSimplification;
   }
 
@@ -166,12 +198,20 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
     alternatives,
     options,
   );
-  if (attemptedSimplifyNestedDisjunctions) {
+  if (attemptedSimplifyNestedDisjunctions !== null) {
     return attemptedSimplifyNestedDisjunctions;
   }
 
+  const attemptedRemoveDuplicates = attemptRemoveDuplicates(
+    alternatives,
+    options,
+  );
+  if (attemptedRemoveDuplicates !== null) {
+    return attemptedRemoveDuplicates;
+  }
+
   const attemptedGrouping = attemptGrouping(alternatives, options);
-  if (attemptedGrouping) {
+  if (attemptedGrouping !== null) {
     return attemptedGrouping;
   }
 
