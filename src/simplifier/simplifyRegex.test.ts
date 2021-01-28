@@ -32,12 +32,12 @@ describe('simplifyRegex', () => {
   });
 
   test('can do a simple multi pass optimization', () => {
-    const simplified = simplifyRegex('/ad|bd|cd/i');
+    const simplified = simplifyRegex('/(?:ad|bd|c(?:d))/i');
 
     expect(simplified).toEqual('/[abc]d/i');
   });
 
-  test.skip('resolve nested disjunctions', () => {
+  test('resolve nested disjunctions', () => {
     const simplified = simplifyRegex('/((?:ab|cd)|(?:ef|gh))/i');
 
     expect(simplified).toEqual('/(ab|cd|ef|gh)/i');

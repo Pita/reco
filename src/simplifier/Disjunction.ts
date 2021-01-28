@@ -68,6 +68,26 @@ const tryToSimplifyOneCharDisjunctions = (alternatives: AST.Alternative[]) => {
   return `[${charsJoined}]`;
 };
 
+const tryToSimplifyNestedDisjunctions = (alternatives: AST.Alternative[]) => {
+  const nestedAlternatives: AST.Alternative[] = [];
+  let isNested = true;
+
+  alternatives.forEach((alternative) => {
+    alternative.elements.forEach((alternativeElement) => {
+      if (alternativeElement.type !== 'Group') {
+        isNested = false;
+        return;
+      }
+
+      alternativeElement.alternatives.forEach((subAlternative) =>
+        nestedAlternatives.push(subAlternative),
+      );
+    });
+  });
+
+  return isNested ? nestedAlternatives : alternatives;
+};
+
 export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   alternatives,
   options,
@@ -85,7 +105,7 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
 
   const alternativesString =
     attemptedOneCharSimplification ??
-    alternatives
+    tryToSimplifyNestedDisjunctions(alternatives)
       .map((alternative) => handleAlternative(alternative, options))
       .join('|');
 
