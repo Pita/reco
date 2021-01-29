@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { Flags } from 'regexpp/ast';
 
 const normalizeUpperLowerCase = (
   char: number,
@@ -212,5 +213,21 @@ export class CharRange {
       negate: this.negate,
       chars: this.chars.toArray(),
     };
+  }
+
+  getUTF16UnitsCount(flags: Flags) {
+    if (flags.unicode === false) {
+      return 1;
+    }
+
+    if (this.negate) {
+      return 2;
+    }
+
+    const chars = this.chars.toArray();
+    if (chars.length > 0 && chars[chars.length - 1] >= 0x10000) {
+      return 2;
+    }
+    return 1;
   }
 }

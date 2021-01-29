@@ -32,7 +32,7 @@ export const handleSetOrCharacter = (
         ast: element,
       },
       1,
-      flags.unicode ? 2 : 1,
+      newCharRange.getUTF16UnitsCount(flags),
       element,
     );
   } else {
@@ -48,7 +48,7 @@ export const handleSetOrCharacter = (
         ast: element,
       },
       1,
-      flags.unicode ? 2 : 1,
+      newCharRange.getUTF16UnitsCount(flags),
       element,
     );
   }
