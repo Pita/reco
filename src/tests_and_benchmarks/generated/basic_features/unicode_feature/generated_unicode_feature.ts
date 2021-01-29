@@ -51,7 +51,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode0 = str.codePointAt(i)!;
-  let result0 = false;
+  let result0: boolean;
 
   if (charCode0 <= 42888) {
     if (charCode0 <= 3948) {
@@ -2446,6 +2446,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
                   } else {
                     if (charCode0 <= 201546) {
                       result0 = charCode0 >= 196608;
+                    } else {
+                      result0 = false;
                     }
                   }
                 }

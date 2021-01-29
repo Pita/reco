@@ -9,9 +9,12 @@ interface Leaf {
   maxChecked?: boolean;
 }
 
-const processLeafs = (leafs: Leaf[]): LeafTemplate | undefined => {
+const processLeafs = (leafs: Leaf[]): LeafTemplate => {
   if (leafs.length === 0) {
-    return undefined;
+    return {
+      type: 'lastComparison',
+      comparison: { type: 'false' },
+    };
   }
   if (leafs.length === 1) {
     if (leafs[0].min === leafs[0].max) {
@@ -103,12 +106,6 @@ export const charRangeToLeafValues = (
       });
       rangeLeafStart = null;
     }
-  }
-
-  if (leafs.length === 0) {
-    return {
-      type: 'noop',
-    };
   }
 
   return processLeafs(leafs);

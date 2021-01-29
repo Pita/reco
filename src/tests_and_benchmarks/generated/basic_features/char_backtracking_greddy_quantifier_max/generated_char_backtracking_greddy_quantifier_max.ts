@@ -94,7 +94,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode1 = str.charCodeAt(i);
-  let result1 = false;
+  let result1: boolean;
 
   result1 = charCode1 === 97;
 
@@ -111,7 +111,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode2 = str.charCodeAt(i);
-  let result2 = false;
+  let result2: boolean;
 
   result2 = charCode2 === 97;
 

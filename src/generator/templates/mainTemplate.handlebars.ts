@@ -110,7 +110,7 @@ export function generatedRegexMatcher(str: string) {
         {{#unless unicode}}
           str.charCodeAt(i);
         {{/unless}}
-        let result{{{@index}}} = false;
+        let result{{{@index}}}: boolean;
         {{> leaf tree atomIndex=@index}}
         if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
           return -1;

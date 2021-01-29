@@ -79,7 +79,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode1 = str.charCodeAt(i);
-  let result1 = false;
+  let result1: boolean;
 
   result1 = charCode1 === 97;
 
@@ -96,7 +96,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode2 = str.charCodeAt(i);
-  let result2 = false;
+  let result2: boolean;
 
   result2 = charCode2 === 97;
 
@@ -113,7 +113,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode3 = str.charCodeAt(i);
-  let result3 = false;
+  let result3: boolean;
 
   result3 = charCode3 === 51;
 
@@ -130,7 +130,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode4 = str.charCodeAt(i);
-  let result4 = false;
+  let result4: boolean;
 
   result4 = charCode4 === 97;
 
@@ -163,7 +163,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode1 = str.charCodeAt(i);
-  let result1 = false;
+  let result1: boolean;
 
   result1 = charCode1 === 97;
 
@@ -180,7 +180,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode2 = str.charCodeAt(i);
-  let result2 = false;
+  let result2: boolean;
 
   result2 = charCode2 === 97;
 
@@ -197,7 +197,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode3 = str.charCodeAt(i);
-  let result3 = false;
+  let result3: boolean;
 
   result3 = charCode3 === 51;
 

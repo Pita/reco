@@ -89,7 +89,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode1 = str.charCodeAt(i);
-  let result1 = false;
+  let result1: boolean;
 
   result1 = charCode1 === 46;
 
@@ -112,13 +112,15 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode3 = str.charCodeAt(i);
-  let result3 = false;
+  let result3: boolean;
 
   if (charCode3 === 46) {
     result3 = true;
   } else {
     if (charCode3 <= 122) {
       result3 = charCode3 >= 97;
+    } else {
+      result3 = false;
     }
   }
   if (!result3) {
@@ -134,13 +136,15 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode4 = str.charCodeAt(i);
-  let result4 = false;
+  let result4: boolean;
 
   if (charCode4 === 46) {
     result4 = true;
   } else {
     if (charCode4 <= 122) {
       result4 = charCode4 >= 97;
+    } else {
+      result4 = false;
     }
   }
   if (!result4) {
@@ -195,13 +199,15 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode0 = str.charCodeAt(i);
-  let result0 = false;
+  let result0: boolean;
 
   if (charCode0 === 46) {
     result0 = true;
   } else {
     if (charCode0 <= 122) {
       result0 = charCode0 >= 97;
+    } else {
+      result0 = false;
     }
   }
   if (!result0) {
@@ -220,7 +226,7 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode0 = str.charCodeAt(i);
-  let result0 = false;
+  let result0: boolean;
 
   if (charCode0 <= 57) {
     if (charCode0 <= 46) {
@@ -231,6 +237,8 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
   } else {
     if (charCode0 <= 122) {
       result0 = charCode0 >= 97;
+    } else {
+      result0 = false;
     }
   }
   if (!result0) {
@@ -263,7 +271,7 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode2 = str.charCodeAt(i);
-  let result2 = false;
+  let result2: boolean;
 
   if (charCode2 <= 57) {
     if (charCode2 <= 46) {
@@ -281,6 +289,8 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
     } else {
       if (charCode2 <= 122) {
         result2 = charCode2 >= 97;
+      } else {
+        result2 = false;
       }
     }
   }
@@ -318,7 +328,7 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode5 = str.charCodeAt(i);
-  let result5 = false;
+  let result5: boolean;
 
   result5 = charCode5 === 64;
 
@@ -341,7 +351,7 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode7 = str.charCodeAt(i);
-  let result7 = false;
+  let result7: boolean;
 
   if (charCode7 <= 57) {
     if (charCode7 <= 46) {
@@ -352,6 +362,8 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   } else {
     if (charCode7 <= 122) {
       result7 = charCode7 >= 97;
+    } else {
+      result7 = false;
     }
   }
   if (!result7) {
@@ -400,7 +412,7 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode0 = str.charCodeAt(i);
-  let result0 = false;
+  let result0: boolean;
 
   if (charCode0 <= 57) {
     if (charCode0 <= 46) {
@@ -418,6 +430,8 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
     } else {
       if (charCode0 <= 122) {
         result0 = charCode0 >= 97;
+      } else {
+        result0 = false;
       }
     }
   }

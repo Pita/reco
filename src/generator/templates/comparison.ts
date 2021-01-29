@@ -18,4 +18,7 @@ export type ComparsionTemplate =
     }
   | {
       type: 'true';
+    }
+  | {
+      type: 'false';
     };

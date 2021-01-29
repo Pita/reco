@@ -8,9 +8,6 @@ export const registerLeafPartial = () => {
 };
 
 export type LeafTemplate =
-  | {
-      type: 'noop';
-    }
   | { type: 'lastComparison'; comparison: ComparsionTemplate }
   | {
       type: 'comparison';

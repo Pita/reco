@@ -3,6 +3,9 @@ export default `
   {{#switchCase 'true'}}
     true
   {{/switchCase}}
+  {{#switchCase 'false'}}
+    false
+  {{/switchCase}}
   {{#switchCase 'equalOneOfTwo'}}
     charCode{{{../atomIndex}}} === {{{comparisonValue1}}} || charCode{{{../atomIndex}}} === {{{comparisonValue2}}}
   {{/switchCase}}

@@ -51,7 +51,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode0 = str.codePointAt(i)!;
-  let result0 = false;
+  let result0: boolean;
 
   result0 = charCode0 === 128516;
 

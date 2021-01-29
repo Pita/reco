@@ -60,7 +60,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   const charCode1 = str.codePointAt(i)!;
-  let result1 = false;
+  let result1: boolean;
 
   result1 = charCode1 === 120;
 

@@ -6,9 +6,7 @@ export default `
   if ({{>comparison atomIndex=atomIndex}}) {
     {{>leaf comparisonTrue atomIndex=atomIndex}}
   }
-  {{#if comparisonFalse}}
-    else {
-      {{>leaf comparisonFalse atomIndex=atomIndex}}
-    }
-  {{/if}}
+  else {
+    {{>leaf comparisonFalse atomIndex=atomIndex}}
+  }
 {{/switchCase}}`;
