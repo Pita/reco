@@ -3,6 +3,7 @@ import { countGroups } from './countGroups';
 import { handleDisjunction } from './Disjunction';
 import { removeFromSide } from './removeFromSide';
 import { SimplifierHandler, SimplifierHandlerOptions } from './types';
+import cloneDeep from 'lodash/cloneDeep';
 
 const canRemove = (element: AST.Element) => {
   return element.type === 'Assertion' && countGroups(element) === 0;
@@ -48,7 +49,7 @@ export const handleCapturingGroup: SimplifierHandler<AST.CapturingGroup> = (
   }
 
   const attemptedPullingOutAssertions = attemptPullingOutAssertions(
-    group,
+    cloneDeep(group),
     options,
   );
   if (attemptedPullingOutAssertions !== null) {
@@ -56,7 +57,7 @@ export const handleCapturingGroup: SimplifierHandler<AST.CapturingGroup> = (
   }
 
   const attemptedRemovingCapturingGroups = attemptRemovingCapturingGroups(
-    group,
+    cloneDeep(group),
     options,
   );
   if (attemptedRemovingCapturingGroups !== null) {

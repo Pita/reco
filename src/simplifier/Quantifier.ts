@@ -2,15 +2,16 @@ import { AST } from 'regexpp';
 import { countGroups } from './countGroups';
 import { handleElement } from './Element';
 import { SimplifierHandler } from './types';
+import cloneDeep from 'lodash/cloneDeep';
 
 const UNROLL_MIN = 10;
 
 export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
-  quantifier,
+  _quantifier,
   options,
 ) => {
+  const quantifier = cloneDeep(_quantifier);
   let unrolledQuantifiers = '';
-  let unrolled = false;
 
   if (options.firstPass) {
     const containsGroups = countGroups(quantifier) > 0;
@@ -22,7 +23,6 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
       );
 
       for (let i = 0; i < unrolledCount; i++) {
-        unrolled = containsGroups;
         unrolledQuantifiers += handleElement(quantifier.element, {
           ...options,
           removeCapturingGroups: true,
@@ -31,10 +31,6 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
 
       quantifier.min = quantifier.min - unrolledCount;
       quantifier.max = quantifier.max - unrolledCount;
-
-      if (containsGroups) {
-        console.log(quantifier.start, 'quantifier.min', quantifier.min);
-      }
     }
   }
 
@@ -61,15 +57,6 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
     if (!quantifier.greedy && quantifierStr !== '') {
       quantifierStr += '?';
     }
-  }
-
-  if (unrolled) {
-    console.log(
-      quantifier.start,
-      quantifier.raw,
-      '->',
-      `${unrolledQuantifiers}${quantifiableElement}${quantifierStr}`,
-    );
   }
 
   return `${unrolledQuantifiers}${quantifiableElement}${quantifierStr}`;

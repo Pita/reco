@@ -5,6 +5,7 @@ import { SimplifierHandler, SimplifierHandlerOptions } from './types';
 import sortBy from 'lodash/sortBy';
 import { computeExclusivityOfAlternatives } from '../dfa-analyzer/CharRangeSequencePossibilities';
 import { countGroups } from './countGroups';
+import cloneDeep from 'lodash/cloneDeep';
 
 const CHAR_TYPES = ['Character', 'CharacterSet', 'CharacterClass'];
 const ELEMENTS_TO_BE_REMOVED = [
@@ -190,37 +191,40 @@ export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
   }
 
   const attemptedRemoveDuplicates = attemptRemoveDuplicates(
-    alternatives,
+    cloneDeep(alternatives),
     options,
   );
   if (attemptedRemoveDuplicates !== null) {
     return attemptedRemoveDuplicates;
   }
 
-  const attemptedSideRemoval = attemptSideRemoval(alternatives, options);
+  const attemptedSideRemoval = attemptSideRemoval(
+    cloneDeep(alternatives),
+    options,
+  );
   if (attemptedSideRemoval !== null) {
     return attemptedSideRemoval;
   }
 
   const attemptedOneCharSimplification = attemptSimplifyOneCharDisjunctions(
-    alternatives,
+    cloneDeep(alternatives),
   );
   if (attemptedOneCharSimplification !== null) {
     return attemptedOneCharSimplification;
   }
 
   const attemptedInlineNestedDisjunctions = attemptInlineNestedDisjunctions(
-    alternatives,
+    cloneDeep(alternatives),
     options,
   );
   if (attemptedInlineNestedDisjunctions !== null) {
     return attemptedInlineNestedDisjunctions;
   }
 
-  const attemptedGrouping = attemptGrouping(alternatives, options);
+  const attemptedGrouping = attemptGrouping(cloneDeep(alternatives), options);
   if (attemptedGrouping !== null) {
     return attemptedGrouping;
   }
 
-  return handleDirectly(alternatives, options);
+  return handleDirectly(cloneDeep(alternatives), options);
 };
