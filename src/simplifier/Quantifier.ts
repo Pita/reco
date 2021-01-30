@@ -10,18 +10,31 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
   options,
 ) => {
   let unrolledQuantifiers = '';
+  let unrolled = false;
 
-  if (quantifier.min > 0 && options.firstPass) {
-    // TODO: only quantifable element group should be ok
-    if (countGroups(quantifier) === 0) {
-      let unrolledCount = 0;
-      for (let i = 0; i < Math.min(quantifier.min, UNROLL_MIN); i++) {
-        unrolledQuantifiers += quantifier.element.raw;
-        unrolledCount++;
+  if (options.firstPass) {
+    const containsGroups = countGroups(quantifier) > 0;
+
+    if (quantifier.min > 1 || (quantifier.min > 0 && !containsGroups)) {
+      const unrolledCount = Math.min(
+        containsGroups ? quantifier.min - 1 : quantifier.min,
+        UNROLL_MIN,
+      );
+
+      for (let i = 0; i < unrolledCount; i++) {
+        unrolled = containsGroups;
+        unrolledQuantifiers += handleElement(quantifier.element, {
+          ...options,
+          removeCapturingGroups: true,
+        });
       }
 
       quantifier.min = quantifier.min - unrolledCount;
       quantifier.max = quantifier.max - unrolledCount;
+
+      if (containsGroups) {
+        console.log(quantifier.start, 'quantifier.min', quantifier.min);
+      }
     }
   }
 
@@ -36,6 +49,8 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
       quantifierStr = '+';
     } else if (quantifier.min === 0 && quantifier.max === 1) {
       quantifierStr = '?';
+    } else if (quantifier.min === 1 && quantifier.max === 1) {
+      quantifierStr = '';
     } else if (quantifier.min === quantifier.max) {
       quantifierStr = `{${quantifier.min}}`;
     } else {
@@ -43,9 +58,18 @@ export const handleQuantifier: SimplifierHandler<AST.Quantifier> = (
         quantifier.max === Infinity ? '' : quantifier.max
       }}`;
     }
-    if (!quantifier.greedy) {
+    if (!quantifier.greedy && quantifierStr !== '') {
       quantifierStr += '?';
     }
+  }
+
+  if (unrolled) {
+    console.log(
+      quantifier.start,
+      quantifier.raw,
+      '->',
+      `${unrolledQuantifiers}${quantifiableElement}${quantifierStr}`,
+    );
   }
 
   return `${unrolledQuantifiers}${quantifiableElement}${quantifierStr}`;

@@ -23,7 +23,7 @@ interface Context {
   groupMarkerEnd0: number;
 }
 
-// Regex optimized to: /(aa){3,}?b/
+// Regex optimized to: /aaaa(aa)+?b/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
@@ -57,8 +57,8 @@ export function generatedRegexMatcher(str: string) {
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(aa){3,}?b/
-   *           ^
+   * /aaaa(aa)+?b/
+   *            ^
    */
   if (i >= str.length) {
     return -1;
@@ -77,14 +77,14 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * /(aa){3,}?b/
-   *  ^^^^
+   * /aaaa(aa)+?b/
+   *      ^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charSequence
-   * /(aa){3,}?b/
-   *   ^
+   * /aaaa(aa)+?b/
+   *       ^
    */
   const iAfterMatch1 = i + 2;
   if (iAfterMatch1 > str.length) {
@@ -115,8 +115,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * /(aa){3,}?b/
-   *  ^^^^
+   * /aaaa(aa)+?b/
+   *      ^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
@@ -124,17 +124,67 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 };
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
-   * lazyQuantifier
-   * /(aa){3,}?b/
-   *  ^^^^^^^^^
+   * charSequence
+   * /aaaa(aa)+?b/
+   *  ^
    */
-  let matches0 = 0;
-  while (true) {
-    if (matches0 >= 3) {
-      const directFollowUpResult0 = fiber0001(i, str, context);
+  const iAfterMatch0 = i + 4;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
 
-      if (directFollowUpResult0 !== -1) {
-        return directFollowUpResult0;
+  {
+    const charCode0 = str.charCodeAt(i + 3);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 2);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 1);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 97;
+
+    if (!result2) {
+      return -1;
+    }
+    const charCode3 = str.charCodeAt(i + 0);
+
+    let result3: boolean;
+
+    result3 = charCode3 === 97;
+
+    if (!result3) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  /*
+   * lazyQuantifier
+   * /aaaa(aa)+?b/
+   *      ^^^^^^
+   */
+  let matches1 = 0;
+  while (true) {
+    if (matches1 >= 1) {
+      const directFollowUpResult1 = fiber0001(i, str, context);
+
+      if (directFollowUpResult1 !== -1) {
+        return directFollowUpResult1;
       }
     }
 
@@ -143,6 +193,6 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
       return -1;
     }
     i = wrappedResult;
-    matches0++;
+    matches1++;
   }
 };

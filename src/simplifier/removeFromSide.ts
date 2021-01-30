@@ -3,7 +3,7 @@ import { AST } from 'regexpp';
 export const removeFromSide = (
   alternatives: AST.Alternative[],
   side: 'start' | 'end',
-  typesAllowList: string[],
+  canRemove: (element: AST.Element) => boolean,
 ) => {
   let removed = '';
 
@@ -12,7 +12,7 @@ export const removeFromSide = (
       side === 'start' ? 0 : alternatives[0].elements.length - 1;
     const needle = alternatives[0].elements[needleIndex];
 
-    if (!needle || !typesAllowList.includes(needle.type)) {
+    if (!needle || !canRemove(needle)) {
       break;
     }
 

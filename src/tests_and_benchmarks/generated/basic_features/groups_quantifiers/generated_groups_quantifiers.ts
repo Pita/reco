@@ -26,7 +26,7 @@ interface Context {
   groupMarkerEnd1: number;
 }
 
-// Regex optimized to: /([a-y]){2}k(123)+/
+// Regex optimized to: /[a-y]([a-y])k(123)+/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
@@ -65,48 +65,62 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * groupStartMarker
-   * /([a-y]){2}k(123)+/
-   *  ^^^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
    * charOrSet
-   * /([a-y]){2}k(123)+/
-   *   ^^^^^
+   * /[a-y]([a-y])k(1...
+   *  ^^^^^
    */
   if (i >= str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
 
-  if (charCode1 <= 121) {
-    result1 = charCode1 >= 97;
+  if (charCode0 <= 121) {
+    result0 = charCode0 >= 97;
   } else {
-    result1 = false;
+    result0 = false;
   }
-  if (!result1) {
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  /*
+   * groupStartMarker
+   * /[a-y]([a-y])k(123)+/
+   *       ^^^^^^^
+   */
+  context.groupMarkerStartTemp0 = i;
+  /*
+   * charOrSet
+   * /[a-y]([a-y])k(123)+/
+   *        ^^^^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode2 = str.charCodeAt(i);
+  let result2: boolean;
+
+  if (charCode2 <= 121) {
+    result2 = charCode2 >= 97;
+  } else {
+    result2 = false;
+  }
+  if (!result2) {
     return -1;
   }
   i++;
   /*
    * groupEndMarker
-   * /([a-y]){2}k(123)+/
-   *  ^^^^^^^
+   * /[a-y]([a-y])k(123)+/
+   *       ^^^^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
-   * groupStartMarker
-   * /([a-y]){2}k(123)+/
-   *  ^^^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
    * charOrSet
-   * /([a-y]){2}k(123)+/
-   *   ^^^^^
+   * /[a-y]([a-y])k(123)+/
+   *              ^
    */
   if (i >= str.length) {
     return -1;
@@ -114,50 +128,23 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   const charCode4 = str.charCodeAt(i);
   let result4: boolean;
 
-  if (charCode4 <= 121) {
-    result4 = charCode4 >= 97;
-  } else {
-    result4 = false;
-  }
+  result4 = charCode4 === 107;
+
   if (!result4) {
     return -1;
   }
   i++;
   /*
-   * groupEndMarker
-   * /([a-y]){2}k(123)+/
-   *  ^^^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  /*
-   * charOrSet
-   * /([a-y]){2}k(123)+/
-   *            ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode6 = str.charCodeAt(i);
-  let result6: boolean;
-
-  result6 = charCode6 === 107;
-
-  if (!result6) {
-    return -1;
-  }
-  i++;
-  /*
    * nonBacktrackingQuantifier
-   * /([a-y]){2}k(123)+/
-   *             ^^^^^^
+   * ...y]([a-y])k(123)+/
+   *              ^^^^^^
    */
-  let matches7 = 0;
+  let matches5 = 0;
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches7 < 1) {
+      if (matches5 < 1) {
         return -1;
       }
 
@@ -165,7 +152,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
 
-      matches7++;
+      matches5++;
     }
   }
   return i;
@@ -173,13 +160,13 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * /([a-y]){2}k(123)+/
-   *             ^^^^^
+   * ...y]([a-y])k(123)+/
+   *              ^^^^^
    */
   context.groupMarkerStartTemp1 = i;
   /*
    * charSequence
-   * /([a-y]){2}k(123)+/
+   * ...]([a-y])k(123)+/
    *              ^
    */
   const iAfterMatch1 = i + 3;
@@ -220,8 +207,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * /([a-y]){2}k(123)+/
-   *             ^^^^^
+   * ...y]([a-y])k(123)+/
+   *              ^^^^^
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;

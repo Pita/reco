@@ -23,7 +23,7 @@ interface Context {
   groupMarkerEnd0: number;
 }
 
-// Regex optimized to: /(aa?){3}/
+// Regex optimized to: /aa?aa?(aa?)/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
@@ -56,41 +56,34 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * groupEndMarker
-   * /(aa?){3}/
-   *  ^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  /*
    * groupStartMarker
-   * /(aa?){3}/
-   *  ^^^^^
+   * /aa?aa?(aa?)/
+   *        ^^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charOrSet
-   * /(aa?){3}/
-   *   ^
+   * /aa?aa?(aa?)/
+   *         ^
    */
   if (i >= str.length) {
     return -1;
   }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
+  const charCode1 = str.charCodeAt(i);
+  let result1: boolean;
 
-  result2 = charCode2 === 97;
+  result1 = charCode1 === 97;
 
-  if (!result2) {
+  if (!result1) {
     return -1;
   }
   i++;
   /*
    * nonBacktrackingQuantifier
-   * /(aa?){3}/
-   *    ^^
+   * /aa?aa?(aa?)/
+   *          ^^
    */
-  let matches3 = 0;
+  let matches2 = 0;
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
@@ -99,17 +92,17 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
 
-      matches3++;
+      matches2++;
 
-      if (matches3 === 1) {
+      if (matches2 === 1) {
         break;
       }
     }
   }
   /*
    * groupEndMarker
-   * /(aa?){3}/
-   *  ^^^^^
+   * /aa?aa?(aa?)/
+   *        ^^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
@@ -118,8 +111,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(aa?){3}/
-   *    ^
+   * /aa?aa?(aa?)/
+   *          ^
    */
   if (i >= str.length) {
     return -1;
@@ -138,8 +131,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(aa?){3}/
-   *    ^
+   * /aa?aa?(aa?)/
+   *      ^
    */
   if (i >= str.length) {
     return -1;
@@ -157,41 +150,28 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 };
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
-   * groupEndMarker
-   * /(aa?){3}/
-   *  ^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  /*
-   * groupStartMarker
-   * /(aa?){3}/
-   *  ^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
    * charOrSet
-   * /(aa?){3}/
-   *   ^
+   * /aa?aa?(aa?)/
+   *     ^
    */
   if (i >= str.length) {
     return -1;
   }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
 
-  result2 = charCode2 === 97;
+  result0 = charCode0 === 97;
 
-  if (!result2) {
+  if (!result0) {
     return -1;
   }
   i++;
   /*
    * backtrackingFixedLengthQuantifier
-   * /(aa?){3}/
-   *    ^^
+   * /aa?aa?(aa?)/
+   *      ^^
    */
-  let matches3 = 0;
+  let matches1 = 0;
 
   while (true) {
     const wrappedResult = fiber0003(i, str, context);
@@ -200,23 +180,23 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
       break;
     } else {
       i = wrappedResult;
-      matches3++;
+      matches1++;
 
-      if (matches3 === 1) {
+      if (matches1 === 1) {
         break;
       }
     }
   }
 
   // needs followUp & forkingFiber
-  while (matches3 >= 0) {
-    const directFollowUpResult3 = fiber0001(i, str, context);
+  while (matches1 >= 0) {
+    const directFollowUpResult1 = fiber0001(i, str, context);
 
-    if (directFollowUpResult3 !== -1) {
-      return directFollowUpResult3;
+    if (directFollowUpResult1 !== -1) {
+      return directFollowUpResult1;
     }
 
-    matches3--;
+    matches1--;
     i -= 1;
   }
 
@@ -225,8 +205,8 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
 const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
-   * /(aa?){3}/
-   *    ^
+   * /aa?aa?(aa?)/
+   *   ^
    */
   if (i >= str.length) {
     return -1;
@@ -244,34 +224,28 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
 };
 const fiber0006 = (i: number, str: string, context: Context): number => {
   /*
-   * groupStartMarker
-   * /(aa?){3}/
-   *  ^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
    * charOrSet
-   * /(aa?){3}/
-   *   ^
+   * /aa?aa?(aa?)/
+   *  ^
    */
   if (i >= str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
 
-  result1 = charCode1 === 97;
+  result0 = charCode0 === 97;
 
-  if (!result1) {
+  if (!result0) {
     return -1;
   }
   i++;
   /*
    * backtrackingFixedLengthQuantifier
-   * /(aa?){3}/
-   *    ^^
+   * /aa?aa?(aa?)/
+   *   ^^
    */
-  let matches2 = 0;
+  let matches1 = 0;
 
   while (true) {
     const wrappedResult = fiber0005(i, str, context);
@@ -280,23 +254,23 @@ const fiber0006 = (i: number, str: string, context: Context): number => {
       break;
     } else {
       i = wrappedResult;
-      matches2++;
+      matches1++;
 
-      if (matches2 === 1) {
+      if (matches1 === 1) {
         break;
       }
     }
   }
 
   // needs followUp & forkingFiber
-  while (matches2 >= 0) {
-    const directFollowUpResult2 = fiber0004(i, str, context);
+  while (matches1 >= 0) {
+    const directFollowUpResult1 = fiber0004(i, str, context);
 
-    if (directFollowUpResult2 !== -1) {
-      return directFollowUpResult2;
+    if (directFollowUpResult1 !== -1) {
+      return directFollowUpResult1;
     }
 
-    matches2--;
+    matches1--;
     i -= 1;
   }
 

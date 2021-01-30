@@ -1,9 +1,43 @@
 import { AST } from 'regexpp';
+import { countGroups } from './countGroups';
 import { handleDisjunction } from './Disjunction';
 import { removeFromSide } from './removeFromSide';
-import { SimplifierHandler } from './types';
+import { SimplifierHandler, SimplifierHandlerOptions } from './types';
 
-const ELEMENTS_TO_BE_REMOVED = ['Assertion'];
+const canRemove = (element: AST.Element) => {
+  return element.type === 'Assertion' && countGroups(element) === 0;
+};
+
+export const attemptPullingOutAssertions = (
+  group: AST.CapturingGroup,
+  options: SimplifierHandlerOptions,
+) => {
+  const removedFromStart = removeFromSide(
+    group.alternatives,
+    'start',
+    canRemove,
+  );
+  const removedFromEnd = removeFromSide(group.alternatives, 'end', canRemove);
+
+  if (removedFromStart !== '' || removedFromEnd !== '') {
+    const alternativesString = handleDisjunction(group.alternatives, options);
+
+    return `${removedFromStart}(${alternativesString})${removedFromEnd}`;
+  } else {
+    return null;
+  }
+};
+
+export const attemptRemovingCapturingGroups = (
+  group: AST.CapturingGroup,
+  options: SimplifierHandlerOptions,
+) => {
+  if (!options.removeCapturingGroups) {
+    return null;
+  }
+
+  return `(?:${handleDisjunction(group.alternatives, options)})`;
+};
 
 export const handleCapturingGroup: SimplifierHandler<AST.CapturingGroup> = (
   group,
@@ -13,22 +47,21 @@ export const handleCapturingGroup: SimplifierHandler<AST.CapturingGroup> = (
     throw new Error('No support for named groups yet');
   }
 
-  const removedFromStart = removeFromSide(
-    group.alternatives,
-    'start',
-    ELEMENTS_TO_BE_REMOVED,
+  const attemptedPullingOutAssertions = attemptPullingOutAssertions(
+    group,
+    options,
   );
-  const removedFromEnd = removeFromSide(
-    group.alternatives,
-    'end',
-    ELEMENTS_TO_BE_REMOVED,
-  );
-
-  const alternativesString = handleDisjunction(group.alternatives, options);
-
-  if (removedFromStart !== '' || removedFromEnd !== '') {
-    return `${removedFromStart}(${alternativesString})${removedFromEnd}`;
-  } else {
-    return `(${alternativesString})`;
+  if (attemptedPullingOutAssertions !== null) {
+    return attemptedPullingOutAssertions;
   }
+
+  const attemptedRemovingCapturingGroups = attemptRemovingCapturingGroups(
+    group,
+    options,
+  );
+  if (attemptedRemovingCapturingGroups !== null) {
+    return attemptedRemovingCapturingGroups;
+  }
+
+  return `(${handleDisjunction(group.alternatives, options)})`;
 };

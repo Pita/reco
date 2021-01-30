@@ -78,4 +78,10 @@ describe('simplifyRegex', () => {
 
     expect(simplified).toEqual('/(a)/i');
   });
+
+  test('removes min quantifiers with their groups', () => {
+    const simplified = simplifyRegex('/((a)(b)){3}/i');
+
+    expect(simplified).toEqual('/abab((a)(b))/i');
+  });
 });

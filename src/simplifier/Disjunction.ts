@@ -17,6 +17,12 @@ const ELEMENTS_TO_BE_REMOVED = [
   'Backreference',
 ];
 
+const canRemove = (element: AST.Element) => {
+  return (
+    ELEMENTS_TO_BE_REMOVED.includes(element.type) && countGroups(element) === 0
+  );
+};
+
 const handleDirectly: SimplifierHandler<AST.Alternative[]> = (
   alternatives: AST.Alternative[],
   options,
@@ -103,16 +109,8 @@ const attemptSideRemoval = (
   alternatives: AST.Alternative[],
   options: SimplifierHandlerOptions,
 ) => {
-  const removedFromStart = removeFromSide(
-    alternatives,
-    'start',
-    ELEMENTS_TO_BE_REMOVED,
-  );
-  const removedFromEnd = removeFromSide(
-    alternatives,
-    'end',
-    ELEMENTS_TO_BE_REMOVED,
-  );
+  const removedFromStart = removeFromSide(alternatives, 'start', canRemove);
+  const removedFromEnd = removeFromSide(alternatives, 'end', canRemove);
 
   if (removedFromStart !== '' || removedFromEnd !== '') {
     return `${removedFromStart}(?:${handleDirectly(

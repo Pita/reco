@@ -23,7 +23,7 @@ interface Context {
   groupMarkerEnd0: number;
 }
 
-// Regex optimized to: /(aa){3,}/
+// Regex optimized to: /aaaa(aa)+/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
@@ -56,16 +56,66 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * nonBacktrackingQuantifier
-   * /(aa){3,}/
-   *  ^^^^^^^^
+   * charSequence
+   * /aaaa(aa)+/
+   *  ^
    */
-  let matches0 = 0;
+  const iAfterMatch0 = i + 4;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 3);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 2);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 1);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 97;
+
+    if (!result2) {
+      return -1;
+    }
+    const charCode3 = str.charCodeAt(i + 0);
+
+    let result3: boolean;
+
+    result3 = charCode3 === 97;
+
+    if (!result3) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  /*
+   * nonBacktrackingQuantifier
+   * /aaaa(aa)+/
+   *      ^^^^^
+   */
+  let matches1 = 0;
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
     if (wrappedResult === -1) {
-      if (matches0 < 3) {
+      if (matches1 < 1) {
         return -1;
       }
 
@@ -73,7 +123,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
 
-      matches0++;
+      matches1++;
     }
   }
   return i;
@@ -81,14 +131,14 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
-   * /(aa){3,}/
-   *  ^^^^
+   * /aaaa(aa)+/
+   *      ^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charSequence
-   * /(aa){3,}/
-   *   ^
+   * /aaaa(aa)+/
+   *       ^
    */
   const iAfterMatch1 = i + 2;
   if (iAfterMatch1 > str.length) {
@@ -119,8 +169,8 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * /(aa){3,}/
-   *  ^^^^
+   * /aaaa(aa)+/
+   *      ^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;

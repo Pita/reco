@@ -23,7 +23,7 @@ interface Context {
   groupMarkerEnd0: number;
 }
 
-// Regex optimized to: /(aa){3}/
+// Regex optimized to: /aaaa(aa)/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
@@ -56,18 +56,68 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
+   * charSequence
+   * /aaaa(aa)/
+   *  ^
+   */
+  const iAfterMatch0 = i + 4;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 3);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 2);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 1);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 97;
+
+    if (!result2) {
+      return -1;
+    }
+    const charCode3 = str.charCodeAt(i + 0);
+
+    let result3: boolean;
+
+    result3 = charCode3 === 97;
+
+    if (!result3) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  /*
    * groupStartMarker
-   * /(aa){3}/
-   *  ^^^^
+   * /aaaa(aa)/
+   *      ^^^^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charSequence
-   * /(aa){3}/
-   *   ^
+   * /aaaa(aa)/
+   *       ^
    */
-  const iAfterMatch1 = i + 2;
-  if (iAfterMatch1 > str.length) {
+  const iAfterMatch2 = i + 2;
+  if (iAfterMatch2 > str.length) {
     return -1;
   }
 
@@ -91,102 +141,12 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
       return -1;
     }
 
-    i = iAfterMatch1;
+    i = iAfterMatch2;
   }
   /*
    * groupEndMarker
-   * /(aa){3}/
-   *  ^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  /*
-   * groupStartMarker
-   * /(aa){3}/
-   *  ^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
-   * charSequence
-   * /(aa){3}/
-   *   ^
-   */
-  const iAfterMatch4 = i + 2;
-  if (iAfterMatch4 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-
-    i = iAfterMatch4;
-  }
-  /*
-   * groupEndMarker
-   * /(aa){3}/
-   *  ^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  /*
-   * groupStartMarker
-   * /(aa){3}/
-   *  ^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
-   * charSequence
-   * /(aa){3}/
-   *   ^
-   */
-  const iAfterMatch7 = i + 2;
-  if (iAfterMatch7 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-
-    i = iAfterMatch7;
-  }
-  /*
-   * groupEndMarker
-   * /(aa){3}/
-   *  ^^^^
+   * /aaaa(aa)/
+   *      ^^^^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
