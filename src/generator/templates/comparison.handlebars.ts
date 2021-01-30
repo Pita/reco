@@ -1,21 +1,21 @@
 export default `
 {{#with comparison}}
-  {{#switchCase 'true'}}
+  {{#switchCase 'type' 'true'}}
     true
   {{/switchCase}}
-  {{#switchCase 'false'}}
+  {{#switchCase 'type' 'false'}}
     false
   {{/switchCase}}
-  {{#switchCase 'equalOneOfTwo'}}
+  {{#switchCase 'type' 'equalOneOfTwo'}}
     charCode{{{../atomIndex}}} === {{{comparisonValue1}}} || charCode{{{../atomIndex}}} === {{{comparisonValue2}}}
   {{/switchCase}}
-  {{#switchCase 'equal'}}
+  {{#switchCase 'type' 'equal'}}
     charCode{{{../atomIndex}}} === {{{comparisonValue}}}
   {{/switchCase}}
-  {{#switchCase 'lessOrEqual'}}
+  {{#switchCase 'type' 'lessOrEqual'}}
     charCode{{{../atomIndex}}} <= {{{comparisonValue}}}
   {{/switchCase}}
-  {{#switchCase 'moreOrEqual'}}
+  {{#switchCase 'type' 'moreOrEqual'}}
     charCode{{{../atomIndex}}} >= {{{comparisonValue}}}
   {{/switchCase}}
 {{/with}}`;

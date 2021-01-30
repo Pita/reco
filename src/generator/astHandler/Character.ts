@@ -4,9 +4,16 @@ import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { charRangeToLeafValues } from '../CharRangeBTreeMatcher';
 import { astToCharRange } from '../astToCharRange';
+import { UTF16UnitsCount } from '../CharRange';
+
+export function utf16UnitsCountToMinAndMax(unitsCount: UTF16UnitsCount) {
+  const min = unitsCount === '2' ? 2 : 1;
+  const max = unitsCount !== '1' ? 2 : 1;
+  return { min, max };
+}
 
 export const handleSetOrCharacter = (
-  element:
+  char:
     | AST.CharacterClass
     | AST.AnyCharacterSet
     | AST.EscapeCharacterSet
@@ -17,39 +24,24 @@ export const handleSetOrCharacter = (
   flags: Flags,
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
-  const newCharRange = astToCharRange(element, flags);
+  const charRange = astToCharRange(char, flags);
+  const unitsCount = charRange.getUTF16UnitsCount(flags);
+  const { min, max } = utf16UnitsCountToMinAndMax(unitsCount);
 
-  if (flags.INTERNAL_backwards) {
-    return collector.addAtom(
-      currentFiber,
-      {
-        type: 'charOrSetBackward',
-        data: {
-          tree: charRangeToLeafValues(newCharRange),
-          negate: newCharRange.toJSON().negate,
-          unicode: flags.unicode,
-        },
-        ast: element,
+  return collector.addAtom(
+    currentFiber,
+    {
+      type: flags.INTERNAL_backwards ? 'charOrSetBackward' : 'charOrSet',
+      data: {
+        tree: charRangeToLeafValues(charRange),
+        negate: charRange.toJSON().negate,
+        unitsCount,
+        unicode: flags.unicode === true,
       },
-      1,
-      newCharRange.getUTF16UnitsCount(flags),
-      element,
-    );
-  } else {
-    return collector.addAtom(
-      currentFiber,
-      {
-        type: 'charOrSet',
-        data: {
-          tree: charRangeToLeafValues(newCharRange),
-          negate: newCharRange.toJSON().negate,
-          unicode: flags.unicode,
-        },
-        ast: element,
-      },
-      1,
-      newCharRange.getUTF16UnitsCount(flags),
-      element,
-    );
-  }
+      ast: char,
+    },
+    min,
+    max,
+    char,
+  );
 };

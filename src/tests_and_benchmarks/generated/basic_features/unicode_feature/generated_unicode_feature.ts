@@ -2461,7 +2461,6 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   if (!result0) {
     return -1;
   }
-  // surrogate pair might require moving 2 chars ahead
   i += charCode0 >= 0x10000 ? 2 : 1;
   return i;
 };

@@ -1,8 +1,8 @@
 export default `
-{{#switchCase 'lastComparison'}}
+{{#switchCase 'type' 'lastComparison'}}
   result{{{atomIndex}}} = {{>comparison atomIndex=atomIndex}}
 {{/switchCase}}
-{{#switchCase 'comparison'}}
+{{#switchCase 'type' 'comparison'}}
   if ({{>comparison atomIndex=atomIndex}}) {
     {{>leaf comparisonTrue atomIndex=atomIndex}}
   }

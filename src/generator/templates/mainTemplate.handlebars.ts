@@ -45,22 +45,22 @@ export function generatedRegexMatcher(str: string) {
   };
 
   {{#with matchPositioning}}
-    {{#switchCase 'startAnchored'}}
+    {{#switchCase 'type' 'startAnchored'}}
       // startAnchored
       const min = 0;
       const max = 0;
     {{/switchCase}}
-    {{#switchCase 'endAnchored'}}
+    {{#switchCase 'type' 'endAnchored'}}
       // endAnchored
       const min = Math.max(str.length - {{{maxCharsLeft}}}, 0);
       const max = str.length - {{{minCharsLeft}}};
     {{/switchCase}}
-    {{#switchCase 'minCharsLeft'}}
+    {{#switchCase 'type' 'minCharsLeft'}}
       // minCharsLeft
       const min = 0;
       const max = str.length - {{{minCharsLeft}}};
     {{/switchCase}}
-    {{#switchCase 'fullScan'}}
+    {{#switchCase 'type' 'fullScan'}}
       // fullScan
       const min = 0;
       const max = str.length;
@@ -99,7 +99,7 @@ export function generatedRegexMatcher(str: string) {
         * {{escapeComment posLine1}}
         * {{{posLine2}}}
         */
-      {{#switchCase 'charOrSet'}}
+       {{#switchCase 'type' 'charOrSet'}}
         if (i >= str.length) {
           return -1;
         }
@@ -115,16 +115,91 @@ export function generatedRegexMatcher(str: string) {
         if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
           return -1;
         };
-        {{#if unicode}}
-          // surrogate pair might require moving 2 chars ahead
-          i += charCode{{{@index}}} >= 0x10000 ? 2 : 1
-        {{/if}}
-        {{#unless unicode}}
+        {{#switchCase 'unitsCount' '1' }}
           i++;
-        {{/unless}}
+        {{/switchCase}}
+        {{#switchCase 'unitsCount' '2' }}
+          i+=2;
+        {{/switchCase}}
+        {{#switchCase 'unitsCount' 'variable' }}
+          i += charCode{{{@index}}} >= 0x10000 ? 2 : 1
+        {{/switchCase}}
       {{/switchCase}}
-      {{#switchCase 'charOrSetBackward'}}
-        {{#if unicode}}
+      {{#switchCase 'type' 'charSequence'}}
+        const iAfterMatch{{{@index}}} = i + {{{length}}};
+        if (iAfterMatch{{{@index}}} > str.length) {
+          return -1;
+        }
+
+        {
+          {{#if orderedLoading}}
+            {{#each orderedLoading}}
+              {{#switchCase 'unitsCount' '1' }}
+                if (i >= str.length) {
+                  return -1;
+                }
+              {{/switchCase}}
+              {{#switchCase 'unitsCount' '2' }}
+                if (i + 1 >= str.length) {
+                  return -1;
+                }
+              {{/switchCase}}
+              {{#switchCase 'unitsCount' 'variable' }}
+                if (i >= str.length) {
+                  return -1;
+                }
+              {{/switchCase}}
+
+              const charCode{{{@index}}} = 
+                {{#if unicode}}
+                  str.codePointAt(i)!;
+                {{/if}}
+                {{#unless unicode}}
+                  str.charCodeAt(i);
+                {{/unless}}
+
+              {{#switchCase 'unitsCount' '1' }}
+                i++;
+              {{/switchCase}}
+              {{#switchCase 'unitsCount' '2' }}
+                i+=2;
+              {{/switchCase}}
+              {{#switchCase 'unitsCount' 'variable' }}
+                i += charCode{{{@index}}} >= 0x10000 ? 2 : 1
+              {{/switchCase}}
+            {{/each}}
+
+            {{#each chars}}
+              let result{{{@index}}}: boolean;
+              {{> leaf tree atomIndex=@index}}
+              if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
+                return -1;
+              };
+            {{/each}}
+          {{/if}}
+          {{#unless orderedLoading}}
+            {{#each chars}}
+              const charCode{{{@index}}} = str.charCodeAt(i + {{{offset}}});
+              
+              let result{{{@index}}}: boolean;
+              {{> leaf tree atomIndex=@index}}
+              if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
+                return -1;
+              };
+            {{/each}}
+
+            i = iAfterMatch{{{@index}}};
+          {{/unless}}
+        }
+      {{/switchCase}}
+      {{#switchCase 'type' 'charOrSetBackward'}}
+        {{#switchCase 'unitsCount' '1' }}
+          i--;
+        {{/switchCase}}
+        {{#switchCase 'unitsCount' '2' }}
+          i-=2;
+        {{/switchCase}}
+        {{#switchCase 'unitsCount' 'variable' }}
           let isSurrogatePair{{{@index}}} = false;
           if (i >= 2) {
             const charCodeBefore{{{@index}}} = str.charCodeAt(i - 2);
@@ -133,10 +208,7 @@ export function generatedRegexMatcher(str: string) {
             }
           } 
           i -= isSurrogatePair{{{@index}}} ? 2 : 1;
-        {{/if}}
-        {{#unless unicode}}
-          i--;
-        {{/unless}}
+        {{/switchCase}}
         if (i < 0) {
           return -1;
         }
@@ -153,7 +225,7 @@ export function generatedRegexMatcher(str: string) {
           return -1;
         };
       {{/switchCase}}
-      {{#switchCase 'disjunction'}}
+      {{#switchCase 'type' 'disjunction'}}
         {{#each groupsToRestore}}
           const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
           const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
@@ -170,17 +242,17 @@ export function generatedRegexMatcher(str: string) {
         {{/each}}
         return -1;
       {{/switchCase}}
-      {{#switchCase 'startAnchor'}}
+      {{#switchCase 'type' 'startAnchor'}}
         if (i !== 0) {
           return -1;
         }
       {{/switchCase}}
-      {{#switchCase 'endAnchor'}}
+      {{#switchCase 'type' 'endAnchor'}}
         if (i !== str.length) {
           return -1;
         }
       {{/switchCase}}
-      {{#switchCase 'multiLineStartAnchor'}}
+      {{#switchCase 'type' 'multiLineStartAnchor'}}
         if (i !== 0) {
           const charCodeMultiLineStartAnchor{{{index}}} = str.charCodeAt(i - 1);
           let isNewLineChar{{{index}}} = false;
@@ -198,7 +270,7 @@ export function generatedRegexMatcher(str: string) {
         }
 
       {{/switchCase}}
-      {{#switchCase 'multiLineEndAnchor'}}
+      {{#switchCase 'type' 'multiLineEndAnchor'}}
         if (i !== str.length) {
           const charCodeMultiLineEndAnchor{{{index}}} = str.charCodeAt(i);
           let isNewLineChar{{{index}}} = false;
@@ -215,14 +287,14 @@ export function generatedRegexMatcher(str: string) {
           }
         }
       {{/switchCase}}
-      {{#switchCase 'groupStartMarker'}}
+      {{#switchCase 'type' 'groupStartMarker'}}
         context.groupMarkerStartTemp{{{groupReference.idx}}} = i;
       {{/switchCase}}
-      {{#switchCase 'groupEndMarker'}}
+      {{#switchCase 'type' 'groupEndMarker'}}
         context.groupMarkerStart{{{groupReference.idx}}} = context.groupMarkerStartTemp{{{groupReference.idx}}};
         context.groupMarkerEnd{{{groupReference.idx}}} = i;
       {{/switchCase}}
-      {{#switchCase 'lookaround'}}
+      {{#switchCase 'type' 'lookaround'}}
         const lookaroundResult{{{@index}}} = {{{lookaroundFiber.functionName}}}(i, str, context);
         {{#if negate}}
           if (lookaroundResult{{{@index}}} !== -1) { 
@@ -233,7 +305,7 @@ export function generatedRegexMatcher(str: string) {
           return -1;
         }
       {{/switchCase}}
-      {{#switchCase 'nonBacktrackingQuantifier'}}
+      {{#switchCase 'type' 'nonBacktrackingQuantifier'}}
         {{#if maxOrMinCount}}
           let matches{{{@index}}} = 0;
         {{/if}}
@@ -263,7 +335,7 @@ export function generatedRegexMatcher(str: string) {
           }
         }
       {{/switchCase}}
-      {{#switchCase 'lazyQuantifier'}}
+      {{#switchCase 'type' 'lazyQuantifier'}}
         {{#if maxOrMinCount}}
           let matches{{{@index}}} = 0;
         {{/if}}
@@ -294,7 +366,7 @@ export function generatedRegexMatcher(str: string) {
           {{/if}}
         }
       {{/switchCase}}
-      {{#switchCase 'backtrackingFixedLengthQuantifier'}}
+      {{#switchCase 'type' 'backtrackingFixedLengthQuantifier'}}
         let matches{{{@index}}} = 0;
 
         while(true) {
@@ -344,7 +416,7 @@ export function generatedRegexMatcher(str: string) {
             return -1;
         {{/if}}
       {{/switchCase}}
-      {{#switchCase 'wordBoundary'}}
+      {{#switchCase 'type' 'wordBoundary'}}
         if (i !== 0 && i !== str.length) {
           // TODO: find way to generate these trees
           const charCodeBefore{{{@index}}} = str.charCodeAt(i-1);
@@ -400,7 +472,7 @@ export function generatedRegexMatcher(str: string) {
         }
         {{/if}}
       {{/switchCase}}
-      {{#switchCase 'groupBackReference'}}
+      {{#switchCase 'type' 'groupBackReference'}}
         let backReferenceI{{{index}}} = context.groupMarkerStart{{{groupIndex}}};
         const backReferenceEnd{{{index}}} = context.groupMarkerEnd{{{groupIndex}}};
         while(backReferenceI{{{index}}} < backReferenceEnd{{{index}}}) {
@@ -419,7 +491,7 @@ export function generatedRegexMatcher(str: string) {
           i++;
         }
       {{/switchCase}}
-      {{#switchCase 'quantifierStarter'}}
+      {{#switchCase 'type' 'quantifierStarter'}}
         {{#if maxOrMinCount}}
           let matchCountCopy{{{functionName}}} = context.quantifierCounter{{{quantifierCounterIndex}}};
           context.quantifierCounter{{{quantifierCounterIndex}}} = -1;
@@ -431,7 +503,7 @@ export function generatedRegexMatcher(str: string) {
 
         return cursorAfterQuantifier;
       {{/switchCase}}
-      {{#switchCase 'nonBacktrackingDisjunction'}}
+      {{#switchCase 'type' 'nonBacktrackingDisjunction'}}
         nonBacktrackingDisjunction{{{@index}}}: {
           {{#each groupsToRestore}}
             const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};

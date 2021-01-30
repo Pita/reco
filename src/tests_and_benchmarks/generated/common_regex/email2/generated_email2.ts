@@ -104,59 +104,57 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp2 = i;
   /*
-   * charOrSet
+   * charSequence
    * ...z\.-]✱)\.([a-z\.][a-z\.][a-...
    *              ^^^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch3 = i + 2;
+  if (iAfterMatch3 > str.length) {
     return -1;
   }
-  const charCode3 = str.charCodeAt(i);
-  let result3: boolean;
 
-  if (charCode3 === 46) {
-    result3 = true;
-  } else {
-    if (charCode3 <= 122) {
-      result3 = charCode3 >= 97;
-    } else {
-      result3 = false;
-    }
-  }
-  if (!result3) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...\.([a-z\.][a-z\.][a-z\.]{0,...
-   *              ^^^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode4 = str.charCodeAt(i);
-  let result4: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode4 === 46) {
-    result4 = true;
-  } else {
-    if (charCode4 <= 122) {
-      result4 = charCode4 >= 97;
+    let result0: boolean;
+
+    if (charCode0 === 46) {
+      result0 = true;
     } else {
-      result4 = false;
+      if (charCode0 <= 122) {
+        result0 = charCode0 >= 97;
+      } else {
+        result0 = false;
+      }
     }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 === 46) {
+      result1 = true;
+    } else {
+      if (charCode1 <= 122) {
+        result1 = charCode1 >= 97;
+      } else {
+        result1 = false;
+      }
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch3;
   }
-  if (!result4) {
-    return -1;
-  }
-  i++;
   /*
    * nonBacktrackingQuantifier
    * ...\.][a-z\.][a-z\.]{0,4})$/
    *              ^^^^^^^^^^^^
    */
-  let matches5 = 0;
+  let matches4 = 0;
   while (true) {
     const wrappedResult = fiber0002(i, str, context);
 
@@ -165,9 +163,9 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
 
-      matches5++;
+      matches4++;
 
-      if (matches5 === 4) {
+      if (matches4 === 4) {
         break;
       }
     }

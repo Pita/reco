@@ -122,197 +122,147 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   /*
-   * charOrSet
+   * charSequence
    * ...✱[a-z])()^.........✱$/
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch7 = i + 8;
+  if (iAfterMatch7 > str.length) {
     return -1;
   }
-  const charCode7 = str.charCodeAt(i);
-  let result7: boolean;
 
-  if (charCode7 <= 13) {
-    result7 = charCode7 === 10 || charCode7 === 13;
-  } else {
-    if (charCode7 <= 8233) {
-      result7 = charCode7 >= 8232;
-    } else {
-      result7 = false;
-    }
-  }
-  if (result7) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...[a-z])()^.........✱$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode8 = str.charCodeAt(i);
-  let result8: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 7);
 
-  if (charCode8 <= 13) {
-    result8 = charCode8 === 10 || charCode8 === 13;
-  } else {
-    if (charCode8 <= 8233) {
-      result8 = charCode8 >= 8232;
-    } else {
-      result8 = false;
-    }
-  }
-  if (result8) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...a-z])()^.........✱$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode9 = str.charCodeAt(i);
-  let result9: boolean;
+    let result0: boolean;
 
-  if (charCode9 <= 13) {
-    result9 = charCode9 === 10 || charCode9 === 13;
-  } else {
-    if (charCode9 <= 8233) {
-      result9 = charCode9 >= 8232;
+    if (charCode0 <= 13) {
+      result0 = charCode0 === 10 || charCode0 === 13;
     } else {
-      result9 = false;
+      if (charCode0 <= 8233) {
+        result0 = charCode0 >= 8232;
+      } else {
+        result0 = false;
+      }
     }
-  }
-  if (result9) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...-z])()^.........✱$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode10 = str.charCodeAt(i);
-  let result10: boolean;
+    if (result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 6);
 
-  if (charCode10 <= 13) {
-    result10 = charCode10 === 10 || charCode10 === 13;
-  } else {
-    if (charCode10 <= 8233) {
-      result10 = charCode10 >= 8232;
-    } else {
-      result10 = false;
-    }
-  }
-  if (result10) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...z])()^.........✱$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode11 = str.charCodeAt(i);
-  let result11: boolean;
+    let result1: boolean;
 
-  if (charCode11 <= 13) {
-    result11 = charCode11 === 10 || charCode11 === 13;
-  } else {
-    if (charCode11 <= 8233) {
-      result11 = charCode11 >= 8232;
+    if (charCode1 <= 13) {
+      result1 = charCode1 === 10 || charCode1 === 13;
     } else {
-      result11 = false;
+      if (charCode1 <= 8233) {
+        result1 = charCode1 >= 8232;
+      } else {
+        result1 = false;
+      }
     }
-  }
-  if (result11) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...])()^.........✱$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode12 = str.charCodeAt(i);
-  let result12: boolean;
+    if (result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 5);
 
-  if (charCode12 <= 13) {
-    result12 = charCode12 === 10 || charCode12 === 13;
-  } else {
-    if (charCode12 <= 8233) {
-      result12 = charCode12 >= 8232;
-    } else {
-      result12 = false;
-    }
-  }
-  if (result12) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...)()^.........✱$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode13 = str.charCodeAt(i);
-  let result13: boolean;
+    let result2: boolean;
 
-  if (charCode13 <= 13) {
-    result13 = charCode13 === 10 || charCode13 === 13;
-  } else {
-    if (charCode13 <= 8233) {
-      result13 = charCode13 >= 8232;
+    if (charCode2 <= 13) {
+      result2 = charCode2 === 10 || charCode2 === 13;
     } else {
-      result13 = false;
+      if (charCode2 <= 8233) {
+        result2 = charCode2 >= 8232;
+      } else {
+        result2 = false;
+      }
     }
-  }
-  if (result13) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...()^.........✱$/
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode14 = str.charCodeAt(i);
-  let result14: boolean;
+    if (result2) {
+      return -1;
+    }
+    const charCode3 = str.charCodeAt(i + 4);
 
-  if (charCode14 <= 13) {
-    result14 = charCode14 === 10 || charCode14 === 13;
-  } else {
-    if (charCode14 <= 8233) {
-      result14 = charCode14 >= 8232;
+    let result3: boolean;
+
+    if (charCode3 <= 13) {
+      result3 = charCode3 === 10 || charCode3 === 13;
     } else {
-      result14 = false;
+      if (charCode3 <= 8233) {
+        result3 = charCode3 >= 8232;
+      } else {
+        result3 = false;
+      }
     }
+    if (result3) {
+      return -1;
+    }
+    const charCode4 = str.charCodeAt(i + 3);
+
+    let result4: boolean;
+
+    if (charCode4 <= 13) {
+      result4 = charCode4 === 10 || charCode4 === 13;
+    } else {
+      if (charCode4 <= 8233) {
+        result4 = charCode4 >= 8232;
+      } else {
+        result4 = false;
+      }
+    }
+    if (result4) {
+      return -1;
+    }
+    const charCode5 = str.charCodeAt(i + 2);
+
+    let result5: boolean;
+
+    if (charCode5 <= 13) {
+      result5 = charCode5 === 10 || charCode5 === 13;
+    } else {
+      if (charCode5 <= 8233) {
+        result5 = charCode5 >= 8232;
+      } else {
+        result5 = false;
+      }
+    }
+    if (result5) {
+      return -1;
+    }
+    const charCode6 = str.charCodeAt(i + 1);
+
+    let result6: boolean;
+
+    if (charCode6 <= 13) {
+      result6 = charCode6 === 10 || charCode6 === 13;
+    } else {
+      if (charCode6 <= 8233) {
+        result6 = charCode6 >= 8232;
+      } else {
+        result6 = false;
+      }
+    }
+    if (result6) {
+      return -1;
+    }
+    const charCode7 = str.charCodeAt(i + 0);
+
+    let result7: boolean;
+
+    if (charCode7 <= 13) {
+      result7 = charCode7 === 10 || charCode7 === 13;
+    } else {
+      if (charCode7 <= 8233) {
+        result7 = charCode7 >= 8232;
+      } else {
+        result7 = false;
+      }
+    }
+    if (result7) {
+      return -1;
+    }
+
+    i = iAfterMatch7;
   }
-  if (result14) {
-    return -1;
-  }
-  i++;
   /*
    * nonBacktrackingQuantifier
    * ...)^.........✱$/

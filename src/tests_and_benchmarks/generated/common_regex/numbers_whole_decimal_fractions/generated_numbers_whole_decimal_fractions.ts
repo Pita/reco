@@ -176,48 +176,46 @@ const fiber0007 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * charOrSet
+   * charSequence
    * ....]?[0-9]✱([\/][0-9][0-9]...
    *              ^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch1 = i + 2;
+  if (iAfterMatch1 > str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
 
-  result1 = charCode1 === 47;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...0-9]✱([\/][0-9][0-9]✱[,.]...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
+    let result0: boolean;
 
-  if (charCode2 <= 57) {
-    result2 = charCode2 >= 48;
-  } else {
-    result2 = false;
+    result0 = charCode0 === 47;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
   }
-  if (!result2) {
-    return -1;
-  }
-  i++;
   /*
    * backtrackingFixedLengthQuantifier
    * ...([\/][0-9][0-9]✱[,.]?[0-9]...
    *              ^^^^^^
    */
-  let matches3 = 0;
+  let matches2 = 0;
 
   while (true) {
     const wrappedResult = fiber0006(i, str, context);
@@ -226,19 +224,19 @@ const fiber0007 = (i: number, str: string, context: Context): number => {
       break;
     } else {
       i = wrappedResult;
-      matches3++;
+      matches2++;
     }
   }
 
   // needs followUp & forkingFiber
-  while (matches3 >= 0) {
-    const directFollowUpResult3 = fiber0002(i, str, context);
+  while (matches2 >= 0) {
+    const directFollowUpResult2 = fiber0002(i, str, context);
 
-    if (directFollowUpResult3 !== -1) {
-      return directFollowUpResult3;
+    if (directFollowUpResult2 !== -1) {
+      return directFollowUpResult2;
     }
 
-    matches3--;
+    matches2--;
     i -= 1;
   }
 

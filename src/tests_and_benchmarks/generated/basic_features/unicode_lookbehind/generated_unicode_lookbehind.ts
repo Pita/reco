@@ -67,8 +67,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   if (!result1) {
     return -1;
   }
-  // surrogate pair might require moving 2 chars ahead
-  i += charCode1 >= 0x10000 ? 2 : 1;
+  i++;
   return i;
 };
 const fiber0002 = (i: number, str: string, context: Context): number => {
@@ -77,14 +76,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
    * /(?<!𝒴)x/u
    *      ^^
    */
-  let isSurrogatePair0 = false;
-  if (i >= 2) {
-    const charCodeBefore0 = str.charCodeAt(i - 2);
-    if (charCodeBefore0 >= 0xd800 && charCodeBefore0 <= 0xdbff) {
-      isSurrogatePair0 = true;
-    }
-  }
-  i -= isSurrogatePair0 ? 2 : 1;
+  i -= 2;
   if (i < 0) {
     return -1;
   }

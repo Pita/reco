@@ -116,42 +116,40 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * charOrSet
+   * charSequence
    * /^\d✱(\.\d\d✱)?$/
    *       ^^
    */
-  if (i >= str.length) {
+  const iAfterMatch1 = i + 2;
+  if (iAfterMatch1 > str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
 
-  result1 = charCode1 === 46;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * /^\d✱(\.\d\d✱)?$/
-   *         ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
+    let result0: boolean;
 
-  if (charCode2 <= 57) {
-    result2 = charCode2 >= 48;
-  } else {
-    result2 = false;
+    result0 = charCode0 === 46;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
   }
-  if (!result2) {
-    return -1;
-  }
-  i++;
   /*
    * nonBacktrackingQuantifier
    * /^\d✱(\.\d\d✱)?$/

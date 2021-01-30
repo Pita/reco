@@ -43,56 +43,46 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * /def$/
    *  ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 3;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 100;
+  {
+    const charCode0 = str.charCodeAt(i + 2);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 102;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 101;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 0);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 100;
+
+    if (!result2) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * /def$/
-   *   ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 101;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * /def$/
-   *    ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
-
-  result2 = charCode2 === 102;
-
-  if (!result2) {
-    return -1;
-  }
-  i++;
   /*
    * endAnchor
    * /def$/

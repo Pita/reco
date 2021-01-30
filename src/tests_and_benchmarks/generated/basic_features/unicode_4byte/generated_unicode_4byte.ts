@@ -26,7 +26,7 @@ export function generatedRegexMatcher(str: string) {
 
   // minCharsLeft
   const min = 0;
-  const max = str.length - 1;
+  const max = str.length - 2;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = fiber0001(i, str, context);
@@ -58,7 +58,6 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   if (!result0) {
     return -1;
   }
-  // surrogate pair might require moving 2 chars ahead
-  i += charCode0 >= 0x10000 ? 2 : 1;
+  i += 2;
   return i;
 };

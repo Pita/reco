@@ -94,45 +94,43 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 };
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...|[2-9]\d)?\d\d|29([\/\...
    *              ^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...2-9]\d)?\d\d|29([\/\-\...
-   *              ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    let result0: boolean;
+
+    if (charCode0 <= 57) {
+      result0 = charCode0 >= 48;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return fiber0001(i, str, context);
 };
 const fiber0003 = (i: number, str: string, context: Context): number => {
@@ -158,85 +156,81 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
 };
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...-2])\2)(?:1[6-9]|[2-9...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...2])\2)(?:1[6-9]|[2-9]\d)?...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    let result0: boolean;
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 54;
-  } else {
-    result1 = false;
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 54;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...(?:1[6-9]|[2-9]\d)?\d\d|2...
    *              ^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 50;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...6-9]|[2-9]\d)?\d\d|29(...
-   *              ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    let result0: boolean;
+
+    if (charCode0 <= 57) {
+      result0 = charCode0 >= 48;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 50;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0006 = (i: number, str: string, context: Context): number => {
@@ -375,76 +369,72 @@ const fiber0009 = (i: number, str: string, context: Context): number => {
 };
 const fiber0010 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...0?[13578]|1[02])\1|(?...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 48 || charCode1 === 50;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * ...?[13578]|1[02])\1|(?:29|...
-   *              ^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 48 || charCode1 === 50;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return fiber0007(i, str, context);
 };
 const fiber0011 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * /^(?:(?:31([\/\-\.]...
    *         ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 51;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 51;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * /^(?:(?:31([\/\-\.])...
-   *          ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 49;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   /*
    * groupStartMarker
    * /^(?:(?:31([\/\-\.])(?:0?[1357...
@@ -459,15 +449,15 @@ const fiber0011 = (i: number, str: string, context: Context): number => {
   if (i >= str.length) {
     return -1;
   }
-  const charCode3 = str.charCodeAt(i);
-  let result3: boolean;
+  const charCode2 = str.charCodeAt(i);
+  let result2: boolean;
 
-  if (charCode3 <= 47) {
-    result3 = charCode3 >= 45;
+  if (charCode2 <= 47) {
+    result2 = charCode2 >= 45;
   } else {
-    result3 = false;
+    result2 = false;
   }
-  if (!result3) {
+  if (!result2) {
     return -1;
   }
   i++;
@@ -588,42 +578,40 @@ const fiber0014 = (i: number, str: string, context: Context): number => {
 };
 const fiber0015 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...0?[1,3-9]|1[0-2])\2)(...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...?[1,3-9]|1[0-2])\2)(?:1[6...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    let result0: boolean;
 
-  if (charCode1 <= 50) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 50) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return fiber0012(i, str, context);
 };
 const fiber0016 = (i: number, str: string, context: Context): number => {
@@ -695,76 +683,72 @@ const fiber0016 = (i: number, str: string, context: Context): number => {
 };
 const fiber0017 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...02])\1|(?:29|30)([\/\...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 50;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 57;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 50;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * ...2])\1|(?:29|30)([\/\-...
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 57;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0018 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...)\1|(?:29|30)([\/\-\....
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 51;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 48;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 51;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * ...\1|(?:29|30)([\/\-\.]...
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 48;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0019 = (i: number, str: string, context: Context): number => {
@@ -819,126 +803,120 @@ const fiber0021 = (i: number, str: string, context: Context): number => {
 };
 const fiber0022 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...-9]\d)?(?:0[48]|[2468...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 48;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 48;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 52 || charCode1 === 56;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * ...9]\d)?(?:0[48]|[2468][04...
-   *              ^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 52 || charCode1 === 56;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0023 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...?(?:0[48]|[2468][048]|[135...
    *              ^^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 52) {
-    result0 = charCode0 === 50 || charCode0 === 52;
-  } else {
-    result0 = charCode0 === 54 || charCode0 === 56;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...48]|[2468][048]|[13579][2...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 52) {
-    result1 = charCode1 === 48 || charCode1 === 52;
-  } else {
-    result1 = charCode1 === 56;
+    let result0: boolean;
+
+    if (charCode0 <= 52) {
+      result0 = charCode0 === 48 || charCode0 === 52;
+    } else {
+      result0 = charCode0 === 56;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 52) {
+      result1 = charCode1 === 50 || charCode1 === 52;
+    } else {
+      result1 = charCode1 === 54 || charCode1 === 56;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0024 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...468][048]|[13579][26])|(?:1...
    *              ^^^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 53) {
-    if (charCode0 <= 51) {
-      result0 = charCode0 === 49 || charCode0 === 51;
-    } else {
-      result0 = charCode0 === 53;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 50 || charCode0 === 54;
+
+    if (!result0) {
+      return -1;
     }
-  } else {
-    result0 = charCode0 === 55 || charCode0 === 57;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...8]|[13579][26])|(?:16|[2...
-   *              ^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    const charCode1 = str.charCodeAt(i + 0);
 
-  result1 = charCode1 === 50 || charCode1 === 54;
+    let result1: boolean;
 
-  if (!result1) {
-    return -1;
+    if (charCode1 <= 53) {
+      if (charCode1 <= 51) {
+        result1 = charCode1 === 49 || charCode1 === 51;
+      } else {
+        result1 = charCode1 === 53;
+      }
+    } else {
+      result1 = charCode1 === 55 || charCode1 === 57;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
   return i;
 };
 const fiber0025 = (i: number, str: string, context: Context): number => {
@@ -964,85 +942,81 @@ const fiber0025 = (i: number, str: string, context: Context): number => {
 };
 const fiber0026 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...?2\3(?:(?:1[6-9]|[2-9...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...2\3(?:(?:1[6-9]|[2-9]\d)?...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    let result0: boolean;
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 54;
-  } else {
-    result1 = false;
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 54;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0027 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...(?:1[6-9]|[2-9]\d)?(?:0[4...
    *              ^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 50;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...6-9]|[2-9]\d)?(?:0[48]...
-   *              ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    let result0: boolean;
+
+    if (charCode0 <= 57) {
+      result0 = charCode0 >= 48;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 50;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0028 = (i: number, str: string, context: Context): number => {
@@ -1107,196 +1081,186 @@ const fiber0029 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   /*
-   * charOrSet
+   * charSequence
    * ...3579][26])00)|(?:0?[1...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch1 = i + 2;
+  if (iAfterMatch1 > str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
 
-  result1 = charCode1 === 48;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result1) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 48;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 48;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
   }
-  i++;
-  /*
-   * charOrSet
-   * ...579][26])00)|(?:0?[1-...
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
-
-  result2 = charCode2 === 48;
-
-  if (!result2) {
-    return -1;
-  }
-  i++;
   return fiber0001(i, str, context);
 };
 const fiber0030 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...][26])|(?:16|[2468][0...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 54;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 49;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * ...[26])|(?:16|[2468][04...
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 54;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0031 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...6])|(?:16|[2468][048]|[357...
    *              ^^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 52) {
-    result0 = charCode0 === 50 || charCode0 === 52;
-  } else {
-    result0 = charCode0 === 54 || charCode0 === 56;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...:16|[2468][048]|[3579][26...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 52) {
-    result1 = charCode1 === 48 || charCode1 === 52;
-  } else {
-    result1 = charCode1 === 56;
+    let result0: boolean;
+
+    if (charCode0 <= 52) {
+      result0 = charCode0 === 48 || charCode0 === 52;
+    } else {
+      result0 = charCode0 === 56;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 52) {
+      result1 = charCode1 === 50 || charCode1 === 52;
+    } else {
+      result1 = charCode1 === 54 || charCode1 === 56;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0032 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...468][048]|[3579][26])00)|(...
    *              ^^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 53) {
-    result0 = charCode0 === 51 || charCode0 === 53;
-  } else {
-    result0 = charCode0 === 55 || charCode0 === 57;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...48]|[3579][26])00)|(?:0?...
-   *              ^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  result1 = charCode1 === 50 || charCode1 === 54;
+    let result0: boolean;
 
-  if (!result1) {
-    return -1;
+    result0 = charCode0 === 50 || charCode0 === 54;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 53) {
+      result1 = charCode1 === 51 || charCode1 === 53;
+    } else {
+      result1 = charCode1 === 55 || charCode1 === 57;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
   return i;
 };
 const fiber0033 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...]\d)?\d\d|29([\/\-\.]...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 50;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 57;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 50;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * ...\d)?\d\d|29([\/\-\.])...
-   *              ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 57;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   /*
    * groupStartMarker
    * ...d)?\d\d|29([\/\-\.])0?2\3(?:(?...
@@ -1311,15 +1275,15 @@ const fiber0033 = (i: number, str: string, context: Context): number => {
   if (i >= str.length) {
     return -1;
   }
-  const charCode3 = str.charCodeAt(i);
-  let result3: boolean;
+  const charCode2 = str.charCodeAt(i);
+  let result2: boolean;
 
-  if (charCode3 <= 47) {
-    result3 = charCode3 >= 45;
+  if (charCode2 <= 47) {
+    result2 = charCode2 >= 45;
   } else {
-    result3 = false;
+    result2 = false;
   }
-  if (!result3) {
+  if (!result2) {
     return -1;
   }
   i++;
@@ -1335,7 +1299,7 @@ const fiber0033 = (i: number, str: string, context: Context): number => {
    * ...([\/\-\.])0?2\3(?:(?:1...
    *              ^^
    */
-  let matches5 = 0;
+  let matches4 = 0;
   while (true) {
     const wrappedResult = fiber0034(i, str, context);
 
@@ -1344,9 +1308,9 @@ const fiber0033 = (i: number, str: string, context: Context): number => {
     } else {
       i = wrappedResult;
 
-      matches5++;
+      matches4++;
 
-      if (matches5 === 1) {
+      if (matches4 === 1) {
         break;
       }
     }
@@ -1359,12 +1323,12 @@ const fiber0033 = (i: number, str: string, context: Context): number => {
   if (i >= str.length) {
     return -1;
   }
-  const charCode6 = str.charCodeAt(i);
-  let result6: boolean;
+  const charCode5 = str.charCodeAt(i);
+  let result5: boolean;
 
-  result6 = charCode6 === 50;
+  result5 = charCode5 === 50;
 
-  if (!result6) {
+  if (!result5) {
     return -1;
   }
   i++;
@@ -1427,45 +1391,43 @@ const fiber0034 = (i: number, str: string, context: Context): number => {
 };
 const fiber0035 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...|[2-9]\d)?\d\d)$/
    *              ^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...2-9]\d)?\d\d)$/
-   *              ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    let result0: boolean;
+
+    if (charCode0 <= 57) {
+      result0 = charCode0 >= 48;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return fiber0001(i, str, context);
 };
 const fiber0036 = (i: number, str: string, context: Context): number => {
@@ -1491,85 +1453,81 @@ const fiber0036 = (i: number, str: string, context: Context): number => {
 };
 const fiber0037 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...0-2])\4(?:1[6-9]|[2-9...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...-2])\4(?:1[6-9]|[2-9]\d)?...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    let result0: boolean;
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 54;
-  } else {
-    result1 = false;
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 54;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0038 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...(?:1[6-9]|[2-9]\d)?\d\d)$/
    *              ^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 50;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...6-9]|[2-9]\d)?\d\d)$/
-   *              ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    let result0: boolean;
+
+    if (charCode0 <= 57) {
+      result0 = charCode0 >= 48;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 50;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0039 = (i: number, str: string, context: Context): number => {
@@ -1697,42 +1655,40 @@ const fiber0041 = (i: number, str: string, context: Context): number => {
 };
 const fiber0042 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...?:0?[1-9]|1[0-2])\4(?...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...:0?[1-9]|1[0-2])\4(?:1[6-...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    let result0: boolean;
 
-  if (charCode1 <= 50) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 50) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return fiber0039(i, str, context);
 };
 const fiber0043 = (i: number, str: string, context: Context): number => {
@@ -1850,82 +1806,78 @@ const fiber0045 = (i: number, str: string, context: Context): number => {
 };
 const fiber0046 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...?:0?[1-9]|1\d|2[0-8])...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...:0?[1-9]|1\d|2[0-8])([...
-   *              ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    let result0: boolean;
 
-  if (charCode1 <= 57) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return fiber0043(i, str, context);
 };
 const fiber0047 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * ...[1-9]|1\d|2[0-8])([\/...
    *              ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = charCode0 === 50;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...1-9]|1\d|2[0-8])([\/\-\.]...
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+    let result0: boolean;
 
-  if (charCode1 <= 56) {
-    result1 = charCode1 >= 48;
-  } else {
-    result1 = false;
+    result0 = charCode0 === 50;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 56) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return fiber0043(i, str, context);
 };
 const fiber0048 = (i: number, str: string, context: Context): number => {

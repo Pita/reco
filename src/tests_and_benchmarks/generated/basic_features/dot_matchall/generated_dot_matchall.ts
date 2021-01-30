@@ -43,38 +43,36 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * /.x/s
    *  ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  result0 = false;
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-  if (result0) {
-    return -1;
+    let result0: boolean;
+
+    result0 = false;
+
+    if (result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 120;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  i++;
-  /*
-   * charOrSet
-   * /.x/s
-   *   ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
-
-  result1 = charCode1 === 120;
-
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };

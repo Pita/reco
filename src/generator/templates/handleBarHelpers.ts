@@ -5,13 +5,16 @@ Handlebars.registerHelper('escapeComment', function (this: any, value) {
   return new Handlebars.SafeString(value.replace(/\*/g, '✱'));
 });
 
-Handlebars.registerHelper('switchCase', function (this: any, type, options) {
-  if (this.type === type) {
-    return options.fn(this.data ? this.data : this);
-  } else {
-    return options.inverse(this);
-  }
-});
+Handlebars.registerHelper(
+  'switchCase',
+  function (this: any, keyName, expectedValue, options) {
+    if (this[keyName] === expectedValue) {
+      return options.fn(this.data ? this.data : this);
+    } else {
+      return options.inverse(this);
+    }
+  },
+);
 
 Handlebars.registerHelper(
   'groupStartArrayIndex',

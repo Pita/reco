@@ -12,6 +12,6 @@ export type LeafTemplate =
   | {
       type: 'comparison';
       comparison: ComparsionTemplate;
-      comparisonTrue?: LeafTemplate;
-      comparisonFalse?: LeafTemplate;
+      comparisonTrue: LeafTemplate;
+      comparisonFalse: LeafTemplate;
     };

@@ -214,7 +214,10 @@ export class Collector {
     def: AtomDefinition,
     minLength: number,
     maxLength: number,
-    newPathElement: AstElementOrQuantifierElement | 'noAstElement',
+    newPathElement:
+      | AstElementOrQuantifierElement
+      | AstElementOrQuantifierElement[]
+      | 'noAstElement',
   ) {
     // TODO: type this correctly
     const newAtom: any = {
@@ -235,7 +238,11 @@ export class Collector {
       currentFiber.meta.anchorsAtEndOfLine = true;
     }
     if (newPathElement !== 'noAstElement') {
-      currentFiber.meta.path = [newPathElement, ...currentFiber.meta.path];
+      if (Array.isArray(newPathElement)) {
+        currentFiber.meta.path = [...newPathElement, ...currentFiber.meta.path];
+      } else {
+        currentFiber.meta.path = [newPathElement, ...currentFiber.meta.path];
+      }
     }
 
     return currentFiber;

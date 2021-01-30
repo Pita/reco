@@ -129,87 +129,83 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
 };
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * /([a-c][a-c]|[d-f...
    *   ^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 99) {
-    result0 = charCode0 >= 97;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * /([a-c][a-c]|[d-f][d-f...
-   *        ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 99) {
-    result1 = charCode1 >= 97;
-  } else {
-    result1 = false;
+    let result0: boolean;
+
+    if (charCode0 <= 99) {
+      result0 = charCode0 >= 97;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 99) {
+      result1 = charCode1 >= 97;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * /([a-c][a-c]|[d-f][d-f])(a)/
    *              ^^^^^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
 
-  if (charCode0 <= 102) {
-    result0 = charCode0 >= 100;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * ...a-c]|[d-f][d-f])(a)/
-   *              ^^^^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (charCode1 <= 102) {
-    result1 = charCode1 >= 100;
-  } else {
-    result1 = false;
+    let result0: boolean;
+
+    if (charCode0 <= 102) {
+      result0 = charCode0 >= 100;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    if (charCode1 <= 102) {
+      result1 = charCode1 >= 100;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
   }
-  if (!result1) {
-    return -1;
-  }
-  i++;
   return i;
 };

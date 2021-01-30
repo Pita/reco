@@ -43,47 +43,52 @@ export function generatedRegexMatcher(str: string) {
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
-   * charOrSet
+   * charSequence
    * /.a/u
    *  ^
    */
-  if (i >= str.length) {
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
     return -1;
   }
-  const charCode0 = str.codePointAt(i)!;
-  let result0: boolean;
 
-  if (charCode0 <= 13) {
-    result0 = charCode0 === 10 || charCode0 === 13;
-  } else {
-    if (charCode0 <= 8233) {
-      result0 = charCode0 >= 8232;
+  {
+    if (i >= str.length) {
+      return -1;
+    }
+
+    const charCode0 = str.codePointAt(i)!;
+
+    i += charCode0 >= 0x10000 ? 2 : 1;
+    if (i >= str.length) {
+      return -1;
+    }
+
+    const charCode1 = str.codePointAt(i)!;
+
+    i++;
+
+    let result0: boolean;
+
+    if (charCode0 <= 13) {
+      result0 = charCode0 === 10 || charCode0 === 13;
     } else {
-      result0 = false;
+      if (charCode0 <= 8233) {
+        result0 = charCode0 >= 8232;
+      } else {
+        result0 = false;
+      }
+    }
+    if (result0) {
+      return -1;
+    }
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
     }
   }
-  if (result0) {
-    return -1;
-  }
-  // surrogate pair might require moving 2 chars ahead
-  i += charCode0 >= 0x10000 ? 2 : 1;
-  /*
-   * charOrSet
-   * /.a/u
-   *   ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode1 = str.codePointAt(i)!;
-  let result1: boolean;
-
-  result1 = charCode1 === 97;
-
-  if (!result1) {
-    return -1;
-  }
-  // surrogate pair might require moving 2 chars ahead
-  i += charCode1 >= 0x10000 ? 2 : 1;
   return i;
 };

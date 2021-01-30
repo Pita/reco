@@ -71,39 +71,37 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * charOrSet
+   * charSequence
    * /(ab)k(123)/
    *   ^
    */
-  if (i >= str.length) {
+  const iAfterMatch1 = i + 2;
+  if (iAfterMatch1 > str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
 
-  result1 = charCode1 === 97;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result1) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 98;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
   }
-  i++;
-  /*
-   * charOrSet
-   * /(ab)k(123)/
-   *    ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
-
-  result2 = charCode2 === 98;
-
-  if (!result2) {
-    return -1;
-  }
-  i++;
   /*
    * groupEndMarker
    * /(ab)k(123)/
@@ -119,12 +117,12 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   if (i >= str.length) {
     return -1;
   }
-  const charCode4 = str.charCodeAt(i);
-  let result4: boolean;
+  const charCode3 = str.charCodeAt(i);
+  let result3: boolean;
 
-  result4 = charCode4 === 107;
+  result3 = charCode3 === 107;
 
-  if (!result4) {
+  if (!result3) {
     return -1;
   }
   i++;
@@ -135,56 +133,46 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp1 = i;
   /*
-   * charOrSet
+   * charSequence
    * /(ab)k(123)/
    *        ^
    */
-  if (i >= str.length) {
+  const iAfterMatch5 = i + 3;
+  if (iAfterMatch5 > str.length) {
     return -1;
   }
-  const charCode6 = str.charCodeAt(i);
-  let result6: boolean;
 
-  result6 = charCode6 === 49;
+  {
+    const charCode0 = str.charCodeAt(i + 2);
 
-  if (!result6) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 51;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 50;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 0);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 49;
+
+    if (!result2) {
+      return -1;
+    }
+
+    i = iAfterMatch5;
   }
-  i++;
-  /*
-   * charOrSet
-   * /(ab)k(123)/
-   *         ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode7 = str.charCodeAt(i);
-  let result7: boolean;
-
-  result7 = charCode7 === 50;
-
-  if (!result7) {
-    return -1;
-  }
-  i++;
-  /*
-   * charOrSet
-   * /(ab)k(123)/
-   *          ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode8 = str.charCodeAt(i);
-  let result8: boolean;
-
-  result8 = charCode8 === 51;
-
-  if (!result8) {
-    return -1;
-  }
-  i++;
   /*
    * groupEndMarker
    * /(ab)k(123)/

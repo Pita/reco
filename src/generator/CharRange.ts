@@ -72,6 +72,8 @@ class NumericSet extends Set<number> {
   }
 }
 
+export type UTF16UnitsCount = '1' | '2' | 'variable';
+
 export class CharRange {
   private chars: NumericSet;
   private negate: boolean;
@@ -215,19 +217,33 @@ export class CharRange {
     };
   }
 
-  getUTF16UnitsCount(flags: Flags) {
+  getUTF16UnitsCount(flags: Flags): UTF16UnitsCount {
     if (flags.unicode === false) {
-      return 1;
+      return '1';
     }
 
     if (this.negate) {
-      return 2;
+      return 'variable';
     }
 
     const chars = this.chars.toArray();
-    if (chars.length > 0 && chars[chars.length - 1] >= 0x10000) {
-      return 2;
+    let canBeTwo = false;
+    let canBeOne = false;
+    chars.forEach((char) => {
+      const charLength = String.fromCodePoint(char).length;
+      if (charLength === 1) {
+        canBeOne = true;
+      } else if (charLength === 2) {
+        canBeTwo = true;
+      }
+    });
+
+    if (canBeOne && !canBeTwo) {
+      return '1';
     }
-    return 1;
+    if (!canBeOne && canBeTwo) {
+      return '2';
+    }
+    return 'variable';
   }
 }

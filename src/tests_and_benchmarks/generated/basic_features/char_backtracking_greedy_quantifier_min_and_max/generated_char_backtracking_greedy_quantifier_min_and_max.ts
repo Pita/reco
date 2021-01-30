@@ -62,39 +62,37 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * charOrSet
+   * charSequence
    * /(aa){3}/
    *   ^
    */
-  if (i >= str.length) {
+  const iAfterMatch1 = i + 2;
+  if (iAfterMatch1 > str.length) {
     return -1;
   }
-  const charCode1 = str.charCodeAt(i);
-  let result1: boolean;
 
-  result1 = charCode1 === 97;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result1) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
   }
-  i++;
-  /*
-   * charOrSet
-   * /(aa){3}/
-   *    ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode2 = str.charCodeAt(i);
-  let result2: boolean;
-
-  result2 = charCode2 === 97;
-
-  if (!result2) {
-    return -1;
-  }
-  i++;
   /*
    * groupEndMarker
    * /(aa){3}/
@@ -109,39 +107,37 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * charOrSet
+   * charSequence
    * /(aa){3}/
    *   ^
    */
-  if (i >= str.length) {
+  const iAfterMatch4 = i + 2;
+  if (iAfterMatch4 > str.length) {
     return -1;
   }
-  const charCode5 = str.charCodeAt(i);
-  let result5: boolean;
 
-  result5 = charCode5 === 97;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result5) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch4;
   }
-  i++;
-  /*
-   * charOrSet
-   * /(aa){3}/
-   *    ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode6 = str.charCodeAt(i);
-  let result6: boolean;
-
-  result6 = charCode6 === 97;
-
-  if (!result6) {
-    return -1;
-  }
-  i++;
   /*
    * groupEndMarker
    * /(aa){3}/
@@ -156,39 +152,37 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStartTemp0 = i;
   /*
-   * charOrSet
+   * charSequence
    * /(aa){3}/
    *   ^
    */
-  if (i >= str.length) {
+  const iAfterMatch7 = i + 2;
+  if (iAfterMatch7 > str.length) {
     return -1;
   }
-  const charCode9 = str.charCodeAt(i);
-  let result9: boolean;
 
-  result9 = charCode9 === 97;
+  {
+    const charCode0 = str.charCodeAt(i + 1);
 
-  if (!result9) {
-    return -1;
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch7;
   }
-  i++;
-  /*
-   * charOrSet
-   * /(aa){3}/
-   *    ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode10 = str.charCodeAt(i);
-  let result10: boolean;
-
-  result10 = charCode10 === 97;
-
-  if (!result10) {
-    return -1;
-  }
-  i++;
   /*
    * groupEndMarker
    * /(aa){3}/

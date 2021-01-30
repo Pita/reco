@@ -2,6 +2,7 @@ import templateFile from './mainTemplate.handlebars';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 import { ASTPath } from '../../dfa-analyzer/types';
+import { UTF16UnitsCount } from '../CharRange';
 
 export interface GroupReference {
   idx: number;
@@ -42,11 +43,29 @@ export interface BaseTemplateAtom {
   posLine2: string;
 }
 
+export interface CharSequenceTemplateAtom extends BaseTemplateAtom {
+  type: 'charSequence';
+  data: {
+    nonOrderedLoading: Array<{
+      unitsCount: UTF16UnitsCount;
+      unicode: boolean;
+    }>;
+    length: number;
+    chars: Array<{
+      tree: LeafTemplate;
+      negate: boolean;
+      unitsCount: UTF16UnitsCount;
+      offset: number;
+    }>;
+  };
+}
+
 export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
   type: 'charOrSet';
   data: {
     tree: LeafTemplate;
     negate: boolean;
+    unitsCount: UTF16UnitsCount;
     unicode: boolean;
   };
 }
@@ -177,6 +196,7 @@ export interface NonBacktrackingDisjunctionTemplateAtom
 }
 
 export type TemplateAtom =
+  | CharSequenceTemplateAtom
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
   | DisjunctionTemplateAtom

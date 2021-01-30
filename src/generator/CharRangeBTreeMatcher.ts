@@ -9,6 +9,43 @@ interface Leaf {
   maxChecked?: boolean;
 }
 
+export const computeAverageLeafComplexity = (rootLeaf: LeafTemplate) => {
+  let complexitySum = 0;
+  let complexityCount = 0;
+
+  const processLeaf = (leaf: LeafTemplate, depth: number) => {
+    switch (leaf.type) {
+      case 'comparison':
+        processLeaf(leaf.comparisonTrue, depth + 1);
+        processLeaf(leaf.comparisonFalse, depth + 1);
+        break;
+      case 'lastComparison':
+        complexitySum += depth;
+        complexityCount++;
+
+        switch (leaf.comparison.type) {
+          case 'lessOrEqual':
+          case 'moreOrEqual':
+          case 'equal':
+            complexitySum++;
+            break;
+          case 'equalOneOfTwo':
+            complexitySum += 3;
+            complexityCount++;
+            break;
+          case 'false':
+          case 'true':
+            break;
+        }
+        break;
+    }
+  };
+  processLeaf(rootLeaf, 0);
+
+  const averageComplexity = complexitySum / complexityCount;
+  return averageComplexity;
+};
+
 const processLeafs = (leafs: Leaf[]): LeafTemplate => {
   if (leafs.length === 0) {
     return {
@@ -82,9 +119,7 @@ const processLeafs = (leafs: Leaf[]): LeafTemplate => {
   };
 };
 
-export const charRangeToLeafValues = (
-  charRange: CharRange,
-): LeafTemplate | undefined => {
+export const charRangeToLeafValues = (charRange: CharRange): LeafTemplate => {
   const chars = charRange.toJSON().chars;
   const leafs: Leaf[] = [];
 
