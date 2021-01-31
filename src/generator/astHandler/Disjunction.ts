@@ -4,12 +4,13 @@ import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 import { BacktrackingError } from '../BacktrackingException';
-import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
 import {
-  CharRangeSequencePossibilities,
   computeExclusivityOfAlternatives,
+  QuickCheckDetails,
 } from '../../dfa-analyzer/CharRangeSequencePossibilities';
+import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
 
+// TODO: there is a lot of code duplicated between this method and its non backtracking variant
 const handleBacktrackingDisjunction = (
   alternatives: AST.Alternative[],
   collector: Collector,
@@ -17,13 +18,15 @@ const handleBacktrackingDisjunction = (
   flags: Flags,
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
-  const mappedAlternatives = alternatives.map((alternative) =>
+  const quickChecks = computeQuickChecks(alternatives, flags, literal);
+  const mappedAlternatives = alternatives.map((alternative, i) =>
     handleAlternative(
       alternative,
       collector,
       collector.createConnectedFiber(currentFiber),
       flags,
       literal,
+      quickChecks ? quickChecks[i] : null,
     ),
   );
 
@@ -43,6 +46,17 @@ const handleBacktrackingDisjunction = (
     (mappedAlternative) => mappedAlternative.meta.anchorsAtEndOfLine,
   );
 
+  const alternativesWithQuickChecks = mappedAlternatives.map(
+    (alternative, i) => {
+      const quickCheck = quickChecks ? quickChecks[i] : null;
+      return {
+        alternative,
+        quickCheck,
+      };
+    },
+  );
+  const hasQuickCheck = !!quickChecks;
+
   return collector.addAtom(
     collector.createForkingFiber(
       currentFiber,
@@ -52,7 +66,7 @@ const handleBacktrackingDisjunction = (
     ),
     {
       type: 'disjunction',
-      data: { alternatives: mappedAlternatives, groupsToRestore },
+      data: { hasQuickCheck, alternativesWithQuickChecks, groupsToRestore },
       ast: alternatives[0].parent,
     },
     minLength,
@@ -133,13 +147,16 @@ const handleNonBacktrackingDisjunction = (
   flags: Flags,
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
-  const mappedAlternatives = alternatives.map((alternative) =>
+  const quickChecks = computeQuickChecks(alternatives, flags, literal);
+
+  const mappedAlternatives = alternatives.map((alternative, i) =>
     handleAlternative(
       alternative,
       collector,
       collector.createFinalFiber(currentFiber.meta.path),
       flags,
       literal,
+      quickChecks ? quickChecks[i] : null,
     ),
   );
 
@@ -164,17 +181,52 @@ const handleNonBacktrackingDisjunction = (
     currentFiber.meta.anchorsAtEndOfLine = true;
   }
 
+  const alternativesWithQuickChecks = mappedAlternatives.map(
+    (alternative, i) => {
+      const quickCheck = quickChecks ? quickChecks[i] : null;
+      return {
+        alternative,
+        quickCheck,
+      };
+    },
+  );
+  const hasQuickCheck = !!quickChecks;
+
   return collector.addAtom(
     currentFiber,
     {
       type: 'nonBacktrackingDisjunction',
-      data: { alternatives: mappedAlternatives, groupsToRestore },
+      data: { hasQuickCheck, alternativesWithQuickChecks, groupsToRestore },
       ast: alternatives[0].parent,
     },
     minLength,
     maxLength,
     alternatives[0].parent,
   );
+};
+
+const computeQuickChecks = (
+  alternatives: AST.Alternative[],
+  flags: Flags,
+  literal: AST.RegExpLiteral,
+) => {
+  let isQuickCheckable = false;
+  const quickChecks = alternatives.map((alternative) => {
+    const analyzed = dfaAnalyzeElement([alternative], literal, Infinity);
+    if (!analyzed) {
+      return null;
+    }
+
+    const quickCheck = analyzed.computeQuickCheck(flags);
+    if (!quickCheck) {
+      return null;
+    }
+
+    isQuickCheckable = true;
+    return quickCheck;
+  });
+
+  return isQuickCheckable ? quickChecks : null;
 };
 
 export const handleDisjunction = (

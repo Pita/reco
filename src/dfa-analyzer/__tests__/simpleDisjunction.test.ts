@@ -6,38 +6,44 @@ import { CharRangeSequence } from '../CharRangeSequence';
 describe('handleAlternative', () => {
   test('can handle a simple disjunction', () => {
     const expected = [
-      new CharRangeSequence([
-        CharRange.create(['a'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-        CharRange.create(['b'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-        CharRange.create(['e'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-      ]),
-      new CharRangeSequence([
-        CharRange.create(['a'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-        CharRange.create(['c'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-        CharRange.create(['d'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-        CharRange.create(['e'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-      ]),
+      new CharRangeSequence({
+        charRanges: [
+          CharRange.create(['a'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+          CharRange.create(['b'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+          CharRange.create(['e'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+        ],
+        astStarts: [1, 3, 8],
+      }),
+      new CharRangeSequence({
+        charRanges: [
+          CharRange.create(['a'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+          CharRange.create(['c'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+          CharRange.create(['d'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+          CharRange.create(['e'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+        ],
+        astStarts: [1, 5, 6, 8],
+      }),
     ].map((element) => element.toJSON());
 
     const literal = new RegExpParser().parseLiteral('/a(b|cd)e/');

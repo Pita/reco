@@ -1,4 +1,5 @@
 import { AST } from 'regexpp';
+import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 import { Collector } from '../Collector';
 import { Flags } from '../generator';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
@@ -12,11 +13,13 @@ export const handleAlternative = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
+  quickCheck: QuickCheckDetails | null = null,
 ): FiberTemplateDefinition => {
   let lastFiber = currentFiber;
   let collectedChars: CharASTElement[] = [];
 
   const flushChars = () => {
+    // TODO: skip this if not necassary
     if (collectedChars.length === 1) {
       lastFiber = handleSetOrCharacter(
         collectedChars[0],
@@ -24,6 +27,7 @@ export const handleAlternative = (
         lastFiber,
         flags,
         literal,
+        // quickCheck,
       );
     }
     if (collectedChars.length > 1) {
@@ -33,6 +37,7 @@ export const handleAlternative = (
         lastFiber,
         flags,
         literal,
+        quickCheck,
       );
     }
     collectedChars = [];

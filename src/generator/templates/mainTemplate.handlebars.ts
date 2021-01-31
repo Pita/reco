@@ -170,22 +170,26 @@ export function generatedRegexMatcher(str: string) {
             {{/each}}
 
             {{#each chars}}
-              let result{{{@index}}}: boolean;
-              {{> leaf tree atomIndex=@index}}
-              if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
-                return -1;
-              };
+              {{#unless canBeSkipped}}
+                let result{{{@index}}}: boolean;
+                {{> leaf tree atomIndex=@index}}
+                if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
+                  return -1;
+                };
+              {{/unless}}
             {{/each}}
           {{/if}}
           {{#unless orderedLoading}}
             {{#each chars}}
-              const charCode{{{@index}}} = str.charCodeAt(i + {{{offset}}});
-              
-              let result{{{@index}}}: boolean;
-              {{> leaf tree atomIndex=@index}}
-              if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
-                return -1;
-              };
+              {{#unless canBeSkipped}}
+                const charCode{{{@index}}} = str.charCodeAt(i + {{{offset}}});
+                
+                let result{{{@index}}}: boolean;
+                {{> leaf tree atomIndex=@index}}
+                if({{#unless negate}}!{{/unless}}result{{{@index}}}) {
+                  return -1;
+                };
+              {{/unless}}
             {{/each}}
 
             i = iAfterMatch{{{@index}}};
@@ -230,15 +234,33 @@ export function generatedRegexMatcher(str: string) {
           const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
           const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
         {{/each}}
-        {{#each alternatives}}            
-          const length{{{@index}}} = {{{functionName}}}(i, str, context);
-          if (length{{{@index}}} !== -1) {
-            return length{{{@index}}};
-          }
-          {{#each meta.groups}}
-            context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-            context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-          {{/each}}
+
+        {{#if hasQuickCheck}}
+          const firstCharQuickCheck{{{@index}}} = i < str.length ? str.charCodeAt(i) : 0;
+          const secondCharQuickCheck{{{@index}}} = (i + 1) < str.length ? str.charCodeAt(i + 1) : 0;
+
+          const quickCheckValue{{{@index}}} = firstCharQuickCheck{{{@index}}} << 16 ^ secondCharQuickCheck{{{@index}}};
+        {{/if}}
+
+        {{#each alternativesWithQuickChecks}}
+          {{#if quickCheck}}
+            {{#with quickCheck}} 
+              if ((quickCheckValue{{{@../index}}} & {{{mask}}}) === {{{value}}}) {
+            {{/with}}
+          {{/if}}
+          {{#with alternative}}           
+            const length{{{@index}}} = {{{functionName}}}(i, str, context);
+            if (length{{{@index}}} !== -1) {
+              return length{{{@index}}};
+            }
+            {{#each meta.groups}}
+              context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+              context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
+            {{/each}}
+          {{/with}}
+          {{#if quickCheck}}
+            }
+          {{/if}}
         {{/each}}
         return -1;
       {{/switchCase}}
@@ -504,21 +526,38 @@ export function generatedRegexMatcher(str: string) {
         return cursorAfterQuantifier;
       {{/switchCase}}
       {{#switchCase 'type' 'nonBacktrackingDisjunction'}}
+        {{#if hasQuickCheck}}
+          const firstCharQuickCheck{{{@index}}} = i < str.length ? str.charCodeAt(i) : 0;
+          const secondCharQuickCheck{{{@index}}} = (i + 1) < str.length ? str.charCodeAt(i + 1) : 0;
+
+          const quickCheckValue{{{@index}}} = firstCharQuickCheck{{{@index}}} << 16 ^ secondCharQuickCheck{{{@index}}};
+        {{/if}}
+
         nonBacktrackingDisjunction{{{@index}}}: {
           {{#each groupsToRestore}}
             const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
             const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
           {{/each}}
-          {{#each alternatives}}                    
-            const length{{{@index}}} = {{{functionName}}}(i, str, context);
-            if (length{{{@index}}} !== -1) {
-              i = length{{{@index}}};
-              break nonBacktrackingDisjunction{{{@../index}}};
-            }
-            {{#each meta.groups}}
-              context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-              context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-            {{/each}}
+          {{#each alternativesWithQuickChecks}}    
+            {{#if quickCheck}}
+              {{#with quickCheck}} 
+                if ((quickCheckValue{{{@../index}}} & {{{mask}}}) === {{{value}}}) {
+              {{/with}}
+            {{/if}} 
+            {{#with alternative}}              
+              const length{{{@index}}} = {{{functionName}}}(i, str, context);
+              if (length{{{@index}}} !== -1) {
+                i = length{{{@index}}};
+                break nonBacktrackingDisjunction{{{@../index}}};
+              }
+              {{#each meta.groups}}
+                context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+                context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
+              {{/each}}
+            {{/with}}
+            {{#if quickCheck}}
+              }
+            {{/if}}
           {{/each}}
           return -1;
         }

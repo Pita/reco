@@ -1,20 +1,40 @@
 import { CharRange } from '../generator/CharRange';
 import flatten from 'lodash/flatten';
 import { ExlusiveState } from './types';
+import { CharASTElement } from '../generator/astHandler/CharacterSequence';
 
 export class CharRangeSequence {
   private charRanges: CharRange[];
+  private astStarts: number[];
 
-  constructor(charRanges: CharRange[] = []) {
+  constructor(
+    options: {
+      charRanges: CharRange[];
+      astStarts: number[];
+    } = { charRanges: [], astStarts: [] },
+  ) {
+    const { charRanges, astStarts } = options;
+    if (charRanges.length !== astStarts.length) {
+      throw new Error(
+        `charRanges and astElements have different lengths: ${charRanges.length} & ${astStarts.length}`,
+      );
+    }
     this.charRanges = charRanges;
+    this.astStarts = astStarts;
   }
 
-  push(charRange: CharRange) {
-    return new CharRangeSequence([...this.charRanges, charRange]);
+  push(charRange: CharRange, astElement: CharASTElement) {
+    return new CharRangeSequence({
+      charRanges: [...this.charRanges, charRange],
+      astStarts: [...this.astStarts, astElement.start],
+    });
   }
 
   toJSON() {
-    return this.charRanges.map((charRange) => charRange.toJSON());
+    return {
+      charRanges: this.charRanges.map((charRange) => charRange.toJSON()),
+      astStarts: this.astStarts.slice(),
+    };
   }
 
   isExclusive(other: CharRangeSequence): ExlusiveState {
@@ -30,6 +50,16 @@ export class CharRangeSequence {
     return this.charRanges.length > other.charRanges.length
       ? 'OrderExclusive'
       : 'NotExclusive';
+  }
+
+  get(index: number) {
+    if (!this.charRanges[index]) {
+      return undefined;
+    }
+    return {
+      charRange: this.charRanges[index],
+      astStart: this.astStarts[index],
+    };
   }
 
   length() {

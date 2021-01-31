@@ -139,16 +139,25 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
    * ...ov|Dec)\2)(?:1[6-9]|[2-9]\d)?\d\d|29([...
    *              ^^^^^^^^^^^^^^^^^^
    */
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0004(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2147450864) === 3211312) {
+      const length0 = fiber0004(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length1 = fiber0005(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2146467824) === 3145776) {
+      const length1 = fiber0005(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction0;
+      }
     }
     return -1;
   }
@@ -166,15 +175,6 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -379,15 +379,6 @@ const fiber0010 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -423,24 +414,6 @@ const fiber0011 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 74;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -458,24 +431,6 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 77;
-
-    if (!result1) {
-      return -1;
-    }
     const charCode2 = str.charCodeAt(i + 2);
 
     let result2: boolean;
@@ -511,24 +466,6 @@ const fiber0013 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 74;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -553,24 +490,6 @@ const fiber0014 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 103;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 65;
-
-    if (!result2) {
       return -1;
     }
 
@@ -599,24 +518,6 @@ const fiber0015 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 99;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 79;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -641,24 +542,6 @@ const fiber0016 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 99;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 68;
-
-    if (!result2) {
       return -1;
     }
 
@@ -737,37 +620,59 @@ const fiber0017 = (i: number, str: string, context: Context): number => {
    * ...([\/\-\.])(?:0?[13578]|1[02]|Jan|Ma[ry]|Jul|Aug|Oct|Dec)\1|(?:29|3...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const length0 = fiber0008(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+
+  const firstCharQuickCheck4 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck4 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
+
+  if ((quickCheckValue4 & 2146435072) === 3145728) {
+    const length0 = fiber0008(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
   }
-  const length1 = fiber0010(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue4 & 2147450877) === 3211312) {
+    const length1 = fiber0010(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
   }
-  const length2 = fiber0011(i, str, context);
-  if (length2 !== -1) {
-    return length2;
+  if ((quickCheckValue4 & 2147450879) === 4849761) {
+    const length2 = fiber0011(i, str, context);
+    if (length2 !== -1) {
+      return length2;
+    }
   }
-  const length3 = fiber0012(i, str, context);
-  if (length3 !== -1) {
-    return length3;
+  if ((quickCheckValue4 & 2147450879) === 5046369) {
+    const length3 = fiber0012(i, str, context);
+    if (length3 !== -1) {
+      return length3;
+    }
   }
-  const length4 = fiber0013(i, str, context);
-  if (length4 !== -1) {
-    return length4;
+  if ((quickCheckValue4 & 2147450879) === 4849781) {
+    const length4 = fiber0013(i, str, context);
+    if (length4 !== -1) {
+      return length4;
+    }
   }
-  const length5 = fiber0014(i, str, context);
-  if (length5 !== -1) {
-    return length5;
+  if ((quickCheckValue4 & 2147450879) === 4259957) {
+    const length5 = fiber0014(i, str, context);
+    if (length5 !== -1) {
+      return length5;
+    }
   }
-  const length6 = fiber0015(i, str, context);
-  if (length6 !== -1) {
-    return length6;
+  if ((quickCheckValue4 & 2147450879) === 5177443) {
+    const length6 = fiber0015(i, str, context);
+    if (length6 !== -1) {
+      return length6;
+    }
   }
-  const length7 = fiber0016(i, str, context);
-  if (length7 !== -1) {
-    return length7;
+  if ((quickCheckValue4 & 2147450879) === 4456549) {
+    const length7 = fiber0016(i, str, context);
+    if (length7 !== -1) {
+      return length7;
+    }
   }
   return -1;
 };
@@ -876,15 +781,6 @@ const fiber0021 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -923,24 +819,6 @@ const fiber0022 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 74;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -965,24 +843,6 @@ const fiber0023 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 114;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 77;
-
-    if (!result2) {
       return -1;
     }
 
@@ -1011,24 +871,6 @@ const fiber0024 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 112;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 65;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1055,24 +897,6 @@ const fiber0025 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 77;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1090,24 +914,6 @@ const fiber0026 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 117;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 74;
-
-    if (!result1) {
-      return -1;
-    }
     const charCode2 = str.charCodeAt(i + 2);
 
     let result2: boolean;
@@ -1143,24 +949,6 @@ const fiber0027 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 65;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1185,24 +973,6 @@ const fiber0028 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 112;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 83;
-
-    if (!result2) {
       return -1;
     }
 
@@ -1231,24 +1001,6 @@ const fiber0029 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 99;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 79;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1273,24 +1025,6 @@ const fiber0030 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 118;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 111;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 78;
-
-    if (!result2) {
       return -1;
     }
 
@@ -1319,24 +1053,6 @@ const fiber0031 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 68;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1348,16 +1064,25 @@ const fiber0032 = (i: number, str: string, context: Context): number => {
    * ...ct|Dec)\1|(?:29|30)([\/\-\.])...
    *              ^^^^^^^^^
    */
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0033(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2147450879) === 3276857) {
+      const length0 = fiber0033(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length1 = fiber0034(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2147450879) === 3342384) {
+      const length1 = fiber0034(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction0;
+      }
     }
     return -1;
   }
@@ -1399,53 +1124,83 @@ const fiber0032 = (i: number, str: string, context: Context): number => {
    * ...([\/\-\.])(?:0?[1,3-9]|1[0-2]|Jan|Mar|Apr|May|Ju[nl]|Aug|Sep|Oct|Nov|Dec)\2)(?:1[6-...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const length0 = fiber0019(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+
+  const firstCharQuickCheck4 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck4 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
+
+  if ((quickCheckValue4 & 2145386496) === 2097152) {
+    const length0 = fiber0019(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
   }
-  const length1 = fiber0021(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue4 & 2147450876) === 3211312) {
+    const length1 = fiber0021(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
   }
-  const length2 = fiber0022(i, str, context);
-  if (length2 !== -1) {
-    return length2;
+  if ((quickCheckValue4 & 2147450879) === 4849761) {
+    const length2 = fiber0022(i, str, context);
+    if (length2 !== -1) {
+      return length2;
+    }
   }
-  const length3 = fiber0023(i, str, context);
-  if (length3 !== -1) {
-    return length3;
+  if ((quickCheckValue4 & 2147450879) === 5046369) {
+    const length3 = fiber0023(i, str, context);
+    if (length3 !== -1) {
+      return length3;
+    }
   }
-  const length4 = fiber0024(i, str, context);
-  if (length4 !== -1) {
-    return length4;
+  if ((quickCheckValue4 & 2147450879) === 4259952) {
+    const length4 = fiber0024(i, str, context);
+    if (length4 !== -1) {
+      return length4;
+    }
   }
-  const length5 = fiber0025(i, str, context);
-  if (length5 !== -1) {
-    return length5;
+  if ((quickCheckValue4 & 2147450879) === 5046369) {
+    const length5 = fiber0025(i, str, context);
+    if (length5 !== -1) {
+      return length5;
+    }
   }
-  const length6 = fiber0026(i, str, context);
-  if (length6 !== -1) {
-    return length6;
+  if ((quickCheckValue4 & 2147450879) === 4849781) {
+    const length6 = fiber0026(i, str, context);
+    if (length6 !== -1) {
+      return length6;
+    }
   }
-  const length7 = fiber0027(i, str, context);
-  if (length7 !== -1) {
-    return length7;
+  if ((quickCheckValue4 & 2147450879) === 4259957) {
+    const length7 = fiber0027(i, str, context);
+    if (length7 !== -1) {
+      return length7;
+    }
   }
-  const length8 = fiber0028(i, str, context);
-  if (length8 !== -1) {
-    return length8;
+  if ((quickCheckValue4 & 2147450879) === 5439589) {
+    const length8 = fiber0028(i, str, context);
+    if (length8 !== -1) {
+      return length8;
+    }
   }
-  const length9 = fiber0029(i, str, context);
-  if (length9 !== -1) {
-    return length9;
+  if ((quickCheckValue4 & 2147450879) === 5177443) {
+    const length9 = fiber0029(i, str, context);
+    if (length9 !== -1) {
+      return length9;
+    }
   }
-  const length10 = fiber0030(i, str, context);
-  if (length10 !== -1) {
-    return length10;
+  if ((quickCheckValue4 & 2147450879) === 5111919) {
+    const length10 = fiber0030(i, str, context);
+    if (length10 !== -1) {
+      return length10;
+    }
   }
-  const length11 = fiber0031(i, str, context);
-  if (length11 !== -1) {
-    return length11;
+  if ((quickCheckValue4 & 2147450879) === 4456549) {
+    const length11 = fiber0031(i, str, context);
+    if (length11 !== -1) {
+      return length11;
+    }
   }
   return -1;
 };
@@ -1461,25 +1216,6 @@ const fiber0033 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 57;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 50;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -1496,25 +1232,6 @@ const fiber0034 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 48;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 51;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -1529,18 +1246,28 @@ const fiber0035 = (i: number, str: string, context: Context): number => {
   const groupMarkerEndCopy0 = context.groupMarkerEnd0;
   const groupMarkerStartCopy1 = context.groupMarkerStart1;
   const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-  const length0 = fiber0017(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
+  if ((quickCheckValue0 & 2147450879) === 3342385) {
+    const length0 = fiber0017(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
   }
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
-  const length1 = fiber0032(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue0 & 2147385334) === 3276848) {
+    const length1 = fiber0032(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
+    context.groupMarkerStart1 = groupMarkerStartCopy1;
+    context.groupMarkerEnd1 = groupMarkerEndCopy1;
   }
-  context.groupMarkerStart1 = groupMarkerStartCopy1;
-  context.groupMarkerEnd1 = groupMarkerEndCopy1;
   return -1;
 };
 const fiber0037 = (i: number, str: string, context: Context): number => {
@@ -1549,21 +1276,32 @@ const fiber0037 = (i: number, str: string, context: Context): number => {
    * ...|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:16|[24...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0038(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2147450867) === 3145776) {
+      const length0 = fiber0038(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length1 = fiber0039(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2146533363) === 3145776) {
+      const length1 = fiber0039(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length2 = fiber0040(i, str, context);
-    if (length2 !== -1) {
-      i = length2;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2146533371) === 3211314) {
+      const length2 = fiber0040(i, str, context);
+      if (length2 !== -1) {
+        i = length2;
+        break nonBacktrackingDisjunction0;
+      }
     }
     return -1;
   }
@@ -1581,15 +1319,6 @@ const fiber0038 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 48;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -1693,16 +1422,25 @@ const fiber0041 = (i: number, str: string, context: Context): number => {
    * ...|Feb)\3(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|...
    *              ^^^^^^^^^^^^^^^^^^
    */
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0042(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2147450864) === 3211312) {
+      const length0 = fiber0042(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length1 = fiber0043(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2146467824) === 3145776) {
+      const length1 = fiber0043(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction0;
+      }
     }
     return -1;
   }
@@ -1720,15 +1458,6 @@ const fiber0042 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -1830,21 +1559,32 @@ const fiber0045 = (i: number, str: string, context: Context): number => {
    * ...579][26])|(?:16|[2468][048]|[3579][26])00)|(?:0?[...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0046(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2147450879) === 3211318) {
+      const length0 = fiber0046(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length1 = fiber0047(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2146533363) === 3145776) {
+      const length1 = fiber0047(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length2 = fiber0048(i, str, context);
-    if (length2 !== -1) {
-      i = length2;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2146533371) === 3211314) {
+      const length2 = fiber0048(i, str, context);
+      if (length2 !== -1) {
+        i = length2;
+        break nonBacktrackingDisjunction0;
+      }
     }
     return -1;
   }
@@ -1894,25 +1634,6 @@ const fiber0046 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 54;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 49;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2067,16 +1788,25 @@ const fiber0049 = (i: number, str: string, context: Context): number => {
    * ...([\/\-\.])(?:0?2|Feb)\3(?:(?:1[...
    *              ^^^^^^^^^^^
    */
+  const firstCharQuickCheck4 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck4 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
+
   nonBacktrackingDisjunction4: {
-    const length0 = fiber0050(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction4;
+    if ((quickCheckValue4 & 2147287040) === 3145728) {
+      const length0 = fiber0050(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction4;
+      }
     }
-    const length1 = fiber0052(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction4;
+    if ((quickCheckValue4 & 2147450879) === 4587621) {
+      const length1 = fiber0052(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction4;
+      }
     }
     return -1;
   }
@@ -2107,13 +1837,23 @@ const fiber0049 = (i: number, str: string, context: Context): number => {
    * ...0?2|Feb)\3(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:16|[2468][048]|[3579][26])00)|(?:0?[1-9...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const length0 = fiber0044(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+
+  const firstCharQuickCheck6 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck6 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue6 = (firstCharQuickCheck6 << 16) ^ secondCharQuickCheck6;
+
+  if ((quickCheckValue6 & 2146467824) === 3145776) {
+    const length0 = fiber0044(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
   }
-  const length1 = fiber0045(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue6 & 2146467825) === 3145776) {
+    const length1 = fiber0045(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
   }
   return -1;
 };
@@ -2199,24 +1939,6 @@ const fiber0052 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 70;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -2269,16 +1991,25 @@ const fiber0054 = (i: number, str: string, context: Context): number => {
    * ...Nov|Dec)\4(?:1[6-9]|[2-9]\d)?\d\d)$/
    *              ^^^^^^^^^^^^^^^^^^
    */
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0055(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2147450864) === 3211312) {
+      const length0 = fiber0055(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
-    const length1 = fiber0056(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 2146467824) === 3145776) {
+      const length1 = fiber0056(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction0;
+      }
     }
     return -1;
   }
@@ -2296,15 +2027,6 @@ const fiber0055 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -2509,16 +2231,25 @@ const fiber0060 = (i: number, str: string, context: Context): number => {
    * ...:0?[1-9]|A(?:pr|ug)|Feb|J(?:a...
    *              ^^^^^^^^^
    */
+  const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue1 = (firstCharQuickCheck1 << 16) ^ secondCharQuickCheck1;
+
   nonBacktrackingDisjunction1: {
-    const length0 = fiber0061(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction1;
+    if ((quickCheckValue1 & 2147450879) === 7340146) {
+      const length0 = fiber0061(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction1;
+      }
     }
-    const length1 = fiber0062(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction1;
+    if ((quickCheckValue1 & 2147450879) === 7667815) {
+      const length1 = fiber0062(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction1;
+      }
     }
     return -1;
   }
@@ -2536,25 +2267,6 @@ const fiber0061 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 114;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 112;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2571,25 +2283,6 @@ const fiber0062 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 103;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2613,24 +2306,6 @@ const fiber0063 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 98;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 70;
-
-    if (!result2) {
       return -1;
     }
 
@@ -2661,16 +2336,25 @@ const fiber0064 = (i: number, str: string, context: Context): number => {
    * ...|ug)|Feb|J(?:an|u[nl])|Ma[ry]|Se...
    *              ^^^^^^^^^^^^
    */
+  const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue1 = (firstCharQuickCheck1 << 16) ^ secondCharQuickCheck1;
+
   nonBacktrackingDisjunction1: {
-    const length0 = fiber0065(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction1;
+    if ((quickCheckValue1 & 2147450879) === 6357102) {
+      const length0 = fiber0065(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction1;
+      }
     }
-    const length1 = fiber0066(i, str, context);
-    if (length1 !== -1) {
-      i = length1;
-      break nonBacktrackingDisjunction1;
+    if ((quickCheckValue1 & 2147450877) === 7667820) {
+      const length1 = fiber0066(i, str, context);
+      if (length1 !== -1) {
+        i = length1;
+        break nonBacktrackingDisjunction1;
+      }
     }
     return -1;
   }
@@ -2688,25 +2372,6 @@ const fiber0065 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 110;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2723,15 +2388,6 @@ const fiber0066 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 117;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -2758,24 +2414,6 @@ const fiber0067 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 77;
-
-    if (!result1) {
-      return -1;
-    }
     const charCode2 = str.charCodeAt(i + 2);
 
     let result2: boolean;
@@ -2811,24 +2449,6 @@ const fiber0068 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 83;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -2846,15 +2466,6 @@ const fiber0069 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -2893,24 +2504,6 @@ const fiber0070 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 99;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 79;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -2937,24 +2530,6 @@ const fiber0071 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 111;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 78;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -2979,24 +2554,6 @@ const fiber0072 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 99;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 68;
-
-    if (!result2) {
       return -1;
     }
 
@@ -3043,45 +2600,71 @@ const fiber0073 = (i: number, str: string, context: Context): number => {
    * ...([\/\-\.])(?:0?[1-9]|A(?:pr|ug)|Feb|J(?:an|u[nl])|Ma[ry]|Sep|1[0-2]|Oct|Nov|Dec)\4(?:1[6-9...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const length0 = fiber0058(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+
+  const firstCharQuickCheck3 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck3 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue3 = (firstCharQuickCheck3 << 16) ^ secondCharQuickCheck3;
+
+  if ((quickCheckValue3 & 2146435072) === 3145728) {
+    const length0 = fiber0058(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
   }
-  const length1 = fiber0060(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue3 & 2147450874) === 4259952) {
+    const length1 = fiber0060(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
   }
-  const length2 = fiber0063(i, str, context);
-  if (length2 !== -1) {
-    return length2;
+  if ((quickCheckValue3 & 2147450879) === 4587621) {
+    const length2 = fiber0063(i, str, context);
+    if (length2 !== -1) {
+      return length2;
+    }
   }
-  const length3 = fiber0064(i, str, context);
-  if (length3 !== -1) {
-    return length3;
+  if ((quickCheckValue3 & 2147450859) === 4849761) {
+    const length3 = fiber0064(i, str, context);
+    if (length3 !== -1) {
+      return length3;
+    }
   }
-  const length4 = fiber0067(i, str, context);
-  if (length4 !== -1) {
-    return length4;
+  if ((quickCheckValue3 & 2147450879) === 5046369) {
+    const length4 = fiber0067(i, str, context);
+    if (length4 !== -1) {
+      return length4;
+    }
   }
-  const length5 = fiber0068(i, str, context);
-  if (length5 !== -1) {
-    return length5;
+  if ((quickCheckValue3 & 2147450879) === 5439589) {
+    const length5 = fiber0068(i, str, context);
+    if (length5 !== -1) {
+      return length5;
+    }
   }
-  const length6 = fiber0069(i, str, context);
-  if (length6 !== -1) {
-    return length6;
+  if ((quickCheckValue3 & 2147450876) === 3211312) {
+    const length6 = fiber0069(i, str, context);
+    if (length6 !== -1) {
+      return length6;
+    }
   }
-  const length7 = fiber0070(i, str, context);
-  if (length7 !== -1) {
-    return length7;
+  if ((quickCheckValue3 & 2147450879) === 5177443) {
+    const length7 = fiber0070(i, str, context);
+    if (length7 !== -1) {
+      return length7;
+    }
   }
-  const length8 = fiber0071(i, str, context);
-  if (length8 !== -1) {
-    return length8;
+  if ((quickCheckValue3 & 2147450879) === 5111919) {
+    const length8 = fiber0071(i, str, context);
+    if (length8 !== -1) {
+      return length8;
+    }
   }
-  const length9 = fiber0072(i, str, context);
-  if (length9 !== -1) {
-    return length9;
+  if ((quickCheckValue3 & 2147450879) === 4456549) {
+    const length9 = fiber0072(i, str, context);
+    if (length9 !== -1) {
+      return length9;
+    }
   }
   return -1;
 };
@@ -3161,15 +2744,6 @@ const fiber0076 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -3199,15 +2773,6 @@ const fiber0077 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 50;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -3233,24 +2798,36 @@ const fiber0078 = (i: number, str: string, context: Context): number => {
    */
   const groupMarkerStartCopy3 = context.groupMarkerStart3;
   const groupMarkerEndCopy3 = context.groupMarkerEnd3;
-  const length0 = fiber0074(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+
+  const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
+
+  if ((quickCheckValue0 & 2146435072) === 3145728) {
+    const length0 = fiber0074(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
+    context.groupMarkerStart3 = groupMarkerStartCopy3;
+    context.groupMarkerEnd3 = groupMarkerEndCopy3;
   }
-  context.groupMarkerStart3 = groupMarkerStartCopy3;
-  context.groupMarkerEnd3 = groupMarkerEndCopy3;
-  const length1 = fiber0076(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue0 & 2147450864) === 3211312) {
+    const length1 = fiber0076(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
+    context.groupMarkerStart3 = groupMarkerStartCopy3;
+    context.groupMarkerEnd3 = groupMarkerEndCopy3;
   }
-  context.groupMarkerStart3 = groupMarkerStartCopy3;
-  context.groupMarkerEnd3 = groupMarkerEndCopy3;
-  const length2 = fiber0077(i, str, context);
-  if (length2 !== -1) {
-    return length2;
+  if ((quickCheckValue0 & 2147450864) === 3276848) {
+    const length2 = fiber0077(i, str, context);
+    if (length2 !== -1) {
+      return length2;
+    }
+    context.groupMarkerStart3 = groupMarkerStartCopy3;
+    context.groupMarkerEnd3 = groupMarkerEndCopy3;
   }
-  context.groupMarkerStart3 = groupMarkerStartCopy3;
-  context.groupMarkerEnd3 = groupMarkerEndCopy3;
   return -1;
 };
 const fiber0079 = (i: number, str: string, context: Context): number => {
@@ -3275,6 +2852,12 @@ const fiber0079 = (i: number, str: string, context: Context): number => {
   const groupMarkerEndCopy2 = context.groupMarkerEnd2;
   const groupMarkerStartCopy3 = context.groupMarkerStart3;
   const groupMarkerEndCopy3 = context.groupMarkerEnd3;
+
+  const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue1 = (firstCharQuickCheck1 << 16) ^ secondCharQuickCheck1;
+
   const length0 = fiber0035(i, str, context);
   if (length0 !== -1) {
     return length0;
@@ -3283,12 +2866,14 @@ const fiber0079 = (i: number, str: string, context: Context): number => {
   context.groupMarkerEnd0 = groupMarkerEndCopy0;
   context.groupMarkerStart1 = groupMarkerStartCopy1;
   context.groupMarkerEnd1 = groupMarkerEndCopy1;
-  const length1 = fiber0049(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue1 & 2147450879) === 3276857) {
+    const length1 = fiber0049(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
+    context.groupMarkerStart2 = groupMarkerStartCopy2;
+    context.groupMarkerEnd2 = groupMarkerEndCopy2;
   }
-  context.groupMarkerStart2 = groupMarkerStartCopy2;
-  context.groupMarkerEnd2 = groupMarkerEndCopy2;
   const length2 = fiber0078(i, str, context);
   if (length2 !== -1) {
     return length2;

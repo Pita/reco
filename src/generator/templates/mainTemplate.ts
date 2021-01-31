@@ -3,6 +3,7 @@ import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 import { ASTPath } from '../../dfa-analyzer/types';
 import { UTF16UnitsCount } from '../CharRange';
+import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 
 export interface GroupReference {
   idx: number;
@@ -56,6 +57,7 @@ export interface CharSequenceTemplateAtom extends BaseTemplateAtom {
       negate: boolean;
       unitsCount: UTF16UnitsCount;
       offset: number;
+      canBeSkipped: boolean;
     }>;
   };
 }
@@ -83,7 +85,11 @@ export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
   type: 'disjunction';
   data: {
     groupsToRestore: GroupReference[];
-    alternatives: FiberTemplateDefinition[];
+    hasQuickCheck: boolean;
+    alternativesWithQuickChecks: {
+      alternative: FiberTemplateDefinition;
+      quickCheck: QuickCheckDetails | null;
+    };
   };
 }
 
@@ -191,7 +197,11 @@ export interface NonBacktrackingDisjunctionTemplateAtom
   type: 'nonBacktrackingDisjunction';
   data: {
     groupsToRestore: GroupReference[];
-    alternatives: FiberTemplateDefinition[];
+    hasQuickCheck: boolean;
+    alternativesWithQuickChecks: {
+      alternative: FiberTemplateDefinition;
+      quickCheck: QuickCheckDetails | null;
+    };
   };
 }
 

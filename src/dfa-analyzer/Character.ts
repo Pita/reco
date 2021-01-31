@@ -26,7 +26,7 @@ export const handleSetOrCharacter: DFAHandler<
   }
 
   const newSequences = options.currentSequences.map((sequence) =>
-    sequence.push(newCharRange),
+    sequence.push(newCharRange, element),
   );
 
   return handleElement(options.path[0], {

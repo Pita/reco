@@ -6,20 +6,23 @@ import { CharRangeSequence } from '../CharRangeSequence';
 describe('handleAlternative', () => {
   test('can handle a simle assertion', () => {
     const expected = [
-      new CharRangeSequence([
-        CharRange.create(['a'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-        CharRange.create(['b'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-        CharRange.create(['c'], {
-          negate: false,
-          ignoreCase: false,
-        }),
-      ]),
+      new CharRangeSequence({
+        charRanges: [
+          CharRange.create(['a'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+          CharRange.create(['b'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+          CharRange.create(['c'], {
+            negate: false,
+            ignoreCase: false,
+          }),
+        ],
+        astStarts: [1, 2, 5],
+      }),
     ].map((element) => element.toJSON());
 
     const literal = new RegExpParser().parseLiteral('/ab\\bc/');
