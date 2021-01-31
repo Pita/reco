@@ -19,18 +19,7 @@ export const handleAlternative = (
   let collectedChars: CharASTElement[] = [];
 
   const flushChars = () => {
-    // TODO: skip this if not necassary
-    if (collectedChars.length === 1) {
-      lastFiber = handleSetOrCharacter(
-        collectedChars[0],
-        collector,
-        lastFiber,
-        flags,
-        literal,
-        // quickCheck,
-      );
-    }
-    if (collectedChars.length > 1) {
+    if (collectedChars.length > 0) {
       lastFiber = handleCharSequence(
         collectedChars,
         collector,
