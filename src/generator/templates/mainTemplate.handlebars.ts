@@ -247,28 +247,14 @@ export function generatedRegexMatcher(str: string) {
             {
           {{/unless}}
           {{#with alternative}}           
-            {{#if canRepeat}}
-              {{#each meta.groups}}
-                const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
-                const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
-              {{/each}}
-            {{/if}}
             const length{{{@index}}} = {{{functionName}}}(i, str, context);
             if (length{{{@index}}} !== -1) {
               return length{{{@index}}};
             }
-            {{#if canRepeat}}
-              {{#each meta.groups}}
-                context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-                context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-              {{/each}}
-            {{/if}}
-            {{#unless canRepeat}}
-              {{#each meta.groups}}
-                context.groupMarkerStart{{{idx}}} = -1;
-                context.groupMarkerEnd{{{idx}}} = -1;
-              {{/each}}
-            {{/unless}}
+            {{#each meta.groups}}
+              context.groupMarkerStart{{{idx}}} = -1;
+              context.groupMarkerEnd{{{idx}}} = -1;
+            {{/each}}
           {{/with}}
           }
         {{/each}}
@@ -553,30 +539,16 @@ export function generatedRegexMatcher(str: string) {
             {{#unless quickCheck}}
               {
             {{/unless}}
-            {{#with alternative}}
-              {{#if canRepeat}}
-                {{#each meta.groups}}
-                  const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
-                  const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
-                {{/each}}
-              {{/if}}       
+            {{#with alternative}}      
               const length{{{@index}}} = {{{functionName}}}(i, str, context);
               if (length{{{@index}}} !== -1) {
                 i = length{{{@index}}};
                 break nonBacktrackingDisjunction{{{@../index}}};
               }
-              {{#if canRepeat}}
-                {{#each meta.groups}}
-                  context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-                  context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-                {{/each}}
-              {{/if}}
-              {{#unless canRepeat}}
-                {{#each meta.groups}}
-                  context.groupMarkerStart{{{idx}}} = -1;
-                  context.groupMarkerEnd{{{idx}}} = -1;
-                {{/each}}
-              {{/unless}}
+              {{#each meta.groups}}
+                context.groupMarkerStart{{{idx}}} = -1;
+                context.groupMarkerEnd{{{idx}}} = -1;
+              {{/each}}
             {{/with}}
               }
           {{/each}}

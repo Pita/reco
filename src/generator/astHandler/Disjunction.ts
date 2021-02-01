@@ -56,7 +56,6 @@ const handleBacktrackingDisjunction = (
       return {
         alternative,
         quickCheck,
-        canRepeat: !!flags.INTERNAL_can_repeat,
       };
     },
   );
@@ -196,7 +195,6 @@ const handleNonBacktrackingDisjunction = (
       return {
         alternative,
         quickCheck,
-        canRepeat: !!flags.INTERNAL_can_repeat,
       };
     },
   );
