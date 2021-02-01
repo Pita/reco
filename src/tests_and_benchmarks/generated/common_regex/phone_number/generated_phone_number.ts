@@ -1250,22 +1250,19 @@ const greedyQuantifier0003 = (
 ): number => {
   context.quantifierCounter0++;
 
-  // TODO: could be an if over the next block
-  if (context.quantifierCounter0 === 1) {
-    return fiber0001(start, str, context);
-  }
+  if (context.quantifierCounter0 !== 1) {
+    const groupMarkerStartCopy2 = context.groupMarkerStart2;
+    const groupMarkerEndCopy2 = context.groupMarkerEnd2;
+    const tryDeeperResult = fiber0014(start, str, context);
+    if (tryDeeperResult !== -1) {
+      // we actually were able to go deeper, nice!
+      return tryDeeperResult;
+    }
 
-  const groupMarkerStartCopy2 = context.groupMarkerStart2;
-  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
-  const tryDeeperResult = fiber0014(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
+    // recursion failed, reset groups
+    context.groupMarkerStart2 = groupMarkerStartCopy2;
+    context.groupMarkerEnd2 = groupMarkerEndCopy2;
   }
-
-  // recursion failed, reset groups
-  context.groupMarkerStart2 = groupMarkerStartCopy2;
-  context.groupMarkerEnd2 = groupMarkerEndCopy2;
 
   return fiber0001(start, str, context);
 };
@@ -1299,22 +1296,19 @@ const greedyQuantifier0027 = (
 ): number => {
   context.quantifierCounter1++;
 
-  // TODO: could be an if over the next block
-  if (context.quantifierCounter1 === 1) {
-    return fiber0025(start, str, context);
-  }
+  if (context.quantifierCounter1 !== 1) {
+    const groupMarkerStartCopy0 = context.groupMarkerStart0;
+    const groupMarkerEndCopy0 = context.groupMarkerEnd0;
+    const tryDeeperResult = fiber0041(start, str, context);
+    if (tryDeeperResult !== -1) {
+      // we actually were able to go deeper, nice!
+      return tryDeeperResult;
+    }
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const tryDeeperResult = fiber0041(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
+    // recursion failed, reset groups
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
   }
-
-  // recursion failed, reset groups
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
 
   return fiber0025(start, str, context);
 };
@@ -1329,22 +1323,19 @@ const greedyQuantifier0031 = (
 ): number => {
   context.quantifierCounter2++;
 
-  // TODO: could be an if over the next block
-  if (context.quantifierCounter2 === 1) {
-    return fiber0029(start, str, context);
-  }
+  if (context.quantifierCounter2 !== 1) {
+    const groupMarkerStartCopy0 = context.groupMarkerStart0;
+    const groupMarkerEndCopy0 = context.groupMarkerEnd0;
+    const tryDeeperResult = fiber0037(start, str, context);
+    if (tryDeeperResult !== -1) {
+      // we actually were able to go deeper, nice!
+      return tryDeeperResult;
+    }
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const tryDeeperResult = fiber0037(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
+    // recursion failed, reset groups
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
   }
-
-  // recursion failed, reset groups
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
 
   return fiber0029(start, str, context);
 };

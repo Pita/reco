@@ -179,22 +179,19 @@ const greedyQuantifier0003 = (
 ): number => {
   context.quantifierCounter0++;
 
-  // TODO: could be an if over the next block
-  if (context.quantifierCounter0 === 3) {
-    return fiber0001(start, str, context);
-  }
+  if (context.quantifierCounter0 !== 3) {
+    const groupMarkerStartCopy0 = context.groupMarkerStart0;
+    const groupMarkerEndCopy0 = context.groupMarkerEnd0;
+    const tryDeeperResult = fiber0005(start, str, context);
+    if (tryDeeperResult !== -1) {
+      // we actually were able to go deeper, nice!
+      return tryDeeperResult;
+    }
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const tryDeeperResult = fiber0005(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
+    // recursion failed, reset groups
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
   }
-
-  // recursion failed, reset groups
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
 
   return fiber0001(start, str, context);
 };

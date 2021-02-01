@@ -652,19 +652,7 @@ export function generatedRegexMatcher(str: string) {
     {{/if}}
 
     {{#if maxCount}}
-    // TODO: could be an if over the next block
-      if (context.quantifierCounter{{{quantifierCounterIndex}}} === {{{maxCount}}}) {
-        {{#if followUp}}
-          return {{{followUp.functionName}}}(
-            start,
-            str, 
-            context,
-          );
-        {{/if}}
-        {{#unless followUp}}
-          return start;
-        {{/unless}}
-      }
+      if (context.quantifierCounter{{{quantifierCounterIndex}}} !== {{{maxCount}}}) {
     {{/if}}
 
     {{#each wrappedHandler.meta.groups}}
@@ -687,6 +675,10 @@ export function generatedRegexMatcher(str: string) {
       if (context.quantifierCounter{{{quantifierCounterIndex}}} < {{{minCount}}}) {
         context.quantifierCounter{{{quantifierCounterIndex}}}--;
         return -1;
+      }
+    {{/if}}
+
+    {{#if maxCount}}
       }
     {{/if}}
 
