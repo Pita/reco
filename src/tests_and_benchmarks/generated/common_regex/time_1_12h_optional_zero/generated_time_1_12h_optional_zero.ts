@@ -112,7 +112,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
         break nonBacktrackingDisjunction2;
       }
     }
-    if ((quickCheckValue2 & 2146435072) === 3145728) {
+    if ((quickCheckValue2 & 2146467824) === 3145776) {
       const length1 = fiber0004(i, str, context);
       if (length1 !== -1) {
         i = length1;

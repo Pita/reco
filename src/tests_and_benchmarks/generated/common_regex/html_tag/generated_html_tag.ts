@@ -353,13 +353,22 @@ const fiber0008 = (i: number, str: string, context: Context): number => {
    *   ^^^^^^^^^^^^^^^^^^^^^^
    */
 
-  const length0 = fiber0002(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+  const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue1 = (firstCharQuickCheck1 << 16) ^ secondCharQuickCheck1;
+
+  if ((quickCheckValue1 & 16777216) === 0) {
+    const length0 = fiber0002(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
   }
-  const length1 = fiber0007(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue1 & 0) === 0) {
+    const length1 = fiber0007(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
   }
   return -1;
 };

@@ -246,7 +246,7 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue2 = (firstCharQuickCheck2 << 16) ^ secondCharQuickCheck2;
 
-  if ((quickCheckValue2 & 2146435072) === 3145728) {
+  if ((quickCheckValue2 & 2146467824) === 3145776) {
     const length0 = fiber0002(i, str, context);
     if (length0 !== -1) {
       return length0;

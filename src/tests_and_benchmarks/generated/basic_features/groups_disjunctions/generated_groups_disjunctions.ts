@@ -103,7 +103,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     const groupMarkerEndCopy1 = context.groupMarkerEnd1;
     const groupMarkerStartCopy2 = context.groupMarkerStart2;
     const groupMarkerEndCopy2 = context.groupMarkerEnd2;
-    if ((quickCheckValue1 & 2147221504) === 6291456) {
+    if ((quickCheckValue1 & 2147254271) === 6291553) {
       const length0 = fiber0002(i, str, context);
       if (length0 !== -1) {
         i = length0;
@@ -112,7 +112,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
       context.groupMarkerStart1 = groupMarkerStartCopy1;
       context.groupMarkerEnd1 = groupMarkerEndCopy1;
     }
-    if ((quickCheckValue1 & 2147221504) === 6553600) {
+    if ((quickCheckValue1 & 2147254271) === 6553697) {
       const length1 = fiber0003(i, str, context);
       if (length1 !== -1) {
         i = length1;

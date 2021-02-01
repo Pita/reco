@@ -800,16 +800,18 @@ const fiber0013 = (i: number, str: string, context: Context): number => {
     context.groupMarkerStart5 = groupMarkerStartCopy5;
     context.groupMarkerEnd5 = groupMarkerEndCopy5;
   }
-  const length1 = fiber0012(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue3 & 2139127680) === 0) {
+    const length1 = fiber0012(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
+    context.groupMarkerStart4 = groupMarkerStartCopy4;
+    context.groupMarkerEnd4 = groupMarkerEndCopy4;
+    context.groupMarkerStart6 = groupMarkerStartCopy6;
+    context.groupMarkerEnd6 = groupMarkerEndCopy6;
+    context.groupMarkerStart7 = groupMarkerStartCopy7;
+    context.groupMarkerEnd7 = groupMarkerEndCopy7;
   }
-  context.groupMarkerStart4 = groupMarkerStartCopy4;
-  context.groupMarkerEnd4 = groupMarkerEndCopy4;
-  context.groupMarkerStart6 = groupMarkerStartCopy6;
-  context.groupMarkerEnd6 = groupMarkerEndCopy6;
-  context.groupMarkerStart7 = groupMarkerStartCopy7;
-  context.groupMarkerEnd7 = groupMarkerEndCopy7;
   return -1;
 };
 const fiber0014 = (i: number, str: string, context: Context): number => {
@@ -1374,38 +1376,47 @@ const fiber0021 = (i: number, str: string, context: Context): number => {
   const groupMarkerStartCopy7 = context.groupMarkerStart7;
   const groupMarkerEndCopy7 = context.groupMarkerEnd7;
 
-  const length0 = fiber0014(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+  const firstCharQuickCheck2 = i < str.length ? str.charCodeAt(i) : 0;
+  const secondCharQuickCheck2 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
+
+  const quickCheckValue2 = (firstCharQuickCheck2 << 16) ^ secondCharQuickCheck2;
+
+  if ((quickCheckValue2 & 0) === 0) {
+    const length0 = fiber0014(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
+    context.groupMarkerStart1 = groupMarkerStartCopy1;
+    context.groupMarkerEnd1 = groupMarkerEndCopy1;
+    context.groupMarkerStart4 = groupMarkerStartCopy4;
+    context.groupMarkerEnd4 = groupMarkerEndCopy4;
+    context.groupMarkerStart5 = groupMarkerStartCopy5;
+    context.groupMarkerEnd5 = groupMarkerEndCopy5;
+    context.groupMarkerStart6 = groupMarkerStartCopy6;
+    context.groupMarkerEnd6 = groupMarkerEndCopy6;
+    context.groupMarkerStart7 = groupMarkerStartCopy7;
+    context.groupMarkerEnd7 = groupMarkerEndCopy7;
   }
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
-  context.groupMarkerStart1 = groupMarkerStartCopy1;
-  context.groupMarkerEnd1 = groupMarkerEndCopy1;
-  context.groupMarkerStart4 = groupMarkerStartCopy4;
-  context.groupMarkerEnd4 = groupMarkerEndCopy4;
-  context.groupMarkerStart5 = groupMarkerStartCopy5;
-  context.groupMarkerEnd5 = groupMarkerEndCopy5;
-  context.groupMarkerStart6 = groupMarkerStartCopy6;
-  context.groupMarkerEnd6 = groupMarkerEndCopy6;
-  context.groupMarkerStart7 = groupMarkerStartCopy7;
-  context.groupMarkerEnd7 = groupMarkerEndCopy7;
-  const length1 = fiber0020(i, str, context);
-  if (length1 !== -1) {
-    return length1;
+  if ((quickCheckValue2 & 2147418112) === 2228224) {
+    const length1 = fiber0020(i, str, context);
+    if (length1 !== -1) {
+      return length1;
+    }
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
+    context.groupMarkerStart3 = groupMarkerStartCopy3;
+    context.groupMarkerEnd3 = groupMarkerEndCopy3;
+    context.groupMarkerStart4 = groupMarkerStartCopy4;
+    context.groupMarkerEnd4 = groupMarkerEndCopy4;
+    context.groupMarkerStart5 = groupMarkerStartCopy5;
+    context.groupMarkerEnd5 = groupMarkerEndCopy5;
+    context.groupMarkerStart6 = groupMarkerStartCopy6;
+    context.groupMarkerEnd6 = groupMarkerEndCopy6;
+    context.groupMarkerStart7 = groupMarkerStartCopy7;
+    context.groupMarkerEnd7 = groupMarkerEndCopy7;
   }
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
-  context.groupMarkerStart3 = groupMarkerStartCopy3;
-  context.groupMarkerEnd3 = groupMarkerEndCopy3;
-  context.groupMarkerStart4 = groupMarkerStartCopy4;
-  context.groupMarkerEnd4 = groupMarkerEndCopy4;
-  context.groupMarkerStart5 = groupMarkerStartCopy5;
-  context.groupMarkerEnd5 = groupMarkerEndCopy5;
-  context.groupMarkerStart6 = groupMarkerStartCopy6;
-  context.groupMarkerEnd6 = groupMarkerEndCopy6;
-  context.groupMarkerStart7 = groupMarkerStartCopy7;
-  context.groupMarkerEnd7 = groupMarkerEndCopy7;
   return -1;
 };
 

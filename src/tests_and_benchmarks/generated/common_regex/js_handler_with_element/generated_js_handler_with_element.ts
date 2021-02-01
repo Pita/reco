@@ -198,10 +198,12 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
 
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0007(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 16777216) === 0) {
+      const length0 = fiber0007(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
     if ((quickCheckValue0 & 2145517568) === 2228224) {
       const length1 = fiber0010(i, str, context);
@@ -560,10 +562,12 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
   const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
 
   nonBacktrackingDisjunction0: {
-    const length0 = fiber0015(i, str, context);
-    if (length0 !== -1) {
-      i = length0;
-      break nonBacktrackingDisjunction0;
+    if ((quickCheckValue0 & 16777216) === 0) {
+      const length0 = fiber0015(i, str, context);
+      if (length0 !== -1) {
+        i = length0;
+        break nonBacktrackingDisjunction0;
+      }
     }
     if ((quickCheckValue0 & 2145517568) === 2228224) {
       const length1 = fiber0018(i, str, context);

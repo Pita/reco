@@ -411,25 +411,6 @@ const fiber0011 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 51;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   /*
@@ -482,7 +463,7 @@ const fiber0011 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
 
-  if ((quickCheckValue4 & 2146435072) === 3145728) {
+  if ((quickCheckValue4 & 2146467808) === 3145760) {
     const length0 = fiber0008(i, str, context);
     if (length0 !== -1) {
       return length0;
@@ -702,7 +683,7 @@ const fiber0016 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
 
-  if ((quickCheckValue4 & 2145386496) === 2097152) {
+  if ((quickCheckValue4 & 2145419232) === 2097184) {
     const length0 = fiber0013(i, str, context);
     if (length0 !== -1) {
       return length0;
@@ -970,6 +951,15 @@ const fiber0026 = (i: number, str: string, context: Context): number => {
   }
 
   {
+    const charCode0 = str.charCodeAt(i + 0);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -1241,25 +1231,6 @@ const fiber0033 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 57;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 50;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   /*
@@ -1762,7 +1733,7 @@ const fiber0043 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue3 = (firstCharQuickCheck3 << 16) ^ secondCharQuickCheck3;
 
-  if ((quickCheckValue3 & 2146435072) === 3145728) {
+  if ((quickCheckValue3 & 2146467808) === 3145760) {
     const length0 = fiber0040(i, str, context);
     if (length0 !== -1) {
       return length0;
@@ -1918,7 +1889,7 @@ const fiber0048 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
 
-  if ((quickCheckValue0 & 2146435072) === 3145728) {
+  if ((quickCheckValue0 & 2146467808) === 3145760) {
     const length0 = fiber0044(i, str, context);
     if (length0 !== -1) {
       return length0;

@@ -18,7 +18,12 @@ const handleBacktrackingDisjunction = (
   flags: Flags,
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
-  const quickChecks = computeQuickChecks(alternatives, flags, literal);
+  const quickChecks = computeQuickChecks(
+    alternatives,
+    currentFiber,
+    flags,
+    literal,
+  );
   const mappedAlternatives = alternatives.map((alternative, i) =>
     handleAlternative(
       alternative,
@@ -147,7 +152,12 @@ const handleNonBacktrackingDisjunction = (
   flags: Flags,
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
-  const quickChecks = computeQuickChecks(alternatives, flags, literal);
+  const quickChecks = computeQuickChecks(
+    alternatives,
+    currentFiber,
+    flags,
+    literal,
+  );
 
   const mappedAlternatives = alternatives.map((alternative, i) =>
     handleAlternative(
@@ -207,12 +217,17 @@ const handleNonBacktrackingDisjunction = (
 
 const computeQuickChecks = (
   alternatives: AST.Alternative[],
+  currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
 ) => {
   let isQuickCheckable = false;
   const quickChecks = alternatives.map((alternative) => {
-    const analyzed = dfaAnalyzeElement([alternative], literal, Infinity);
+    const analyzed = dfaAnalyzeElement(
+      [alternative, ...currentFiber.meta.path],
+      literal,
+      2,
+    );
     if (!analyzed) {
       return null;
     }

@@ -567,25 +567,6 @@ const fiber0017 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 51;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   /*
@@ -638,7 +619,7 @@ const fiber0017 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
 
-  if ((quickCheckValue4 & 2146435072) === 3145728) {
+  if ((quickCheckValue4 & 2146467808) === 3145760) {
     const length0 = fiber0008(i, str, context);
     if (length0 !== -1) {
       return length0;
@@ -1154,7 +1135,7 @@ const fiber0032 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
 
-  if ((quickCheckValue4 & 2145386496) === 2097152) {
+  if ((quickCheckValue4 & 2145419232) === 2097184) {
     const length0 = fiber0019(i, str, context);
     if (length0 !== -1) {
       return length0;
@@ -1482,6 +1463,15 @@ const fiber0042 = (i: number, str: string, context: Context): number => {
   }
 
   {
+    const charCode0 = str.charCodeAt(i + 0);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 49;
+
+    if (!result0) {
+      return -1;
+    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -1753,25 +1743,6 @@ const fiber0049 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 57;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 50;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   /*
@@ -1824,7 +1795,7 @@ const fiber0049 = (i: number, str: string, context: Context): number => {
   const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
 
   nonBacktrackingDisjunction4: {
-    if ((quickCheckValue4 & 2147287040) === 3145728) {
+    if ((quickCheckValue4 & 2147319776) === 3145760) {
       const length0 = fiber0050(i, str, context);
       if (length0 !== -1) {
         i = length0;
@@ -2666,7 +2637,7 @@ const fiber0073 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue3 = (firstCharQuickCheck3 << 16) ^ secondCharQuickCheck3;
 
-  if ((quickCheckValue3 & 2146435072) === 3145728) {
+  if ((quickCheckValue3 & 2146467808) === 3145760) {
     const length0 = fiber0058(i, str, context);
     if (length0 !== -1) {
       return length0;
@@ -2870,7 +2841,7 @@ const fiber0078 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue0 = (firstCharQuickCheck0 << 16) ^ secondCharQuickCheck0;
 
-  if ((quickCheckValue0 & 2146435072) === 3145728) {
+  if ((quickCheckValue0 & 2146467808) === 3145760) {
     const length0 = fiber0074(i, str, context);
     if (length0 !== -1) {
       return length0;
@@ -2924,14 +2895,16 @@ const fiber0079 = (i: number, str: string, context: Context): number => {
 
   const quickCheckValue1 = (firstCharQuickCheck1 << 16) ^ secondCharQuickCheck1;
 
-  const length0 = fiber0035(i, str, context);
-  if (length0 !== -1) {
-    return length0;
+  if ((quickCheckValue1 & 2147385334) === 3276848) {
+    const length0 = fiber0035(i, str, context);
+    if (length0 !== -1) {
+      return length0;
+    }
+    context.groupMarkerStart0 = groupMarkerStartCopy0;
+    context.groupMarkerEnd0 = groupMarkerEndCopy0;
+    context.groupMarkerStart1 = groupMarkerStartCopy1;
+    context.groupMarkerEnd1 = groupMarkerEndCopy1;
   }
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
-  context.groupMarkerStart1 = groupMarkerStartCopy1;
-  context.groupMarkerEnd1 = groupMarkerEndCopy1;
   if ((quickCheckValue1 & 2147450879) === 3276857) {
     const length1 = fiber0049(i, str, context);
     if (length1 !== -1) {
@@ -2940,11 +2913,13 @@ const fiber0079 = (i: number, str: string, context: Context): number => {
     context.groupMarkerStart2 = groupMarkerStartCopy2;
     context.groupMarkerEnd2 = groupMarkerEndCopy2;
   }
-  const length2 = fiber0078(i, str, context);
-  if (length2 !== -1) {
-    return length2;
+  if ((quickCheckValue1 & 2146467808) === 3145760) {
+    const length2 = fiber0078(i, str, context);
+    if (length2 !== -1) {
+      return length2;
+    }
+    context.groupMarkerStart3 = groupMarkerStartCopy3;
+    context.groupMarkerEnd3 = groupMarkerEndCopy3;
   }
-  context.groupMarkerStart3 = groupMarkerStartCopy3;
-  context.groupMarkerEnd3 = groupMarkerEndCopy3;
   return -1;
 };
