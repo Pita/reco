@@ -365,8 +365,7 @@ const lazyQuantifier0003 = (
 
   if (context.quantifierCounter0 >= 1) {
     const followUpResult = fiber0001(start, str, context);
-    if (followUpResult === -1) {
-    } else {
+    if (followUpResult !== -1) {
       return followUpResult;
     }
   }

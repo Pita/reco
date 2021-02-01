@@ -204,8 +204,7 @@ const lazyQuantifier0003 = (
   context.quantifierCounter0++;
 
   const followUpResult = fiber0001(start, str, context);
-  if (followUpResult === -1) {
-  } else {
+  if (followUpResult !== -1) {
     return followUpResult;
   }
 

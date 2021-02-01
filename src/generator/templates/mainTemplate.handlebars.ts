@@ -588,21 +588,12 @@ export function generatedRegexMatcher(str: string) {
       {{#if minCount}}
         if (context.quantifierCounter{{{quantifierCounterIndex}}} >= {{{minCount}}}) {
       {{/if}}
-        {{#each followUp.meta.groups}}
-          const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
-          const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
-        {{/each}}
         const followUpResult = {{{followUp.functionName}}}(
           start, 
           str, 
           context,
         );
-        if (followUpResult === -1) {
-          {{#each followUp.meta.groups}}
-            context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-            context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-          {{/each}}
-        } else {
+        if (followUpResult !== -1) {
           return followUpResult;
         }
 
