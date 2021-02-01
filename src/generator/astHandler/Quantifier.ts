@@ -211,7 +211,7 @@ const generateBacktrackingQuantifier = (
     quantifier.element,
     collector,
     quantifierFinalFiber,
-    flags,
+    generateHandlerFlags(quantifier, flags),
     literal,
   );
 
@@ -240,6 +240,7 @@ const generateBacktrackingQuantifier = (
       type: 'quantifierStarter',
       data: {
         maxOrMinCount: quantifierHandler.maxOrMinCount,
+        shouldBackupPrevious: !!flags.INTERNAL_can_repeat,
         functionName: quantifierHandler.functionName,
         quantifierCounterIndex: quantifierHandler.quantifierCounterIndex,
       },
@@ -249,6 +250,13 @@ const generateBacktrackingQuantifier = (
     maxCharLength,
     quantifier,
   );
+};
+
+const generateHandlerFlags = (quantifier: AST.Quantifier, flags: Flags) => {
+  return {
+    ...flags,
+    INTERNAL_can_repeat: flags.INTERNAL_can_repeat || quantifier.max > 1,
+  };
 };
 
 const generateBacktrackingFixedLengthQuantifier = (
@@ -264,7 +272,7 @@ const generateBacktrackingFixedLengthQuantifier = (
     quantifier.element,
     collector,
     collector.createFinalFiber(pathForHandler),
-    flags,
+    generateHandlerFlags(quantifier, flags),
     literal,
   );
 
@@ -319,7 +327,7 @@ const generateNonBacktrackingQuantifier = (
     quantifier.element,
     collector,
     collector.createFinalFiber(pathForHandler),
-    flags,
+    generateHandlerFlags(quantifier, flags),
     literal,
   );
 
@@ -430,7 +438,7 @@ const generateLazyQuantifier = (
       quantifier.element,
       collector,
       collector.createFinalFiber(pathForHandler),
-      flags,
+      generateHandlerFlags(quantifier, flags),
       literal,
     );
 

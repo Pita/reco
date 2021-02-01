@@ -184,10 +184,9 @@ const fiber0006 = (i: number, str: string, context: Context): number => {
    * /aa?aa?(aa?)+?b/
    *        ^^^^^^^
    */
-  let matchCountCopylazyQuantifier0003 = context.quantifierCounter0;
   context.quantifierCounter0 = -1;
   const cursorAfterQuantifier = lazyQuantifier0003(i, str, context);
-  context.quantifierCounter0 = matchCountCopylazyQuantifier0003;
+  context.quantifierCounter0 = -1;
 
   return cursorAfterQuantifier;
 };

@@ -130,7 +130,7 @@ export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
 export interface QuantifierStarterTemplateAtom extends BaseTemplateAtom {
   type: 'quantifierStarter';
   data: {
-    maxOrMinCount?: boolean;
+    backupCounter: boolean;
     functionName: string;
     quantifierCounterIndex?: number;
   };

@@ -161,10 +161,9 @@ const fiber0006 = (i: number, str: string, context: Context): number => {
    * /aa?aa?(aa?)+/
    *        ^^^^^^
    */
-  let matchCountCopygreedyQuantifier0003 = context.quantifierCounter0;
   context.quantifierCounter0 = -1;
   const cursorAfterQuantifier = greedyQuantifier0003(i, str, context);
-  context.quantifierCounter0 = matchCountCopygreedyQuantifier0003;
+  context.quantifierCounter0 = -1;
 
   return cursorAfterQuantifier;
 };

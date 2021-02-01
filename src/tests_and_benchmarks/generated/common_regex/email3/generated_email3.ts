@@ -727,10 +727,9 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
    * ...]{0,2}])|(([a-zA-Z\-0-9][a-zA-Z\-0-9]✱\.)+[a-zA-Z][a...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0010 = context.quantifierCounter0;
   context.quantifierCounter0 = -1;
   const cursorAfterQuantifier = greedyQuantifier0010(i, str, context);
-  context.quantifierCounter0 = matchCountCopygreedyQuantifier0010;
+  context.quantifierCounter0 = -1;
 
   return cursorAfterQuantifier;
 };

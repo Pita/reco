@@ -584,10 +584,9 @@ const fiber0009 = (i: number, str: string, context: Context): number => {
    * ...ps?:\/\/)?(www\.)?[-a-zA-Z0-...
    *              ^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0008 = context.quantifierCounter0;
   context.quantifierCounter0 = -1;
   const cursorAfterQuantifier = greedyQuantifier0008(i, str, context);
-  context.quantifierCounter0 = matchCountCopygreedyQuantifier0008;
+  context.quantifierCounter0 = -1;
 
   return cursorAfterQuantifier;
 };
@@ -751,6 +750,7 @@ const greedyQuantifier0008 = (
 ): number => {
   context.quantifierCounter0++;
 
+  // TODO: could be an if over the next block
   if (context.quantifierCounter0 === 1) {
     return fiber0006(start, str, context);
   }

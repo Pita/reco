@@ -531,10 +531,9 @@ const fiber0016 = (i: number, str: string, context: Context): number => {
    * ... \\\/]?)✱)(?:[\-\.\ \\\/]?(?:#|ext(?:\.?|ension)|x)[\-\.\ \\\/]?(\d\d✱))?$/
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0003 = context.quantifierCounter0;
   context.quantifierCounter0 = -1;
   const cursorAfterQuantifier = greedyQuantifier0003(i, str, context);
-  context.quantifierCounter0 = matchCountCopygreedyQuantifier0003;
+  context.quantifierCounter0 = -1;
 
   return cursorAfterQuantifier;
 };
@@ -781,9 +780,7 @@ const fiber0025 = (i: number, str: string, context: Context): number => {
    * ... \\\/]?)?((?:\(?\d\d✱\)?[\-\.\ \\\/]?)✱)(?:[\-\.\...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const cursorAfterQuantifier = greedyQuantifier0018(i, str, context);
-
-  return cursorAfterQuantifier;
+  return greedyQuantifier0018(i, str, context);
 };
 const fiber0026 = (i: number, str: string, context: Context): number => {
   return greedyQuantifier0027(i, str, context);
@@ -1215,10 +1212,9 @@ const fiber0041 = (i: number, str: string, context: Context): number => {
    * /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\...
    *      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0031 = context.quantifierCounter2;
   context.quantifierCounter2 = -1;
   const cursorAfterQuantifier = greedyQuantifier0031(i, str, context);
-  context.quantifierCounter2 = matchCountCopygreedyQuantifier0031;
+  context.quantifierCounter2 = -1;
 
   return cursorAfterQuantifier;
 };
@@ -1236,10 +1232,9 @@ const fiber0042 = (i: number, str: string, context: Context): number => {
    * /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d\...
    *   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  let matchCountCopygreedyQuantifier0027 = context.quantifierCounter1;
   context.quantifierCounter1 = -1;
   const cursorAfterQuantifier = greedyQuantifier0027(i, str, context);
-  context.quantifierCounter1 = matchCountCopygreedyQuantifier0027;
+  context.quantifierCounter1 = -1;
 
   return cursorAfterQuantifier;
 };
@@ -1255,6 +1250,7 @@ const greedyQuantifier0003 = (
 ): number => {
   context.quantifierCounter0++;
 
+  // TODO: could be an if over the next block
   if (context.quantifierCounter0 === 1) {
     return fiber0001(start, str, context);
   }
@@ -1303,6 +1299,7 @@ const greedyQuantifier0027 = (
 ): number => {
   context.quantifierCounter1++;
 
+  // TODO: could be an if over the next block
   if (context.quantifierCounter1 === 1) {
     return fiber0025(start, str, context);
   }
@@ -1332,6 +1329,7 @@ const greedyQuantifier0031 = (
 ): number => {
   context.quantifierCounter2++;
 
+  // TODO: could be an if over the next block
   if (context.quantifierCounter2 === 1) {
     return fiber0029(start, str, context);
   }

@@ -511,15 +511,23 @@ export function generatedRegexMatcher(str: string) {
       {{/switchCase}}
       {{#switchCase 'type' 'quantifierStarter'}}
         {{#if maxOrMinCount}}
-          let matchCountCopy{{{functionName}}} = context.quantifierCounter{{{quantifierCounterIndex}}};
+          {{#if shouldBackupPrevious}}
+            let matchCountCopy{{{functionName}}} = context.quantifierCounter{{{quantifierCounterIndex}}};
+          {{/if}}
           context.quantifierCounter{{{quantifierCounterIndex}}} = -1;
+          const cursorAfterQuantifier = {{{functionName}}}(i, str, context);
+          {{#if shouldBackupPrevious}}
+            context.quantifierCounter{{{quantifierCounterIndex}}} = matchCountCopy{{{functionName}}};
+          {{/if}}
+          {{#unless shouldBackupPrevious}}
+            context.quantifierCounter{{{quantifierCounterIndex}}} = -1;
+          {{/unless}}
+          
+          return cursorAfterQuantifier;
         {{/if}}
-        const cursorAfterQuantifier = {{{functionName}}}(i, str, context);
-        {{#if maxOrMinCount}}
-          context.quantifierCounter{{{quantifierCounterIndex}}} = matchCountCopy{{{functionName}}};
-        {{/if}}
-
-        return cursorAfterQuantifier;
+        {{#unless maxOrMinCount}}
+          return {{{functionName}}}(i, str, context);
+        {{/unless}}
       {{/switchCase}}
       {{#switchCase 'type' 'nonBacktrackingDisjunction'}}
         {{#if hasQuickCheck}}
@@ -644,6 +652,7 @@ export function generatedRegexMatcher(str: string) {
     {{/if}}
 
     {{#if maxCount}}
+    // TODO: could be an if over the next block
       if (context.quantifierCounter{{{quantifierCounterIndex}}} === {{{maxCount}}}) {
         {{#if followUp}}
           return {{{followUp.functionName}}}(
