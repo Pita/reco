@@ -1424,19 +1424,5 @@ const greedyQuantifier0010 = (
     return -1;
   }
 
-  const groupMarkerStartCopy4 = context.groupMarkerStart4;
-  const groupMarkerEndCopy4 = context.groupMarkerEnd4;
-  const groupMarkerStartCopy6 = context.groupMarkerStart6;
-  const groupMarkerEndCopy6 = context.groupMarkerEnd6;
-
-  const followUpResult = fiber0007(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart4 = groupMarkerStartCopy4;
-    context.groupMarkerEnd4 = groupMarkerEndCopy4;
-    context.groupMarkerStart6 = groupMarkerStartCopy6;
-    context.groupMarkerEnd6 = groupMarkerEndCopy6;
-    context.quantifierCounter0--;
-  }
-  return followUpResult;
+  return fiber0007(start, str, context);
 };

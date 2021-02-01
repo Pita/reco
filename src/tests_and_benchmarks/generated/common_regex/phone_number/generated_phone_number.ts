@@ -1271,12 +1271,7 @@ const greedyQuantifier0003 = (
   context.groupMarkerStart2 = groupMarkerStartCopy2;
   context.groupMarkerEnd2 = groupMarkerEndCopy2;
 
-  const followUpResult = fiber0001(start, str, context);
-
-  if (followUpResult === -1) {
-    context.quantifierCounter0--;
-  }
-  return followUpResult;
+  return fiber0001(start, str, context);
 };
 /*
  * ... \\\/]?)?((?:\(?\d\d✱\)?[\-\.\ \\\/]?)✱)(?:[\-\.\...
@@ -1295,20 +1290,7 @@ const greedyQuantifier0018 = (
 
   // recursion failed, reset groups
 
-  const groupMarkerStartCopy1 = context.groupMarkerStart1;
-  const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-  const groupMarkerStartCopy2 = context.groupMarkerStart2;
-  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
-
-  const followUpResult = fiber0016(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart1 = groupMarkerStartCopy1;
-    context.groupMarkerEnd1 = groupMarkerEndCopy1;
-    context.groupMarkerStart2 = groupMarkerStartCopy2;
-    context.groupMarkerEnd2 = groupMarkerEndCopy2;
-  }
-  return followUpResult;
+  return fiber0016(start, str, context);
 };
 /*
  * /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d\...
@@ -1337,21 +1319,7 @@ const greedyQuantifier0027 = (
   context.groupMarkerStart0 = groupMarkerStartCopy0;
   context.groupMarkerEnd0 = groupMarkerEndCopy0;
 
-  const groupMarkerStartCopy1 = context.groupMarkerStart1;
-  const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-  const groupMarkerStartCopy2 = context.groupMarkerStart2;
-  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
-
-  const followUpResult = fiber0025(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart1 = groupMarkerStartCopy1;
-    context.groupMarkerEnd1 = groupMarkerEndCopy1;
-    context.groupMarkerStart2 = groupMarkerStartCopy2;
-    context.groupMarkerEnd2 = groupMarkerEndCopy2;
-    context.quantifierCounter1--;
-  }
-  return followUpResult;
+  return fiber0025(start, str, context);
 };
 /*
  * /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\...
@@ -1380,10 +1348,5 @@ const greedyQuantifier0031 = (
   context.groupMarkerStart0 = groupMarkerStartCopy0;
   context.groupMarkerEnd0 = groupMarkerEndCopy0;
 
-  const followUpResult = fiber0029(start, str, context);
-
-  if (followUpResult === -1) {
-    context.quantifierCounter2--;
-  }
-  return followUpResult;
+  return fiber0029(start, str, context);
 };

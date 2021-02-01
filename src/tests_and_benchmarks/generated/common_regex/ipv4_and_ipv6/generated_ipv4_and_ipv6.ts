@@ -19813,21 +19813,7 @@ const greedyQuantifier0036 = (
   context.groupMarkerStart81 = groupMarkerStartCopy81;
   context.groupMarkerEnd81 = groupMarkerEndCopy81;
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const groupMarkerStartCopy6 = context.groupMarkerStart6;
-  const groupMarkerEndCopy6 = context.groupMarkerEnd6;
-
-  const followUpResult = fiber0033(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.groupMarkerStart6 = groupMarkerStartCopy6;
-    context.groupMarkerEnd6 = groupMarkerEndCopy6;
-    context.quantifierCounter0--;
-  }
-  return followUpResult;
+  return fiber0033(start, str, context);
 };
 /*
  * ...}){1,3})|((:[0-9A-Fa-f][0-9A-Fa-f]{0,3})?:((2(?:5[0...
@@ -19856,57 +19842,7 @@ const greedyQuantifier0179 = (
   context.groupMarkerStart33 = groupMarkerStartCopy33;
   context.groupMarkerEnd33 = groupMarkerEndCopy33;
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const groupMarkerStartCopy6 = context.groupMarkerStart6;
-  const groupMarkerEndCopy6 = context.groupMarkerEnd6;
-  const groupMarkerStartCopy7 = context.groupMarkerStart7;
-  const groupMarkerEndCopy7 = context.groupMarkerEnd7;
-  const groupMarkerStartCopy27 = context.groupMarkerStart27;
-  const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-  const groupMarkerStartCopy29 = context.groupMarkerStart29;
-  const groupMarkerEndCopy29 = context.groupMarkerEnd29;
-  const groupMarkerStartCopy32 = context.groupMarkerStart32;
-  const groupMarkerEndCopy32 = context.groupMarkerEnd32;
-  const groupMarkerStartCopy34 = context.groupMarkerStart34;
-  const groupMarkerEndCopy34 = context.groupMarkerEnd34;
-  const groupMarkerStartCopy35 = context.groupMarkerStart35;
-  const groupMarkerEndCopy35 = context.groupMarkerEnd35;
-  const groupMarkerStartCopy36 = context.groupMarkerStart36;
-  const groupMarkerEndCopy36 = context.groupMarkerEnd36;
-  const groupMarkerStartCopy37 = context.groupMarkerStart37;
-  const groupMarkerEndCopy37 = context.groupMarkerEnd37;
-  const groupMarkerStartCopy81 = context.groupMarkerStart81;
-  const groupMarkerEndCopy81 = context.groupMarkerEnd81;
-
-  const followUpResult = fiber0177(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.groupMarkerStart6 = groupMarkerStartCopy6;
-    context.groupMarkerEnd6 = groupMarkerEndCopy6;
-    context.groupMarkerStart7 = groupMarkerStartCopy7;
-    context.groupMarkerEnd7 = groupMarkerEndCopy7;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart29 = groupMarkerStartCopy29;
-    context.groupMarkerEnd29 = groupMarkerEndCopy29;
-    context.groupMarkerStart32 = groupMarkerStartCopy32;
-    context.groupMarkerEnd32 = groupMarkerEndCopy32;
-    context.groupMarkerStart34 = groupMarkerStartCopy34;
-    context.groupMarkerEnd34 = groupMarkerEndCopy34;
-    context.groupMarkerStart35 = groupMarkerStartCopy35;
-    context.groupMarkerEnd35 = groupMarkerEndCopy35;
-    context.groupMarkerStart36 = groupMarkerStartCopy36;
-    context.groupMarkerEnd36 = groupMarkerEndCopy36;
-    context.groupMarkerStart37 = groupMarkerStartCopy37;
-    context.groupMarkerEnd37 = groupMarkerEndCopy37;
-    context.groupMarkerStart81 = groupMarkerStartCopy81;
-    context.groupMarkerEnd81 = groupMarkerEndCopy81;
-    context.quantifierCounter1--;
-  }
-  return followUpResult;
+  return fiber0177(start, str, context);
 };
 /*
  * ...}){1,4})|((:[0-9A-Fa-f][0-9A-Fa-f]{0,3}){0,2}:((2(?:5[0...
@@ -19935,57 +19871,7 @@ const greedyQuantifier0226 = (
   context.groupMarkerStart44 = groupMarkerStartCopy44;
   context.groupMarkerEnd44 = groupMarkerEndCopy44;
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const groupMarkerStartCopy6 = context.groupMarkerStart6;
-  const groupMarkerEndCopy6 = context.groupMarkerEnd6;
-  const groupMarkerStartCopy7 = context.groupMarkerStart7;
-  const groupMarkerEndCopy7 = context.groupMarkerEnd7;
-  const groupMarkerStartCopy38 = context.groupMarkerStart38;
-  const groupMarkerEndCopy38 = context.groupMarkerEnd38;
-  const groupMarkerStartCopy40 = context.groupMarkerStart40;
-  const groupMarkerEndCopy40 = context.groupMarkerEnd40;
-  const groupMarkerStartCopy43 = context.groupMarkerStart43;
-  const groupMarkerEndCopy43 = context.groupMarkerEnd43;
-  const groupMarkerStartCopy45 = context.groupMarkerStart45;
-  const groupMarkerEndCopy45 = context.groupMarkerEnd45;
-  const groupMarkerStartCopy46 = context.groupMarkerStart46;
-  const groupMarkerEndCopy46 = context.groupMarkerEnd46;
-  const groupMarkerStartCopy47 = context.groupMarkerStart47;
-  const groupMarkerEndCopy47 = context.groupMarkerEnd47;
-  const groupMarkerStartCopy48 = context.groupMarkerStart48;
-  const groupMarkerEndCopy48 = context.groupMarkerEnd48;
-  const groupMarkerStartCopy81 = context.groupMarkerStart81;
-  const groupMarkerEndCopy81 = context.groupMarkerEnd81;
-
-  const followUpResult = fiber0224(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.groupMarkerStart6 = groupMarkerStartCopy6;
-    context.groupMarkerEnd6 = groupMarkerEndCopy6;
-    context.groupMarkerStart7 = groupMarkerStartCopy7;
-    context.groupMarkerEnd7 = groupMarkerEndCopy7;
-    context.groupMarkerStart38 = groupMarkerStartCopy38;
-    context.groupMarkerEnd38 = groupMarkerEndCopy38;
-    context.groupMarkerStart40 = groupMarkerStartCopy40;
-    context.groupMarkerEnd40 = groupMarkerEndCopy40;
-    context.groupMarkerStart43 = groupMarkerStartCopy43;
-    context.groupMarkerEnd43 = groupMarkerEndCopy43;
-    context.groupMarkerStart45 = groupMarkerStartCopy45;
-    context.groupMarkerEnd45 = groupMarkerEndCopy45;
-    context.groupMarkerStart46 = groupMarkerStartCopy46;
-    context.groupMarkerEnd46 = groupMarkerEndCopy46;
-    context.groupMarkerStart47 = groupMarkerStartCopy47;
-    context.groupMarkerEnd47 = groupMarkerEndCopy47;
-    context.groupMarkerStart48 = groupMarkerStartCopy48;
-    context.groupMarkerEnd48 = groupMarkerEndCopy48;
-    context.groupMarkerStart81 = groupMarkerStartCopy81;
-    context.groupMarkerEnd81 = groupMarkerEndCopy81;
-    context.quantifierCounter2--;
-  }
-  return followUpResult;
+  return fiber0224(start, str, context);
 };
 /*
  * ...}){1,5})|((:[0-9A-Fa-f][0-9A-Fa-f]{0,3}){0,3}:((2(?:5[0...
@@ -20014,57 +19900,7 @@ const greedyQuantifier0272 = (
   context.groupMarkerStart55 = groupMarkerStartCopy55;
   context.groupMarkerEnd55 = groupMarkerEndCopy55;
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const groupMarkerStartCopy6 = context.groupMarkerStart6;
-  const groupMarkerEndCopy6 = context.groupMarkerEnd6;
-  const groupMarkerStartCopy7 = context.groupMarkerStart7;
-  const groupMarkerEndCopy7 = context.groupMarkerEnd7;
-  const groupMarkerStartCopy49 = context.groupMarkerStart49;
-  const groupMarkerEndCopy49 = context.groupMarkerEnd49;
-  const groupMarkerStartCopy51 = context.groupMarkerStart51;
-  const groupMarkerEndCopy51 = context.groupMarkerEnd51;
-  const groupMarkerStartCopy54 = context.groupMarkerStart54;
-  const groupMarkerEndCopy54 = context.groupMarkerEnd54;
-  const groupMarkerStartCopy56 = context.groupMarkerStart56;
-  const groupMarkerEndCopy56 = context.groupMarkerEnd56;
-  const groupMarkerStartCopy57 = context.groupMarkerStart57;
-  const groupMarkerEndCopy57 = context.groupMarkerEnd57;
-  const groupMarkerStartCopy58 = context.groupMarkerStart58;
-  const groupMarkerEndCopy58 = context.groupMarkerEnd58;
-  const groupMarkerStartCopy59 = context.groupMarkerStart59;
-  const groupMarkerEndCopy59 = context.groupMarkerEnd59;
-  const groupMarkerStartCopy81 = context.groupMarkerStart81;
-  const groupMarkerEndCopy81 = context.groupMarkerEnd81;
-
-  const followUpResult = fiber0270(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.groupMarkerStart6 = groupMarkerStartCopy6;
-    context.groupMarkerEnd6 = groupMarkerEndCopy6;
-    context.groupMarkerStart7 = groupMarkerStartCopy7;
-    context.groupMarkerEnd7 = groupMarkerEndCopy7;
-    context.groupMarkerStart49 = groupMarkerStartCopy49;
-    context.groupMarkerEnd49 = groupMarkerEndCopy49;
-    context.groupMarkerStart51 = groupMarkerStartCopy51;
-    context.groupMarkerEnd51 = groupMarkerEndCopy51;
-    context.groupMarkerStart54 = groupMarkerStartCopy54;
-    context.groupMarkerEnd54 = groupMarkerEndCopy54;
-    context.groupMarkerStart56 = groupMarkerStartCopy56;
-    context.groupMarkerEnd56 = groupMarkerEndCopy56;
-    context.groupMarkerStart57 = groupMarkerStartCopy57;
-    context.groupMarkerEnd57 = groupMarkerEndCopy57;
-    context.groupMarkerStart58 = groupMarkerStartCopy58;
-    context.groupMarkerEnd58 = groupMarkerEndCopy58;
-    context.groupMarkerStart59 = groupMarkerStartCopy59;
-    context.groupMarkerEnd59 = groupMarkerEndCopy59;
-    context.groupMarkerStart81 = groupMarkerStartCopy81;
-    context.groupMarkerEnd81 = groupMarkerEndCopy81;
-    context.quantifierCounter3--;
-  }
-  return followUpResult;
+  return fiber0270(start, str, context);
 };
 /*
  * ...}){1,6})|((:[0-9A-Fa-f][0-9A-Fa-f]{0,3}){0,4}:((2(?:5[0...
@@ -20093,57 +19929,7 @@ const greedyQuantifier0317 = (
   context.groupMarkerStart66 = groupMarkerStartCopy66;
   context.groupMarkerEnd66 = groupMarkerEndCopy66;
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const groupMarkerStartCopy6 = context.groupMarkerStart6;
-  const groupMarkerEndCopy6 = context.groupMarkerEnd6;
-  const groupMarkerStartCopy7 = context.groupMarkerStart7;
-  const groupMarkerEndCopy7 = context.groupMarkerEnd7;
-  const groupMarkerStartCopy60 = context.groupMarkerStart60;
-  const groupMarkerEndCopy60 = context.groupMarkerEnd60;
-  const groupMarkerStartCopy62 = context.groupMarkerStart62;
-  const groupMarkerEndCopy62 = context.groupMarkerEnd62;
-  const groupMarkerStartCopy65 = context.groupMarkerStart65;
-  const groupMarkerEndCopy65 = context.groupMarkerEnd65;
-  const groupMarkerStartCopy67 = context.groupMarkerStart67;
-  const groupMarkerEndCopy67 = context.groupMarkerEnd67;
-  const groupMarkerStartCopy68 = context.groupMarkerStart68;
-  const groupMarkerEndCopy68 = context.groupMarkerEnd68;
-  const groupMarkerStartCopy69 = context.groupMarkerStart69;
-  const groupMarkerEndCopy69 = context.groupMarkerEnd69;
-  const groupMarkerStartCopy70 = context.groupMarkerStart70;
-  const groupMarkerEndCopy70 = context.groupMarkerEnd70;
-  const groupMarkerStartCopy81 = context.groupMarkerStart81;
-  const groupMarkerEndCopy81 = context.groupMarkerEnd81;
-
-  const followUpResult = fiber0315(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.groupMarkerStart6 = groupMarkerStartCopy6;
-    context.groupMarkerEnd6 = groupMarkerEndCopy6;
-    context.groupMarkerStart7 = groupMarkerStartCopy7;
-    context.groupMarkerEnd7 = groupMarkerEndCopy7;
-    context.groupMarkerStart60 = groupMarkerStartCopy60;
-    context.groupMarkerEnd60 = groupMarkerEndCopy60;
-    context.groupMarkerStart62 = groupMarkerStartCopy62;
-    context.groupMarkerEnd62 = groupMarkerEndCopy62;
-    context.groupMarkerStart65 = groupMarkerStartCopy65;
-    context.groupMarkerEnd65 = groupMarkerEndCopy65;
-    context.groupMarkerStart67 = groupMarkerStartCopy67;
-    context.groupMarkerEnd67 = groupMarkerEndCopy67;
-    context.groupMarkerStart68 = groupMarkerStartCopy68;
-    context.groupMarkerEnd68 = groupMarkerEndCopy68;
-    context.groupMarkerStart69 = groupMarkerStartCopy69;
-    context.groupMarkerEnd69 = groupMarkerEndCopy69;
-    context.groupMarkerStart70 = groupMarkerStartCopy70;
-    context.groupMarkerEnd70 = groupMarkerEndCopy70;
-    context.groupMarkerStart81 = groupMarkerStartCopy81;
-    context.groupMarkerEnd81 = groupMarkerEndCopy81;
-    context.quantifierCounter4--;
-  }
-  return followUpResult;
+  return fiber0315(start, str, context);
 };
 /*
  * ...}){1,7})|((:[0-9A-Fa-f][0-9A-Fa-f]{0,3}){0,5}:((2(?:5[0...
@@ -20172,55 +19958,5 @@ const greedyQuantifier0361 = (
   context.groupMarkerStart76 = groupMarkerStartCopy76;
   context.groupMarkerEnd76 = groupMarkerEndCopy76;
 
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const groupMarkerStartCopy6 = context.groupMarkerStart6;
-  const groupMarkerEndCopy6 = context.groupMarkerEnd6;
-  const groupMarkerStartCopy7 = context.groupMarkerStart7;
-  const groupMarkerEndCopy7 = context.groupMarkerEnd7;
-  const groupMarkerStartCopy71 = context.groupMarkerStart71;
-  const groupMarkerEndCopy71 = context.groupMarkerEnd71;
-  const groupMarkerStartCopy72 = context.groupMarkerStart72;
-  const groupMarkerEndCopy72 = context.groupMarkerEnd72;
-  const groupMarkerStartCopy75 = context.groupMarkerStart75;
-  const groupMarkerEndCopy75 = context.groupMarkerEnd75;
-  const groupMarkerStartCopy77 = context.groupMarkerStart77;
-  const groupMarkerEndCopy77 = context.groupMarkerEnd77;
-  const groupMarkerStartCopy78 = context.groupMarkerStart78;
-  const groupMarkerEndCopy78 = context.groupMarkerEnd78;
-  const groupMarkerStartCopy79 = context.groupMarkerStart79;
-  const groupMarkerEndCopy79 = context.groupMarkerEnd79;
-  const groupMarkerStartCopy80 = context.groupMarkerStart80;
-  const groupMarkerEndCopy80 = context.groupMarkerEnd80;
-  const groupMarkerStartCopy81 = context.groupMarkerStart81;
-  const groupMarkerEndCopy81 = context.groupMarkerEnd81;
-
-  const followUpResult = fiber0359(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
-    context.groupMarkerStart6 = groupMarkerStartCopy6;
-    context.groupMarkerEnd6 = groupMarkerEndCopy6;
-    context.groupMarkerStart7 = groupMarkerStartCopy7;
-    context.groupMarkerEnd7 = groupMarkerEndCopy7;
-    context.groupMarkerStart71 = groupMarkerStartCopy71;
-    context.groupMarkerEnd71 = groupMarkerEndCopy71;
-    context.groupMarkerStart72 = groupMarkerStartCopy72;
-    context.groupMarkerEnd72 = groupMarkerEndCopy72;
-    context.groupMarkerStart75 = groupMarkerStartCopy75;
-    context.groupMarkerEnd75 = groupMarkerEndCopy75;
-    context.groupMarkerStart77 = groupMarkerStartCopy77;
-    context.groupMarkerEnd77 = groupMarkerEndCopy77;
-    context.groupMarkerStart78 = groupMarkerStartCopy78;
-    context.groupMarkerEnd78 = groupMarkerEndCopy78;
-    context.groupMarkerStart79 = groupMarkerStartCopy79;
-    context.groupMarkerEnd79 = groupMarkerEndCopy79;
-    context.groupMarkerStart80 = groupMarkerStartCopy80;
-    context.groupMarkerEnd80 = groupMarkerEndCopy80;
-    context.groupMarkerStart81 = groupMarkerStartCopy81;
-    context.groupMarkerEnd81 = groupMarkerEndCopy81;
-    context.quantifierCounter5--;
-  }
-  return followUpResult;
+  return fiber0359(start, str, context);
 };

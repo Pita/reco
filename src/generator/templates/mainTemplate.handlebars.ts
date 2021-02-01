@@ -691,27 +691,11 @@ export function generatedRegexMatcher(str: string) {
     {{/if}}
 
     {{#if followUp}}
-      {{#each followUp.meta.groups}}
-        const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
-        const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
-      {{/each}}
-
-      const followUpResult = {{{followUp.functionName}}}(
+      return {{{followUp.functionName}}}(
         start,
         str, 
         context,
       );
-
-      if (followUpResult === -1) {
-        {{#each followUp.meta.groups}}
-          context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-          context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-        {{/each}}
-        {{#if maxOrMinCount}}
-          context.quantifierCounter{{{quantifierCounterIndex}}}--;
-        {{/if}}
-      }
-      return followUpResult;
     {{/if}}
     {{#unless followUp}}
       return start;

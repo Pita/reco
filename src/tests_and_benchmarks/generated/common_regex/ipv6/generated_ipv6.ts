@@ -6362,12 +6362,7 @@ const greedyQuantifier0055 = (
   context.groupMarkerStart23 = groupMarkerStartCopy23;
   context.groupMarkerEnd23 = groupMarkerEndCopy23;
 
-  const followUpResult = fiber0053(start, str, context);
-
-  if (followUpResult === -1) {
-    context.quantifierCounter0--;
-  }
-  return followUpResult;
+  return fiber0053(start, str, context);
 };
 /*
  * ...((25[0-5]|(2[0-4]|1?[0-9])?[0-9])\.)(...
@@ -6396,25 +6391,7 @@ const greedyQuantifier0065 = (
   context.groupMarkerStart21 = groupMarkerStartCopy21;
   context.groupMarkerEnd21 = groupMarkerEndCopy21;
 
-  const groupMarkerStartCopy19 = context.groupMarkerStart19;
-  const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-  const groupMarkerStartCopy20 = context.groupMarkerStart20;
-  const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-  const groupMarkerStartCopy22 = context.groupMarkerStart22;
-  const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-
-  const followUpResult = fiber0063(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
-    context.quantifierCounter1--;
-  }
-  return followUpResult;
+  return fiber0063(start, str, context);
 };
 /*
  * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.((...
@@ -6439,29 +6416,7 @@ const greedyQuantifier0076 = (
 
   // recursion failed, reset groups
 
-  const groupMarkerStartCopy19 = context.groupMarkerStart19;
-  const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-  const groupMarkerStartCopy20 = context.groupMarkerStart20;
-  const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-  const groupMarkerStartCopy21 = context.groupMarkerStart21;
-  const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-  const groupMarkerStartCopy22 = context.groupMarkerStart22;
-  const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-
-  const followUpResult = fiber0074(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
-    context.quantifierCounter2--;
-  }
-  return followUpResult;
+  return fiber0074(start, str, context);
 };
 /*
  * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(?...
@@ -6486,29 +6441,7 @@ const greedyQuantifier0087 = (
 
   // recursion failed, reset groups
 
-  const groupMarkerStartCopy19 = context.groupMarkerStart19;
-  const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-  const groupMarkerStartCopy20 = context.groupMarkerStart20;
-  const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-  const groupMarkerStartCopy21 = context.groupMarkerStart21;
-  const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-  const groupMarkerStartCopy22 = context.groupMarkerStart22;
-  const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-
-  const followUpResult = fiber0085(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
-    context.quantifierCounter3--;
-  }
-  return followUpResult;
+  return fiber0085(start, str, context);
 };
 /*
  * ...-zA-Z]✱|::(ffff(:00{0,3})?:)?(?:25[0-5]...
@@ -6541,29 +6474,7 @@ const greedyQuantifier0096 = (
   context.groupMarkerStart18 = groupMarkerStartCopy18;
   context.groupMarkerEnd18 = groupMarkerEndCopy18;
 
-  const groupMarkerStartCopy19 = context.groupMarkerStart19;
-  const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-  const groupMarkerStartCopy20 = context.groupMarkerStart20;
-  const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-  const groupMarkerStartCopy21 = context.groupMarkerStart21;
-  const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-  const groupMarkerStartCopy22 = context.groupMarkerStart22;
-  const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-
-  const followUpResult = fiber0094(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
-    context.quantifierCounter4--;
-  }
-  return followUpResult;
+  return fiber0094(start, str, context);
 };
 /*
  * ...]✱|::(ffff(:00{0,3})?:)?(?:25[0...
@@ -6592,17 +6503,7 @@ const greedyQuantifier0098 = (
   context.groupMarkerStart18 = groupMarkerStartCopy18;
   context.groupMarkerEnd18 = groupMarkerEndCopy18;
 
-  const groupMarkerStartCopy17 = context.groupMarkerStart17;
-  const groupMarkerEndCopy17 = context.groupMarkerEnd17;
-
-  const followUpResult = fiber0095(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart17 = groupMarkerStartCopy17;
-    context.groupMarkerEnd17 = groupMarkerEndCopy17;
-    context.quantifierCounter5--;
-  }
-  return followUpResult;
+  return fiber0095(start, str, context);
 };
 /*
  * ...)(25[0-5]|(2[0-4]|1?[0-9])?[0-9]))/
@@ -6631,12 +6532,7 @@ const greedyQuantifier0106 = (
   context.groupMarkerStart29 = groupMarkerStartCopy29;
   context.groupMarkerEnd29 = groupMarkerEndCopy29;
 
-  const followUpResult = fiber0104(start, str, context);
-
-  if (followUpResult === -1) {
-    context.quantifierCounter6--;
-  }
-  return followUpResult;
+  return fiber0104(start, str, context);
 };
 /*
  * ...((25[0-5]|(2[0-4]|1?[0-9])?[0-9])\.)(...
@@ -6665,25 +6561,7 @@ const greedyQuantifier0116 = (
   context.groupMarkerStart27 = groupMarkerStartCopy27;
   context.groupMarkerEnd27 = groupMarkerEndCopy27;
 
-  const groupMarkerStartCopy25 = context.groupMarkerStart25;
-  const groupMarkerEndCopy25 = context.groupMarkerEnd25;
-  const groupMarkerStartCopy26 = context.groupMarkerStart26;
-  const groupMarkerEndCopy26 = context.groupMarkerEnd26;
-  const groupMarkerStartCopy28 = context.groupMarkerStart28;
-  const groupMarkerEndCopy28 = context.groupMarkerEnd28;
-
-  const followUpResult = fiber0114(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
-    context.quantifierCounter7--;
-  }
-  return followUpResult;
+  return fiber0114(start, str, context);
 };
 /*
  * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.((...
@@ -6708,29 +6586,7 @@ const greedyQuantifier0127 = (
 
   // recursion failed, reset groups
 
-  const groupMarkerStartCopy25 = context.groupMarkerStart25;
-  const groupMarkerEndCopy25 = context.groupMarkerEnd25;
-  const groupMarkerStartCopy26 = context.groupMarkerStart26;
-  const groupMarkerEndCopy26 = context.groupMarkerEnd26;
-  const groupMarkerStartCopy27 = context.groupMarkerStart27;
-  const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-  const groupMarkerStartCopy28 = context.groupMarkerStart28;
-  const groupMarkerEndCopy28 = context.groupMarkerEnd28;
-
-  const followUpResult = fiber0125(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
-    context.quantifierCounter8--;
-  }
-  return followUpResult;
+  return fiber0125(start, str, context);
 };
 /*
  * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(?...
@@ -6755,27 +6611,5 @@ const greedyQuantifier0138 = (
 
   // recursion failed, reset groups
 
-  const groupMarkerStartCopy25 = context.groupMarkerStart25;
-  const groupMarkerEndCopy25 = context.groupMarkerEnd25;
-  const groupMarkerStartCopy26 = context.groupMarkerStart26;
-  const groupMarkerEndCopy26 = context.groupMarkerEnd26;
-  const groupMarkerStartCopy27 = context.groupMarkerStart27;
-  const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-  const groupMarkerStartCopy28 = context.groupMarkerStart28;
-  const groupMarkerEndCopy28 = context.groupMarkerEnd28;
-
-  const followUpResult = fiber0136(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
-    context.quantifierCounter9--;
-  }
-  return followUpResult;
+  return fiber0136(start, str, context);
 };

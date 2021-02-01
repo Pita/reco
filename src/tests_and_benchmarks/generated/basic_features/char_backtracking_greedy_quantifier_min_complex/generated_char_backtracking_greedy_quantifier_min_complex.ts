@@ -357,10 +357,5 @@ const greedyQuantifier0003 = (
     return -1;
   }
 
-  const followUpResult = fiber0001(start, str, context);
-
-  if (followUpResult === -1) {
-    context.quantifierCounter0--;
-  }
-  return followUpResult;
+  return fiber0001(start, str, context);
 };

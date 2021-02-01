@@ -767,15 +767,5 @@ const greedyQuantifier0008 = (
   context.groupMarkerStart1 = groupMarkerStartCopy1;
   context.groupMarkerEnd1 = groupMarkerEndCopy1;
 
-  const groupMarkerStartCopy2 = context.groupMarkerStart2;
-  const groupMarkerEndCopy2 = context.groupMarkerEnd2;
-
-  const followUpResult = fiber0006(start, str, context);
-
-  if (followUpResult === -1) {
-    context.groupMarkerStart2 = groupMarkerStartCopy2;
-    context.groupMarkerEnd2 = groupMarkerEndCopy2;
-    context.quantifierCounter0--;
-  }
-  return followUpResult;
+  return fiber0006(start, str, context);
 };
