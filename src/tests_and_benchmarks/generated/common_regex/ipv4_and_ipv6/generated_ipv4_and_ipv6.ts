@@ -2769,10 +2769,7 @@ const fiber0039 = (i: number, str: string, context: Context): number => {
    *              ^^^^^^^
    */
   context.quantifierCounter0 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0036(i, str, context);
-  context.quantifierCounter0 = -1;
-
-  return cursorAfterQuantifier;
+  return greedyQuantifier0036(i, str, context);
 };
 const fiber0040 = (i: number, str: string, context: Context): number => {
   /*
@@ -10152,10 +10149,7 @@ const fiber0181 = (i: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   context.quantifierCounter1 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0179(i, str, context);
-  context.quantifierCounter1 = -1;
-
-  return cursorAfterQuantifier;
+  return greedyQuantifier0179(i, str, context);
 };
 const fiber0182 = (i: number, str: string, context: Context): number => {
   /*
@@ -12536,10 +12530,7 @@ const fiber0228 = (i: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   context.quantifierCounter2 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0226(i, str, context);
-  context.quantifierCounter2 = -1;
-
-  return cursorAfterQuantifier;
+  return greedyQuantifier0226(i, str, context);
 };
 const fiber0229 = (i: number, str: string, context: Context): number => {
   /*
@@ -14825,10 +14816,7 @@ const fiber0274 = (i: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   context.quantifierCounter3 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0272(i, str, context);
-  context.quantifierCounter3 = -1;
-
-  return cursorAfterQuantifier;
+  return greedyQuantifier0272(i, str, context);
 };
 const fiber0275 = (i: number, str: string, context: Context): number => {
   /*
@@ -17019,10 +17007,7 @@ const fiber0319 = (i: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   context.quantifierCounter4 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0317(i, str, context);
-  context.quantifierCounter4 = -1;
-
-  return cursorAfterQuantifier;
+  return greedyQuantifier0317(i, str, context);
 };
 const fiber0320 = (i: number, str: string, context: Context): number => {
   /*
@@ -19103,10 +19088,7 @@ const fiber0363 = (i: number, str: string, context: Context): number => {
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
   context.quantifierCounter5 = -1;
-  const cursorAfterQuantifier = greedyQuantifier0361(i, str, context);
-  context.quantifierCounter5 = -1;
-
-  return cursorAfterQuantifier;
+  return greedyQuantifier0361(i, str, context);
 };
 const fiber0364 = (i: number, str: string, context: Context): number => {
   /*

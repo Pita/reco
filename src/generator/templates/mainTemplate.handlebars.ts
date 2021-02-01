@@ -515,15 +515,14 @@ export function generatedRegexMatcher(str: string) {
             let matchCountCopy{{{functionName}}} = context.quantifierCounter{{{quantifierCounterIndex}}};
           {{/if}}
           context.quantifierCounter{{{quantifierCounterIndex}}} = -1;
-          const cursorAfterQuantifier = {{{functionName}}}(i, str, context);
           {{#if shouldBackupPrevious}}
+            const cursorAfterQuantifier = {{{functionName}}}(i, str, context);
             context.quantifierCounter{{{quantifierCounterIndex}}} = matchCountCopy{{{functionName}}};
+            return cursorAfterQuantifier;
           {{/if}}
           {{#unless shouldBackupPrevious}}
-            context.quantifierCounter{{{quantifierCounterIndex}}} = -1;
+            return {{{functionName}}}(i, str, context);
           {{/unless}}
-          
-          return cursorAfterQuantifier;
         {{/if}}
         {{#unless maxOrMinCount}}
           return {{{functionName}}}(i, str, context);
