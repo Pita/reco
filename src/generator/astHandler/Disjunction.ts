@@ -35,7 +35,6 @@ const handleBacktrackingDisjunction = (
     ),
   );
 
-  const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
   let minLength = Infinity;
   let maxLength = -Infinity;
   mappedAlternatives.forEach((alternative) => {
@@ -57,6 +56,7 @@ const handleBacktrackingDisjunction = (
       return {
         alternative,
         quickCheck,
+        canRepeat: !!flags.INTERNAL_can_repeat,
       };
     },
   );
@@ -65,13 +65,13 @@ const handleBacktrackingDisjunction = (
   return collector.addAtom(
     collector.createForkingFiber(
       currentFiber,
-      groupsToRestore,
+      mergeGroupsOfFibers(mappedAlternatives),
       anchorsAtStartOfLine,
       anchorsAtEndOfLine,
     ),
     {
       type: 'disjunction',
-      data: { hasQuickCheck, alternativesWithQuickChecks, groupsToRestore },
+      data: { hasQuickCheck, alternativesWithQuickChecks },
       ast: alternatives[0].parent,
     },
     minLength,
@@ -170,7 +170,6 @@ const handleNonBacktrackingDisjunction = (
     ),
   );
 
-  const groupsToRestore = mergeGroupsOfFibers(mappedAlternatives);
   let minLength = Infinity;
   let maxLength = -Infinity;
   mappedAlternatives.forEach((alternative) => {
@@ -197,6 +196,7 @@ const handleNonBacktrackingDisjunction = (
       return {
         alternative,
         quickCheck,
+        canRepeat: !!flags.INTERNAL_can_repeat,
       };
     },
   );
@@ -206,7 +206,10 @@ const handleNonBacktrackingDisjunction = (
     currentFiber,
     {
       type: 'nonBacktrackingDisjunction',
-      data: { hasQuickCheck, alternativesWithQuickChecks, groupsToRestore },
+      data: {
+        hasQuickCheck,
+        alternativesWithQuickChecks,
+      },
       ast: alternatives[0].parent,
     },
     minLength,

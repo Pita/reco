@@ -230,11 +230,6 @@ export function generatedRegexMatcher(str: string) {
         };
       {{/switchCase}}
       {{#switchCase 'type' 'disjunction'}}
-        {{#each groupsToRestore}}
-          const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
-          const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
-        {{/each}}
-
         {{#if hasQuickCheck}}
           const firstCharQuickCheck{{{@index}}} = i < str.length ? str.charCodeAt(i) : 0;
           const secondCharQuickCheck{{{@index}}} = (i + 1) < str.length ? str.charCodeAt(i + 1) : 0;
@@ -248,19 +243,34 @@ export function generatedRegexMatcher(str: string) {
               if ((quickCheckValue{{{@../index}}} & {{{mask}}}) === {{{value}}}) {
             {{/with}}
           {{/if}}
+          {{#unless quickCheck}}
+            {
+          {{/unless}}
           {{#with alternative}}           
+            {{#if canRepeat}}
+              {{#each meta.groups}}
+                const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+                const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
+              {{/each}}
+            {{/if}}
             const length{{{@index}}} = {{{functionName}}}(i, str, context);
             if (length{{{@index}}} !== -1) {
               return length{{{@index}}};
             }
-            {{#each meta.groups}}
-              context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-              context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-            {{/each}}
+            {{#if canRepeat}}
+              {{#each meta.groups}}
+                context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+                context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
+              {{/each}}
+            {{/if}}
+            {{#unless canRepeat}}
+              {{#each meta.groups}}
+                context.groupMarkerStart{{{idx}}} = -1;
+                context.groupMarkerEnd{{{idx}}} = -1;
+              {{/each}}
+            {{/unless}}
           {{/with}}
-          {{#if quickCheck}}
-            }
-          {{/if}}
+          }
         {{/each}}
         return -1;
       {{/switchCase}}
@@ -534,30 +544,41 @@ export function generatedRegexMatcher(str: string) {
         {{/if}}
 
         nonBacktrackingDisjunction{{{@index}}}: {
-          {{#each groupsToRestore}}
-            const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
-            const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
-          {{/each}}
           {{#each alternativesWithQuickChecks}}    
             {{#if quickCheck}}
               {{#with quickCheck}} 
                 if ((quickCheckValue{{{@../index}}} & {{{mask}}}) === {{{value}}}) {
               {{/with}}
             {{/if}} 
-            {{#with alternative}}              
+            {{#unless quickCheck}}
+              {
+            {{/unless}}
+            {{#with alternative}}
+              {{#if canRepeat}}
+                {{#each meta.groups}}
+                  const groupMarkerStartCopy{{{idx}}} = context.groupMarkerStart{{{idx}}};
+                  const groupMarkerEndCopy{{{idx}}} = context.groupMarkerEnd{{{idx}}};
+                {{/each}}
+              {{/if}}       
               const length{{{@index}}} = {{{functionName}}}(i, str, context);
               if (length{{{@index}}} !== -1) {
                 i = length{{{@index}}};
                 break nonBacktrackingDisjunction{{{@../index}}};
               }
-              {{#each meta.groups}}
-                context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
-                context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
-              {{/each}}
+              {{#if canRepeat}}
+                {{#each meta.groups}}
+                  context.groupMarkerStart{{{idx}}} = groupMarkerStartCopy{{{idx}}};
+                  context.groupMarkerEnd{{{idx}}} = groupMarkerEndCopy{{{idx}}};
+                {{/each}}
+              {{/if}}
+              {{#unless canRepeat}}
+                {{#each meta.groups}}
+                  context.groupMarkerStart{{{idx}}} = -1;
+                  context.groupMarkerEnd{{{idx}}} = -1;
+                {{/each}}
+              {{/unless}}
             {{/with}}
-            {{#if quickCheck}}
               }
-            {{/if}}
           {{/each}}
           return -1;
         }

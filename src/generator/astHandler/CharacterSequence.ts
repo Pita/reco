@@ -23,7 +23,6 @@ const handleBackwardsChars = (
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
-  quickCheck: QuickCheckDetails | null = null,
 ) => {
   // TODO: convert to mass matching like the forward matching
 
@@ -35,7 +34,6 @@ const handleBackwardsChars = (
       lastFiber,
       flags,
       literal,
-      quickCheck,
     );
   }
 
@@ -57,7 +55,6 @@ export const handleCharSequence = (
       currentFiber,
       flags,
       literal,
-      quickCheck,
     );
   }
 

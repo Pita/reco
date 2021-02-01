@@ -352,7 +352,6 @@ const fiber0008 = (i: number, str: string, context: Context): number => {
    * /<(?:\/?[\w\s]✱|..✱[\W])>/
    *   ^^^^^^^^^^^^^^^^^^^^^^
    */
-
   const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 

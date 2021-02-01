@@ -11,6 +11,7 @@ const { version } = require('../../package.json');
 export interface Flags extends AST.Flags {
   INTERNAL_backwards?: boolean;
   INTERNAL_no_backtracking?: boolean;
+  INTERNAL_can_repeat?: boolean;
 }
 
 const deriveMatchPositioning = (

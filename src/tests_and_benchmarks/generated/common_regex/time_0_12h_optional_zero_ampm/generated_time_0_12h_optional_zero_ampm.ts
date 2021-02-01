@@ -238,9 +238,6 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
    * /^(0?[1-9]|1[0-2]):[0-5][0-9]$/
    *   ^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-
   const firstCharQuickCheck2 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck2 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -251,16 +248,16 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
+    context.groupMarkerStart0 = -1;
+    context.groupMarkerEnd0 = -1;
   }
   if ((quickCheckValue2 & 2147450876) === 3211312) {
     const length1 = fiber0004(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart0 = groupMarkerStartCopy0;
-    context.groupMarkerEnd0 = groupMarkerEndCopy0;
+    context.groupMarkerStart0 = -1;
+    context.groupMarkerEnd0 = -1;
   }
   return -1;
 };

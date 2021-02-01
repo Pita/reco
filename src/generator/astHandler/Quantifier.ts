@@ -469,9 +469,15 @@ export const handleQuantifier = (
   quantifier: AST.Quantifier,
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
-  flags: Flags,
+  _flags: Flags,
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
+  const flags = {
+    ..._flags,
+    INTERNAL_can_repeat:
+      _flags.INTERNAL_can_repeat === true || quantifier.max > 1,
+  };
+
   if (quantifier.min === quantifier.max && quantifier.max < 10) {
     let currentAppendableFiber = currentFiber;
     for (let i = 0; i < quantifier.max; i++) {

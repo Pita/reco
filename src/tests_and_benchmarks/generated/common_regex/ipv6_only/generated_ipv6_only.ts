@@ -413,40 +413,14 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   const quickCheckValue1 = (firstCharQuickCheck1 << 16) ^ secondCharQuickCheck1;
 
   nonBacktrackingDisjunction1: {
-    const groupMarkerStartCopy1 = context.groupMarkerStart1;
-    const groupMarkerEndCopy1 = context.groupMarkerEnd1;
-    const groupMarkerStartCopy12 = context.groupMarkerStart12;
-    const groupMarkerEndCopy12 = context.groupMarkerEnd12;
-    const groupMarkerStartCopy14 = context.groupMarkerStart14;
-    const groupMarkerEndCopy14 = context.groupMarkerEnd14;
-    const groupMarkerStartCopy17 = context.groupMarkerStart17;
-    const groupMarkerEndCopy17 = context.groupMarkerEnd17;
-    const groupMarkerStartCopy18 = context.groupMarkerStart18;
-    const groupMarkerEndCopy18 = context.groupMarkerEnd18;
-    const groupMarkerStartCopy19 = context.groupMarkerStart19;
-    const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-    const groupMarkerStartCopy20 = context.groupMarkerStart20;
-    const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-    const groupMarkerStartCopy21 = context.groupMarkerStart21;
-    const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-    const groupMarkerStartCopy22 = context.groupMarkerStart22;
-    const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-    const groupMarkerStartCopy25 = context.groupMarkerStart25;
-    const groupMarkerEndCopy25 = context.groupMarkerEnd25;
-    const groupMarkerStartCopy26 = context.groupMarkerStart26;
-    const groupMarkerEndCopy26 = context.groupMarkerEnd26;
-    const groupMarkerStartCopy27 = context.groupMarkerStart27;
-    const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-    const groupMarkerStartCopy28 = context.groupMarkerStart28;
-    const groupMarkerEndCopy28 = context.groupMarkerEnd28;
     if ((quickCheckValue1 & 2139127680) === 0) {
       const length0 = fiber0002(i, str, context);
       if (length0 !== -1) {
         i = length0;
         break nonBacktrackingDisjunction1;
       }
-      context.groupMarkerStart1 = groupMarkerStartCopy1;
-      context.groupMarkerEnd1 = groupMarkerEndCopy1;
+      context.groupMarkerStart1 = -1;
+      context.groupMarkerEnd1 = -1;
     }
     if ((quickCheckValue1 & 2139127680) === 0) {
       const length1 = fiber0011(i, str, context);
@@ -496,8 +470,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
         i = length7;
         break nonBacktrackingDisjunction1;
       }
-      context.groupMarkerStart12 = groupMarkerStartCopy12;
-      context.groupMarkerEnd12 = groupMarkerEndCopy12;
+      context.groupMarkerStart12 = -1;
+      context.groupMarkerEnd12 = -1;
     }
     if ((quickCheckValue1 & 2147450879) === 3801146) {
       const length8 = fiber0042(i, str, context);
@@ -505,8 +479,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
         i = length8;
         break nonBacktrackingDisjunction1;
       }
-      context.groupMarkerStart14 = groupMarkerStartCopy14;
-      context.groupMarkerEnd14 = groupMarkerEndCopy14;
+      context.groupMarkerStart14 = -1;
+      context.groupMarkerEnd14 = -1;
     }
     if ((quickCheckValue1 & 2147450879) === 6684773) {
       const length9 = fiber0047(i, str, context);
@@ -521,18 +495,18 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
         i = length10;
         break nonBacktrackingDisjunction1;
       }
-      context.groupMarkerStart17 = groupMarkerStartCopy17;
-      context.groupMarkerEnd17 = groupMarkerEndCopy17;
-      context.groupMarkerStart18 = groupMarkerStartCopy18;
-      context.groupMarkerEnd18 = groupMarkerEndCopy18;
-      context.groupMarkerStart19 = groupMarkerStartCopy19;
-      context.groupMarkerEnd19 = groupMarkerEndCopy19;
-      context.groupMarkerStart20 = groupMarkerStartCopy20;
-      context.groupMarkerEnd20 = groupMarkerEndCopy20;
-      context.groupMarkerStart21 = groupMarkerStartCopy21;
-      context.groupMarkerEnd21 = groupMarkerEndCopy21;
-      context.groupMarkerStart22 = groupMarkerStartCopy22;
-      context.groupMarkerEnd22 = groupMarkerEndCopy22;
+      context.groupMarkerStart17 = -1;
+      context.groupMarkerEnd17 = -1;
+      context.groupMarkerStart18 = -1;
+      context.groupMarkerEnd18 = -1;
+      context.groupMarkerStart19 = -1;
+      context.groupMarkerEnd19 = -1;
+      context.groupMarkerStart20 = -1;
+      context.groupMarkerEnd20 = -1;
+      context.groupMarkerStart21 = -1;
+      context.groupMarkerEnd21 = -1;
+      context.groupMarkerStart22 = -1;
+      context.groupMarkerEnd22 = -1;
     }
     if ((quickCheckValue1 & 2139127680) === 0) {
       const length11 = fiber0145(i, str, context);
@@ -540,14 +514,14 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
         i = length11;
         break nonBacktrackingDisjunction1;
       }
-      context.groupMarkerStart25 = groupMarkerStartCopy25;
-      context.groupMarkerEnd25 = groupMarkerEndCopy25;
-      context.groupMarkerStart26 = groupMarkerStartCopy26;
-      context.groupMarkerEnd26 = groupMarkerEndCopy26;
-      context.groupMarkerStart27 = groupMarkerStartCopy27;
-      context.groupMarkerEnd27 = groupMarkerEndCopy27;
-      context.groupMarkerStart28 = groupMarkerStartCopy28;
-      context.groupMarkerEnd28 = groupMarkerEndCopy28;
+      context.groupMarkerStart25 = -1;
+      context.groupMarkerEnd25 = -1;
+      context.groupMarkerStart26 = -1;
+      context.groupMarkerEnd26 = -1;
+      context.groupMarkerStart27 = -1;
+      context.groupMarkerEnd27 = -1;
+      context.groupMarkerStart28 = -1;
+      context.groupMarkerEnd28 = -1;
     }
     return -1;
   }
@@ -3716,8 +3690,6 @@ const fiber0051 = (i: number, str: string, context: Context): number => {
   const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
 
   nonBacktrackingDisjunction4: {
-    const groupMarkerStartCopy23 = context.groupMarkerStart23;
-    const groupMarkerEndCopy23 = context.groupMarkerEnd23;
     if ((quickCheckValue4 & 2147450879) === 3276853) {
       const length0 = fiber0052(i, str, context);
       if (length0 !== -1) {
@@ -3731,8 +3703,8 @@ const fiber0051 = (i: number, str: string, context: Context): number => {
         i = length1;
         break nonBacktrackingDisjunction4;
       }
-      context.groupMarkerStart23 = groupMarkerStartCopy23;
-      context.groupMarkerEnd23 = groupMarkerEndCopy23;
+      context.groupMarkerStart23 = -1;
+      context.groupMarkerEnd23 = -1;
     }
     return -1;
   }
@@ -3940,9 +3912,6 @@ const fiber0060 = (i: number, str: string, context: Context): number => {
    * ...)(25[0-5]|(2[0-4]|1?[0-9])?[0-9])|([...
    *              ^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy23 = context.groupMarkerStart23;
-  const groupMarkerEndCopy23 = context.groupMarkerEnd23;
-
   const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -3953,16 +3922,16 @@ const fiber0060 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart23 = groupMarkerStartCopy23;
-    context.groupMarkerEnd23 = groupMarkerEndCopy23;
+    context.groupMarkerStart23 = -1;
+    context.groupMarkerEnd23 = -1;
   }
   if ((quickCheckValue1 & 2146467824) === 3145776) {
     const length1 = fiber0059(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart23 = groupMarkerStartCopy23;
-    context.groupMarkerEnd23 = groupMarkerEndCopy23;
+    context.groupMarkerStart23 = -1;
+    context.groupMarkerEnd23 = -1;
   }
   return -1;
 };
@@ -4174,9 +4143,6 @@ const fiber0070 = (i: number, str: string, context: Context): number => {
    * ...((25[0-5]|(2[0-4]|1?[0-9])?[0-9])\.)...
    *              ^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy21 = context.groupMarkerStart21;
-  const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-
   const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -4187,16 +4153,16 @@ const fiber0070 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
+    context.groupMarkerStart21 = -1;
+    context.groupMarkerEnd21 = -1;
   }
   if ((quickCheckValue1 & 2146467824) === 3145776) {
     const length1 = fiber0069(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
+    context.groupMarkerStart21 = -1;
+    context.groupMarkerEnd21 = -1;
   }
   return -1;
 };
@@ -4254,15 +4220,6 @@ const fiber0072 = (i: number, str: string, context: Context): number => {
    * ...?[0-9])\.((25[0-5]|(2[0-4]|1?[0-9])?[0-9])\.)(25[0-5...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy19 = context.groupMarkerStart19;
-  const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-  const groupMarkerStartCopy20 = context.groupMarkerStart20;
-  const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-  const groupMarkerStartCopy21 = context.groupMarkerStart21;
-  const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-  const groupMarkerStartCopy22 = context.groupMarkerStart22;
-  const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-
   const firstCharQuickCheck3 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck3 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -4273,26 +4230,26 @@ const fiber0072 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
+    context.groupMarkerStart19 = -1;
+    context.groupMarkerEnd19 = -1;
+    context.groupMarkerStart20 = -1;
+    context.groupMarkerEnd20 = -1;
+    context.groupMarkerStart22 = -1;
+    context.groupMarkerEnd22 = -1;
   }
   if ((quickCheckValue3 & 2146467808) === 3145760) {
     const length1 = fiber0071(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
+    context.groupMarkerStart19 = -1;
+    context.groupMarkerEnd19 = -1;
+    context.groupMarkerStart20 = -1;
+    context.groupMarkerEnd20 = -1;
+    context.groupMarkerStart21 = -1;
+    context.groupMarkerEnd21 = -1;
+    context.groupMarkerStart22 = -1;
+    context.groupMarkerEnd22 = -1;
   }
   return -1;
 };
@@ -4475,7 +4432,6 @@ const fiber0081 = (i: number, str: string, context: Context): number => {
    * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(...
    *              ^^^^^^^^^^^^^^^^^^
    */
-
   const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -4537,15 +4493,6 @@ const fiber0083 = (i: number, str: string, context: Context): number => {
    * ...)?[0-9])\.(?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.((25[0-5...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy19 = context.groupMarkerStart19;
-  const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-  const groupMarkerStartCopy20 = context.groupMarkerStart20;
-  const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-  const groupMarkerStartCopy21 = context.groupMarkerStart21;
-  const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-  const groupMarkerStartCopy22 = context.groupMarkerStart22;
-  const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-
   const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -4556,28 +4503,28 @@ const fiber0083 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
+    context.groupMarkerStart19 = -1;
+    context.groupMarkerEnd19 = -1;
+    context.groupMarkerStart20 = -1;
+    context.groupMarkerEnd20 = -1;
+    context.groupMarkerStart21 = -1;
+    context.groupMarkerEnd21 = -1;
+    context.groupMarkerStart22 = -1;
+    context.groupMarkerEnd22 = -1;
   }
   if ((quickCheckValue1 & 2146467808) === 3145760) {
     const length1 = fiber0082(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
+    context.groupMarkerStart19 = -1;
+    context.groupMarkerEnd19 = -1;
+    context.groupMarkerStart20 = -1;
+    context.groupMarkerEnd20 = -1;
+    context.groupMarkerStart21 = -1;
+    context.groupMarkerEnd21 = -1;
+    context.groupMarkerStart22 = -1;
+    context.groupMarkerEnd22 = -1;
   }
   return -1;
 };
@@ -4760,7 +4707,6 @@ const fiber0092 = (i: number, str: string, context: Context): number => {
    * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(...
    *              ^^^^^^^^^^^^^^^^^^
    */
-
   const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -4799,15 +4745,6 @@ const fiber0094 = (i: number, str: string, context: Context): number => {
    * ...{0,3})?:)?(?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(?:25[0-...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy19 = context.groupMarkerStart19;
-  const groupMarkerEndCopy19 = context.groupMarkerEnd19;
-  const groupMarkerStartCopy20 = context.groupMarkerStart20;
-  const groupMarkerEndCopy20 = context.groupMarkerEnd20;
-  const groupMarkerStartCopy21 = context.groupMarkerStart21;
-  const groupMarkerEndCopy21 = context.groupMarkerEnd21;
-  const groupMarkerStartCopy22 = context.groupMarkerStart22;
-  const groupMarkerEndCopy22 = context.groupMarkerEnd22;
-
   const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -4818,28 +4755,28 @@ const fiber0094 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
+    context.groupMarkerStart19 = -1;
+    context.groupMarkerEnd19 = -1;
+    context.groupMarkerStart20 = -1;
+    context.groupMarkerEnd20 = -1;
+    context.groupMarkerStart21 = -1;
+    context.groupMarkerEnd21 = -1;
+    context.groupMarkerStart22 = -1;
+    context.groupMarkerEnd22 = -1;
   }
   if ((quickCheckValue0 & 2146467808) === 3145760) {
     const length1 = fiber0093(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart19 = groupMarkerStartCopy19;
-    context.groupMarkerEnd19 = groupMarkerEndCopy19;
-    context.groupMarkerStart20 = groupMarkerStartCopy20;
-    context.groupMarkerEnd20 = groupMarkerEndCopy20;
-    context.groupMarkerStart21 = groupMarkerStartCopy21;
-    context.groupMarkerEnd21 = groupMarkerEndCopy21;
-    context.groupMarkerStart22 = groupMarkerStartCopy22;
-    context.groupMarkerEnd22 = groupMarkerEndCopy22;
+    context.groupMarkerStart19 = -1;
+    context.groupMarkerEnd19 = -1;
+    context.groupMarkerStart20 = -1;
+    context.groupMarkerEnd20 = -1;
+    context.groupMarkerStart21 = -1;
+    context.groupMarkerEnd21 = -1;
+    context.groupMarkerStart22 = -1;
+    context.groupMarkerEnd22 = -1;
   }
   return -1;
 };
@@ -5134,8 +5071,6 @@ const fiber0102 = (i: number, str: string, context: Context): number => {
   const quickCheckValue4 = (firstCharQuickCheck4 << 16) ^ secondCharQuickCheck4;
 
   nonBacktrackingDisjunction4: {
-    const groupMarkerStartCopy29 = context.groupMarkerStart29;
-    const groupMarkerEndCopy29 = context.groupMarkerEnd29;
     if ((quickCheckValue4 & 2147450879) === 3276853) {
       const length0 = fiber0103(i, str, context);
       if (length0 !== -1) {
@@ -5149,8 +5084,8 @@ const fiber0102 = (i: number, str: string, context: Context): number => {
         i = length1;
         break nonBacktrackingDisjunction4;
       }
-      context.groupMarkerStart29 = groupMarkerStartCopy29;
-      context.groupMarkerEnd29 = groupMarkerEndCopy29;
+      context.groupMarkerStart29 = -1;
+      context.groupMarkerEnd29 = -1;
     }
     return -1;
   }
@@ -5358,9 +5293,6 @@ const fiber0111 = (i: number, str: string, context: Context): number => {
    * ...)(25[0-5]|(2[0-4]|1?[0-9])?[0-9]))/
    *              ^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy29 = context.groupMarkerStart29;
-  const groupMarkerEndCopy29 = context.groupMarkerEnd29;
-
   const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -5371,16 +5303,16 @@ const fiber0111 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart29 = groupMarkerStartCopy29;
-    context.groupMarkerEnd29 = groupMarkerEndCopy29;
+    context.groupMarkerStart29 = -1;
+    context.groupMarkerEnd29 = -1;
   }
   if ((quickCheckValue1 & 2146467824) === 3145776) {
     const length1 = fiber0110(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart29 = groupMarkerStartCopy29;
-    context.groupMarkerEnd29 = groupMarkerEndCopy29;
+    context.groupMarkerStart29 = -1;
+    context.groupMarkerEnd29 = -1;
   }
   return -1;
 };
@@ -5592,9 +5524,6 @@ const fiber0121 = (i: number, str: string, context: Context): number => {
    * ...((25[0-5]|(2[0-4]|1?[0-9])?[0-9])\.)...
    *              ^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy27 = context.groupMarkerStart27;
-  const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-
   const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -5605,16 +5534,16 @@ const fiber0121 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
+    context.groupMarkerStart27 = -1;
+    context.groupMarkerEnd27 = -1;
   }
   if ((quickCheckValue1 & 2146467824) === 3145776) {
     const length1 = fiber0120(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
+    context.groupMarkerStart27 = -1;
+    context.groupMarkerEnd27 = -1;
   }
   return -1;
 };
@@ -5672,15 +5601,6 @@ const fiber0123 = (i: number, str: string, context: Context): number => {
    * ...?[0-9])\.((25[0-5]|(2[0-4]|1?[0-9])?[0-9])\.)(25[0-5...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy25 = context.groupMarkerStart25;
-  const groupMarkerEndCopy25 = context.groupMarkerEnd25;
-  const groupMarkerStartCopy26 = context.groupMarkerStart26;
-  const groupMarkerEndCopy26 = context.groupMarkerEnd26;
-  const groupMarkerStartCopy27 = context.groupMarkerStart27;
-  const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-  const groupMarkerStartCopy28 = context.groupMarkerStart28;
-  const groupMarkerEndCopy28 = context.groupMarkerEnd28;
-
   const firstCharQuickCheck3 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck3 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -5691,26 +5611,26 @@ const fiber0123 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
+    context.groupMarkerStart25 = -1;
+    context.groupMarkerEnd25 = -1;
+    context.groupMarkerStart26 = -1;
+    context.groupMarkerEnd26 = -1;
+    context.groupMarkerStart28 = -1;
+    context.groupMarkerEnd28 = -1;
   }
   if ((quickCheckValue3 & 2146467808) === 3145760) {
     const length1 = fiber0122(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
+    context.groupMarkerStart25 = -1;
+    context.groupMarkerEnd25 = -1;
+    context.groupMarkerStart26 = -1;
+    context.groupMarkerEnd26 = -1;
+    context.groupMarkerStart27 = -1;
+    context.groupMarkerEnd27 = -1;
+    context.groupMarkerStart28 = -1;
+    context.groupMarkerEnd28 = -1;
   }
   return -1;
 };
@@ -5893,7 +5813,6 @@ const fiber0132 = (i: number, str: string, context: Context): number => {
    * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(...
    *              ^^^^^^^^^^^^^^^^^^
    */
-
   const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -5955,15 +5874,6 @@ const fiber0134 = (i: number, str: string, context: Context): number => {
    * ...)?[0-9])\.(?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.((25[0-5...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy25 = context.groupMarkerStart25;
-  const groupMarkerEndCopy25 = context.groupMarkerEnd25;
-  const groupMarkerStartCopy26 = context.groupMarkerStart26;
-  const groupMarkerEndCopy26 = context.groupMarkerEnd26;
-  const groupMarkerStartCopy27 = context.groupMarkerStart27;
-  const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-  const groupMarkerStartCopy28 = context.groupMarkerStart28;
-  const groupMarkerEndCopy28 = context.groupMarkerEnd28;
-
   const firstCharQuickCheck1 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck1 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -5974,28 +5884,28 @@ const fiber0134 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
+    context.groupMarkerStart25 = -1;
+    context.groupMarkerEnd25 = -1;
+    context.groupMarkerStart26 = -1;
+    context.groupMarkerEnd26 = -1;
+    context.groupMarkerStart27 = -1;
+    context.groupMarkerEnd27 = -1;
+    context.groupMarkerStart28 = -1;
+    context.groupMarkerEnd28 = -1;
   }
   if ((quickCheckValue1 & 2146467808) === 3145760) {
     const length1 = fiber0133(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
+    context.groupMarkerStart25 = -1;
+    context.groupMarkerEnd25 = -1;
+    context.groupMarkerStart26 = -1;
+    context.groupMarkerEnd26 = -1;
+    context.groupMarkerStart27 = -1;
+    context.groupMarkerEnd27 = -1;
+    context.groupMarkerStart28 = -1;
+    context.groupMarkerEnd28 = -1;
   }
   return -1;
 };
@@ -6178,7 +6088,6 @@ const fiber0143 = (i: number, str: string, context: Context): number => {
    * ...?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(...
    *              ^^^^^^^^^^^^^^^^^^
    */
-
   const firstCharQuickCheck0 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck0 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -6265,15 +6174,6 @@ const fiber0145 = (i: number, str: string, context: Context): number => {
    * ...3}:){1,4}:(?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\.(?:25[0-...
    *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    */
-  const groupMarkerStartCopy25 = context.groupMarkerStart25;
-  const groupMarkerEndCopy25 = context.groupMarkerEnd25;
-  const groupMarkerStartCopy26 = context.groupMarkerStart26;
-  const groupMarkerEndCopy26 = context.groupMarkerEnd26;
-  const groupMarkerStartCopy27 = context.groupMarkerStart27;
-  const groupMarkerEndCopy27 = context.groupMarkerEnd27;
-  const groupMarkerStartCopy28 = context.groupMarkerStart28;
-  const groupMarkerEndCopy28 = context.groupMarkerEnd28;
-
   const firstCharQuickCheck2 = i < str.length ? str.charCodeAt(i) : 0;
   const secondCharQuickCheck2 = i + 1 < str.length ? str.charCodeAt(i + 1) : 0;
 
@@ -6284,28 +6184,28 @@ const fiber0145 = (i: number, str: string, context: Context): number => {
     if (length0 !== -1) {
       return length0;
     }
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
+    context.groupMarkerStart25 = -1;
+    context.groupMarkerEnd25 = -1;
+    context.groupMarkerStart26 = -1;
+    context.groupMarkerEnd26 = -1;
+    context.groupMarkerStart27 = -1;
+    context.groupMarkerEnd27 = -1;
+    context.groupMarkerStart28 = -1;
+    context.groupMarkerEnd28 = -1;
   }
   if ((quickCheckValue2 & 2146467808) === 3145760) {
     const length1 = fiber0144(i, str, context);
     if (length1 !== -1) {
       return length1;
     }
-    context.groupMarkerStart25 = groupMarkerStartCopy25;
-    context.groupMarkerEnd25 = groupMarkerEndCopy25;
-    context.groupMarkerStart26 = groupMarkerStartCopy26;
-    context.groupMarkerEnd26 = groupMarkerEndCopy26;
-    context.groupMarkerStart27 = groupMarkerStartCopy27;
-    context.groupMarkerEnd27 = groupMarkerEndCopy27;
-    context.groupMarkerStart28 = groupMarkerStartCopy28;
-    context.groupMarkerEnd28 = groupMarkerEndCopy28;
+    context.groupMarkerStart25 = -1;
+    context.groupMarkerEnd25 = -1;
+    context.groupMarkerStart26 = -1;
+    context.groupMarkerEnd26 = -1;
+    context.groupMarkerStart27 = -1;
+    context.groupMarkerEnd27 = -1;
+    context.groupMarkerStart28 = -1;
+    context.groupMarkerEnd28 = -1;
   }
   return -1;
 };
