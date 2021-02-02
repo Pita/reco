@@ -1,6 +1,6 @@
 {
   "name": "reco.io",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Regular Expression COmpiler",
   "main": "./dist/api.js",
   "types": "./dist/api.d.ts",
