@@ -278,21 +278,21 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
    * ...)\b(?=.✱\b\1\b)/
    *              ^^
    */
-  let backReferenceI = context.groupMarkerStart0;
-  const backReferenceEnd = context.groupMarkerEnd0;
-  while (backReferenceI < backReferenceEnd) {
+  let backReferenceI1 = context.groupMarkerStart0;
+  const backReferenceEnd1 = context.groupMarkerEnd0;
+  while (backReferenceI1 < backReferenceEnd1) {
     if (i >= str.length) {
       return -1;
     }
 
-    const backReferenceCharCode = str.charCodeAt(backReferenceI);
+    const backReferenceCharCode = str.charCodeAt(backReferenceI1);
     const currentCharCode = str.charCodeAt(i);
 
     if (backReferenceCharCode !== currentCharCode) {
       return -1;
     }
 
-    backReferenceI++;
+    backReferenceI1++;
     i++;
   }
   /*

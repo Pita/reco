@@ -37,7 +37,7 @@ export function generatedRegexMatcher(str: string) {
   const max = str.length - 1;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0012(i, str, context);
+    const posAfterMatch = fiber0010(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -55,6 +55,55 @@ export function generatedRegexMatcher(str: string) {
 }
 
 const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * nonBacktrackingQuantifier
+   * ...0-9][0-9]✱[,.]?[0-9]✱([\/...
+   *              ^^^^^
+   */
+  let matches0 = 0;
+  while (true) {
+    const wrappedResult = fiber0008(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+
+      matches0++;
+
+      if (matches0 === 1) {
+        break;
+      }
+    }
+  }
+  /*
+   * nonBacktrackingQuantifier
+   * ...0-9]✱[,.]?[0-9]✱([\/][0-9]...
+   *              ^^^^^^
+   */
+  while (true) {
+    const wrappedResult = fiber0007(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+    }
+  }
+  /*
+   * nonBacktrackingQuantifier
+   * ...,.]?[0-9]✱([\/][0-9][0-9]✱[,.]?[0-9]✱)✱/
+   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   */
+  while (true) {
+    const wrappedResult = fiber0006(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+    }
+  }
   return i;
 };
 const fiber0002 = (i: number, str: string, context: Context): number => {
@@ -65,7 +114,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
    */
   let matches0 = 0;
   while (true) {
-    const wrappedResult = fiber0005(i, str, context);
+    const wrappedResult = fiber0004(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -85,7 +134,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
    *              ^^^^^^
    */
   while (true) {
-    const wrappedResult = fiber0004(i, str, context);
+    const wrappedResult = fiber0003(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -100,9 +149,9 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
-  return greedyQuantifier0003(i, str, context);
+  return i;
 };
-const fiber0004 = (i: number, str: string, context: Context): number => {
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-9]✱[,.]?[0-9]✱)✱/
@@ -125,7 +174,7 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0005 = (i: number, str: string, context: Context): number => {
+const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-9][0-9]✱[,.]?[0-9]✱)✱/
@@ -145,7 +194,7 @@ const fiber0005 = (i: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0006 = (i: number, str: string, context: Context): number => {
+const fiber0005 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...([\/][0-9][0-9]✱[,.]?[0-9...
@@ -168,7 +217,7 @@ const fiber0006 = (i: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0007 = (i: number, str: string, context: Context): number => {
+const fiber0006 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * ...,.]?[0-9]✱([\/][0-9][0-9]✱[,.]?[0-9]✱)✱/
@@ -218,7 +267,7 @@ const fiber0007 = (i: number, str: string, context: Context): number => {
   let matches2 = 0;
 
   while (true) {
-    const wrappedResult = fiber0006(i, str, context);
+    const wrappedResult = fiber0005(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -242,50 +291,7 @@ const fiber0007 = (i: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0008 = (i: number, str: string, context: Context): number => {
-  /*
-   * nonBacktrackingQuantifier
-   * ...0-9][0-9]✱[,.]?[0-9]✱([\/...
-   *              ^^^^^
-   */
-  let matches0 = 0;
-  while (true) {
-    const wrappedResult = fiber0010(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-
-      matches0++;
-
-      if (matches0 === 1) {
-        break;
-      }
-    }
-  }
-  /*
-   * nonBacktrackingQuantifier
-   * ...0-9]✱[,.]?[0-9]✱([\/][0-9]...
-   *              ^^^^^^
-   */
-  while (true) {
-    const wrappedResult = fiber0009(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-    }
-  }
-  /*
-   * quantifierStarter
-   * ...,.]?[0-9]✱([\/][0-9][0-9]✱[,.]?[0-9]✱)✱/
-   *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   */
-  return greedyQuantifier0003(i, str, context);
-};
-const fiber0009 = (i: number, str: string, context: Context): number => {
+const fiber0007 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-9]✱[,.]?[0-9]✱([\/][0-9...
@@ -308,7 +314,7 @@ const fiber0009 = (i: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0010 = (i: number, str: string, context: Context): number => {
+const fiber0008 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * ...0-9][0-9]✱[,.]?[0-9]✱([\...
@@ -328,7 +334,7 @@ const fiber0010 = (i: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0011 = (i: number, str: string, context: Context): number => {
+const fiber0009 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /[-]?[0-9][0-9]✱[,.]?[0-9...
@@ -351,7 +357,7 @@ const fiber0011 = (i: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0012 = (i: number, str: string, context: Context): number => {
+const fiber0010 = (i: number, str: string, context: Context): number => {
   /*
    * nonBacktrackingQuantifier
    * /[-]?[0-9][0-9]...
@@ -359,7 +365,7 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
    */
   let matches0 = 0;
   while (true) {
-    const wrappedResult = fiber0013(i, str, context);
+    const wrappedResult = fiber0011(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -407,7 +413,7 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
   let matches2 = 0;
 
   while (true) {
-    const wrappedResult = fiber0011(i, str, context);
+    const wrappedResult = fiber0009(i, str, context);
 
     if (wrappedResult === -1) {
       break;
@@ -419,7 +425,7 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
 
   // needs followUp & forkingFiber
   while (matches2 >= 0) {
-    const directFollowUpResult2 = fiber0008(i, str, context);
+    const directFollowUpResult2 = fiber0001(i, str, context);
 
     if (directFollowUpResult2 !== -1) {
       return directFollowUpResult2;
@@ -431,7 +437,7 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
 
   return -1;
 };
-const fiber0013 = (i: number, str: string, context: Context): number => {
+const fiber0011 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
    * /[-]?[0-9][0-9...
@@ -450,28 +456,4 @@ const fiber0013 = (i: number, str: string, context: Context): number => {
   }
   i++;
   return i;
-};
-
-/*
- * ...,.]?[0-9]✱([\/][0-9][0-9]✱[,.]?[0-9]✱)✱/
- *              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- */
-const greedyQuantifier0003 = (
-  start: number,
-  str: string,
-  context: Context
-): number => {
-  const groupMarkerStartCopy0 = context.groupMarkerStart0;
-  const groupMarkerEndCopy0 = context.groupMarkerEnd0;
-  const tryDeeperResult = fiber0007(start, str, context);
-  if (tryDeeperResult !== -1) {
-    // we actually were able to go deeper, nice!
-    return tryDeeperResult;
-  }
-
-  // recursion failed, reset groups
-  context.groupMarkerStart0 = groupMarkerStartCopy0;
-  context.groupMarkerEnd0 = groupMarkerEndCopy0;
-
-  return fiber0001(start, str, context);
 };
