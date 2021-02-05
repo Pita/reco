@@ -9,6 +9,7 @@ import {
   QuickCheckDetails,
 } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
+import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
 
 // TODO: there is a lot of code duplicated between this method and its non backtracking variant
 const handleBacktrackingDisjunction = (
@@ -79,36 +80,23 @@ const handleBacktrackingDisjunction = (
   );
 };
 
-const checkIfAlternativesHaveInternalBacktracking = (
+const checkIfAlternativesHaveInsideOutBacktracking = (
   alternatives: AST.Alternative[],
   collector: Collector,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
 ) => {
-  try {
-    alternatives.forEach((alternative) => {
-      const fakeCollector = collector.fakeCollector();
-      handleAlternative(
-        alternative,
-        fakeCollector,
-        fakeCollector.createFinalFiber(currentFiber.meta.path),
-        {
-          ...flags,
-          INTERNAL_no_backtracking: true,
-        },
-        literal,
-      );
-    });
-  } catch (e) {
-    if (e instanceof BacktrackingError) {
-      return true;
-    }
-
-    throw e;
-  }
-
-  return false;
+  return alternatives.some((alternative) =>
+    hasInsideOutBacktracking(
+      alternative,
+      currentFiber.meta.path,
+      collector,
+      currentFiber,
+      flags,
+      literal,
+    ),
+  );
 };
 
 const isANonBacktrackingDisjunction = (
@@ -128,7 +116,7 @@ const isANonBacktrackingDisjunction = (
   }
 
   if (
-    checkIfAlternativesHaveInternalBacktracking(
+    checkIfAlternativesHaveInsideOutBacktracking(
       alternatives,
       collector,
       currentFiber,
@@ -279,7 +267,7 @@ export const handleDisjunction = (
       literal,
     );
   } else {
-    if (flags.INTERNAL_no_backtracking) {
+    if (flags.INTERNAL_no_inside_out_backtracking) {
       throw new BacktrackingError();
     }
 

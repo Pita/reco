@@ -6,35 +6,24 @@ import { handleElement } from './Element';
 import { BacktrackingError } from '../BacktrackingException';
 import { ASTPath } from '../../dfa-analyzer/types';
 import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
+import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
 
-const checkIfQuantifierHasInternalBacktracking = (
+const checkIfQuantifierHasInsideOutBacktracking = (
   quantifier: AST.Quantifier,
+  currentFiber: FiberTemplateDefinition,
   collector: Collector,
   flags: Flags,
   literal: AST.RegExpLiteral,
   pathForHandler: ASTPath,
 ) => {
-  try {
-    const fakeCollector = collector.fakeCollector();
-    handleElement(
-      quantifier.element,
-      fakeCollector,
-      fakeCollector.createFinalFiber(pathForHandler),
-      {
-        ...flags,
-        INTERNAL_no_backtracking: true,
-      },
-      literal,
-    );
-  } catch (e) {
-    if (e instanceof BacktrackingError) {
-      return true;
-    }
-
-    throw e;
-  }
-
-  return false;
+  return hasInsideOutBacktracking(
+    quantifier.element,
+    pathForHandler,
+    collector,
+    currentFiber,
+    flags,
+    literal,
+  );
 };
 
 const createPathForQuantifierHandler = (
@@ -88,6 +77,7 @@ const checkIfQuantifierHasExternalBacktracking = (
   quantifier: AST.Quantifier,
   currentFiber: FiberTemplateDefinition,
   literal: AST.RegExpLiteral,
+  flags: Flags,
 ) => {
   let handlerPossibilities = dfaAnalyzeElement(
     [quantifier.element],
@@ -100,6 +90,9 @@ const checkIfQuantifierHasExternalBacktracking = (
   }
 
   if (handlerPossibilities === null) {
+    if (flags.INTERNAL_no_inside_out_backtracking) {
+      throw new BacktrackingError();
+    }
     return true;
   }
 
@@ -110,12 +103,23 @@ const checkIfQuantifierHasExternalBacktracking = (
   );
 
   if (followupPossibilties === null) {
+    if (flags.INTERNAL_no_inside_out_backtracking) {
+      throw new BacktrackingError();
+    }
     return true;
   }
 
-  return (
-    handlerPossibilities.isExclusive(followupPossibilties) === 'NotExclusive'
-  );
+  const notExclusive =
+    handlerPossibilities.isExclusive(followupPossibilties) === 'NotExclusive';
+  if (notExclusive && flags.INTERNAL_no_inside_out_backtracking) {
+    if (
+      !handlerPossibilities.doesBacktrackingStayInside(followupPossibilties)
+    ) {
+      throw new BacktrackingError();
+    }
+  }
+
+  return notExclusive;
 };
 
 const analyzeGreedyQuantifier = (
@@ -126,8 +130,9 @@ const analyzeGreedyQuantifier = (
   literal: AST.RegExpLiteral,
   pathForHandler: ASTPath,
 ) => {
-  const hasInternalBacktracking = checkIfQuantifierHasInternalBacktracking(
+  const hasInsideOutBacktracking = checkIfQuantifierHasInsideOutBacktracking(
     quantifier,
+    currentFiber,
     collector,
     flags,
     literal,
@@ -138,6 +143,7 @@ const analyzeGreedyQuantifier = (
     quantifier,
     currentFiber,
     literal,
+    flags,
   );
 
   const {
@@ -152,7 +158,7 @@ const analyzeGreedyQuantifier = (
   );
 
   return {
-    needsBacktracking: hasInternalBacktracking || hasExternalBackTracking,
+    needsBacktracking: hasInsideOutBacktracking || hasExternalBackTracking,
     fixedLengthOptimizable,
     fixedLength,
   };
@@ -160,13 +166,15 @@ const analyzeGreedyQuantifier = (
 
 const analyzeLazyQuantifier = (
   quantifier: AST.Quantifier,
+  currentFiber: FiberTemplateDefinition,
   collector: Collector,
   flags: Flags,
   literal: AST.RegExpLiteral,
   pathForHandler: ASTPath,
 ) => {
-  const hasInternalBacktracking = checkIfQuantifierHasInternalBacktracking(
+  const hasInternalBacktracking = checkIfQuantifierHasInsideOutBacktracking(
     quantifier,
+    currentFiber,
     collector,
     flags,
     literal,
@@ -373,9 +381,6 @@ const generateGreedyQuantifier = (
   );
 
   if (needsBacktracking) {
-    if (flags.INTERNAL_no_backtracking) {
-      throw new BacktrackingError();
-    }
     if (fixedLengthOptimizable && fixedLength) {
       return generateBacktrackingFixedLengthQuantifier(
         quantifier,
@@ -418,6 +423,7 @@ const generateLazyQuantifier = (
 ) => {
   const { hasInternalBacktracking } = analyzeLazyQuantifier(
     quantifier,
+    currentFiber,
     collector,
     flags,
     literal,

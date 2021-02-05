@@ -272,17 +272,17 @@ export function generatedRegexMatcher(str: string) {
       {{/switchCase}}
       {{#switchCase 'type' 'multiLineStartAnchor'}}
         if (i !== 0) {
-          const charCodeMultiLineStartAnchor{{{index}}} = str.charCodeAt(i - 1);
-          let isNewLineChar{{{index}}} = false;
+          const charCodeMultiLineStartAnchor{{{@index}}} = str.charCodeAt(i - 1);
+          let isNewLineChar{{{@index}}} = false;
           // TODO: find way to generate these trees
-          if (charCodeMultiLineStartAnchor{{{index}}} <= 13) {
-            isNewLineChar{{{index}}} = charCodeMultiLineStartAnchor{{{index}}} === 10 || charCodeMultiLineStartAnchor{{{index}}} === 13;
+          if (charCodeMultiLineStartAnchor{{{@index}}} <= 13) {
+            isNewLineChar{{{@index}}} = charCodeMultiLineStartAnchor{{{@index}}} === 10 || charCodeMultiLineStartAnchor{{{@index}}} === 13;
           } else {
-            if (charCodeMultiLineStartAnchor{{{index}}} <= 8233) {
-              isNewLineChar{{{index}}} = charCodeMultiLineStartAnchor{{{index}}} >= 8232;
+            if (charCodeMultiLineStartAnchor{{{@index}}} <= 8233) {
+              isNewLineChar{{{@index}}} = charCodeMultiLineStartAnchor{{{@index}}} >= 8232;
             }
           }
-          if (!isNewLineChar{{{index}}}) {
+          if (!isNewLineChar{{{@index}}}) {
             return -1;
           }
         }
@@ -290,17 +290,17 @@ export function generatedRegexMatcher(str: string) {
       {{/switchCase}}
       {{#switchCase 'type' 'multiLineEndAnchor'}}
         if (i !== str.length) {
-          const charCodeMultiLineEndAnchor{{{index}}} = str.charCodeAt(i);
-          let isNewLineChar{{{index}}} = false;
+          const charCodeMultiLineEndAnchor{{{@index}}} = str.charCodeAt(i);
+          let isNewLineChar{{{@index}}} = false;
           // TODO: find way to generate these trees
-          if (charCodeMultiLineEndAnchor{{{index}}} <= 13) {
-            isNewLineChar{{{index}}} = charCodeMultiLineEndAnchor{{{index}}} === 10 || charCodeMultiLineEndAnchor{{{index}}} === 13;
+          if (charCodeMultiLineEndAnchor{{{@index}}} <= 13) {
+            isNewLineChar{{{@index}}} = charCodeMultiLineEndAnchor{{{@index}}} === 10 || charCodeMultiLineEndAnchor{{{@index}}} === 13;
           } else {
-            if (charCodeMultiLineEndAnchor{{{index}}} <= 8233) {
-              isNewLineChar{{{index}}} = charCodeMultiLineEndAnchor{{{index}}} >= 8232;
+            if (charCodeMultiLineEndAnchor{{{@index}}} <= 8233) {
+              isNewLineChar{{{@index}}} = charCodeMultiLineEndAnchor{{{@index}}} >= 8232;
             }
           }
-          if (!isNewLineChar{{{index}}}) {
+          if (!isNewLineChar{{{@index}}}) {
             return -1;
           }
         }
@@ -491,21 +491,21 @@ export function generatedRegexMatcher(str: string) {
         {{/if}}
       {{/switchCase}}
       {{#switchCase 'type' 'groupBackReference'}}
-        let backReferenceI{{{index}}} = context.groupMarkerStart{{{groupIndex}}};
-        const backReferenceEnd{{{index}}} = context.groupMarkerEnd{{{groupIndex}}};
-        while(backReferenceI{{{index}}} < backReferenceEnd{{{index}}}) {
+        let backReferenceI{{{@index}}} = context.groupMarkerStart{{{groupIndex}}};
+        const backReferenceEnd{{{@index}}} = context.groupMarkerEnd{{{groupIndex}}};
+        while(backReferenceI{{{@index}}} < backReferenceEnd{{{@index}}}) {
           if (i >= str.length) {
             return -1;
           }
 
-          const backReferenceCharCode = str.charCodeAt(backReferenceI{{{index}}});
+          const backReferenceCharCode = str.charCodeAt(backReferenceI{{{@index}}});
           const currentCharCode = str.charCodeAt(i);
 
           if (backReferenceCharCode !== currentCharCode) {
             return -1;
           }
 
-          backReferenceI{{{index}}}++;
+          backReferenceI{{{@index}}}++;
           i++;
         }
       {{/switchCase}}

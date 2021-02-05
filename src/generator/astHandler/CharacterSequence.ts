@@ -73,7 +73,7 @@ export const handleCharSequence = (
       minSum += min;
       maxSum += max;
       const canBeSkipped =
-        quickCheck?.determinesPerfectlyAstStarts.includes(char.start) ?? false;
+        quickCheck?.determinesPerfectlyAstElements.includes(char) ?? false;
 
       return {
         tree,

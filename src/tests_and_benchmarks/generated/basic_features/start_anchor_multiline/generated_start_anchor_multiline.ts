@@ -48,19 +48,19 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    *  ^
    */
   if (i !== 0) {
-    const charCodeMultiLineStartAnchor = str.charCodeAt(i - 1);
-    let isNewLineChar = false;
+    const charCodeMultiLineStartAnchor0 = str.charCodeAt(i - 1);
+    let isNewLineChar0 = false;
     // TODO: find way to generate these trees
-    if (charCodeMultiLineStartAnchor <= 13) {
-      isNewLineChar =
-        charCodeMultiLineStartAnchor === 10 ||
-        charCodeMultiLineStartAnchor === 13;
+    if (charCodeMultiLineStartAnchor0 <= 13) {
+      isNewLineChar0 =
+        charCodeMultiLineStartAnchor0 === 10 ||
+        charCodeMultiLineStartAnchor0 === 13;
     } else {
-      if (charCodeMultiLineStartAnchor <= 8233) {
-        isNewLineChar = charCodeMultiLineStartAnchor >= 8232;
+      if (charCodeMultiLineStartAnchor0 <= 8233) {
+        isNewLineChar0 = charCodeMultiLineStartAnchor0 >= 8232;
       }
     }
-    if (!isNewLineChar) {
+    if (!isNewLineChar0) {
       return -1;
     }
   }

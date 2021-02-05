@@ -37,6 +37,8 @@ configFiles
     return configFile.indexOf(filter) !== -1;
   })
   .forEach((configFile, configIndex) => {
+    console.log(configFile);
+
     let config: {
       testInputs: string[];
       regex: string;

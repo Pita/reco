@@ -126,6 +126,24 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 101;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 0);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 100;
+
+    if (!result2) {
+      return -1;
+    }
 
     i = iAfterMatch1;
   }
@@ -150,6 +168,24 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 102;
 
     if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 101;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 0);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 100;
+
+    if (!result2) {
       return -1;
     }
 

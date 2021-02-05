@@ -1,12 +1,13 @@
 import { AST } from 'regexpp';
 import { Flags, RegExpLiteral } from 'regexpp/ast';
+import { CharASTElement } from '../generator/astHandler/CharacterSequence';
 import { CharRange } from '../generator/CharRange';
 import { CharRangeSequence } from './CharRangeSequence';
 import { dfaAnalyzeElement } from './dfaAnalyze';
 import { ExlusiveState } from './types';
 
 export type QuickCheckDetails = {
-  determinesPerfectlyAstStarts: number[];
+  determinesPerfectlyAstElements: CharASTElement[];
   mask: number;
   value: number;
 };
@@ -47,6 +48,22 @@ export class CharRangeSequencePossibilities {
     return isOrderExclusive ? 'OrderExclusive' : 'Exlusive';
   }
 
+  doesBacktrackingStayInside(other: CharRangeSequencePossibilities): boolean {
+    for (let i = 0; i < this.possibilities.length; i++) {
+      const a = this.possibilities[i];
+
+      for (let j = 0; j < other.possibilities.length; j++) {
+        const b = other.possibilities[j];
+
+        if (!a.doesBacktrackingStayInside(b)) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   toJSON() {
     return this.possibilities.map((possiblity) => possiblity.toJSON());
   }
@@ -67,10 +84,10 @@ export class CharRangeSequencePossibilities {
   private getFirstTwoCharRangesForQuickCheck(flags: Flags) {
     const charUnions: ({
       charRange: CharRange;
-      astStart: number | null;
+      astElement: CharASTElement | null | 'moreThanOne';
     } | null)[] = [
-      { charRange: CharRange.createEmptyRange(), astStart: null },
-      { charRange: CharRange.createEmptyRange(), astStart: null },
+      { charRange: CharRange.createEmptyRange(), astElement: null },
+      { charRange: CharRange.createEmptyRange(), astElement: null },
     ];
     this.possibilities.forEach((charRangeSeq) => {
       for (let i = 0; i < 2; i++) {
@@ -78,17 +95,22 @@ export class CharRangeSequencePossibilities {
         if (currentCharUnion) {
           const seqElement = charRangeSeq.get(i);
           if (seqElement) {
-            const { charRange, astStart } = seqElement;
+            const { charRange, astElement } = seqElement;
             const newCharRange = currentCharUnion.charRange.union(charRange);
-            let newAstStart = -1;
-            if (currentCharUnion.astStart === null) {
-              newAstStart = astStart;
-            } else if (currentCharUnion.astStart !== astStart) {
-              newAstStart = -1;
+
+            let newAstElement:
+              | CharASTElement
+              | null
+              | 'moreThanOne' = astElement;
+            if (
+              astElement !== null &&
+              currentCharUnion.astElement !== astElement
+            ) {
+              newAstElement = 'moreThanOne';
             }
             charUnions[i] = {
               charRange: newCharRange,
-              astStart: newAstStart,
+              astElement: newAstElement,
             };
           } else {
             charUnions[i] = null;
@@ -120,7 +142,7 @@ export class CharRangeSequencePossibilities {
       return null;
     }
 
-    const determinesPerfectlyAstStarts: number[] = [];
+    const determinesPerfectlyAstElements: CharASTElement[] = [];
 
     const masksAndValues = charUnions.map((charUnion) => {
       if (!charUnion) {
@@ -134,10 +156,10 @@ export class CharRangeSequencePossibilities {
 
       if (
         chars.length === 1 &&
-        charUnion.astStart !== null &&
-        charUnion.astStart !== -1
+        charUnion.astElement !== null &&
+        charUnion.astElement !== 'moreThanOne'
       ) {
-        determinesPerfectlyAstStarts.push(charUnion.astStart);
+        determinesPerfectlyAstElements.push(charUnion.astElement);
       }
 
       let common_bits = 0b111111111111111;
@@ -152,7 +174,7 @@ export class CharRangeSequencePossibilities {
     });
 
     return {
-      determinesPerfectlyAstStarts,
+      determinesPerfectlyAstElements,
       mask: (masksAndValues[0].mask << 16) + masksAndValues[1].mask,
       value: (masksAndValues[0].value << 16) + masksAndValues[1].value,
     };

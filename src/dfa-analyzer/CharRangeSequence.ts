@@ -2,38 +2,39 @@ import { CharRange } from '../generator/CharRange';
 import flatten from 'lodash/flatten';
 import { ExlusiveState } from './types';
 import { CharASTElement } from '../generator/astHandler/CharacterSequence';
+import { isInsideElement } from '../generator/checkForInsideOutBacktracking';
 
 export class CharRangeSequence {
   private charRanges: CharRange[];
-  private astStarts: number[];
+  private astElements: CharASTElement[];
 
   constructor(
     options: {
       charRanges: CharRange[];
-      astStarts: number[];
-    } = { charRanges: [], astStarts: [] },
+      astElements: CharASTElement[];
+    } = { charRanges: [], astElements: [] },
   ) {
-    const { charRanges, astStarts } = options;
-    if (charRanges.length !== astStarts.length) {
+    const { charRanges, astElements } = options;
+    if (charRanges.length !== astElements.length) {
       throw new Error(
-        `charRanges and astElements have different lengths: ${charRanges.length} & ${astStarts.length}`,
+        `charRanges and astElements have different lengths: ${charRanges.length} & ${astElements.length}`,
       );
     }
     this.charRanges = charRanges;
-    this.astStarts = astStarts;
+    this.astElements = astElements;
   }
 
   push(charRange: CharRange, astElement: CharASTElement) {
     return new CharRangeSequence({
       charRanges: [...this.charRanges, charRange],
-      astStarts: [...this.astStarts, astElement.start],
+      astElements: [...this.astElements, astElement],
     });
   }
 
   toJSON() {
     return {
       charRanges: this.charRanges.map((charRange) => charRange.toJSON()),
-      astStarts: this.astStarts.slice(),
+      astElements: this.astElements.slice(),
     };
   }
 
@@ -52,13 +53,26 @@ export class CharRangeSequence {
       : 'NotExclusive';
   }
 
+  doesBacktrackingStayInside(other: CharRangeSequence): boolean {
+    const length = Math.min(this.charRanges.length, other.charRanges.length);
+
+    for (let i = 0; i < length; i++) {
+      const hasOverlap = this.charRanges[i].hasOverlap(other.charRanges[i]);
+      if (!hasOverlap) {
+        return true;
+      }
+    }
+
+    return isInsideElement(other.astElements[length - 1]);
+  }
+
   get(index: number) {
     if (!this.charRanges[index]) {
       return undefined;
     }
     return {
       charRange: this.charRanges[index],
-      astStart: this.astStarts[index],
+      astElement: this.astElements[index],
     };
   }
 
