@@ -6,70 +6,67 @@ import { CharRangeSequence } from '../CharRangeSequence';
 describe('handleAlternative', () => {
   test('can handle a simple quantifier', () => {
     const expected = [
-      new CharRangeSequence({
+      {
         charRanges: [
           CharRange.create(['a'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['b'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['c'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
         ],
-        astStarts: [1, 7, 8],
-      }),
-      new CharRangeSequence({
+      },
+      {
         charRanges: [
           CharRange.create(['a'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['a'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['b'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['c'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
         ],
-        astStarts: [1, 1, 7, 8],
-      }),
-      new CharRangeSequence({
+      },
+      {
         charRanges: [
           CharRange.create(['a'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['a'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['a'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['b'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['c'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
         ],
-        astStarts: [1, 1, 1, 7, 8],
-      }),
-    ].map((element) => element.toJSON());
+      },
+    ];
 
     const literal = new RegExpParser().parseLiteral('/a{1,3}bc/');
     const result = dfaAnalyzeElement(
@@ -77,7 +74,9 @@ describe('handleAlternative', () => {
       literal,
       10,
     );
-    const resultSerialized = result!.toJSON();
+    const resultSerialized = result!.toJSON().map((result) => ({
+      charRanges: result.charRanges,
+    }));
 
     expect(resultSerialized).toEqual(expected);
   });

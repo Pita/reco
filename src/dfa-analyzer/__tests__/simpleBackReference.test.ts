@@ -6,28 +6,27 @@ import { CharRangeSequence } from '../CharRangeSequence';
 describe('handleAlternative', () => {
   test('can handle a very simple regex', () => {
     const expected = [
-      new CharRangeSequence({
+      {
         charRanges: [
           CharRange.create(['a'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['b'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['c'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
           CharRange.create(['b'], {
             negate: false,
             ignoreCase: false,
-          }),
+          }).toJSON(),
         ],
-        astStarts: [1, 3, 5, 3],
-      }),
-    ].map((element) => element.toJSON());
+      },
+    ];
 
     const literal = new RegExpParser().parseLiteral('/a(b)c\\1/');
     const result = dfaAnalyzeElement(
@@ -35,7 +34,9 @@ describe('handleAlternative', () => {
       literal,
       10,
     );
-    const resultSerialized = result!.toJSON();
+    const resultSerialized = result!.toJSON().map((result) => ({
+      charRanges: result.charRanges,
+    }));
 
     expect(resultSerialized).toEqual(expected);
   });
