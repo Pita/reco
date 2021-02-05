@@ -1,6 +1,7 @@
 {
   "regex": "/(aa?){3}/",
   "testInputs": [
+    "",
     "a",
     "aa",
     "aaa",
@@ -8,7 +9,11 @@
     "aaaaa",
     "aaaaaa",
     "aaaaaaa",
-    "aaaaaaaa"
+    "aaaaaaaa",
+    "aaaaaaaaa",
+    "aaaaaaaaaa",
+    "aaaaaaaaaaa",
+    "aaaaaaaaaaaa"
   ],
   "mustPass": true
 }
