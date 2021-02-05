@@ -204,15 +204,6 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 50;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;

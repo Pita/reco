@@ -451,24 +451,6 @@ const fiber0010 = (i: number, str: string, context: Context): number => {
     if (!result3) {
       return -1;
     }
-    const charCode4 = str.charCodeAt(i + 1);
-
-    let result4: boolean;
-
-    result4 = charCode4 === 110;
-
-    if (!result4) {
-      return -1;
-    }
-    const charCode5 = str.charCodeAt(i + 0);
-
-    let result5: boolean;
-
-    result5 = charCode5 === 101;
-
-    if (!result5) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -493,24 +475,6 @@ const fiber0011 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 116;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 120;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 101;
-
-    if (!result2) {
       return -1;
     }
 

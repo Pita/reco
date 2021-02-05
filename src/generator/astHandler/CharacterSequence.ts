@@ -72,6 +72,7 @@ export const handleCharSequence = (
       const { min, max } = utf16UnitsCountToMinAndMax(unitsCount);
       minSum += min;
       maxSum += max;
+
       const canBeSkipped =
         quickCheck?.determinesPerfectlyAstElements.includes(char) ?? false;
 

@@ -175,15 +175,6 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -425,15 +416,6 @@ const fiber0010 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -469,24 +451,6 @@ const fiber0011 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 74;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -504,24 +468,6 @@ const fiber0012 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 77;
-
-    if (!result1) {
-      return -1;
-    }
     const charCode2 = str.charCodeAt(i + 2);
 
     let result2: boolean;
@@ -557,24 +503,6 @@ const fiber0013 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 74;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -599,24 +527,6 @@ const fiber0014 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 103;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 65;
-
-    if (!result2) {
       return -1;
     }
 
@@ -645,24 +555,6 @@ const fiber0015 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 99;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 79;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -689,24 +581,6 @@ const fiber0016 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 68;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -724,25 +598,6 @@ const fiber0017 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 51;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   /*
@@ -955,15 +810,6 @@ const fiber0021 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -1002,24 +848,6 @@ const fiber0022 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 74;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1044,24 +872,6 @@ const fiber0023 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 114;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 77;
-
-    if (!result2) {
       return -1;
     }
 
@@ -1090,24 +900,6 @@ const fiber0024 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 112;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 65;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1134,24 +926,6 @@ const fiber0025 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 77;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1169,24 +943,6 @@ const fiber0026 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 117;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 74;
-
-    if (!result1) {
-      return -1;
-    }
     const charCode2 = str.charCodeAt(i + 2);
 
     let result2: boolean;
@@ -1222,24 +978,6 @@ const fiber0027 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 65;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1264,24 +1002,6 @@ const fiber0028 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 112;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 83;
-
-    if (!result2) {
       return -1;
     }
 
@@ -1310,24 +1030,6 @@ const fiber0029 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 99;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 79;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1354,24 +1056,6 @@ const fiber0030 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 111;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 78;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -1396,24 +1080,6 @@ const fiber0031 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 99;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 68;
-
-    if (!result2) {
       return -1;
     }
 
@@ -1584,25 +1250,6 @@ const fiber0033 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 57;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 50;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -1619,25 +1266,6 @@ const fiber0034 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 48;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 51;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -1691,15 +1319,6 @@ const fiber0037 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 48;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -2024,25 +1643,6 @@ const fiber0045 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 54;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 49;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2138,25 +1738,6 @@ const fiber0048 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 57;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 50;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   /*
@@ -2359,24 +1940,6 @@ const fiber0051 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 70;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -2465,15 +2028,6 @@ const fiber0054 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -2726,25 +2280,6 @@ const fiber0060 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 114;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 112;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2761,25 +2296,6 @@ const fiber0061 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 103;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 117;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2803,24 +2319,6 @@ const fiber0062 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 98;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 70;
-
-    if (!result2) {
       return -1;
     }
 
@@ -2893,25 +2391,6 @@ const fiber0064 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 110;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;
@@ -2928,15 +2407,6 @@ const fiber0065 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 117;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -2963,24 +2433,6 @@ const fiber0066 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 77;
-
-    if (!result1) {
-      return -1;
-    }
     const charCode2 = str.charCodeAt(i + 2);
 
     let result2: boolean;
@@ -3016,24 +2468,6 @@ const fiber0067 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 83;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -3051,15 +2485,6 @@ const fiber0068 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -3098,24 +2523,6 @@ const fiber0069 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 99;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 79;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -3142,24 +2549,6 @@ const fiber0070 = (i: number, str: string, context: Context): number => {
     if (!result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 111;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 78;
-
-    if (!result2) {
-      return -1;
-    }
 
     i = iAfterMatch0;
   }
@@ -3184,24 +2573,6 @@ const fiber0071 = (i: number, str: string, context: Context): number => {
     result0 = charCode0 === 99;
 
     if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 68;
-
-    if (!result2) {
       return -1;
     }
 
@@ -3403,15 +2774,6 @@ const fiber0075 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 49;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
@@ -3441,15 +2803,6 @@ const fiber0076 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 50;
-
-    if (!result0) {
-      return -1;
-    }
     const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;

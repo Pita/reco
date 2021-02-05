@@ -4,10 +4,7 @@ import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleAlternative } from './Alternative';
 import { BacktrackingError } from '../BacktrackingException';
-import {
-  computeExclusivityOfAlternatives,
-  QuickCheckDetails,
-} from '../../dfa-analyzer/CharRangeSequencePossibilities';
+import { computeExclusivityOfAlternatives } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
 import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
 

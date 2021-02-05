@@ -496,16 +496,6 @@ const fiber0008 = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 63;
-
-    if (!result0) {
-      return -1;
-    }
-
     i = iAfterMatch0;
   }
   return i;

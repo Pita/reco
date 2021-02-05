@@ -98,12 +98,13 @@ export class CharRangeSequencePossibilities {
             const { charRange, astElement } = seqElement;
             const newCharRange = currentCharUnion.charRange.union(charRange);
 
-            let newAstElement:
-              | CharASTElement
-              | null
-              | 'moreThanOne' = astElement;
-            if (
+            let newAstElement: CharASTElement | null | 'moreThanOne' =
+              'moreThanOne';
+            if (currentCharUnion.astElement === null) {
+              newAstElement = astElement;
+            } else if (
               astElement !== null &&
+              // check if its different to what was there before
               currentCharUnion.astElement !== astElement
             ) {
               newAstElement = 'moreThanOne';
