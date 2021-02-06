@@ -1,4 +1,5 @@
 import * as Handlebars from 'handlebars';
+import { FiberTemplateDefinition, TemplateValues } from './mainTemplate';
 
 Handlebars.registerHelper('escapeComment', function (this: any, value) {
   return new Handlebars.SafeString(value.replace(/\*/g, '✱'));
@@ -31,3 +32,35 @@ Handlebars.registerHelper('nextItem', function (array, currentIndex, options) {
     nextIndex: currentIndex + 1,
   });
 });
+
+Handlebars.registerHelper(
+  'withEntryOf',
+  function (root: TemplateValues, functionName: string, options) {
+    const fiber = root.fiberHandlers.find(
+      (fiber) => fiber.functionName === functionName,
+    );
+    if (fiber) {
+      return options.fn({
+        ...fiber.atoms[0],
+        functionName,
+        index: 0,
+      });
+    }
+  },
+);
+
+Handlebars.registerHelper(
+  'withExitOf',
+  function (root: TemplateValues, functionName: string, options) {
+    const fiber = root.fiberHandlers.find(
+      (fiber) => fiber.functionName === functionName,
+    );
+    if (fiber) {
+      return options.fn({
+        ...fiber.atoms[fiber.atoms.length - 1],
+        functionName,
+        index: fiber.atoms.length - 1,
+      });
+    }
+  },
+);
