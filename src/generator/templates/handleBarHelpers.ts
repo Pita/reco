@@ -16,22 +16,20 @@ Handlebars.registerHelper(
   },
 );
 
-Handlebars.registerHelper(
-  'groupStartArrayIndex',
-  function (groupReference: GroupReference) {
-    return new Handlebars.SafeString('' + groupReference.idx * 2);
-  },
-);
-
-Handlebars.registerHelper(
-  'groupEndArrayIndex',
-  function (groupReference: GroupReference) {
-    return new Handlebars.SafeString('' + (groupReference.idx * 2 + 1));
-  },
-);
-
 Handlebars.registerHelper('times', function (n, block) {
   let accum = '';
   for (let i = 0; i < n; i++) accum += block.fn(i);
   return accum;
+});
+
+Handlebars.registerHelper('nextItem', function (array, currentIndex, options) {
+  console.log('arguments', arguments);
+  if (currentIndex + 1 >= array.length) {
+    return;
+  }
+
+  return options.fn({
+    ...array[currentIndex + 1],
+    nextIndex: currentIndex + 1,
+  });
 });

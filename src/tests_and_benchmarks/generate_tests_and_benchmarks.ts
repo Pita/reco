@@ -8,8 +8,9 @@ import * as rimraf from 'rimraf';
 import * as path from 'path';
 import * as _ from 'lodash';
 import * as Handlebars from 'handlebars';
-import { template } from '../generator/templates/mainTemplate';
+import { template, dotTemplate } from '../generator/templates/mainTemplate';
 import { transformCode } from '../generator/transformCode';
+import { execSync } from 'child_process';
 const jsStringEscape = require('js-string-escape');
 
 Handlebars.registerHelper(
@@ -53,10 +54,11 @@ configFiles
     }
     const testName = configFile.replace(/\.json$/, '');
 
-    let unformattedCode, templateValues, error;
+    let unformattedCode, templateValues, error, dotGraph;
     try {
       templateValues = genDevTemplateValues(config.regex);
       unformattedCode = template(templateValues);
+      dotGraph = dotTemplate(templateValues);
     } catch (e) {
       console.error(e);
       error = e;
@@ -104,7 +106,7 @@ configFiles
     mkdirp.sync(testFolderName);
     mkdirp.sync(benchmarkFolderName);
 
-    if (unformattedCode && templateValues) {
+    if (unformattedCode && templateValues && dotGraph) {
       const tsCode = transformCode(unformattedCode, 'ts');
       fs.writeFileSync(`${testFolderName}/${fileName}.ts`, tsCode, 'utf8');
       fs.writeFileSync(`${benchmarkFolderName}/${fileName}.ts`, tsCode, 'utf8');
@@ -117,6 +119,10 @@ configFiles
         `${testFolderName}/${fileName}.test.ts`,
         testCode,
         'utf8',
+      );
+      fs.writeFileSync(`${testFolderName}/${fileName}.dot`, dotGraph, 'utf8');
+      execSync(
+        `dot -Tpng ${testFolderName}/${fileName}.dot -o ${testFolderName}/${fileName}.png`,
       );
 
       fs.writeFileSync(

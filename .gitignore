@@ -112,3 +112,5 @@ nextTodos.txt
 **/generated/**/*.min.js
 **/generated/**/*.test.ts
 **/generated/**/*_templateValues.json
+**/generated/**/*.png
+**/generated/**/*.dot

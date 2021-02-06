@@ -1,4 +1,5 @@
 import templateFile from './mainTemplate.handlebars';
+import dotTemplateFile from './mainTemplate.dot.handlebars';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
 import { ASTPath } from '../../dfa-analyzer/types';
@@ -247,3 +248,4 @@ export interface TemplateValues {
 
 registerLeafPartial();
 export const template = Handlebars.compile(templateFile);
+export const dotTemplate = Handlebars.compile(dotTemplateFile);
