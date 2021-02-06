@@ -69,7 +69,7 @@ const handleBacktrackingDisjunction = (
     {
       type: 'disjunction',
       data: { hasQuickCheck, alternativesWithQuickChecks },
-      ast: alternatives[0].parent,
+      astLocation: alternatives[0].parent,
     },
     minLength,
     maxLength,
@@ -193,7 +193,7 @@ const handleNonBacktrackingDisjunction = (
         hasQuickCheck,
         alternativesWithQuickChecks,
       },
-      ast: alternatives[0].parent,
+      astLocation: alternatives[0].parent,
     },
     minLength,
     maxLength,

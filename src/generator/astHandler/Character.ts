@@ -39,7 +39,7 @@ export const handleSetOrCharacter = (
         unitsCount,
         unicode: flags.unicode === true,
       },
-      ast: char,
+      astLocation: char,
     },
     min,
     max,

@@ -17,7 +17,7 @@ export const handleAssertion = (
         currentFiber,
         {
           type: flags.multiline ? 'multiLineStartAnchor' : 'startAnchor',
-          ast: assertion,
+          astLocation: assertion,
           data: {},
         },
         0,
@@ -29,7 +29,7 @@ export const handleAssertion = (
         currentFiber,
         {
           type: flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
-          ast: assertion,
+          astLocation: assertion,
           data: {},
         },
         0,
@@ -50,7 +50,7 @@ export const handleAssertion = (
         currentFiber,
         {
           type: 'wordBoundary',
-          ast: assertion,
+          astLocation: assertion,
           data: {
             negate: assertion.negate,
           },

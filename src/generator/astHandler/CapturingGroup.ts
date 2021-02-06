@@ -23,7 +23,7 @@ export const handleCapturingGroup = (
     currentFiber,
     {
       type: 'groupEndMarker',
-      ast: capturingGroup,
+      astLocation: { start: capturingGroup.end - 1, end: capturingGroup.end },
       data: {
         groupReference,
       },
@@ -45,7 +45,10 @@ export const handleCapturingGroup = (
     disjunction,
     {
       type: 'groupStartMarker',
-      ast: capturingGroup,
+      astLocation: {
+        start: capturingGroup.start,
+        end: capturingGroup.start + 1,
+      },
       data: {
         groupReference,
       },

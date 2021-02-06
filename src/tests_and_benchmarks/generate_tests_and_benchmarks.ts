@@ -121,8 +121,10 @@ configFiles
         'utf8',
       );
       fs.writeFileSync(`${testFolderName}/${fileName}.dot`, dotGraph, 'utf8');
-      execSync(
-        `dot -Tpng ${testFolderName}/${fileName}.dot -o ${testFolderName}/${fileName}.png`,
+      console.log(
+        execSync(
+          `dot -Tpng ${testFolderName}/${fileName}.dot -o ${testFolderName}/${fileName}.png`,
+        ).toString(),
       );
 
       fs.writeFileSync(

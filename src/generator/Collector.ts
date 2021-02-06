@@ -8,12 +8,11 @@ import {
   QuantifierTemplateDefinition,
 } from './templates/mainTemplate';
 import * as _ from 'lodash';
-import { CharRange } from './CharRange';
 import { Quantifier } from 'regexpp/ast';
 import { AstElementOrQuantifierElement, ASTPath } from '../dfa-analyzer/types';
 
-type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2'> & {
-  ast: AST.Node;
+type AtomDefinition = Omit<TemplateAtom, 'posLine1' | 'posLine2' | 'raw'> & {
+  astLocation: { start: number; end: number };
 };
 
 export function mergeGroupsOfFibers(forks: FiberTemplateDefinition[]) {
@@ -53,7 +52,7 @@ export class Collector {
     return (this.counter + '').padStart(4, '0');
   }
 
-  private formatAstLocation(ast: AST.Node) {
+  private formatAstLocation(ast: { start: number; end: number }) {
     const startNeedsTruncation = ast.start > 13;
     const regexStrStart = startNeedsTruncation ? ast.start - 10 : 0;
     const endNeedsTruncation = this.optimizedRegexStr.length > ast.end + 13;
@@ -69,6 +68,7 @@ export class Collector {
       posLine2:
         ' '.repeat(ast.start - regexStrStart + (startNeedsTruncation ? 3 : 0)) +
         '^'.repeat(ast.end - ast.start),
+      raw: this.optimizedRegexStr.substring(ast.start, ast.end),
     };
   }
 
@@ -91,6 +91,7 @@ export class Collector {
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
+      returningFunctionName: fiber.returningFunctionName,
       meta: {
         groups,
         minCharLength: fiber.meta.minCharLength,
@@ -100,16 +101,18 @@ export class Collector {
         path: fiber.meta.path,
       },
     };
-    this.fiberHandlers.push(newFiber);
+    this.fiberHandlers.unshift(newFiber);
     return newFiber;
   }
 
   // used by lookaround & non backtracking quantifier
   createFinalFiber(path: ASTPath) {
+    const functionName = `fiber${this.getNewCount()}`;
     const newFiber: FiberTemplateDefinition = {
       followUp: null,
       atoms: [],
-      functionName: `fiber${this.getNewCount()}`,
+      functionName: functionName,
+      returningFunctionName: functionName,
       lastAtomReturns: false,
       meta: {
         groups: [],
@@ -120,7 +123,8 @@ export class Collector {
         path,
       },
     };
-    this.fiberHandlers.push(newFiber);
+
+    this.fiberHandlers.unshift(newFiber);
     return newFiber;
   }
 
@@ -136,6 +140,7 @@ export class Collector {
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: true,
+      returningFunctionName: followUpFiber.returningFunctionName,
       meta: {
         groups: groups.slice(),
         minCharLength: 0,
@@ -145,14 +150,14 @@ export class Collector {
         path: followUpFiber.meta.path,
       },
     };
-    this.fiberHandlers.push(newFiber);
+    this.fiberHandlers.unshift(newFiber);
     return newFiber;
   }
 
   createQuantifierFiberPair(
     followUp: FiberTemplateDefinition,
     type: 'greedy' | 'lazy',
-    ast: AST.Quantifier,
+    astLocation: { start: number; end: number },
     pathForHandler: ASTPath,
   ) {
     const quantifierFinalFiber: FiberTemplateDefinition = {
@@ -160,6 +165,7 @@ export class Collector {
       atoms: [],
       functionName: `fiber${this.getNewCount()}`,
       lastAtomReturns: false,
+      returningFunctionName: followUp.returningFunctionName,
       meta: {
         groups: [],
         minCharLength: 0,
@@ -177,18 +183,19 @@ export class Collector {
           ? `greedyQuantifier${this.getNewCount()}`
           : `lazyQuantifier${this.getNewCount()}`,
       wrappedHandler: quantifierFinalFiber,
+      returningFunctionName: followUp.returningFunctionName,
       meta: {
         groups: [],
         minCharLength: 0,
         maxCharLength: 0,
         path: followUp.meta.path,
       },
-      ...this.formatAstLocation(ast),
+      ...this.formatAstLocation(astLocation),
     };
 
     quantifierFinalFiber.followUp = quantifierHandler;
 
-    this.fiberHandlers.push(quantifierFinalFiber);
+    this.fiberHandlers.unshift(quantifierFinalFiber);
     if (type === 'greedy') {
       this.greedyQuantifierHandlers.push(quantifierHandler);
     } else {
@@ -221,7 +228,7 @@ export class Collector {
   ) {
     // TODO: type this correctly
     const newAtom: any = {
-      ...this.formatAstLocation(def.ast),
+      ...this.formatAstLocation(def.astLocation),
       type: def.type,
       data: def.data,
     };

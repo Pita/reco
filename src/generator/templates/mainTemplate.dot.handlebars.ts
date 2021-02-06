@@ -1,17 +1,28 @@
 export default `
 digraph G {
-  start [shape=Mdiamond];
+  #rankdir="LR";
+  ordering="in";
+  compound=true;
+
+  graph [fontname = "helvetica"];
+  node [fontname = "helvetica", shape=rect, style=rounded];
+  edge [fontname = "helvetica"];
+
+  start [shape=circle, style="filled" fillcolor="green"];
+  start -> {{{mainHandler.functionName}}}_start;
   
   {{#each fiberHandlers}}
-    subgraph {{{functionName}}} {
+    subgraph cluster{{{functionName}}} {
+      style=rounded;
       color=black;
 
-      {{{functionName}}}_start [shape=rect];
+      {{{functionName}}}_start [shape=triangle, label="", style=solid];
       {{#each atoms}}
-        {{{../functionName}}}_{{{@index}}}_{{{type}}};
+        {{{../functionName}}}_{{{@index}}}_{{{type}}} 
+          [label=<{{raw}}<br /><font POINT-SIZE="7"><br />{{type}}</font>>];
 
         {{#if @first}}
-          {{{../functionName}}}_start ->  {{{../functionName}}}_{{{@index}}}_{{{type}}};
+          {{{../functionName}}}_start -> {{{../functionName}}}_{{{@index}}}_{{{type}}};
         {{/if}}
 
         {{#nextItem ../atoms @index}} 
@@ -24,23 +35,26 @@ digraph G {
           {{/unless}}
         {{/if}}
 
-        {{#switchCase 'type' 'lazyQuantifier'}}
-          {{{../../functionName}}}_{{{@../index}}}_{{{../type}}} -> {{{wrappedHandler.functionName}}}_start [dir=both, label=wrappedHandler];
-          {{{../../functionName}}}_{{{@../index}}}_{{{../type}}} -> {{{followUp.functionName}}}_start [label=followUp];
-        {{/switchCase}}
-
-
+        {{#if data.followUp.functionName}}
+          {{{../functionName}}}_{{{@index}}}_{{{type}}} -> {{{data.followUp.functionName}}}_start;
+        {{/if}}
+        {{#if data.wrappedHandler.functionName}}
+          {{{../functionName}}}_{{{@index}}}_{{{type}}} -> {{{data.wrappedHandler.functionName}}}_start;
+          {{{data.wrappedHandler.returningFunctionName}}}_end -> {{{../functionName}}}_{{{@index}}}_{{{type}}};
+        {{/if}}
       {{/each}}
       {{#unless lastAtomReturns}}
-        {{{functionName}}}_end [shape=rect];
+        {{{functionName}}}_end [shape=invtriangle, label="", style=solid];
 
         {{#if followUp}}
           return {{{functionName}}}_end -> {{{followUp.functionName}}}_start;
         {{/if}}
       {{/unless}}
+
     }
   {{/each}}
 
-  start -> {{{mainHandler.functionName}}}_start
+  end [shape=circle, style="filled" fillcolor="red"];
+  {{{mainHandler.returningFunctionName}}}_end -> end;
 }
 `;

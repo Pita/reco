@@ -13,6 +13,7 @@ export interface GroupReference {
 export interface FunctionDefinition {
   functionName: string;
   followUp: FollowUp;
+  returningFunctionName: string;
   meta: {
     groups: GroupReference[];
     minCharLength: number;
@@ -43,6 +44,7 @@ export type FollowUp = FunctionDefinition | null;
 export interface BaseTemplateAtom {
   posLine1: string;
   posLine2: string;
+  raw: string;
 }
 
 export interface CharSequenceTemplateAtom extends BaseTemplateAtom {

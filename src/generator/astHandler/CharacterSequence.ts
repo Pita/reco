@@ -118,7 +118,10 @@ export const handleCharSequence = (
         length,
         chars,
       },
-      ast: charASTElements[0], // TODO: collector should be able to take start & end
+      astLocation: {
+        start: charASTElements[0].start,
+        end: charASTElements[charASTElements.length - 1].end,
+      },
     },
     minSum,
     maxSum,

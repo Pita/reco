@@ -28,7 +28,7 @@ export const handleLookaroundAssertion = (
     currentFiber,
     {
       type: 'lookaround',
-      ast: lookaroundAssertion,
+      astLocation: lookaroundAssertion,
       data: {
         lookaroundFiber,
         negate: lookaroundAssertion.negate,

@@ -1,5 +1,4 @@
 import * as Handlebars from 'handlebars';
-import { GroupReference } from './mainTemplate';
 
 Handlebars.registerHelper('escapeComment', function (this: any, value) {
   return new Handlebars.SafeString(value.replace(/\*/g, '✱'));
@@ -23,7 +22,6 @@ Handlebars.registerHelper('times', function (n, block) {
 });
 
 Handlebars.registerHelper('nextItem', function (array, currentIndex, options) {
-  console.log('arguments', arguments);
   if (currentIndex + 1 >= array.length) {
     return;
   }

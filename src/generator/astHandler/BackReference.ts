@@ -49,7 +49,7 @@ export const handleBackReference = (
     currentFiber,
     {
       type: 'groupBackReference',
-      ast: backreference,
+      astLocation: backreference,
       data: {
         groupIndex: backReferenceRef - 1,
       },
