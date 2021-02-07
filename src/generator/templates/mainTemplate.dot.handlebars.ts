@@ -1,8 +1,8 @@
 export default `
 digraph G {
-  #rankdir="LR";
-  ordering="in";
-  compound=true;
+  #ordering="in";
+  concentrate=true;
+  splines="ortho";
 
   graph [fontname = "helvetica"];
   node [fontname = "helvetica", shape=rect, style=rounded];
@@ -20,23 +20,35 @@ digraph G {
 
       {{#each atoms}}
         #atom definition
-        {{{../functionName}}}_{{{@index}}}_{{{type}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />{{type}}</font>>];
+        {{#isAnyOf type 'disjunction' 'nonBacktrackingDisjunction'}}
+          {{{../../functionName}}}_{{{@index}}}_{{{../type}}} [label={{{../type}}}];
+        {{/isAnyOf}}
+        {{#isNotAnyOf type 'disjunction' 'nonBacktrackingDisjunction'}}
+          {{{../../functionName}}}_{{{@index}}}_{{{../type}}} [label=<{{../raw}}<br /><font POINT-SIZE="7"><br />{{../type}}</font>>
+            {{#isAnyOf ../type 'lazyQuantifier' 'backtrackingFixedLengthQuantifier'}}
+              , fillcolor=lightblue, style=filled
+            {{/isAnyOf}}
+          ];
+        {{/isNotAnyOf}}
       {{/each}}
+      {{#unless atoms}}
+        {{{functionName}}}_0_empty [label=Empty];
+      {{/unless}}
     }
   {{/each}}
 
   {{#each greedyQuantifierHandlers}}
     # greedyQuantifier TODO: indicate counter
-    {{{functionName}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />greedyQuantifier</font>>];
+    {{{functionName}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />greedyQuantifier</font>>, fillcolor=lightblue, style=filled];
 
     {{#if followUp.functionName}}
-      # followUp
+      # greedy quantifier followUp
       {{#withEntryOf @root followUp.functionName}}
         {{{../functionName}}} -> {{{entryNode}}};
       {{/withEntryOf}}
     {{/if}}
     {{#if wrappedHandler.functionName}}
-      # wrappedHandler
+      # greedy quantifier wrappedHandler
       {{#withEntryOf @root wrappedHandler.functionName}}
         {{{../functionName}}} -> {{{entryNode}}};
       {{/withEntryOf}}
@@ -47,8 +59,24 @@ digraph G {
   {{/each}}
 
   {{#each lazyQuantifierHandlers}}
-    # lazyQuantifier
-    {{{functionName}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />{{type}}</font>>];
+    # lazyQuantifier TODO: indicate counter
+    {{{functionName}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />greedyQuantifier</font>>, fillcolor=lightblue, style=filled];
+
+    {{#if followUp.functionName}}
+      # lazy quantifier followUp
+      {{#withEntryOf @root followUp.functionName}}
+        {{{../functionName}}} -> {{{entryNode}}};
+      {{/withEntryOf}}
+    {{/if}}
+    {{#if wrappedHandler.functionName}}
+      # lazy quantifier wrappedHandler
+      {{#withEntryOf @root wrappedHandler.functionName}}
+        {{{../functionName}}} -> {{{entryNode}}};
+      {{/withEntryOf}}
+      {{#withExitOf @root wrappedHandler.functionName}}
+        {{{exitNode}}} -> {{{../functionName}}};
+      {{/withExitOf}}
+    {{/if}}
   {{/each}}
 
   {{#each fiberHandlers}}
@@ -59,13 +87,13 @@ digraph G {
       {{/nextItem}}
 
       {{#if data.followUp.functionName}}
-        # followUp
+        # atom followUp
         {{#withEntryOf @root data.followUp.functionName}}
           {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{entryNode}}};
         {{/withEntryOf}}
       {{/if}}
       {{#if data.wrappedHandler.functionName}}
-        # wrappedHandler
+        # atom wrappedHandler
         {{#withEntryOf @root data.wrappedHandler.functionName}}
           {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{entryNode}}};
         {{/withEntryOf}}
@@ -74,9 +102,39 @@ digraph G {
         {{/withExitOf}}
       {{/if}}
 
+      {{#if data.lookaroundFiber.functionName}}
+        # lookaroundFiber
+        {{#withEntryOf @root data.lookaroundFiber.functionName}}
+          {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{entryNode}}};
+        {{/withEntryOf}}
+        {{#withExitOf @root data.lookaroundFiber.functionName}}
+          {{{exitNode}}} -> {{{../../functionName}}}_{{{@index}}}_{{{../type}}};
+        {{/withExitOf}}
+      {{/if}}
+
       {{#switchCase 'type' 'quantifierStarter'}}
         # quantifierStarter
         {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{functionName}}};
+      {{/switchCase}}
+
+      {{#switchCase 'type' 'disjunction'}}
+        {{#each alternativesWithQuickChecks}}
+          # disjunction alternatives with quickcheck
+          {{#withEntryOf @root alternative.functionName}}
+            {{{../../../../functionName}}}_{{{@../index}}}_{{{../../../type}}} -> {{{entryNode}}};
+          {{/withEntryOf}}
+        {{/each}}
+      {{/switchCase}}
+      {{#switchCase 'type' 'nonBacktrackingDisjunction'}}
+        {{#each alternativesWithQuickChecks}}
+          # nonBacktrackingDisjunction alternatives with quickcheck
+          {{#withEntryOf @root alternative.functionName}}
+            {{{../../../../functionName}}}_{{{@../index}}}_{{{../../../type}}} -> {{{entryNode}}};
+          {{/withEntryOf}}
+          {{#withExitOf @root alternative.returningFunctionName}}
+            {{{exitNode}}} -> {{{../../../../functionName}}}_{{{@../index}}}_{{{../../../type}}};
+          {{/withExitOf}}
+        {{/each}}
       {{/switchCase}}
     {{/each}}
     {{#unless lastAtomReturns}}

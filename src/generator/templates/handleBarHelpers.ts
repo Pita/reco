@@ -51,6 +51,22 @@ const assertQuantifierExists = (root: TemplateValues, functionName: string) => {
   throw new Error(`Did not find quantifier ${functionName}`);
 };
 
+Handlebars.registerHelper('isAnyOf', function (value: any, ...args) {
+  const possiblities = args.slice(0, arguments.length - 2);
+  const options = args[args.length - 1];
+  if (possiblities.includes(value)) {
+    return options.fn();
+  }
+});
+
+Handlebars.registerHelper('isNotAnyOf', function (value: any, ...args) {
+  const possiblities = args.slice(0, arguments.length - 2);
+  const options = args[args.length - 1];
+  if (!possiblities.includes(value)) {
+    return options.fn();
+  }
+});
+
 Handlebars.registerHelper(
   'withEntryOf',
   function (root: TemplateValues, functionName: string, options) {
@@ -58,6 +74,9 @@ Handlebars.registerHelper(
       (fiber) => fiber.functionName === functionName,
     );
     if (fiber) {
+      if (fiber.atoms.length === 0) {
+        return `${fiber.functionName}_0_empty`;
+      }
       const type = fiber.atoms[0].type;
       return options.fn({ entryNode: `${functionName}_0_${type}` });
     }
@@ -73,6 +92,9 @@ Handlebars.registerHelper(
       (fiber) => fiber.functionName === functionName,
     );
     if (fiber) {
+      if (fiber.atoms.length === 0) {
+        return `${fiber.functionName}_0_empty`;
+      }
       const lastIndex = fiber.atoms.length - 1;
       const type = fiber.atoms[lastIndex].type;
       return options.fn({ exitNode: `${functionName}_${lastIndex}_${type}` });
