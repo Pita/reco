@@ -33,6 +33,24 @@ Handlebars.registerHelper('nextItem', function (array, currentIndex, options) {
   });
 });
 
+const assertQuantifierExists = (root: TemplateValues, functionName: string) => {
+  const greedyQuantifier = root.greedyQuantifierHandlers.find(
+    (quantifier) => quantifier.functionName === functionName,
+  );
+  if (greedyQuantifier) {
+    return greedyQuantifier;
+  }
+
+  const lazyQuantifier = root.lazyQuantifierHandlers.find(
+    (quantifier) => quantifier.functionName === functionName,
+  );
+  if (lazyQuantifier) {
+    return lazyQuantifier;
+  }
+
+  throw new Error(`Did not find quantifier ${functionName}`);
+};
+
 Handlebars.registerHelper(
   'withEntryOf',
   function (root: TemplateValues, functionName: string, options) {
@@ -40,12 +58,11 @@ Handlebars.registerHelper(
       (fiber) => fiber.functionName === functionName,
     );
     if (fiber) {
-      return options.fn({
-        ...fiber.atoms[0],
-        functionName,
-        index: 0,
-      });
+      const type = fiber.atoms[0].type;
+      return options.fn({ entryNode: `${functionName}_0_${type}` });
     }
+    assertQuantifierExists(root, functionName);
+    return options.fn({ entryNode: functionName });
   },
 );
 
@@ -56,11 +73,12 @@ Handlebars.registerHelper(
       (fiber) => fiber.functionName === functionName,
     );
     if (fiber) {
-      return options.fn({
-        ...fiber.atoms[fiber.atoms.length - 1],
-        functionName,
-        index: fiber.atoms.length - 1,
-      });
+      const lastIndex = fiber.atoms.length - 1;
+      const type = fiber.atoms[lastIndex].type;
+      return options.fn({ exitNode: `${functionName}_${lastIndex}_${type}` });
     }
+
+    assertQuantifierExists(root, functionName);
+    return options.fn({ exitNode: functionName });
   },
 );

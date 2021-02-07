@@ -10,7 +10,7 @@ digraph G {
 
   start [shape=circle, style="filled" fillcolor="green"];
   {{#withEntryOf @root mainHandler.functionName}}
-    start -> {{{functionName}}}_{{index}}_{{type}};
+    start -> {{{entryNode}}};
   {{/withEntryOf}}
   
   {{#each fiberHandlers}}
@@ -19,47 +19,83 @@ digraph G {
       color=black;
 
       {{#each atoms}}
-        #atom
+        #atom definition
         {{{../functionName}}}_{{{@index}}}_{{{type}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />{{type}}</font>>];
-
-        {{#nextItem ../atoms @index}}
-          #nextItem
-          {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{../../functionName}}}_{{{nextIndex}}}_{{{type}}};
-        {{/nextItem}}
-
-        {{#if data.followUp.functionName}}
-          # followUp
-          {{#withEntryOf @root data.followUp.functionName}}
-            {{{../../functionName}}}_{{{@../index}}}_{{{../type}}} -> {{{functionName}}}_{{index}}_{{type}};
-          {{/withEntryOf}}
-        {{/if}}
-        {{#if data.wrappedHandler.functionName}}
-          # wrappedHandler
-          {{#withEntryOf @root data.wrappedHandler.functionName}}
-            {{{../../functionName}}}_{{{@../index}}}_{{{../type}}} -> {{{functionName}}}_{{index}}_{{type}};
-          {{/withEntryOf}}
-          {{#withExitOf @root data.wrappedHandler.functionName}}
-            {{{functionName}}}_{{index}}_{{type}} -> {{{../../functionName}}}_{{{@../index}}}_{{{../type}}};
-          {{/withExitOf}}
-        {{/if}}
       {{/each}}
-      {{#unless lastAtomReturns}}
-        {{#if followUp}}
-          {{#withEntryOf @root functionName}}
-            {{{functionName}}}_{{index}}_{{type}} ->
-          {{/withEntryOf}}
-          {{#withExitOf @root followUp.functionName}}
-            {{{functionName}}}_{{index}}_{{type}};
-          {{/withExitOf}}
-        {{/if}}
-      {{/unless}}
     }
+  {{/each}}
+
+  {{#each greedyQuantifierHandlers}}
+    # greedyQuantifier TODO: indicate counter
+    {{{functionName}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />greedyQuantifier</font>>];
+
+    {{#if followUp.functionName}}
+      # followUp
+      {{#withEntryOf @root followUp.functionName}}
+        {{{../functionName}}} -> {{{entryNode}}};
+      {{/withEntryOf}}
+    {{/if}}
+    {{#if wrappedHandler.functionName}}
+      # wrappedHandler
+      {{#withEntryOf @root wrappedHandler.functionName}}
+        {{{../functionName}}} -> {{{entryNode}}};
+      {{/withEntryOf}}
+      {{#withExitOf @root wrappedHandler.functionName}}
+        {{{exitNode}}} -> {{{../functionName}}};
+      {{/withExitOf}}
+    {{/if}}
+  {{/each}}
+
+  {{#each lazyQuantifierHandlers}}
+    # lazyQuantifier
+    {{{functionName}}} [label=<{{raw}}<br /><font POINT-SIZE="7"><br />{{type}}</font>>];
+  {{/each}}
+
+  {{#each fiberHandlers}}
+    {{#each atoms}}
+      {{#nextItem ../atoms @index}}
+        #nextItem
+        {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{../../functionName}}}_{{{nextIndex}}}_{{{type}}};
+      {{/nextItem}}
+
+      {{#if data.followUp.functionName}}
+        # followUp
+        {{#withEntryOf @root data.followUp.functionName}}
+          {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{entryNode}}};
+        {{/withEntryOf}}
+      {{/if}}
+      {{#if data.wrappedHandler.functionName}}
+        # wrappedHandler
+        {{#withEntryOf @root data.wrappedHandler.functionName}}
+          {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{entryNode}}};
+        {{/withEntryOf}}
+        {{#withExitOf @root data.wrappedHandler.functionName}}
+          {{{exitNode}}} -> {{{../../functionName}}}_{{{@index}}}_{{{../type}}};
+        {{/withExitOf}}
+      {{/if}}
+
+      {{#switchCase 'type' 'quantifierStarter'}}
+        # quantifierStarter
+        {{{../../functionName}}}_{{{@index}}}_{{{../type}}} -> {{{functionName}}};
+      {{/switchCase}}
+    {{/each}}
+    {{#unless lastAtomReturns}}
+      {{#if followUp}}
+        # function end follow up
+        {{#withExitOf @root functionName}}
+          {{{exitNode}}} ->
+        {{/withExitOf}}
+        {{#withEntryOf @root followUp.functionName}}
+          {{{entryNode}}};
+        {{/withEntryOf}}
+      {{/if}}
+    {{/unless}}
   {{/each}}
 
   end [shape=circle, style="filled" fillcolor="red"];
 
   {{#withExitOf @root mainHandler.returningFunctionName}}
-    {{{functionName}}}_{{index}}_{{type}} -> end;
+    {{{exitNode}}} -> end;
   {{/withExitOf}}
 }
 `;
