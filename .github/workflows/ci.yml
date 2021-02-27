@@ -10,6 +10,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '15.x'
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
       - run: npm install
       - run: npm run generate
       - run: git diff --exit-code src/tests_and_benchmarks/generated
