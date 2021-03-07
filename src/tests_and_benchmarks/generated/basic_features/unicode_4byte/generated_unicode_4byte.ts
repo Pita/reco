@@ -17,7 +17,7 @@
 // }
 // or null in case there is no match
 
-/* eslint prefer-const: 0 */
+/* eslint prefer-const: 0, functional/prefer-readonly-type: 0, functional/no-let: 0, functional/immutable-data: 0 */
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {}
