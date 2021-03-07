@@ -2,3 +2,4 @@ fake_data
 generated_*
 *.handlebars
 lambda_benchmarking/benchmarks_result
+coverage
