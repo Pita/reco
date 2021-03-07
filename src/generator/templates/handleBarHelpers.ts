@@ -7,7 +7,8 @@ Handlebars.registerHelper('escapeComment', function (this: unknown, value) {
 
 Handlebars.registerHelper(
   'switchCase',
-  function (this: unknown, keyName, expectedValue, options) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function (this: any, keyName, expectedValue, options) {
     if (this[keyName] === expectedValue) {
       return options.fn(this.data ? this.data : this);
     } else {

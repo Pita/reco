@@ -50,10 +50,10 @@ export interface BaseTemplateAtom {
 export interface CharSequenceTemplateAtom extends BaseTemplateAtom {
   type: 'charSequence';
   data: {
-    nonOrderedLoading: Array<{
+    orderedLoading: Array<{
       unitsCount: UTF16UnitsCount;
       unicode: boolean;
-    }>;
+    }> | null;
     length: number;
     chars: Array<{
       tree: LeafTemplate;
@@ -87,12 +87,11 @@ export interface CharOrSetBackwardTemplateAtom extends BaseTemplateAtom {
 export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
   type: 'disjunction';
   data: {
-    groupsToRestore: GroupReference[];
     hasQuickCheck: boolean;
-    alternativesWithQuickChecks: {
+    alternativesWithQuickChecks: Array<{
       alternative: FiberTemplateDefinition;
       quickCheck: QuickCheckDetails | null;
-    };
+    }>;
   };
 }
 
@@ -133,7 +132,8 @@ export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
 export interface QuantifierStarterTemplateAtom extends BaseTemplateAtom {
   type: 'quantifierStarter';
   data: {
-    backupCounter: boolean;
+    maxOrMinCount: boolean;
+    shouldBackupPrevious: boolean;
     functionName: string;
     quantifierCounterIndex?: number;
   };
@@ -157,8 +157,7 @@ export interface WordBoundaryTemplateAtom extends BaseTemplateAtom {
 export interface GroupBackReferenceTemplateAtom extends BaseTemplateAtom {
   type: 'groupBackReference';
   data: {
-    startGroupMarkerIndex: number;
-    endGroupMarkerIndex: number;
+    groupIndex: number;
   };
 }
 
@@ -180,7 +179,7 @@ export interface BacktrackingFixedLengthQuantifier extends BaseTemplateAtom {
     maxCount?: number;
     wrappedHandler: FiberTemplateDefinition;
     followUp: FollowUp;
-    groups: GroupReference[];
+    fixedLength: number;
   };
 }
 

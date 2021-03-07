@@ -7,8 +7,7 @@
   "scripts": {
     "test:all": "npm run generate && npm run test:run",
     "generate": "ts-node -T ./src/tests_and_benchmarks/generate_tests_and_benchmarks.ts",
-    "test:keep-snapshots": "npx jest",
-    "test:run": "npx jest --updateSnapshot",
+    "test:ci": "npx jest --coverage",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "typecheck": "tsc --noEmit",
     "benchmark": "cd lambda_benchmarking/ && npm run deploy:function && npm run benchmark",
