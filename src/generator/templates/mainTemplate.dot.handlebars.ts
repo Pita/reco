@@ -131,6 +131,7 @@ digraph G {
           {{#withEntryOf @root alternative.functionName}}
             {{{../../../../functionName}}}_{{{@../index}}}_{{{../../../type}}} -> {{{entryNode}}};
           {{/withEntryOf}}
+          // TODO: there is a problem here, this sometimes does not exist
           {{#withExitOf @root alternative.returningFunctionName}}
             {{{exitNode}}} -> {{{../../../../functionName}}}_{{{@../index}}}_{{{../../../type}}};
           {{/withExitOf}}
