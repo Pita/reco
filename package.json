@@ -16,7 +16,8 @@
     "faker:generate": "ts-node -T ./src/benchmarking_with_faker/generate_fake_data.ts",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "build": "rm -rf dist && tsc && chmod +x ./dist/cli.js"
+    "build": "rm -rf dist && tsc && chmod +x ./dist/cli.js",
+    "lint": "eslint ."
   },
   "bin": {
     "reco.io": "./dist/cli.js"
