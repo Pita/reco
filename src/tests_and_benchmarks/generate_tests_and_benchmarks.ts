@@ -58,7 +58,8 @@ configFiles
     try {
       templateValues = genDevTemplateValues(config.regex);
       unformattedCode = template(templateValues);
-      dotGraph = dotTemplate(templateValues);
+      dotGraph = 'placeholder';
+      // dotGraph = dotTemplate(templateValues);
     } catch (e) {
       console.error(e);
       error = e;
@@ -120,12 +121,12 @@ configFiles
         testCode,
         'utf8',
       );
-      fs.writeFileSync(`${testFolderName}/${fileName}.dot`, dotGraph, 'utf8');
-      console.log(
-        execSync(
-          `dot -Tpng ${testFolderName}/${fileName}.dot -o ${testFolderName}/${fileName}.png`,
-        ).toString(),
-      );
+      // fs.writeFileSync(`${testFolderName}/${fileName}.dot`, dotGraph, 'utf8');
+      // console.log(
+      //   execSync(
+      //     `dot -Tpng ${testFolderName}/${fileName}.dot -o ${testFolderName}/${fileName}.png`,
+      //   ).toString(),
+      // );
 
       fs.writeFileSync(
         `${benchmarkFolderName}/${fileName}.benchmark.ts`,
