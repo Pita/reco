@@ -63,17 +63,82 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0004 = (i: number, str: string, context: Context): number => {
+  /*
+   * quantifierStarter
+   * /(aa3)✱(aa3a)/
+   *  ^^^^^^
+   */
+  return greedyQuantifier0003(i, str, context);
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupStartMarker
+   * /(aa3)✱(aa3a)/
+   *  ^
+   */
+  context.groupMarkerStartTemp0 = i;
+  /*
+   * charSequence
+   * /(aa3)✱(aa3a)/
+   *   ^^^
+   */
+  const iAfterMatch1 = i + 3;
+  if (iAfterMatch1 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 2);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 51;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 0);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 97;
+
+    if (!result2) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
+  }
+  /*
+   * groupEndMarker
+   * /(aa3)✱(aa3a)/
+   *      ^
+   */
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
+  return greedyQuantifier0003(i, str, context);
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(aa3)✱(aa3a)/
-   *        ^^^^^^
+   *        ^
    */
   context.groupMarkerStartTemp1 = i;
   /*
    * charSequence
    * /(aa3)✱(aa3a)/
-   *         ^
+   *         ^^^^
    */
   const iAfterMatch1 = i + 4;
   if (iAfterMatch1 > str.length) {
@@ -123,76 +188,11 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(aa3)✱(aa3a)/
-   *        ^^^^^^
+   *             ^
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;
   return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * /(aa3)✱(aa3a)/
-   *  ^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
-   * charSequence
-   * /(aa3)✱(aa3a)/
-   *   ^
-   */
-  const iAfterMatch1 = i + 3;
-  if (iAfterMatch1 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 2);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 51;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 97;
-
-    if (!result2) {
-      return -1;
-    }
-
-    i = iAfterMatch1;
-  }
-  /*
-   * groupEndMarker
-   * /(aa3)✱(aa3a)/
-   *  ^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  return greedyQuantifier0003(i, str, context);
-};
-const fiber0004 = (i: number, str: string, context: Context): number => {
-  /*
-   * quantifierStarter
-   * /(aa3)✱(aa3a)/
-   *  ^^^^^^
-   */
-  return greedyQuantifier0003(i, str, context);
 };
 
 /*

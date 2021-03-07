@@ -41,6 +41,52 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /^\d✱\.\d\d✱$/
+   *   ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  if (charCode0 <= 57) {
+    result0 = charCode0 >= 48;
+  } else {
+    result0 = false;
+  }
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /^\d✱\.\d\d✱$/
+   *          ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  if (charCode0 <= 57) {
+    result0 = charCode0 >= 48;
+  } else {
+    result0 = false;
+  }
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
@@ -67,7 +113,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charSequence
    * /^\d✱\.\d\d✱$/
-   *      ^^
+   *      ^^^^
    */
   const iAfterMatch2 = i + 2;
   if (iAfterMatch2 > str.length) {
@@ -121,51 +167,5 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   if (i !== str.length) {
     return -1;
   }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /^\d✱\.\d\d✱$/
-   *          ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /^\d✱\.\d\d✱$/
-   *   ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
   return i;
 };

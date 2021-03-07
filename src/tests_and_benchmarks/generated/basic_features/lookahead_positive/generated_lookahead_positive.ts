@@ -41,6 +41,32 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charSequence
+   * /x(?=y)/
+   *      ^
+   */
+  const iAfterMatch0 = i + 1;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 0);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 121;
+
+    if (!result0) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charSequence
@@ -73,32 +99,6 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   const lookaroundResult1 = fiber0002(i, str, context);
   if (lookaroundResult1 === -1) {
     return -1;
-  }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * /x(?=y)/
-   *      ^
-   */
-  const iAfterMatch0 = i + 1;
-  if (iAfterMatch0 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 121;
-
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch0;
   }
   return i;
 };

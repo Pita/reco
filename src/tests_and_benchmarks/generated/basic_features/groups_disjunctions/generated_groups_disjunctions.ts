@@ -81,11 +81,95 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (i: number, str: string, context: Context): number => {
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(([a-c])|([d-f]))(a)/
-   *  ^^^^^^^^^^^^^^^^^
+   *           ^
+   */
+  context.groupMarkerStartTemp2 = i;
+  /*
+   * charSequence
+   * /(([a-c])|([d-f]))(a)/
+   *            ^^^^^
+   */
+  const iAfterMatch1 = i + 1;
+  if (iAfterMatch1 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 0);
+
+    let result0: boolean;
+
+    if (charCode0 <= 102) {
+      result0 = charCode0 >= 100;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
+  }
+  /*
+   * groupEndMarker
+   * ...c])|([d-f]))(a)/
+   *              ^
+   */
+  context.groupMarkerStart2 = context.groupMarkerStartTemp2;
+  context.groupMarkerEnd2 = i;
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupStartMarker
+   * /(([a-c])|([d...
+   *   ^
+   */
+  context.groupMarkerStartTemp1 = i;
+  /*
+   * charSequence
+   * /(([a-c])|([d-f]))...
+   *    ^^^^^
+   */
+  const iAfterMatch1 = i + 1;
+  if (iAfterMatch1 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 0);
+
+    let result0: boolean;
+
+    if (charCode0 <= 99) {
+      result0 = charCode0 >= 97;
+    } else {
+      result0 = false;
+    }
+    if (!result0) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
+  }
+  /*
+   * groupEndMarker
+   * /(([a-c])|([d-f]))(a)/
+   *         ^
+   */
+  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
+  context.groupMarkerEnd1 = i;
+  return i;
+};
+const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupStartMarker
+   * /(([a-c])|([...
+   *  ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
@@ -121,15 +205,15 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * /(([a-c])|([d-f]))(a)/
-   *  ^^^^^^^^^^^^^^^^^
+   * ...])|([d-f]))(a)/
+   *              ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
    * ...)|([d-f]))(a)/
-   *              ^^^
+   *              ^
    */
   context.groupMarkerStartTemp3 = i;
   /*
@@ -157,94 +241,10 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * ...)|([d-f]))(a)/
-   *              ^^^
+   * ...([d-f]))(a)/
+   *              ^
    */
   context.groupMarkerStart3 = context.groupMarkerStartTemp3;
   context.groupMarkerEnd3 = i;
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * /(([a-c])|([d-f]))(a)/
-   *   ^^^^^^^
-   */
-  context.groupMarkerStartTemp1 = i;
-  /*
-   * charSequence
-   * /(([a-c])|([d-f]))...
-   *    ^^^^^
-   */
-  const iAfterMatch1 = i + 1;
-  if (iAfterMatch1 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    if (charCode0 <= 99) {
-      result0 = charCode0 >= 97;
-    } else {
-      result0 = false;
-    }
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch1;
-  }
-  /*
-   * groupEndMarker
-   * /(([a-c])|([d-f]))(a)/
-   *   ^^^^^^^
-   */
-  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
-  context.groupMarkerEnd1 = i;
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * /(([a-c])|([d-f]))(a)/
-   *           ^^^^^^^
-   */
-  context.groupMarkerStartTemp2 = i;
-  /*
-   * charSequence
-   * /(([a-c])|([d-f]))(a)/
-   *            ^^^^^
-   */
-  const iAfterMatch1 = i + 1;
-  if (iAfterMatch1 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    if (charCode0 <= 102) {
-      result0 = charCode0 >= 100;
-    } else {
-      result0 = false;
-    }
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch1;
-  }
-  /*
-   * groupEndMarker
-   * /(([a-c])|([d-f]))(a)/
-   *           ^^^^^^^
-   */
-  context.groupMarkerStart2 = context.groupMarkerStartTemp2;
-  context.groupMarkerEnd2 = i;
   return i;
 };

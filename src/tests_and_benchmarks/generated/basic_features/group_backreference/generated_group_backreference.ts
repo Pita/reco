@@ -63,70 +63,11 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupEndMarker
-   * /(['"])(.✱?)\1/
-   *        ^^^^^
-   */
-  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
-  context.groupMarkerEnd1 = i;
-  /*
-   * groupBackReference
-   * /(['"])(.✱?)\1/
-   *             ^^
-   */
-  let backReferenceI1 = context.groupMarkerStart0;
-  const backReferenceEnd1 = context.groupMarkerEnd0;
-  while (backReferenceI1 < backReferenceEnd1) {
-    if (i >= str.length) {
-      return -1;
-    }
-
-    const backReferenceCharCode = str.charCodeAt(backReferenceI1);
-    const currentCharCode = str.charCodeAt(i);
-
-    if (backReferenceCharCode !== currentCharCode) {
-      return -1;
-    }
-
-    backReferenceI1++;
-    i++;
-  }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /(['"])(.✱?)\1/
-   *         ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  if (charCode0 <= 13) {
-    result0 = charCode0 === 10 || charCode0 === 13;
-  } else {
-    if (charCode0 <= 8233) {
-      result0 = charCode0 >= 8232;
-    } else {
-      result0 = false;
-    }
-  }
-  if (result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
 const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(['"])(.✱?)\1/
-   *  ^^^^^^
+   *  ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
@@ -155,14 +96,14 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(['"])(.✱?)\1/
-   *  ^^^^^^
+   *       ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
    * /(['"])(.✱?)\1/
-   *        ^^^^^
+   *        ^
    */
   context.groupMarkerStartTemp1 = i;
   /*
@@ -183,4 +124,63 @@ const fiber0003 = (i: number, str: string, context: Context): number => {
     }
     i = wrappedResult;
   }
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /(['"])(.✱?)\1/
+   *         ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  if (charCode0 <= 13) {
+    result0 = charCode0 === 10 || charCode0 === 13;
+  } else {
+    if (charCode0 <= 8233) {
+      result0 = charCode0 >= 8232;
+    } else {
+      result0 = false;
+    }
+  }
+  if (result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupEndMarker
+   * /(['"])(.✱?)\1/
+   *            ^
+   */
+  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
+  context.groupMarkerEnd1 = i;
+  /*
+   * groupBackReference
+   * /(['"])(.✱?)\1/
+   *             ^^
+   */
+  let backReferenceI1 = context.groupMarkerStart0;
+  const backReferenceEnd1 = context.groupMarkerEnd0;
+  while (backReferenceI1 < backReferenceEnd1) {
+    if (i >= str.length) {
+      return -1;
+    }
+
+    const backReferenceCharCode = str.charCodeAt(backReferenceI1);
+    const currentCharCode = str.charCodeAt(i);
+
+    if (backReferenceCharCode !== currentCharCode) {
+      return -1;
+    }
+
+    backReferenceI1++;
+    i++;
+  }
+  return i;
 };

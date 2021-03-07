@@ -54,11 +54,71 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charSequence
+   * /(^deg|def)/
+   *        ^^^
+   */
+  const iAfterMatch0 = i + 3;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 2);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 102;
+
+    if (!result0) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * startAnchor
+   * /(^deg|def)/
+   *   ^
+   */
+  if (i !== 0) {
+    return -1;
+  }
+  /*
+   * charSequence
+   * /(^deg|def)/
+   *    ^^^
+   */
+  const iAfterMatch1 = i + 3;
+  if (iAfterMatch1 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 2);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 103;
+
+    if (!result0) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
+  }
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(^deg|def)/
-   *  ^^^^^^^^^^
+   *  ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
@@ -91,69 +151,9 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(^deg|def)/
-   *  ^^^^^^^^^^
+   *           ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * startAnchor
-   * /(^deg|def)/
-   *   ^
-   */
-  if (i !== 0) {
-    return -1;
-  }
-  /*
-   * charSequence
-   * /(^deg|def)/
-   *    ^
-   */
-  const iAfterMatch1 = i + 3;
-  if (iAfterMatch1 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 2);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 103;
-
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch1;
-  }
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * /(^deg|def)/
-   *        ^
-   */
-  const iAfterMatch0 = i + 3;
-  if (iAfterMatch0 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 2);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 102;
-
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch0;
-  }
   return i;
 };

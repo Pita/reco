@@ -63,51 +63,31 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupEndMarker
-   * /(.✱?)(a)/
-   *  ^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
+const fiber0003 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(.✱?)(a)/
-   *       ^^^
+   *  ^
    */
-  context.groupMarkerStartTemp1 = i;
+  context.groupMarkerStartTemp0 = i;
   /*
-   * charSequence
+   * lazyQuantifier
    * /(.✱?)(a)/
-   *        ^
+   *   ^^^
    */
-  const iAfterMatch2 = i + 1;
-  if (iAfterMatch2 > str.length) {
-    return -1;
-  }
+  while (true) {
+    const directFollowUpResult1 = fiber0001(i, str, context);
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
+    if (directFollowUpResult1 !== -1) {
+      return directFollowUpResult1;
     }
 
-    i = iAfterMatch2;
+    const wrappedResult = fiber0002(i, str, context);
+    if (wrappedResult === -1) {
+      return -1;
+    }
+    i = wrappedResult;
   }
-  /*
-   * groupEndMarker
-   * /(.✱?)(a)/
-   *       ^^^
-   */
-  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
-  context.groupMarkerEnd1 = i;
-  return i;
 };
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
@@ -136,29 +116,49 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   i++;
   return i;
 };
-const fiber0003 = (i: number, str: string, context: Context): number => {
+const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupEndMarker
+   * /(.✱?)(a)/
+   *      ^
+   */
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
    * /(.✱?)(a)/
-   *  ^^^^^
+   *       ^
    */
-  context.groupMarkerStartTemp0 = i;
+  context.groupMarkerStartTemp1 = i;
   /*
-   * lazyQuantifier
+   * charSequence
    * /(.✱?)(a)/
-   *   ^^^
+   *        ^
    */
-  while (true) {
-    const directFollowUpResult1 = fiber0001(i, str, context);
+  const iAfterMatch2 = i + 1;
+  if (iAfterMatch2 > str.length) {
+    return -1;
+  }
 
-    if (directFollowUpResult1 !== -1) {
-      return directFollowUpResult1;
-    }
+  {
+    const charCode0 = str.charCodeAt(i + 0);
 
-    const wrappedResult = fiber0002(i, str, context);
-    if (wrappedResult === -1) {
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
       return -1;
     }
-    i = wrappedResult;
+
+    i = iAfterMatch2;
   }
+  /*
+   * groupEndMarker
+   * /(.✱?)(a)/
+   *         ^
+   */
+  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
+  context.groupMarkerEnd1 = i;
+  return i;
 };

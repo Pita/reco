@@ -54,6 +54,93 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0004 = (i: number, str: string, context: Context): number => {
+  /*
+   * charSequence
+   * ...9]|1[0-9]|2[0-3]):[0-5][0-...
+   *              ^^^^^^
+   */
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 51) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  return i;
+};
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charSequence
+   * /^(0[0-9]|1[0-9]|2[0-3]):[...
+   *           ^^^^^^
+   */
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charSequence
+   * /^(0[0-9]|1[0-9]|2[...
+   *    ^^^^^^
+   */
+  const iAfterMatch0 = i + 2;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch0;
+  }
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
@@ -65,8 +152,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupStartMarker
-   * /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-   *   ^^^^^^^^^^^^^^^^^^^^^^
+   * /^(0[0-9]|1[0...
+   *   ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
@@ -105,15 +192,15 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupEndMarker
-   * /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-   *   ^^^^^^^^^^^^^^^^^^^^^^
+   * ...-9]|2[0-3]):[0-5][0-9]$/
+   *              ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * charSequence
    * ...9]|2[0-3]):[0-5][0-9]$/
-   *              ^
+   *              ^^^^^^^^^^^
    */
   const iAfterMatch4 = i + 3;
   if (iAfterMatch4 > str.length) {
@@ -164,93 +251,6 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
    */
   if (i !== str.length) {
     return -1;
-  }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * /^(0[0-9]|1[0-...
-   *    ^
-   */
-  const iAfterMatch0 = i + 2;
-  if (iAfterMatch0 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    if (charCode1 <= 57) {
-      result1 = charCode1 >= 48;
-    } else {
-      result1 = false;
-    }
-    if (!result1) {
-      return -1;
-    }
-
-    i = iAfterMatch0;
-  }
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * /^(0[0-9]|1[0-9]|2[0-...
-   *           ^
-   */
-  const iAfterMatch0 = i + 2;
-  if (iAfterMatch0 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    if (charCode1 <= 57) {
-      result1 = charCode1 >= 48;
-    } else {
-      result1 = false;
-    }
-    if (!result1) {
-      return -1;
-    }
-
-    i = iAfterMatch0;
-  }
-  return i;
-};
-const fiber0004 = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * ...9]|1[0-9]|2[0-3]):[0-...
-   *              ^
-   */
-  const iAfterMatch0 = i + 2;
-  if (iAfterMatch0 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    if (charCode1 <= 51) {
-      result1 = charCode1 >= 48;
-    } else {
-      result1 = false;
-    }
-    if (!result1) {
-      return -1;
-    }
-
-    i = iAfterMatch0;
   }
   return i;
 };

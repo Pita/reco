@@ -45,7 +45,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charSequence
    * /def$/
-   *  ^
+   *  ^^^
    */
   const iAfterMatch0 = i + 3;
   if (iAfterMatch0 > str.length) {

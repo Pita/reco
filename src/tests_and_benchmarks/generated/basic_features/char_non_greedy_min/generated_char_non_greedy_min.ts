@@ -67,13 +67,13 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(aaa)(a)/
-   *  ^^^^^
+   *  ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charSequence
    * /(aaa)(a)/
-   *   ^
+   *   ^^^
    */
   const iAfterMatch1 = i + 3;
   if (iAfterMatch1 > str.length) {
@@ -114,14 +114,14 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(aaa)(a)/
-   *  ^^^^^
+   *      ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
   /*
    * groupStartMarker
    * /(aaa)(a)/
-   *       ^^^
+   *       ^
    */
   context.groupMarkerStartTemp1 = i;
   /*
@@ -150,7 +150,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(aaa)(a)/
-   *       ^^^
+   *         ^
    */
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;

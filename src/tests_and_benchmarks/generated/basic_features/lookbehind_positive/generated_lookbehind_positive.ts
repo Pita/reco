@@ -41,6 +41,26 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSetBackward
+   * /(?<=y)x/
+   *      ^
+   */
+  i--;
+  if (i < 0) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0 = false;
+
+  result0 = charCode0 === 121;
+
+  if (!result0) {
+    return -1;
+  }
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * lookaround
@@ -73,26 +93,6 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
     }
 
     i = iAfterMatch1;
-  }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSetBackward
-   * /(?<=y)x/
-   *      ^
-   */
-  i--;
-  if (i < 0) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0 = false;
-
-  result0 = charCode0 === 121;
-
-  if (!result0) {
-    return -1;
   }
   return i;
 };

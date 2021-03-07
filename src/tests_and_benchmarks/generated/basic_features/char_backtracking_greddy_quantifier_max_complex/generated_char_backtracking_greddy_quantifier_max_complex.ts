@@ -54,65 +54,11 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (i: number, str: string, context: Context): number => {
-  /*
-   * nonBacktrackingQuantifier
-   * /(aa?){0,3}/
-   *  ^^^^^^^^^^
-   */
-  let matches0 = 0;
-  while (true) {
-    const wrappedResult = fiber0004(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-
-      matches0++;
-
-      if (matches0 === 3) {
-        break;
-      }
-    }
-  }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupEndMarker
-   * /(aa?){0,3}/
-   *  ^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /(aa?){0,3}/
-   *    ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  result0 = charCode0 === 97;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
 const fiber0004 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(aa?){0,3}/
-   *  ^^^^^
+   *  ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
@@ -173,4 +119,58 @@ const fiber0004 = (i: number, str: string, context: Context): number => {
   }
 
   return -1;
+};
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /(aa?){0,3}/
+   *    ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  result0 = charCode0 === 97;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupEndMarker
+   * /(aa?){0,3}/
+   *      ^
+   */
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
+  return i;
+};
+const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * nonBacktrackingQuantifier
+   * /(aa?){0,3}/
+   *  ^^^^^^^^^^
+   */
+  let matches0 = 0;
+  while (true) {
+    const wrappedResult = fiber0004(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+
+      matches0++;
+
+      if (matches0 === 3) {
+        break;
+      }
+    }
+  }
+  return i;
 };

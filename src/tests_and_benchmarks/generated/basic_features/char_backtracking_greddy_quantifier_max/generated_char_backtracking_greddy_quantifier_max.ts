@@ -54,41 +54,17 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (i: number, str: string, context: Context): number => {
-  /*
-   * nonBacktrackingQuantifier
-   * /(aa){0,3}/
-   *  ^^^^^^^^^
-   */
-  let matches0 = 0;
-  while (true) {
-    const wrappedResult = fiber0002(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-
-      matches0++;
-
-      if (matches0 === 3) {
-        break;
-      }
-    }
-  }
-  return i;
-};
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(aa){0,3}/
-   *  ^^^^
+   *  ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charSequence
    * /(aa){0,3}/
-   *   ^
+   *   ^^
    */
   const iAfterMatch1 = i + 2;
   if (iAfterMatch1 > str.length) {
@@ -120,9 +96,33 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(aa){0,3}/
-   *  ^^^^
+   *     ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
+  return i;
+};
+const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * nonBacktrackingQuantifier
+   * /(aa){0,3}/
+   *  ^^^^^^^^^
+   */
+  let matches0 = 0;
+  while (true) {
+    const wrappedResult = fiber0002(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+
+      matches0++;
+
+      if (matches0 === 3) {
+        break;
+      }
+    }
+  }
   return i;
 };

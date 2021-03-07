@@ -54,11 +54,59 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupStartMarker
+   * /aaaa(aa)+/
+   *      ^
+   */
+  context.groupMarkerStartTemp0 = i;
+  /*
+   * charSequence
+   * /aaaa(aa)+/
+   *       ^^
+   */
+  const iAfterMatch1 = i + 2;
+  if (iAfterMatch1 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 1);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 97;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 0);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 97;
+
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
+  }
+  /*
+   * groupEndMarker
+   * /aaaa(aa)+/
+   *         ^
+   */
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charSequence
    * /aaaa(aa)+/
-   *  ^
+   *  ^^^^
    */
   const iAfterMatch0 = i + 4;
   if (iAfterMatch0 > str.length) {
@@ -126,53 +174,5 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
       matches1++;
     }
   }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * /aaaa(aa)+/
-   *      ^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
-   * charSequence
-   * /aaaa(aa)+/
-   *       ^
-   */
-  const iAfterMatch1 = i + 2;
-  if (iAfterMatch1 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 1);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 97;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 0);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 97;
-
-    if (!result1) {
-      return -1;
-    }
-
-    i = iAfterMatch1;
-  }
-  /*
-   * groupEndMarker
-   * /aaaa(aa)+/
-   *      ^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
   return i;
 };

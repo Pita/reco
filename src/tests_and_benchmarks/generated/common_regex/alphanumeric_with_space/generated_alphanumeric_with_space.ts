@@ -41,39 +41,6 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (i: number, str: string, context: Context): number => {
-  /*
-   * startAnchor
-   * /^[a-zA-Z0-9...
-   *  ^
-   */
-  if (i !== 0) {
-    return -1;
-  }
-  /*
-   * nonBacktrackingQuantifier
-   * /^[a-zA-Z0-9 ]✱$/
-   *   ^^^^^^^^^^^^^
-   */
-  while (true) {
-    const wrappedResult = fiber0002(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-    }
-  }
-  /*
-   * endAnchor
-   * ...zA-Z0-9 ]✱$/
-   *              ^
-   */
-  if (i !== str.length) {
-    return -1;
-  }
-  return i;
-};
 const fiber0002 = (i: number, str: string, context: Context): number => {
   /*
    * charOrSet
@@ -107,5 +74,38 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
   i++;
+  return i;
+};
+const fiber0001 = (i: number, str: string, context: Context): number => {
+  /*
+   * startAnchor
+   * /^[a-zA-Z0-9...
+   *  ^
+   */
+  if (i !== 0) {
+    return -1;
+  }
+  /*
+   * nonBacktrackingQuantifier
+   * /^[a-zA-Z0-9 ]✱$/
+   *   ^^^^^^^^^^^^^
+   */
+  while (true) {
+    const wrappedResult = fiber0002(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+    }
+  }
+  /*
+   * endAnchor
+   * ...zA-Z0-9 ]✱$/
+   *              ^
+   */
+  if (i !== str.length) {
+    return -1;
+  }
   return i;
 };

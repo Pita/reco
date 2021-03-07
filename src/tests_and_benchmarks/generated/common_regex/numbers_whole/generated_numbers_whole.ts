@@ -41,6 +41,29 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /^\d\d✱$/
+   *     ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  if (charCode0 <= 57) {
+    result0 = charCode0 >= 48;
+  } else {
+    result0 = false;
+  }
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
@@ -98,28 +121,5 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   if (i !== str.length) {
     return -1;
   }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /^\d\d✱$/
-   *     ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
   return i;
 };

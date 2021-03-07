@@ -54,17 +54,57 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charSequence
+   * /(de(?:f$|g))/
+   *           ^
+   */
+  const iAfterMatch0 = i + 1;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    i = iAfterMatch0;
+  }
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charSequence
+   * /(de(?:f$|g))/
+   *        ^
+   */
+  const iAfterMatch0 = i + 1;
+  if (iAfterMatch0 > str.length) {
+    return -1;
+  }
+
+  {
+    i = iAfterMatch0;
+  }
+  /*
+   * endAnchor
+   * /(de(?:f$|g))/
+   *         ^
+   */
+  if (i !== str.length) {
+    return -1;
+  }
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /(de(?:f$|g))/
-   *  ^^^^^^^^^^^^
+   *  ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
    * charSequence
    * /(de(?:f$|g))/
-   *   ^
+   *   ^^
    */
   const iAfterMatch1 = i + 2;
   if (iAfterMatch1 > str.length) {
@@ -123,49 +163,9 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /(de(?:f$|g))/
-   *  ^^^^^^^^^^^^
+   *             ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * /(de(?:f$|g))/
-   *        ^
-   */
-  const iAfterMatch0 = i + 1;
-  if (iAfterMatch0 > str.length) {
-    return -1;
-  }
-
-  {
-    i = iAfterMatch0;
-  }
-  /*
-   * endAnchor
-   * /(de(?:f$|g))/
-   *         ^
-   */
-  if (i !== str.length) {
-    return -1;
-  }
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * /(de(?:f$|g))/
-   *           ^
-   */
-  const iAfterMatch0 = i + 1;
-  if (iAfterMatch0 > str.length) {
-    return -1;
-  }
-
-  {
-    i = iAfterMatch0;
-  }
   return i;
 };

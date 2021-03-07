@@ -81,7 +81,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupStartMarker
    * /a(b)c/
-   *   ^^^
+   *   ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
@@ -110,7 +110,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /a(b)c/
-   *   ^^^
+   *     ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;

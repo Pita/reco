@@ -41,6 +41,66 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0004 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /a✱BB✱c?/
+   *  ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  result0 = charCode0 === 97;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /a✱BB✱c?/
+   *     ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  result0 = charCode0 === 66;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /a✱BB✱c?/
+   *       ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  result0 = charCode0 === 99;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * nonBacktrackingQuantifier
@@ -114,65 +174,5 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
       }
     }
   }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /a✱BB✱c?/
-   *       ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  result0 = charCode0 === 99;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /a✱BB✱c?/
-   *     ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  result0 = charCode0 === 66;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0004 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /a✱BB✱c?/
-   *  ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  result0 = charCode0 === 97;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
   return i;
 };

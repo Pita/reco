@@ -54,6 +54,137 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0005 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /^-?\d✱(\.\d\...
+   *   ^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  result0 = charCode0 === 45;
+
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0004 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /^-?\d✱(\.\d\d✱)?$/
+   *     ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  if (charCode0 <= 57) {
+    result0 = charCode0 >= 48;
+  } else {
+    result0 = false;
+  }
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0003 = (i: number, str: string, context: Context): number => {
+  /*
+   * charOrSet
+   * /^-?\d✱(\.\d\d✱)?$/
+   *             ^^
+   */
+  if (i >= str.length) {
+    return -1;
+  }
+  const charCode0 = str.charCodeAt(i);
+  let result0: boolean;
+
+  if (charCode0 <= 57) {
+    result0 = charCode0 >= 48;
+  } else {
+    result0 = false;
+  }
+  if (!result0) {
+    return -1;
+  }
+  i++;
+  return i;
+};
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupStartMarker
+   * /^-?\d✱(\.\d\d✱)?$/
+   *        ^
+   */
+  context.groupMarkerStartTemp0 = i;
+  /*
+   * charSequence
+   * /^-?\d✱(\.\d\d✱)?$/
+   *         ^^^^
+   */
+  const iAfterMatch1 = i + 2;
+  if (iAfterMatch1 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 0);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 46;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    if (charCode1 <= 57) {
+      result1 = charCode1 >= 48;
+    } else {
+      result1 = false;
+    }
+    if (!result1) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
+  }
+  /*
+   * nonBacktrackingQuantifier
+   * /^-?\d✱(\.\d\d✱)?$/
+   *             ^^^
+   */
+  while (true) {
+    const wrappedResult = fiber0003(i, str, context);
+
+    if (wrappedResult === -1) {
+      break;
+    } else {
+      i = wrappedResult;
+    }
+  }
+  /*
+   * groupEndMarker
+   * ...d✱(\.\d\d✱)?$/
+   *              ^
+   */
+  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
+  context.groupMarkerEnd0 = i;
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * startAnchor
@@ -127,136 +258,5 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   if (i !== str.length) {
     return -1;
   }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * /^-?\d✱(\.\d\d✱)?$/
-   *        ^^^^^^^^^
-   */
-  context.groupMarkerStartTemp0 = i;
-  /*
-   * charSequence
-   * /^-?\d✱(\.\d\d✱)?$/
-   *         ^^
-   */
-  const iAfterMatch1 = i + 2;
-  if (iAfterMatch1 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 0);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 46;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    if (charCode1 <= 57) {
-      result1 = charCode1 >= 48;
-    } else {
-      result1 = false;
-    }
-    if (!result1) {
-      return -1;
-    }
-
-    i = iAfterMatch1;
-  }
-  /*
-   * nonBacktrackingQuantifier
-   * /^-?\d✱(\.\d\d✱)?$/
-   *             ^^^
-   */
-  while (true) {
-    const wrappedResult = fiber0003(i, str, context);
-
-    if (wrappedResult === -1) {
-      break;
-    } else {
-      i = wrappedResult;
-    }
-  }
-  /*
-   * groupEndMarker
-   * /^-?\d✱(\.\d\d✱)?$/
-   *        ^^^^^^^^^
-   */
-  context.groupMarkerStart0 = context.groupMarkerStartTemp0;
-  context.groupMarkerEnd0 = i;
-  return i;
-};
-const fiber0003 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /^-?\d✱(\.\d\d✱)?$/
-   *             ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0004 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /^-?\d✱(\.\d\d✱)?$/
-   *     ^^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  if (charCode0 <= 57) {
-    result0 = charCode0 >= 48;
-  } else {
-    result0 = false;
-  }
-  if (!result0) {
-    return -1;
-  }
-  i++;
-  return i;
-};
-const fiber0005 = (i: number, str: string, context: Context): number => {
-  /*
-   * charOrSet
-   * /^-?\d✱(\.\d\...
-   *   ^
-   */
-  if (i >= str.length) {
-    return -1;
-  }
-  const charCode0 = str.charCodeAt(i);
-  let result0: boolean;
-
-  result0 = charCode0 === 45;
-
-  if (!result0) {
-    return -1;
-  }
-  i++;
   return i;
 };

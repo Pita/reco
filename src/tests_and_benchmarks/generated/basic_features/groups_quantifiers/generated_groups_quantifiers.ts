@@ -63,6 +63,63 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
+const fiber0002 = (i: number, str: string, context: Context): number => {
+  /*
+   * groupStartMarker
+   * ...y]([a-y])k(123)+/
+   *              ^
+   */
+  context.groupMarkerStartTemp1 = i;
+  /*
+   * charSequence
+   * ...]([a-y])k(123)+/
+   *              ^^^
+   */
+  const iAfterMatch1 = i + 3;
+  if (iAfterMatch1 > str.length) {
+    return -1;
+  }
+
+  {
+    const charCode0 = str.charCodeAt(i + 2);
+
+    let result0: boolean;
+
+    result0 = charCode0 === 51;
+
+    if (!result0) {
+      return -1;
+    }
+    const charCode1 = str.charCodeAt(i + 1);
+
+    let result1: boolean;
+
+    result1 = charCode1 === 50;
+
+    if (!result1) {
+      return -1;
+    }
+    const charCode2 = str.charCodeAt(i + 0);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 49;
+
+    if (!result2) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
+  }
+  /*
+   * groupEndMarker
+   * ...a-y])k(123)+/
+   *              ^
+   */
+  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
+  context.groupMarkerEnd1 = i;
+  return i;
+};
 const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * charSequence
@@ -92,8 +149,8 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   }
   /*
    * groupStartMarker
-   * /[a-y]([a-y])k(123)+/
-   *       ^^^^^^^
+   * /[a-y]([a-y])k(12...
+   *       ^
    */
   context.groupMarkerStartTemp0 = i;
   /*
@@ -125,7 +182,7 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
   /*
    * groupEndMarker
    * /[a-y]([a-y])k(123)+/
-   *       ^^^^^^^
+   *             ^
    */
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
@@ -173,62 +230,5 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
       matches5++;
     }
   }
-  return i;
-};
-const fiber0002 = (i: number, str: string, context: Context): number => {
-  /*
-   * groupStartMarker
-   * ...y]([a-y])k(123)+/
-   *              ^^^^^
-   */
-  context.groupMarkerStartTemp1 = i;
-  /*
-   * charSequence
-   * ...]([a-y])k(123)+/
-   *              ^
-   */
-  const iAfterMatch1 = i + 3;
-  if (iAfterMatch1 > str.length) {
-    return -1;
-  }
-
-  {
-    const charCode0 = str.charCodeAt(i + 2);
-
-    let result0: boolean;
-
-    result0 = charCode0 === 51;
-
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 50;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 49;
-
-    if (!result2) {
-      return -1;
-    }
-
-    i = iAfterMatch1;
-  }
-  /*
-   * groupEndMarker
-   * ...y]([a-y])k(123)+/
-   *              ^^^^^
-   */
-  context.groupMarkerStart1 = context.groupMarkerStartTemp1;
-  context.groupMarkerEnd1 = i;
   return i;
 };
