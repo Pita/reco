@@ -10,11 +10,13 @@ import { Flags } from './generator';
 import { handleAlternative } from './astHandler/Alternative';
 
 function markChar(char: CharASTElement) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (markChar as any)._inside_ = true;
 }
 
 // should probably be: contains outside element
 export function isInsideElement(char: CharASTElement) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (char as any)._inside_ === true;
 }
 

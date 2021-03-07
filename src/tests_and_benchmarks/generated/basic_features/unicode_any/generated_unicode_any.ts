@@ -17,6 +17,9 @@
 // }
 // or null in case there is no match
 
+/* eslint prefer-const: 0 */
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {}
 
 // Regex optimized to: /.a/u
@@ -57,14 +60,14 @@ const fiber0001 = (i: number, str: string, context: Context): number => {
       return -1;
     }
 
-    const charCode0 = str.codePointAt(i)!;
+    const charCode0 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
     i += charCode0 >= 0x10000 ? 2 : 1;
     if (i >= str.length) {
       return -1;
     }
 
-    const charCode1 = str.codePointAt(i)!;
+    const charCode1 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
     i++;
 

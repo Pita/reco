@@ -18,6 +18,9 @@ export default `
 // }
 // or null in case there is no match
 
+/* eslint prefer-const: 0 */
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {
   {{#each groups}}
     groupMarkerStart{{{@index}}}: number;
@@ -105,7 +108,7 @@ export function generatedRegexMatcher(str: string) {
         }
         const charCode{{{@index}}} =
         {{#if unicode}}
-          str.codePointAt(i)!;
+          str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
         {{/if}}
         {{#unless unicode}}
           str.charCodeAt(i);
@@ -152,7 +155,7 @@ export function generatedRegexMatcher(str: string) {
 
               const charCode{{{@index}}} = 
                 {{#if unicode}}
-                  str.codePointAt(i)!;
+                  str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
                 {{/if}}
                 {{#unless unicode}}
                   str.charCodeAt(i);
@@ -218,7 +221,7 @@ export function generatedRegexMatcher(str: string) {
         }
         const charCode{{{@index}}} =
           {{#if unicode}}
-            str.codePointAt(i);
+            str.codePointAt(i); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           {{/if}}
           {{#unless unicode}}
             str.charCodeAt(i);

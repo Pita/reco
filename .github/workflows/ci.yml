@@ -18,6 +18,7 @@ jobs:
       - run: npm run test:keep-snapshots
       - run: npm run typecheck
       - run: npm run prettier:check
+      - run: npm run lint
 
       # verify cli
       - run: npm run build

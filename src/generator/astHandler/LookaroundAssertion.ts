@@ -3,7 +3,6 @@ import { Collector } from '../Collector';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleDisjunction } from './Disjunction';
-import { CharRange } from '../CharRange';
 
 export const handleLookaroundAssertion = (
   lookaroundAssertion: AST.LookaroundAssertion,

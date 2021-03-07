@@ -7,7 +7,6 @@ import {
   GroupReference,
   QuantifierTemplateDefinition,
 } from './templates/mainTemplate';
-import * as _ from 'lodash';
 import { Quantifier } from 'regexpp/ast';
 import { AstElementOrQuantifierElement, ASTPath } from '../dfa-analyzer/types';
 
@@ -176,6 +175,7 @@ export class Collector {
       },
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const quantifierHandler: any = {
       followUp,
       functionName:
@@ -227,6 +227,7 @@ export class Collector {
       | 'noAstElement',
   ) {
     // TODO: type this correctly
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const newAtom: any = {
       ...this.formatAstLocation(def.astLocation),
       type: def.type,

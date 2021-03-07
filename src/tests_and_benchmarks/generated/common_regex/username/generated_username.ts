@@ -17,6 +17,9 @@
 // }
 // or null in case there is no match
 
+/* eslint prefer-const: 0 */
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {}
 
 // Regex optimized to: /^[a-z0-9_-][a-z0-9_-][a-z0-9_-][a-z0-9_-]{0,13}$/

@@ -1,5 +1,4 @@
 import { CharRange } from './CharRange';
-import _ from 'lodash';
 
 describe('CharRange', () => {
   describe('fromCharachter', () => {

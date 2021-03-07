@@ -1,12 +1,12 @@
 import { AST, RegExpParser } from 'regexpp';
 import { Collector } from './Collector';
 import { handleDisjunction } from './astHandler/Disjunction';
-import { CharRange } from './CharRange';
 import {
   FiberTemplateDefinition,
   MatchPositioning,
 } from './templates/mainTemplate';
 import { simplifyRegex } from '../simplifier/simplifyRegex';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../../package.json');
 export interface Flags extends AST.Flags {
   INTERNAL_backwards?: boolean;

@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { CharRange } from './CharRange';
 import { ComparsionTemplate } from './templates/comparison';
 import { LeafTemplate } from './templates/leaf';

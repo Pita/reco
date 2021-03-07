@@ -77,15 +77,21 @@ export const astToCharRange = (
           ],
           { negate: set.negate, ignoreCase },
         );
-      case 'property':
-        const fullValue = matchPropertyValue(set.key, set.value!);
+      case 'property': {
+        const setValue = set.value;
+        if (setValue === null) {
+          throw new Error('Set value is null');
+        }
+        const fullValue = matchPropertyValue(set.key, setValue);
         const regenerateSet: {
           toArray: () => number[];
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
         } = require(`regenerate-unicode-properties/${set.key}/${fullValue}.js`);
         return CharRange.create(regenerateSet.toArray(), {
           negate: set.negate,
           ignoreCase,
         });
+      }
     }
   };
 
@@ -93,7 +99,7 @@ export const astToCharRange = (
     switch (element.type) {
       case 'Character':
         return CharRange.create([element.value], { ignoreCase, negate: false });
-      case 'CharacterClass':
+      case 'CharacterClass': {
         const charRange = element.elements.reduce(
           (currentCharRange, element) => {
             switch (element.type) {
@@ -121,6 +127,7 @@ export const astToCharRange = (
           CharRange.createEmptyRange(),
         );
         return element.negate ? charRange.invert() : charRange;
+      }
       case 'CharacterSet':
         return addCharacterSet(element);
     }

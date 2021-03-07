@@ -3,7 +3,6 @@ import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibili
 import { Collector } from '../Collector';
 import { Flags } from '../generator';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { handleSetOrCharacter } from './Character';
 import { CharASTElement, handleCharSequence } from './CharacterSequence';
 import { handleElement } from './Element';
 

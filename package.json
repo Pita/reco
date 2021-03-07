@@ -17,7 +17,8 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "build": "rm -rf dist && tsc && chmod +x ./dist/cli.js",
-    "lint": "eslint ."
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
   },
   "bin": {
     "reco.io": "./dist/cli.js"

@@ -1,5 +1,5 @@
 import * as Handlebars from 'handlebars';
-const prettier = require('prettier');
+import prettier from 'prettier';
 
 const template = `
 import { generatedRegexMatcher } from './{{{string fileName}}}';
@@ -31,7 +31,7 @@ describe('{{{string testName}}}', () => {
 `;
 
 const compiled = Handlebars.compile(template);
-export default (context: any) => {
+export default (context: unknown) => {
   return prettier.format(compiled(context), {
     semi: true,
     parser: 'babel-ts',

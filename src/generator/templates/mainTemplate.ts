@@ -98,22 +98,22 @@ export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
 
 export interface StartAnchorTemplateAtom extends BaseTemplateAtom {
   type: 'startAnchor';
-  data: {};
+  data: Record<string, never>;
 }
 
 export interface EndAnchorTemplateAtom extends BaseTemplateAtom {
   type: 'endAnchor';
-  data: {};
+  data: Record<string, never>;
 }
 
 export interface MultiLineStartAnchorTemplateAtom extends BaseTemplateAtom {
   type: 'multiLineStartAnchor';
-  data: {};
+  data: Record<string, never>;
 }
 
 export interface MultiLineEndAnchorTemplateAtom extends BaseTemplateAtom {
   type: 'multiLineEndAnchor';
-  data: {};
+  data: Record<string, never>;
 }
 
 export interface GroupStartMarkerTemplateAtom extends BaseTemplateAtom {

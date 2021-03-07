@@ -1,7 +1,6 @@
 import { CharRange } from '../../generator/CharRange';
 import { RegExpParser } from 'regexpp';
 import { dfaAnalyzeElement } from '../dfaAnalyze';
-import { CharRangeSequence } from '../CharRangeSequence';
 
 describe('handleAlternative', () => {
   test('can handle a simple quantifier', () => {
@@ -74,7 +73,7 @@ describe('handleAlternative', () => {
       literal,
       10,
     );
-    const resultSerialized = result!.toJSON().map((result) => ({
+    const resultSerialized = result?.toJSON().map((result) => ({
       charRanges: result.charRanges,
     }));
 

@@ -12,6 +12,7 @@ import * as path from 'path';
       const benchmarkFile = `${cwd}/${folder}/generated_${
         folder.split('/')[1]
       }.benchmark`;
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const benchmark = require(benchmarkFile).benchmark;
       const ratio = await benchmark();
       results[folder] = ratio;

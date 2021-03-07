@@ -1,4 +1,5 @@
-import * as fs from 'fs';
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 import * as path from 'path';
 
 function runFakeDataBenchmark(file: string, regex: string) {

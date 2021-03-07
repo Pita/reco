@@ -30,7 +30,7 @@ describe('handleAlternative', () => {
       10,
     );
 
-    const resultSerialized = result!.toJSON().map((result) => ({
+    const resultSerialized = result?.toJSON().map((result) => ({
       charRanges: result.charRanges,
     }));
 

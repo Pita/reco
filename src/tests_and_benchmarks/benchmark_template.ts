@@ -1,4 +1,4 @@
-const prettier = require('prettier');
+import * as prettier from 'prettier';
 import * as Handlebars from 'handlebars';
 
 const template = `
@@ -54,7 +54,7 @@ const template = `
 `;
 
 const compiled = Handlebars.compile(template);
-export default (context: any) => {
+export default (context: unknown) => {
   return prettier.format(compiled(context), {
     semi: true,
     parser: 'babel-ts',

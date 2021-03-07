@@ -5,7 +5,6 @@ import { Flags } from '../generator';
 import { charRangeToLeafValues } from '../CharRangeBTreeMatcher';
 import { astToCharRange } from '../astToCharRange';
 import { UTF16UnitsCount } from '../CharRange';
-import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 
 export function utf16UnitsCountToMinAndMax(unitsCount: UTF16UnitsCount) {
   const min = unitsCount === '2' ? 2 : 1;

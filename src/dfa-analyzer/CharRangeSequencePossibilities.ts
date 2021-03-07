@@ -12,6 +12,8 @@ export type QuickCheckDetails = {
   value: number;
 };
 
+// keep this function around for debugging
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function debugToBinary(n: number) {
   let binary = '';
   while (Math.ceil(n / 2) > 0) {
@@ -124,7 +126,7 @@ export class CharRangeSequencePossibilities {
       return null;
     }
 
-    let hasVariableLength = charUnions.some((charUnion) => {
+    const hasVariableLength = charUnions.some((charUnion) => {
       if (charUnion) {
         return charUnion.charRange.getUTF16UnitsCount(flags) !== '1';
       }

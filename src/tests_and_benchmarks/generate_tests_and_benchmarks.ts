@@ -6,11 +6,12 @@ import testTemplate from './test_template';
 import benchmarkTemplate from './benchmark_template';
 import * as rimraf from 'rimraf';
 import * as path from 'path';
-import * as _ from 'lodash';
 import * as Handlebars from 'handlebars';
-import { template, dotTemplate } from '../generator/templates/mainTemplate';
+import { template } from '../generator/templates/mainTemplate';
+// import { template, dotTemplate } from '../generator/templates/mainTemplate';
 import { transformCode } from '../generator/transformCode';
-import { execSync } from 'child_process';
+// import { execSync } from 'child_process';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const jsStringEscape = require('js-string-escape');
 
 Handlebars.registerHelper(
@@ -37,7 +38,7 @@ configFiles
 
     return configFile.indexOf(filter) !== -1;
   })
-  .forEach((configFile, configIndex) => {
+  .forEach((configFile) => {
     console.log(configFile);
 
     let config: {

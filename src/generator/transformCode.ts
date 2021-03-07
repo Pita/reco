@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const babel = require('@babel/standalone');
 import * as prettier from 'prettier/standalone';
 import * as plugins from 'prettier/parser-babel';

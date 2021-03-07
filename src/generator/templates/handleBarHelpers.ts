@@ -1,13 +1,13 @@
 import * as Handlebars from 'handlebars';
-import { FiberTemplateDefinition, TemplateValues } from './mainTemplate';
+import { TemplateValues } from './mainTemplate';
 
-Handlebars.registerHelper('escapeComment', function (this: any, value) {
+Handlebars.registerHelper('escapeComment', function (this: unknown, value) {
   return new Handlebars.SafeString(value.replace(/\*/g, '✱'));
 });
 
 Handlebars.registerHelper(
   'switchCase',
-  function (this: any, keyName, expectedValue, options) {
+  function (this: unknown, keyName, expectedValue, options) {
     if (this[keyName] === expectedValue) {
       return options.fn(this.data ? this.data : this);
     } else {
@@ -51,7 +51,7 @@ const assertQuantifierExists = (root: TemplateValues, functionName: string) => {
   throw new Error(`Did not find quantifier ${functionName}`);
 };
 
-Handlebars.registerHelper('isAnyOf', function (value: any, ...args) {
+Handlebars.registerHelper('isAnyOf', function (value: unknown, ...args) {
   const possiblities = args.slice(0, arguments.length - 2);
   const options = args[args.length - 1];
   if (possiblities.includes(value)) {
@@ -59,7 +59,7 @@ Handlebars.registerHelper('isAnyOf', function (value: any, ...args) {
   }
 });
 
-Handlebars.registerHelper('isNotAnyOf', function (value: any, ...args) {
+Handlebars.registerHelper('isNotAnyOf', function (value: unknown, ...args) {
   const possiblities = args.slice(0, arguments.length - 2);
   const options = args[args.length - 1];
   if (!possiblities.includes(value)) {

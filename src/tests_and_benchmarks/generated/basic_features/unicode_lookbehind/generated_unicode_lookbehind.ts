@@ -17,6 +17,9 @@
 // }
 // or null in case there is no match
 
+/* eslint prefer-const: 0 */
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {}
 
 // Regex optimized to: /(?<!𝒴)x/u
@@ -51,7 +54,7 @@ const fiber0002 = (i: number, str: string, context: Context): number => {
   if (i < 0) {
     return -1;
   }
-  const charCode0 = str.codePointAt(i);
+  const charCode0 = str.codePointAt(i); // eslint-disable-line @typescript-eslint/no-non-null-assertion
   let result0 = false;
 
   result0 = charCode0 === 119988;
