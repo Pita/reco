@@ -6,7 +6,10 @@ import { CharASTElement, handleCharSequence } from './CharacterSequence';
 import { handleElement } from './Element';
 import * as _ from 'lodash/fp';
 
-type GroupedCharElements = ReadonlyArray<CharASTElement>;
+type GroupedCharElements = {
+  readonly type: 'GroupedChars';
+  readonly chars: ReadonlyArray<CharASTElement>;
+};
 
 export const handleAlternative = (
   alternative: AST.Alternative,
@@ -21,11 +24,19 @@ export const handleAlternative = (
         case 'Character':
         case 'CharacterSet':
         case 'CharacterClass': {
-          const lastElement = _.last(acc);
-          if (Array.isArray(lastElement)) {
-            return [[element, ...lastElement], ...acc.slice(1)];
+          const firstElement = _.first(acc);
+          if (firstElement && firstElement.type === 'GroupedChars') {
+            const groupedChars: GroupedCharElements = {
+              type: 'GroupedChars',
+              chars: [element, ...firstElement.chars],
+            };
+            return [groupedChars, ...acc.slice(1)];
           } else {
-            return [[element], ...acc];
+            const groupedChars: GroupedCharElements = {
+              type: 'GroupedChars',
+              chars: [element],
+            };
+            return [groupedChars, ...acc];
           }
         }
         default:
@@ -33,66 +44,25 @@ export const handleAlternative = (
       }
     },
     [] as ReadonlyArray<GroupedCharElements | AST.Element>,
-    _.reverse(alternative.elements),
+    alternative.elements,
   );
 
   return _.reduce(
     (templateValues, groupedElement) => {
-      if (Array.isArray(groupedElement)) {
-        return handleCharSequence(
-          groupedElement as GroupedCharElements,
-          templateValues,
-          flags,
-          literal,
-          quickCheck,
-        );
-      } else {
-        throw new Error('Non chars are not yet supported');
-        // return handleElement(groupedElement, templateValues, flags, literal);
+      switch (groupedElement.type) {
+        case 'GroupedChars':
+          return handleCharSequence(
+            groupedElement.chars,
+            templateValues,
+            flags,
+            literal,
+            quickCheck,
+          );
+        default:
+          return handleElement(groupedElement, templateValues, flags, literal);
       }
     },
     templateValues,
     groupedElements,
   );
-
-  // let lastFiber = currentFiber;
-  // let collectedChars: CharASTElement[] = [];
-
-  // const flushChars = () => {
-  //   if (collectedChars.length > 0) {
-  //     lastFiber = handleCharSequence(
-  //       collectedChars,
-  //       templateValues,
-  //       lastFiber,
-  //       flags,
-  //       literal,
-  //       quickCheck,
-  //     );
-  //   }
-  //   collectedChars = [];
-  // };
-
-  // for (let i = alternative.elements.length - 1; i >= 0; i--) {
-  //   const currentElement = alternative.elements[i];
-  //   switch (currentElement.type) {
-  //     case 'Character':
-  //     case 'CharacterSet':
-  //     case 'CharacterClass':
-  //       collectedChars.unshift(currentElement);
-  //       break;
-  //     default:
-  //       flushChars();
-  //       lastFiber = handleElement(
-  //         alternative.elements[i],
-  //         templateValues,
-  //         lastFiber,
-  //         flags,
-  //         literal,
-  //       );
-  //       break;
-  //   }
-  // }
-  // flushChars();
-
-  // return lastFiber;
 };

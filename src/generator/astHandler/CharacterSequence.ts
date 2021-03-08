@@ -61,9 +61,7 @@ export const handleCharSequence = (
   const chars = charASTElements
     .map((char, offset) => {
       const charRange = astToCharRange(char, flags);
-
       const tree = charRangeToLeafValues(charRange);
-
       const averageComplexity = computeAverageLeafComplexity(tree);
       const negate = charRange.toJSON().negate;
       const unicode = flags.unicode === true;

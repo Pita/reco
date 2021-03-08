@@ -1,60 +1,59 @@
 import { AST } from 'regexpp';
-import { CollectedTemplateValues } from '../CollectedTemplateValues';
-import { FiberTemplateDefinition } from '../templates/mainTemplate';
+import { addAtom, CollectedTemplateValues } from '../CollectedTemplateValues';
 import { Flags } from '../generator';
 import { handleLookaroundAssertion } from './LookaroundAssertion';
 
 export const handleAssertion = (
   assertion: AST.Assertion,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
-): FiberTemplateDefinition => {
+): CollectedTemplateValues => {
   switch (assertion.kind) {
     case 'start':
-      return templateValues.addAtom(
-        currentFiber,
+      return addAtom(
+        templateValues,
         {
           type: flags.multiline ? 'multiLineStartAnchor' : 'startAnchor',
-          astLocation: assertion,
           data: {},
         },
+        assertion,
         0,
         0,
         assertion,
       );
     case 'end':
-      return templateValues.addAtom(
-        currentFiber,
+      return addAtom(
+        templateValues,
         {
           type: flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
-          astLocation: assertion,
           data: {},
         },
+        assertion,
         0,
         0,
         assertion,
       );
     case 'lookahead':
     case 'lookbehind':
-      return handleLookaroundAssertion(
-        assertion,
-        templateValues,
-        currentFiber,
-        flags,
-        literal,
-      );
+      throw new Error('Does not support lookarounds yet');
+    // return handleLookaroundAssertion(
+    //   assertion,
+    //   templateValues,
+    //   currentFiber,
+    //   flags,
+    //   literal,
+    // );
     case 'word':
-      return templateValues.addAtom(
-        currentFiber,
+      return addAtom(
+        templateValues,
         {
           type: 'wordBoundary',
-          astLocation: assertion,
           data: {
             negate: assertion.negate,
           },
         },
+        assertion,
         0,
         0,
         assertion,

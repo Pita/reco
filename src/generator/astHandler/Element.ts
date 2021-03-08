@@ -12,7 +12,6 @@ import { CollectedTemplateValues } from '../CollectedTemplateValues';
 export const handleElement = (
   element: AST.Element,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
 ): CollectedTemplateValues => {
@@ -20,52 +19,51 @@ export const handleElement = (
     case 'Character':
     case 'CharacterSet':
     case 'CharacterClass':
-      return handleSetOrCharacter(
-        element,
-        templateValues,
-        currentFiber,
-        flags,
-        literal,
-      );
+      throw new Error('Should be unreachable');
+    // return handleSetOrCharacter(
+    //   element,
+    //   templateValues,
+    //   currentFiber,
+    //   flags,
+    //   literal,
+    // );
     case 'Group':
       return handleDisjunction(
         element.alternatives,
         templateValues,
-        currentFiber,
         flags,
         literal,
       );
     case 'Quantifier':
-      return handleQuantifier(
-        element,
-        templateValues,
-        currentFiber,
-        flags,
-        literal,
-      );
+      throw new Error('Quantifier not yet supported');
+    // return handleQuantifier(
+    //   element,
+    //   templateValues,
+    //   currentFiber,
+    //   flags,
+    //   literal,
+    // );
     case 'Assertion':
-      return handleAssertion(
-        element,
-        templateValues,
-        currentFiber,
-        flags,
-        literal,
-      );
+      return handleAssertion(element, templateValues, flags, literal);
     case 'CapturingGroup':
-      return handleCapturingGroup(
-        element,
-        templateValues,
-        currentFiber,
-        flags,
-        literal,
-      );
+      throw new Error('Assertion not yet supported');
+
+    // return handleCapturingGroup(
+    //   element,
+    //   templateValues,
+    //   currentFiber,
+    //   flags,
+    //   literal,
+    // );
     case 'Backreference':
-      return handleBackReference(
-        element,
-        templateValues,
-        currentFiber,
-        flags,
-        literal,
-      );
+      throw new Error('Assertion not yet supported');
+
+    // return handleBackReference(
+    //   element,
+    //   templateValues,
+    //   currentFiber,
+    //   flags,
+    //   literal,
+    // );
   }
 };
