@@ -6,12 +6,10 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
     "plugin:functional/no-mutations"
   ],
   "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 1,
     "@typescript-eslint/no-unused-vars": [
       1,
       {

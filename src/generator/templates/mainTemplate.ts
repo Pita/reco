@@ -7,207 +7,201 @@ import { UTF16UnitsCount } from '../CharRange';
 import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 
 export interface GroupReference {
-  idx: number;
+  readonly idx: number;
+  readonly astStart: number;
 }
 
 export interface FunctionDefinition {
-  functionName: string;
-  followUp: FollowUp;
-  returningFunctionName: string;
-  meta: {
-    groups: GroupReference[];
-    minCharLength: number;
-    maxCharLength: number;
-    anchorsAtStartOfLine: boolean;
-    anchorsAtEndOfLine: boolean;
-    path: ASTPath;
+  readonly functionName: string;
+  readonly followUp: FollowUp;
+  readonly returningFunctionName: string;
+  readonly meta: {
+    readonly groups: ReadonlyArray<GroupReference>;
+    readonly minCharLength: number;
+    readonly maxCharLength: number;
+    readonly anchorsAtStartOfLine: boolean;
+    readonly anchorsAtEndOfLine: boolean;
+    readonly path: ASTPath;
   };
 }
 
 export interface FiberTemplateDefinition extends FunctionDefinition {
-  atoms: TemplateAtom[];
-  lastAtomReturns: boolean;
+  readonly atoms: ReadonlyArray<TemplateAtom>;
+  readonly lastAtomReturns: boolean;
 }
 
 export interface QuantifierTemplateDefinition extends FunctionDefinition {
-  wrappedHandler: FunctionDefinition;
-  maxOrMinCount?: boolean;
-  minCount?: number;
-  maxCount?: number;
-  posLine1: string;
-  posLine2: string;
-  quantifierCounterIndex?: number;
+  readonly wrappedHandler: FunctionDefinition;
+  readonly maxOrMinCount?: boolean;
+  readonly minCount?: number;
+  readonly maxCount?: number;
+  readonly posLine1: string;
+  readonly posLine2: string;
+  readonly quantifierCounterIndex?: number;
 }
 
 export type FollowUp = FunctionDefinition | null;
 
-export interface BaseTemplateAtom {
-  posLine1: string;
-  posLine2: string;
-  raw: string;
-}
-
-export interface CharSequenceTemplateAtom extends BaseTemplateAtom {
-  type: 'charSequence';
-  data: {
-    orderedLoading: Array<{
-      unitsCount: UTF16UnitsCount;
-      unicode: boolean;
+export interface CharSequenceTemplateAtom {
+  readonly type: 'charSequence';
+  readonly data: {
+    readonly orderedLoading: ReadonlyArray<{
+      readonly unitsCount: UTF16UnitsCount;
+      readonly unicode: boolean;
     }> | null;
-    length: number;
-    chars: Array<{
-      tree: LeafTemplate;
-      negate: boolean;
-      unitsCount: UTF16UnitsCount;
-      offset: number;
-      canBeSkipped: boolean;
+    readonly length: number;
+    readonly chars: ReadonlyArray<{
+      readonly tree: LeafTemplate;
+      readonly negate: boolean;
+      readonly unitsCount: UTF16UnitsCount;
+      readonly offset: number;
+      readonly canBeSkipped: boolean;
     }>;
   };
 }
 
-export interface CharOrSetTemplateAtom extends BaseTemplateAtom {
-  type: 'charOrSet';
-  data: {
-    tree: LeafTemplate;
-    negate: boolean;
-    unitsCount: UTF16UnitsCount;
-    unicode: boolean;
+export interface CharOrSetTemplateAtom {
+  readonly type: 'charOrSet';
+  readonly data: {
+    readonly tree: LeafTemplate;
+    readonly negate: boolean;
+    readonly unitsCount: UTF16UnitsCount;
+    readonly unicode: boolean;
   };
 }
 
-export interface CharOrSetBackwardTemplateAtom extends BaseTemplateAtom {
-  type: 'charOrSetBackward';
-  data: {
-    tree: LeafTemplate;
-    negate: boolean;
-    unicode: boolean;
+export interface CharOrSetBackwardTemplateAtom {
+  readonly type: 'charOrSetBackward';
+  readonly data: {
+    readonly tree: LeafTemplate;
+    readonly negate: boolean;
+    readonly unicode: boolean;
   };
 }
 
-export interface DisjunctionTemplateAtom extends BaseTemplateAtom {
-  type: 'disjunction';
-  data: {
-    hasQuickCheck: boolean;
-    alternativesWithQuickChecks: Array<{
-      alternative: FiberTemplateDefinition;
-      quickCheck: QuickCheckDetails | null;
+export interface DisjunctionTemplateAtom {
+  readonly type: 'disjunction';
+  readonly data: {
+    readonly hasQuickCheck: boolean;
+    readonly alternativesWithQuickChecks: ReadonlyArray<{
+      readonly alternative: FiberTemplateDefinition;
+      readonly quickCheck: QuickCheckDetails | null;
     }>;
   };
 }
 
-export interface StartAnchorTemplateAtom extends BaseTemplateAtom {
-  type: 'startAnchor';
-  data: Record<string, never>;
+export interface StartAnchorTemplateAtom {
+  readonly type: 'startAnchor';
+  readonly data: Record<string, never>;
 }
 
-export interface EndAnchorTemplateAtom extends BaseTemplateAtom {
-  type: 'endAnchor';
-  data: Record<string, never>;
+export interface EndAnchorTemplateAtom {
+  readonly type: 'endAnchor';
+  readonly data: Record<string, never>;
 }
 
-export interface MultiLineStartAnchorTemplateAtom extends BaseTemplateAtom {
-  type: 'multiLineStartAnchor';
-  data: Record<string, never>;
+export interface MultiLineStartAnchorTemplateAtom {
+  readonly type: 'multiLineStartAnchor';
+  readonly data: Record<string, never>;
 }
 
-export interface MultiLineEndAnchorTemplateAtom extends BaseTemplateAtom {
-  type: 'multiLineEndAnchor';
-  data: Record<string, never>;
+export interface MultiLineEndAnchorTemplateAtom {
+  readonly type: 'multiLineEndAnchor';
+  readonly data: Record<string, never>;
 }
 
-export interface GroupStartMarkerTemplateAtom extends BaseTemplateAtom {
-  type: 'groupStartMarker';
-  data: {
-    groupReference: GroupReference;
+export interface GroupStartMarkerTemplateAtom {
+  readonly type: 'groupStartMarker';
+  readonly data: {
+    readonly groupReference: GroupReference;
   };
 }
 
-export interface GroupEndMarkerTemplateAtom extends BaseTemplateAtom {
-  type: 'groupEndMarker';
-  data: {
-    groupReference: GroupReference;
+export interface GroupEndMarkerTemplateAtom {
+  readonly type: 'groupEndMarker';
+  readonly data: {
+    readonly groupReference: GroupReference;
   };
 }
 
-export interface QuantifierStarterTemplateAtom extends BaseTemplateAtom {
-  type: 'quantifierStarter';
-  data: {
-    maxOrMinCount: boolean;
-    shouldBackupPrevious: boolean;
-    functionName: string;
-    quantifierCounterIndex?: number;
+export interface QuantifierStarterTemplateAtom {
+  readonly type: 'quantifierStarter';
+  readonly data: {
+    readonly maxOrMinCount: boolean;
+    readonly shouldBackupPrevious: boolean;
+    readonly functionName: string;
+    readonly quantifierCounterIndex?: number;
   };
 }
 
-export interface LookaroundTemplateAtom extends BaseTemplateAtom {
-  type: 'lookaround';
-  data: {
-    lookaroundFiber: FiberTemplateDefinition;
-    negate: boolean;
+export interface LookaroundTemplateAtom {
+  readonly type: 'lookaround';
+  readonly data: {
+    readonly lookaroundFiber: FiberTemplateDefinition;
+    readonly negate: boolean;
   };
 }
 
-export interface WordBoundaryTemplateAtom extends BaseTemplateAtom {
-  type: 'wordBoundary';
-  data: {
-    negate: boolean;
+export interface WordBoundaryTemplateAtom {
+  readonly type: 'wordBoundary';
+  readonly data: {
+    readonly negate: boolean;
   };
 }
 
-export interface GroupBackReferenceTemplateAtom extends BaseTemplateAtom {
-  type: 'groupBackReference';
-  data: {
-    groupIndex: number;
+export interface GroupBackReferenceTemplateAtom {
+  readonly type: 'groupBackReference';
+  readonly data: {
+    readonly groupIndex: number;
   };
 }
 
-export interface NonBacktrackingQuantifier extends BaseTemplateAtom {
-  type: 'nonBacktrackingQuantifier';
-  data: {
-    maxOrMinCount?: boolean;
-    minCount?: number;
-    maxCount?: number;
-    wrappedHandler: FiberTemplateDefinition;
+export interface NonBacktrackingQuantifier {
+  readonly type: 'nonBacktrackingQuantifier';
+  readonly data: {
+    readonly maxOrMinCount?: boolean;
+    readonly minCount?: number;
+    readonly maxCount?: number;
+    readonly wrappedHandler: FiberTemplateDefinition;
   };
 }
 
-export interface BacktrackingFixedLengthQuantifier extends BaseTemplateAtom {
-  type: 'backtrackingFixedLengthQuantifier';
-  data: {
-    maxOrMinCount?: boolean;
-    minCount?: number;
-    maxCount?: number;
-    wrappedHandler: FiberTemplateDefinition;
-    followUp: FollowUp;
-    fixedLength: number;
+export interface BacktrackingFixedLengthQuantifier {
+  readonly type: 'backtrackingFixedLengthQuantifier';
+  readonly data: {
+    readonly maxOrMinCount?: boolean;
+    readonly minCount?: number;
+    readonly maxCount?: number;
+    readonly wrappedHandler: FiberTemplateDefinition;
+    readonly followUp: FollowUp;
+    readonly fixedLength: number;
   };
 }
 
-export interface LazyQuantifier extends BaseTemplateAtom {
-  type: 'lazyQuantifier';
-  data: {
-    maxOrMinCount?: boolean;
-    minCount?: number;
-    maxCount?: number;
-    wrappedHandler: FiberTemplateDefinition;
-    followUp: FollowUp;
+export interface LazyQuantifier {
+  readonly type: 'lazyQuantifier';
+  readonly data: {
+    readonly maxOrMinCount?: boolean;
+    readonly minCount?: number;
+    readonly maxCount?: number;
+    readonly wrappedHandler: FiberTemplateDefinition;
+    readonly followUp: FollowUp;
   };
 }
 
-export interface NonBacktrackingDisjunctionTemplateAtom
-  extends BaseTemplateAtom {
-  type: 'nonBacktrackingDisjunction';
-  data: {
-    groupsToRestore: GroupReference[];
-    hasQuickCheck: boolean;
-    alternativesWithQuickChecks: {
-      alternative: FiberTemplateDefinition;
-      quickCheck: QuickCheckDetails | null;
+export interface NonBacktrackingDisjunctionTemplateAtom {
+  readonly type: 'nonBacktrackingDisjunction';
+  readonly data: {
+    readonly groupsToRestore: ReadonlyArray<GroupReference>;
+    readonly hasQuickCheck: boolean;
+    readonly alternativesWithQuickChecks: {
+      readonly alternative: FiberTemplateDefinition;
+      readonly quickCheck: QuickCheckDetails | null;
     };
   };
 }
 
-export type TemplateAtom =
+export type BaseTemplateAtom =
   | CharSequenceTemplateAtom
   | CharOrSetTemplateAtom
   | CharOrSetBackwardTemplateAtom
@@ -227,24 +221,35 @@ export type TemplateAtom =
   | LazyQuantifier
   | NonBacktrackingDisjunctionTemplateAtom;
 
+export type TemplateAtom = BaseTemplateAtom & {
+  readonly posLine1: string;
+  readonly posLine2: string;
+  readonly raw: string;
+};
+
 export type MatchPositioning =
   | {
-      type: 'startAnchored';
+      readonly type: 'startAnchored';
     }
-  | { type: 'endAnchored'; maxCharsLeft: number; minCharsLeft: number }
-  | { type: 'minCharsLeft'; minCharsLeft: number }
-  | { type: 'fullScan' };
+  | {
+      readonly type: 'endAnchored';
+      readonly maxCharsLeft: number;
+      readonly minCharsLeft: number;
+    }
+  | { readonly type: 'minCharsLeft'; readonly minCharsLeft: number }
+  | { readonly type: 'fullScan' };
+
 export interface TemplateValues {
-  optimizedRegexStr: string;
-  originalRegexStr: string;
-  fiberHandlers: FiberTemplateDefinition[];
-  greedyQuantifierHandlers: QuantifierTemplateDefinition[];
-  lazyQuantifierHandlers: QuantifierTemplateDefinition[];
-  mainHandler: FiberTemplateDefinition;
-  groups: GroupReference[];
-  quantifierCountersLength: number;
-  version: string;
-  matchPositioning: MatchPositioning;
+  readonly optimizedRegexStr: string;
+  readonly originalRegexStr: string;
+  readonly fiberHandlers: ReadonlyArray<FiberTemplateDefinition>;
+  readonly greedyQuantifierHandlers: ReadonlyArray<QuantifierTemplateDefinition>;
+  readonly lazyQuantifierHandlers: ReadonlyArray<QuantifierTemplateDefinition>;
+  readonly mainHandler: FiberTemplateDefinition;
+  readonly groups: ReadonlyArray<GroupReference>;
+  readonly quantifierCountersLength: number;
+  readonly version: string;
+  readonly matchPositioning: MatchPositioning;
 }
 
 registerLeafPartial();

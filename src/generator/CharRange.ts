@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import * as _ from 'lodash/fp';
 import { Flags } from 'regexpp/ast';
 
 const normalizeUpperLowerCase = (
@@ -68,7 +68,7 @@ class NumericSet extends Set<number> {
   toArray() {
     const array: number[] = [];
     this.forEach((char) => array.push(char));
-    return _.sortBy(array);
+    return _.sortBy((char) => char, array);
   }
 }
 

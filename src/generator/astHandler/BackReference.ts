@@ -1,17 +1,17 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
+import { CollectedTemplateValues } from '../CollectedTemplateValues';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from 'regexpp/ast';
 import { handleCapturingGroup } from './CapturingGroup';
 
 const analyzeReferencedGroupAST = (
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   capturingGroup: AST.CapturingGroup,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
 ) => {
-  const fakeCollector = collector.fakeCollector();
+  const fakeCollector = fakeCollector(templateValues);
   const groupFiber = handleCapturingGroup(
     capturingGroup,
     fakeCollector,
@@ -27,7 +27,7 @@ const analyzeReferencedGroupAST = (
 
 export const handleBackReference = (
   backreference: AST.Backreference,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -38,14 +38,14 @@ export const handleBackReference = (
   }
 
   const { minCharLength, maxCharLength } = analyzeReferencedGroupAST(
-    collector,
+    templateValues,
     backreference.resolved,
     currentFiber,
     flags,
     literal,
   );
 
-  return collector.addAtom(
+  return templateValues.addAtom(
     currentFiber,
     {
       type: 'groupBackReference',

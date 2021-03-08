@@ -1,17 +1,22 @@
 import { AST, RegExpParser } from 'regexpp';
-import { Collector } from './Collector';
 import { handleDisjunction } from './astHandler/Disjunction';
 import {
   FiberTemplateDefinition,
   MatchPositioning,
+  TemplateValues,
 } from './templates/mainTemplate';
 import { simplifyRegex } from '../simplifier/simplifyRegex';
+import {
+  createTemplateValues,
+  findEntryHandler,
+} from './CollectedTemplateValues';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../../package.json');
-export interface Flags extends AST.Flags {
-  INTERNAL_backwards?: boolean;
-  INTERNAL_no_inside_out_backtracking?: boolean;
-  INTERNAL_can_repeat?: boolean;
+
+export interface Flags extends Readonly<AST.Flags> {
+  readonly INTERNAL_backwards?: boolean;
+  readonly INTERNAL_no_inside_out_backtracking?: boolean;
+  readonly INTERNAL_can_repeat?: boolean;
 }
 
 const deriveMatchPositioning = (
@@ -49,34 +54,38 @@ const deriveMatchPositioning = (
 const genTemplateValuesPrivate = (
   originalRegexStr: string,
   version: string,
-) => {
+): TemplateValues => {
   const optimizedRegexStr = simplifyRegex(originalRegexStr);
 
   const literal = new RegExpParser().parseLiteral(optimizedRegexStr);
 
-  const collector = new Collector(originalRegexStr, optimizedRegexStr);
-  const mainHandler = handleDisjunction(
+  const blankTemplateValues = createTemplateValues(
+    originalRegexStr,
+    optimizedRegexStr,
+  );
+  const templateValues = handleDisjunction(
     literal.pattern.alternatives,
-    collector,
-    collector.createFinalFiber([]),
+    blankTemplateValues,
     literal.flags,
     literal,
   );
 
+  const mainHandler = findEntryHandler(templateValues);
   const matchPositioning = deriveMatchPositioning(mainHandler);
 
   return {
-    ...collector.getTemplateValues(),
-    mainHandler,
+    ...templateValues,
     matchPositioning,
+    mainHandler,
     version,
+    quantifierCountersLength: templateValues.quantifierCounters.length,
   };
 };
 
-export const genTemplateValues = (regexStr: string) => {
+export const genTemplateValues = (regexStr: string): TemplateValues => {
   return genTemplateValuesPrivate(regexStr, version);
 };
 
-export const genDevTemplateValues = (regexStr: string) => {
+export const genDevTemplateValues = (regexStr: string): TemplateValues => {
   return genTemplateValuesPrivate(regexStr, 'DEV');
 };

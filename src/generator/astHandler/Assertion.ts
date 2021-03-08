@@ -1,19 +1,19 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
+import { CollectedTemplateValues } from '../CollectedTemplateValues';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleLookaroundAssertion } from './LookaroundAssertion';
 
 export const handleAssertion = (
   assertion: AST.Assertion,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
 ): FiberTemplateDefinition => {
   switch (assertion.kind) {
     case 'start':
-      return collector.addAtom(
+      return templateValues.addAtom(
         currentFiber,
         {
           type: flags.multiline ? 'multiLineStartAnchor' : 'startAnchor',
@@ -25,7 +25,7 @@ export const handleAssertion = (
         assertion,
       );
     case 'end':
-      return collector.addAtom(
+      return templateValues.addAtom(
         currentFiber,
         {
           type: flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
@@ -40,13 +40,13 @@ export const handleAssertion = (
     case 'lookbehind':
       return handleLookaroundAssertion(
         assertion,
-        collector,
+        templateValues,
         currentFiber,
         flags,
         literal,
       );
     case 'word':
-      return collector.addAtom(
+      return templateValues.addAtom(
         currentFiber,
         {
           type: 'wordBoundary',

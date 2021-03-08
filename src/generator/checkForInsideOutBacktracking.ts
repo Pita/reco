@@ -1,10 +1,10 @@
 import { ASTPath } from '../dfa-analyzer/types';
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from 'lodash/fp/cloneDeep';
 import { AST, visitRegExpAST } from 'regexpp';
 import { CharASTElement } from './astHandler/CharacterSequence';
 import { BacktrackingError } from './BacktrackingException';
 import { handleElement } from './astHandler/Element';
-import { Collector } from './Collector';
+import { Collector } from './CollectedTemplateValues';
 import { FiberTemplateDefinition } from './templates/mainTemplate';
 import { Flags } from './generator';
 import { handleAlternative } from './astHandler/Alternative';

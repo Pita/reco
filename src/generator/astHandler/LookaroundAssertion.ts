@@ -1,12 +1,12 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
+import { CollectedTemplateValues } from '../CollectedTemplateValues';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleDisjunction } from './Disjunction';
 
 export const handleLookaroundAssertion = (
   lookaroundAssertion: AST.LookaroundAssertion,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -17,13 +17,13 @@ export const handleLookaroundAssertion = (
   };
   const lookaroundFiber = handleDisjunction(
     lookaroundAssertion.alternatives,
-    collector,
-    collector.createFinalFiber([]),
+    templateValues,
+    createFinalFiber(templateValues, []),
     newFlags,
     literal,
   );
 
-  return collector.addAtom(
+  return templateValues.addAtom(
     currentFiber,
     {
       type: 'lookaround',

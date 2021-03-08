@@ -32,7 +32,7 @@ export function generatedRegexMatcher(str: string) {
   const max = str.length - 1;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = fiber0001(i, str, context);
+    const posAfterMatch = tailFiber(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -44,7 +44,7 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const fiber0001 = (i: number, str: string, context: Context): number => {
+const tailFiber = (i: number, str: string, context: Context): number => {
   /*
    * charSequence
    * /[^ab-c]/

@@ -1,5 +1,8 @@
 import { AST } from 'regexpp';
-import { Collector, mergeGroupsOfFibers } from '../Collector';
+import {
+  CollectedTemplateValues,
+  mergeGroupsOfFibers,
+} from '../CollectedTemplateValues';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { handleElement } from './Element';
@@ -11,7 +14,7 @@ import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
 const checkIfQuantifierHasInsideOutBacktracking = (
   quantifier: AST.Quantifier,
   currentFiber: FiberTemplateDefinition,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   flags: Flags,
   literal: AST.RegExpLiteral,
   pathForHandler: ASTPath,
@@ -19,7 +22,7 @@ const checkIfQuantifierHasInsideOutBacktracking = (
   return hasInsideOutBacktracking(
     quantifier.element,
     pathForHandler,
-    collector,
+    templateValues,
     currentFiber,
     flags,
     literal,
@@ -41,12 +44,12 @@ const createPathForQuantifierHandler = (
 
 const checkIfQuantifierHasFixedLength = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   flags: Flags,
   literal: AST.RegExpLiteral,
   pathForHandler: ASTPath,
 ) => {
-  const fakeCollector = collector.fakeCollector();
+  const fakeCollector = fakeCollector(templateValues);
   const quantifierFiber = handleElement(
     quantifier.element,
     fakeCollector,
@@ -124,7 +127,7 @@ const checkIfQuantifierHasExternalBacktracking = (
 
 const analyzeGreedyQuantifier = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -133,7 +136,7 @@ const analyzeGreedyQuantifier = (
   const hasInsideOutBacktracking = checkIfQuantifierHasInsideOutBacktracking(
     quantifier,
     currentFiber,
-    collector,
+    templateValues,
     flags,
     literal,
     pathForHandler,
@@ -151,7 +154,7 @@ const analyzeGreedyQuantifier = (
     fixedLength,
   } = checkIfQuantifierHasFixedLength(
     quantifier,
-    collector,
+    templateValues,
     flags,
     literal,
     pathForHandler,
@@ -167,7 +170,7 @@ const analyzeGreedyQuantifier = (
 const analyzeLazyQuantifier = (
   quantifier: AST.Quantifier,
   currentFiber: FiberTemplateDefinition,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   flags: Flags,
   literal: AST.RegExpLiteral,
   pathForHandler: ASTPath,
@@ -175,7 +178,7 @@ const analyzeLazyQuantifier = (
   const hasInternalBacktracking = checkIfQuantifierHasInsideOutBacktracking(
     quantifier,
     currentFiber,
-    collector,
+    templateValues,
     flags,
     literal,
     pathForHandler,
@@ -188,7 +191,7 @@ const analyzeLazyQuantifier = (
 
 const generateBacktrackingQuantifier = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -197,7 +200,7 @@ const generateBacktrackingQuantifier = (
   const {
     quantifierFinalFiber,
     quantifierHandler,
-  } = collector.createQuantifierFiberPair(
+  } = templateValues.createQuantifierFiberPair(
     currentFiber,
     quantifier.greedy ? 'greedy' : 'lazy',
     quantifier,
@@ -210,14 +213,14 @@ const generateBacktrackingQuantifier = (
   quantifierHandler.maxOrMinCount = countParams.maxOrMinCount;
 
   if (countParams.maxOrMinCount) {
-    quantifierHandler.quantifierCounterIndex = collector.addQuantifierCounter(
+    quantifierHandler.quantifierCounterIndex = templateValues.addQuantifierCounter(
       quantifier,
     );
   }
 
   const wrappedHandler = handleElement(
     quantifier.element,
-    collector,
+    templateValues,
     quantifierFinalFiber,
     generateHandlerFlags(quantifier, flags),
     literal,
@@ -237,8 +240,8 @@ const generateBacktrackingQuantifier = (
     currentFiber.meta.maxCharLength +
     quantifier.max * wrappedHandler.meta.maxCharLength;
 
-  return collector.addAtom(
-    collector.createForkingFiber(
+  return templateValues.addAtom(
+    templateValues.createForkingFiber(
       quantifierHandler,
       quantifierHandler.meta.groups,
       false,
@@ -269,7 +272,7 @@ const generateHandlerFlags = (quantifier: AST.Quantifier, flags: Flags) => {
 
 const generateBacktrackingFixedLengthQuantifier = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   fixedLength: number,
@@ -278,8 +281,8 @@ const generateBacktrackingFixedLengthQuantifier = (
 ) => {
   const wrappedHandler = handleElement(
     quantifier.element,
-    collector,
-    collector.createFinalFiber(pathForHandler),
+    templateValues,
+    createFinalFiber(templateValues, pathForHandler),
     generateHandlerFlags(quantifier, flags),
     literal,
   );
@@ -292,8 +295,8 @@ const generateBacktrackingFixedLengthQuantifier = (
     currentFiber.meta.maxCharLength +
     quantifier.max * wrappedHandler.meta.maxCharLength;
 
-  return collector.addAtom(
-    collector.createForkingFiber(
+  return templateValues.addAtom(
+    templateValues.createForkingFiber(
       currentFiber,
       currentFiber.meta.groups,
       false,
@@ -325,7 +328,7 @@ const generateCountParams = (quantifier: AST.Quantifier) => {
 
 const generateNonBacktrackingQuantifier = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -333,8 +336,8 @@ const generateNonBacktrackingQuantifier = (
 ) => {
   const wrappedHandler = handleElement(
     quantifier.element,
-    collector,
-    collector.createFinalFiber(pathForHandler),
+    templateValues,
+    createFinalFiber(templateValues, pathForHandler),
     generateHandlerFlags(quantifier, flags),
     literal,
   );
@@ -343,7 +346,7 @@ const generateNonBacktrackingQuantifier = (
   const minCharLength = quantifier.min * wrappedHandler.meta.minCharLength;
   const maxCharLength = quantifier.max * wrappedHandler.meta.maxCharLength;
 
-  return collector.addAtom(
+  return templateValues.addAtom(
     currentFiber,
     {
       type: 'nonBacktrackingQuantifier',
@@ -361,7 +364,7 @@ const generateNonBacktrackingQuantifier = (
 
 const generateGreedyQuantifier = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -373,7 +376,7 @@ const generateGreedyQuantifier = (
     fixedLength,
   } = analyzeGreedyQuantifier(
     quantifier,
-    collector,
+    templateValues,
     currentFiber,
     flags,
     literal,
@@ -384,7 +387,7 @@ const generateGreedyQuantifier = (
     if (fixedLengthOptimizable && fixedLength) {
       return generateBacktrackingFixedLengthQuantifier(
         quantifier,
-        collector,
+        templateValues,
         currentFiber,
         flags,
         fixedLength,
@@ -394,7 +397,7 @@ const generateGreedyQuantifier = (
     } else {
       return generateBacktrackingQuantifier(
         quantifier,
-        collector,
+        templateValues,
         currentFiber,
         flags,
         literal,
@@ -404,7 +407,7 @@ const generateGreedyQuantifier = (
   } else {
     return generateNonBacktrackingQuantifier(
       quantifier,
-      collector,
+      templateValues,
       currentFiber,
       flags,
       literal,
@@ -415,7 +418,7 @@ const generateGreedyQuantifier = (
 
 const generateLazyQuantifier = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -424,7 +427,7 @@ const generateLazyQuantifier = (
   const { hasInternalBacktracking } = analyzeLazyQuantifier(
     quantifier,
     currentFiber,
-    collector,
+    templateValues,
     flags,
     literal,
     pathForHandler,
@@ -433,7 +436,7 @@ const generateLazyQuantifier = (
   if (hasInternalBacktracking) {
     return generateBacktrackingQuantifier(
       quantifier,
-      collector,
+      templateValues,
       currentFiber,
       flags,
       literal,
@@ -442,8 +445,8 @@ const generateLazyQuantifier = (
   } else {
     const wrappedHandler = handleElement(
       quantifier.element,
-      collector,
-      collector.createFinalFiber(pathForHandler),
+      templateValues,
+      createFinalFiber(templateValues, pathForHandler),
       generateHandlerFlags(quantifier, flags),
       literal,
     );
@@ -456,8 +459,8 @@ const generateLazyQuantifier = (
       currentFiber.meta.maxCharLength +
       quantifier.max * wrappedHandler.meta.maxCharLength;
 
-    return collector.addAtom(
-      collector.createForkingFiber(
+    return templateValues.addAtom(
+      templateValues.createForkingFiber(
         currentFiber,
         currentFiber.meta.groups,
         false,
@@ -481,7 +484,7 @@ const generateLazyQuantifier = (
 
 export const handleQuantifier = (
   quantifier: AST.Quantifier,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -491,7 +494,7 @@ export const handleQuantifier = (
     for (let i = 0; i < quantifier.max; i++) {
       currentAppendableFiber = handleElement(
         quantifier.element,
-        collector,
+        templateValues,
         currentAppendableFiber,
         flags,
         literal,
@@ -509,7 +512,7 @@ export const handleQuantifier = (
   if (quantifier.greedy) {
     return generateGreedyQuantifier(
       quantifier,
-      collector,
+      templateValues,
       currentFiber,
       flags,
       literal,
@@ -518,7 +521,7 @@ export const handleQuantifier = (
   } else {
     return generateLazyQuantifier(
       quantifier,
-      collector,
+      templateValues,
       currentFiber,
       flags,
       literal,

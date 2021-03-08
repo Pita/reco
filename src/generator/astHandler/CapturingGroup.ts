@@ -1,12 +1,12 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
+import { CollectedTemplateValues } from '../CollectedTemplateValues';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from 'regexpp/ast';
 import { handleDisjunction } from './Disjunction';
 
 export const handleCapturingGroup = (
   capturingGroup: AST.CapturingGroup,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -15,11 +15,11 @@ export const handleCapturingGroup = (
     throw new Error('No supported for named capturing groups yet');
   }
 
-  const groupReference = collector.addCapturingGroup(
+  const groupReference = templateValues.addCapturingGroup(
     currentFiber,
     capturingGroup,
   );
-  const groupEndMarker = collector.addAtom(
+  const groupEndMarker = templateValues.addAtom(
     currentFiber,
     {
       type: 'groupEndMarker',
@@ -35,13 +35,13 @@ export const handleCapturingGroup = (
 
   const disjunction = handleDisjunction(
     capturingGroup.alternatives,
-    collector,
+    templateValues,
     groupEndMarker,
     flags,
     literal,
   );
 
-  const groupStartMarker = collector.addAtom(
+  const groupStartMarker = templateValues.addAtom(
     disjunction,
     {
       type: 'groupStartMarker',

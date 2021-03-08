@@ -18,7 +18,7 @@ export type AstElementOrQuantifierElement =
   | MaxCountASTElement
   | InfiniteASTElement;
 
-export type ASTPath = AstElementOrQuantifierElement[];
+export type ASTPath = ReadonlyArray<AstElementOrQuantifierElement>;
 export interface DFACache {
   astToCharRange: Map<AST.Element, CharRange>;
 }

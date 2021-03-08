@@ -1,6 +1,5 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
-import { FiberTemplateDefinition } from '../templates/mainTemplate';
+import { addAtom, CollectedTemplateValues } from '../CollectedTemplateValues';
 import { Flags } from '../generator';
 import {
   charRangeToLeafValues,
@@ -9,6 +8,7 @@ import {
 import { astToCharRange } from '../astToCharRange';
 import { handleSetOrCharacter, utf16UnitsCountToMinAndMax } from './Character';
 import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
+import * as _ from 'lodash/fp';
 
 export type CharASTElement =
   | AST.CharacterClass
@@ -17,61 +17,57 @@ export type CharASTElement =
   | AST.UnicodePropertyCharacterSet
   | AST.Character;
 
-const handleBackwardsChars = (
-  charASTElements: Array<CharASTElement>,
-  collector: Collector,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
-) => {
-  // TODO: convert to mass matching like the forward matching
+// const handleBackwardsChars = (
+//   charASTElements: ReadonlyArray<CharASTElement>,
+//   templateValues: CollectedTemplateValues,
+//   currentFiber: FiberTemplateDefinition,
+//   flags: Flags,
+//   literal: AST.RegExpLiteral,
+// ) => {
+//   // TODO: convert to mass matching like the forward matching
 
-  let lastFiber = currentFiber;
-  for (let i = charASTElements.length - 1; i >= 0; i--) {
-    lastFiber = handleSetOrCharacter(
-      charASTElements[i],
-      collector,
-      lastFiber,
-      flags,
-      literal,
-    );
-  }
+//   let lastFiber = currentFiber;
+//   for (let i = charASTElements.length - 1; i >= 0; i--) {
+//     lastFiber = handleSetOrCharacter(
+//       charASTElements[i],
+//       templateValues,
+//       lastFiber,
+//       flags,
+//       literal,
+//     );
+//   }
 
-  return lastFiber;
-};
+//   return lastFiber;
+// };
 
 export const handleCharSequence = (
-  charASTElements: Array<CharASTElement>,
-  collector: Collector,
-  currentFiber: FiberTemplateDefinition,
+  charASTElements: ReadonlyArray<CharASTElement>,
+  templateValues: CollectedTemplateValues,
   flags: Flags,
   literal: AST.RegExpLiteral,
   quickCheck: QuickCheckDetails | null = null,
-): FiberTemplateDefinition => {
+): CollectedTemplateValues => {
   if (flags.INTERNAL_backwards) {
-    return handleBackwardsChars(
-      charASTElements,
-      collector,
-      currentFiber,
-      flags,
-      literal,
-    );
+    throw new Error('Does not support reverse matching yet');
+    // return handleBackwardsChars(
+    //   charASTElements,
+    //   templateValues,
+    //   currentFiber,
+    //   flags,
+    //   literal,
+    // );
   }
-
-  let minSum = 0;
-  let maxSum = 0;
 
   const chars = charASTElements
     .map((char, offset) => {
       const charRange = astToCharRange(char, flags);
+
       const tree = charRangeToLeafValues(charRange);
+
       const averageComplexity = computeAverageLeafComplexity(tree);
       const negate = charRange.toJSON().negate;
       const unicode = flags.unicode === true;
       const unitsCount = charRange.getUTF16UnitsCount(flags);
-      const { min, max } = utf16UnitsCountToMinAndMax(unitsCount);
-      minSum += min;
-      maxSum += max;
 
       const canBeSkipped =
         quickCheck?.determinesPerfectlyAstElements.includes(char) ?? false;
@@ -96,6 +92,19 @@ export const handleCharSequence = (
       return complexityDiff;
     });
 
+  const { minSum, maxSum } = _.reduce(
+    ({ minSum, maxSum }, { unitsCount }) => {
+      const { min, max } = utf16UnitsCountToMinAndMax(unitsCount);
+
+      return {
+        minSum: min + minSum,
+        maxSum: max + maxSum,
+      };
+    },
+    { minSum: 0, maxSum: 0 },
+    chars,
+  );
+
   const length = chars.length;
   const orderedLoading =
     maxSum === length
@@ -109,8 +118,8 @@ export const handleCharSequence = (
             unicode: flags.unicode === true,
           }));
 
-  return collector.addAtom(
-    currentFiber,
+  return addAtom(
+    templateValues,
     {
       type: 'charSequence',
       data: {
@@ -118,10 +127,10 @@ export const handleCharSequence = (
         length,
         chars,
       },
-      astLocation: {
-        start: charASTElements[0].start,
-        end: charASTElements[charASTElements.length - 1].end,
-      },
+    },
+    {
+      start: charASTElements[0].start,
+      end: charASTElements[charASTElements.length - 1].end,
     },
     minSum,
     maxSum,

@@ -1,5 +1,5 @@
 import { AST } from 'regexpp';
-import { Collector } from '../Collector';
+import { CollectedTemplateValues } from '../CollectedTemplateValues';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { Flags } from '../generator';
 import { charRangeToLeafValues } from '../CharRangeBTreeMatcher';
@@ -19,7 +19,7 @@ export const handleSetOrCharacter = (
     | AST.EscapeCharacterSet
     | AST.UnicodePropertyCharacterSet
     | AST.Character,
-  collector: Collector,
+  templateValues: CollectedTemplateValues,
   currentFiber: FiberTemplateDefinition,
   flags: Flags,
   literal: AST.RegExpLiteral,
@@ -28,7 +28,7 @@ export const handleSetOrCharacter = (
   const unitsCount = charRange.getUTF16UnitsCount(flags);
   const { min, max } = utf16UnitsCountToMinAndMax(unitsCount);
 
-  return collector.addAtom(
+  return templateValues.addAtom(
     currentFiber,
     {
       type: flags.INTERNAL_backwards ? 'charOrSetBackward' : 'charOrSet',

@@ -5,10 +5,10 @@
   "main": "./dist/api.js",
   "types": "./dist/api.d.ts",
   "scripts": {
-    "test:all": "npm run generate && npm run test:run",
+    "test:all": "npm run generate && jest src/tests_and_benchmarks/generated/",
     "generate": "node --require ts-node/register/transpile-only ./src/tests_and_benchmarks/generate_tests_and_benchmarks.ts",
     "generate:prof": "rm isolate*.txt; node --require ts-node/register/transpile-only --prof ./src/tests_and_benchmarks/generate_tests_and_benchmarks.ts; node --prof-process isolate*",
-    "test:ci": "npx jest --coverage",
+    "test:ci": "jest --coverage",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "typecheck": "tsc --noEmit",
     "benchmark": "cd lambda_benchmarking/ && npm run deploy:function && npm run benchmark",
