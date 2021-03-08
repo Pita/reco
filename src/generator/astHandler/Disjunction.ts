@@ -4,7 +4,7 @@ import {
   mergeGroupsOfFibers,
 } from '../CollectedTemplateValues';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { Flags } from '../generator';
+import { Flags, GeneratorContext } from '../generator';
 import { handleAlternative } from './Alternative';
 import { BacktrackingError } from '../BacktrackingException';
 import { computeExclusivityOfAlternatives } from '../../dfa-analyzer/CharRangeSequencePossibilities';
@@ -236,11 +236,10 @@ import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
 export const handleDisjunction = (
   alternatives: ReadonlyArray<AST.Alternative>,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
 ): CollectedTemplateValues => {
   if (alternatives.length === 1) {
-    return handleAlternative(alternatives[0], templateValues, flags, literal);
+    return handleAlternative(alternatives[0], templateValues, context);
   }
 
   throw new Error('More than one alternative not supported yet');

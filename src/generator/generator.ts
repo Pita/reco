@@ -1,7 +1,8 @@
-import { AST, RegExpParser } from 'regexpp';
+import { AST, RegExpParser, visitRegExpAST } from 'regexpp';
 import { handleDisjunction } from './astHandler/Disjunction';
 import {
   FiberTemplateDefinition,
+  GroupReference,
   MatchPositioning,
   TemplateValues,
 } from './templates/mainTemplate';
@@ -10,6 +11,8 @@ import {
   createTemplateValues,
   findEntryHandler,
 } from './CollectedTemplateValues';
+import * as _ from 'lodash/fp';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../../package.json');
 
@@ -51,6 +54,38 @@ const deriveMatchPositioning = (
   };
 };
 
+type GroupIndex = ReadonlyMap<AST.CapturingGroup, GroupReference>;
+
+const indexGroups = (literal: AST.RegExpLiteral): GroupIndex => {
+  // eslint-disable-next-line functional/prefer-readonly-type
+  const capturingGroups: AST.CapturingGroup[] = [];
+
+  visitRegExpAST(literal, {
+    onCapturingGroupEnter: (capturingGroup) => {
+      capturingGroups.push(capturingGroup);
+    },
+  });
+
+  const capturingGroupsSorted = _.sortBy(
+    (group) => group.start,
+    capturingGroups,
+  );
+  const capturingGroupsEntries = capturingGroupsSorted.map(
+    (capturingGroup, idx): readonly [AST.CapturingGroup, GroupReference] => {
+      const groupReference: GroupReference = { idx };
+      return [capturingGroup, groupReference];
+    },
+  );
+
+  return new Map(capturingGroupsEntries);
+};
+
+export interface GeneratorContext {
+  readonly literal: AST.RegExpLiteral;
+  readonly groupIndex: GroupIndex;
+  readonly flags: Flags;
+}
+
 const genTemplateValuesPrivate = (
   originalRegexStr: string,
   version: string,
@@ -58,16 +93,18 @@ const genTemplateValuesPrivate = (
   const optimizedRegexStr = simplifyRegex(originalRegexStr);
 
   const literal = new RegExpParser().parseLiteral(optimizedRegexStr);
+  const groupIndex = indexGroups(literal);
+  const context = { literal, groupIndex, flags: literal.flags };
 
   const blankTemplateValues = createTemplateValues(
     originalRegexStr,
     optimizedRegexStr,
   );
+
   const templateValues = handleDisjunction(
     literal.pattern.alternatives,
     blankTemplateValues,
-    literal.flags,
-    literal,
+    context,
   );
 
   const mainHandler = findEntryHandler(templateValues);
@@ -79,6 +116,7 @@ const genTemplateValuesPrivate = (
     mainHandler,
     version,
     quantifierCountersLength: templateValues.quantifierCounters.length,
+    groupsLength: groupIndex.size,
   };
 };
 

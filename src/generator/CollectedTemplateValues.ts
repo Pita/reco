@@ -8,6 +8,7 @@ import {
 } from './templates/mainTemplate';
 import * as _ from 'lodash/fp';
 import { AstElementOrQuantifierElement, ASTPath } from '../dfa-analyzer/types';
+import { GeneratorContext } from './generator';
 
 /*
   Functions should probably return fiber as well, like before
@@ -47,7 +48,7 @@ export interface CollectedTemplateValues {
   readonly lazyQuantifierHandlers: ReadonlyArray<
     Readonly<QuantifierTemplateDefinition>
   >;
-  readonly groups: ReadonlyArray<Readonly<GroupReference>>;
+  // readonly groups: ReadonlyArray<Readonly<GroupReference>>;
   readonly quantifierCounters: ReadonlyArray<Readonly<QuantifierCounter>>;
   readonly counter: number;
   readonly entryFunctionName: string;
@@ -77,7 +78,6 @@ export function createTemplateValues(
     optimizedRegexStr,
     originalRegexStr,
     counter: 0,
-    groups: [],
     fiberHandlers: [entry],
     greedyQuantifierHandlers: [],
     lazyQuantifierHandlers: [],
@@ -264,6 +264,7 @@ export function createQuantifierFiberPair(
   };
 
   // there is no other way to create a cyclic dependency
+  // @ts-ignore
   // eslint-disable-next-line functional/immutable-data
   quantifierFinalFiber.followUp = quantifierHandler;
 
@@ -287,50 +288,27 @@ export function createQuantifierFiberPair(
 
 export function addCapturingGroup(
   values: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
   ast: AST.CapturingGroup,
+  context: GeneratorContext,
 ): {
   readonly group: GroupReference;
   readonly values: CollectedTemplateValues;
 } {
-  const existingGroup = values.groups.find(
-    (group) => group.astStart === ast.start,
-  );
-  if (existingGroup !== undefined) {
-    return { group: existingGroup, values };
+  const newGroup = context.groupIndex.get(ast);
+  if (newGroup === undefined) {
+    throw new Error("Couldn't find group in index");
   }
 
-  const allGroupsUnsorted = [
-    ...values.groups,
-    {
-      idx: -1,
-      astStart: ast.start,
-    },
-  ];
-  const allGroupsSorted = _.sortBy((g) => g.astStart, allGroupsUnsorted);
-  const allGroupsCorrected = allGroupsSorted.map((group, idx) => ({
-    ...group,
-    idx,
-  }));
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const newGroup = allGroupsCorrected.find(
-    (group) => group.astStart === ast.start,
-  )!;
-
   const newFiberHandlers = values.fiberHandlers.map((fiberHandler) => {
-    if (fiberHandler !== currentFiber) {
+    if (fiberHandler.functionName !== values.entryFunctionName) {
       return fiberHandler;
     }
-
-    const fiberGroupsUnsorted = [...fiberHandler.meta.groups, newGroup];
-    const fiberGroupsSorted = _.sortBy((g) => g.idx, fiberGroupsUnsorted);
 
     return {
       ...fiberHandler,
       meta: {
         ...fiberHandler.meta,
-        groups: fiberGroupsSorted,
+        groups: _.union(fiberHandler.meta.groups, [newGroup]),
       },
     };
   });
@@ -338,7 +316,6 @@ export function addCapturingGroup(
   return {
     values: {
       ...values,
-      groups: allGroupsCorrected,
       fiberHandlers: newFiberHandlers,
     },
     group: newGroup,

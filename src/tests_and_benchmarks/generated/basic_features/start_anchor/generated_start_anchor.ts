@@ -2,7 +2,7 @@
 // A Regular Expression to Code Compiler
 // Visit: https://github.com/pita/reco
 //
-// Generated from: '/.a/u'
+// Generated from: '/^def/'
 //
 // Use like this:
 //
@@ -22,14 +22,14 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {}
 
-// Regex optimized to: /.a/u
+// Regex optimized to: /^def/
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {};
 
-  // minCharsLeft
+  // startAnchored
   const min = 0;
-  const max = str.length - 2;
+  const max = 0;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = tailFiber(i, str, context);
@@ -46,52 +46,53 @@ export function generatedRegexMatcher(str: string) {
 
 const tailFiber = (i: number, str: string, context: Context): number => {
   /*
-   * charSequence
-   * /.a/u
-   *  ^^
+   * startAnchor
+   * /^def/
+   *  ^
    */
-  const iAfterMatch0 = i + 2;
-  if (iAfterMatch0 > str.length) {
+  if (i !== 0) {
+    return -1;
+  }
+  /*
+   * charSequence
+   * /^def/
+   *   ^^^
+   */
+  const iAfterMatch1 = i + 3;
+  if (iAfterMatch1 > str.length) {
     return -1;
   }
 
   {
-    if (i >= str.length) {
-      return -1;
-    }
-
-    const charCode0 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
-
-    i += charCode0 >= 0x10000 ? 2 : 1;
-    if (i >= str.length) {
-      return -1;
-    }
-
-    const charCode1 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
-
-    i++;
+    const charCode0 = str.charCodeAt(i + 2);
 
     let result0: boolean;
 
-    if (charCode0 <= 13) {
-      result0 = charCode0 === 10 || charCode0 === 13;
-    } else {
-      if (charCode0 <= 8233) {
-        result0 = charCode0 >= 8232;
-      } else {
-        result0 = false;
-      }
-    }
-    if (result0) {
+    result0 = charCode0 === 102;
+
+    if (!result0) {
       return -1;
     }
+    const charCode1 = str.charCodeAt(i + 1);
+
     let result1: boolean;
 
-    result1 = charCode1 === 97;
+    result1 = charCode1 === 101;
 
     if (!result1) {
       return -1;
     }
+    const charCode2 = str.charCodeAt(i + 0);
+
+    let result2: boolean;
+
+    result2 = charCode2 === 100;
+
+    if (!result2) {
+      return -1;
+    }
+
+    i = iAfterMatch1;
   }
   return i;
 };

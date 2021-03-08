@@ -1,6 +1,6 @@
 import { AST } from 'regexpp';
 import { addAtom, CollectedTemplateValues } from '../CollectedTemplateValues';
-import { Flags } from '../generator';
+import { GeneratorContext } from '../generator';
 import {
   charRangeToLeafValues,
   computeAverageLeafComplexity,
@@ -43,11 +43,10 @@ export type CharASTElement =
 export const handleCharSequence = (
   charASTElements: ReadonlyArray<CharASTElement>,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   quickCheck: QuickCheckDetails | null = null,
 ): CollectedTemplateValues => {
-  if (flags.INTERNAL_backwards) {
+  if (context.flags.INTERNAL_backwards) {
     throw new Error('Does not support reverse matching yet');
     // return handleBackwardsChars(
     //   charASTElements,
@@ -60,12 +59,12 @@ export const handleCharSequence = (
 
   const chars = charASTElements
     .map((char, offset) => {
-      const charRange = astToCharRange(char, flags);
+      const charRange = astToCharRange(char, context.flags);
       const tree = charRangeToLeafValues(charRange);
       const averageComplexity = computeAverageLeafComplexity(tree);
       const negate = charRange.toJSON().negate;
-      const unicode = flags.unicode === true;
-      const unitsCount = charRange.getUTF16UnitsCount(flags);
+      const unicode = context.flags.unicode === true;
+      const unitsCount = charRange.getUTF16UnitsCount(context.flags);
 
       const canBeSkipped =
         quickCheck?.determinesPerfectlyAstElements.includes(char) ?? false;
@@ -113,7 +112,7 @@ export const handleCharSequence = (
           })
           .map((char) => ({
             unitsCount: char.unitsCount,
-            unicode: flags.unicode === true,
+            unicode: context.flags.unicode === true,
           }));
 
   return addAtom(

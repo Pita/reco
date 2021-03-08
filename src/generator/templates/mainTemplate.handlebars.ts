@@ -22,11 +22,11 @@ export default `
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {
-  {{#each groups}}
-    groupMarkerStart{{{@index}}}: number;
-    groupMarkerStartTemp{{{@index}}}: number;
-    groupMarkerEnd{{{@index}}}: number;
-  {{/each}}
+  {{#times groupsLength}}
+    groupMarkerStart{{{@this}}}: number;
+    groupMarkerStartTemp{{{@this}}}: number;
+    groupMarkerEnd{{{@this}}}: number;
+  {{/times}}
   {{#times quantifierCountersLength}}
     quantifierCounter{{{@this}}}: number;
   {{/times}}
@@ -37,11 +37,11 @@ interface Context {
 
 export function generatedRegexMatcher(str: string) {
   const context: Context = {
-    {{#each groups}}
-      groupMarkerStart{{{@index}}}: -1,
-      groupMarkerStartTemp{{{@index}}}: -1,
-      groupMarkerEnd{{{@index}}}: -1,
-    {{/each}}
+    {{#times groupsLength}}
+      groupMarkerStart{{{@this}}}: -1,
+      groupMarkerStartTemp{{{@this}}}: -1,
+      groupMarkerEnd{{{@this}}}: -1,
+    {{/times}}
     {{#times quantifierCountersLength}}
       quantifierCounter{{{@this}}}: -1, 
     {{/times}}
@@ -77,11 +77,11 @@ export function generatedRegexMatcher(str: string) {
         index: i,
         matches: [
           str.substring(i, posAfterMatch),
-          {{#each groups}}
-            context.groupMarkerEnd{{{@index}}} !== -1
-              ? str.substring(context.groupMarkerStart{{{@index}}}, context.groupMarkerEnd{{{@index}}})
+          {{#times groupsLength}}
+            context.groupMarkerEnd{{{@this}}} !== -1
+              ? str.substring(context.groupMarkerStart{{{@this}}}, context.groupMarkerEnd{{{@this}}})
               : undefined,
-          {{/each}}
+          {{/times}}
         ]
       }
     }

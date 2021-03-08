@@ -48,7 +48,7 @@ const tailFiber = (i: number, str: string, context: Context): number => {
   /*
    * charSequence
    * /.x/s
-   *
+   *  ^^
    */
   const iAfterMatch0 = i + 2;
   if (iAfterMatch0 > str.length) {
@@ -56,7 +56,7 @@ const tailFiber = (i: number, str: string, context: Context): number => {
   }
 
   {
-    const charCode0 = str.charCodeAt(i + 1);
+    const charCode0 = str.charCodeAt(i + 0);
 
     let result0: boolean;
 
@@ -65,7 +65,7 @@ const tailFiber = (i: number, str: string, context: Context): number => {
     if (result0) {
       return -1;
     }
-    const charCode1 = str.charCodeAt(i + 0);
+    const charCode1 = str.charCodeAt(i + 1);
 
     let result1: boolean;
 

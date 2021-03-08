@@ -1,20 +1,21 @@
 import { AST } from 'regexpp';
 import { addAtom, CollectedTemplateValues } from '../CollectedTemplateValues';
-import { Flags } from '../generator';
+import { GeneratorContext } from '../generator';
 import { handleLookaroundAssertion } from './LookaroundAssertion';
 
 export const handleAssertion = (
   assertion: AST.Assertion,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
 ): CollectedTemplateValues => {
   switch (assertion.kind) {
     case 'start':
       return addAtom(
         templateValues,
         {
-          type: flags.multiline ? 'multiLineStartAnchor' : 'startAnchor',
+          type: context.flags.multiline
+            ? 'multiLineStartAnchor'
+            : 'startAnchor',
           data: {},
         },
         assertion,
@@ -26,7 +27,7 @@ export const handleAssertion = (
       return addAtom(
         templateValues,
         {
-          type: flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
+          type: context.flags.multiline ? 'multiLineEndAnchor' : 'endAnchor',
           data: {},
         },
         assertion,

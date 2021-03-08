@@ -1,62 +1,62 @@
 import { AST } from 'regexpp';
-import { CollectedTemplateValues } from '../CollectedTemplateValues';
-import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { Flags } from 'regexpp/ast';
+import {
+  addAtom,
+  addCapturingGroup,
+  CollectedTemplateValues,
+} from '../CollectedTemplateValues';
 import { handleDisjunction } from './Disjunction';
+import { GeneratorContext } from '../generator';
 
 export const handleCapturingGroup = (
   capturingGroup: AST.CapturingGroup,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
-): FiberTemplateDefinition => {
+  context: GeneratorContext,
+): CollectedTemplateValues => {
   if (capturingGroup.name) {
-    throw new Error('No supported for named capturing groups yet');
+    throw new Error('No support for named capturing groups yet');
   }
 
-  const groupReference = templateValues.addCapturingGroup(
-    currentFiber,
+  const { group: groupReference, values: templateValues1 } = addCapturingGroup(
+    templateValues,
     capturingGroup,
+    context,
   );
-  const groupEndMarker = templateValues.addAtom(
-    currentFiber,
+  const templateValues2 = addAtom(
+    templateValues1,
     {
       type: 'groupEndMarker',
-      astLocation: { start: capturingGroup.end - 1, end: capturingGroup.end },
       data: {
         groupReference,
       },
     },
+    { start: capturingGroup.end - 1, end: capturingGroup.end },
     0,
     0,
     'noAstElement',
   );
 
-  const disjunction = handleDisjunction(
+  const templateValues3 = handleDisjunction(
     capturingGroup.alternatives,
-    templateValues,
-    groupEndMarker,
-    flags,
-    literal,
+    templateValues2,
+    context,
   );
 
-  const groupStartMarker = templateValues.addAtom(
-    disjunction,
+  const templateValues4 = addAtom(
+    templateValues3,
     {
       type: 'groupStartMarker',
-      astLocation: {
-        start: capturingGroup.start,
-        end: capturingGroup.start + 1,
-      },
       data: {
         groupReference,
       },
+    },
+    {
+      start: capturingGroup.start,
+      end: capturingGroup.start + 1,
     },
     0,
     0,
     'noAstElement',
   );
 
-  return groupStartMarker;
+  return templateValues4;
 };

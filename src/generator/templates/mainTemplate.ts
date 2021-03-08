@@ -8,7 +8,6 @@ import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibili
 
 export interface GroupReference {
   readonly idx: number;
-  readonly astStart: number;
 }
 
 export interface FunctionDefinition {
@@ -246,8 +245,8 @@ export interface TemplateValues {
   readonly greedyQuantifierHandlers: ReadonlyArray<QuantifierTemplateDefinition>;
   readonly lazyQuantifierHandlers: ReadonlyArray<QuantifierTemplateDefinition>;
   readonly mainHandler: FiberTemplateDefinition;
-  readonly groups: ReadonlyArray<GroupReference>;
   readonly quantifierCountersLength: number;
+  readonly groupsLength: number;
   readonly version: string;
   readonly matchPositioning: MatchPositioning;
 }

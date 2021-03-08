@@ -1,7 +1,7 @@
 import { AST } from 'regexpp';
 import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { handleSetOrCharacter } from './Character';
-import { Flags } from '../generator';
+import { Flags, GeneratorContext } from '../generator';
 import { handleDisjunction } from './Disjunction';
 import { handleQuantifier } from './Quantifier';
 import { handleAssertion } from './Assertion';
@@ -12,8 +12,7 @@ import { CollectedTemplateValues } from '../CollectedTemplateValues';
 export const handleElement = (
   element: AST.Element,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
 ): CollectedTemplateValues => {
   switch (element.type) {
     case 'Character':
@@ -28,12 +27,7 @@ export const handleElement = (
     //   literal,
     // );
     case 'Group':
-      return handleDisjunction(
-        element.alternatives,
-        templateValues,
-        flags,
-        literal,
-      );
+      return handleDisjunction(element.alternatives, templateValues, context);
     case 'Quantifier':
       throw new Error('Quantifier not yet supported');
     // return handleQuantifier(
@@ -44,17 +38,9 @@ export const handleElement = (
     //   literal,
     // );
     case 'Assertion':
-      return handleAssertion(element, templateValues, flags, literal);
+      return handleAssertion(element, templateValues, context);
     case 'CapturingGroup':
-      throw new Error('Assertion not yet supported');
-
-    // return handleCapturingGroup(
-    //   element,
-    //   templateValues,
-    //   currentFiber,
-    //   flags,
-    //   literal,
-    // );
+      return handleCapturingGroup(element, templateValues, context);
     case 'Backreference':
       throw new Error('Assertion not yet supported');
 

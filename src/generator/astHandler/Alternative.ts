@@ -1,7 +1,7 @@
 import { AST } from 'regexpp';
 import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 import { CollectedTemplateValues } from '../CollectedTemplateValues';
-import { Flags } from '../generator';
+import { GeneratorContext } from '../generator';
 import { CharASTElement, handleCharSequence } from './CharacterSequence';
 import { handleElement } from './Element';
 import * as _ from 'lodash/fp';
@@ -14,8 +14,7 @@ type GroupedCharElements = {
 export const handleAlternative = (
   alternative: AST.Alternative,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   quickCheck: QuickCheckDetails | null = null,
 ): CollectedTemplateValues => {
   const groupedElements = _.reduce(
@@ -28,7 +27,7 @@ export const handleAlternative = (
           if (firstElement && firstElement.type === 'GroupedChars') {
             const groupedChars: GroupedCharElements = {
               type: 'GroupedChars',
-              chars: [element, ...firstElement.chars],
+              chars: [...firstElement.chars, element],
             };
             return [groupedChars, ...acc.slice(1)];
           } else {
@@ -54,12 +53,11 @@ export const handleAlternative = (
           return handleCharSequence(
             groupedElement.chars,
             templateValues,
-            flags,
-            literal,
+            context,
             quickCheck,
           );
         default:
-          return handleElement(groupedElement, templateValues, flags, literal);
+          return handleElement(groupedElement, templateValues, context);
       }
     },
     templateValues,
