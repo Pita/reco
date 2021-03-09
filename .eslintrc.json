@@ -30,6 +30,15 @@
     "functional/immutable-data": 1,
     "functional/no-method-signature": 1,
     "functional/no-class": 1,
-    "functional/no-this-expression": 1
+    "functional/no-this-expression": 1,
+    "max-lines-per-function": [
+      1,
+      { "max": 75, "skipBlankLines": true, "skipComments": true }
+    ],
+    "max-lines": [
+      1,
+      { "max": 500, "skipBlankLines": false, "skipComments": false }
+    ],
+    "complexity": [1, { "max": 10 }]
   }
 }

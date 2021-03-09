@@ -9,6 +9,7 @@ import {
 import * as _ from 'lodash/fp';
 import { AstElementOrQuantifierElement, ASTPath } from '../dfa-analyzer/types';
 import { GeneratorContext } from './generator';
+import { QuantifierCountParams } from './astHandler/Quantifier';
 
 /*
   Functions should probably return fiber as well, like before
@@ -213,15 +214,16 @@ export function createForkingFiber(
 // used by recursive quantifiers
 export function createQuantifierFiberPair(
   values: CollectedTemplateValues,
-  followUp: FiberTemplateDefinition,
   type: 'greedy' | 'lazy',
-  astLocation: ASTLocation,
+  quantifier: AST.Quantifier,
   pathForHandler: ASTPath,
+  countParams: QuantifierCountParams,
 ): {
   readonly quantifierHandler: QuantifierTemplateDefinition;
   readonly quantifierFinalFiber: FiberTemplateDefinition;
-  readonly values: CollectedTemplateValues;
+  readonly templateValues: CollectedTemplateValues;
 } {
+  const followUp = findEntryHandler(values);
   const { values: newValues1, newCount: fiberCount } = bumpCount(values);
 
   const quantifierFinalFiber: FiberTemplateDefinition = {
@@ -252,6 +254,7 @@ export function createQuantifierFiberPair(
         : `lazyQuantifier${quantifierCount}`,
     wrappedHandler: quantifierFinalFiber,
     returningFunctionName: followUp.returningFunctionName,
+    ...countParams,
     meta: {
       groups: [],
       minCharLength: 0,
@@ -260,16 +263,19 @@ export function createQuantifierFiberPair(
       anchorsAtEndOfLine: followUp.meta.anchorsAtEndOfLine,
       path: followUp.meta.path,
     },
-    ...formatAstLocation(newValues2, astLocation),
+    ...formatAstLocation(newValues2, quantifier),
   };
 
   // there is no other way to create a cyclic dependency
-  // @ts-ignore
-  // eslint-disable-next-line functional/immutable-data
-  quantifierFinalFiber.followUp = quantifierHandler;
+  // eslint-disable-next-line functional/immutable-data, @typescript-eslint/no-explicit-any
+  (quantifierFinalFiber as any).followUp = quantifierHandler;
+
+  const quantifierCounters = countParams.maxOrMinCount
+    ? [...newValues2.quantifierCounters, { ast: quantifier }]
+    : newValues2.quantifierCounters;
 
   return {
-    values: {
+    templateValues: {
       ...newValues2,
       fiberHandlers: [quantifierFinalFiber, ...newValues2.fiberHandlers],
       greedyQuantifierHandlers: [
@@ -280,6 +286,7 @@ export function createQuantifierFiberPair(
         ...newValues2.greedyQuantifierHandlers,
         ...(type === 'lazy' ? [quantifierHandler] : []),
       ],
+      quantifierCounters,
     },
     quantifierFinalFiber,
     quantifierHandler,

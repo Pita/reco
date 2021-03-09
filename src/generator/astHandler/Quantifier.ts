@@ -1,37 +1,36 @@
 import { AST } from 'regexpp';
 import {
   CollectedTemplateValues,
+  createFinalFiber,
+  createQuantifierFiberPair,
+  findEntryHandler,
   mergeGroupsOfFibers,
 } from '../CollectedTemplateValues';
-import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { Flags } from '../generator';
+import { Flags, GeneratorContext } from '../generator';
 import { handleElement } from './Element';
 import { BacktrackingError } from '../BacktrackingException';
 import { ASTPath } from '../../dfa-analyzer/types';
 import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
 import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
+import _ from 'lodash/fp';
 
 const checkIfQuantifierHasInsideOutBacktracking = (
   quantifier: AST.Quantifier,
-  currentFiber: FiberTemplateDefinition,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
   return hasInsideOutBacktracking(
     quantifier.element,
-    pathForHandler,
     templateValues,
-    currentFiber,
-    flags,
-    literal,
+    context,
+    pathForHandler,
   );
 };
 
 const createPathForQuantifierHandler = (
   quantifier: AST.Quantifier,
-  currentFiber: FiberTemplateDefinition,
+  templateValues: CollectedTemplateValues,
 ) => {
   const decrementedQuantifier = {
     ...quantifier,
@@ -39,30 +38,28 @@ const createPathForQuantifierHandler = (
     max: quantifier.max - 1,
   };
 
-  return [decrementedQuantifier, ...currentFiber.meta.path];
+  return [decrementedQuantifier, ...findEntryHandler(templateValues).meta.path];
 };
 
 const checkIfQuantifierHasFixedLength = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
-  const fakeCollector = fakeCollector(templateValues);
   const quantifierFiber = handleElement(
     quantifier.element,
-    fakeCollector,
-    fakeCollector.createFinalFiber(pathForHandler),
-    flags,
-    literal,
+    createFinalFiber(templateValues, pathForHandler),
+    context,
   );
 
-  const { minCharLength, maxCharLength } = quantifierFiber.meta;
+  const { minCharLength, maxCharLength, groups } = findEntryHandler(
+    quantifierFiber,
+  ).meta;
 
   if (
     minCharLength === maxCharLength &&
-    quantifierFiber.meta.groups.length === 0 &&
+    groups.length === 0 &&
     quantifier.greedy
   ) {
     return {
@@ -78,35 +75,28 @@ const checkIfQuantifierHasFixedLength = (
 
 const checkIfQuantifierHasExternalBacktracking = (
   quantifier: AST.Quantifier,
-  currentFiber: FiberTemplateDefinition,
-  literal: AST.RegExpLiteral,
-  flags: Flags,
+  templateValues: CollectedTemplateValues,
+  context: GeneratorContext,
 ) => {
-  let handlerPossibilities = dfaAnalyzeElement(
-    [quantifier.element],
-    literal,
-    Infinity,
-  );
+  const handlerPossibilities =
+    dfaAnalyzeElement([quantifier.element], context.literal, Infinity) ??
+    dfaAnalyzeElement([quantifier.element], context.literal, 3);
 
   if (handlerPossibilities === null) {
-    handlerPossibilities = dfaAnalyzeElement([quantifier.element], literal, 3);
-  }
-
-  if (handlerPossibilities === null) {
-    if (flags.INTERNAL_no_inside_out_backtracking) {
+    if (context.flags.INTERNAL_no_inside_out_backtracking) {
       throw new BacktrackingError();
     }
     return true;
   }
 
   const followupPossibilties = dfaAnalyzeElement(
-    currentFiber.meta.path,
-    literal,
+    findEntryHandler(templateValues).meta.path,
+    context.literal,
     handlerPossibilities.maxLengthOfPossibilities(),
   );
 
   if (followupPossibilties === null) {
-    if (flags.INTERNAL_no_inside_out_backtracking) {
+    if (context.flags.INTERNAL_no_inside_out_backtracking) {
       throw new BacktrackingError();
     }
     return true;
@@ -114,7 +104,7 @@ const checkIfQuantifierHasExternalBacktracking = (
 
   const notExclusive =
     handlerPossibilities.isExclusive(followupPossibilties) === 'NotExclusive';
-  if (notExclusive && flags.INTERNAL_no_inside_out_backtracking) {
+  if (notExclusive && context.flags.INTERNAL_no_inside_out_backtracking) {
     if (
       !handlerPossibilities.doesBacktrackingStayInside(followupPossibilties)
     ) {
@@ -128,25 +118,20 @@ const checkIfQuantifierHasExternalBacktracking = (
 const analyzeGreedyQuantifier = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
   const hasInsideOutBacktracking = checkIfQuantifierHasInsideOutBacktracking(
     quantifier,
-    currentFiber,
     templateValues,
-    flags,
-    literal,
+    context,
     pathForHandler,
   );
 
   const hasExternalBackTracking = checkIfQuantifierHasExternalBacktracking(
     quantifier,
-    currentFiber,
-    literal,
-    flags,
+    templateValues,
+    context,
   );
 
   const {
@@ -155,8 +140,7 @@ const analyzeGreedyQuantifier = (
   } = checkIfQuantifierHasFixedLength(
     quantifier,
     templateValues,
-    flags,
-    literal,
+    context,
     pathForHandler,
   );
 
@@ -169,18 +153,14 @@ const analyzeGreedyQuantifier = (
 
 const analyzeLazyQuantifier = (
   quantifier: AST.Quantifier,
-  currentFiber: FiberTemplateDefinition,
   templateValues: CollectedTemplateValues,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
   const hasInternalBacktracking = checkIfQuantifierHasInsideOutBacktracking(
     quantifier,
-    currentFiber,
     templateValues,
-    flags,
-    literal,
+    context,
     pathForHandler,
   );
 
@@ -192,31 +172,33 @@ const analyzeLazyQuantifier = (
 const generateBacktrackingQuantifier = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
+  const countParams = generateCountParams(quantifier);
+
   const {
     quantifierFinalFiber,
     quantifierHandler,
-  } = templateValues.createQuantifierFiberPair(
-    currentFiber,
+    templateValues: templateValues1,
+  } = createQuantifierFiberPair(
+    templateValues,
     quantifier.greedy ? 'greedy' : 'lazy',
     quantifier,
     pathForHandler,
+    countParams,
   );
 
-  const countParams = generateCountParams(quantifier);
-  quantifierHandler.minCount = countParams.minCount;
-  quantifierHandler.maxCount = countParams.maxCount;
-  quantifierHandler.maxOrMinCount = countParams.maxOrMinCount;
+  // const countParams = generateCountParams(quantifier);
+  // quantifierHandler.minCount = countParams.minCount;
+  // quantifierHandler.maxCount = countParams.maxCount;
+  // quantifierHandler.maxOrMinCount = countParams.maxOrMinCount;
 
-  if (countParams.maxOrMinCount) {
-    quantifierHandler.quantifierCounterIndex = templateValues.addQuantifierCounter(
-      quantifier,
-    );
-  }
+  // if (countParams.maxOrMinCount) {
+  //   quantifierHandler.quantifierCounterIndex = templateValues.addQuantifierCounter(
+  //     quantifier,
+  //   );
+  // }
 
   const wrappedHandler = handleElement(
     quantifier.element,
@@ -273,10 +255,8 @@ const generateHandlerFlags = (quantifier: AST.Quantifier, flags: Flags) => {
 const generateBacktrackingFixedLengthQuantifier = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
+  context: GeneratorContext,
   fixedLength: number,
-  literal: AST.RegExpLiteral,
   pathForHandler: ASTPath,
 ) => {
   const wrappedHandler = handleElement(
@@ -318,7 +298,15 @@ const generateBacktrackingFixedLengthQuantifier = (
   );
 };
 
-const generateCountParams = (quantifier: AST.Quantifier) => {
+export interface QuantifierCountParams {
+  readonly minCount?: number;
+  readonly maxCount?: number;
+  readonly maxOrMinCount: boolean;
+}
+
+const generateCountParams = (
+  quantifier: AST.Quantifier,
+): QuantifierCountParams => {
   const minCount = quantifier.min === 0 ? undefined : quantifier.min;
   const maxCount = quantifier.max === Infinity ? undefined : quantifier.max;
   const maxOrMinCount = minCount !== undefined || maxCount !== undefined;
@@ -329,9 +317,7 @@ const generateCountParams = (quantifier: AST.Quantifier) => {
 const generateNonBacktrackingQuantifier = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
   const wrappedHandler = handleElement(
@@ -365,9 +351,7 @@ const generateNonBacktrackingQuantifier = (
 const generateGreedyQuantifier = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
   const {
@@ -377,9 +361,7 @@ const generateGreedyQuantifier = (
   } = analyzeGreedyQuantifier(
     quantifier,
     templateValues,
-    currentFiber,
-    flags,
-    literal,
+    context,
     pathForHandler,
   );
 
@@ -388,19 +370,15 @@ const generateGreedyQuantifier = (
       return generateBacktrackingFixedLengthQuantifier(
         quantifier,
         templateValues,
-        currentFiber,
-        flags,
+        context,
         fixedLength,
-        literal,
         pathForHandler,
       );
     } else {
       return generateBacktrackingQuantifier(
         quantifier,
         templateValues,
-        currentFiber,
-        flags,
-        literal,
+        context,
         pathForHandler,
       );
     }
@@ -408,9 +386,7 @@ const generateGreedyQuantifier = (
     return generateNonBacktrackingQuantifier(
       quantifier,
       templateValues,
-      currentFiber,
-      flags,
-      literal,
+      context,
       pathForHandler,
     );
   }
@@ -419,9 +395,7 @@ const generateGreedyQuantifier = (
 const generateLazyQuantifier = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
+  context: GeneratorContext,
   pathForHandler: ASTPath,
 ) => {
   const { hasInternalBacktracking } = analyzeLazyQuantifier(
@@ -485,46 +459,35 @@ const generateLazyQuantifier = (
 export const handleQuantifier = (
   quantifier: AST.Quantifier,
   templateValues: CollectedTemplateValues,
-  currentFiber: FiberTemplateDefinition,
-  flags: Flags,
-  literal: AST.RegExpLiteral,
-): FiberTemplateDefinition => {
+  context: GeneratorContext,
+): CollectedTemplateValues => {
   if (quantifier.min === quantifier.max && quantifier.max < 10) {
-    let currentAppendableFiber = currentFiber;
-    for (let i = 0; i < quantifier.max; i++) {
-      currentAppendableFiber = handleElement(
-        quantifier.element,
-        templateValues,
-        currentAppendableFiber,
-        flags,
-        literal,
-      );
-    }
-
-    return currentAppendableFiber;
+    return _.reduce(
+      (templateValues) => {
+        return handleElement(quantifier.element, templateValues, context);
+      },
+      templateValues,
+      _.range(1, quantifier.max),
+    );
   }
 
   const pathForHandler = createPathForQuantifierHandler(
     quantifier,
-    currentFiber,
+    templateValues,
   );
 
   if (quantifier.greedy) {
     return generateGreedyQuantifier(
       quantifier,
       templateValues,
-      currentFiber,
-      flags,
-      literal,
+      context,
       pathForHandler,
     );
   } else {
     return generateLazyQuantifier(
       quantifier,
       templateValues,
-      currentFiber,
-      flags,
-      literal,
+      context,
       pathForHandler,
     );
   }

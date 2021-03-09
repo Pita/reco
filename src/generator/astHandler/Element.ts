@@ -29,14 +29,7 @@ export const handleElement = (
     case 'Group':
       return handleDisjunction(element.alternatives, templateValues, context);
     case 'Quantifier':
-      throw new Error('Quantifier not yet supported');
-    // return handleQuantifier(
-    //   element,
-    //   templateValues,
-    //   currentFiber,
-    //   flags,
-    //   literal,
-    // );
+      return handleQuantifier(element, templateValues, context);
     case 'Assertion':
       return handleAssertion(element, templateValues, context);
     case 'CapturingGroup':
