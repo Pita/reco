@@ -1,11 +1,15 @@
 import { AST } from 'regexpp';
-// import { FiberTemplateDefinition } from '../templates/mainTemplate';
-import { ASTHandler } from '../generator';
+import {
+  CollectedTemplateValues,
+  mergeGroupsOfFibers,
+} from '../CollectedTemplateValues';
+import { FiberTemplateDefinition } from '../templates/mainTemplate';
+import { Flags, GeneratorContext } from '../generator';
 import { handleAlternative } from './Alternative';
-// import { BacktrackingError } from '../BacktrackingException';
-// import { computeExclusivityOfAlternatives } from '../../dfa-analyzer/CharRangeSequencePossibilities';
-// import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
-// import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
+import { BacktrackingError } from '../BacktrackingException';
+import { computeExclusivityOfAlternatives } from '../../dfa-analyzer/CharRangeSequencePossibilities';
+import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
+import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
 
 // TODO: there is a lot of code duplicated between this method and its non backtracking variant
 // const handleBacktrackingDisjunction = (
@@ -229,18 +233,16 @@ import { handleAlternative } from './Alternative';
 //   return isQuickCheckable ? quickChecks : null;
 // };
 
-export const handleDisjunction: ASTHandler<ReadonlyArray<AST.Alternative>> = (
-  alternatives,
-  nextAtom,
-  context,
-) => {
+export const handleDisjunction = (
+  alternatives: ReadonlyArray<AST.Alternative>,
+  templateValues: CollectedTemplateValues,
+  context: GeneratorContext,
+): CollectedTemplateValues => {
   if (alternatives.length === 1) {
-    return handleAlternative(alternatives[0], nextAtom, context);
+    return handleAlternative(alternatives[0], templateValues, context);
   }
 
   throw new Error('More than one alternative not supported yet');
-
-  // TODO: bring back disjunction optimizations
 
   // if (
   //   isANonBacktrackingDisjunction(alternatives, templateValues, flags, literal)

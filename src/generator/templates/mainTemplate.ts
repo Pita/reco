@@ -1,48 +1,49 @@
 import templateFile from './mainTemplate.handlebars';
-import dotTemplateFile from './mainTemplate.dot.handlebars';
+// import dotTemplateFile from './mainTemplate.dot.handlebars.legacy';
 import { LeafTemplate, registerLeafPartial } from './leaf';
 import * as Handlebars from 'handlebars';
-import { ASTPath } from '../../dfa-analyzer/types';
 import { UTF16UnitsCount } from '../CharRange';
 import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
+import { AST } from 'regexpp';
+import { CharASTElement } from '../astHandler/CharacterSequence';
 
 export interface GroupReference {
   readonly idx: number;
 }
 
-export interface FunctionDefinition {
-  readonly functionName: string;
-  readonly followUp: FollowUp;
-  readonly returningFunctionName: string;
-  readonly meta: {
-    readonly groups: ReadonlyArray<GroupReference>;
-    readonly minCharLength: number;
-    readonly maxCharLength: number;
-    readonly anchorsAtStartOfLine: boolean;
-    readonly anchorsAtEndOfLine: boolean;
-    readonly path: ASTPath;
-  };
+// Idea: backtracking strategy analayzer!
+
+// TODO: when should that be created?
+
+// interface References<HandlerType> {
+//   readonly [type: string]: HandlerType | ReadonlyArray<HandlerType> | null;
+// } // TODO: implement me
+
+export interface AtomReferences<HandlerType> {
+  readonly nextAtom: HandlerType | null;
+  readonly [key: string]: HandlerType | ReadonlyArray<HandlerType> | null;
 }
 
-export interface FiberTemplateDefinition extends FunctionDefinition {
-  readonly atoms: ReadonlyArray<TemplateAtom>;
-  readonly lastAtomReturns: boolean;
+interface BaseAtom<HandlerType> {
+  readonly references: AtomReferences<HandlerType>;
 }
 
-export interface QuantifierTemplateDefinition extends FunctionDefinition {
-  readonly wrappedHandler: FunctionDefinition;
+export interface RecursiveQuantifierAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
+  readonly type: 'recursiveQuantifier';
+  readonly astElement: AST.Quantifier;
   readonly maxOrMinCount?: boolean;
   readonly minCount?: number;
   readonly maxCount?: number;
-  readonly posLine1: string;
-  readonly posLine2: string;
-  readonly quantifierCounterIndex?: number;
+  readonly references: {
+    readonly nextAtom: HandlerType | null;
+    readonly wrappedHandler: HandlerType;
+  };
 }
 
-export type FollowUp = FunctionDefinition | null;
-
-export interface CharSequenceTemplateAtom {
+export interface CharSequenceAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'charSequence';
+  readonly astElements: ReadonlyArray<CharASTElement>;
   readonly data: {
     readonly orderedLoading: ReadonlyArray<{
       readonly unitsCount: UTF16UnitsCount;
@@ -59,171 +60,228 @@ export interface CharSequenceTemplateAtom {
   };
 }
 
-export interface CharOrSetTemplateAtom {
-  readonly type: 'charOrSet';
-  readonly data: {
-    readonly tree: LeafTemplate;
-    readonly negate: boolean;
-    readonly unitsCount: UTF16UnitsCount;
-    readonly unicode: boolean;
-  };
-}
-
-export interface CharOrSetBackwardTemplateAtom {
-  readonly type: 'charOrSetBackward';
-  readonly data: {
-    readonly tree: LeafTemplate;
-    readonly negate: boolean;
-    readonly unicode: boolean;
-  };
-}
-
-export interface DisjunctionTemplateAtom {
-  readonly type: 'disjunction';
-  readonly data: {
-    readonly hasQuickCheck: boolean;
-    readonly alternativesWithQuickChecks: ReadonlyArray<{
-      readonly alternative: FiberTemplateDefinition;
-      readonly quickCheck: QuickCheckDetails | null;
-    }>;
-  };
-}
-
-export interface StartAnchorTemplateAtom {
+export interface StartAnchorAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'startAnchor';
+  readonly astElement: AST.EdgeAssertion;
   readonly data: Record<string, never>;
 }
 
-export interface EndAnchorTemplateAtom {
+export interface EndAnchorAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'endAnchor';
+  readonly astElement: AST.EdgeAssertion;
   readonly data: Record<string, never>;
 }
 
-export interface MultiLineStartAnchorTemplateAtom {
+export interface MultiLineStartAnchorAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
   readonly type: 'multiLineStartAnchor';
+  readonly astElement: AST.EdgeAssertion;
   readonly data: Record<string, never>;
 }
 
-export interface MultiLineEndAnchorTemplateAtom {
+export interface MultiLineEndAnchorAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
   readonly type: 'multiLineEndAnchor';
+  readonly astElement: AST.EdgeAssertion;
   readonly data: Record<string, never>;
 }
 
-export interface GroupStartMarkerTemplateAtom {
+export interface GroupStartMarkerAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
   readonly type: 'groupStartMarker';
+  readonly astElement: AST.CapturingGroup;
   readonly data: {
     readonly groupReference: GroupReference;
   };
 }
 
-export interface GroupEndMarkerTemplateAtom {
+export interface GroupEndMarkerAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'groupEndMarker';
+  readonly astElement: AST.CapturingGroup;
   readonly data: {
     readonly groupReference: GroupReference;
   };
 }
 
-export interface QuantifierStarterTemplateAtom {
-  readonly type: 'quantifierStarter';
+export interface RecursiveQuantifierStarterAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
+  readonly type: 'recursiveQuantifierStarter';
+  readonly astElement: AST.Quantifier;
   readonly data: {
     readonly maxOrMinCount: boolean;
     readonly shouldBackupPrevious: boolean;
-    readonly functionName: string;
+    readonly quantifier: RecursiveQuantifierAtom<HandlerType>;
     readonly quantifierCounterIndex?: number;
   };
 }
 
-export interface LookaroundTemplateAtom {
+export interface LookaroundAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'lookaround';
+  readonly astElement: AST.LookaroundAssertion;
   readonly data: {
-    readonly lookaroundFiber: FiberTemplateDefinition;
     readonly negate: boolean;
+  };
+  readonly references: {
+    readonly nextAtom: HandlerType | null;
+    readonly lookaround: HandlerType;
   };
 }
 
-export interface WordBoundaryTemplateAtom {
+export interface WordBoundaryAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'wordBoundary';
+  readonly astElement: AST.WordBoundaryAssertion;
   readonly data: {
     readonly negate: boolean;
   };
 }
 
-export interface GroupBackReferenceTemplateAtom {
+export interface GroupBackReferenceAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
   readonly type: 'groupBackReference';
+  readonly astElement: AST.Backreference;
   readonly data: {
     readonly groupIndex: number;
   };
 }
 
-export interface NonBacktrackingQuantifier {
-  readonly type: 'nonBacktrackingQuantifier';
+export interface GreedyPossessiveQuantifierAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
+  readonly type: 'greedyPossessiveQuantifier';
+  readonly astElement: AST.Quantifier;
   readonly data: {
     readonly maxOrMinCount?: boolean;
     readonly minCount?: number;
     readonly maxCount?: number;
-    readonly wrappedHandler: FiberTemplateDefinition;
+  };
+  readonly references: {
+    readonly nextAtom: HandlerType | null;
+    readonly wrappedHandler: HandlerType;
   };
 }
 
-export interface BacktrackingFixedLengthQuantifier {
-  readonly type: 'backtrackingFixedLengthQuantifier';
+export interface GreedyBacktrackingFixedLengthQuantifierAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
+  readonly type: 'greedyBacktrackingFixedLengthQuantifier';
+  readonly astElement: AST.Quantifier;
   readonly data: {
     readonly maxOrMinCount?: boolean;
     readonly minCount?: number;
     readonly maxCount?: number;
-    readonly wrappedHandler: FiberTemplateDefinition;
-    readonly followUp: FollowUp;
     readonly fixedLength: number;
   };
+  readonly references: {
+    readonly nextAtom: HandlerType | null;
+    readonly wrappedHandler: HandlerType;
+  };
 }
 
-export interface LazyQuantifier {
+export interface LazyQuantifierAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'lazyQuantifier';
+  readonly astElement: AST.Quantifier;
   readonly data: {
     readonly maxOrMinCount?: boolean;
     readonly minCount?: number;
     readonly maxCount?: number;
-    readonly wrappedHandler: FiberTemplateDefinition;
-    readonly followUp: FollowUp;
+  };
+  readonly references: {
+    readonly nextAtom: HandlerType | null;
+    readonly wrappedHandler: HandlerType;
   };
 }
 
-export interface NonBacktrackingDisjunctionTemplateAtom {
-  readonly type: 'nonBacktrackingDisjunction';
+export interface DisjunctionAtom<HandlerType> extends BaseAtom<HandlerType> {
+  readonly type: 'disjunction';
+  readonly astElements: ReadonlyArray<AST.Alternative>;
+  readonly data: {
+    readonly quickChecks: ReadonlyArray<QuickCheckDetails>;
+  };
+  readonly references: {
+    readonly nextAtom: HandlerType | null;
+    readonly alternatives: ReadonlyArray<HandlerType>;
+  };
+}
+
+export interface PossessiveDisjunctionAtom<HandlerType>
+  extends BaseAtom<HandlerType> {
+  readonly type: 'possessiveDisjunction';
+  readonly astElements: ReadonlyArray<AST.Alternative>;
   readonly data: {
     readonly groupsToRestore: ReadonlyArray<GroupReference>;
-    readonly hasQuickCheck: boolean;
-    readonly alternativesWithQuickChecks: {
-      readonly alternative: FiberTemplateDefinition;
-      readonly quickCheck: QuickCheckDetails | null;
-    };
+    readonly quickChecks: ReadonlyArray<QuickCheckDetails>;
+  };
+  readonly references: {
+    readonly nextAtom: HandlerType | null;
+    readonly alternatives: ReadonlyArray<HandlerType>;
   };
 }
 
-export type BaseTemplateAtom =
-  | CharSequenceTemplateAtom
-  | CharOrSetTemplateAtom
-  | CharOrSetBackwardTemplateAtom
-  | DisjunctionTemplateAtom
-  | StartAnchorTemplateAtom
-  | EndAnchorTemplateAtom
-  | MultiLineStartAnchorTemplateAtom
-  | MultiLineEndAnchorTemplateAtom
-  | GroupStartMarkerTemplateAtom
-  | GroupEndMarkerTemplateAtom
-  | QuantifierStarterTemplateAtom
-  | LookaroundTemplateAtom
-  | WordBoundaryTemplateAtom
-  | GroupBackReferenceTemplateAtom
-  | NonBacktrackingQuantifier
-  | BacktrackingFixedLengthQuantifier
-  | LazyQuantifier
-  | NonBacktrackingDisjunctionTemplateAtom;
+export type Atom =
+  // Char matching
+  | CharSequenceAtom<Atom>
 
-export type TemplateAtom = BaseTemplateAtom & {
+  // Back reference
+  | GroupBackReferenceAtom<Atom>
+
+  // Disjunction
+  | DisjunctionAtom<Atom>
+  | PossessiveDisjunctionAtom<Atom>
+
+  // Assertions
+  | StartAnchorAtom<Atom>
+  | EndAnchorAtom<Atom>
+  | MultiLineStartAnchorAtom<Atom>
+  | MultiLineEndAnchorAtom<Atom>
+  | LookaroundAtom<Atom>
+  | WordBoundaryAtom<Atom>
+
+  // Groups
+  | GroupStartMarkerAtom<Atom>
+  | GroupEndMarkerAtom<Atom>
+
+  // Quantifier
+  | GreedyPossessiveQuantifierAtom<Atom>
+  | GreedyBacktrackingFixedLengthQuantifierAtom<Atom>
+  | LazyQuantifierAtom<Atom>
+
+  // Recursive Quantifier
+  | RecursiveQuantifierStarterAtom<Atom>
+  | RecursiveQuantifierAtom<Atom>;
+
+export type TemplateAtom = (
+  | // Char matching
+  CharSequenceAtom<string>
+
+  // Back reference
+  | GroupBackReferenceAtom<string>
+
+  // Disjunction
+  | DisjunctionAtom<string>
+  | PossessiveDisjunctionAtom<string>
+
+  // Assertions
+  | StartAnchorAtom<string>
+  | EndAnchorAtom<string>
+  | MultiLineStartAnchorAtom<string>
+  | MultiLineEndAnchorAtom<string>
+  | LookaroundAtom<string>
+  | WordBoundaryAtom<string>
+
+  // Groups
+  | GroupStartMarkerAtom<string>
+  | GroupEndMarkerAtom<string>
+
+  // Quantifier
+  | GreedyPossessiveQuantifierAtom<string>
+  | GreedyBacktrackingFixedLengthQuantifierAtom<string>
+  | LazyQuantifierAtom<string>
+
+  // Recursive Quantifier
+  | RecursiveQuantifierStarterAtom<string>
+  | RecursiveQuantifierAtom<string>
+) & {
+  readonly functionName: string;
   readonly posLine1: string;
   readonly posLine2: string;
-  readonly raw: string;
 };
 
 export type MatchPositioning =
@@ -241,16 +299,18 @@ export type MatchPositioning =
 export interface TemplateValues {
   readonly optimizedRegexStr: string;
   readonly originalRegexStr: string;
-  readonly fiberHandlers: ReadonlyArray<FiberTemplateDefinition>;
-  readonly greedyQuantifierHandlers: ReadonlyArray<QuantifierTemplateDefinition>;
-  readonly lazyQuantifierHandlers: ReadonlyArray<QuantifierTemplateDefinition>;
-  readonly mainHandler: FiberTemplateDefinition;
-  readonly quantifierCountersLength: number;
-  readonly groupsLength: number;
   readonly version: string;
+
+  readonly templateAtoms: ReadonlyArray<TemplateAtom>;
+  readonly entryTemplateAtom: TemplateAtom;
+
   readonly matchPositioning: MatchPositioning;
+  // readonly groupsLength: number;
+
+  // TODO: might not be necassary
+  // readonly quantifierCountersLength: number;
 }
 
 registerLeafPartial();
 export const template = Handlebars.compile(templateFile);
-export const dotTemplate = Handlebars.compile(dotTemplateFile);
+// export const dotTemplate = Handlebars.compile(dotTemplateFile);

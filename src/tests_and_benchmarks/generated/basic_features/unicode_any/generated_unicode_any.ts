@@ -20,19 +20,27 @@
 /* eslint prefer-const: 0, functional/prefer-readonly-type: 0, functional/no-let: 0, functional/immutable-data: 0 */
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Context {}
+interface Context {
+  /*
+   */
+}
 
 // Regex optimized to: /.a/u
 
-export function generatedRegexMatcher(str: string) {
+export function generatedRegexMatcher(
+  str: string
+): {
+  index: number;
+  matches: [string | undefined];
+} | null {
   const context: Context = {};
 
-  // minCharsLeft
+  // fullScan
   const min = 0;
-  const max = str.length - 2;
+  const max = str.length;
 
   for (let i = min; i <= max; i++) {
-    const posAfterMatch = tailFiber(i, str, context);
+    const posAfterMatch = atom0000(i, str, context);
     if (posAfterMatch !== -1) {
       return {
         index: i,
@@ -44,14 +52,9 @@ export function generatedRegexMatcher(str: string) {
   return null;
 }
 
-const tailFiber = (i: number, str: string, context: Context): number => {
-  /*
-   * charSequence
-   * /.a/u
-   *  ^^
-   */
-  const iAfterMatch0 = i + 2;
-  if (iAfterMatch0 > str.length) {
+const atom0000 = (i: number, str: string, context: Context): number => {
+  const iAfterMatch = i + 2;
+  if (iAfterMatch > str.length) {
     return -1;
   }
 
@@ -93,5 +96,6 @@ const tailFiber = (i: number, str: string, context: Context): number => {
       return -1;
     }
   }
+
   return i;
 };

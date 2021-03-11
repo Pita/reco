@@ -1,19 +1,22 @@
 import { AST } from 'regexpp';
 import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
-import { ASTHandler } from '../generator';
+import { CollectedTemplateValues } from '../CollectedTemplateValues';
+import { GeneratorContext } from '../generator';
 import { CharASTElement, handleCharSequence } from './CharacterSequence';
+import { handleElement } from './Element';
 import * as _ from 'lodash/fp';
-import { Atom } from '../templates/mainTemplate';
 
 type GroupedCharElements = {
   readonly type: 'GroupedChars';
   readonly chars: ReadonlyArray<CharASTElement>;
 };
 
-export const handleAlternative: ASTHandler<
-  AST.Alternative,
-  QuickCheckDetails | null
-> = (alternative, nextAtom, context, quickCheck = null): Atom | null => {
+export const handleAlternative = (
+  alternative: AST.Alternative,
+  templateValues: CollectedTemplateValues,
+  context: GeneratorContext,
+  quickCheck: QuickCheckDetails | null = null,
+): CollectedTemplateValues => {
   const groupedElements = _.reduce(
     (acc, element) => {
       switch (element.type) {
@@ -44,21 +47,20 @@ export const handleAlternative: ASTHandler<
   );
 
   return _.reduce(
-    (nextAtom, groupedElement) => {
+    (templateValues, groupedElement) => {
       switch (groupedElement.type) {
         case 'GroupedChars':
           return handleCharSequence(
             groupedElement.chars,
-            nextAtom,
+            templateValues,
             context,
             quickCheck,
           );
         default:
-          throw new Error("Can't handle non char sequences yet");
-        // return handleElement(groupedElement, templateValues, context);
+          return handleElement(groupedElement, templateValues, context);
       }
     },
-    nextAtom,
+    templateValues,
     groupedElements,
   );
 };

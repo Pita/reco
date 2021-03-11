@@ -29,8 +29,6 @@
     "functional/no-let": 1,
     "functional/immutable-data": 1,
     "functional/no-method-signature": 1,
-    "functional/no-class": 1,
-    "functional/no-this-expression": 1,
     "max-lines-per-function": [
       1,
       { "max": 75, "skipBlankLines": true, "skipComments": true }

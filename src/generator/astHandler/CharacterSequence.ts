@@ -1,14 +1,13 @@
 import { AST } from 'regexpp';
-import { addAtom, CollectedTemplateValues } from '../CollectedTemplateValues';
-import { GeneratorContext } from '../generator';
+import { ASTHandler } from '../generator';
 import {
   charRangeToLeafValues,
   computeAverageLeafComplexity,
 } from '../CharRangeBTreeMatcher';
 import { astToCharRange } from '../astToCharRange';
-import { handleSetOrCharacter, utf16UnitsCountToMinAndMax } from './Character';
 import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
 import * as _ from 'lodash/fp';
+import { Atom, CharSequenceAtom } from '../templates/mainTemplate';
 
 export type CharASTElement =
   | AST.CharacterClass
@@ -17,35 +16,10 @@ export type CharASTElement =
   | AST.UnicodePropertyCharacterSet
   | AST.Character;
 
-// const handleBackwardsChars = (
-//   charASTElements: ReadonlyArray<CharASTElement>,
-//   templateValues: CollectedTemplateValues,
-//   currentFiber: FiberTemplateDefinition,
-//   flags: Flags,
-//   literal: AST.RegExpLiteral,
-// ) => {
-//   // TODO: convert to mass matching like the forward matching
-
-//   let lastFiber = currentFiber;
-//   for (let i = charASTElements.length - 1; i >= 0; i--) {
-//     lastFiber = handleSetOrCharacter(
-//       charASTElements[i],
-//       templateValues,
-//       lastFiber,
-//       flags,
-//       literal,
-//     );
-//   }
-
-//   return lastFiber;
-// };
-
-export const handleCharSequence = (
-  charASTElements: ReadonlyArray<CharASTElement>,
-  templateValues: CollectedTemplateValues,
-  context: GeneratorContext,
-  quickCheck: QuickCheckDetails | null = null,
-): CollectedTemplateValues => {
+export const handleCharSequence: ASTHandler<
+  ReadonlyArray<CharASTElement>,
+  QuickCheckDetails | null
+> = (charASTElements, nextAtom, context, quickCheck = null) => {
   if (context.flags.INTERNAL_backwards) {
     throw new Error('Does not support reverse matching yet');
     // return handleBackwardsChars(
@@ -89,48 +63,33 @@ export const handleCharSequence = (
       return complexityDiff;
     });
 
-  const { minSum, maxSum } = _.reduce(
-    ({ minSum, maxSum }, { unitsCount }) => {
-      const { min, max } = utf16UnitsCountToMinAndMax(unitsCount);
-
-      return {
-        minSum: min + minSum,
-        maxSum: max + maxSum,
-      };
-    },
-    { minSum: 0, maxSum: 0 },
-    chars,
-  );
+  const hasVariableLengths =
+    chars.findIndex((char) => char.unitsCount !== '1') !== -1;
 
   const length = chars.length;
-  const orderedLoading =
-    maxSum === length
-      ? null
-      : chars
-          .sort((a, b) => {
-            return a.offset - b.offset;
-          })
-          .map((char) => ({
-            unitsCount: char.unitsCount,
-            unicode: context.flags.unicode === true,
-          }));
+  const orderedLoading = !hasVariableLengths
+    ? null
+    : chars
+        .sort((a, b) => {
+          return a.offset - b.offset;
+        })
+        .map((char) => ({
+          unitsCount: char.unitsCount,
+          unicode: context.flags.unicode === true,
+        }));
 
-  return addAtom(
-    templateValues,
-    {
-      type: 'charSequence',
-      data: {
-        orderedLoading,
-        length,
-        chars,
-      },
+  const atom: CharSequenceAtom<Atom> = {
+    type: 'charSequence',
+    astElements: charASTElements,
+    data: {
+      orderedLoading,
+      length,
+      chars,
     },
-    {
-      start: charASTElements[0].start,
-      end: charASTElements[charASTElements.length - 1].end,
+    references: {
+      nextAtom,
     },
-    minSum,
-    maxSum,
-    charASTElements,
-  );
+  };
+
+  return atom;
 };

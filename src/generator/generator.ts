@@ -1,17 +1,14 @@
 import { AST, RegExpParser, visitRegExpAST } from 'regexpp';
 import { handleDisjunction } from './astHandler/Disjunction';
 import {
-  FiberTemplateDefinition,
+  Atom,
   GroupReference,
   MatchPositioning,
   TemplateValues,
 } from './templates/mainTemplate';
 import { simplifyRegex } from '../simplifier/simplifyRegex';
-import {
-  createTemplateValues,
-  findEntryHandler,
-} from './CollectedTemplateValues';
 import * as _ from 'lodash/fp';
+import { unrollEntryAtom } from './atomsToTemplateAtoms';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../../package.json');
@@ -22,37 +19,37 @@ export interface Flags extends Readonly<AST.Flags> {
   readonly INTERNAL_can_repeat?: boolean;
 }
 
-const deriveMatchPositioning = (
-  mainHandler: FiberTemplateDefinition,
-): MatchPositioning => {
-  if (mainHandler.meta.anchorsAtStartOfLine) {
-    return {
-      type: 'startAnchored',
-    };
-  }
+// const deriveMatchPositioning = (
+//   mainHandler: FiberTemplateDefinition,
+// ): MatchPositioning => {
+//   if (mainHandler.meta.anchorsAtStartOfLine) {
+//     return {
+//       type: 'startAnchored',
+//     };
+//   }
 
-  if (
-    mainHandler.meta.anchorsAtEndOfLine &&
-    mainHandler.meta.maxCharLength !== Infinity
-  ) {
-    return {
-      type: 'endAnchored',
-      maxCharsLeft: mainHandler.meta.maxCharLength,
-      minCharsLeft: mainHandler.meta.minCharLength,
-    };
-  }
+//   if (
+//     mainHandler.meta.anchorsAtEndOfLine &&
+//     mainHandler.meta.maxCharLength !== Infinity
+//   ) {
+//     return {
+//       type: 'endAnchored',
+//       maxCharsLeft: mainHandler.meta.maxCharLength,
+//       minCharsLeft: mainHandler.meta.minCharLength,
+//     };
+//   }
 
-  if (mainHandler.meta.minCharLength > 0) {
-    return {
-      type: 'minCharsLeft',
-      minCharsLeft: mainHandler.meta.minCharLength,
-    };
-  }
+//   if (mainHandler.meta.minCharLength > 0) {
+//     return {
+//       type: 'minCharsLeft',
+//       minCharsLeft: mainHandler.meta.minCharLength,
+//     };
+//   }
 
-  return {
-    type: 'fullScan',
-  };
-};
+//   return {
+//     type: 'fullScan',
+//   };
+// };
 
 type GroupIndex = ReadonlyMap<AST.CapturingGroup, GroupReference>;
 
@@ -86,6 +83,13 @@ export interface GeneratorContext {
   readonly flags: Flags;
 }
 
+export type ASTHandler<ASTType, Options = undefined> = (
+  ast: ASTType,
+  previousAtom: Atom | null,
+  context: GeneratorContext,
+  extraOptions?: Options,
+) => Atom | null;
+
 const genTemplateValuesPrivate = (
   originalRegexStr: string,
   version: string,
@@ -96,27 +100,41 @@ const genTemplateValuesPrivate = (
   const groupIndex = indexGroups(literal);
   const context = { literal, groupIndex, flags: literal.flags };
 
-  const blankTemplateValues = createTemplateValues(
-    originalRegexStr,
-    optimizedRegexStr,
-  );
+  // const blankTemplateValues = createTemplateValues(
+  //   originalRegexStr,
+  //   optimizedRegexStr,
+  // );
 
-  const templateValues = handleDisjunction(
+  const entryAtom = handleDisjunction(
     literal.pattern.alternatives,
-    blankTemplateValues,
+    null,
     context,
   );
 
-  const mainHandler = findEntryHandler(templateValues);
-  const matchPositioning = deriveMatchPositioning(mainHandler);
+  if (entryAtom === null) {
+    throw new Error('Could not resolve regex');
+  }
+
+  // TODO: bring back match positioning optimization
+  // const matchPositioning = deriveMatchPositioning(mainHandler);
+  const matchPositioning: MatchPositioning = {
+    type: 'fullScan',
+  };
+
+  const { entryTemplateAtom, templateAtoms } = unrollEntryAtom(
+    optimizedRegexStr,
+    entryAtom,
+  );
 
   return {
-    ...templateValues,
+    originalRegexStr,
+    optimizedRegexStr,
     matchPositioning,
-    mainHandler,
     version,
-    quantifierCountersLength: templateValues.quantifierCounters.length,
-    groupsLength: groupIndex.size,
+    entryTemplateAtom,
+    templateAtoms,
+    // quantifierCountersLength: 0, // TODO: figure out quantifier counter
+    // groupsLength: groupIndex.size,
   };
 };
 

@@ -1,11 +1,8 @@
 import { ASTPath } from '../dfa-analyzer/types';
-import cloneDeep from 'lodash/cloneDeep';
-import { AST, visitRegExpAST } from 'regexpp';
+import { AST } from 'regexpp';
 import { CharASTElement } from './astHandler/CharacterSequence';
-import { BacktrackingError } from './BacktrackingException';
-import { handleElement } from './astHandler/Element';
+// import { handleElement } from './astHandler/Element';
 import { GeneratorContext } from './generator';
-import { handleAlternative } from './astHandler/Alternative';
 import { CollectedTemplateValues } from './CollectedTemplateValues';
 
 function markChar(char: CharASTElement): void {
@@ -28,45 +25,47 @@ export function hasInsideOutBacktracking(
   context: GeneratorContext,
   outsidePath: ASTPath,
 ): boolean {
-  const newFibers = templateValues.fiberHandlers.map((fiberHandler) => {
-    if (fiberHandler.functionName !== templateValues.entryFunctionName) {
-      return fiberHandler;
-    }
+  return true;
 
-    return {
-      ...fiberHandler,
-      meta: {
-        ...fiberHandler.meta,
-        path: outsidePath,
-      },
-    };
-  });
+  // const newFibers = templateValues.fiberHandlers.map((fiberHandler) => {
+  //   if (fiberHandler.functionName !== templateValues.entryFunctionName) {
+  //     return fiberHandler;
+  //   }
 
-  const newTemplateValues = {
-    ...templateValues,
-    fiberHandlers: newFibers,
-  };
+  //   return {
+  //     ...fiberHandler,
+  //     meta: {
+  //       ...fiberHandler.meta,
+  //       path: outsidePath,
+  //     },
+  //   };
+  // });
 
-  const insideClone = cloneDeep(inside);
+  // const newTemplateValues = {
+  //   ...templateValues,
+  //   fiberHandlers: newFibers,
+  // };
 
-  visitRegExpAST(insideClone, {
-    onCharacterEnter: markChar,
-    onCharacterClassEnter: markChar,
-    onCharacterSetEnter: markChar,
-  });
+  // const insideClone = cloneDeep(inside);
 
-  try {
-    if (insideClone.type === 'Alternative') {
-      handleAlternative(insideClone, newTemplateValues, context);
-    } else {
-      handleElement(insideClone, newTemplateValues, context);
-    }
-  } catch (e) {
-    if (!(e instanceof BacktrackingError)) {
-      throw e;
-    }
-    return true;
-  }
+  // visitRegExpAST(insideClone, {
+  //   onCharacterEnter: markChar,
+  //   onCharacterClassEnter: markChar,
+  //   onCharacterSetEnter: markChar,
+  // });
 
-  return false;
+  // try {
+  //   if (insideClone.type === 'Alternative') {
+  //     handleAlternative(insideClone, newTemplateValues, context);
+  //   } else {
+  //     handleElement(insideClone, newTemplateValues, context);
+  //   }
+  // } catch (e) {
+  //   if (!(e instanceof BacktrackingError)) {
+  //     throw e;
+  //   }
+  //   return true;
+  // }
+
+  // return false;
 }
