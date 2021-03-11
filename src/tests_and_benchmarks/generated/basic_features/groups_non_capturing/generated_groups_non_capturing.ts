@@ -108,19 +108,17 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
+  const charCode0 = str.charCodeAt(i + 0);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    result0 = charCode0 === 99;
+  result0 = charCode0 === 99;
 
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch;
+  if (!result0) {
+    return -1;
   }
+
+  i = iAfterMatch;
 
   return i;
 };
@@ -190,19 +188,17 @@ const atom0002 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
+  const charCode0 = str.charCodeAt(i + 0);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    result0 = charCode0 === 98;
+  result0 = charCode0 === 98;
 
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch;
+  if (!result0) {
+    return -1;
   }
+
+  i = iAfterMatch;
 
   return atom0001(i, str, context);
 };
@@ -271,19 +267,17 @@ const atom0004 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
+  const charCode0 = str.charCodeAt(i + 0);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    result0 = charCode0 === 97;
+  result0 = charCode0 === 97;
 
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch;
+  if (!result0) {
+    return -1;
   }
+
+  i = iAfterMatch;
 
   return atom0003(i, str, context);
 };

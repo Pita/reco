@@ -150,34 +150,32 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
+  const charCode0 = str.charCodeAt(i + 0);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    if (charCode0 <= 90) {
-      if (charCode0 <= 57) {
-        result0 = charCode0 >= 48;
-      } else {
-        result0 = charCode0 >= 65;
-      }
+  if (charCode0 <= 90) {
+    if (charCode0 <= 57) {
+      result0 = charCode0 >= 48;
     } else {
-      if (charCode0 === 95) {
-        result0 = true;
+      result0 = charCode0 >= 65;
+    }
+  } else {
+    if (charCode0 === 95) {
+      result0 = true;
+    } else {
+      if (charCode0 <= 122) {
+        result0 = charCode0 >= 97;
       } else {
-        if (charCode0 <= 122) {
-          result0 = charCode0 >= 97;
-        } else {
-          result0 = false;
-        }
+        result0 = false;
       }
     }
-    if (result0) {
-      return -1;
-    }
-
-    i = iAfterMatch;
   }
+  if (result0) {
+    return -1;
+  }
+
+  i = iAfterMatch;
 
   return i;
 };

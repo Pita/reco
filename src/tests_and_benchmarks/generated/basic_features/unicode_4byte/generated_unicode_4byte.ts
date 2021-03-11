@@ -101,22 +101,20 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    if (i + 1 >= str.length) {
-      return -1;
-    }
+  if (i + 1 >= str.length) {
+    return -1;
+  }
 
-    const charCode0 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  const charCode0 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
-    i += 2;
+  i += 2;
 
-    let result0: boolean;
+  let result0: boolean;
 
-    result0 = charCode0 === 128516;
+  result0 = charCode0 === 128516;
 
-    if (!result0) {
-      return -1;
-    }
+  if (!result0) {
+    return -1;
   }
 
   return i;

@@ -124,26 +124,24 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
+  const charCode0 = str.charCodeAt(i + 0);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    if (charCode0 <= 13) {
-      result0 = charCode0 === 10 || charCode0 === 13;
+  if (charCode0 <= 13) {
+    result0 = charCode0 === 10 || charCode0 === 13;
+  } else {
+    if (charCode0 <= 8233) {
+      result0 = charCode0 >= 8232;
     } else {
-      if (charCode0 <= 8233) {
-        result0 = charCode0 >= 8232;
-      } else {
-        result0 = false;
-      }
+      result0 = false;
     }
-    if (result0) {
-      return -1;
-    }
-
-    i = iAfterMatch;
   }
+  if (result0) {
+    return -1;
+  }
+
+  i = iAfterMatch;
 
   return i;
 };

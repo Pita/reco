@@ -148,43 +148,41 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    if (i >= str.length) {
-      return -1;
-    }
+  if (i >= str.length) {
+    return -1;
+  }
 
-    const charCode0 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  const charCode0 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
-    i += charCode0 >= 0x10000 ? 2 : 1;
-    if (i >= str.length) {
-      return -1;
-    }
+  i += charCode0 >= 0x10000 ? 2 : 1;
+  if (i >= str.length) {
+    return -1;
+  }
 
-    const charCode1 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  const charCode1 = str.codePointAt(i)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
-    i++;
+  i++;
 
-    let result0: boolean;
+  let result0: boolean;
 
-    if (charCode0 <= 13) {
-      result0 = charCode0 === 10 || charCode0 === 13;
+  if (charCode0 <= 13) {
+    result0 = charCode0 === 10 || charCode0 === 13;
+  } else {
+    if (charCode0 <= 8233) {
+      result0 = charCode0 >= 8232;
     } else {
-      if (charCode0 <= 8233) {
-        result0 = charCode0 >= 8232;
-      } else {
-        result0 = false;
-      }
+      result0 = false;
     }
-    if (result0) {
-      return -1;
-    }
-    let result1: boolean;
+  }
+  if (result0) {
+    return -1;
+  }
+  let result1: boolean;
 
-    result1 = charCode1 === 97;
+  result1 = charCode1 === 97;
 
-    if (!result1) {
-      return -1;
-    }
+  if (!result1) {
+    return -1;
   }
 
   return i;

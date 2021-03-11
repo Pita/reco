@@ -126,37 +126,35 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 2);
+  const charCode0 = str.charCodeAt(i + 2);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    result0 = charCode0 === 102;
+  result0 = charCode0 === 102;
 
-    if (!result0) {
-      return -1;
-    }
-    const charCode1 = str.charCodeAt(i + 1);
-
-    let result1: boolean;
-
-    result1 = charCode1 === 101;
-
-    if (!result1) {
-      return -1;
-    }
-    const charCode2 = str.charCodeAt(i + 0);
-
-    let result2: boolean;
-
-    result2 = charCode2 === 100;
-
-    if (!result2) {
-      return -1;
-    }
-
-    i = iAfterMatch;
+  if (!result0) {
+    return -1;
   }
+  const charCode1 = str.charCodeAt(i + 1);
+
+  let result1: boolean;
+
+  result1 = charCode1 === 101;
+
+  if (!result1) {
+    return -1;
+  }
+  const charCode2 = str.charCodeAt(i + 0);
+
+  let result2: boolean;
+
+  result2 = charCode2 === 100;
+
+  if (!result2) {
+    return -1;
+  }
+
+  i = iAfterMatch;
 
   return i;
 };

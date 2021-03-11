@@ -208,50 +208,48 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
+  const charCode0 = str.charCodeAt(i + 0);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    if (charCode0 <= 8202) {
-      if (charCode0 <= 160) {
-        if (charCode0 <= 32) {
-          if (charCode0 <= 13) {
-            result0 = charCode0 >= 9;
-          } else {
-            result0 = charCode0 === 32;
-          }
+  if (charCode0 <= 8202) {
+    if (charCode0 <= 160) {
+      if (charCode0 <= 32) {
+        if (charCode0 <= 13) {
+          result0 = charCode0 >= 9;
         } else {
-          result0 = charCode0 === 160;
+          result0 = charCode0 === 32;
         }
       } else {
-        if (charCode0 === 5760) {
-          result0 = true;
-        } else {
-          result0 = charCode0 >= 8192;
-        }
+        result0 = charCode0 === 160;
       }
     } else {
-      if (charCode0 <= 8287) {
-        if (charCode0 <= 8239) {
-          if (charCode0 <= 8233) {
-            result0 = charCode0 >= 8232;
-          } else {
-            result0 = charCode0 === 8239;
-          }
-        } else {
-          result0 = charCode0 === 8287;
-        }
+      if (charCode0 === 5760) {
+        result0 = true;
       } else {
-        result0 = charCode0 === 12288 || charCode0 === 65279;
+        result0 = charCode0 >= 8192;
       }
     }
-    if (result0) {
-      return -1;
+  } else {
+    if (charCode0 <= 8287) {
+      if (charCode0 <= 8239) {
+        if (charCode0 <= 8233) {
+          result0 = charCode0 >= 8232;
+        } else {
+          result0 = charCode0 === 8239;
+        }
+      } else {
+        result0 = charCode0 === 8287;
+      }
+    } else {
+      result0 = charCode0 === 12288 || charCode0 === 65279;
     }
-
-    i = iAfterMatch;
   }
+  if (result0) {
+    return -1;
+  }
+
+  i = iAfterMatch;
 
   return i;
 };

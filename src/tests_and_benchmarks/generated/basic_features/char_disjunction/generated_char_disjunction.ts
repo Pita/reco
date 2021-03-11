@@ -110,22 +110,20 @@ const atom0000 = (i: number, str: string, context: Context): number => {
     return -1;
   }
 
-  {
-    const charCode0 = str.charCodeAt(i + 0);
+  const charCode0 = str.charCodeAt(i + 0);
 
-    let result0: boolean;
+  let result0: boolean;
 
-    if (charCode0 <= 98) {
-      result0 = charCode0 >= 97;
-    } else {
-      result0 = charCode0 === 102;
-    }
-    if (!result0) {
-      return -1;
-    }
-
-    i = iAfterMatch;
+  if (charCode0 <= 98) {
+    result0 = charCode0 >= 97;
+  } else {
+    result0 = charCode0 === 102;
   }
+  if (!result0) {
+    return -1;
+  }
+
+  i = iAfterMatch;
 
   return i;
 };
