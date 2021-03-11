@@ -1,6 +1,7 @@
 import { AST } from 'regexpp';
 // import { FiberTemplateDefinition } from '../templates/mainTemplate';
 import { ASTHandler } from '../generator';
+import { NotSupportedException } from '../NotSupportedException';
 import { handleAlternative } from './Alternative';
 // import { BacktrackingError } from '../BacktrackingException';
 // import { computeExclusivityOfAlternatives } from '../../dfa-analyzer/CharRangeSequencePossibilities';
@@ -238,7 +239,9 @@ export const handleDisjunction: ASTHandler<ReadonlyArray<AST.Alternative>> = (
     return handleAlternative(alternatives[0], nextAtom, context);
   }
 
-  throw new Error('More than one alternative not supported yet');
+  throw new NotSupportedException(
+    'More than one alternative not supported yet',
+  );
 
   // TODO: bring back disjunction optimizations
 

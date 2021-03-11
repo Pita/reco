@@ -302,10 +302,10 @@ export interface TemplateValues {
   readonly version: string;
 
   readonly templateAtoms: ReadonlyArray<TemplateAtom>;
-  readonly entryTemplateAtom: TemplateAtom;
+  readonly entryFunctionName: string;
 
   readonly matchPositioning: MatchPositioning;
-  // readonly groupsLength: number;
+  readonly groupsLength: number;
 
   // TODO: might not be necassary
   // readonly quantifierCountersLength: number;

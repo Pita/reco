@@ -10,6 +10,7 @@ import * as Handlebars from 'handlebars';
 import { template } from '../generator/templates/mainTemplate';
 // import { template, dotTemplate } from '../generator/templates/mainTemplate';
 import { transformCode } from '../generator/transformCode';
+import { NotSupportedException } from '../generator/NotSupportedException';
 // import { execSync } from 'child_process';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const jsStringEscape = require('js-string-escape');
@@ -62,7 +63,6 @@ configFiles
       dotGraph = 'placeholder';
       // dotGraph = dotTemplate(templateValues);
     } catch (e) {
-      console.error(e);
       error = e;
     }
     const nativeRegex: RegExp = eval(config.regex);
@@ -139,7 +139,11 @@ configFiles
         '___',
       )} } from "./${testName}/${fileName}.benchmark";\n`;
     } else {
-      console.error(`Skipped: ${configFile}`, error.toString(), error.stack);
+      if (error instanceof NotSupportedException) {
+        console.log(`SKIPPED, NOT SUPPORTED: ${configFile}`, error.toString());
+      } else {
+        console.error(`ERROR: ${configFile}`, error.toString(), error.stack);
+      }
       // throw new Error(
       //   `Previously passing test does not pass anymore: ${configFile}`,
       // );

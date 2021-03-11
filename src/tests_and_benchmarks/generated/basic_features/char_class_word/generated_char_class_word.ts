@@ -21,7 +21,7 @@
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Context {
-  /*
+  /* TODO quantifierCounter
    */
 }
 
@@ -33,7 +33,10 @@ export function generatedRegexMatcher(
   index: number;
   matches: [string | undefined];
 } | null {
-  const context: Context = {};
+  const context: Context = {
+    /* TODO quantifierCounter
+     */
+  };
 
   // fullScan
   const min = 0;

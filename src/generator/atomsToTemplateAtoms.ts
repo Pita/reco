@@ -29,19 +29,19 @@ function formatAstLocation(
   };
 }
 
-// function firstCharOfASTElement(astElement: AST.Element): RegexSlice {
-//   return {
-//     start: astElement.start,
-//     end: astElement.end + 1,
-//   };
-// }
+function firstCharOfASTElement(astElement: AST.Element): RegexSlice {
+  return {
+    start: astElement.start,
+    end: astElement.end + 1,
+  };
+}
 
-// function lastCharOfASTElement(astElement: AST.Element): RegexSlice {
-//   return {
-//     start: astElement.start - 1,
-//     end: astElement.end,
-//   };
-// }
+function lastCharOfASTElement(astElement: AST.Element): RegexSlice {
+  return {
+    start: astElement.start - 1,
+    end: astElement.end,
+  };
+}
 
 function wholeRangeOfAstElements(
   astElements: ReadonlyArray<AST.Element>,
@@ -69,7 +69,7 @@ function reduceAtom(
   optimizedRegexStr: string,
   templateAtomsAcc: ReadonlyArray<TemplateAtom>,
 ): {
-  readonly templateAtom: TemplateAtom;
+  readonly functionName: string;
   readonly templateAtomsAcc: ReadonlyArray<TemplateAtom>;
 } {
   const { templateAtomsAcc: accWithReferences, references } = reduceReferences(
@@ -83,26 +83,39 @@ function reduceAtom(
     '0',
   )}`;
 
-  switch (atom.type) {
-    case 'charSequence': {
-      const templateAtom: TemplateAtom = {
-        ...atom,
-        ...formatAstLocation(
+  const astLocation = (() => {
+    switch (atom.type) {
+      case 'charSequence':
+        return formatAstLocation(
           optimizedRegexStr,
           wholeRangeOfAstElements(atom.astElements),
-        ),
-        references: references,
-        functionName,
-      };
-
-      return {
-        templateAtomsAcc: [...accWithReferences, templateAtom],
-        templateAtom,
-      };
+        );
+      case 'groupStartMarker':
+        return formatAstLocation(
+          optimizedRegexStr,
+          firstCharOfASTElement(atom.astElement),
+        );
+      case 'groupEndMarker':
+        return formatAstLocation(
+          optimizedRegexStr,
+          lastCharOfASTElement(atom.astElement),
+        );
+      default:
+        throw new Error(`templating for atom ${atom.type} not implemented yet`);
     }
-    default:
-      throw new Error(`templating for atom ${atom.type} not implemented yet`);
-  }
+  })();
+
+  const templateAtom: TemplateAtom = {
+    ...atom,
+    ...astLocation,
+    references: references,
+    functionName,
+  };
+
+  return {
+    templateAtomsAcc: [...accWithReferences, templateAtom],
+    functionName,
+  };
 }
 
 function reduceAtomsArray(
@@ -111,11 +124,11 @@ function reduceAtomsArray(
   templateAtomsAcc: ReadonlyArray<TemplateAtom>,
 ): {
   readonly templateAtomsAcc: ReadonlyArray<TemplateAtom>;
-  readonly templateAtomsArray: ReadonlyArray<TemplateAtom>;
+  readonly functionNames: ReadonlyArray<string>;
 } {
-  const { templateAtomsAcc: accWithArray, templateAtomsArray } = _.reduce(
-    ({ templateAtomsAcc, templateAtomsArray }, atom) => {
-      const { templateAtomsAcc: accWithAtom, templateAtom } = reduceAtom(
+  const { templateAtomsAcc: accWithArray, functionNames } = _.reduce(
+    ({ templateAtomsAcc, functionNames }, atom) => {
+      const { templateAtomsAcc: accWithAtom, functionName } = reduceAtom(
         atom,
         optimizedRegexStr,
         templateAtomsAcc,
@@ -123,16 +136,16 @@ function reduceAtomsArray(
 
       return {
         templateAtomsAcc: accWithAtom,
-        templateAtomsArray: [...templateAtomsArray, templateAtom],
+        functionNames: [...functionNames, functionName],
       };
     },
-    { templateAtomsAcc, templateAtomsArray: [] as ReadonlyArray<TemplateAtom> },
+    { templateAtomsAcc, functionNames: [] as ReadonlyArray<string> },
     atomArray,
   );
 
   return {
     templateAtomsAcc: accWithArray,
-    templateAtomsArray,
+    functionNames,
   };
 }
 
@@ -164,22 +177,22 @@ function reduceReferences(
       if (isArray<Atom>(entryValue)) {
         const {
           templateAtomsAcc: accWithArray,
-          templateAtomsArray,
+          functionNames,
         } = reduceAtomsArray(entryValue, optimizedRegexStr, templateAtomsAcc);
 
         return {
           templateAtomsAcc: accWithArray,
           referencesEntries: [
             ...referencesEntries,
-            [entryKey, templateAtomsArray] as readonly [
+            [entryKey, functionNames] as readonly [
               string,
-              ReadonlyArray<TemplateAtom>,
+              ReadonlyArray<string>,
             ],
           ],
         };
       }
 
-      const { templateAtomsAcc: accWithAtom, templateAtom } = reduceAtom(
+      const { templateAtomsAcc: accWithAtom, functionName } = reduceAtom(
         entryValue,
         optimizedRegexStr,
         templateAtomsAcc,
@@ -189,14 +202,14 @@ function reduceReferences(
         templateAtomsAcc: accWithAtom,
         referencesEntries: [
           ...referencesEntries,
-          [entryKey, templateAtom] as readonly [string, TemplateAtom],
+          [entryKey, functionName] as readonly [string, string],
         ],
       };
     },
     {
       templateAtomsAcc,
       referencesEntries: [] as ReadonlyArray<
-        readonly [string, TemplateAtom | readonly TemplateAtom[] | null]
+        readonly [string, string | ReadonlyArray<string> | null]
       >,
     },
     referenceEntries,
@@ -216,13 +229,13 @@ export function unrollEntryAtom(
   optimizedRegexStr: string,
   atom: Atom,
 ): {
-  readonly entryTemplateAtom: TemplateAtom;
+  readonly entryFunctionName: string;
   readonly templateAtoms: ReadonlyArray<TemplateAtom>;
 } {
   const unrolled = reduceAtom(atom, optimizedRegexStr, []);
 
   return {
     templateAtoms: unrolled.templateAtomsAcc,
-    entryTemplateAtom: unrolled.templateAtom,
+    entryFunctionName: unrolled.functionName,
   };
 }

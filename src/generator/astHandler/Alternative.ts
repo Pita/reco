@@ -4,6 +4,7 @@ import { ASTHandler } from '../generator';
 import { CharASTElement, handleCharSequence } from './CharacterSequence';
 import * as _ from 'lodash/fp';
 import { Atom } from '../templates/mainTemplate';
+import { handleElement } from './Element';
 
 type GroupedCharElements = {
   readonly type: 'GroupedChars';
@@ -54,8 +55,7 @@ export const handleAlternative: ASTHandler<
             quickCheck,
           );
         default:
-          throw new Error("Can't handle non char sequences yet");
-        // return handleElement(groupedElement, templateValues, context);
+          return handleElement(groupedElement, nextAtom, context);
       }
     },
     nextAtom,

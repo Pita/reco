@@ -121,7 +121,7 @@ const genTemplateValuesPrivate = (
     type: 'fullScan',
   };
 
-  const { entryTemplateAtom, templateAtoms } = unrollEntryAtom(
+  const { entryFunctionName, templateAtoms } = unrollEntryAtom(
     optimizedRegexStr,
     entryAtom,
   );
@@ -131,10 +131,10 @@ const genTemplateValuesPrivate = (
     optimizedRegexStr,
     matchPositioning,
     version,
-    entryTemplateAtom,
+    entryFunctionName,
     templateAtoms,
     // quantifierCountersLength: 0, // TODO: figure out quantifier counter
-    // groupsLength: groupIndex.size,
+    groupsLength: groupIndex.size,
   };
 };
 
