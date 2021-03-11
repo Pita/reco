@@ -55,6 +55,69 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /./
+ *  ^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "comparison",
+ *         "comparison": {
+ *           "type": "lessOrEqual",
+ *           "comparisonValue": 13
+ *         },
+ *         "comparisonTrue": {
+ *           "type": "lastComparison",
+ *           "comparison": {
+ *             "type": "equalOneOfTwo",
+ *             "comparisonValue1": 10,
+ *             "comparisonValue2": 13
+ *           }
+ *         },
+ *         "comparisonFalse": {
+ *           "type": "comparison",
+ *           "comparison": {
+ *             "type": "lessOrEqual",
+ *             "comparisonValue": 8233
+ *           },
+ *           "comparisonTrue": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "moreOrEqual",
+ *               "comparisonValue": 8232
+ *             }
+ *           },
+ *           "comparisonFalse": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "false"
+ *             }
+ *           }
+ *         }
+ *       },
+ *       "negate": true,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 2.25,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {

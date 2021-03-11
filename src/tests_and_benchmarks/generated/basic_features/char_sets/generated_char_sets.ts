@@ -55,6 +55,82 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /[a-zA-Z0-9]/
+ *  ^^^^^^^^^^^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "comparison",
+ *         "comparison": {
+ *           "type": "lessOrEqual",
+ *           "comparisonValue": 90
+ *         },
+ *         "comparisonTrue": {
+ *           "type": "comparison",
+ *           "comparison": {
+ *             "type": "lessOrEqual",
+ *             "comparisonValue": 57
+ *           },
+ *           "comparisonTrue": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "moreOrEqual",
+ *               "comparisonValue": 48
+ *             }
+ *           },
+ *           "comparisonFalse": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "moreOrEqual",
+ *               "comparisonValue": 65
+ *             }
+ *           }
+ *         },
+ *         "comparisonFalse": {
+ *           "type": "comparison",
+ *           "comparison": {
+ *             "type": "lessOrEqual",
+ *             "comparisonValue": 122
+ *           },
+ *           "comparisonTrue": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "moreOrEqual",
+ *               "comparisonValue": 97
+ *             }
+ *           },
+ *           "comparisonFalse": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "false"
+ *             }
+ *           }
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 2.75,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {

@@ -55,6 +55,54 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /\d/
+ *  ^^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "comparison",
+ *         "comparison": {
+ *           "type": "lessOrEqual",
+ *           "comparisonValue": 57
+ *         },
+ *         "comparisonTrue": {
+ *           "type": "lastComparison",
+ *           "comparison": {
+ *             "type": "moreOrEqual",
+ *             "comparisonValue": 48
+ *           }
+ *         },
+ *         "comparisonFalse": {
+ *           "type": "lastComparison",
+ *           "comparison": {
+ *             "type": "false"
+ *           }
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1.5,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {

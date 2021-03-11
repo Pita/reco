@@ -67,6 +67,41 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /a(b)c/
+ *      ^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 99
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {
@@ -89,12 +124,66 @@ const atom0000 = (i: number, str: string, context: Context): number => {
 
   return i;
 };
+/*
+ * groupEndMarker
+ * /a(b)c/
+ *     ^
+ *
+ * data:
+ * {
+ *   "groupReference": {
+ *     "idx": 0
+ *   }
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0000"
+ * }
+ *
+ */
+
 const atom0001 = (i: number, str: string, context: Context): number => {
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
 
   return atom0000(i, str, context);
 };
+/*
+ * charSequence
+ * /a(b)c/
+ *    ^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 98
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0001"
+ * }
+ *
+ */
+
 const atom0002 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {
@@ -117,11 +206,65 @@ const atom0002 = (i: number, str: string, context: Context): number => {
 
   return atom0001(i, str, context);
 };
+/*
+ * groupStartMarker
+ * /a(b)c/
+ *   ^
+ *
+ * data:
+ * {
+ *   "groupReference": {
+ *     "idx": 0
+ *   }
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0002"
+ * }
+ *
+ */
+
 const atom0003 = (i: number, str: string, context: Context): number => {
   context.groupMarkerStartTemp0 = i;
 
   return atom0002(i, str, context);
 };
+/*
+ * charSequence
+ * /a(b)c/
+ *  ^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 97
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0003"
+ * }
+ *
+ */
+
 const atom0004 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {

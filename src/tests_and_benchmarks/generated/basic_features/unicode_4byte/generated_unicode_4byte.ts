@@ -55,6 +55,46 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /\u{1f604}/u
+ *  ^^^^^^^^^
+ *
+ * data:
+ * {
+ *   "orderedLoading": [
+ *     {
+ *       "unitsCount": "2",
+ *       "unicode": true
+ *     }
+ *   ],
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 128516
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": true,
+ *       "unitsCount": "2",
+ *       "averageComplexity": 1,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {

@@ -55,6 +55,153 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /\s/
+ *  ^^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "comparison",
+ *         "comparison": {
+ *           "type": "lessOrEqual",
+ *           "comparisonValue": 8202
+ *         },
+ *         "comparisonTrue": {
+ *           "type": "comparison",
+ *           "comparison": {
+ *             "type": "lessOrEqual",
+ *             "comparisonValue": 160
+ *           },
+ *           "comparisonTrue": {
+ *             "type": "comparison",
+ *             "comparison": {
+ *               "type": "lessOrEqual",
+ *               "comparisonValue": 32
+ *             },
+ *             "comparisonTrue": {
+ *               "type": "comparison",
+ *               "comparison": {
+ *                 "type": "lessOrEqual",
+ *                 "comparisonValue": 13
+ *               },
+ *               "comparisonTrue": {
+ *                 "type": "lastComparison",
+ *                 "comparison": {
+ *                   "type": "moreOrEqual",
+ *                   "comparisonValue": 9
+ *                 }
+ *               },
+ *               "comparisonFalse": {
+ *                 "type": "lastComparison",
+ *                 "comparison": {
+ *                   "type": "equal",
+ *                   "comparisonValue": 32
+ *                 }
+ *               }
+ *             },
+ *             "comparisonFalse": {
+ *               "type": "lastComparison",
+ *               "comparison": {
+ *                 "type": "equal",
+ *                 "comparisonValue": 160
+ *               }
+ *             }
+ *           },
+ *           "comparisonFalse": {
+ *             "type": "comparison",
+ *             "comparison": {
+ *               "type": "equal",
+ *               "comparisonValue": 5760
+ *             },
+ *             "comparisonTrue": {
+ *               "type": "lastComparison",
+ *               "comparison": {
+ *                 "type": "true"
+ *               }
+ *             },
+ *             "comparisonFalse": {
+ *               "type": "lastComparison",
+ *               "comparison": {
+ *                 "type": "moreOrEqual",
+ *                 "comparisonValue": 8192
+ *               }
+ *             }
+ *           }
+ *         },
+ *         "comparisonFalse": {
+ *           "type": "comparison",
+ *           "comparison": {
+ *             "type": "lessOrEqual",
+ *             "comparisonValue": 8287
+ *           },
+ *           "comparisonTrue": {
+ *             "type": "comparison",
+ *             "comparison": {
+ *               "type": "lessOrEqual",
+ *               "comparisonValue": 8239
+ *             },
+ *             "comparisonTrue": {
+ *               "type": "comparison",
+ *               "comparison": {
+ *                 "type": "lessOrEqual",
+ *                 "comparisonValue": 8233
+ *               },
+ *               "comparisonTrue": {
+ *                 "type": "lastComparison",
+ *                 "comparison": {
+ *                   "type": "moreOrEqual",
+ *                   "comparisonValue": 8232
+ *                 }
+ *               },
+ *               "comparisonFalse": {
+ *                 "type": "lastComparison",
+ *                 "comparison": {
+ *                   "type": "equal",
+ *                   "comparisonValue": 8239
+ *                 }
+ *               }
+ *             },
+ *             "comparisonFalse": {
+ *               "type": "lastComparison",
+ *               "comparison": {
+ *                 "type": "equal",
+ *                 "comparisonValue": 8287
+ *               }
+ *             }
+ *           },
+ *           "comparisonFalse": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "equalOneOfTwo",
+ *               "comparisonValue1": 12288,
+ *               "comparisonValue2": 65279
+ *             }
+ *           }
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 4,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {

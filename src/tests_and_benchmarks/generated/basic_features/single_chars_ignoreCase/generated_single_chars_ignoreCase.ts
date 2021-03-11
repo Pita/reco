@@ -55,6 +55,74 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /def/i
+ *  ^^^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 3,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equalOneOfTwo",
+ *           "comparisonValue1": 70,
+ *           "comparisonValue2": 102
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1.5,
+ *       "offset": 2,
+ *       "canBeSkipped": false
+ *     },
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equalOneOfTwo",
+ *           "comparisonValue1": 69,
+ *           "comparisonValue2": 101
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1.5,
+ *       "offset": 1,
+ *       "canBeSkipped": false
+ *     },
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equalOneOfTwo",
+ *           "comparisonValue1": 68,
+ *           "comparisonValue2": 100
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1.5,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 3;
   if (iAfterMatch > str.length) {

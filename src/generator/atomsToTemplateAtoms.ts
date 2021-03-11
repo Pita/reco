@@ -32,13 +32,13 @@ function formatAstLocation(
 function firstCharOfASTElement(astElement: AST.Element): RegexSlice {
   return {
     start: astElement.start,
-    end: astElement.end + 1,
+    end: astElement.start + 1,
   };
 }
 
 function lastCharOfASTElement(astElement: AST.Element): RegexSlice {
   return {
-    start: astElement.start - 1,
+    start: astElement.end - 1,
     end: astElement.end,
   };
 }

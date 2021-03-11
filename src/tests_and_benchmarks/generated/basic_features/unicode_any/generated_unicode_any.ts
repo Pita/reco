@@ -55,6 +55,93 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * charSequence
+ * /.a/u
+ *  ^^
+ *
+ * data:
+ * {
+ *   "orderedLoading": [
+ *     {
+ *       "unitsCount": "variable",
+ *       "unicode": true
+ *     },
+ *     {
+ *       "unitsCount": "1",
+ *       "unicode": true
+ *     }
+ *   ],
+ *   "length": 2,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "comparison",
+ *         "comparison": {
+ *           "type": "lessOrEqual",
+ *           "comparisonValue": 13
+ *         },
+ *         "comparisonTrue": {
+ *           "type": "lastComparison",
+ *           "comparison": {
+ *             "type": "equalOneOfTwo",
+ *             "comparisonValue1": 10,
+ *             "comparisonValue2": 13
+ *           }
+ *         },
+ *         "comparisonFalse": {
+ *           "type": "comparison",
+ *           "comparison": {
+ *             "type": "lessOrEqual",
+ *             "comparisonValue": 8233
+ *           },
+ *           "comparisonTrue": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "moreOrEqual",
+ *               "comparisonValue": 8232
+ *             }
+ *           },
+ *           "comparisonFalse": {
+ *             "type": "lastComparison",
+ *             "comparison": {
+ *               "type": "false"
+ *             }
+ *           }
+ *         }
+ *       },
+ *       "negate": true,
+ *       "unicode": true,
+ *       "unitsCount": "variable",
+ *       "averageComplexity": 2.25,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     },
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 97
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": true,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 1,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 2;
   if (iAfterMatch > str.length) {

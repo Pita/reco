@@ -107,6 +107,17 @@ export function generatedRegexMatcher(str: string): {
 };
 
 {{#each templateAtoms}}
+   /*
+    * {{{type}}}
+    * {{escapeComment posLine1}}
+    * {{{posLine2}}}
+    * 
+    {{stringifyComment 'data' data}}
+    *
+    {{stringifyComment 'references' references}}
+    * 
+    */
+
   const {{{functionName}}} = (
     i: number,
     str: string,

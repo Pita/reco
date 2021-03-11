@@ -76,12 +76,66 @@ export function generatedRegexMatcher(
   return null;
 }
 
+/*
+ * groupEndMarker
+ * /(aaa)(a)/
+ *         ^
+ *
+ * data:
+ * {
+ *   "groupReference": {
+ *     "idx": 1
+ *   }
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": null
+ * }
+ *
+ */
+
 const atom0000 = (i: number, str: string, context: Context): number => {
   context.groupMarkerStart1 = context.groupMarkerStartTemp1;
   context.groupMarkerEnd1 = i;
 
   return i;
 };
+/*
+ * charSequence
+ * /(aaa)(a)/
+ *        ^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 1,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 97
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0000"
+ * }
+ *
+ */
+
 const atom0001 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 1;
   if (iAfterMatch > str.length) {
@@ -104,17 +158,120 @@ const atom0001 = (i: number, str: string, context: Context): number => {
 
   return atom0000(i, str, context);
 };
+/*
+ * groupStartMarker
+ * /(aaa)(a)/
+ *       ^
+ *
+ * data:
+ * {
+ *   "groupReference": {
+ *     "idx": 1
+ *   }
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0001"
+ * }
+ *
+ */
+
 const atom0002 = (i: number, str: string, context: Context): number => {
   context.groupMarkerStartTemp1 = i;
 
   return atom0001(i, str, context);
 };
+/*
+ * groupEndMarker
+ * /(aaa)(a)/
+ *      ^
+ *
+ * data:
+ * {
+ *   "groupReference": {
+ *     "idx": 0
+ *   }
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0002"
+ * }
+ *
+ */
+
 const atom0003 = (i: number, str: string, context: Context): number => {
   context.groupMarkerStart0 = context.groupMarkerStartTemp0;
   context.groupMarkerEnd0 = i;
 
   return atom0002(i, str, context);
 };
+/*
+ * charSequence
+ * /(aaa)(a)/
+ *   ^^^
+ *
+ * data:
+ * {
+ *   "orderedLoading": null,
+ *   "length": 3,
+ *   "chars": [
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 97
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 2,
+ *       "canBeSkipped": false
+ *     },
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 97
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 1,
+ *       "canBeSkipped": false
+ *     },
+ *     {
+ *       "tree": {
+ *         "type": "lastComparison",
+ *         "comparison": {
+ *           "type": "equal",
+ *           "comparisonValue": 97
+ *         }
+ *       },
+ *       "negate": false,
+ *       "unicode": false,
+ *       "unitsCount": "1",
+ *       "averageComplexity": 1,
+ *       "offset": 0,
+ *       "canBeSkipped": false
+ *     }
+ *   ]
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0003"
+ * }
+ *
+ */
+
 const atom0004 = (i: number, str: string, context: Context): number => {
   const iAfterMatch = i + 3;
   if (iAfterMatch > str.length) {
@@ -155,6 +312,25 @@ const atom0004 = (i: number, str: string, context: Context): number => {
 
   return atom0003(i, str, context);
 };
+/*
+ * groupStartMarker
+ * /(aaa)(a)/
+ *  ^
+ *
+ * data:
+ * {
+ *   "groupReference": {
+ *     "idx": 0
+ *   }
+ * }
+ *
+ * references:
+ * {
+ *   "nextAtom": "atom0004"
+ * }
+ *
+ */
+
 const atom0005 = (i: number, str: string, context: Context): number => {
   context.groupMarkerStartTemp0 = i;
 
