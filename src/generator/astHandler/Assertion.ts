@@ -1,6 +1,5 @@
 import { AST } from 'regexpp';
 import { ASTHandler } from '../generator';
-import { NotSupportedException } from '../NotSupportedException';
 import {
   Atom,
   EndAnchorAtom,
@@ -9,6 +8,7 @@ import {
   StartAnchorAtom,
   WordBoundaryAtom,
 } from '../templates/mainTemplate';
+import { handleLookaroundAssertion } from './LookaroundAssertion';
 
 export const handleAssertion: ASTHandler<AST.Assertion> = (
   assertion,
@@ -58,13 +58,6 @@ export const handleAssertion: ASTHandler<AST.Assertion> = (
     }
     case 'lookahead':
     case 'lookbehind':
-      throw new NotSupportedException('Does not support lookarounds yet');
-    // return handleLookaroundAssertion(
-    //   assertion,
-    //   templateValues,
-    //   currentFiber,
-    //   flags,
-    //   literal,
-    // );
+      return handleLookaroundAssertion(assertion, nextAtom, context);
   }
 };

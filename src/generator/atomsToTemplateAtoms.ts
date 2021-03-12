@@ -106,6 +106,7 @@ function reduceAtom(
       case 'startAnchor':
       case 'endAnchor':
       case 'groupBackReference':
+      case 'lookaround':
         return formatAstLocation(optimizedRegexStr, atom.astElement);
       default:
         throw new Error(`templating for atom ${atom.type} not implemented yet`);
@@ -115,8 +116,11 @@ function reduceAtom(
   const templateAtom: TemplateAtom = {
     ...atom,
     ...astLocation,
-    references: references,
     functionName,
+
+    // this is fine, not sure how to fix this type error
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    references: references as any,
   };
 
   return {
