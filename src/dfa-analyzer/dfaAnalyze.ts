@@ -11,7 +11,7 @@ export const dfaAnalyzeElement = (
   path: ASTPath,
   literal: AST.RegExpLiteral,
   maxLength: number,
-) => {
+): CharRangeSequencePossibilities | null => {
   const cache: DFACache = {
     astToCharRange: new Map(),
   };

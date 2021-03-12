@@ -4,7 +4,7 @@ import { Flags } from 'regexpp/ast';
 const normalizeUpperLowerCase = (
   char: number,
   ignoreCase: boolean,
-): number[] => {
+): ReadonlyArray<number> => {
   if (!ignoreCase) {
     return [char];
   }
@@ -75,23 +75,26 @@ class NumericSet extends Set<number> {
 export type UTF16UnitsCount = '1' | '2' | 'variable';
 
 export class CharRange {
-  private chars: NumericSet;
-  private negate: boolean;
+  private readonly chars: NumericSet;
+  private readonly negate: boolean;
 
-  constructor(options: { chars: number[] | NumericSet; negate: boolean }) {
+  constructor(options: {
+    readonly chars: ReadonlyArray<number> | NumericSet;
+    readonly negate: boolean;
+  }) {
     this.chars = new NumericSet(options.chars);
     this.negate = options.negate;
   }
 
   static create(
-    definitions: Array<
+    definitions: ReadonlyArray<
       | number
       | string
-      | { from: string; to: string }
-      | { from: number; to: number }
+      | { readonly from: string; readonly to: string }
+      | { readonly from: number; readonly to: number }
     >,
-    options: { ignoreCase: boolean; negate: boolean },
-  ) {
+    options: { readonly ignoreCase: boolean; readonly negate: boolean },
+  ): CharRange {
     const { ignoreCase, negate } = options;
     const chars: number[] = [];
 
@@ -119,14 +122,14 @@ export class CharRange {
     });
   }
 
-  static createEmptyRange() {
+  static createEmptyRange(): CharRange {
     return new CharRange({
       chars: [],
       negate: false,
     });
   }
 
-  static createFullRange() {
+  static createFullRange(): CharRange {
     return new CharRange({
       chars: [],
       negate: true,
@@ -210,7 +213,10 @@ export class CharRange {
     });
   }
 
-  toJSON() {
+  toJSON(): {
+    readonly negate: boolean;
+    readonly chars: ReadonlyArray<number>;
+  } {
     return {
       negate: this.negate,
       chars: this.chars.toArray(),

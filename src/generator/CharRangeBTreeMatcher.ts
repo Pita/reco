@@ -3,9 +3,9 @@ import { ComparsionTemplate } from './templates/comparison';
 import { LeafTemplate } from './templates/leaf';
 
 interface Leaf {
-  min: number;
-  max: number;
-  maxChecked?: boolean;
+  readonly min: number;
+  readonly max: number;
+  readonly maxChecked?: boolean;
 }
 
 export const computeAverageLeafComplexity = (rootLeaf: LeafTemplate) => {
@@ -45,7 +45,7 @@ export const computeAverageLeafComplexity = (rootLeaf: LeafTemplate) => {
   return averageComplexity;
 };
 
-const processLeafs = (leafs: Leaf[]): LeafTemplate => {
+const processLeafs = (leafs: ReadonlyArray<Leaf>): LeafTemplate => {
   if (leafs.length === 0) {
     return {
       type: 'lastComparison',

@@ -12,7 +12,7 @@ const canRemove = (element: AST.Element) => {
 export const attemptPullingOutAssertions = (
   group: AST.CapturingGroup,
   options: SimplifierHandlerOptions,
-) => {
+): string | null => {
   const removedFromStart = removeFromSide(
     group.alternatives,
     'start',
@@ -32,7 +32,7 @@ export const attemptPullingOutAssertions = (
 export const attemptRemovingCapturingGroups = (
   group: AST.CapturingGroup,
   options: SimplifierHandlerOptions,
-) => {
+): string | null => {
   if (!options.removeCapturingGroups) {
     return null;
   }

@@ -3,14 +3,14 @@ import { CharRange } from '../generator/CharRange';
 import { CharRangeSequence } from './CharRangeSequence';
 
 export type MaxCountASTElement = {
-  type: 'MaxCountASTElement';
-  element: AST.QuantifiableElement;
-  count: number;
+  readonly type: 'MaxCountASTElement';
+  readonly element: AST.QuantifiableElement;
+  readonly count: number;
 };
 
 export type InfiniteASTElement = {
-  type: 'InfiniteASTElement';
-  element: AST.QuantifiableElement;
+  readonly type: 'InfiniteASTElement';
+  readonly element: AST.QuantifiableElement;
 };
 
 export type AstElementOrQuantifierElement =
@@ -20,7 +20,7 @@ export type AstElementOrQuantifierElement =
 
 export type ASTPath = ReadonlyArray<AstElementOrQuantifierElement>;
 export interface DFACache {
-  astToCharRange: Map<AST.Element, CharRange>;
+  readonly astToCharRange: Map<AST.Element, CharRange>;
 }
 
 export type ExlusiveState = 'Exlusive' | 'NotExclusive' | 'OrderExclusive';
@@ -28,11 +28,11 @@ export type ExlusiveState = 'Exlusive' | 'NotExclusive' | 'OrderExclusive';
 export type DFAHandler<T> = (
   element: T,
   options: {
-    cache: DFACache;
-    literal: AST.RegExpLiteral;
-    currentLength: number;
-    maxLength: number;
-    path: ASTPath;
-    currentSequences: CharRangeSequence[];
+    readonly cache: DFACache;
+    readonly literal: AST.RegExpLiteral;
+    readonly currentLength: number;
+    readonly maxLength: number;
+    readonly path: ASTPath;
+    readonly currentSequences: ReadonlyArray<CharRangeSequence>;
   },
-) => CharRangeSequence[];
+) => ReadonlyArray<CharRangeSequence>;

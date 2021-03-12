@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { CharRange } from './CharRange';
 
 describe('CharRange', () => {

@@ -54,7 +54,7 @@ const template = `
 `;
 
 const compiled = Handlebars.compile(template);
-export default (context: unknown) => {
+export default (context: unknown): string => {
   return prettier.format(compiled(context), {
     semi: true,
     parser: 'babel-ts',

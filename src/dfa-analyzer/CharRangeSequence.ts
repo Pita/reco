@@ -1,17 +1,16 @@
 import { CharRange } from '../generator/CharRange';
-import flatten from 'lodash/flatten';
 import { ExlusiveState } from './types';
 import { CharASTElement } from '../generator/astHandler/CharacterSequence';
 import { isInsideElement } from '../generator/checkForInsideOutBacktracking';
-
+import _ from 'lodash/fp';
 export class CharRangeSequence {
-  private charRanges: CharRange[];
-  private astElements: CharASTElement[];
+  private readonly charRanges: ReadonlyArray<CharRange>;
+  private readonly astElements: ReadonlyArray<CharASTElement>;
 
   constructor(
     options: {
-      charRanges: CharRange[];
-      astElements: CharASTElement[];
+      readonly charRanges: ReadonlyArray<CharRange>;
+      readonly astElements: ReadonlyArray<CharASTElement>;
     } = { charRanges: [], astElements: [] },
   ) {
     const { charRanges, astElements } = options;
@@ -24,14 +23,20 @@ export class CharRangeSequence {
     this.astElements = astElements;
   }
 
-  push(charRange: CharRange, astElement: CharASTElement) {
+  push(charRange: CharRange, astElement: CharASTElement): CharRangeSequence {
     return new CharRangeSequence({
       charRanges: [...this.charRanges, charRange],
       astElements: [...this.astElements, astElement],
     });
   }
 
-  toJSON() {
+  toJSON(): {
+    readonly charRanges: ReadonlyArray<{
+      readonly negate: boolean;
+      readonly chars: ReadonlyArray<number>;
+    }>;
+    readonly astElements: ReadonlyArray<CharASTElement>;
+  } {
     return {
       charRanges: this.charRanges.map((charRange) => charRange.toJSON()),
       astElements: this.astElements.slice(),
@@ -66,7 +71,14 @@ export class CharRangeSequence {
     return isInsideElement(other.astElements[length - 1]);
   }
 
-  get(index: number) {
+  get(
+    index: number,
+  ):
+    | {
+        readonly charRange: CharRange;
+        readonly astElement: CharASTElement;
+      }
+    | undefined {
     if (!this.charRanges[index]) {
       return undefined;
     }
@@ -76,17 +88,19 @@ export class CharRangeSequence {
     };
   }
 
-  length() {
+  length(): number {
     return this.charRanges.length;
   }
 }
 
 export class OverlyComplexBranchingError extends Error {
-  type = 'OverlyComplexBranchingError';
+  readonly type = 'OverlyComplexBranchingError';
 }
 
-export function flattenSequences(seqs: CharRangeSequence[][]) {
-  const flattend = flatten(seqs);
+export function flattenSequences(
+  seqs: ReadonlyArray<ReadonlyArray<CharRangeSequence>>,
+): ReadonlyArray<CharRangeSequence> {
+  const flattend = _.flatten(seqs);
   if (flattend.length > 100) {
     throw new OverlyComplexBranchingError();
   }

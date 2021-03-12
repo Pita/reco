@@ -7,14 +7,15 @@ import { dfaAnalyzeElement } from './dfaAnalyze';
 import { ExlusiveState } from './types';
 
 export type QuickCheckDetails = {
-  determinesPerfectlyAstElements: CharASTElement[];
-  mask: number;
-  value: number;
+  readonly determinesPerfectlyAstElements: ReadonlyArray<CharASTElement>;
+  readonly mask: number;
+  readonly value: number;
 };
 
 // keep this function around for debugging
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function debugToBinary(n: number) {
+  // eslint-disable-next-line functional/no-let
   let binary = '';
   while (Math.ceil(n / 2) > 0) {
     binary = (n % 2) + binary;
@@ -24,9 +25,9 @@ function debugToBinary(n: number) {
 }
 
 export class CharRangeSequencePossibilities {
-  possibilities: CharRangeSequence[];
+  readonly possibilities: ReadonlyArray<CharRangeSequence>;
 
-  constructor(possibilities: CharRangeSequence[]) {
+  constructor(possibilities: ReadonlyArray<CharRangeSequence>) {
     this.possibilities = possibilities;
   }
 
@@ -66,15 +67,23 @@ export class CharRangeSequencePossibilities {
     return true;
   }
 
-  toJSON() {
+  toJSON(): ReadonlyArray<{
+    readonly charRanges: readonly {
+      readonly negate: boolean;
+      readonly chars: ReadonlyArray<number>;
+    }[];
+    readonly astElements: ReadonlyArray<CharASTElement>;
+  }> {
     return this.possibilities.map((possiblity) => possiblity.toJSON());
   }
 
-  size() {
+  size(): number {
     return this.possibilities.length;
   }
 
-  maxLengthOfPossibilities() {
+  maxLengthOfPossibilities(): number {
+    // TODO: FUNC: convert to reduce
+
     let maxLength = 0;
     this.possibilities.forEach((charRange) => {
       maxLength = Math.max(maxLength, charRange.length());
@@ -84,13 +93,16 @@ export class CharRangeSequencePossibilities {
   }
 
   private getFirstTwoCharRangesForQuickCheck(flags: Flags) {
-    const charUnions: ({
-      charRange: CharRange;
-      astElement: CharASTElement | null | 'moreThanOne';
-    } | null)[] = [
+    const charUnions: Array<{
+      readonly charRange: CharRange;
+      readonly astElement: CharASTElement | null | 'moreThanOne';
+    } | null> = [
       { charRange: CharRange.createEmptyRange(), astElement: null },
       { charRange: CharRange.createEmptyRange(), astElement: null },
     ];
+
+    // TODO: FUNC: convert to reduce
+
     this.possibilities.forEach((charRangeSeq) => {
       for (let i = 0; i < 2; i++) {
         const currentCharUnion = charUnions[i];
@@ -145,7 +157,7 @@ export class CharRangeSequencePossibilities {
       return null;
     }
 
-    const determinesPerfectlyAstElements: CharASTElement[] = [];
+    const determinesPerfectlyAstElements: Array<CharASTElement> = [];
 
     const masksAndValues = charUnions.map((charUnion) => {
       if (!charUnion) {
@@ -185,7 +197,7 @@ export class CharRangeSequencePossibilities {
 }
 
 export function computeExclusivityOfAlternatives(
-  alternatives: AST.Alternative[],
+  alternatives: ReadonlyArray<AST.Alternative>,
   literal: RegExpLiteral,
 ): ExlusiveState {
   const mappedDFAs: CharRangeSequencePossibilities[] = [];

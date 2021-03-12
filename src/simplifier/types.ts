@@ -1,9 +1,9 @@
 import { RegExpLiteral } from 'regexpp/ast';
 
 export type SimplifierHandlerOptions = {
-  firstPass: boolean;
-  literal: RegExpLiteral;
-  removeCapturingGroups?: boolean;
+  readonly firstPass: boolean;
+  readonly literal: RegExpLiteral;
+  readonly removeCapturingGroups?: boolean;
 };
 
 export type SimplifierHandler<T> = (
