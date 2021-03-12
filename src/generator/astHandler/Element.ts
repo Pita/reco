@@ -1,6 +1,7 @@
 import { AST } from 'regexpp';
 import { ASTHandler } from '../generator';
 import { NotSupportedException } from '../NotSupportedException';
+import { handleAssertion } from './Assertion';
 import { handleCapturingGroup } from './CapturingGroup';
 import { handleCharSequence } from './CharacterSequence';
 
@@ -16,13 +17,14 @@ export const handleElement: ASTHandler<AST.Element> = (
       return handleCharSequence([element], nextAtom, context);
     case 'CapturingGroup':
       return handleCapturingGroup(element, nextAtom, context);
+    case 'Assertion':
+      return handleAssertion(element, nextAtom, context);
     default:
       throw new NotSupportedException(`${element.type} not yet supported`);
 
     // case 'Quantifier':
     //   return handleQuantifier(element, templateValues, context);
-    // case 'Assertion':
-    //   return handleAssertion(element, templateValues, context);
+
     // case 'CapturingGroup':
     //   return handleCapturingGroup(element, templateValues, context);
     // case 'Backreference':

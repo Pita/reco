@@ -1,6 +1,11 @@
 import charSequence from './atoms/charSequence';
 import groupStartMarker from './atoms/groupStartMarker';
 import groupEndMarker from './atoms/groupEndMarker';
+import endAnchor from './atoms/endAnchor';
+import startAnchor from './atoms/startAnchor';
+import wordBoundary from './atoms/wordBoundary';
+import multiLineStartAnchor from './atoms/multiLineStartAnchor';
+import multiLineEndAnchor from './atoms/multiLineEndAnchor';
 
 export default `
 // This code was generated with RECO v{{{version}}}
@@ -126,7 +131,11 @@ export function generatedRegexMatcher(str: string): {
     ${charSequence}
     ${groupStartMarker}
     ${groupEndMarker}
-
+    ${endAnchor}
+    ${startAnchor}
+    ${wordBoundary}
+    ${multiLineStartAnchor}
+    ${multiLineEndAnchor}
     {{#if references.nextAtom}}
       return {{{references.nextAtom}}}(i, str, context)
     {{/if}}

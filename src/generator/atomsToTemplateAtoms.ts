@@ -100,6 +100,12 @@ function reduceAtom(
           optimizedRegexStr,
           lastCharOfASTElement(atom.astElement),
         );
+      case 'multiLineEndAnchor':
+      case 'multiLineStartAnchor':
+      case 'wordBoundary':
+      case 'startAnchor':
+      case 'endAnchor':
+        return formatAstLocation(optimizedRegexStr, atom.astElement);
       default:
         throw new Error(`templating for atom ${atom.type} not implemented yet`);
     }
