@@ -9,6 +9,8 @@ import {
 import { simplifyRegex } from '../simplifier/simplifyRegex';
 import * as _ from 'lodash/fp';
 import { unrollEntryAtom } from './atomsToTemplateAtoms';
+import { anchoringASTReducer } from './astReducer/anchoringASTReducer';
+import { lengthASTReducer } from './astReducer/lengthASTReducer';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require('../../package.json');
@@ -19,37 +21,44 @@ export interface Flags extends Readonly<AST.Flags> {
   readonly INTERNAL_can_repeat?: boolean;
 }
 
-// const deriveMatchPositioning = (
-//   mainHandler: FiberTemplateDefinition,
-// ): MatchPositioning => {
-//   if (mainHandler.meta.anchorsAtStartOfLine) {
-//     return {
-//       type: 'startAnchored',
-//     };
-//   }
+const deriveMatchPositioning = (
+  literal: AST.RegExpLiteral,
+): MatchPositioning => {
+  const { anchorsAtEndOfLine, anchorsAtStartOfLine } = anchoringASTReducer(
+    literal,
+    literal.flags,
+  );
 
-//   if (
-//     mainHandler.meta.anchorsAtEndOfLine &&
-//     mainHandler.meta.maxCharLength !== Infinity
-//   ) {
-//     return {
-//       type: 'endAnchored',
-//       maxCharsLeft: mainHandler.meta.maxCharLength,
-//       minCharsLeft: mainHandler.meta.minCharLength,
-//     };
-//   }
+  if (anchorsAtStartOfLine || literal.flags.sticky) {
+    return {
+      type: 'startAnchored',
+    };
+  }
 
-//   if (mainHandler.meta.minCharLength > 0) {
-//     return {
-//       type: 'minCharsLeft',
-//       minCharsLeft: mainHandler.meta.minCharLength,
-//     };
-//   }
+  const { minCharLength, maxCharLength } = lengthASTReducer(
+    literal,
+    literal.flags,
+  );
 
-//   return {
-//     type: 'fullScan',
-//   };
-// };
+  if (anchorsAtEndOfLine && maxCharLength !== Infinity) {
+    return {
+      type: 'endAnchored',
+      maxCharsLeft: maxCharLength,
+      minCharsLeft: minCharLength,
+    };
+  }
+
+  if (minCharLength > 0) {
+    return {
+      type: 'minCharsLeft',
+      minCharsLeft: minCharLength,
+    };
+  }
+
+  return {
+    type: 'fullScan',
+  };
+};
 
 type GroupIndex = ReadonlyMap<AST.CapturingGroup, GroupReference>;
 
@@ -100,11 +109,6 @@ const genTemplateValuesPrivate = (
   const groupIndex = indexGroups(literal);
   const context = { literal, groupIndex, flags: literal.flags };
 
-  // const blankTemplateValues = createTemplateValues(
-  //   originalRegexStr,
-  //   optimizedRegexStr,
-  // );
-
   const entryAtom = handleDisjunction(
     literal.pattern.alternatives,
     null,
@@ -115,11 +119,7 @@ const genTemplateValuesPrivate = (
     throw new Error('Could not resolve regex');
   }
 
-  // TODO: bring back match positioning optimization
-  // const matchPositioning = deriveMatchPositioning(mainHandler);
-  const matchPositioning: MatchPositioning = {
-    type: 'fullScan',
-  };
+  const matchPositioning = deriveMatchPositioning(literal);
 
   const { entryFunctionName, templateAtoms } = unrollEntryAtom(
     optimizedRegexStr,

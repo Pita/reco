@@ -31,12 +31,12 @@
     "functional/no-method-signature": 1,
     "max-lines-per-function": [
       1,
-      { "max": 75, "skipBlankLines": true, "skipComments": true }
+      { "max": 100, "skipBlankLines": true, "skipComments": true }
     ],
     "max-lines": [
       1,
       { "max": 500, "skipBlankLines": false, "skipComments": false }
     ],
-    "complexity": [1, { "max": 10 }]
+    "complexity": [1, { "max": 20 }]
   }
 }

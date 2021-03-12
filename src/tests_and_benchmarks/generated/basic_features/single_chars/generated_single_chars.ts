@@ -38,9 +38,9 @@ export function generatedRegexMatcher(
      */
   };
 
-  // fullScan
+  // minCharsLeft
   const min = 0;
-  const max = str.length;
+  const max = str.length - 3;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = atom0000(i, str, context);

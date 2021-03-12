@@ -51,9 +51,9 @@ export function generatedRegexMatcher(
      */
   };
 
-  // fullScan
+  // minCharsLeft
   const min = 0;
-  const max = str.length;
+  const max = str.length - 4;
 
   for (let i = min; i <= max; i++) {
     const posAfterMatch = atom0005(i, str, context);
