@@ -6,6 +6,7 @@ import startAnchor from './atoms/startAnchor';
 import wordBoundary from './atoms/wordBoundary';
 import multiLineStartAnchor from './atoms/multiLineStartAnchor';
 import multiLineEndAnchor from './atoms/multiLineEndAnchor';
+import backreference from './atoms/backReference';
 
 export default `
 // This code was generated with RECO v{{{version}}}
@@ -136,6 +137,7 @@ export function generatedRegexMatcher(str: string): {
     ${wordBoundary}
     ${multiLineStartAnchor}
     ${multiLineEndAnchor}
+    ${backreference}
     {{#if references.nextAtom}}
       return {{{references.nextAtom}}}(i, str, context)
     {{/if}}

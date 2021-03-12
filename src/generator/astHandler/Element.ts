@@ -2,6 +2,7 @@ import { AST } from 'regexpp';
 import { ASTHandler } from '../generator';
 import { NotSupportedException } from '../NotSupportedException';
 import { handleAssertion } from './Assertion';
+import { handleBackReference } from './BackReference';
 import { handleCapturingGroup } from './CapturingGroup';
 import { handleCharSequence } from './CharacterSequence';
 
@@ -19,6 +20,8 @@ export const handleElement: ASTHandler<AST.Element> = (
       return handleCapturingGroup(element, nextAtom, context);
     case 'Assertion':
       return handleAssertion(element, nextAtom, context);
+    case 'Backreference':
+      return handleBackReference(element, nextAtom, context);
     default:
       throw new NotSupportedException(`${element.type} not yet supported`);
 
@@ -27,8 +30,6 @@ export const handleElement: ASTHandler<AST.Element> = (
 
     // case 'CapturingGroup':
     //   return handleCapturingGroup(element, templateValues, context);
-    // case 'Backreference':
-    //   throw new Error('Assertion not yet supported');
 
     // return handleBackReference(
     //   element,

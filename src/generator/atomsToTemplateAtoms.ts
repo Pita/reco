@@ -105,6 +105,7 @@ function reduceAtom(
       case 'wordBoundary':
       case 'startAnchor':
       case 'endAnchor':
+      case 'groupBackReference':
         return formatAstLocation(optimizedRegexStr, atom.astElement);
       default:
         throw new Error(`templating for atom ${atom.type} not implemented yet`);
