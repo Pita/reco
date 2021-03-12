@@ -6,7 +6,7 @@ import * as path from 'path';
   const cwd = `${__dirname}/generated`;
   const folders = glob.sync('*/*', { cwd });
 
-  const results: { [key: string]: number } = {};
+  const results: { readonly [key: string]: number } = {};
   for (const folder of folders) {
     try {
       const benchmarkFile = `${cwd}/${folder}/generated_${

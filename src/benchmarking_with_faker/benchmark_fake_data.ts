@@ -27,7 +27,7 @@ function runFakeDataBenchmark(file: string, regex: string) {
     return require(generatedRegexCodePath);
   }
 
-  function benchmarkNativeRegex(testData: string[]) {
+  function benchmarkNativeRegex(testData: readonly string[]) {
     const originalRegex = getOriginalRegex();
     console.log('originalRegex', originalRegex);
 
@@ -47,7 +47,7 @@ function runFakeDataBenchmark(file: string, regex: string) {
     return { durationOriginalRegex, originalRegexCheckSum };
   }
 
-  function benchmarkGeneratedRegex(testData: string[]) {
+  function benchmarkGeneratedRegex(testData: readonly string[]) {
     const generatedRegex = getGeneratedRegexCode();
 
     const startGeneratedRegex = Date.now();

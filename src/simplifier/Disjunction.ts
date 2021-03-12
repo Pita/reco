@@ -24,8 +24,8 @@ const canRemove = (element: AST.Element) => {
   );
 };
 
-const handleDirectly: SimplifierHandler<AST.Alternative[]> = (
-  alternatives: AST.Alternative[],
+const handleDirectly: SimplifierHandler<readonly AST.Alternative[]> = (
+  alternatives: readonly AST.Alternative[],
   options,
 ) => {
   return alternatives
@@ -34,7 +34,7 @@ const handleDirectly: SimplifierHandler<AST.Alternative[]> = (
 };
 
 const attemptSimplifyOneCharDisjunctions = (
-  alternatives: AST.Alternative[],
+  alternatives: readonly AST.Alternative[],
 ) => {
   const canBeTransformed = alternatives.every((alternative) => {
     if (alternative.elements.length !== 1) {
@@ -58,10 +58,10 @@ const attemptSimplifyOneCharDisjunctions = (
 };
 
 const attemptInlineNestedDisjunctions = (
-  alternatives: AST.Alternative[],
+  alternatives: readonly AST.Alternative[],
   options: SimplifierHandlerOptions,
 ) => {
-  const inlinedAlternatives: AST.Alternative[] = [];
+  const inlinedAlternatives: readonly AST.Alternative[] = [];
   let couldInline = false;
 
   alternatives.forEach((alternative) => {
@@ -82,11 +82,11 @@ const attemptInlineNestedDisjunctions = (
 };
 
 const attemptRemoveDuplicates = (
-  alternatives: AST.Alternative[],
+  alternatives: readonly AST.Alternative[],
   options: SimplifierHandlerOptions,
 ) => {
   const keysSeen = new Set<string>();
-  const deduplicatedAlternatives: AST.Alternative[] = [];
+  const deduplicatedAlternatives: readonly AST.Alternative[] = [];
   let deduplicated = false;
 
   alternatives.forEach((alternative) => {
@@ -107,7 +107,7 @@ const attemptRemoveDuplicates = (
 };
 
 const attemptSideRemoval = (
-  alternatives: AST.Alternative[],
+  alternatives: readonly AST.Alternative[],
   options: SimplifierHandlerOptions,
 ) => {
   const removedFromStart = removeFromSide(alternatives, 'start', canRemove);
@@ -124,7 +124,7 @@ const attemptSideRemoval = (
 };
 
 const attemptGrouping = (
-  alternatives: AST.Alternative[],
+  alternatives: readonly AST.Alternative[],
   options: SimplifierHandlerOptions,
 ) => {
   let groupCount = 0;
@@ -146,7 +146,7 @@ const attemptGrouping = (
     }
   }
 
-  const groups: AST.Alternative[][] = [];
+  const groups: readonly (readonly AST.Alternative[])[] = [];
   let previousRaw: string | null = null;
   let couldGroup = false;
   for (let i = 0; i < proccessedAlternatives.length; i++) {
@@ -182,7 +182,7 @@ const attemptGrouping = (
     .join('|');
 };
 
-export const handleDisjunction: SimplifierHandler<AST.Alternative[]> = (
+export const handleDisjunction: SimplifierHandler<readonly AST.Alternative[]> = (
   alternatives,
   options,
 ) => {

@@ -120,7 +120,7 @@ const processLeafs = (leafs: ReadonlyArray<Leaf>): LeafTemplate => {
 
 export const charRangeToLeafValues = (charRange: CharRange): LeafTemplate => {
   const chars = charRange.toJSON().chars;
-  const leafs: Leaf[] = [];
+  const leafs: readonly Leaf[] = [];
 
   let rangeLeafStart = null;
   for (let i = 0; i < chars.length; i++) {

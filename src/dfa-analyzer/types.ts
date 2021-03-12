@@ -20,7 +20,7 @@ export type AstElementOrQuantifierElement =
 
 export type ASTPath = ReadonlyArray<AstElementOrQuantifierElement>;
 export interface DFACache {
-  readonly astToCharRange: Map<AST.Element, CharRange>;
+  readonly astToCharRange: ReadonlyMap<AST.Element, CharRange>;
 }
 
 export type ExlusiveState = 'Exlusive' | 'NotExclusive' | 'OrderExclusive';

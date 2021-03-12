@@ -66,7 +66,7 @@ class NumericSet extends Set<number> {
   }
 
   toArray() {
-    const array: number[] = [];
+    const array: readonly number[] = [];
     this.forEach((char) => array.push(char));
     return _.sortBy((char) => char, array);
   }
@@ -96,7 +96,7 @@ export class CharRange {
     options: { readonly ignoreCase: boolean; readonly negate: boolean },
   ): CharRange {
     const { ignoreCase, negate } = options;
-    const chars: number[] = [];
+    const chars: readonly number[] = [];
 
     definitions.forEach((definition) => {
       if (typeof definition === 'string' || typeof definition === 'number') {

@@ -43,8 +43,8 @@ configFiles
     console.log(configFile);
 
     let config: {
-      testInputs: string[];
-      regex: string;
+      readonly testInputs: readonly string[];
+      readonly regex: string;
     };
     try {
       config = JSON.parse(

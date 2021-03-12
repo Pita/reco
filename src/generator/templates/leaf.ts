@@ -8,10 +8,10 @@ export const registerLeafPartial = () => {
 };
 
 export type LeafTemplate =
-  | { type: 'lastComparison'; comparison: ComparsionTemplate }
+  | { readonly type: 'lastComparison'; readonly comparison: ComparsionTemplate }
   | {
-      type: 'comparison';
-      comparison: ComparsionTemplate;
-      comparisonTrue: LeafTemplate;
-      comparisonFalse: LeafTemplate;
+      readonly type: 'comparison';
+      readonly comparison: ComparsionTemplate;
+      readonly comparisonTrue: LeafTemplate;
+      readonly comparisonFalse: LeafTemplate;
     };

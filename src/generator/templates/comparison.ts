@@ -8,17 +8,17 @@ export const registerComparisonPartial = () => {
 
 export type ComparsionTemplate =
   | {
-      type: 'lessOrEqual' | 'moreOrEqual' | 'equal';
-      comparisonValue: number;
+      readonly type: 'lessOrEqual' | 'moreOrEqual' | 'equal';
+      readonly comparisonValue: number;
     }
   | {
-      type: 'equalOneOfTwo';
-      comparisonValue1: number;
-      comparisonValue2: number;
+      readonly type: 'equalOneOfTwo';
+      readonly comparisonValue1: number;
+      readonly comparisonValue2: number;
     }
   | {
-      type: 'true';
+      readonly type: 'true';
     }
   | {
-      type: 'false';
+      readonly type: 'false';
     };

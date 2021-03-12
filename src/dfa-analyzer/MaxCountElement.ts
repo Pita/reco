@@ -11,7 +11,7 @@ export const handleMaxCountASTElement: DFAHandler<MaxCountASTElement> = (
     path: options.path.slice(1),
   });
 
-  let withQuantifier: CharRangeSequence[] = [];
+  let withQuantifier: readonly CharRangeSequence[] = [];
   if (element.count > 0) {
     const newPathWithReducedCounter = [
       {

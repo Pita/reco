@@ -93,7 +93,7 @@ export class CharRangeSequencePossibilities {
   }
 
   private getFirstTwoCharRangesForQuickCheck(flags: Flags) {
-    const charUnions: Array<{
+    const charUnions: ReadonlyArray<{
       readonly charRange: CharRange;
       readonly astElement: CharASTElement | null | 'moreThanOne';
     } | null> = [
@@ -157,7 +157,7 @@ export class CharRangeSequencePossibilities {
       return null;
     }
 
-    const determinesPerfectlyAstElements: Array<CharASTElement> = [];
+    const determinesPerfectlyAstElements: ReadonlyArray<CharASTElement> = [];
 
     const masksAndValues = charUnions.map((charUnion) => {
       if (!charUnion) {
@@ -200,7 +200,7 @@ export function computeExclusivityOfAlternatives(
   alternatives: ReadonlyArray<AST.Alternative>,
   literal: RegExpLiteral,
 ): ExlusiveState {
-  const mappedDFAs: CharRangeSequencePossibilities[] = [];
+  const mappedDFAs: readonly CharRangeSequencePossibilities[] = [];
   let complexity = 1;
   for (let i = 0; i < alternatives.length; i++) {
     const possibilities = dfaAnalyzeElement([alternatives[i]], literal, 20);

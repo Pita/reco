@@ -1,7 +1,7 @@
 import { AST } from 'regexpp';
 
 export const removeFromSide = (
-  alternatives: AST.Alternative[],
+  alternatives: readonly AST.Alternative[],
   side: 'start' | 'end',
   canRemove: (element: AST.Element) => boolean,
 ) => {
