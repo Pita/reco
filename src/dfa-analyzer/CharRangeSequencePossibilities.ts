@@ -196,6 +196,7 @@ export class CharRangeSequencePossibilities {
   }
 }
 
+// TODO: make me functional
 export function computeExclusivityOfAlternatives(
   alternatives: ReadonlyArray<AST.Alternative>,
   literal: RegExpLiteral,
