@@ -17,7 +17,7 @@ export type CharASTElement =
   | AST.Character;
 
 export const handleCharSequence: ASTHandler<
-  ReadonlyArray<CharASTElement>,
+  readonly CharASTElement[],
   QuickCheckDetails | null
 > = (charASTElements, nextAtom, context, quickCheck = null) => {
   if (context.flags.INTERNAL_backwards) {

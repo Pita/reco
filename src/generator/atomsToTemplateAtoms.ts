@@ -44,7 +44,7 @@ function lastCharOfASTElement(astElement: AST.Element): RegexSlice {
 }
 
 function wholeRangeOfAstElements(
-  astElements: ReadonlyArray<AST.Element>,
+  astElements: readonly AST.Element[],
 ): RegexSlice {
   return _.reduce(
     ({ start: accStart, end: accEnd }, { start, end }) => {
@@ -58,19 +58,17 @@ function wholeRangeOfAstElements(
   );
 }
 
-function isArray<T>(
-  value: T | ReadonlyArray<T> | null,
-): value is ReadonlyArray<T> {
+function isArray<T>(value: T | readonly T[] | null): value is readonly T[] {
   return Array.isArray(value);
 }
 
 function reduceAtom(
   atom: Atom,
   optimizedRegexStr: string,
-  templateAtomsAcc: ReadonlyArray<TemplateAtom>,
+  templateAtomsAcc: readonly TemplateAtom[],
 ): {
   readonly functionName: string;
-  readonly templateAtomsAcc: ReadonlyArray<TemplateAtom>;
+  readonly templateAtomsAcc: readonly TemplateAtom[];
 } {
   const { templateAtomsAcc: accWithReferences, references } = reduceReferences(
     optimizedRegexStr,
@@ -130,12 +128,12 @@ function reduceAtom(
 }
 
 function reduceAtomsArray(
-  atomArray: ReadonlyArray<Atom>,
+  atomArray: readonly Atom[],
   optimizedRegexStr: string,
-  templateAtomsAcc: ReadonlyArray<TemplateAtom>,
+  templateAtomsAcc: readonly TemplateAtom[],
 ): {
-  readonly templateAtomsAcc: ReadonlyArray<TemplateAtom>;
-  readonly functionNames: ReadonlyArray<string>;
+  readonly templateAtomsAcc: readonly TemplateAtom[];
+  readonly functionNames: readonly string[];
 } {
   const { templateAtomsAcc: accWithArray, functionNames } = _.reduce(
     ({ templateAtomsAcc, functionNames }, atom) => {
@@ -150,7 +148,7 @@ function reduceAtomsArray(
         functionNames: [...functionNames, functionName],
       };
     },
-    { templateAtomsAcc, functionNames: [] as ReadonlyArray<string> },
+    { templateAtomsAcc, functionNames: [] as readonly string[] },
     atomArray,
   );
 
@@ -163,9 +161,9 @@ function reduceAtomsArray(
 function reduceReferences(
   optimizedRegexStr: string,
   references: AtomReferences<Atom>,
-  templateAtomsAcc: ReadonlyArray<TemplateAtom>,
+  templateAtomsAcc: readonly TemplateAtom[],
 ): {
-  readonly templateAtomsAcc: ReadonlyArray<TemplateAtom>;
+  readonly templateAtomsAcc: readonly TemplateAtom[];
   readonly references: AtomReferences<string>;
 } {
   const referenceEntries = Object.entries(references);
@@ -195,10 +193,7 @@ function reduceReferences(
           templateAtomsAcc: accWithArray,
           referencesEntries: [
             ...referencesEntries,
-            [entryKey, functionNames] as readonly [
-              string,
-              ReadonlyArray<string>,
-            ],
+            [entryKey, functionNames] as readonly [string, readonly string[]],
           ],
         };
       }
@@ -219,9 +214,10 @@ function reduceReferences(
     },
     {
       templateAtomsAcc,
-      referencesEntries: [] as ReadonlyArray<
-        readonly [string, string | ReadonlyArray<string> | null]
-      >,
+      referencesEntries: [] as readonly (readonly [
+        string,
+        string | readonly string[] | null,
+      ])[],
     },
     referenceEntries,
   );
@@ -241,7 +237,7 @@ export function unrollEntryAtom(
   atom: Atom,
 ): {
   readonly entryFunctionName: string;
-  readonly templateAtoms: ReadonlyArray<TemplateAtom>;
+  readonly templateAtoms: readonly TemplateAtom[];
 } {
   const unrolled = reduceAtom(atom, optimizedRegexStr, []);
 

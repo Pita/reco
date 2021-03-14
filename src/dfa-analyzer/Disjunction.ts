@@ -3,7 +3,7 @@ import { handleAlternative } from './Alternative';
 import { DFAHandler } from './types';
 import { flattenSequences } from './CharRangeSequence';
 
-export const handleDisjunction: DFAHandler<ReadonlyArray<AST.Alternative>> = (
+export const handleDisjunction: DFAHandler<readonly AST.Alternative[]> = (
   alternatives,
   options,
 ) => {

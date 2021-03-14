@@ -18,7 +18,7 @@ export type AstElementOrQuantifierElement =
   | MaxCountASTElement
   | InfiniteASTElement;
 
-export type ASTPath = ReadonlyArray<AstElementOrQuantifierElement>;
+export type ASTPath = readonly AstElementOrQuantifierElement[];
 export interface DFACache {
   readonly astToCharRange: ReadonlyMap<AST.Element, CharRange>;
 }
@@ -33,6 +33,6 @@ export type DFAHandler<T> = (
     readonly currentLength: number;
     readonly maxLength: number;
     readonly path: ASTPath;
-    readonly currentSequences: ReadonlyArray<CharRangeSequence>;
+    readonly currentSequences: readonly CharRangeSequence[];
   },
-) => ReadonlyArray<CharRangeSequence>;
+) => readonly CharRangeSequence[];

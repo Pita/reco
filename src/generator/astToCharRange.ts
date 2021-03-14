@@ -84,7 +84,7 @@ export const astToCharRange = (
         }
         const fullValue = matchPropertyValue(set.key, setValue);
         const regenerateSet: {
-          readonly toArray: () => ReadonlyArray<number>;
+          readonly toArray: () => readonly number[];
           // eslint-disable-next-line @typescript-eslint/no-var-requires
         } = require(`regenerate-unicode-properties/${set.key}/${fullValue}.js`);
         return CharRange.create(regenerateSet.toArray(), {

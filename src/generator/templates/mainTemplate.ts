@@ -16,12 +16,12 @@ export interface GroupReference {
 // TODO: when should that be created?
 
 // interface References<HandlerType> {
-//   readonly [type: string]: HandlerType | ReadonlyArray<HandlerType> | null;
+//   readonly [type: string]: HandlerType | readonly HandlerType[] | null;
 // } // TODO: implement me
 
 export interface AtomReferences<HandlerType> {
   readonly nextAtom: HandlerType | null;
-  readonly [key: string]: HandlerType | ReadonlyArray<HandlerType> | null;
+  readonly [key: string]: HandlerType | readonly HandlerType[] | null;
 }
 
 interface BaseAtom<HandlerType> {
@@ -43,20 +43,22 @@ export interface RecursiveQuantifierAtom<HandlerType>
 
 export interface CharSequenceAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'charSequence';
-  readonly astElements: ReadonlyArray<CharASTElement>;
+  readonly astElements: readonly CharASTElement[];
   readonly data: {
-    readonly orderedLoading: ReadonlyArray<{
-      readonly unitsCount: UTF16UnitsCount;
-      readonly unicode: boolean;
-    }> | null;
+    readonly orderedLoading:
+      | readonly {
+          readonly unitsCount: UTF16UnitsCount;
+          readonly unicode: boolean;
+        }[]
+      | null;
     readonly length: number;
-    readonly chars: ReadonlyArray<{
+    readonly chars: readonly {
       readonly tree: LeafTemplate;
       readonly negate: boolean;
       readonly unitsCount: UTF16UnitsCount;
       readonly offset: number;
       readonly canBeSkipped: boolean;
-    }>;
+    }[];
   };
 }
 
@@ -191,27 +193,27 @@ export interface LazyQuantifierAtom<HandlerType> extends BaseAtom<HandlerType> {
 
 export interface DisjunctionAtom<HandlerType> extends BaseAtom<HandlerType> {
   readonly type: 'disjunction';
-  readonly astElements: ReadonlyArray<AST.Alternative>;
+  readonly astElements: readonly AST.Alternative[];
   readonly data: {
-    readonly quickChecks: ReadonlyArray<QuickCheckDetails>;
+    readonly quickChecks: readonly QuickCheckDetails[];
   };
   readonly references: {
     readonly nextAtom: HandlerType | null;
-    readonly alternatives: ReadonlyArray<HandlerType>;
+    readonly alternatives: readonly HandlerType[];
   };
 }
 
 export interface PossessiveDisjunctionAtom<HandlerType>
   extends BaseAtom<HandlerType> {
   readonly type: 'possessiveDisjunction';
-  readonly astElements: ReadonlyArray<AST.Alternative>;
+  readonly astElements: readonly AST.Alternative[];
   readonly data: {
-    readonly groupsToRestore: ReadonlyArray<GroupReference>;
-    readonly quickChecks: ReadonlyArray<QuickCheckDetails>;
+    readonly groupsToRestore: readonly GroupReference[];
+    readonly quickChecks: readonly QuickCheckDetails[];
   };
   readonly references: {
     readonly nextAtom: HandlerType | null;
-    readonly alternatives: ReadonlyArray<HandlerType>;
+    readonly alternatives: readonly HandlerType[];
   };
 }
 
@@ -301,7 +303,7 @@ export interface TemplateValues {
   readonly originalRegexStr: string;
   readonly version: string;
 
-  readonly templateAtoms: ReadonlyArray<TemplateAtom>;
+  readonly templateAtoms: readonly TemplateAtom[];
   readonly entryFunctionName: string;
 
   readonly matchPositioning: MatchPositioning;

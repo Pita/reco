@@ -4,7 +4,7 @@ import { Flags } from 'regexpp/ast';
 const normalizeUpperLowerCase = (
   char: number,
   ignoreCase: boolean,
-): ReadonlyArray<number> => {
+): readonly number[] => {
   if (!ignoreCase) {
     return [char];
   }
@@ -79,7 +79,7 @@ export class CharRange {
   private readonly negate: boolean;
 
   constructor(options: {
-    readonly chars: ReadonlyArray<number> | NumericSet;
+    readonly chars: readonly number[] | NumericSet;
     readonly negate: boolean;
   }) {
     this.chars = new NumericSet(options.chars);
@@ -87,12 +87,12 @@ export class CharRange {
   }
 
   static create(
-    definitions: ReadonlyArray<
+    definitions: readonly [
       | number
       | string
       | { readonly from: string; readonly to: string }
-      | { readonly from: number; readonly to: number }
-    >,
+      | { readonly from: number; readonly to: number },
+    ],
     options: { readonly ignoreCase: boolean; readonly negate: boolean },
   ): CharRange {
     const { ignoreCase, negate } = options;
@@ -215,7 +215,7 @@ export class CharRange {
 
   toJSON(): {
     readonly negate: boolean;
-    readonly chars: ReadonlyArray<number>;
+    readonly chars: readonly number[];
   } {
     return {
       negate: this.negate,

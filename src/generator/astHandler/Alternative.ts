@@ -8,7 +8,7 @@ import { handleElement } from './Element';
 
 type GroupedCharElements = {
   readonly type: 'GroupedChars';
-  readonly chars: ReadonlyArray<CharASTElement>;
+  readonly chars: readonly CharASTElement[];
 };
 
 export const handleAlternative: ASTHandler<
@@ -40,7 +40,7 @@ export const handleAlternative: ASTHandler<
           return [element, ...acc];
       }
     },
-    [] as ReadonlyArray<GroupedCharElements | AST.Element>,
+    [] as readonly (GroupedCharElements | AST.Element)[],
     alternative.elements,
   );
 

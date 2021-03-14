@@ -234,7 +234,7 @@ import { hasInsideOutBacktracking } from '../checkForInsideOutBacktracking';
 // };
 
 export const handleDisjunction = (
-  alternatives: ReadonlyArray<AST.Alternative>,
+  alternatives: readonly AST.Alternative[],
   templateValues: CollectedTemplateValues,
   context: GeneratorContext,
 ): CollectedTemplateValues => {

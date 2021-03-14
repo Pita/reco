@@ -8,7 +8,7 @@ import * as _ from 'lodash/fp';
 
 type GroupedCharElements = {
   readonly type: 'GroupedChars';
-  readonly chars: ReadonlyArray<CharASTElement>;
+  readonly chars: readonly CharASTElement[];
 };
 
 export const handleAlternative = (
@@ -42,7 +42,7 @@ export const handleAlternative = (
           return [element, ...acc];
       }
     },
-    [] as ReadonlyArray<GroupedCharElements | AST.Element>,
+    [] as readonly (GroupedCharElements | AST.Element)[],
     alternative.elements,
   );
 

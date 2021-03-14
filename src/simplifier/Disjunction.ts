@@ -182,10 +182,9 @@ const attemptGrouping = (
     .join('|');
 };
 
-export const handleDisjunction: SimplifierHandler<readonly AST.Alternative[]> = (
-  alternatives,
-  options,
-) => {
+export const handleDisjunction: SimplifierHandler<
+  readonly AST.Alternative[]
+> = (alternatives, options) => {
   if (alternatives.length === 1) {
     return handleAlternative(alternatives[0], options);
   }

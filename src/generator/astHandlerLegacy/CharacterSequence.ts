@@ -18,7 +18,7 @@ export type CharASTElement =
   | AST.Character;
 
 // const handleBackwardsChars = (
-//   charASTElements: ReadonlyArray<CharASTElement>,
+//   charASTElements: readonly CharASTElement[],
 //   templateValues: CollectedTemplateValues,
 //   currentFiber: FiberTemplateDefinition,
 //   flags: Flags,
@@ -41,7 +41,7 @@ export type CharASTElement =
 // };
 
 export const handleCharSequence = (
-  charASTElements: ReadonlyArray<CharASTElement>,
+  charASTElements: readonly CharASTElement[],
   templateValues: CollectedTemplateValues,
   context: GeneratorContext,
   quickCheck: QuickCheckDetails | null = null,

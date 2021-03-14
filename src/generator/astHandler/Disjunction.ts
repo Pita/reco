@@ -230,7 +230,7 @@ import { handleAlternative } from './Alternative';
 //   return isQuickCheckable ? quickChecks : null;
 // };
 
-export const handleDisjunction: ASTHandler<ReadonlyArray<AST.Alternative>> = (
+export const handleDisjunction: ASTHandler<readonly AST.Alternative[]> = (
   alternatives,
   nextAtom,
   context,

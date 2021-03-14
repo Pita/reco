@@ -7,7 +7,7 @@ import { dfaAnalyzeElement } from './dfaAnalyze';
 import { ExlusiveState } from './types';
 
 export type QuickCheckDetails = {
-  readonly determinesPerfectlyAstElements: ReadonlyArray<CharASTElement>;
+  readonly determinesPerfectlyAstElements: readonly CharASTElement[];
   readonly mask: number;
   readonly value: number;
 };
@@ -25,9 +25,9 @@ function debugToBinary(n: number) {
 }
 
 export class CharRangeSequencePossibilities {
-  readonly possibilities: ReadonlyArray<CharRangeSequence>;
+  readonly possibilities: readonly CharRangeSequence[];
 
-  constructor(possibilities: ReadonlyArray<CharRangeSequence>) {
+  constructor(possibilities: readonly CharRangeSequence[]) {
     this.possibilities = possibilities;
   }
 
@@ -67,13 +67,13 @@ export class CharRangeSequencePossibilities {
     return true;
   }
 
-  toJSON(): ReadonlyArray<{
+  toJSON(): readonly {
     readonly charRanges: readonly {
       readonly negate: boolean;
-      readonly chars: ReadonlyArray<number>;
+      readonly chars: readonly number[];
     }[];
-    readonly astElements: ReadonlyArray<CharASTElement>;
-  }> {
+    readonly astElements: readonly CharASTElement[];
+  }[] {
     return this.possibilities.map((possiblity) => possiblity.toJSON());
   }
 
@@ -93,10 +93,10 @@ export class CharRangeSequencePossibilities {
   }
 
   private getFirstTwoCharRangesForQuickCheck(flags: Flags) {
-    const charUnions: ReadonlyArray<{
+    const charUnions: readonly ({
       readonly charRange: CharRange;
       readonly astElement: CharASTElement | null | 'moreThanOne';
-    } | null> = [
+    } | null)[] = [
       { charRange: CharRange.createEmptyRange(), astElement: null },
       { charRange: CharRange.createEmptyRange(), astElement: null },
     ];
@@ -157,7 +157,7 @@ export class CharRangeSequencePossibilities {
       return null;
     }
 
-    const determinesPerfectlyAstElements: ReadonlyArray<CharASTElement> = [];
+    const determinesPerfectlyAstElements: readonly CharASTElement[] = [];
 
     const masksAndValues = charUnions.map((charUnion) => {
       if (!charUnion) {
@@ -198,7 +198,7 @@ export class CharRangeSequencePossibilities {
 
 // TODO: make me functional
 export function computeExclusivityOfAlternatives(
-  alternatives: ReadonlyArray<AST.Alternative>,
+  alternatives: readonly AST.Alternative[],
   literal: RegExpLiteral,
 ): ExlusiveState {
   const mappedDFAs: readonly CharRangeSequencePossibilities[] = [];

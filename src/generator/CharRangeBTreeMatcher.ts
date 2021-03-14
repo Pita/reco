@@ -45,7 +45,7 @@ export const computeAverageLeafComplexity = (rootLeaf: LeafTemplate) => {
   return averageComplexity;
 };
 
-const processLeafs = (leafs: ReadonlyArray<Leaf>): LeafTemplate => {
+const processLeafs = (leafs: readonly Leaf[]): LeafTemplate => {
   if (leafs.length === 0) {
     return {
       type: 'lastComparison',
