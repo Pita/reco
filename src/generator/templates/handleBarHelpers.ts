@@ -18,13 +18,9 @@ Handlebars.registerHelper(
 );
 
 Handlebars.registerHelper('times', function (n, block) {
-  return _.reduce(
-    (accum, i) => {
-      return accum + block.fn(i);
-    },
-    '',
-    _.range(0, n),
-  );
+  return _.range(0, n).reduce((accum, i) => {
+    return accum + block.fn(i);
+  }, '');
 });
 
 Handlebars.registerHelper('nextItem', function (array, currentIndex, options) {

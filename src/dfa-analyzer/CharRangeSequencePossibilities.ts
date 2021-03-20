@@ -50,28 +50,20 @@ export class CharRangeSequencePossibilities {
 
     // return isOrderExclusive ? 'OrderExclusive' : 'Exclusive';
 
-    return _.reduce<CharRangeSequence, ExclusiveState>(
-      (acc, ownPossiblity) => {
-        return _.reduce(
-          (acc, otherPossiblity) => {
-            if (acc === 'NotExclusive') {
-              return acc;
-            }
+    return this.possibilities.reduce((acc, ownPossiblity) => {
+      return other.possibilities.reduce((acc, otherPossiblity) => {
+        if (acc === 'NotExclusive') {
+          return acc;
+        }
 
-            const exclusiveState = ownPossiblity.isExclusive(otherPossiblity);
-            if (exclusiveState !== 'Exclusive') {
-              return exclusiveState;
-            }
+        const exclusiveState = ownPossiblity.isExclusive(otherPossiblity);
+        if (exclusiveState !== 'Exclusive') {
+          return exclusiveState;
+        }
 
-            return acc;
-          },
-          acc,
-          other.possibilities,
-        );
-      },
-      'Exclusive',
-      this.possibilities,
-    );
+        return acc;
+      }, acc);
+    }, 'Exclusive' as ExclusiveState);
   }
 
   get(
@@ -100,14 +92,9 @@ export class CharRangeSequencePossibilities {
   }
 
   maxLengthOfPossibilities(): number {
-    // TODO: FUNC: convert to reduce
-
-    let maxLength = 0;
-    this.possibilities.forEach((charRange) => {
-      maxLength = Math.max(maxLength, charRange.length());
-    });
-
-    return maxLength;
+    return this.possibilities.reduce((acc, charRange) => {
+      return Math.max(acc, charRange.length());
+    }, 0);
   }
 
   private getFirstTwoCharRangesForQuickCheck(flags: Flags) {

@@ -44,7 +44,7 @@ function lastCharOfASTElement(astElement: AST.Node): RegexSlice {
 }
 
 function wholeRangeOfAstElements(astElements: readonly AST.Node[]): RegexSlice {
-  return _.reduce(
+  return astElements.reduce(
     ({ start: accStart, end: accEnd }, { start, end }) => {
       return {
         start: Math.min(accStart, start),
@@ -52,7 +52,6 @@ function wholeRangeOfAstElements(astElements: readonly AST.Node[]): RegexSlice {
       };
     },
     { start: Infinity, end: -Infinity },
-    astElements,
   );
 }
 
@@ -133,7 +132,7 @@ function reduceAtomsArray(
   readonly templateAtomsAcc: readonly TemplateAtom[];
   readonly functionNames: readonly string[];
 } {
-  const { templateAtomsAcc: accWithArray, functionNames } = _.reduce(
+  const { templateAtomsAcc: accWithArray, functionNames } = atomArray.reduce(
     ({ templateAtomsAcc, functionNames }, atom) => {
       const { templateAtomsAcc: accWithAtom, functionName } = reduceAtom(
         atom,
@@ -147,7 +146,6 @@ function reduceAtomsArray(
       };
     },
     { templateAtomsAcc, functionNames: [] as readonly string[] },
-    atomArray,
   );
 
   return {
@@ -169,7 +167,7 @@ function reduceReferences(
   const {
     templateAtomsAcc: accWithReferences,
     referencesEntries: templateReferenceEntries,
-  } = _.reduce(
+  } = referenceEntries.reduce(
     ({ templateAtomsAcc, referencesEntries }, [entryKey, entryValue]) => {
       if (entryValue === null) {
         return {
@@ -217,7 +215,6 @@ function reduceReferences(
         string | readonly string[] | null,
       ])[],
     },
-    referenceEntries,
   );
 
   const templateReferences = Object.fromEntries(

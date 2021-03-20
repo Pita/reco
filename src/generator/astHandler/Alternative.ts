@@ -15,50 +15,42 @@ export const handleAlternative: ASTHandler<
   AST.Alternative,
   QuickCheckDetails | null
 > = (alternative, nextAtom, context, quickCheck = null): Atom | null => {
-  const groupedElements = _.reduce(
-    (acc, element) => {
-      switch (element.type) {
-        case 'Character':
-        case 'CharacterSet':
-        case 'CharacterClass': {
-          const firstElement = _.first(acc);
-          if (firstElement && firstElement.type === 'GroupedChars') {
-            const groupedChars: GroupedCharElements = {
-              type: 'GroupedChars',
-              chars: [...firstElement.chars, element],
-            };
-            return [groupedChars, ...acc.slice(1)];
-          } else {
-            const groupedChars: GroupedCharElements = {
-              type: 'GroupedChars',
-              chars: [element],
-            };
-            return [groupedChars, ...acc];
-          }
+  const groupedElements = alternative.elements.reduce((acc, element) => {
+    switch (element.type) {
+      case 'Character':
+      case 'CharacterSet':
+      case 'CharacterClass': {
+        const firstElement = _.first(acc);
+        if (firstElement && firstElement.type === 'GroupedChars') {
+          const groupedChars: GroupedCharElements = {
+            type: 'GroupedChars',
+            chars: [...firstElement.chars, element],
+          };
+          return [groupedChars, ...acc.slice(1)];
+        } else {
+          const groupedChars: GroupedCharElements = {
+            type: 'GroupedChars',
+            chars: [element],
+          };
+          return [groupedChars, ...acc];
         }
-        default:
-          return [element, ...acc];
       }
-    },
-    [] as readonly (GroupedCharElements | AST.Element)[],
-    alternative.elements,
-  );
+      default:
+        return [element, ...acc];
+    }
+  }, [] as readonly (GroupedCharElements | AST.Element)[]);
 
-  return _.reduce(
-    (nextAtom, groupedElement) => {
-      switch (groupedElement.type) {
-        case 'GroupedChars':
-          return handleCharSequence(
-            groupedElement.chars,
-            nextAtom,
-            context,
-            quickCheck,
-          );
-        default:
-          return handleElement(groupedElement, nextAtom, context);
-      }
-    },
-    nextAtom,
-    groupedElements,
-  );
+  return groupedElements.reduce((nextAtom, groupedElement) => {
+    switch (groupedElement.type) {
+      case 'GroupedChars':
+        return handleCharSequence(
+          groupedElement.chars,
+          nextAtom,
+          context,
+          quickCheck,
+        );
+      default:
+        return handleElement(groupedElement, nextAtom, context);
+    }
+  }, nextAtom);
 };

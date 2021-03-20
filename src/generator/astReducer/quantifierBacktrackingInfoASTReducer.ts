@@ -103,7 +103,7 @@ function reduceQuantifier(
   // check if there is any child quantifier with limited backtracking
   // if so, we need to carry over the elements that reach to outside of
   // ourselves
-  const limitedBacktrackingCharsOfInnerQuantifiers = _.reduce(
+  const limitedBacktrackingCharsOfInnerQuantifiers = childQuantifiers.reduce(
     (acc, childQuantifierEntry) => {
       const quantifierInfo = childQuantifierEntry[1];
       if (quantifierInfo.type !== 'limitedBacktracking') {
@@ -113,7 +113,6 @@ function reduceQuantifier(
       return [...acc, ...quantifierInfo.canNotBacktrackAfter];
     },
     [] as readonly CharASTElement[],
-    childQuantifiers,
   );
   const {
     notContained: carryOverCanNotBacktrackAfter,
@@ -203,25 +202,22 @@ function reduceNode(
     case 'Pattern':
     case 'Group':
     case 'CapturingGroup':
-      return _.reduce(
+      return node.alternatives.reduce(
         (acc, node) => reduceNode(acc, node, literal),
         acc,
-        node.alternatives,
       );
     case 'Assertion':
       if (node.kind === 'lookahead' || node.kind === 'lookbehind') {
-        return _.reduce(
+        return node.alternatives.reduce(
           (acc, node) => reduceNode(acc, node, literal),
           acc,
-          node.alternatives,
         );
       }
       return acc;
     case 'Alternative':
-      return _.reduce(
+      return node.elements.reduce(
         (acc, node) => reduceNode(acc, node, literal),
         acc,
-        node.elements,
       );
     case 'CharacterClass':
     case 'CharacterClassRange':

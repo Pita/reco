@@ -36,22 +36,20 @@ function reduceNode(acc: ContainsCharAcc, node: AST.Node): ContainsCharAcc {
     case 'Pattern':
     case 'Group':
     case 'CapturingGroup':
-      return _.reduce(
+      return node.alternatives.reduce(
         (acc, node) => reduceNode(acc, node),
         acc,
-        node.alternatives,
       );
     case 'Assertion':
       if (node.kind === 'lookahead' || node.kind === 'lookbehind') {
-        return _.reduce(
+        return node.alternatives.reduce(
           (acc, node) => reduceNode(acc, node),
           acc,
-          node.alternatives,
         );
       }
       return acc;
     case 'Alternative':
-      return _.reduce((acc, node) => reduceNode(acc, node), acc, node.elements);
+      return node.elements.reduce((acc, node) => reduceNode(acc, node), acc);
     case 'Quantifier':
       return reduceNode(acc, node.element);
     case 'CharacterClass':
