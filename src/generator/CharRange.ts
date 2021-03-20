@@ -1,5 +1,6 @@
 import * as _ from 'lodash/fp';
 import { Flags } from 'regexpp/ast';
+import { options } from 'yargs';
 
 const normalizeUpperLowerCase = (
   char: number,
@@ -104,6 +105,16 @@ export class CharRange {
 
     return new CharRange({
       negate,
+      chars,
+    });
+  }
+
+  static createFromUnicodeArray(
+    chars: readonly number[],
+    options: { readonly negate: boolean },
+  ): CharRange {
+    return new CharRange({
+      negate: options.negate,
       chars,
     });
   }

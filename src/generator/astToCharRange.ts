@@ -84,9 +84,8 @@ export const astToCharRange = (
           // TODO: always import all
           // eslint-disable-next-line @typescript-eslint/no-var-requires
         } = require(`regenerate-unicode-properties/${set.key}/${fullValue}.js`);
-        return CharRange.create(regenerateSet.toArray(), {
+        return CharRange.createFromUnicodeArray(regenerateSet.toArray(), {
           negate: set.negate,
-          ignoreCase,
         });
       }
     }
