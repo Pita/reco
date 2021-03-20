@@ -26,49 +26,39 @@ const toCharCode = (element: string | number) => {
   return element.charCodeAt(0);
 };
 
-class NumericSet extends Set<number> {
+class NumericSet {
+  private readonly set: ReadonlySet<number>;
+
+  private constructor(set: readonly number[]) {
+    this.set = new Set(set);
+  }
+
+  static from(chars: readonly number[] | NumericSet): NumericSet {
+    if (chars instanceof NumericSet) {
+      return chars;
+    }
+
+    return new NumericSet(chars);
+  }
+
   difference(other: NumericSet) {
-    const difference = new NumericSet();
-
-    this.forEach((char) => {
-      if (!other.has(char)) {
-        difference.add(char);
-      }
-    });
-
-    return difference;
+    return new NumericSet(this.toArray().filter((num) => !other.set.has(num)));
   }
 
   union(other: NumericSet) {
-    const union = new NumericSet();
-
-    this.forEach((char) => {
-      union.add(char);
-    });
-
-    other.forEach((char) => {
-      union.add(char);
-    });
-
-    return union;
+    return new NumericSet([...this.set, ...other.set]);
   }
 
   intersection(other: NumericSet) {
-    const intersection = new NumericSet();
-
-    this.forEach((char) => {
-      if (other.has(char)) {
-        intersection.add(char);
-      }
-    });
-
-    return intersection;
+    return new NumericSet(this.toArray().filter((num) => other.set.has(num)));
   }
 
-  toArray() {
-    const array: readonly number[] = [];
-    this.forEach((char) => array.push(char));
-    return _.sortBy((char) => char, array);
+  toArray(): readonly number[] {
+    return Array.from(this.set);
+  }
+
+  size() {
+    return this.set.size;
   }
 }
 
@@ -82,7 +72,7 @@ export class CharRange {
     readonly chars: readonly number[] | NumericSet;
     readonly negate: boolean;
   }) {
-    this.chars = new NumericSet(options.chars);
+    this.chars = NumericSet.from(options.chars);
     this.negate = options.negate;
   }
 
@@ -96,25 +86,21 @@ export class CharRange {
     options: { readonly ignoreCase: boolean; readonly negate: boolean },
   ): CharRange {
     const { ignoreCase, negate } = options;
-    const chars: readonly number[] = [];
-
-    definitions.forEach((definition) => {
+    const chars = definitions.reduce((acc, definition) => {
       if (typeof definition === 'string' || typeof definition === 'number') {
-        normalizeUpperLowerCase(
-          toCharCode(definition),
-          ignoreCase,
-        ).forEach((char) => chars.push(char));
+        return [
+          ...acc,
+          ...normalizeUpperLowerCase(toCharCode(definition), ignoreCase),
+        ];
       } else {
         const from = toCharCode(definition.from);
         const to = toCharCode(definition.to);
 
-        for (let i = from; i <= to; i++) {
-          normalizeUpperLowerCase(i, ignoreCase).forEach((char) =>
-            chars.push(char),
-          );
-        }
+        return _.range(from, to + 1).reduce((acc, char) => {
+          return [...acc, ...normalizeUpperLowerCase(char, ignoreCase)];
+        }, acc);
       }
-    });
+    }, [] as readonly number[]);
 
     return new CharRange({
       negate,
@@ -150,15 +136,15 @@ export class CharRange {
 
     if (this.negate) {
       const onlyInOther = other.chars.difference(this.chars);
-      return onlyInOther.size !== 0;
+      return onlyInOther.size() !== 0;
     }
     if (other.negate) {
       const onlyInThis = this.chars.difference(other.chars);
-      return onlyInThis.size !== 0;
+      return onlyInThis.size() !== 0;
     }
 
     const inCommon = this.chars.intersection(other.chars);
-    return inCommon.size > 0;
+    return inCommon.size() > 0;
   }
 
   smallestInCommon(other: CharRange): CharRange {
@@ -219,7 +205,7 @@ export class CharRange {
   } {
     return {
       negate: this.negate,
-      chars: this.chars.toArray(),
+      chars: _.sortBy((x) => x, this.chars.toArray()),
     };
   }
 
@@ -233,16 +219,9 @@ export class CharRange {
     }
 
     const chars = this.chars.toArray();
-    let canBeTwo = false;
-    let canBeOne = false;
-    chars.forEach((char) => {
-      const charLength = String.fromCodePoint(char).length;
-      if (charLength === 1) {
-        canBeOne = true;
-      } else if (charLength === 2) {
-        canBeTwo = true;
-      }
-    });
+    const charLengths = chars.map((char) => String.fromCodePoint(char).length);
+    const canBeOne = charLengths.some((charLength) => charLength === 1);
+    const canBeTwo = charLengths.some((charLength) => charLength === 2);
 
     if (canBeOne && !canBeTwo) {
       return '1';
