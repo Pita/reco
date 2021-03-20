@@ -2,6 +2,7 @@ import { AST } from 'regexpp';
 import { Flags } from './generator';
 import matchPropertyValue from 'unicode-match-property-value-ecmascript';
 import { CharRange } from './CharRange';
+import { CharASTElement } from './astHandler/CharacterSequence';
 
 const SPACES = [
   ' ',
@@ -42,12 +43,7 @@ const WORDS = [
 ];
 
 export const astToCharRange = (
-  element:
-    | AST.CharacterClass
-    | AST.AnyCharacterSet
-    | AST.EscapeCharacterSet
-    | AST.UnicodePropertyCharacterSet
-    | AST.Character,
+  element: CharASTElement,
   flags: Flags,
 ): CharRange => {
   const { ignoreCase } = flags;
@@ -85,6 +81,7 @@ export const astToCharRange = (
         const fullValue = matchPropertyValue(set.key, setValue);
         const regenerateSet: {
           readonly toArray: () => readonly number[];
+          // TODO: always import all
           // eslint-disable-next-line @typescript-eslint/no-var-requires
         } = require(`regenerate-unicode-properties/${set.key}/${fullValue}.js`);
         return CharRange.create(regenerateSet.toArray(), {

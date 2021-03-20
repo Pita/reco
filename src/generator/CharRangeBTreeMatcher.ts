@@ -1,6 +1,7 @@
 import { CharRange } from './CharRange';
 import { ComparsionTemplate } from './templates/comparison';
 import { LeafTemplate } from './templates/leaf';
+import * as _ from 'lodash/fp';
 
 interface Leaf {
   readonly min: number;
@@ -8,38 +9,56 @@ interface Leaf {
   readonly maxChecked?: boolean;
 }
 
-export const computeAverageLeafComplexity = (rootLeaf: LeafTemplate) => {
-  let complexitySum = 0;
-  let complexityCount = 0;
+type LeafComplexityAcc = {
+  readonly complexitySum: number;
+  readonly complexityCount: number;
+};
 
-  const processLeaf = (leaf: LeafTemplate, depth: number) => {
+export const computeAverageLeafComplexity = (
+  rootLeaf: LeafTemplate,
+): number => {
+  const processLeaf = (
+    acc: LeafComplexityAcc,
+    leaf: LeafTemplate,
+    depth: number,
+  ): LeafComplexityAcc => {
     switch (leaf.type) {
       case 'comparison':
-        processLeaf(leaf.comparisonTrue, depth + 1);
-        processLeaf(leaf.comparisonFalse, depth + 1);
-        break;
+        return [leaf.comparisonTrue, leaf.comparisonFalse].reduce(
+          (acc, leaf) => {
+            return processLeaf(acc, leaf, depth + 1);
+          },
+          acc,
+        );
       case 'lastComparison':
-        complexitySum += depth;
-        complexityCount++;
-
         switch (leaf.comparison.type) {
           case 'lessOrEqual':
           case 'moreOrEqual':
           case 'equal':
-            complexitySum++;
-            break;
+            return {
+              complexityCount: acc.complexityCount + 1,
+              complexitySum: acc.complexitySum + 1 + depth,
+            };
           case 'equalOneOfTwo':
-            complexitySum += 3;
-            complexityCount++;
-            break;
+            return {
+              complexityCount: acc.complexityCount + 2,
+              complexitySum: acc.complexitySum + 3 + depth,
+            };
           case 'false':
           case 'true':
-            break;
+            return {
+              complexityCount: acc.complexityCount + 1,
+              complexitySum: acc.complexitySum + depth,
+            };
         }
-        break;
     }
   };
-  processLeaf(rootLeaf, 0);
+
+  const { complexitySum, complexityCount } = processLeaf(
+    { complexitySum: 0, complexityCount: 0 },
+    rootLeaf,
+    0,
+  );
 
   const averageComplexity = complexitySum / complexityCount;
   return averageComplexity;
@@ -100,14 +119,23 @@ const processLeafs = (leafs: readonly Leaf[]): LeafTemplate => {
   }
 
   const slicePoint = Math.ceil(leafs.length / 2);
-  leafs[slicePoint - 1].maxChecked = true;
+  const markedLeafs = leafs.map((leaf, i) => {
+    if (i === slicePoint - 1) {
+      return {
+        ...leaf,
+        maxChecked: true,
+      };
+    }
 
-  const lowerHalf = processLeafs(leafs.slice(0, slicePoint));
-  const upperHalf = processLeafs(leafs.slice(slicePoint));
+    return leaf;
+  });
+
+  const lowerHalf = processLeafs(markedLeafs.slice(0, slicePoint));
+  const upperHalf = processLeafs(markedLeafs.slice(slicePoint));
 
   const comparison: ComparsionTemplate = {
     type: 'lessOrEqual',
-    comparisonValue: leafs[slicePoint - 1].max,
+    comparisonValue: markedLeafs[slicePoint - 1].max,
   };
 
   return {
@@ -120,27 +148,32 @@ const processLeafs = (leafs: readonly Leaf[]): LeafTemplate => {
 
 export const charRangeToLeafValues = (charRange: CharRange): LeafTemplate => {
   const chars = charRange.toJSON().chars;
-  const leafs: readonly Leaf[] = [];
 
-  let rangeLeafStart = null;
-  for (let i = 0; i < chars.length; i++) {
-    const currentChar = chars[i];
-    const nextCharIsFollowUp = currentChar + 1 === chars[i + 1];
+  const charGroups = chars.reduce((acc, currentChar) => {
+    const lastGroup = _.last(acc) ?? [];
+    const lastChar = _.last(lastGroup);
 
-    if (rangeLeafStart === null) {
-      if (nextCharIsFollowUp) {
-        rangeLeafStart = currentChar;
-      } else {
-        leafs.push({ min: currentChar, max: currentChar });
-      }
-    } else if (!nextCharIsFollowUp) {
-      leafs.push({
-        min: rangeLeafStart,
-        max: currentChar,
-      });
-      rangeLeafStart = null;
+    const charIsFollowUp = lastChar ? lastChar + 1 === currentChar : true;
+    if (charIsFollowUp) {
+      return [...acc.slice(0, -1), [...lastGroup, currentChar]];
+    } else {
+      return [...acc, [currentChar]];
     }
-  }
+  }, [] as readonly (readonly number[])[]);
+
+  const leafs: readonly Leaf[] = charGroups.map((charGroup) => {
+    const min = _.first(charGroup);
+    const max = _.last(charGroup);
+
+    if (min === undefined || max === undefined) {
+      throw new Error('Invalid empty char group');
+    }
+
+    return {
+      min,
+      max,
+    };
+  });
 
   return processLeafs(leafs);
 };
