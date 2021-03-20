@@ -1,7 +1,7 @@
 import { RegExpParser } from 'regexpp';
 import { handleDisjunction } from './Disjunction';
 
-export const simplifyRegex = (originalRegex: string) => {
+export const simplifyRegex = (originalRegex: string): string => {
   let previousRegex = originalRegex;
   let currentRegex = originalRegex;
   let firstPass = true;

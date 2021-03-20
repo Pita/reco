@@ -4,7 +4,7 @@ export const removeFromSide = (
   alternatives: readonly AST.Alternative[],
   side: 'start' | 'end',
   canRemove: (element: AST.Element) => boolean,
-) => {
+): string => {
   let removed = '';
 
   while (true) {

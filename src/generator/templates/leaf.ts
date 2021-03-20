@@ -2,7 +2,7 @@ import * as Handlebars from 'handlebars';
 import templateFile from './leaf.handlebars';
 import { ComparsionTemplate, registerComparisonPartial } from './comparison';
 
-export const registerLeafPartial = () => {
+export const registerLeafPartial = (): void => {
   registerComparisonPartial();
   Handlebars.registerPartial('leaf', templateFile);
 };

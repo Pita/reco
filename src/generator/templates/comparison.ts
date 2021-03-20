@@ -2,7 +2,7 @@ import * as Handlebars from 'handlebars';
 import './handleBarHelpers';
 import templateFile from './comparison.handlebars';
 
-export const registerComparisonPartial = () => {
+export const registerComparisonPartial = (): void => {
   Handlebars.registerPartial('comparison', templateFile);
 };
 
