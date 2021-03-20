@@ -87,12 +87,12 @@ export class CharRange {
   }
 
   static create(
-    definitions: readonly [
+    definitions: readonly (
       | number
       | string
       | { readonly from: string; readonly to: string }
-      | { readonly from: number; readonly to: number },
-    ],
+      | { readonly from: number; readonly to: number }
+    )[],
     options: { readonly ignoreCase: boolean; readonly negate: boolean },
   ): CharRange {
     const { ignoreCase, negate } = options;

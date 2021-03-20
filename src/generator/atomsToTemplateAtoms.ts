@@ -29,23 +29,21 @@ function formatAstLocation(
   };
 }
 
-function firstCharOfASTElement(astElement: AST.Element): RegexSlice {
+function firstCharOfASTElement(astElement: AST.Node): RegexSlice {
   return {
     start: astElement.start,
     end: astElement.start + 1,
   };
 }
 
-function lastCharOfASTElement(astElement: AST.Element): RegexSlice {
+function lastCharOfASTElement(astElement: AST.Node): RegexSlice {
   return {
     start: astElement.end - 1,
     end: astElement.end,
   };
 }
 
-function wholeRangeOfAstElements(
-  astElements: readonly AST.Element[],
-): RegexSlice {
+function wholeRangeOfAstElements(astElements: readonly AST.Node[]): RegexSlice {
   return _.reduce(
     ({ start: accStart, end: accEnd }, { start, end }) => {
       return {
