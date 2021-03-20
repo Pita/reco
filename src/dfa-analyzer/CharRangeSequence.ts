@@ -1,8 +1,8 @@
 import { CharRange } from '../generator/CharRange';
-import { ExlusiveState } from './types';
+import { ExclusiveState } from './types';
 import { CharASTElement } from '../generator/astHandler/CharacterSequence';
-import { isInsideElement } from '../generator/checkForInsideOutBacktracking';
 import _ from 'lodash/fp';
+
 export class CharRangeSequence {
   private readonly charRanges: ReadonlyArray<CharRange>;
   private readonly astElements: ReadonlyArray<CharASTElement>;
@@ -43,32 +43,23 @@ export class CharRangeSequence {
     };
   }
 
-  isExclusive(other: CharRangeSequence): ExlusiveState {
-    const length = Math.min(this.charRanges.length, other.charRanges.length);
+  isExclusive(other: CharRangeSequence): ExclusiveState {
+    const minLengthInCommon = Math.min(
+      this.charRanges.length,
+      other.charRanges.length,
+    );
 
-    for (let i = 0; i < length; i++) {
-      const hasOverlap = this.charRanges[i].hasOverlap(other.charRanges[i]);
-      if (!hasOverlap) {
-        return 'Exlusive';
-      }
+    const isExclusive = _.any((i) => {
+      return !this.charRanges[i].hasOverlap(other.charRanges[i]);
+    }, _.range(0, minLengthInCommon));
+
+    if (isExclusive) {
+      return 'Exclusive';
     }
 
     return this.charRanges.length > other.charRanges.length
       ? 'OrderExclusive'
       : 'NotExclusive';
-  }
-
-  doesBacktrackingStayInside(other: CharRangeSequence): boolean {
-    const length = Math.min(this.charRanges.length, other.charRanges.length);
-
-    for (let i = 0; i < length; i++) {
-      const hasOverlap = this.charRanges[i].hasOverlap(other.charRanges[i]);
-      if (!hasOverlap) {
-        return true;
-      }
-    }
-
-    return isInsideElement(other.astElements[length - 1]);
   }
 
   get(

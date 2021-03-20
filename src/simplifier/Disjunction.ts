@@ -136,7 +136,7 @@ const attemptGrouping = (
   if (groupCount <= 1) {
     const isExclusive =
       computeExclusivityOfAlternatives(alternatives, options.literal) ===
-      'Exlusive';
+      'Exclusive';
 
     if (isExclusive) {
       proccessedAlternatives = sortBy(

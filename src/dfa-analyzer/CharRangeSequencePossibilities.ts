@@ -1,10 +1,11 @@
+import _ from 'lodash/fp';
 import { AST } from 'regexpp';
 import { Flags, RegExpLiteral } from 'regexpp/ast';
 import { CharASTElement } from '../generator/astHandler/CharacterSequence';
 import { CharRange } from '../generator/CharRange';
 import { CharRangeSequence } from './CharRangeSequence';
 import { dfaAnalyzeElement } from './dfaAnalyze';
-import { ExlusiveState } from './types';
+import { ExclusiveState } from './types';
 
 export type QuickCheckDetails = {
   readonly determinesPerfectlyAstElements: readonly CharASTElement[];
@@ -23,7 +24,6 @@ function debugToBinary(n: number) {
   }
   return binary.padStart(16, '0');
 }
-
 export class CharRangeSequencePossibilities {
   readonly possibilities: readonly CharRangeSequence[];
 
@@ -31,40 +31,58 @@ export class CharRangeSequencePossibilities {
     this.possibilities = possibilities;
   }
 
-  isExclusive(other: CharRangeSequencePossibilities): ExlusiveState {
-    let isOrderExclusive = false;
-    for (let i = 0; i < this.possibilities.length; i++) {
-      const a = this.possibilities[i];
+  isExclusive(other: CharRangeSequencePossibilities): ExclusiveState {
+    // let isOrderExclusive = false;
+    // for (let i = 0; i < this.possibilities.length; i++) {
+    //   const a = this.possibilities[i];
 
-      for (let j = 0; j < other.possibilities.length; j++) {
-        const b = other.possibilities[j];
+    //   for (let j = 0; j < other.possibilities.length; j++) {
+    //     const b = other.possibilities[j];
 
-        const exclusiveState = a.isExclusive(b);
-        if (exclusiveState === 'NotExclusive') {
-          return 'NotExclusive';
-        } else if (exclusiveState === 'OrderExclusive') {
-          isOrderExclusive = true;
-        }
-      }
-    }
+    //     const exclusiveState = a.isExclusive(b);
+    //     if (exclusiveState === 'NotExclusive') {
+    //       return 'NotExclusive';
+    //     } else if (exclusiveState === 'OrderExclusive') {
+    //       isOrderExclusive = true;
+    //     }
+    //   }
+    // }
 
-    return isOrderExclusive ? 'OrderExclusive' : 'Exlusive';
+    // return isOrderExclusive ? 'OrderExclusive' : 'Exclusive';
+
+    return _.reduce<CharRangeSequence, ExclusiveState>(
+      (acc, ownPossiblity) => {
+        return _.reduce(
+          (acc, otherPossiblity) => {
+            if (acc === 'NotExclusive') {
+              return acc;
+            }
+
+            const exclusiveState = ownPossiblity.isExclusive(otherPossiblity);
+            if (exclusiveState !== 'Exclusive') {
+              return exclusiveState;
+            }
+
+            return acc;
+          },
+          acc,
+          other.possibilities,
+        );
+      },
+      'Exclusive',
+      this.possibilities,
+    );
   }
 
-  doesBacktrackingStayInside(other: CharRangeSequencePossibilities): boolean {
-    for (let i = 0; i < this.possibilities.length; i++) {
-      const a = this.possibilities[i];
-
-      for (let j = 0; j < other.possibilities.length; j++) {
-        const b = other.possibilities[j];
-
-        if (!a.doesBacktrackingStayInside(b)) {
-          return false;
-        }
-      }
-    }
-
-    return true;
+  get(
+    index: number,
+  ): readonly {
+    readonly charRange: CharRange;
+    readonly astElement: CharASTElement;
+  }[] {
+    return this.possibilities
+      .map((possiblity) => possiblity.get(index))
+      .filter((char): char is NonNullable<typeof char> => char !== undefined);
   }
 
   toJSON(): readonly {
@@ -200,7 +218,7 @@ export class CharRangeSequencePossibilities {
 export function computeExclusivityOfAlternatives(
   alternatives: readonly AST.Alternative[],
   literal: RegExpLiteral,
-): ExlusiveState {
+): ExclusiveState {
   const mappedDFAs: readonly CharRangeSequencePossibilities[] = [];
   let complexity = 1;
   for (let i = 0; i < alternatives.length; i++) {
@@ -234,5 +252,5 @@ export function computeExclusivityOfAlternatives(
     }
   }
 
-  return isOrderExclusive ? 'OrderExclusive' : 'Exlusive';
+  return isOrderExclusive ? 'OrderExclusive' : 'Exclusive';
 }

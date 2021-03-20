@@ -6,15 +6,20 @@ import {
 } from '../CharRangeBTreeMatcher';
 import { astToCharRange } from '../astToCharRange';
 import { QuickCheckDetails } from '../../dfa-analyzer/CharRangeSequencePossibilities';
-import * as _ from 'lodash/fp';
 import { Atom, CharSequenceAtom } from '../templates/mainTemplate';
+
+// export type CharASTElement =
+//   | AST.CharacterClass
+//   | AST.AnyCharacterSet
+//   | AST.EscapeCharacterSet
+//   | AST.UnicodePropertyCharacterSet
+//   | AST.Character;
 
 export type CharASTElement =
   | AST.CharacterClass
-  | AST.AnyCharacterSet
-  | AST.EscapeCharacterSet
-  | AST.UnicodePropertyCharacterSet
-  | AST.Character;
+  | AST.Character
+  | AST.CharacterClassRange
+  | AST.CharacterSet;
 
 export const handleCharSequence: ASTHandler<
   readonly CharASTElement[],

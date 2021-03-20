@@ -23,7 +23,7 @@ export interface DFACache {
   readonly astToCharRange: ReadonlyMap<AST.Element, CharRange>;
 }
 
-export type ExlusiveState = 'Exlusive' | 'NotExclusive' | 'OrderExclusive';
+export type ExclusiveState = 'Exclusive' | 'NotExclusive' | 'OrderExclusive';
 
 export type DFAHandler<T> = (
   element: T,
