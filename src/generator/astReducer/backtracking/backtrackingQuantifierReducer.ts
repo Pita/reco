@@ -1,18 +1,26 @@
 import { AST } from 'regexpp';
-import { CharASTElement } from '../astHandler/CharacterSequence';
+import { CharASTElement } from '../../astHandler/CharacterSequence';
 import * as _ from 'lodash/fp';
-import { dfaAnalyzeElement } from '../../dfa-analyzer/dfaAnalyze';
-import { CharRangeSequencePossibilities } from '../../dfa-analyzer/CharRangeSequencePossibilities';
-import { followUpPathASTReducer } from './followUpPathASTReducer';
-import { containsCharASTReducer } from './containsCharASTReducer';
+import { dfaAnalyzeElement } from '../../../dfa-analyzer/dfaAnalyze';
+import { CharRangeSequencePossibilities } from '../../../dfa-analyzer/CharRangeSequencePossibilities';
+import { followUpPathASTReducer } from '../followUpPathASTReducer';
+import {
+  BacktrackingInfoAcc,
+  emptyBacktrackingInfoAcc,
+  reduceNode,
+} from './backtrackingASTReducer';
+import {
+  containsInfiniteBacktrackingQuantifiers,
+  findNotContainedBacktrackingChars,
+} from './backtrackingHelpers';
 
-type InfiniteBacktrackingReason =
+type QuantifierInfiniteBacktrackingReason =
   | 'child_has_infinite_backtracking'
   | 'handler_not_analyzable'
   | 'followUp_not_analyzable'
   | 'not_exclusive_in_reduced_analysis';
 
-type QuantifierBacktrackingInfo =
+export type QuantifierBacktrackingInfo =
   | {
       readonly type: 'possessive';
     }
@@ -22,7 +30,7 @@ type QuantifierBacktrackingInfo =
     }
   | {
       readonly type: 'infiniteBacktracking';
-      readonly reason: InfiniteBacktrackingReason;
+      readonly reason: QuantifierInfiniteBacktrackingReason;
     };
 
 type QuantifierBacktrackingInfoAccElement = readonly [
@@ -30,7 +38,7 @@ type QuantifierBacktrackingInfoAccElement = readonly [
   QuantifierBacktrackingInfo,
 ];
 
-type QuantifierBacktrackingInfoAcc = readonly QuantifierBacktrackingInfoAccElement[];
+export type QuantifierBacktrackingInfoAcc = readonly QuantifierBacktrackingInfoAccElement[];
 
 function getQuantifierHandlerPossibilities(
   quantifier: AST.Quantifier,
@@ -66,33 +74,44 @@ function getQuantifierHandlerPossibilities(
 
 function assembleReturnAcc(
   options: {
-    readonly acc: QuantifierBacktrackingInfoAcc;
-    readonly childQuantifiers: QuantifierBacktrackingInfoAcc;
+    readonly acc: BacktrackingInfoAcc;
+    readonly childrenAcc: BacktrackingInfoAcc;
     readonly quantifier: AST.Quantifier;
   },
   info: QuantifierBacktrackingInfo,
-): QuantifierBacktrackingInfoAcc {
-  const { acc, childQuantifiers, quantifier } = options;
-  return [...acc, ...childQuantifiers, [quantifier, info]];
+): BacktrackingInfoAcc {
+  const { acc, childrenAcc, quantifier } = options;
+  return {
+    disjunctions: [...acc.disjunctions, ...childrenAcc.disjunctions],
+    quantifiers: [
+      ...acc.quantifiers,
+      ...childrenAcc.quantifiers,
+      [quantifier, info],
+    ],
+  };
 }
 
 // TODO: refactor with reducing exclusivity detection
-function reduceQuantifier(
-  acc: QuantifierBacktrackingInfoAcc,
+export function reduceQuantifier(
+  acc: BacktrackingInfoAcc,
   quantifier: AST.Quantifier,
   literal: AST.RegExpLiteral,
-): QuantifierBacktrackingInfoAcc {
-  const childQuantifiers = reduceNode([], quantifier.element, literal);
+): BacktrackingInfoAcc {
+  const childrenAcc = reduceNode(
+    emptyBacktrackingInfoAcc,
+    quantifier.element,
+    literal,
+  );
 
   // check if there is any child quantifier with infinte backtracking,
   // if so, all optimization attempts are futile and we need to bail to
   // infinite backtracking as well
-  const hasInfiniteBacktrackingChild = _.any((childQuantifierEntry) => {
-    childQuantifierEntry[1].type === 'infiniteBacktracking';
-  }, childQuantifiers);
+  const hasInfiniteBacktrackingChild = containsInfiniteBacktrackingQuantifiers(
+    childrenAcc,
+  );
   if (hasInfiniteBacktrackingChild) {
     return assembleReturnAcc(
-      { acc, childQuantifiers, quantifier },
+      { acc, childrenAcc, quantifier },
       {
         type: 'infiniteBacktracking',
         reason: 'child_has_infinite_backtracking',
@@ -103,22 +122,9 @@ function reduceQuantifier(
   // check if there is any child quantifier with limited backtracking
   // if so, we need to carry over the elements that reach to outside of
   // ourselves
-  const limitedBacktrackingCharsOfInnerQuantifiers = childQuantifiers.reduce(
-    (acc, childQuantifierEntry) => {
-      const quantifierInfo = childQuantifierEntry[1];
-      if (quantifierInfo.type !== 'limitedBacktracking') {
-        return acc;
-      }
-
-      return [...acc, ...quantifierInfo.canNotBacktrackAfter];
-    },
-    [] as readonly CharASTElement[],
-  );
-  const {
-    notContained: carryOverCanNotBacktrackAfter,
-  } = containsCharASTReducer(
+  const carryOverCanNotBacktrackAfter = findNotContainedBacktrackingChars(
+    childrenAcc,
     quantifier.element,
-    limitedBacktrackingCharsOfInnerQuantifiers,
   );
 
   // try to analyze the possiblities of the handler, this might fail as the
@@ -130,7 +136,7 @@ function reduceQuantifier(
   } = getQuantifierHandlerPossibilities(quantifier, literal);
   if (handlerPossibilities === null) {
     return assembleReturnAcc(
-      { acc, childQuantifiers, quantifier },
+      { acc, childrenAcc, quantifier },
       { type: 'infiniteBacktracking', reason: 'handler_not_analyzable' },
     );
   }
@@ -144,7 +150,7 @@ function reduceQuantifier(
   );
   if (followupPossibilties === null) {
     return assembleReturnAcc(
-      { acc, childQuantifiers, quantifier },
+      { acc, childrenAcc, quantifier },
       { type: 'infiniteBacktracking', reason: 'followUp_not_analyzable' },
     );
   }
@@ -160,7 +166,7 @@ function reduceQuantifier(
       exclusivityState === 'OrderExclusive'
     ) {
       return assembleReturnAcc(
-        { acc, childQuantifiers, quantifier },
+        { acc, childrenAcc, quantifier },
         { type: 'possessive' },
       );
     }
@@ -170,7 +176,7 @@ function reduceQuantifier(
   // it failed and we need to bail to infinite backtracking
   if (!isComplete) {
     return assembleReturnAcc(
-      { acc, childQuantifiers, quantifier },
+      { acc, childrenAcc, quantifier },
       {
         type: 'infiniteBacktracking',
         reason: 'not_exclusive_in_reduced_analysis',
@@ -186,54 +192,12 @@ function reduceQuantifier(
     .concat(carryOverCanNotBacktrackAfter);
 
   return assembleReturnAcc(
-    { acc, childQuantifiers, quantifier },
+    { acc, childrenAcc, quantifier },
     { type: 'limitedBacktracking', canNotBacktrackAfter },
   );
 }
 
-function reduceNode(
-  acc: QuantifierBacktrackingInfoAcc,
-  node: AST.Node,
-  literal: AST.RegExpLiteral,
-): QuantifierBacktrackingInfoAcc {
-  switch (node.type) {
-    case 'RegExpLiteral':
-      return reduceNode(acc, node.pattern, literal);
-    case 'Pattern':
-    case 'Group':
-    case 'CapturingGroup':
-      return node.alternatives.reduce(
-        (acc, node) => reduceNode(acc, node, literal),
-        acc,
-      );
-    case 'Assertion':
-      if (node.kind === 'lookahead' || node.kind === 'lookbehind') {
-        return node.alternatives.reduce(
-          (acc, node) => reduceNode(acc, node, literal),
-          acc,
-        );
-      }
-      return acc;
-    case 'Alternative':
-      return node.elements.reduce(
-        (acc, node) => reduceNode(acc, node, literal),
-        acc,
-      );
-    case 'CharacterClass':
-    case 'CharacterClassRange':
-    case 'CharacterSet':
-    case 'Character':
-    case 'Flags':
-      return acc;
-    case 'Backreference':
-      return reduceNode(acc, node.resolved, literal);
-    case 'Quantifier':
-      return reduceQuantifier(acc, node, literal);
-  }
-}
-
-export function quantifierBacktrackingInfoASTReducer(
-  literal: AST.RegExpLiteral,
-): ReadonlyMap<AST.Quantifier, QuantifierBacktrackingInfo> {
-  return new Map(reduceNode([], literal, literal));
-}
+export type QuantifierBacktrackingInfoMap = ReadonlyMap<
+  AST.Quantifier,
+  QuantifierBacktrackingInfo
+>;
